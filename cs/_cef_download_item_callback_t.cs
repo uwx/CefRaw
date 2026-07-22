@@ -1,0 +1,16 @@
+namespace RawCef.Native;
+
+public unsafe partial struct _cef_download_item_callback_t
+{
+    [NativeTypeName("cef_base_ref_counted_t")]
+    public _cef_base_ref_counted_t @base;
+
+    [NativeTypeName("void (*)(struct _cef_download_item_callback_t *) __attribute__((stdcall))")]
+    public delegate* unmanaged[Stdcall]<_cef_download_item_callback_t*, void> cancel;
+
+    [NativeTypeName("void (*)(struct _cef_download_item_callback_t *) __attribute__((stdcall))")]
+    public delegate* unmanaged[Stdcall]<_cef_download_item_callback_t*, void> pause;
+
+    [NativeTypeName("void (*)(struct _cef_download_item_callback_t *) __attribute__((stdcall))")]
+    public delegate* unmanaged[Stdcall]<_cef_download_item_callback_t*, void> resume;
+}
