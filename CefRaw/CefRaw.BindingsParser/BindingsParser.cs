@@ -70,6 +70,9 @@ public static class BindingsParser
                 case "struct":
                     ns.Structs.Add(ParseStruct(child));
                     break;
+                case "enumeration":
+                    ns.Enumerations.Add(ParseEnumeration(child));
+                    break;
                 case "class":
                     ns.Class = ParseClass(child);
                     break;
@@ -94,6 +97,121 @@ public static class BindingsParser
             s.Fields.Add(ParseField(fieldEl));
 
         return s;
+    }
+
+    // ── Enumeration ────────────────────────────────────────────────────
+
+    private static EnumerationDefinition ParseEnumeration(XElement el)
+    {
+        var typeEl = el.Element("type");
+
+        var e = new EnumerationDefinition
+        {
+            Name   = Attr(el, "name") ?? "",
+            Access = Attr(el, "access") ?? "public",
+            Type   = typeEl?.Value ?? ""
+        };
+
+        foreach (var enumeratorEl in el.Elements("enumerator"))
+            e.Enumerators.Add(ParseEnumerator(enumeratorEl));
+
+        return e;
+    }
+
+    // ── Enumerator ─────────────────────────────────────────────────────
+
+    private static EnumeratorDefinition ParseEnumerator(XElement el)
+    {
+        var typeEl  = el.Element("type");
+        var valueEl = el.Element("value");
+
+        return new EnumeratorDefinition
+        {
+            Name        = Attr(el, "name") ?? "",
+            Access      = Attr(el, "access") ?? "public",
+            Type        = typeEl?.Value ?? "",
+            IsPrimitive = BoolAttr(typeEl, "primitive"),
+            Value       = ParseEnumeratorValue(valueEl)
+        };
+    }
+
+    // ── Enumerator Value ───────────────────────────────────────────────
+
+    private static EnumeratorValue? ParseEnumeratorValue(XElement? el)
+    {
+        if (el is null)
+            return null;
+
+        // Pattern: <unchecked><value><cast>...</cast><value><code>...</code></value></value></unchecked>
+        var uncheckedEl = el.Element("unchecked");
+        if (uncheckedEl is not null)
+            return ParseEnumeratorValueInner(uncheckedEl, isUnchecked: true);
+
+        // Pattern: <deref><code>...</code></deref>
+        var derefEl = el.Element("deref");
+        if (derefEl is not null)
+        {
+            return new EnumeratorValue
+            {
+                Code        = derefEl.Element("code")?.Value,
+                IsDeref     = true,
+                IsUnchecked = false
+            };
+        }
+
+        // Plain <code> inside <value>
+        return new EnumeratorValue
+        {
+            Code        = el.Element("code")?.Value,
+            IsDeref     = false,
+            IsUnchecked = false
+        };
+    }
+
+    /// <summary>
+    /// Recursively drills into nested <c>&lt;value&gt;</c> / <c>&lt;unchecked&gt;</c> wrappers
+    /// to find the innermost <c>&lt;code&gt;</c> element.
+    /// </summary>
+    private static EnumeratorValue? ParseEnumeratorValueInner(XElement el, bool isUnchecked)
+    {
+        // Drill through <value> elements until we find <code>
+        var codeEl = el.Element("code");
+        if (codeEl is not null)
+        {
+            return new EnumeratorValue
+            {
+                Code        = codeEl.Value,
+                IsUnchecked = isUnchecked,
+                IsDeref     = false
+            };
+        }
+
+        // Handle nested <value> inside <unchecked> (e.g. <value><cast>...</cast><value><code>...</code></value></value>)
+        var innerValue = el.Element("value");
+        if (innerValue is not null)
+        {
+            // Check for <unchecked> inside the inner value
+            var innerUnchecked = innerValue.Element("unchecked");
+            if (innerUnchecked is not null)
+                return ParseEnumeratorValueInner(innerUnchecked, isUnchecked: true);
+
+            // Look for <code> inside the inner value
+            var innerCode = innerValue.Element("code");
+            if (innerCode is not null)
+            {
+                return new EnumeratorValue
+                {
+                    Code        = innerCode.Value,
+                    IsUnchecked = isUnchecked,
+                    IsDeref     = false
+                };
+            }
+
+            // Drill deeper: <value> inside <value>
+            return ParseEnumeratorValueInner(innerValue, isUnchecked);
+        }
+
+        return null;
     }
 
     // ── Field ──────────────────────────────────────────────────────────

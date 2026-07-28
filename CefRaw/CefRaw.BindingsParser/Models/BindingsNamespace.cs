@@ -8,6 +8,9 @@ public class BindingsNamespace : IEquatable<BindingsNamespace>
     /// <summary>All &lt;struct&gt; elements (including duplicates).</summary>
     public List<StructDefinition> Structs { get; set; } = [];
 
+    /// <summary>All &lt;enumeration&gt; elements.</summary>
+    public List<EnumerationDefinition> Enumerations { get; set; } = [];
+
     /// <summary>The single &lt;class&gt; element with functions and constants.</summary>
     public ClassDefinition? Class { get; set; }
 
@@ -15,7 +18,7 @@ public class BindingsNamespace : IEquatable<BindingsNamespace>
     {
         if (other is null) return false;
         if (ReferenceEquals(this, other)) return true;
-        return Name == other.Name && Structs.SequenceEqual(other.Structs) && Equals(Class, other.Class);
+        return Name == other.Name && Structs.SequenceEqual(other.Structs) && Enumerations.SequenceEqual(other.Enumerations) && Equals(Class, other.Class);
     }
 
     public override bool Equals(object? obj)
@@ -28,7 +31,7 @@ public class BindingsNamespace : IEquatable<BindingsNamespace>
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Name, Structs.Aggregate(0, HashCode.Combine), Class);
+        return HashCode.Combine(Name, Structs.Aggregate(0, HashCode.Combine), Enumerations.Aggregate(0, HashCode.Combine), Class);
     }
 
     public static bool operator ==(BindingsNamespace? left, BindingsNamespace? right)

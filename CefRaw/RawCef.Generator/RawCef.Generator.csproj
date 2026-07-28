@@ -11,4 +11,19 @@
       <ProjectReference Include="..\CefRaw.BindingsParser\CefRaw.BindingsParser.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="..\..\bindings_linux.xml">
+        <Link>bindings_linux.xml</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="..\..\bindings_mac.xml">
+        <Link>bindings_mac.xml</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="..\..\bindings_win.xml">
+        <Link>bindings_win.xml</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

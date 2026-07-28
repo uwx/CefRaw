@@ -193,11 +193,13 @@ $commonArgs = @(
     '-l', 'libcef',
     '-m', 'RawMethods',
     '-om', 'Xml',
-    '-f', 'include/capi/cef_app_capi.h',
-    '-f', 'include/capi/cef_client_capi.h',
-    '-f', 'include/capi/cef_browser_capi.h',
-    '-f', 'include/capi/cef_browser_process_handler_capi.h',
+    '-f', 'base_include.h',
     '-f', 'include/cef_api_hash.h',
+    '-t', 'include/capi/cef_app_capi.h',
+    '-t', 'include/capi/cef_client_capi.h',
+    '-t', 'include/capi/cef_browser_capi.h',
+    '-t', 'include/capi/cef_browser_process_handler_capi.h',
+    '-t', 'include/cef_api_hash.h',
     '-t', 'include/capi/cef_accessibility_handler_capi.h',
     '-t', 'include/capi/cef_audio_handler_capi.h',
     '-t', 'include/capi/cef_auth_callback_capi.h',
@@ -295,33 +297,35 @@ $commonArgs = @(
     '-t', 'include/capi/views/cef_box_layout_capi.h',
     '-t', 'include/capi/views/cef_browser_view_capi.h',
     '-t', 'include/capi/views/cef_window_delegate_capi.h',
-    #'-t', 'include/internal/cef_dump_without_crashing_internal.h',
-    #'-t', 'include/internal/cef_export.h',
-    #'-t', 'include/internal/cef_logging_internal.h',
-    #'-t', 'include/internal/cef_ptr.h',
+    '-t', 'include/internal/cef_dump_without_crashing_internal.h',
+    '-t', 'include/internal/cef_export.h',
+    '-t', 'include/internal/cef_logging_internal.h',
+    '-t', 'include/internal/cef_ptr.h',
     '-t', 'include/internal/cef_string.h',
     '-t', 'include/internal/cef_string_list.h',
     '-t', 'include/internal/cef_string_map.h',
     '-t', 'include/internal/cef_string_multimap.h',
-    '-t', 'include/internal/cef_string_types.h'
+    '-t', 'include/internal/cef_string_types.h',
     #'-t', 'include/internal/cef_string_wrappers.h',
-    #'-t', 'include/internal/cef_thread_internal.h',
-    #'-t', 'include/internal/cef_time.h',
-    #'-t', 'include/internal/cef_time_wrappers.h',
-    #'-t', 'include/internal/cef_trace_event_internal.h',
-    #'-t', 'include/internal/cef_types.h',
-    #'-t', 'include/internal/cef_types_color.h',
-    #'-t', 'include/internal/cef_types_component.h',
-    #'-t', 'include/internal/cef_types_content_settings.h',
-    #'-t', 'include/internal/cef_types_geometry.h',
-    #'-t', 'include/internal/cef_types_osr.h',
-    #'-t', 'include/internal/cef_types_runtime.h'
+    '-t', 'include/internal/cef_thread_internal.h',
+    '-t', 'include/internal/cef_time.h',
+    '-t', 'include/internal/cef_time_wrappers.h',
+    '-t', 'include/internal/cef_trace_event_internal.h',
+    '-t', 'include/internal/cef_types.h',
+    '-t', 'include/internal/cef_types_color.h',
+    '-t', 'include/internal/cef_types_component.h',
+    '-t', 'include/internal/cef_types_content_settings.h',
+    '-t', 'include/internal/cef_types_geometry.h',
+    '-t', 'include/internal/cef_types_osr.h',
+    '-t', 'include/internal/cef_types_runtime.h',
+    '--remap', 'HWND=HWND',
+    '--remap', 'HMENU=HMENU'
 )
 
 $platforms = @(
-    @{ Name = 'win';   Types = 'windows'; Defines = @('OS_WIN', 'NOMINMAX', 'WIN32_LEAN_AND_MEAN') },
-    @{ Name = 'mac';   Types = 'unix';    Defines = @('OS_MAC') },
-    @{ Name = 'linux'; Types = 'unix';    Defines = @('OS_LINUX') }
+    @{ Name = 'win';   Types = 'windows'; ExtraFiles = @('include/internal/cef_types_win.h');   Defines = @('CLANGSHARP_WIN', 'NOMINMAX', 'WIN32_LEAN_AND_MEAN') },
+    @{ Name = 'mac';   Types = 'unix';    ExtraFiles = @('include/internal/cef_types_mac.h');   Defines = @('CLANGSHARP_MAC') },
+    @{ Name = 'linux'; Types = 'unix';    ExtraFiles = @('include/internal/cef_types_linux.h'); Defines = @('CLANGSHARP_LINUX') }
 )
 
 foreach ($p in $platforms) {
@@ -331,6 +335,10 @@ foreach ($p in $platforms) {
     foreach ($d in $p.Defines) {
         $platformArgs += '-D'
         $platformArgs += $d
+    }
+    foreach ($f in $p.ExtraFiles) {
+        $platformArgs += '-t'
+        $platformArgs += $f
     }
     $platformArgs += '-o'
     $platformArgs += "bindings_$($p.Name).xml"

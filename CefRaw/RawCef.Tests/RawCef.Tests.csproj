@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\RawCef\RawCef.csproj" />
+      <ProjectReference Include="..\RawCef\RawCef.Window.csproj" />
     </ItemGroup>
 
 </Project>
