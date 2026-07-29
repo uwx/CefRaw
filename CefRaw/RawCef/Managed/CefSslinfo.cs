@@ -55,11 +55,19 @@ public unsafe abstract partial class CefSslinfo : CefBaseRefCounted, ICefSslinfo
     #endif
     private static cef_cert_status_t Bridge_GetCertStatus(_cef_sslinfo_t* self)
     {
-        var _m = GetManaged<CefSslinfo>(self);
+        try
+        {
+            var _m = GetManaged<CefSslinfo>(self);
 
-        var _result = _m.GetCertStatus();
+            var _result = _m.GetCertStatus();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -69,11 +77,20 @@ public unsafe abstract partial class CefSslinfo : CefBaseRefCounted, ICefSslinfo
     #endif
     private static _cef_x509_certificate_t* Bridge_GetX509Certificate(_cef_sslinfo_t* self)
     {
-        var _m = GetManaged<CefSslinfo>(self);
+        try
+        {
+            var _m = GetManaged<CefSslinfo>(self);
 
-        var _result = _m.GetX509Certificate();
+            var _result = _m.GetX509Certificate();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -134,11 +151,19 @@ public unsafe abstract partial class CefSslinfo : CefBaseRefCounted, ICefSslinfo
     #endif
     private static cef_cert_status_t Bridge_GetCertStatus(_cef_sslinfo_t* self)
     {
-        var _m = GetManaged<CefSslinfo>(self);
+        try
+        {
+            var _m = GetManaged<CefSslinfo>(self);
 
-        var _result = _m.GetCertStatus();
+            var _result = _m.GetCertStatus();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -148,11 +173,20 @@ public unsafe abstract partial class CefSslinfo : CefBaseRefCounted, ICefSslinfo
     #endif
     private static _cef_x509_certificate_t* Bridge_GetX509Certificate(_cef_sslinfo_t* self)
     {
-        var _m = GetManaged<CefSslinfo>(self);
+        try
+        {
+            var _m = GetManaged<CefSslinfo>(self);
 
-        var _result = _m.GetX509Certificate();
+            var _result = _m.GetX509Certificate();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -213,11 +247,19 @@ public unsafe abstract partial class CefSslinfo : CefBaseRefCounted, ICefSslinfo
     #endif
     private static cef_cert_status_t Bridge_GetCertStatus(_cef_sslinfo_t* self)
     {
-        var _m = GetManaged<CefSslinfo>(self);
+        try
+        {
+            var _m = GetManaged<CefSslinfo>(self);
 
-        var _result = _m.GetCertStatus();
+            var _result = _m.GetCertStatus();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -227,11 +269,20 @@ public unsafe abstract partial class CefSslinfo : CefBaseRefCounted, ICefSslinfo
     #endif
     private static _cef_x509_certificate_t* Bridge_GetX509Certificate(_cef_sslinfo_t* self)
     {
-        var _m = GetManaged<CefSslinfo>(self);
+        try
+        {
+            var _m = GetManaged<CefSslinfo>(self);
 
-        var _result = _m.GetX509Certificate();
+            var _result = _m.GetX509Certificate();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

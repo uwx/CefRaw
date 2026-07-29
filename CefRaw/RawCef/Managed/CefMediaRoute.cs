@@ -73,11 +73,19 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_route_t* self)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        var _result = _m.GetId();
+            var _result = _m.GetId();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -87,11 +95,20 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static _cef_media_source_t* Bridge_GetSource(_cef_media_route_t* self)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        var _result = _m.GetSource();
+            var _result = _m.GetSource();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -101,11 +118,20 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static _cef_media_sink_t* Bridge_GetSink(_cef_media_route_t* self)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        var _result = _m.GetSink();
+            var _result = _m.GetSink();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -115,11 +141,19 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static void Bridge_SendRouteMessage(_cef_media_route_t* self, void* arg0, nuint arg1)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        _m.SendRouteMessage(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            _m.SendRouteMessage(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -129,9 +163,17 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static void Bridge_Terminate(_cef_media_route_t* self)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        _m.Terminate();
+            _m.Terminate();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -210,11 +252,19 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_route_t* self)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        var _result = _m.GetId();
+            var _result = _m.GetId();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -224,11 +274,20 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static _cef_media_source_t* Bridge_GetSource(_cef_media_route_t* self)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        var _result = _m.GetSource();
+            var _result = _m.GetSource();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -238,11 +297,20 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static _cef_media_sink_t* Bridge_GetSink(_cef_media_route_t* self)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        var _result = _m.GetSink();
+            var _result = _m.GetSink();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -252,11 +320,19 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static void Bridge_SendRouteMessage(_cef_media_route_t* self, void* arg0, nuint arg1)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        _m.SendRouteMessage(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            _m.SendRouteMessage(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -266,9 +342,17 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static void Bridge_Terminate(_cef_media_route_t* self)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        _m.Terminate();
+            _m.Terminate();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -347,11 +431,19 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_route_t* self)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        var _result = _m.GetId();
+            var _result = _m.GetId();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -361,11 +453,20 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static _cef_media_source_t* Bridge_GetSource(_cef_media_route_t* self)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        var _result = _m.GetSource();
+            var _result = _m.GetSource();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -375,11 +476,20 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static _cef_media_sink_t* Bridge_GetSink(_cef_media_route_t* self)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        var _result = _m.GetSink();
+            var _result = _m.GetSink();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -389,11 +499,19 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static void Bridge_SendRouteMessage(_cef_media_route_t* self, void* arg0, nuint arg1)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        _m.SendRouteMessage(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            _m.SendRouteMessage(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -403,9 +521,17 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     #endif
     private static void Bridge_Terminate(_cef_media_route_t* self)
     {
-        var _m = GetManaged<CefMediaRoute>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRoute>(self);
 
-        _m.Terminate();
+            _m.Terminate();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

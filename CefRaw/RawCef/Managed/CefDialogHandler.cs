@@ -49,19 +49,27 @@ public unsafe abstract partial class CefDialogHandler : CefBaseRefCounted, ICefD
     #endif
     private static int Bridge_OnFileDialog(_cef_dialog_handler_t* self, _cef_browser_t* arg0, cef_file_dialog_mode_t arg1, _cef_string_utf16_t* arg2, _cef_string_utf16_t* arg3, _cef_string_list_t* arg4, _cef_string_list_t* arg5, _cef_string_list_t* arg6, _cef_file_dialog_callback_t* arg7)
     {
-        var _m = GetManaged<CefDialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefDialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = CefStringRef.ToString(arg2);
-        var _a3 = CefStringRef.ToString(arg3);
-        var _a4 = arg4 != null ? new CefStringListRef(arg4) : null;
-        var _a5 = arg5 != null ? new CefStringListRef(arg5) : null;
-        var _a6 = arg6 != null ? new CefStringListRef(arg6) : null;
-        var _a7 = arg7 != null ? new CefFileDialogCallbackRef(arg7) : null;
-        var _result = _m.OnFileDialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = CefStringRef.ToString(arg2);
+            var _a3 = CefStringRef.ToString(arg3);
+            var _a4 = arg4 != null ? new CefStringListRef(arg4) : null;
+            var _a5 = arg5 != null ? new CefStringListRef(arg5) : null;
+            var _a6 = arg6 != null ? new CefStringListRef(arg6) : null;
+            var _a7 = arg7 != null ? new CefFileDialogCallbackRef(arg7) : null;
+            var _result = _m.OnFileDialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -116,19 +124,27 @@ public unsafe abstract partial class CefDialogHandler : CefBaseRefCounted, ICefD
     #endif
     private static int Bridge_OnFileDialog(_cef_dialog_handler_t* self, _cef_browser_t* arg0, cef_file_dialog_mode_t arg1, _cef_string_utf16_t* arg2, _cef_string_utf16_t* arg3, _cef_string_list_t* arg4, _cef_string_list_t* arg5, _cef_string_list_t* arg6, _cef_file_dialog_callback_t* arg7)
     {
-        var _m = GetManaged<CefDialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefDialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = CefStringRef.ToString(arg2);
-        var _a3 = CefStringRef.ToString(arg3);
-        var _a4 = arg4 != null ? new CefStringListRef(arg4) : null;
-        var _a5 = arg5 != null ? new CefStringListRef(arg5) : null;
-        var _a6 = arg6 != null ? new CefStringListRef(arg6) : null;
-        var _a7 = arg7 != null ? new CefFileDialogCallbackRef(arg7) : null;
-        var _result = _m.OnFileDialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = CefStringRef.ToString(arg2);
+            var _a3 = CefStringRef.ToString(arg3);
+            var _a4 = arg4 != null ? new CefStringListRef(arg4) : null;
+            var _a5 = arg5 != null ? new CefStringListRef(arg5) : null;
+            var _a6 = arg6 != null ? new CefStringListRef(arg6) : null;
+            var _a7 = arg7 != null ? new CefFileDialogCallbackRef(arg7) : null;
+            var _result = _m.OnFileDialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -183,19 +199,27 @@ public unsafe abstract partial class CefDialogHandler : CefBaseRefCounted, ICefD
     #endif
     private static int Bridge_OnFileDialog(_cef_dialog_handler_t* self, _cef_browser_t* arg0, cef_file_dialog_mode_t arg1, _cef_string_utf16_t* arg2, _cef_string_utf16_t* arg3, _cef_string_list_t* arg4, _cef_string_list_t* arg5, _cef_string_list_t* arg6, _cef_file_dialog_callback_t* arg7)
     {
-        var _m = GetManaged<CefDialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefDialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = CefStringRef.ToString(arg2);
-        var _a3 = CefStringRef.ToString(arg3);
-        var _a4 = arg4 != null ? new CefStringListRef(arg4) : null;
-        var _a5 = arg5 != null ? new CefStringListRef(arg5) : null;
-        var _a6 = arg6 != null ? new CefStringListRef(arg6) : null;
-        var _a7 = arg7 != null ? new CefFileDialogCallbackRef(arg7) : null;
-        var _result = _m.OnFileDialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = CefStringRef.ToString(arg2);
+            var _a3 = CefStringRef.ToString(arg3);
+            var _a4 = arg4 != null ? new CefStringListRef(arg4) : null;
+            var _a5 = arg5 != null ? new CefStringListRef(arg5) : null;
+            var _a6 = arg6 != null ? new CefStringListRef(arg6) : null;
+            var _a7 = arg7 != null ? new CefFileDialogCallbackRef(arg7) : null;
+            var _result = _m.OnFileDialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

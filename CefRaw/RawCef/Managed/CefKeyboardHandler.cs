@@ -55,15 +55,23 @@ public unsafe abstract partial class CefKeyboardHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnPreKeyEvent(_cef_keyboard_handler_t* self, _cef_browser_t* arg0, _cef_key_event_t* arg1, tagMSG* arg2, int* arg3)
     {
-        var _m = GetManaged<CefKeyboardHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefKeyboardHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefKeyEventRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.OnPreKeyEvent(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefKeyEventRef(arg1) : null;
+            var _a2 = arg2;
+            var _a3 = arg3;
+            var _result = _m.OnPreKeyEvent(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -73,14 +81,22 @@ public unsafe abstract partial class CefKeyboardHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnKeyEvent(_cef_keyboard_handler_t* self, _cef_browser_t* arg0, _cef_key_event_t* arg1, tagMSG* arg2)
     {
-        var _m = GetManaged<CefKeyboardHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefKeyboardHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefKeyEventRef(arg1) : null;
-        var _a2 = arg2;
-        var _result = _m.OnKeyEvent(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefKeyEventRef(arg1) : null;
+            var _a2 = arg2;
+            var _result = _m.OnKeyEvent(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -141,15 +157,23 @@ public unsafe abstract partial class CefKeyboardHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnPreKeyEvent(_cef_keyboard_handler_t* self, _cef_browser_t* arg0, _cef_key_event_t* arg1, void* arg2, int* arg3)
     {
-        var _m = GetManaged<CefKeyboardHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefKeyboardHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefKeyEventRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.OnPreKeyEvent(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefKeyEventRef(arg1) : null;
+            var _a2 = arg2;
+            var _a3 = arg3;
+            var _result = _m.OnPreKeyEvent(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -159,14 +183,22 @@ public unsafe abstract partial class CefKeyboardHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnKeyEvent(_cef_keyboard_handler_t* self, _cef_browser_t* arg0, _cef_key_event_t* arg1, void* arg2)
     {
-        var _m = GetManaged<CefKeyboardHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefKeyboardHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefKeyEventRef(arg1) : null;
-        var _a2 = arg2;
-        var _result = _m.OnKeyEvent(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefKeyEventRef(arg1) : null;
+            var _a2 = arg2;
+            var _result = _m.OnKeyEvent(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -227,15 +259,23 @@ public unsafe abstract partial class CefKeyboardHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnPreKeyEvent(_cef_keyboard_handler_t* self, _cef_browser_t* arg0, _cef_key_event_t* arg1, void* arg2, int* arg3)
     {
-        var _m = GetManaged<CefKeyboardHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefKeyboardHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefKeyEventRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.OnPreKeyEvent(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefKeyEventRef(arg1) : null;
+            var _a2 = arg2;
+            var _a3 = arg3;
+            var _result = _m.OnPreKeyEvent(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -245,14 +285,22 @@ public unsafe abstract partial class CefKeyboardHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnKeyEvent(_cef_keyboard_handler_t* self, _cef_browser_t* arg0, _cef_key_event_t* arg1, void* arg2)
     {
-        var _m = GetManaged<CefKeyboardHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefKeyboardHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefKeyEventRef(arg1) : null;
-        var _a2 = arg2;
-        var _result = _m.OnKeyEvent(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefKeyEventRef(arg1) : null;
+            var _a2 = arg2;
+            var _result = _m.OnKeyEvent(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

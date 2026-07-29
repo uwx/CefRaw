@@ -49,10 +49,18 @@ public unsafe abstract partial class CefResourceSkipCallback : CefBaseRefCounted
     #endif
     private static void Bridge_Cont(_cef_resource_skip_callback_t* self, long arg0)
     {
-        var _m = GetManaged<CefResourceSkipCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceSkipCallback>(self);
 
-        var _a0 = arg0;
-        _m.Cont(_a0);
+            var _a0 = arg0;
+            _m.Cont(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -107,10 +115,18 @@ public unsafe abstract partial class CefResourceSkipCallback : CefBaseRefCounted
     #endif
     private static void Bridge_Cont(_cef_resource_skip_callback_t* self, long arg0)
     {
-        var _m = GetManaged<CefResourceSkipCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceSkipCallback>(self);
 
-        var _a0 = arg0;
-        _m.Cont(_a0);
+            var _a0 = arg0;
+            _m.Cont(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -165,10 +181,18 @@ public unsafe abstract partial class CefResourceSkipCallback : CefBaseRefCounted
     #endif
     private static void Bridge_Cont(_cef_resource_skip_callback_t* self, long arg0)
     {
-        var _m = GetManaged<CefResourceSkipCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceSkipCallback>(self);
 
-        var _a0 = arg0;
-        _m.Cont(_a0);
+            var _a0 = arg0;
+            _m.Cont(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

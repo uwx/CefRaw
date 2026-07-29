@@ -49,11 +49,19 @@ public unsafe abstract partial class CefBeforeDownloadCallback : CefBaseRefCount
     #endif
     private static void Bridge_Cont(_cef_before_download_callback_t* self, _cef_string_utf16_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefBeforeDownloadCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefBeforeDownloadCallback>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        _m.Cont(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            _m.Cont(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -108,11 +116,19 @@ public unsafe abstract partial class CefBeforeDownloadCallback : CefBaseRefCount
     #endif
     private static void Bridge_Cont(_cef_before_download_callback_t* self, _cef_string_utf16_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefBeforeDownloadCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefBeforeDownloadCallback>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        _m.Cont(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            _m.Cont(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -167,11 +183,19 @@ public unsafe abstract partial class CefBeforeDownloadCallback : CefBaseRefCount
     #endif
     private static void Bridge_Cont(_cef_before_download_callback_t* self, _cef_string_utf16_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefBeforeDownloadCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefBeforeDownloadCallback>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        _m.Cont(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            _m.Cont(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

@@ -175,11 +175,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static int Bridge_IsReadOnly(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.IsReadOnly();
+            var _result = _m.IsReadOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -189,11 +197,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetUrl(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetUrl();
+            var _result = _m.GetUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -203,10 +219,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetUrl(_cef_request_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetUrl(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetUrl(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -216,11 +240,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetMethod(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetMethod();
+            var _result = _m.GetMethod();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -230,10 +262,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetMethod(_cef_request_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetMethod(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetMethod(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -243,11 +283,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetReferrer(_cef_request_t* self, _cef_string_utf16_t* arg0, cef_referrer_policy_t arg1)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        _m.SetReferrer(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            _m.SetReferrer(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -257,11 +305,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetReferrerUrl(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetReferrerUrl();
+            var _result = _m.GetReferrerUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -271,11 +327,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_referrer_policy_t Bridge_GetReferrerPolicy(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetReferrerPolicy();
+            var _result = _m.GetReferrerPolicy();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -285,11 +349,20 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static _cef_post_data_t* Bridge_GetPostData(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetPostData();
+            var _result = _m.GetPostData();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -299,10 +372,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetPostData(_cef_request_t* self, _cef_post_data_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0 != null ? new CefPostDataRef(arg0) : null;
-        _m.SetPostData(_a0);
+            var _a0 = arg0 != null ? new CefPostDataRef(arg0) : null;
+            _m.SetPostData(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -312,10 +393,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_GetHeaderMap(_cef_request_t* self, _cef_string_multimap_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        _m.GetHeaderMap(_a0);
+            var _a0 = arg0;
+            _m.GetHeaderMap(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -325,10 +414,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetHeaderMap(_cef_request_t* self, _cef_string_multimap_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        _m.SetHeaderMap(_a0);
+            var _a0 = arg0;
+            _m.SetHeaderMap(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -338,12 +435,20 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetHeaderByName(_cef_request_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetHeaderByName(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetHeaderByName(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -353,12 +458,20 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetHeaderByName(_cef_request_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, int arg2)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2;
-        _m.SetHeaderByName(_a0, _a1, _a2);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2;
+            _m.SetHeaderByName(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -368,13 +481,21 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_Set(_cef_request_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, _cef_post_data_t* arg2, _cef_string_multimap_t* arg3)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2 != null ? new CefPostDataRef(arg2) : null;
-        var _a3 = arg3;
-        _m.Set(_a0, _a1, _a2, _a3);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2 != null ? new CefPostDataRef(arg2) : null;
+            var _a3 = arg3;
+            _m.Set(_a0, _a1, _a2, _a3);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -384,11 +505,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static int Bridge_GetFlags(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetFlags();
+            var _result = _m.GetFlags();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -398,10 +527,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetFlags(_cef_request_t* self, int arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        _m.SetFlags(_a0);
+            var _a0 = arg0;
+            _m.SetFlags(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -411,11 +548,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFirstPartyForCookies(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetFirstPartyForCookies();
+            var _result = _m.GetFirstPartyForCookies();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -425,10 +570,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetFirstPartyForCookies(_cef_request_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetFirstPartyForCookies(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetFirstPartyForCookies(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -438,11 +591,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_resource_type_t Bridge_GetResourceType(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetResourceType();
+            var _result = _m.GetResourceType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -452,11 +613,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_transition_type_t Bridge_GetTransitionType(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetTransitionType();
+            var _result = _m.GetTransitionType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -466,11 +635,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static ulong Bridge_GetIdentifier(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetIdentifier();
+            var _result = _m.GetIdentifier();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -651,11 +828,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static int Bridge_IsReadOnly(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.IsReadOnly();
+            var _result = _m.IsReadOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -665,11 +850,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetUrl(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetUrl();
+            var _result = _m.GetUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -679,10 +872,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetUrl(_cef_request_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetUrl(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetUrl(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -692,11 +893,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetMethod(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetMethod();
+            var _result = _m.GetMethod();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -706,10 +915,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetMethod(_cef_request_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetMethod(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetMethod(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -719,11 +936,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetReferrer(_cef_request_t* self, _cef_string_utf16_t* arg0, cef_referrer_policy_t arg1)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        _m.SetReferrer(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            _m.SetReferrer(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -733,11 +958,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetReferrerUrl(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetReferrerUrl();
+            var _result = _m.GetReferrerUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -747,11 +980,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_referrer_policy_t Bridge_GetReferrerPolicy(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetReferrerPolicy();
+            var _result = _m.GetReferrerPolicy();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -761,11 +1002,20 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static _cef_post_data_t* Bridge_GetPostData(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetPostData();
+            var _result = _m.GetPostData();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -775,10 +1025,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetPostData(_cef_request_t* self, _cef_post_data_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0 != null ? new CefPostDataRef(arg0) : null;
-        _m.SetPostData(_a0);
+            var _a0 = arg0 != null ? new CefPostDataRef(arg0) : null;
+            _m.SetPostData(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -788,10 +1046,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_GetHeaderMap(_cef_request_t* self, _cef_string_multimap_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        _m.GetHeaderMap(_a0);
+            var _a0 = arg0;
+            _m.GetHeaderMap(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -801,10 +1067,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetHeaderMap(_cef_request_t* self, _cef_string_multimap_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        _m.SetHeaderMap(_a0);
+            var _a0 = arg0;
+            _m.SetHeaderMap(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -814,12 +1088,20 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetHeaderByName(_cef_request_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetHeaderByName(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetHeaderByName(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -829,12 +1111,20 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetHeaderByName(_cef_request_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, int arg2)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2;
-        _m.SetHeaderByName(_a0, _a1, _a2);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2;
+            _m.SetHeaderByName(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -844,13 +1134,21 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_Set(_cef_request_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, _cef_post_data_t* arg2, _cef_string_multimap_t* arg3)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2 != null ? new CefPostDataRef(arg2) : null;
-        var _a3 = arg3;
-        _m.Set(_a0, _a1, _a2, _a3);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2 != null ? new CefPostDataRef(arg2) : null;
+            var _a3 = arg3;
+            _m.Set(_a0, _a1, _a2, _a3);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -860,11 +1158,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static int Bridge_GetFlags(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetFlags();
+            var _result = _m.GetFlags();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -874,10 +1180,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetFlags(_cef_request_t* self, int arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        _m.SetFlags(_a0);
+            var _a0 = arg0;
+            _m.SetFlags(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -887,11 +1201,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFirstPartyForCookies(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetFirstPartyForCookies();
+            var _result = _m.GetFirstPartyForCookies();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -901,10 +1223,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetFirstPartyForCookies(_cef_request_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetFirstPartyForCookies(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetFirstPartyForCookies(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -914,11 +1244,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_resource_type_t Bridge_GetResourceType(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetResourceType();
+            var _result = _m.GetResourceType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -928,11 +1266,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_transition_type_t Bridge_GetTransitionType(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetTransitionType();
+            var _result = _m.GetTransitionType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -942,11 +1288,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static ulong Bridge_GetIdentifier(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetIdentifier();
+            var _result = _m.GetIdentifier();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -1127,11 +1481,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static int Bridge_IsReadOnly(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.IsReadOnly();
+            var _result = _m.IsReadOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1141,11 +1503,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetUrl(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetUrl();
+            var _result = _m.GetUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1155,10 +1525,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetUrl(_cef_request_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetUrl(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetUrl(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1168,11 +1546,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetMethod(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetMethod();
+            var _result = _m.GetMethod();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1182,10 +1568,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetMethod(_cef_request_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetMethod(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetMethod(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1195,11 +1589,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetReferrer(_cef_request_t* self, _cef_string_utf16_t* arg0, cef_referrer_policy_t arg1)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        _m.SetReferrer(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            _m.SetReferrer(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1209,11 +1611,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetReferrerUrl(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetReferrerUrl();
+            var _result = _m.GetReferrerUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1223,11 +1633,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_referrer_policy_t Bridge_GetReferrerPolicy(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetReferrerPolicy();
+            var _result = _m.GetReferrerPolicy();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1237,11 +1655,20 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static _cef_post_data_t* Bridge_GetPostData(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetPostData();
+            var _result = _m.GetPostData();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1251,10 +1678,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetPostData(_cef_request_t* self, _cef_post_data_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0 != null ? new CefPostDataRef(arg0) : null;
-        _m.SetPostData(_a0);
+            var _a0 = arg0 != null ? new CefPostDataRef(arg0) : null;
+            _m.SetPostData(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1264,10 +1699,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_GetHeaderMap(_cef_request_t* self, _cef_string_multimap_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        _m.GetHeaderMap(_a0);
+            var _a0 = arg0;
+            _m.GetHeaderMap(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1277,10 +1720,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetHeaderMap(_cef_request_t* self, _cef_string_multimap_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        _m.SetHeaderMap(_a0);
+            var _a0 = arg0;
+            _m.SetHeaderMap(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1290,12 +1741,20 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetHeaderByName(_cef_request_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetHeaderByName(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetHeaderByName(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1305,12 +1764,20 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetHeaderByName(_cef_request_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, int arg2)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2;
-        _m.SetHeaderByName(_a0, _a1, _a2);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2;
+            _m.SetHeaderByName(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1320,13 +1787,21 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_Set(_cef_request_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, _cef_post_data_t* arg2, _cef_string_multimap_t* arg3)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2 != null ? new CefPostDataRef(arg2) : null;
-        var _a3 = arg3;
-        _m.Set(_a0, _a1, _a2, _a3);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2 != null ? new CefPostDataRef(arg2) : null;
+            var _a3 = arg3;
+            _m.Set(_a0, _a1, _a2, _a3);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1336,11 +1811,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static int Bridge_GetFlags(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetFlags();
+            var _result = _m.GetFlags();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1350,10 +1833,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetFlags(_cef_request_t* self, int arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        _m.SetFlags(_a0);
+            var _a0 = arg0;
+            _m.SetFlags(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1363,11 +1854,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFirstPartyForCookies(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetFirstPartyForCookies();
+            var _result = _m.GetFirstPartyForCookies();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1377,10 +1876,18 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static void Bridge_SetFirstPartyForCookies(_cef_request_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetFirstPartyForCookies(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetFirstPartyForCookies(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1390,11 +1897,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_resource_type_t Bridge_GetResourceType(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetResourceType();
+            var _result = _m.GetResourceType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1404,11 +1919,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static cef_transition_type_t Bridge_GetTransitionType(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetTransitionType();
+            var _result = _m.GetTransitionType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1418,11 +1941,19 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     #endif
     private static ulong Bridge_GetIdentifier(_cef_request_t* self)
     {
-        var _m = GetManaged<CefRequest>(self);
+        try
+        {
+            var _m = GetManaged<CefRequest>(self);
 
-        var _result = _m.GetIdentifier();
+            var _result = _m.GetIdentifier();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

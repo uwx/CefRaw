@@ -73,11 +73,19 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static void Bridge_OnBeforeCommandLineProcessing(_cef_app_t* self, _cef_string_utf16_t* arg0, _cef_command_line_t* arg1)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefCommandLineRef(arg1) : null;
-        _m.OnBeforeCommandLineProcessing(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefCommandLineRef(arg1) : null;
+            _m.OnBeforeCommandLineProcessing(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -87,10 +95,18 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static void Bridge_OnRegisterCustomSchemes(_cef_app_t* self, _cef_scheme_registrar_t* arg0)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _a0 = arg0 != null ? new CefSchemeRegistrarRef(arg0) : null;
-        _m.OnRegisterCustomSchemes(_a0);
+            var _a0 = arg0 != null ? new CefSchemeRegistrarRef(arg0) : null;
+            _m.OnRegisterCustomSchemes(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -100,11 +116,20 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static _cef_resource_bundle_handler_t* Bridge_GetResourceBundleHandler(_cef_app_t* self)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _result = _m.GetResourceBundleHandler();
+            var _result = _m.GetResourceBundleHandler();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -114,11 +139,20 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static _cef_browser_process_handler_t* Bridge_GetBrowserProcessHandler(_cef_app_t* self)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _result = _m.GetBrowserProcessHandler();
+            var _result = _m.GetBrowserProcessHandler();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -128,11 +162,20 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static _cef_render_process_handler_t* Bridge_GetRenderProcessHandler(_cef_app_t* self)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _result = _m.GetRenderProcessHandler();
+            var _result = _m.GetRenderProcessHandler();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -211,11 +254,19 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static void Bridge_OnBeforeCommandLineProcessing(_cef_app_t* self, _cef_string_utf16_t* arg0, _cef_command_line_t* arg1)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefCommandLineRef(arg1) : null;
-        _m.OnBeforeCommandLineProcessing(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefCommandLineRef(arg1) : null;
+            _m.OnBeforeCommandLineProcessing(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -225,10 +276,18 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static void Bridge_OnRegisterCustomSchemes(_cef_app_t* self, _cef_scheme_registrar_t* arg0)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _a0 = arg0 != null ? new CefSchemeRegistrarRef(arg0) : null;
-        _m.OnRegisterCustomSchemes(_a0);
+            var _a0 = arg0 != null ? new CefSchemeRegistrarRef(arg0) : null;
+            _m.OnRegisterCustomSchemes(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -238,11 +297,20 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static _cef_resource_bundle_handler_t* Bridge_GetResourceBundleHandler(_cef_app_t* self)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _result = _m.GetResourceBundleHandler();
+            var _result = _m.GetResourceBundleHandler();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -252,11 +320,20 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static _cef_browser_process_handler_t* Bridge_GetBrowserProcessHandler(_cef_app_t* self)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _result = _m.GetBrowserProcessHandler();
+            var _result = _m.GetBrowserProcessHandler();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -266,11 +343,20 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static _cef_render_process_handler_t* Bridge_GetRenderProcessHandler(_cef_app_t* self)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _result = _m.GetRenderProcessHandler();
+            var _result = _m.GetRenderProcessHandler();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -349,11 +435,19 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static void Bridge_OnBeforeCommandLineProcessing(_cef_app_t* self, _cef_string_utf16_t* arg0, _cef_command_line_t* arg1)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefCommandLineRef(arg1) : null;
-        _m.OnBeforeCommandLineProcessing(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefCommandLineRef(arg1) : null;
+            _m.OnBeforeCommandLineProcessing(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -363,10 +457,18 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static void Bridge_OnRegisterCustomSchemes(_cef_app_t* self, _cef_scheme_registrar_t* arg0)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _a0 = arg0 != null ? new CefSchemeRegistrarRef(arg0) : null;
-        _m.OnRegisterCustomSchemes(_a0);
+            var _a0 = arg0 != null ? new CefSchemeRegistrarRef(arg0) : null;
+            _m.OnRegisterCustomSchemes(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -376,11 +478,20 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static _cef_resource_bundle_handler_t* Bridge_GetResourceBundleHandler(_cef_app_t* self)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _result = _m.GetResourceBundleHandler();
+            var _result = _m.GetResourceBundleHandler();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -390,11 +501,20 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static _cef_browser_process_handler_t* Bridge_GetBrowserProcessHandler(_cef_app_t* self)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _result = _m.GetBrowserProcessHandler();
+            var _result = _m.GetBrowserProcessHandler();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -404,11 +524,20 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     #endif
     private static _cef_render_process_handler_t* Bridge_GetRenderProcessHandler(_cef_app_t* self)
     {
-        var _m = GetManaged<CefApp>(self);
+        try
+        {
+            var _m = GetManaged<CefApp>(self);
 
-        var _result = _m.GetRenderProcessHandler();
+            var _result = _m.GetRenderProcessHandler();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

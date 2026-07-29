@@ -73,11 +73,19 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnFrameCreated(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        _m.OnFrameCreated(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            _m.OnFrameCreated(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -87,11 +95,19 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnFrameDestroyed(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        _m.OnFrameDestroyed(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            _m.OnFrameDestroyed(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -101,12 +117,20 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnFrameAttached(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, int arg2)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        _m.OnFrameAttached(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2;
+            _m.OnFrameAttached(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -116,11 +140,19 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnFrameDetached(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        _m.OnFrameDetached(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            _m.OnFrameDetached(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -130,12 +162,20 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnMainFrameChanged(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_frame_t* arg2)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefFrameRef(arg2) : null;
-        _m.OnMainFrameChanged(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefFrameRef(arg2) : null;
+            _m.OnMainFrameChanged(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -214,11 +254,19 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnFrameCreated(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        _m.OnFrameCreated(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            _m.OnFrameCreated(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -228,11 +276,19 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnFrameDestroyed(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        _m.OnFrameDestroyed(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            _m.OnFrameDestroyed(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -242,12 +298,20 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnFrameAttached(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, int arg2)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        _m.OnFrameAttached(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2;
+            _m.OnFrameAttached(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -257,11 +321,19 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnFrameDetached(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        _m.OnFrameDetached(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            _m.OnFrameDetached(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -271,12 +343,20 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnMainFrameChanged(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_frame_t* arg2)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefFrameRef(arg2) : null;
-        _m.OnMainFrameChanged(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefFrameRef(arg2) : null;
+            _m.OnMainFrameChanged(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -355,11 +435,19 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnFrameCreated(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        _m.OnFrameCreated(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            _m.OnFrameCreated(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -369,11 +457,19 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnFrameDestroyed(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        _m.OnFrameDestroyed(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            _m.OnFrameDestroyed(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -383,12 +479,20 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnFrameAttached(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, int arg2)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        _m.OnFrameAttached(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2;
+            _m.OnFrameAttached(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -398,11 +502,19 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnFrameDetached(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        _m.OnFrameDetached(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            _m.OnFrameDetached(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -412,12 +524,20 @@ public unsafe abstract partial class CefFrameHandler : CefBaseRefCounted, ICefFr
     #endif
     private static void Bridge_OnMainFrameChanged(_cef_frame_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_frame_t* arg2)
     {
-        var _m = GetManaged<CefFrameHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFrameHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefFrameRef(arg2) : null;
-        _m.OnMainFrameChanged(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefFrameRef(arg2) : null;
+            _m.OnMainFrameChanged(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

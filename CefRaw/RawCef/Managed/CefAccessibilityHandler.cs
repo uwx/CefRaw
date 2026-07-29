@@ -55,10 +55,18 @@ public unsafe abstract partial class CefAccessibilityHandler : CefBaseRefCounted
     #endif
     private static void Bridge_OnAccessibilityTreeChange(_cef_accessibility_handler_t* self, _cef_value_t* arg0)
     {
-        var _m = GetManaged<CefAccessibilityHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefAccessibilityHandler>(self);
 
-        var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
-        _m.OnAccessibilityTreeChange(_a0);
+            var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
+            _m.OnAccessibilityTreeChange(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -68,10 +76,18 @@ public unsafe abstract partial class CefAccessibilityHandler : CefBaseRefCounted
     #endif
     private static void Bridge_OnAccessibilityLocationChange(_cef_accessibility_handler_t* self, _cef_value_t* arg0)
     {
-        var _m = GetManaged<CefAccessibilityHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefAccessibilityHandler>(self);
 
-        var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
-        _m.OnAccessibilityLocationChange(_a0);
+            var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
+            _m.OnAccessibilityLocationChange(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -132,10 +148,18 @@ public unsafe abstract partial class CefAccessibilityHandler : CefBaseRefCounted
     #endif
     private static void Bridge_OnAccessibilityTreeChange(_cef_accessibility_handler_t* self, _cef_value_t* arg0)
     {
-        var _m = GetManaged<CefAccessibilityHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefAccessibilityHandler>(self);
 
-        var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
-        _m.OnAccessibilityTreeChange(_a0);
+            var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
+            _m.OnAccessibilityTreeChange(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -145,10 +169,18 @@ public unsafe abstract partial class CefAccessibilityHandler : CefBaseRefCounted
     #endif
     private static void Bridge_OnAccessibilityLocationChange(_cef_accessibility_handler_t* self, _cef_value_t* arg0)
     {
-        var _m = GetManaged<CefAccessibilityHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefAccessibilityHandler>(self);
 
-        var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
-        _m.OnAccessibilityLocationChange(_a0);
+            var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
+            _m.OnAccessibilityLocationChange(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -209,10 +241,18 @@ public unsafe abstract partial class CefAccessibilityHandler : CefBaseRefCounted
     #endif
     private static void Bridge_OnAccessibilityTreeChange(_cef_accessibility_handler_t* self, _cef_value_t* arg0)
     {
-        var _m = GetManaged<CefAccessibilityHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefAccessibilityHandler>(self);
 
-        var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
-        _m.OnAccessibilityTreeChange(_a0);
+            var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
+            _m.OnAccessibilityTreeChange(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -222,10 +262,18 @@ public unsafe abstract partial class CefAccessibilityHandler : CefBaseRefCounted
     #endif
     private static void Bridge_OnAccessibilityLocationChange(_cef_accessibility_handler_t* self, _cef_value_t* arg0)
     {
-        var _m = GetManaged<CefAccessibilityHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefAccessibilityHandler>(self);
 
-        var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
-        _m.OnAccessibilityLocationChange(_a0);
+            var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
+            _m.OnAccessibilityLocationChange(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

@@ -67,18 +67,26 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnJsdialog(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, cef_jsdialog_type_t arg2, _cef_string_utf16_t* arg3, _cef_string_utf16_t* arg4, _cef_jsdialog_callback_t* arg5, int* arg6)
     {
-        var _m = GetManaged<CefJsdialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefJsdialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2;
-        var _a3 = CefStringRef.ToString(arg3);
-        var _a4 = CefStringRef.ToString(arg4);
-        var _a5 = arg5 != null ? new CefJsdialogCallbackRef(arg5) : null;
-        var _a6 = arg6;
-        var _result = _m.OnJsdialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2;
+            var _a3 = CefStringRef.ToString(arg3);
+            var _a4 = CefStringRef.ToString(arg4);
+            var _a5 = arg5 != null ? new CefJsdialogCallbackRef(arg5) : null;
+            var _a6 = arg6;
+            var _result = _m.OnJsdialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -88,15 +96,23 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnBeforeUnloadDialog(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, int arg2, _cef_jsdialog_callback_t* arg3)
     {
-        var _m = GetManaged<CefJsdialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefJsdialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefJsdialogCallbackRef(arg3) : null;
-        var _result = _m.OnBeforeUnloadDialog(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2;
+            var _a3 = arg3 != null ? new CefJsdialogCallbackRef(arg3) : null;
+            var _result = _m.OnBeforeUnloadDialog(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -106,10 +122,18 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnResetDialogState(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefJsdialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefJsdialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnResetDialogState(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnResetDialogState(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -119,10 +143,18 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnDialogClosed(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefJsdialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefJsdialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnDialogClosed(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnDialogClosed(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -195,18 +227,26 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnJsdialog(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, cef_jsdialog_type_t arg2, _cef_string_utf16_t* arg3, _cef_string_utf16_t* arg4, _cef_jsdialog_callback_t* arg5, int* arg6)
     {
-        var _m = GetManaged<CefJsdialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefJsdialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2;
-        var _a3 = CefStringRef.ToString(arg3);
-        var _a4 = CefStringRef.ToString(arg4);
-        var _a5 = arg5 != null ? new CefJsdialogCallbackRef(arg5) : null;
-        var _a6 = arg6;
-        var _result = _m.OnJsdialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2;
+            var _a3 = CefStringRef.ToString(arg3);
+            var _a4 = CefStringRef.ToString(arg4);
+            var _a5 = arg5 != null ? new CefJsdialogCallbackRef(arg5) : null;
+            var _a6 = arg6;
+            var _result = _m.OnJsdialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -216,15 +256,23 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnBeforeUnloadDialog(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, int arg2, _cef_jsdialog_callback_t* arg3)
     {
-        var _m = GetManaged<CefJsdialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefJsdialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefJsdialogCallbackRef(arg3) : null;
-        var _result = _m.OnBeforeUnloadDialog(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2;
+            var _a3 = arg3 != null ? new CefJsdialogCallbackRef(arg3) : null;
+            var _result = _m.OnBeforeUnloadDialog(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -234,10 +282,18 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnResetDialogState(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefJsdialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefJsdialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnResetDialogState(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnResetDialogState(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -247,10 +303,18 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnDialogClosed(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefJsdialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefJsdialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnDialogClosed(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnDialogClosed(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -323,18 +387,26 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnJsdialog(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, cef_jsdialog_type_t arg2, _cef_string_utf16_t* arg3, _cef_string_utf16_t* arg4, _cef_jsdialog_callback_t* arg5, int* arg6)
     {
-        var _m = GetManaged<CefJsdialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefJsdialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2;
-        var _a3 = CefStringRef.ToString(arg3);
-        var _a4 = CefStringRef.ToString(arg4);
-        var _a5 = arg5 != null ? new CefJsdialogCallbackRef(arg5) : null;
-        var _a6 = arg6;
-        var _result = _m.OnJsdialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2;
+            var _a3 = CefStringRef.ToString(arg3);
+            var _a4 = CefStringRef.ToString(arg4);
+            var _a5 = arg5 != null ? new CefJsdialogCallbackRef(arg5) : null;
+            var _a6 = arg6;
+            var _result = _m.OnJsdialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -344,15 +416,23 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnBeforeUnloadDialog(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, int arg2, _cef_jsdialog_callback_t* arg3)
     {
-        var _m = GetManaged<CefJsdialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefJsdialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefJsdialogCallbackRef(arg3) : null;
-        var _result = _m.OnBeforeUnloadDialog(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2;
+            var _a3 = arg3 != null ? new CefJsdialogCallbackRef(arg3) : null;
+            var _result = _m.OnBeforeUnloadDialog(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -362,10 +442,18 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnResetDialogState(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefJsdialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefJsdialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnResetDialogState(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnResetDialogState(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -375,10 +463,18 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnDialogClosed(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefJsdialogHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefJsdialogHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnDialogClosed(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnDialogClosed(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

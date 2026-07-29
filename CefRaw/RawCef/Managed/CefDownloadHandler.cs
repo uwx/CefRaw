@@ -61,14 +61,22 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_CanDownload(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, _cef_string_utf16_t* arg2)
     {
-        var _m = GetManaged<CefDownloadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = CefStringRef.ToString(arg2);
-        var _result = _m.CanDownload(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = CefStringRef.ToString(arg2);
+            var _result = _m.CanDownload(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -78,15 +86,23 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnBeforeDownload(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_download_item_t* arg1, _cef_string_utf16_t* arg2, _cef_before_download_callback_t* arg3)
     {
-        var _m = GetManaged<CefDownloadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
-        var _a2 = CefStringRef.ToString(arg2);
-        var _a3 = arg3 != null ? new CefBeforeDownloadCallbackRef(arg3) : null;
-        var _result = _m.OnBeforeDownload(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
+            var _a2 = CefStringRef.ToString(arg2);
+            var _a3 = arg3 != null ? new CefBeforeDownloadCallbackRef(arg3) : null;
+            var _result = _m.OnBeforeDownload(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -96,12 +112,20 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnDownloadUpdated(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_download_item_t* arg1, _cef_download_item_callback_t* arg2)
     {
-        var _m = GetManaged<CefDownloadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefDownloadItemCallbackRef(arg2) : null;
-        _m.OnDownloadUpdated(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefDownloadItemCallbackRef(arg2) : null;
+            _m.OnDownloadUpdated(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -168,14 +192,22 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_CanDownload(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, _cef_string_utf16_t* arg2)
     {
-        var _m = GetManaged<CefDownloadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = CefStringRef.ToString(arg2);
-        var _result = _m.CanDownload(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = CefStringRef.ToString(arg2);
+            var _result = _m.CanDownload(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -185,15 +217,23 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnBeforeDownload(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_download_item_t* arg1, _cef_string_utf16_t* arg2, _cef_before_download_callback_t* arg3)
     {
-        var _m = GetManaged<CefDownloadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
-        var _a2 = CefStringRef.ToString(arg2);
-        var _a3 = arg3 != null ? new CefBeforeDownloadCallbackRef(arg3) : null;
-        var _result = _m.OnBeforeDownload(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
+            var _a2 = CefStringRef.ToString(arg2);
+            var _a3 = arg3 != null ? new CefBeforeDownloadCallbackRef(arg3) : null;
+            var _result = _m.OnBeforeDownload(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -203,12 +243,20 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnDownloadUpdated(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_download_item_t* arg1, _cef_download_item_callback_t* arg2)
     {
-        var _m = GetManaged<CefDownloadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefDownloadItemCallbackRef(arg2) : null;
-        _m.OnDownloadUpdated(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefDownloadItemCallbackRef(arg2) : null;
+            _m.OnDownloadUpdated(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -275,14 +323,22 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_CanDownload(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, _cef_string_utf16_t* arg2)
     {
-        var _m = GetManaged<CefDownloadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = CefStringRef.ToString(arg2);
-        var _result = _m.CanDownload(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = CefStringRef.ToString(arg2);
+            var _result = _m.CanDownload(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -292,15 +348,23 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnBeforeDownload(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_download_item_t* arg1, _cef_string_utf16_t* arg2, _cef_before_download_callback_t* arg3)
     {
-        var _m = GetManaged<CefDownloadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
-        var _a2 = CefStringRef.ToString(arg2);
-        var _a3 = arg3 != null ? new CefBeforeDownloadCallbackRef(arg3) : null;
-        var _result = _m.OnBeforeDownload(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
+            var _a2 = CefStringRef.ToString(arg2);
+            var _a3 = arg3 != null ? new CefBeforeDownloadCallbackRef(arg3) : null;
+            var _result = _m.OnBeforeDownload(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -310,12 +374,20 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnDownloadUpdated(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_download_item_t* arg1, _cef_download_item_callback_t* arg2)
     {
-        var _m = GetManaged<CefDownloadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefDownloadItemCallbackRef(arg2) : null;
-        _m.OnDownloadUpdated(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefDownloadItemCallbackRef(arg2) : null;
+            _m.OnDownloadUpdated(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

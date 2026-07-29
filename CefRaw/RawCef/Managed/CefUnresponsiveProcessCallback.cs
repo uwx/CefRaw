@@ -55,9 +55,17 @@ public unsafe abstract partial class CefUnresponsiveProcessCallback : CefBaseRef
     #endif
     private static void Bridge_Wait(_cef_unresponsive_process_callback_t* self)
     {
-        var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
 
-        _m.Wait();
+            _m.Wait();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -67,9 +75,17 @@ public unsafe abstract partial class CefUnresponsiveProcessCallback : CefBaseRef
     #endif
     private static void Bridge_Terminate(_cef_unresponsive_process_callback_t* self)
     {
-        var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
 
-        _m.Terminate();
+            _m.Terminate();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -130,9 +146,17 @@ public unsafe abstract partial class CefUnresponsiveProcessCallback : CefBaseRef
     #endif
     private static void Bridge_Wait(_cef_unresponsive_process_callback_t* self)
     {
-        var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
 
-        _m.Wait();
+            _m.Wait();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -142,9 +166,17 @@ public unsafe abstract partial class CefUnresponsiveProcessCallback : CefBaseRef
     #endif
     private static void Bridge_Terminate(_cef_unresponsive_process_callback_t* self)
     {
-        var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
 
-        _m.Terminate();
+            _m.Terminate();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -205,9 +237,17 @@ public unsafe abstract partial class CefUnresponsiveProcessCallback : CefBaseRef
     #endif
     private static void Bridge_Wait(_cef_unresponsive_process_callback_t* self)
     {
-        var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
 
-        _m.Wait();
+            _m.Wait();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -217,9 +257,17 @@ public unsafe abstract partial class CefUnresponsiveProcessCallback : CefBaseRef
     #endif
     private static void Bridge_Terminate(_cef_unresponsive_process_callback_t* self)
     {
-        var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
 
-        _m.Terminate();
+            _m.Terminate();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

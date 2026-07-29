@@ -61,11 +61,19 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
     #endif
     private static int Bridge_IsValid(_cef_v8_stack_trace_t* self)
     {
-        var _m = GetManaged<CefV8StackTrace>(self);
+        try
+        {
+            var _m = GetManaged<CefV8StackTrace>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -75,11 +83,19 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
     #endif
     private static int Bridge_GetFrameCount(_cef_v8_stack_trace_t* self)
     {
-        var _m = GetManaged<CefV8StackTrace>(self);
+        try
+        {
+            var _m = GetManaged<CefV8StackTrace>(self);
 
-        var _result = _m.GetFrameCount();
+            var _result = _m.GetFrameCount();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -89,12 +105,21 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
     #endif
     private static _cef_v8_stack_frame_t* Bridge_GetFrame(_cef_v8_stack_trace_t* self, int arg0)
     {
-        var _m = GetManaged<CefV8StackTrace>(self);
+        try
+        {
+            var _m = GetManaged<CefV8StackTrace>(self);
 
-        var _a0 = arg0;
-        var _result = _m.GetFrame(_a0);
+            var _a0 = arg0;
+            var _result = _m.GetFrame(_a0);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -161,11 +186,19 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
     #endif
     private static int Bridge_IsValid(_cef_v8_stack_trace_t* self)
     {
-        var _m = GetManaged<CefV8StackTrace>(self);
+        try
+        {
+            var _m = GetManaged<CefV8StackTrace>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -175,11 +208,19 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
     #endif
     private static int Bridge_GetFrameCount(_cef_v8_stack_trace_t* self)
     {
-        var _m = GetManaged<CefV8StackTrace>(self);
+        try
+        {
+            var _m = GetManaged<CefV8StackTrace>(self);
 
-        var _result = _m.GetFrameCount();
+            var _result = _m.GetFrameCount();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -189,12 +230,21 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
     #endif
     private static _cef_v8_stack_frame_t* Bridge_GetFrame(_cef_v8_stack_trace_t* self, int arg0)
     {
-        var _m = GetManaged<CefV8StackTrace>(self);
+        try
+        {
+            var _m = GetManaged<CefV8StackTrace>(self);
 
-        var _a0 = arg0;
-        var _result = _m.GetFrame(_a0);
+            var _a0 = arg0;
+            var _result = _m.GetFrame(_a0);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -261,11 +311,19 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
     #endif
     private static int Bridge_IsValid(_cef_v8_stack_trace_t* self)
     {
-        var _m = GetManaged<CefV8StackTrace>(self);
+        try
+        {
+            var _m = GetManaged<CefV8StackTrace>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -275,11 +333,19 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
     #endif
     private static int Bridge_GetFrameCount(_cef_v8_stack_trace_t* self)
     {
-        var _m = GetManaged<CefV8StackTrace>(self);
+        try
+        {
+            var _m = GetManaged<CefV8StackTrace>(self);
 
-        var _result = _m.GetFrameCount();
+            var _result = _m.GetFrameCount();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -289,12 +355,21 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
     #endif
     private static _cef_v8_stack_frame_t* Bridge_GetFrame(_cef_v8_stack_trace_t* self, int arg0)
     {
-        var _m = GetManaged<CefV8StackTrace>(self);
+        try
+        {
+            var _m = GetManaged<CefV8StackTrace>(self);
 
-        var _a0 = arg0;
-        var _result = _m.GetFrame(_a0);
+            var _a0 = arg0;
+            var _result = _m.GetFrame(_a0);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

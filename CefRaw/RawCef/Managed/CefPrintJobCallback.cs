@@ -49,9 +49,17 @@ public unsafe abstract partial class CefPrintJobCallback : CefBaseRefCounted, IC
     #endif
     private static void Bridge_Cont(_cef_print_job_callback_t* self)
     {
-        var _m = GetManaged<CefPrintJobCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintJobCallback>(self);
 
-        _m.Cont();
+            _m.Cont();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -106,9 +114,17 @@ public unsafe abstract partial class CefPrintJobCallback : CefBaseRefCounted, IC
     #endif
     private static void Bridge_Cont(_cef_print_job_callback_t* self)
     {
-        var _m = GetManaged<CefPrintJobCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintJobCallback>(self);
 
-        _m.Cont();
+            _m.Cont();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -163,9 +179,17 @@ public unsafe abstract partial class CefPrintJobCallback : CefBaseRefCounted, IC
     #endif
     private static void Bridge_Cont(_cef_print_job_callback_t* self)
     {
-        var _m = GetManaged<CefPrintJobCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintJobCallback>(self);
 
-        _m.Cont();
+            _m.Cont();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

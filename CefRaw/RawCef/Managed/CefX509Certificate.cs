@@ -103,11 +103,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_x509_cert_principal_t* Bridge_GetSubject(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetSubject();
+            var _result = _m.GetSubject();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -117,11 +126,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_x509_cert_principal_t* Bridge_GetIssuer(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetIssuer();
+            var _result = _m.GetIssuer();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -131,11 +149,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_binary_value_t* Bridge_GetSerialNumber(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetSerialNumber();
+            var _result = _m.GetSerialNumber();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -145,11 +172,19 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_basetime_t Bridge_GetValidStart(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetValidStart();
+            var _result = _m.GetValidStart();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -159,11 +194,19 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_basetime_t Bridge_GetValidExpiry(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetValidExpiry();
+            var _result = _m.GetValidExpiry();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -173,11 +216,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_binary_value_t* Bridge_GetDerencoded(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetDerencoded();
+            var _result = _m.GetDerencoded();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -187,11 +239,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_binary_value_t* Bridge_GetPemencoded(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetPemencoded();
+            var _result = _m.GetPemencoded();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -201,11 +262,19 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static nuint Bridge_GetIssuerChainSize(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetIssuerChainSize();
+            var _result = _m.GetIssuerChainSize();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -215,13 +284,21 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_GetDerencodedIssuerChain(_cef_x509_certificate_t* self, nuint* arg0, _cef_binary_value_t** arg1)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _a0 = arg0;
-        ICefBinaryValue? _out1 = null;
-        if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
-        _m.GetDerencodedIssuerChain(_a0, out _out1);
-        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+            var _a0 = arg0;
+            ICefBinaryValue? _out1 = null;
+            if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
+            _m.GetDerencodedIssuerChain(_a0, out _out1);
+            if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -231,13 +308,21 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_GetPemencodedIssuerChain(_cef_x509_certificate_t* self, nuint* arg0, _cef_binary_value_t** arg1)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _a0 = arg0;
-        ICefBinaryValue? _out1 = null;
-        if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
-        _m.GetPemencodedIssuerChain(_a0, out _out1);
-        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+            var _a0 = arg0;
+            ICefBinaryValue? _out1 = null;
+            if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
+            _m.GetPemencodedIssuerChain(_a0, out _out1);
+            if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -346,11 +431,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_x509_cert_principal_t* Bridge_GetSubject(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetSubject();
+            var _result = _m.GetSubject();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -360,11 +454,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_x509_cert_principal_t* Bridge_GetIssuer(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetIssuer();
+            var _result = _m.GetIssuer();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -374,11 +477,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_binary_value_t* Bridge_GetSerialNumber(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetSerialNumber();
+            var _result = _m.GetSerialNumber();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -388,11 +500,19 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_basetime_t Bridge_GetValidStart(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetValidStart();
+            var _result = _m.GetValidStart();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -402,11 +522,19 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_basetime_t Bridge_GetValidExpiry(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetValidExpiry();
+            var _result = _m.GetValidExpiry();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -416,11 +544,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_binary_value_t* Bridge_GetDerencoded(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetDerencoded();
+            var _result = _m.GetDerencoded();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -430,11 +567,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_binary_value_t* Bridge_GetPemencoded(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetPemencoded();
+            var _result = _m.GetPemencoded();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -444,11 +590,19 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static nuint Bridge_GetIssuerChainSize(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetIssuerChainSize();
+            var _result = _m.GetIssuerChainSize();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -458,13 +612,21 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_GetDerencodedIssuerChain(_cef_x509_certificate_t* self, nuint* arg0, _cef_binary_value_t** arg1)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _a0 = arg0;
-        ICefBinaryValue? _out1 = null;
-        if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
-        _m.GetDerencodedIssuerChain(_a0, out _out1);
-        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+            var _a0 = arg0;
+            ICefBinaryValue? _out1 = null;
+            if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
+            _m.GetDerencodedIssuerChain(_a0, out _out1);
+            if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -474,13 +636,21 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_GetPemencodedIssuerChain(_cef_x509_certificate_t* self, nuint* arg0, _cef_binary_value_t** arg1)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _a0 = arg0;
-        ICefBinaryValue? _out1 = null;
-        if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
-        _m.GetPemencodedIssuerChain(_a0, out _out1);
-        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+            var _a0 = arg0;
+            ICefBinaryValue? _out1 = null;
+            if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
+            _m.GetPemencodedIssuerChain(_a0, out _out1);
+            if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -589,11 +759,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_x509_cert_principal_t* Bridge_GetSubject(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetSubject();
+            var _result = _m.GetSubject();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -603,11 +782,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_x509_cert_principal_t* Bridge_GetIssuer(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetIssuer();
+            var _result = _m.GetIssuer();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -617,11 +805,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_binary_value_t* Bridge_GetSerialNumber(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetSerialNumber();
+            var _result = _m.GetSerialNumber();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -631,11 +828,19 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_basetime_t Bridge_GetValidStart(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetValidStart();
+            var _result = _m.GetValidStart();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -645,11 +850,19 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_basetime_t Bridge_GetValidExpiry(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetValidExpiry();
+            var _result = _m.GetValidExpiry();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -659,11 +872,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_binary_value_t* Bridge_GetDerencoded(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetDerencoded();
+            var _result = _m.GetDerencoded();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -673,11 +895,20 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static _cef_binary_value_t* Bridge_GetPemencoded(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetPemencoded();
+            var _result = _m.GetPemencoded();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -687,11 +918,19 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static nuint Bridge_GetIssuerChainSize(_cef_x509_certificate_t* self)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _result = _m.GetIssuerChainSize();
+            var _result = _m.GetIssuerChainSize();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -701,13 +940,21 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_GetDerencodedIssuerChain(_cef_x509_certificate_t* self, nuint* arg0, _cef_binary_value_t** arg1)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _a0 = arg0;
-        ICefBinaryValue? _out1 = null;
-        if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
-        _m.GetDerencodedIssuerChain(_a0, out _out1);
-        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+            var _a0 = arg0;
+            ICefBinaryValue? _out1 = null;
+            if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
+            _m.GetDerencodedIssuerChain(_a0, out _out1);
+            if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -717,13 +964,21 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_GetPemencodedIssuerChain(_cef_x509_certificate_t* self, nuint* arg0, _cef_binary_value_t** arg1)
     {
-        var _m = GetManaged<CefX509Certificate>(self);
+        try
+        {
+            var _m = GetManaged<CefX509Certificate>(self);
 
-        var _a0 = arg0;
-        ICefBinaryValue? _out1 = null;
-        if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
-        _m.GetPemencodedIssuerChain(_a0, out _out1);
-        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+            var _a0 = arg0;
+            ICefBinaryValue? _out1 = null;
+            if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
+            _m.GetPemencodedIssuerChain(_a0, out _out1);
+            if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

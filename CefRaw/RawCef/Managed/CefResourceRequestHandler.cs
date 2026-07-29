@@ -91,14 +91,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static _cef_cookie_access_filter_t* Bridge_GetCookieAccessFilter(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _result = _m.GetCookieAccessFilter(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _result = _m.GetCookieAccessFilter(_a0, _a1, _a2);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -108,15 +117,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static cef_return_value_t Bridge_OnBeforeResourceLoad(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_callback_t* arg3)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefCallbackRef(arg3) : null;
-        var _result = _m.OnBeforeResourceLoad(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefCallbackRef(arg3) : null;
+            var _result = _m.OnBeforeResourceLoad(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -126,14 +143,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static _cef_resource_handler_t* Bridge_GetResourceHandler(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _result = _m.GetResourceHandler(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _result = _m.GetResourceHandler(_a0, _a1, _a2);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -143,19 +169,27 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static void Bridge_OnResourceRedirect(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3, _cef_string_utf16_t* arg4)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        string? _out4 = null;
-        if (arg4 != null) _out4 = CefStringRef.ToStringAndFree(arg4);
-        _m.OnResourceRedirect(_a0, _a1, _a2, _a3, out _out4);
-        if (arg4 != null)
+        try
         {
-            fixed (char* _p4 = _out4)
-                CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg4, copy: 1);
+            var _m = GetManaged<CefResourceRequestHandler>(self);
+
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
+            string? _out4 = null;
+            if (arg4 != null) _out4 = CefStringRef.ToStringAndFree(arg4);
+            _m.OnResourceRedirect(_a0, _a1, _a2, _a3, out _out4);
+            if (arg4 != null)
+            {
+                fixed (char* _p4 = _out4)
+                    CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg4, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -166,15 +200,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static int Bridge_OnResourceResponse(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        var _result = _m.OnResourceResponse(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
+            var _result = _m.OnResourceResponse(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -184,15 +226,24 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static _cef_response_filter_t* Bridge_GetResourceResponseFilter(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        var _result = _m.GetResourceResponseFilter(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
+            var _result = _m.GetResourceResponseFilter(_a0, _a1, _a2, _a3);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -202,15 +253,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static void Bridge_OnResourceLoadComplete(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3, cef_urlrequest_status_t arg4, long arg5)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        var _a4 = arg4;
-        var _a5 = arg5;
-        _m.OnResourceLoadComplete(_a0, _a1, _a2, _a3, _a4, _a5);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
+            var _a4 = arg4;
+            var _a5 = arg5;
+            _m.OnResourceLoadComplete(_a0, _a1, _a2, _a3, _a4, _a5);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -220,13 +279,21 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static void Bridge_OnProtocolExecution(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, int* arg3)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3;
-        _m.OnProtocolExecution(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3;
+            _m.OnProtocolExecution(_a0, _a1, _a2, _a3);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -323,14 +390,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static _cef_cookie_access_filter_t* Bridge_GetCookieAccessFilter(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _result = _m.GetCookieAccessFilter(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _result = _m.GetCookieAccessFilter(_a0, _a1, _a2);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -340,15 +416,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static cef_return_value_t Bridge_OnBeforeResourceLoad(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_callback_t* arg3)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefCallbackRef(arg3) : null;
-        var _result = _m.OnBeforeResourceLoad(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefCallbackRef(arg3) : null;
+            var _result = _m.OnBeforeResourceLoad(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -358,14 +442,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static _cef_resource_handler_t* Bridge_GetResourceHandler(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _result = _m.GetResourceHandler(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _result = _m.GetResourceHandler(_a0, _a1, _a2);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -375,19 +468,27 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static void Bridge_OnResourceRedirect(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3, _cef_string_utf16_t* arg4)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        string? _out4 = null;
-        if (arg4 != null) _out4 = CefStringRef.ToStringAndFree(arg4);
-        _m.OnResourceRedirect(_a0, _a1, _a2, _a3, out _out4);
-        if (arg4 != null)
+        try
         {
-            fixed (char* _p4 = _out4)
-                CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg4, copy: 1);
+            var _m = GetManaged<CefResourceRequestHandler>(self);
+
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
+            string? _out4 = null;
+            if (arg4 != null) _out4 = CefStringRef.ToStringAndFree(arg4);
+            _m.OnResourceRedirect(_a0, _a1, _a2, _a3, out _out4);
+            if (arg4 != null)
+            {
+                fixed (char* _p4 = _out4)
+                    CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg4, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -398,15 +499,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static int Bridge_OnResourceResponse(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        var _result = _m.OnResourceResponse(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
+            var _result = _m.OnResourceResponse(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -416,15 +525,24 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static _cef_response_filter_t* Bridge_GetResourceResponseFilter(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        var _result = _m.GetResourceResponseFilter(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
+            var _result = _m.GetResourceResponseFilter(_a0, _a1, _a2, _a3);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -434,15 +552,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static void Bridge_OnResourceLoadComplete(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3, cef_urlrequest_status_t arg4, long arg5)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        var _a4 = arg4;
-        var _a5 = arg5;
-        _m.OnResourceLoadComplete(_a0, _a1, _a2, _a3, _a4, _a5);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
+            var _a4 = arg4;
+            var _a5 = arg5;
+            _m.OnResourceLoadComplete(_a0, _a1, _a2, _a3, _a4, _a5);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -452,13 +578,21 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static void Bridge_OnProtocolExecution(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, int* arg3)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3;
-        _m.OnProtocolExecution(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3;
+            _m.OnProtocolExecution(_a0, _a1, _a2, _a3);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -555,14 +689,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static _cef_cookie_access_filter_t* Bridge_GetCookieAccessFilter(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _result = _m.GetCookieAccessFilter(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _result = _m.GetCookieAccessFilter(_a0, _a1, _a2);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -572,15 +715,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static cef_return_value_t Bridge_OnBeforeResourceLoad(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_callback_t* arg3)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefCallbackRef(arg3) : null;
-        var _result = _m.OnBeforeResourceLoad(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefCallbackRef(arg3) : null;
+            var _result = _m.OnBeforeResourceLoad(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -590,14 +741,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static _cef_resource_handler_t* Bridge_GetResourceHandler(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _result = _m.GetResourceHandler(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _result = _m.GetResourceHandler(_a0, _a1, _a2);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -607,19 +767,27 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static void Bridge_OnResourceRedirect(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3, _cef_string_utf16_t* arg4)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        string? _out4 = null;
-        if (arg4 != null) _out4 = CefStringRef.ToStringAndFree(arg4);
-        _m.OnResourceRedirect(_a0, _a1, _a2, _a3, out _out4);
-        if (arg4 != null)
+        try
         {
-            fixed (char* _p4 = _out4)
-                CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg4, copy: 1);
+            var _m = GetManaged<CefResourceRequestHandler>(self);
+
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
+            string? _out4 = null;
+            if (arg4 != null) _out4 = CefStringRef.ToStringAndFree(arg4);
+            _m.OnResourceRedirect(_a0, _a1, _a2, _a3, out _out4);
+            if (arg4 != null)
+            {
+                fixed (char* _p4 = _out4)
+                    CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg4, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -630,15 +798,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static int Bridge_OnResourceResponse(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        var _result = _m.OnResourceResponse(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
+            var _result = _m.OnResourceResponse(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -648,15 +824,24 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static _cef_response_filter_t* Bridge_GetResourceResponseFilter(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        var _result = _m.GetResourceResponseFilter(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
+            var _result = _m.GetResourceResponseFilter(_a0, _a1, _a2, _a3);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -666,15 +851,23 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static void Bridge_OnResourceLoadComplete(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3, cef_urlrequest_status_t arg4, long arg5)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        var _a4 = arg4;
-        var _a5 = arg5;
-        _m.OnResourceLoadComplete(_a0, _a1, _a2, _a3, _a4, _a5);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
+            var _a4 = arg4;
+            var _a5 = arg5;
+            _m.OnResourceLoadComplete(_a0, _a1, _a2, _a3, _a4, _a5);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -684,13 +877,21 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     #endif
     private static void Bridge_OnProtocolExecution(_cef_resource_request_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, int* arg3)
     {
-        var _m = GetManaged<CefResourceRequestHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceRequestHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3;
-        _m.OnProtocolExecution(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
+            var _a3 = arg3;
+            _m.OnProtocolExecution(_a0, _a1, _a2, _a3);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

@@ -49,10 +49,18 @@ public unsafe abstract partial class CefMediaSinkDeviceInfoCallback : CefBaseRef
     #endif
     private static void Bridge_OnMediaSinkDeviceInfo(_cef_media_sink_device_info_callback_t* self, _cef_media_sink_device_info_t* arg0)
     {
-        var _m = GetManaged<CefMediaSinkDeviceInfoCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSinkDeviceInfoCallback>(self);
 
-        var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoRef(arg0) : null;
-        _m.OnMediaSinkDeviceInfo(_a0);
+            var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoRef(arg0) : null;
+            _m.OnMediaSinkDeviceInfo(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -107,10 +115,18 @@ public unsafe abstract partial class CefMediaSinkDeviceInfoCallback : CefBaseRef
     #endif
     private static void Bridge_OnMediaSinkDeviceInfo(_cef_media_sink_device_info_callback_t* self, _cef_media_sink_device_info_t* arg0)
     {
-        var _m = GetManaged<CefMediaSinkDeviceInfoCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSinkDeviceInfoCallback>(self);
 
-        var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoRef(arg0) : null;
-        _m.OnMediaSinkDeviceInfo(_a0);
+            var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoRef(arg0) : null;
+            _m.OnMediaSinkDeviceInfo(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -165,10 +181,18 @@ public unsafe abstract partial class CefMediaSinkDeviceInfoCallback : CefBaseRef
     #endif
     private static void Bridge_OnMediaSinkDeviceInfo(_cef_media_sink_device_info_callback_t* self, _cef_media_sink_device_info_t* arg0)
     {
-        var _m = GetManaged<CefMediaSinkDeviceInfoCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSinkDeviceInfoCallback>(self);
 
-        var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoRef(arg0) : null;
-        _m.OnMediaSinkDeviceInfo(_a0);
+            var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoRef(arg0) : null;
+            _m.OnMediaSinkDeviceInfo(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

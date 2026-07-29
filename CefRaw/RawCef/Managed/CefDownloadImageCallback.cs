@@ -49,12 +49,20 @@ public unsafe abstract partial class CefDownloadImageCallback : CefBaseRefCounte
     #endif
     private static void Bridge_OnDownloadImageFinished(_cef_download_image_callback_t* self, _cef_string_utf16_t* arg0, int arg1, _cef_image_t* arg2)
     {
-        var _m = GetManaged<CefDownloadImageCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadImageCallback>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        var _a2 = arg2 != null ? new CefImageRef(arg2) : null;
-        _m.OnDownloadImageFinished(_a0, _a1, _a2);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            var _a2 = arg2 != null ? new CefImageRef(arg2) : null;
+            _m.OnDownloadImageFinished(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -109,12 +117,20 @@ public unsafe abstract partial class CefDownloadImageCallback : CefBaseRefCounte
     #endif
     private static void Bridge_OnDownloadImageFinished(_cef_download_image_callback_t* self, _cef_string_utf16_t* arg0, int arg1, _cef_image_t* arg2)
     {
-        var _m = GetManaged<CefDownloadImageCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadImageCallback>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        var _a2 = arg2 != null ? new CefImageRef(arg2) : null;
-        _m.OnDownloadImageFinished(_a0, _a1, _a2);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            var _a2 = arg2 != null ? new CefImageRef(arg2) : null;
+            _m.OnDownloadImageFinished(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -169,12 +185,20 @@ public unsafe abstract partial class CefDownloadImageCallback : CefBaseRefCounte
     #endif
     private static void Bridge_OnDownloadImageFinished(_cef_download_image_callback_t* self, _cef_string_utf16_t* arg0, int arg1, _cef_image_t* arg2)
     {
-        var _m = GetManaged<CefDownloadImageCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadImageCallback>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        var _a2 = arg2 != null ? new CefImageRef(arg2) : null;
-        _m.OnDownloadImageFinished(_a0, _a1, _a2);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            var _a2 = arg2 != null ? new CefImageRef(arg2) : null;
+            _m.OnDownloadImageFinished(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

@@ -85,12 +85,20 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_ExecuteCommand(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, int arg1, cef_event_flags_t arg2)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        _m.ExecuteCommand(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            _m.ExecuteCommand(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -100,11 +108,19 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_MouseOutsideMenu(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, _cef_point_t* arg1)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefPointRef(arg1) : null;
-        _m.MouseOutsideMenu(_a0, _a1);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefPointRef(arg1) : null;
+            _m.MouseOutsideMenu(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -114,11 +130,19 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_UnhandledOpenSubmenu(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1;
-        _m.UnhandledOpenSubmenu(_a0, _a1);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            var _a1 = arg1;
+            _m.UnhandledOpenSubmenu(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -128,11 +152,19 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_UnhandledCloseSubmenu(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1;
-        _m.UnhandledCloseSubmenu(_a0, _a1);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            var _a1 = arg1;
+            _m.UnhandledCloseSubmenu(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -142,10 +174,18 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_MenuWillShow(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        _m.MenuWillShow(_a0);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            _m.MenuWillShow(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -155,10 +195,18 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_MenuClosed(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        _m.MenuClosed(_a0);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            _m.MenuClosed(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -168,18 +216,26 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static int Bridge_FormatLabel(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, _cef_string_utf16_t* arg1)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
-
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        string? _out1 = null;
-        if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.FormatLabel(_a0, out _out1);
-
-        return _result;
-        if (arg1 != null)
+        try
         {
-            fixed (char* _p1 = _out1)
-                CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+            var _m = GetManaged<CefMenuModelDelegate>(self);
+
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            string? _out1 = null;
+            if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
+            var _result = _m.FormatLabel(_a0, out _out1);
+
+            return _result;
+            if (arg1 != null)
+            {
+                fixed (char* _p1 = _out1)
+                    CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 }
@@ -271,12 +327,20 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_ExecuteCommand(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, int arg1, cef_event_flags_t arg2)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        _m.ExecuteCommand(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            _m.ExecuteCommand(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -286,11 +350,19 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_MouseOutsideMenu(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, _cef_point_t* arg1)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefPointRef(arg1) : null;
-        _m.MouseOutsideMenu(_a0, _a1);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefPointRef(arg1) : null;
+            _m.MouseOutsideMenu(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -300,11 +372,19 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_UnhandledOpenSubmenu(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1;
-        _m.UnhandledOpenSubmenu(_a0, _a1);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            var _a1 = arg1;
+            _m.UnhandledOpenSubmenu(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -314,11 +394,19 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_UnhandledCloseSubmenu(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1;
-        _m.UnhandledCloseSubmenu(_a0, _a1);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            var _a1 = arg1;
+            _m.UnhandledCloseSubmenu(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -328,10 +416,18 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_MenuWillShow(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        _m.MenuWillShow(_a0);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            _m.MenuWillShow(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -341,10 +437,18 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_MenuClosed(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        _m.MenuClosed(_a0);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            _m.MenuClosed(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -354,18 +458,26 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static int Bridge_FormatLabel(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, _cef_string_utf16_t* arg1)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
-
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        string? _out1 = null;
-        if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.FormatLabel(_a0, out _out1);
-
-        return _result;
-        if (arg1 != null)
+        try
         {
-            fixed (char* _p1 = _out1)
-                CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+            var _m = GetManaged<CefMenuModelDelegate>(self);
+
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            string? _out1 = null;
+            if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
+            var _result = _m.FormatLabel(_a0, out _out1);
+
+            return _result;
+            if (arg1 != null)
+            {
+                fixed (char* _p1 = _out1)
+                    CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 }
@@ -457,12 +569,20 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_ExecuteCommand(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, int arg1, cef_event_flags_t arg2)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        _m.ExecuteCommand(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            _m.ExecuteCommand(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -472,11 +592,19 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_MouseOutsideMenu(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, _cef_point_t* arg1)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefPointRef(arg1) : null;
-        _m.MouseOutsideMenu(_a0, _a1);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefPointRef(arg1) : null;
+            _m.MouseOutsideMenu(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -486,11 +614,19 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_UnhandledOpenSubmenu(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1;
-        _m.UnhandledOpenSubmenu(_a0, _a1);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            var _a1 = arg1;
+            _m.UnhandledOpenSubmenu(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -500,11 +636,19 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_UnhandledCloseSubmenu(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1;
-        _m.UnhandledCloseSubmenu(_a0, _a1);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            var _a1 = arg1;
+            _m.UnhandledCloseSubmenu(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -514,10 +658,18 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_MenuWillShow(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        _m.MenuWillShow(_a0);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            _m.MenuWillShow(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -527,10 +679,18 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static void Bridge_MenuClosed(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
+        try
+        {
+            var _m = GetManaged<CefMenuModelDelegate>(self);
 
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        _m.MenuClosed(_a0);
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            _m.MenuClosed(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -540,18 +700,26 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     #endif
     private static int Bridge_FormatLabel(_cef_menu_model_delegate_t* self, _cef_menu_model_t* arg0, _cef_string_utf16_t* arg1)
     {
-        var _m = GetManaged<CefMenuModelDelegate>(self);
-
-        var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        string? _out1 = null;
-        if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.FormatLabel(_a0, out _out1);
-
-        return _result;
-        if (arg1 != null)
+        try
         {
-            fixed (char* _p1 = _out1)
-                CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+            var _m = GetManaged<CefMenuModelDelegate>(self);
+
+            var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
+            string? _out1 = null;
+            if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
+            var _result = _m.FormatLabel(_a0, out _out1);
+
+            return _result;
+            if (arg1 != null)
+            {
+                fixed (char* _p1 = _out1)
+                    CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 }

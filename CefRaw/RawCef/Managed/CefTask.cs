@@ -49,9 +49,17 @@ public unsafe abstract partial class CefTask : CefBaseRefCounted, ICefTask
     #endif
     private static void Bridge_Execute(_cef_task_t* self)
     {
-        var _m = GetManaged<CefTask>(self);
+        try
+        {
+            var _m = GetManaged<CefTask>(self);
 
-        _m.Execute();
+            _m.Execute();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -106,9 +114,17 @@ public unsafe abstract partial class CefTask : CefBaseRefCounted, ICefTask
     #endif
     private static void Bridge_Execute(_cef_task_t* self)
     {
-        var _m = GetManaged<CefTask>(self);
+        try
+        {
+            var _m = GetManaged<CefTask>(self);
 
-        _m.Execute();
+            _m.Execute();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -163,9 +179,17 @@ public unsafe abstract partial class CefTask : CefBaseRefCounted, ICefTask
     #endif
     private static void Bridge_Execute(_cef_task_t* self)
     {
-        var _m = GetManaged<CefTask>(self);
+        try
+        {
+            var _m = GetManaged<CefTask>(self);
 
-        _m.Execute();
+            _m.Execute();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

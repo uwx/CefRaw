@@ -175,11 +175,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_IsValid(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -189,11 +197,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_IsReadOnly(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.IsReadOnly();
+            var _result = _m.IsReadOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -203,10 +219,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetOrientation(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetOrientation(_a0);
+            var _a0 = arg0;
+            _m.SetOrientation(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -216,11 +240,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_IsLandscape(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.IsLandscape();
+            var _result = _m.IsLandscape();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -230,12 +262,20 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetPrinterPrintableArea(_cef_print_settings_t* self, _cef_size_t* arg0, _cef_rect_t* arg1, int arg2)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0 != null ? new CefSizeRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-        var _a2 = arg2;
-        _m.SetPrinterPrintableArea(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefSizeRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
+            var _a2 = arg2;
+            _m.SetPrinterPrintableArea(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -245,10 +285,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetDeviceName(_cef_print_settings_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetDeviceName(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetDeviceName(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -258,11 +306,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetDeviceName(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetDeviceName();
+            var _result = _m.GetDeviceName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -272,10 +328,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetDpi(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetDpi(_a0);
+            var _a0 = arg0;
+            _m.SetDpi(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -285,11 +349,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_GetDpi(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetDpi();
+            var _result = _m.GetDpi();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -299,11 +371,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetPageRanges(_cef_print_settings_t* self, nuint arg0, _cef_range_t* arg1)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-        _m.SetPageRanges(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
+            _m.SetPageRanges(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -313,11 +393,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static nuint Bridge_GetPageRangesCount(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetPageRangesCount();
+            var _result = _m.GetPageRangesCount();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -327,11 +415,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_GetPageRanges(_cef_print_settings_t* self, nuint* arg0, _cef_range_t* arg1)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-        _m.GetPageRanges(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
+            _m.GetPageRanges(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -341,10 +437,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetSelectionOnly(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetSelectionOnly(_a0);
+            var _a0 = arg0;
+            _m.SetSelectionOnly(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -354,11 +458,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_IsSelectionOnly(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.IsSelectionOnly();
+            var _result = _m.IsSelectionOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -368,10 +480,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetCollate(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetCollate(_a0);
+            var _a0 = arg0;
+            _m.SetCollate(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -381,11 +501,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_WillCollate(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.WillCollate();
+            var _result = _m.WillCollate();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -395,10 +523,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetColorModel(_cef_print_settings_t* self, cef_color_model_t arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetColorModel(_a0);
+            var _a0 = arg0;
+            _m.SetColorModel(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -408,11 +544,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static cef_color_model_t Bridge_GetColorModel(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetColorModel();
+            var _result = _m.GetColorModel();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -422,10 +566,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetCopies(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetCopies(_a0);
+            var _a0 = arg0;
+            _m.SetCopies(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -435,11 +587,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_GetCopies(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetCopies();
+            var _result = _m.GetCopies();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -449,10 +609,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetDuplexMode(_cef_print_settings_t* self, cef_duplex_mode_t arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetDuplexMode(_a0);
+            var _a0 = arg0;
+            _m.SetDuplexMode(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -462,11 +630,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static cef_duplex_mode_t Bridge_GetDuplexMode(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetDuplexMode();
+            var _result = _m.GetDuplexMode();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -647,11 +823,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_IsValid(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -661,11 +845,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_IsReadOnly(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.IsReadOnly();
+            var _result = _m.IsReadOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -675,10 +867,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetOrientation(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetOrientation(_a0);
+            var _a0 = arg0;
+            _m.SetOrientation(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -688,11 +888,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_IsLandscape(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.IsLandscape();
+            var _result = _m.IsLandscape();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -702,12 +910,20 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetPrinterPrintableArea(_cef_print_settings_t* self, _cef_size_t* arg0, _cef_rect_t* arg1, int arg2)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0 != null ? new CefSizeRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-        var _a2 = arg2;
-        _m.SetPrinterPrintableArea(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefSizeRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
+            var _a2 = arg2;
+            _m.SetPrinterPrintableArea(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -717,10 +933,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetDeviceName(_cef_print_settings_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetDeviceName(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetDeviceName(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -730,11 +954,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetDeviceName(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetDeviceName();
+            var _result = _m.GetDeviceName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -744,10 +976,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetDpi(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetDpi(_a0);
+            var _a0 = arg0;
+            _m.SetDpi(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -757,11 +997,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_GetDpi(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetDpi();
+            var _result = _m.GetDpi();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -771,11 +1019,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetPageRanges(_cef_print_settings_t* self, nuint arg0, _cef_range_t* arg1)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-        _m.SetPageRanges(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
+            _m.SetPageRanges(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -785,11 +1041,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static nuint Bridge_GetPageRangesCount(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetPageRangesCount();
+            var _result = _m.GetPageRangesCount();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -799,11 +1063,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_GetPageRanges(_cef_print_settings_t* self, nuint* arg0, _cef_range_t* arg1)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-        _m.GetPageRanges(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
+            _m.GetPageRanges(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -813,10 +1085,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetSelectionOnly(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetSelectionOnly(_a0);
+            var _a0 = arg0;
+            _m.SetSelectionOnly(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -826,11 +1106,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_IsSelectionOnly(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.IsSelectionOnly();
+            var _result = _m.IsSelectionOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -840,10 +1128,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetCollate(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetCollate(_a0);
+            var _a0 = arg0;
+            _m.SetCollate(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -853,11 +1149,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_WillCollate(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.WillCollate();
+            var _result = _m.WillCollate();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -867,10 +1171,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetColorModel(_cef_print_settings_t* self, cef_color_model_t arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetColorModel(_a0);
+            var _a0 = arg0;
+            _m.SetColorModel(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -880,11 +1192,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static cef_color_model_t Bridge_GetColorModel(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetColorModel();
+            var _result = _m.GetColorModel();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -894,10 +1214,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetCopies(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetCopies(_a0);
+            var _a0 = arg0;
+            _m.SetCopies(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -907,11 +1235,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_GetCopies(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetCopies();
+            var _result = _m.GetCopies();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -921,10 +1257,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetDuplexMode(_cef_print_settings_t* self, cef_duplex_mode_t arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetDuplexMode(_a0);
+            var _a0 = arg0;
+            _m.SetDuplexMode(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -934,11 +1278,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static cef_duplex_mode_t Bridge_GetDuplexMode(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetDuplexMode();
+            var _result = _m.GetDuplexMode();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -1119,11 +1471,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_IsValid(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1133,11 +1493,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_IsReadOnly(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.IsReadOnly();
+            var _result = _m.IsReadOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1147,10 +1515,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetOrientation(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetOrientation(_a0);
+            var _a0 = arg0;
+            _m.SetOrientation(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1160,11 +1536,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_IsLandscape(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.IsLandscape();
+            var _result = _m.IsLandscape();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1174,12 +1558,20 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetPrinterPrintableArea(_cef_print_settings_t* self, _cef_size_t* arg0, _cef_rect_t* arg1, int arg2)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0 != null ? new CefSizeRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-        var _a2 = arg2;
-        _m.SetPrinterPrintableArea(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefSizeRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
+            var _a2 = arg2;
+            _m.SetPrinterPrintableArea(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1189,10 +1581,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetDeviceName(_cef_print_settings_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetDeviceName(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetDeviceName(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1202,11 +1602,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetDeviceName(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetDeviceName();
+            var _result = _m.GetDeviceName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1216,10 +1624,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetDpi(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetDpi(_a0);
+            var _a0 = arg0;
+            _m.SetDpi(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1229,11 +1645,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_GetDpi(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetDpi();
+            var _result = _m.GetDpi();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1243,11 +1667,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetPageRanges(_cef_print_settings_t* self, nuint arg0, _cef_range_t* arg1)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-        _m.SetPageRanges(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
+            _m.SetPageRanges(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1257,11 +1689,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static nuint Bridge_GetPageRangesCount(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetPageRangesCount();
+            var _result = _m.GetPageRangesCount();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1271,11 +1711,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_GetPageRanges(_cef_print_settings_t* self, nuint* arg0, _cef_range_t* arg1)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-        _m.GetPageRanges(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
+            _m.GetPageRanges(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1285,10 +1733,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetSelectionOnly(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetSelectionOnly(_a0);
+            var _a0 = arg0;
+            _m.SetSelectionOnly(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1298,11 +1754,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_IsSelectionOnly(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.IsSelectionOnly();
+            var _result = _m.IsSelectionOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1312,10 +1776,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetCollate(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetCollate(_a0);
+            var _a0 = arg0;
+            _m.SetCollate(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1325,11 +1797,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_WillCollate(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.WillCollate();
+            var _result = _m.WillCollate();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1339,10 +1819,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetColorModel(_cef_print_settings_t* self, cef_color_model_t arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetColorModel(_a0);
+            var _a0 = arg0;
+            _m.SetColorModel(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1352,11 +1840,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static cef_color_model_t Bridge_GetColorModel(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetColorModel();
+            var _result = _m.GetColorModel();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1366,10 +1862,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetCopies(_cef_print_settings_t* self, int arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetCopies(_a0);
+            var _a0 = arg0;
+            _m.SetCopies(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1379,11 +1883,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static int Bridge_GetCopies(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetCopies();
+            var _result = _m.GetCopies();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1393,10 +1905,18 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static void Bridge_SetDuplexMode(_cef_print_settings_t* self, cef_duplex_mode_t arg0)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = arg0;
-        _m.SetDuplexMode(_a0);
+            var _a0 = arg0;
+            _m.SetDuplexMode(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1406,11 +1926,19 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     #endif
     private static cef_duplex_mode_t Bridge_GetDuplexMode(_cef_print_settings_t* self)
     {
-        var _m = GetManaged<CefPrintSettings>(self);
+        try
+        {
+            var _m = GetManaged<CefPrintSettings>(self);
 
-        var _result = _m.GetDuplexMode();
+            var _result = _m.GetDuplexMode();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

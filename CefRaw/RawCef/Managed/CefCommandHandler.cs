@@ -73,14 +73,22 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_OnChromeCommand(_cef_command_handler_t* self, _cef_browser_t* arg0, int arg1, cef_window_open_disposition_t arg2)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.OnChromeCommand(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _result = _m.OnChromeCommand(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -90,13 +98,21 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsChromeAppMenuItemVisible(_cef_command_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.IsChromeAppMenuItemVisible(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _result = _m.IsChromeAppMenuItemVisible(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -106,13 +122,21 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsChromeAppMenuItemEnabled(_cef_command_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.IsChromeAppMenuItemEnabled(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _result = _m.IsChromeAppMenuItemEnabled(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -122,12 +146,20 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsChromePageActionIconVisible(_cef_command_handler_t* self, cef_chrome_page_action_icon_type_t arg0)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0;
-        var _result = _m.IsChromePageActionIconVisible(_a0);
+            var _a0 = arg0;
+            var _result = _m.IsChromePageActionIconVisible(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -137,12 +169,20 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsChromeToolbarButtonVisible(_cef_command_handler_t* self, cef_chrome_toolbar_button_type_t arg0)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0;
-        var _result = _m.IsChromeToolbarButtonVisible(_a0);
+            var _a0 = arg0;
+            var _result = _m.IsChromeToolbarButtonVisible(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -221,14 +261,22 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_OnChromeCommand(_cef_command_handler_t* self, _cef_browser_t* arg0, int arg1, cef_window_open_disposition_t arg2)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.OnChromeCommand(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _result = _m.OnChromeCommand(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -238,13 +286,21 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsChromeAppMenuItemVisible(_cef_command_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.IsChromeAppMenuItemVisible(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _result = _m.IsChromeAppMenuItemVisible(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -254,13 +310,21 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsChromeAppMenuItemEnabled(_cef_command_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.IsChromeAppMenuItemEnabled(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _result = _m.IsChromeAppMenuItemEnabled(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -270,12 +334,20 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsChromePageActionIconVisible(_cef_command_handler_t* self, cef_chrome_page_action_icon_type_t arg0)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0;
-        var _result = _m.IsChromePageActionIconVisible(_a0);
+            var _a0 = arg0;
+            var _result = _m.IsChromePageActionIconVisible(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -285,12 +357,20 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsChromeToolbarButtonVisible(_cef_command_handler_t* self, cef_chrome_toolbar_button_type_t arg0)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0;
-        var _result = _m.IsChromeToolbarButtonVisible(_a0);
+            var _a0 = arg0;
+            var _result = _m.IsChromeToolbarButtonVisible(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -369,14 +449,22 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_OnChromeCommand(_cef_command_handler_t* self, _cef_browser_t* arg0, int arg1, cef_window_open_disposition_t arg2)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.OnChromeCommand(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _result = _m.OnChromeCommand(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -386,13 +474,21 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsChromeAppMenuItemVisible(_cef_command_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.IsChromeAppMenuItemVisible(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _result = _m.IsChromeAppMenuItemVisible(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -402,13 +498,21 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsChromeAppMenuItemEnabled(_cef_command_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.IsChromeAppMenuItemEnabled(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _result = _m.IsChromeAppMenuItemEnabled(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -418,12 +522,20 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsChromePageActionIconVisible(_cef_command_handler_t* self, cef_chrome_page_action_icon_type_t arg0)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0;
-        var _result = _m.IsChromePageActionIconVisible(_a0);
+            var _a0 = arg0;
+            var _result = _m.IsChromePageActionIconVisible(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -433,12 +545,20 @@ public unsafe abstract partial class CefCommandHandler : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsChromeToolbarButtonVisible(_cef_command_handler_t* self, cef_chrome_toolbar_button_type_t arg0)
     {
-        var _m = GetManaged<CefCommandHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefCommandHandler>(self);
 
-        var _a0 = arg0;
-        var _result = _m.IsChromeToolbarButtonVisible(_a0);
+            var _a0 = arg0;
+            var _result = _m.IsChromeToolbarButtonVisible(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

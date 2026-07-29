@@ -169,11 +169,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_IsValid(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -183,11 +191,20 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_browser_host_t* Bridge_GetHost(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetHost();
+            var _result = _m.GetHost();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -197,11 +214,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_CanGoBack(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.CanGoBack();
+            var _result = _m.CanGoBack();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -211,9 +236,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_GoBack(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.GoBack();
+            _m.GoBack();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -223,11 +256,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_CanGoForward(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.CanGoForward();
+            var _result = _m.CanGoForward();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -237,9 +278,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_GoForward(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.GoForward();
+            _m.GoForward();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -249,11 +298,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_IsLoading(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.IsLoading();
+            var _result = _m.IsLoading();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -263,9 +320,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_Reload(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.Reload();
+            _m.Reload();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -275,9 +340,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_ReloadIgnoreCache(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.ReloadIgnoreCache();
+            _m.ReloadIgnoreCache();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -287,9 +360,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_StopLoad(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.StopLoad();
+            _m.StopLoad();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -299,11 +380,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_GetIdentifier(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetIdentifier();
+            var _result = _m.GetIdentifier();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -313,12 +402,20 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_IsSame(_cef_browser_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _result = _m.IsSame(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -328,11 +425,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_IsPopup(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.IsPopup();
+            var _result = _m.IsPopup();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -342,11 +447,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_HasDocument(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.HasDocument();
+            var _result = _m.HasDocument();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -356,11 +469,20 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_frame_t* Bridge_GetMainFrame(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetMainFrame();
+            var _result = _m.GetMainFrame();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -370,11 +492,20 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_frame_t* Bridge_GetFocusedFrame(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetFocusedFrame();
+            var _result = _m.GetFocusedFrame();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -384,12 +515,21 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_frame_t* Bridge_GetFrameByIdentifier(_cef_browser_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetFrameByIdentifier(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetFrameByIdentifier(_a0);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -399,12 +539,21 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_frame_t* Bridge_GetFrameByName(_cef_browser_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetFrameByName(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetFrameByName(_a0);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -414,11 +563,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static nuint Bridge_GetFrameCount(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetFrameCount();
+            var _result = _m.GetFrameCount();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -428,10 +585,18 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_GetFrameIdentifiers(_cef_browser_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.GetFrameIdentifiers(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.GetFrameIdentifiers(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -441,10 +606,18 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_GetFrameNames(_cef_browser_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.GetFrameNames(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.GetFrameNames(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -619,11 +792,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_IsValid(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -633,11 +814,20 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_browser_host_t* Bridge_GetHost(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetHost();
+            var _result = _m.GetHost();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -647,11 +837,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_CanGoBack(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.CanGoBack();
+            var _result = _m.CanGoBack();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -661,9 +859,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_GoBack(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.GoBack();
+            _m.GoBack();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -673,11 +879,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_CanGoForward(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.CanGoForward();
+            var _result = _m.CanGoForward();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -687,9 +901,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_GoForward(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.GoForward();
+            _m.GoForward();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -699,11 +921,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_IsLoading(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.IsLoading();
+            var _result = _m.IsLoading();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -713,9 +943,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_Reload(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.Reload();
+            _m.Reload();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -725,9 +963,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_ReloadIgnoreCache(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.ReloadIgnoreCache();
+            _m.ReloadIgnoreCache();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -737,9 +983,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_StopLoad(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.StopLoad();
+            _m.StopLoad();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -749,11 +1003,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_GetIdentifier(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetIdentifier();
+            var _result = _m.GetIdentifier();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -763,12 +1025,20 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_IsSame(_cef_browser_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _result = _m.IsSame(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -778,11 +1048,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_IsPopup(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.IsPopup();
+            var _result = _m.IsPopup();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -792,11 +1070,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_HasDocument(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.HasDocument();
+            var _result = _m.HasDocument();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -806,11 +1092,20 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_frame_t* Bridge_GetMainFrame(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetMainFrame();
+            var _result = _m.GetMainFrame();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -820,11 +1115,20 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_frame_t* Bridge_GetFocusedFrame(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetFocusedFrame();
+            var _result = _m.GetFocusedFrame();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -834,12 +1138,21 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_frame_t* Bridge_GetFrameByIdentifier(_cef_browser_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetFrameByIdentifier(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetFrameByIdentifier(_a0);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -849,12 +1162,21 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_frame_t* Bridge_GetFrameByName(_cef_browser_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetFrameByName(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetFrameByName(_a0);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -864,11 +1186,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static nuint Bridge_GetFrameCount(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetFrameCount();
+            var _result = _m.GetFrameCount();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -878,10 +1208,18 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_GetFrameIdentifiers(_cef_browser_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.GetFrameIdentifiers(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.GetFrameIdentifiers(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -891,10 +1229,18 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_GetFrameNames(_cef_browser_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.GetFrameNames(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.GetFrameNames(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -1069,11 +1415,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_IsValid(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1083,11 +1437,20 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_browser_host_t* Bridge_GetHost(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetHost();
+            var _result = _m.GetHost();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1097,11 +1460,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_CanGoBack(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.CanGoBack();
+            var _result = _m.CanGoBack();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1111,9 +1482,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_GoBack(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.GoBack();
+            _m.GoBack();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1123,11 +1502,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_CanGoForward(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.CanGoForward();
+            var _result = _m.CanGoForward();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1137,9 +1524,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_GoForward(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.GoForward();
+            _m.GoForward();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1149,11 +1544,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_IsLoading(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.IsLoading();
+            var _result = _m.IsLoading();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1163,9 +1566,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_Reload(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.Reload();
+            _m.Reload();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1175,9 +1586,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_ReloadIgnoreCache(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.ReloadIgnoreCache();
+            _m.ReloadIgnoreCache();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1187,9 +1606,17 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_StopLoad(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        _m.StopLoad();
+            _m.StopLoad();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1199,11 +1626,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_GetIdentifier(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetIdentifier();
+            var _result = _m.GetIdentifier();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1213,12 +1648,20 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_IsSame(_cef_browser_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _result = _m.IsSame(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1228,11 +1671,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_IsPopup(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.IsPopup();
+            var _result = _m.IsPopup();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1242,11 +1693,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static int Bridge_HasDocument(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.HasDocument();
+            var _result = _m.HasDocument();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1256,11 +1715,20 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_frame_t* Bridge_GetMainFrame(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetMainFrame();
+            var _result = _m.GetMainFrame();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1270,11 +1738,20 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_frame_t* Bridge_GetFocusedFrame(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetFocusedFrame();
+            var _result = _m.GetFocusedFrame();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1284,12 +1761,21 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_frame_t* Bridge_GetFrameByIdentifier(_cef_browser_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetFrameByIdentifier(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetFrameByIdentifier(_a0);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1299,12 +1785,21 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static _cef_frame_t* Bridge_GetFrameByName(_cef_browser_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetFrameByName(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetFrameByName(_a0);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1314,11 +1809,19 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static nuint Bridge_GetFrameCount(_cef_browser_t* self)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _result = _m.GetFrameCount();
+            var _result = _m.GetFrameCount();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1328,10 +1831,18 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_GetFrameIdentifiers(_cef_browser_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.GetFrameIdentifiers(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.GetFrameIdentifiers(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1341,10 +1852,18 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     #endif
     private static void Bridge_GetFrameNames(_cef_browser_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefBrowser>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.GetFrameNames(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.GetFrameNames(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

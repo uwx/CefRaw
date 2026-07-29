@@ -61,11 +61,19 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
     #endif
     private static int Bridge_IsValid(_cef_shared_memory_region_t* self)
     {
-        var _m = GetManaged<CefSharedMemoryRegion>(self);
+        try
+        {
+            var _m = GetManaged<CefSharedMemoryRegion>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -75,11 +83,19 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
     #endif
     private static nuint Bridge_Size(_cef_shared_memory_region_t* self)
     {
-        var _m = GetManaged<CefSharedMemoryRegion>(self);
+        try
+        {
+            var _m = GetManaged<CefSharedMemoryRegion>(self);
 
-        var _result = _m.Size();
+            var _result = _m.Size();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -89,11 +105,19 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
     #endif
     private static void* Bridge_Memory(_cef_shared_memory_region_t* self)
     {
-        var _m = GetManaged<CefSharedMemoryRegion>(self);
+        try
+        {
+            var _m = GetManaged<CefSharedMemoryRegion>(self);
 
-        var _result = _m.Memory();
+            var _result = _m.Memory();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -160,11 +184,19 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
     #endif
     private static int Bridge_IsValid(_cef_shared_memory_region_t* self)
     {
-        var _m = GetManaged<CefSharedMemoryRegion>(self);
+        try
+        {
+            var _m = GetManaged<CefSharedMemoryRegion>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -174,11 +206,19 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
     #endif
     private static nuint Bridge_Size(_cef_shared_memory_region_t* self)
     {
-        var _m = GetManaged<CefSharedMemoryRegion>(self);
+        try
+        {
+            var _m = GetManaged<CefSharedMemoryRegion>(self);
 
-        var _result = _m.Size();
+            var _result = _m.Size();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -188,11 +228,19 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
     #endif
     private static void* Bridge_Memory(_cef_shared_memory_region_t* self)
     {
-        var _m = GetManaged<CefSharedMemoryRegion>(self);
+        try
+        {
+            var _m = GetManaged<CefSharedMemoryRegion>(self);
 
-        var _result = _m.Memory();
+            var _result = _m.Memory();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -259,11 +307,19 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
     #endif
     private static int Bridge_IsValid(_cef_shared_memory_region_t* self)
     {
-        var _m = GetManaged<CefSharedMemoryRegion>(self);
+        try
+        {
+            var _m = GetManaged<CefSharedMemoryRegion>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -273,11 +329,19 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
     #endif
     private static nuint Bridge_Size(_cef_shared_memory_region_t* self)
     {
-        var _m = GetManaged<CefSharedMemoryRegion>(self);
+        try
+        {
+            var _m = GetManaged<CefSharedMemoryRegion>(self);
 
-        var _result = _m.Size();
+            var _result = _m.Size();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -287,11 +351,19 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
     #endif
     private static void* Bridge_Memory(_cef_shared_memory_region_t* self)
     {
-        var _m = GetManaged<CefSharedMemoryRegion>(self);
+        try
+        {
+            var _m = GetManaged<CefSharedMemoryRegion>(self);
 
-        var _result = _m.Memory();
+            var _result = _m.Memory();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

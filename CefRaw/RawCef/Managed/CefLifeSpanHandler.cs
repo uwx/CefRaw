@@ -79,28 +79,36 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnBeforePopup(_cef_life_span_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, int arg2, _cef_string_utf16_t* arg3, _cef_string_utf16_t* arg4, cef_window_open_disposition_t arg5, int arg6, _cef_popup_features_t* arg7, _cef_window_info_t* arg8, _cef_client_t** arg9, _cef_browser_settings_t* arg10, _cef_dictionary_value_t** arg11, int* arg12)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = CefStringRef.ToString(arg3);
-        var _a4 = CefStringRef.ToString(arg4);
-        var _a5 = arg5;
-        var _a6 = arg6;
-        var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;
-        var _a8 = arg8 != null ? new CefWindowInfoRef(arg8) : null;
-        ICefClient? _out9 = null;
-        if (arg9 != null && *arg9 != null) _out9 = new CefClientRef(*arg9);
-        var _a10 = arg10 != null ? new CefBrowserSettingsRef(arg10) : null;
-        ICefDictionaryValue? _out11 = null;
-        if (arg11 != null && *arg11 != null) _out11 = new CefDictionaryValueRef(*arg11);
-        var _a12 = arg12;
-        var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7, _a8, out _out9, _a10, out _out11, _a12);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2;
+            var _a3 = CefStringRef.ToString(arg3);
+            var _a4 = CefStringRef.ToString(arg4);
+            var _a5 = arg5;
+            var _a6 = arg6;
+            var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;
+            var _a8 = arg8 != null ? new CefWindowInfoRef(arg8) : null;
+            ICefClient? _out9 = null;
+            if (arg9 != null && *arg9 != null) _out9 = new CefClientRef(*arg9);
+            var _a10 = arg10 != null ? new CefBrowserSettingsRef(arg10) : null;
+            ICefDictionaryValue? _out11 = null;
+            if (arg11 != null && *arg11 != null) _out11 = new CefDictionaryValueRef(*arg11);
+            var _a12 = arg12;
+            var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7, _a8, out _out9, _a10, out _out11, _a12);
 
-        return _result;
-        if (arg9 != null) *arg9 = _out9 != null ? _out9.NativePtr : null;
-        if (arg11 != null) *arg11 = _out11 != null ? _out11.NativePtr : null;
+            return _result;
+            if (arg9 != null) *arg9 = _out9 != null ? _out9.NativePtr : null;
+            if (arg11 != null) *arg11 = _out11 != null ? _out11.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -110,11 +118,19 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnBeforePopupAborted(_cef_life_span_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnBeforePopupAborted(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            _m.OnBeforePopupAborted(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -124,19 +140,27 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnBeforeDevToolsPopup(_cef_life_span_handler_t* self, _cef_browser_t* arg0, _cef_window_info_t* arg1, _cef_client_t** arg2, _cef_browser_settings_t* arg3, _cef_dictionary_value_t** arg4, int* arg5)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefWindowInfoRef(arg1) : null;
-        ICefClient? _out2 = null;
-        if (arg2 != null && *arg2 != null) _out2 = new CefClientRef(*arg2);
-        var _a3 = arg3 != null ? new CefBrowserSettingsRef(arg3) : null;
-        ICefDictionaryValue? _out4 = null;
-        if (arg4 != null && *arg4 != null) _out4 = new CefDictionaryValueRef(*arg4);
-        var _a5 = arg5;
-        _m.OnBeforeDevToolsPopup(_a0, _a1, out _out2, _a3, out _out4, _a5);
-        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
-        if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefWindowInfoRef(arg1) : null;
+            ICefClient? _out2 = null;
+            if (arg2 != null && *arg2 != null) _out2 = new CefClientRef(*arg2);
+            var _a3 = arg3 != null ? new CefBrowserSettingsRef(arg3) : null;
+            ICefDictionaryValue? _out4 = null;
+            if (arg4 != null && *arg4 != null) _out4 = new CefDictionaryValueRef(*arg4);
+            var _a5 = arg5;
+            _m.OnBeforeDevToolsPopup(_a0, _a1, out _out2, _a3, out _out4, _a5);
+            if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+            if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -146,10 +170,18 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnAfterCreated(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnAfterCreated(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnAfterCreated(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -159,12 +191,20 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_DoClose(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _result = _m.DoClose(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _result = _m.DoClose(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -174,10 +214,18 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnBeforeClose(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnBeforeClose(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnBeforeClose(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -262,28 +310,36 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnBeforePopup(_cef_life_span_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, int arg2, _cef_string_utf16_t* arg3, _cef_string_utf16_t* arg4, cef_window_open_disposition_t arg5, int arg6, _cef_popup_features_t* arg7, _cef_window_info_t* arg8, _cef_client_t** arg9, _cef_browser_settings_t* arg10, _cef_dictionary_value_t** arg11, int* arg12)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = CefStringRef.ToString(arg3);
-        var _a4 = CefStringRef.ToString(arg4);
-        var _a5 = arg5;
-        var _a6 = arg6;
-        var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;
-        var _a8 = arg8 != null ? new CefWindowInfoRef(arg8) : null;
-        ICefClient? _out9 = null;
-        if (arg9 != null && *arg9 != null) _out9 = new CefClientRef(*arg9);
-        var _a10 = arg10 != null ? new CefBrowserSettingsRef(arg10) : null;
-        ICefDictionaryValue? _out11 = null;
-        if (arg11 != null && *arg11 != null) _out11 = new CefDictionaryValueRef(*arg11);
-        var _a12 = arg12;
-        var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7, _a8, out _out9, _a10, out _out11, _a12);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2;
+            var _a3 = CefStringRef.ToString(arg3);
+            var _a4 = CefStringRef.ToString(arg4);
+            var _a5 = arg5;
+            var _a6 = arg6;
+            var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;
+            var _a8 = arg8 != null ? new CefWindowInfoRef(arg8) : null;
+            ICefClient? _out9 = null;
+            if (arg9 != null && *arg9 != null) _out9 = new CefClientRef(*arg9);
+            var _a10 = arg10 != null ? new CefBrowserSettingsRef(arg10) : null;
+            ICefDictionaryValue? _out11 = null;
+            if (arg11 != null && *arg11 != null) _out11 = new CefDictionaryValueRef(*arg11);
+            var _a12 = arg12;
+            var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7, _a8, out _out9, _a10, out _out11, _a12);
 
-        return _result;
-        if (arg9 != null) *arg9 = _out9 != null ? _out9.NativePtr : null;
-        if (arg11 != null) *arg11 = _out11 != null ? _out11.NativePtr : null;
+            return _result;
+            if (arg9 != null) *arg9 = _out9 != null ? _out9.NativePtr : null;
+            if (arg11 != null) *arg11 = _out11 != null ? _out11.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -293,11 +349,19 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnBeforePopupAborted(_cef_life_span_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnBeforePopupAborted(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            _m.OnBeforePopupAborted(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -307,19 +371,27 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnBeforeDevToolsPopup(_cef_life_span_handler_t* self, _cef_browser_t* arg0, _cef_window_info_t* arg1, _cef_client_t** arg2, _cef_browser_settings_t* arg3, _cef_dictionary_value_t** arg4, int* arg5)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefWindowInfoRef(arg1) : null;
-        ICefClient? _out2 = null;
-        if (arg2 != null && *arg2 != null) _out2 = new CefClientRef(*arg2);
-        var _a3 = arg3 != null ? new CefBrowserSettingsRef(arg3) : null;
-        ICefDictionaryValue? _out4 = null;
-        if (arg4 != null && *arg4 != null) _out4 = new CefDictionaryValueRef(*arg4);
-        var _a5 = arg5;
-        _m.OnBeforeDevToolsPopup(_a0, _a1, out _out2, _a3, out _out4, _a5);
-        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
-        if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefWindowInfoRef(arg1) : null;
+            ICefClient? _out2 = null;
+            if (arg2 != null && *arg2 != null) _out2 = new CefClientRef(*arg2);
+            var _a3 = arg3 != null ? new CefBrowserSettingsRef(arg3) : null;
+            ICefDictionaryValue? _out4 = null;
+            if (arg4 != null && *arg4 != null) _out4 = new CefDictionaryValueRef(*arg4);
+            var _a5 = arg5;
+            _m.OnBeforeDevToolsPopup(_a0, _a1, out _out2, _a3, out _out4, _a5);
+            if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+            if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -329,10 +401,18 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnAfterCreated(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnAfterCreated(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnAfterCreated(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -342,12 +422,20 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_DoClose(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _result = _m.DoClose(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _result = _m.DoClose(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -357,10 +445,18 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnBeforeClose(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnBeforeClose(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnBeforeClose(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -445,28 +541,36 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_OnBeforePopup(_cef_life_span_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, int arg2, _cef_string_utf16_t* arg3, _cef_string_utf16_t* arg4, cef_window_open_disposition_t arg5, int arg6, _cef_popup_features_t* arg7, _cef_window_info_t* arg8, _cef_client_t** arg9, _cef_browser_settings_t* arg10, _cef_dictionary_value_t** arg11, int* arg12)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = CefStringRef.ToString(arg3);
-        var _a4 = CefStringRef.ToString(arg4);
-        var _a5 = arg5;
-        var _a6 = arg6;
-        var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;
-        var _a8 = arg8 != null ? new CefWindowInfoRef(arg8) : null;
-        ICefClient? _out9 = null;
-        if (arg9 != null && *arg9 != null) _out9 = new CefClientRef(*arg9);
-        var _a10 = arg10 != null ? new CefBrowserSettingsRef(arg10) : null;
-        ICefDictionaryValue? _out11 = null;
-        if (arg11 != null && *arg11 != null) _out11 = new CefDictionaryValueRef(*arg11);
-        var _a12 = arg12;
-        var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7, _a8, out _out9, _a10, out _out11, _a12);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = arg2;
+            var _a3 = CefStringRef.ToString(arg3);
+            var _a4 = CefStringRef.ToString(arg4);
+            var _a5 = arg5;
+            var _a6 = arg6;
+            var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;
+            var _a8 = arg8 != null ? new CefWindowInfoRef(arg8) : null;
+            ICefClient? _out9 = null;
+            if (arg9 != null && *arg9 != null) _out9 = new CefClientRef(*arg9);
+            var _a10 = arg10 != null ? new CefBrowserSettingsRef(arg10) : null;
+            ICefDictionaryValue? _out11 = null;
+            if (arg11 != null && *arg11 != null) _out11 = new CefDictionaryValueRef(*arg11);
+            var _a12 = arg12;
+            var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7, _a8, out _out9, _a10, out _out11, _a12);
 
-        return _result;
-        if (arg9 != null) *arg9 = _out9 != null ? _out9.NativePtr : null;
-        if (arg11 != null) *arg11 = _out11 != null ? _out11.NativePtr : null;
+            return _result;
+            if (arg9 != null) *arg9 = _out9 != null ? _out9.NativePtr : null;
+            if (arg11 != null) *arg11 = _out11 != null ? _out11.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -476,11 +580,19 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnBeforePopupAborted(_cef_life_span_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnBeforePopupAborted(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            _m.OnBeforePopupAborted(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -490,19 +602,27 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnBeforeDevToolsPopup(_cef_life_span_handler_t* self, _cef_browser_t* arg0, _cef_window_info_t* arg1, _cef_client_t** arg2, _cef_browser_settings_t* arg3, _cef_dictionary_value_t** arg4, int* arg5)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefWindowInfoRef(arg1) : null;
-        ICefClient? _out2 = null;
-        if (arg2 != null && *arg2 != null) _out2 = new CefClientRef(*arg2);
-        var _a3 = arg3 != null ? new CefBrowserSettingsRef(arg3) : null;
-        ICefDictionaryValue? _out4 = null;
-        if (arg4 != null && *arg4 != null) _out4 = new CefDictionaryValueRef(*arg4);
-        var _a5 = arg5;
-        _m.OnBeforeDevToolsPopup(_a0, _a1, out _out2, _a3, out _out4, _a5);
-        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
-        if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefWindowInfoRef(arg1) : null;
+            ICefClient? _out2 = null;
+            if (arg2 != null && *arg2 != null) _out2 = new CefClientRef(*arg2);
+            var _a3 = arg3 != null ? new CefBrowserSettingsRef(arg3) : null;
+            ICefDictionaryValue? _out4 = null;
+            if (arg4 != null && *arg4 != null) _out4 = new CefDictionaryValueRef(*arg4);
+            var _a5 = arg5;
+            _m.OnBeforeDevToolsPopup(_a0, _a1, out _out2, _a3, out _out4, _a5);
+            if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+            if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -512,10 +632,18 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnAfterCreated(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnAfterCreated(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnAfterCreated(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -525,12 +653,20 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static int Bridge_DoClose(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _result = _m.DoClose(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _result = _m.DoClose(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -540,10 +676,18 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnBeforeClose(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefLifeSpanHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnBeforeClose(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnBeforeClose(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

@@ -61,18 +61,26 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
     #endif
     private static int Bridge_GetLocalizedString(_cef_resource_bundle_handler_t* self, int arg0, _cef_string_utf16_t* arg1)
     {
-        var _m = GetManaged<CefResourceBundleHandler>(self);
-
-        var _a0 = arg0;
-        string? _out1 = null;
-        if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.GetLocalizedString(_a0, out _out1);
-
-        return _result;
-        if (arg1 != null)
+        try
         {
-            fixed (char* _p1 = _out1)
-                CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+            var _m = GetManaged<CefResourceBundleHandler>(self);
+
+            var _a0 = arg0;
+            string? _out1 = null;
+            if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
+            var _result = _m.GetLocalizedString(_a0, out _out1);
+
+            return _result;
+            if (arg1 != null)
+            {
+                fixed (char* _p1 = _out1)
+                    CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -83,14 +91,22 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
     #endif
     private static int Bridge_GetDataResource(_cef_resource_bundle_handler_t* self, int arg0, void** arg1, nuint* arg2)
     {
-        var _m = GetManaged<CefResourceBundleHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceBundleHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.GetDataResource(_a0, _a1, _a2);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _result = _m.GetDataResource(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -100,15 +116,23 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
     #endif
     private static int Bridge_GetDataResourceForScale(_cef_resource_bundle_handler_t* self, int arg0, cef_scale_factor_t arg1, void** arg2, nuint* arg3)
     {
-        var _m = GetManaged<CefResourceBundleHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceBundleHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.GetDataResourceForScale(_a0, _a1, _a2, _a3);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _a3 = arg3;
+            var _result = _m.GetDataResourceForScale(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -175,18 +199,26 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
     #endif
     private static int Bridge_GetLocalizedString(_cef_resource_bundle_handler_t* self, int arg0, _cef_string_utf16_t* arg1)
     {
-        var _m = GetManaged<CefResourceBundleHandler>(self);
-
-        var _a0 = arg0;
-        string? _out1 = null;
-        if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.GetLocalizedString(_a0, out _out1);
-
-        return _result;
-        if (arg1 != null)
+        try
         {
-            fixed (char* _p1 = _out1)
-                CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+            var _m = GetManaged<CefResourceBundleHandler>(self);
+
+            var _a0 = arg0;
+            string? _out1 = null;
+            if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
+            var _result = _m.GetLocalizedString(_a0, out _out1);
+
+            return _result;
+            if (arg1 != null)
+            {
+                fixed (char* _p1 = _out1)
+                    CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -197,14 +229,22 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
     #endif
     private static int Bridge_GetDataResource(_cef_resource_bundle_handler_t* self, int arg0, void** arg1, nuint* arg2)
     {
-        var _m = GetManaged<CefResourceBundleHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceBundleHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.GetDataResource(_a0, _a1, _a2);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _result = _m.GetDataResource(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -214,15 +254,23 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
     #endif
     private static int Bridge_GetDataResourceForScale(_cef_resource_bundle_handler_t* self, int arg0, cef_scale_factor_t arg1, void** arg2, nuint* arg3)
     {
-        var _m = GetManaged<CefResourceBundleHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceBundleHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.GetDataResourceForScale(_a0, _a1, _a2, _a3);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _a3 = arg3;
+            var _result = _m.GetDataResourceForScale(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -289,18 +337,26 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
     #endif
     private static int Bridge_GetLocalizedString(_cef_resource_bundle_handler_t* self, int arg0, _cef_string_utf16_t* arg1)
     {
-        var _m = GetManaged<CefResourceBundleHandler>(self);
-
-        var _a0 = arg0;
-        string? _out1 = null;
-        if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.GetLocalizedString(_a0, out _out1);
-
-        return _result;
-        if (arg1 != null)
+        try
         {
-            fixed (char* _p1 = _out1)
-                CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+            var _m = GetManaged<CefResourceBundleHandler>(self);
+
+            var _a0 = arg0;
+            string? _out1 = null;
+            if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
+            var _result = _m.GetLocalizedString(_a0, out _out1);
+
+            return _result;
+            if (arg1 != null)
+            {
+                fixed (char* _p1 = _out1)
+                    CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -311,14 +367,22 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
     #endif
     private static int Bridge_GetDataResource(_cef_resource_bundle_handler_t* self, int arg0, void** arg1, nuint* arg2)
     {
-        var _m = GetManaged<CefResourceBundleHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceBundleHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.GetDataResource(_a0, _a1, _a2);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _result = _m.GetDataResource(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -328,15 +392,23 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
     #endif
     private static int Bridge_GetDataResourceForScale(_cef_resource_bundle_handler_t* self, int arg0, cef_scale_factor_t arg1, void** arg2, nuint* arg3)
     {
-        var _m = GetManaged<CefResourceBundleHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefResourceBundleHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.GetDataResourceForScale(_a0, _a1, _a2, _a3);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _a3 = arg3;
+            var _result = _m.GetDataResourceForScale(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

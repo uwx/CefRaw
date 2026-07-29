@@ -49,10 +49,18 @@ public unsafe abstract partial class CefStringVisitor : CefBaseRefCounted, ICefS
     #endif
     private static void Bridge_Visit(_cef_string_visitor_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefStringVisitor>(self);
+        try
+        {
+            var _m = GetManaged<CefStringVisitor>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.Visit(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.Visit(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -107,10 +115,18 @@ public unsafe abstract partial class CefStringVisitor : CefBaseRefCounted, ICefS
     #endif
     private static void Bridge_Visit(_cef_string_visitor_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefStringVisitor>(self);
+        try
+        {
+            var _m = GetManaged<CefStringVisitor>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.Visit(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.Visit(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -165,10 +181,18 @@ public unsafe abstract partial class CefStringVisitor : CefBaseRefCounted, ICefS
     #endif
     private static void Bridge_Visit(_cef_string_visitor_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefStringVisitor>(self);
+        try
+        {
+            var _m = GetManaged<CefStringVisitor>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.Visit(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.Visit(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

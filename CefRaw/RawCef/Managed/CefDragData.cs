@@ -205,11 +205,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static _cef_drag_data_t* Bridge_Clone(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.Clone();
+            var _result = _m.Clone();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -219,11 +228,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_IsReadOnly(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.IsReadOnly();
+            var _result = _m.IsReadOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -233,11 +250,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_IsLink(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.IsLink();
+            var _result = _m.IsLink();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -247,11 +272,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_IsFragment(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.IsFragment();
+            var _result = _m.IsFragment();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -261,11 +294,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_IsFile(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.IsFile();
+            var _result = _m.IsFile();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -275,11 +316,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkUrl(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetLinkUrl();
+            var _result = _m.GetLinkUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -289,11 +338,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkTitle(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetLinkTitle();
+            var _result = _m.GetLinkTitle();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -303,11 +360,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkMetadata(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetLinkMetadata();
+            var _result = _m.GetLinkMetadata();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -317,11 +382,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFragmentText(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetFragmentText();
+            var _result = _m.GetFragmentText();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -331,11 +404,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFragmentHtml(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetFragmentHtml();
+            var _result = _m.GetFragmentHtml();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -345,11 +426,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFragmentBaseUrl(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetFragmentBaseUrl();
+            var _result = _m.GetFragmentBaseUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -359,11 +448,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFileName(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetFileName();
+            var _result = _m.GetFileName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -373,12 +470,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static nuint Bridge_GetFileContents(_cef_drag_data_t* self, _cef_stream_writer_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = arg0 != null ? new CefStreamWriterRef(arg0) : null;
-        var _result = _m.GetFileContents(_a0);
+            var _a0 = arg0 != null ? new CefStreamWriterRef(arg0) : null;
+            var _result = _m.GetFileContents(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -388,12 +493,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_GetFileNames(_cef_drag_data_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        var _result = _m.GetFileNames(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            var _result = _m.GetFileNames(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -403,12 +516,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_GetFilePaths(_cef_drag_data_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        var _result = _m.GetFilePaths(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            var _result = _m.GetFilePaths(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -418,10 +539,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetLinkUrl(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetLinkUrl(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetLinkUrl(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -431,10 +560,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetLinkTitle(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetLinkTitle(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetLinkTitle(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -444,10 +581,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetLinkMetadata(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetLinkMetadata(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetLinkMetadata(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -457,10 +602,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetFragmentText(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetFragmentText(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetFragmentText(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -470,10 +623,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetFragmentHtml(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetFragmentHtml(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetFragmentHtml(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -483,10 +644,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetFragmentBaseUrl(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetFragmentBaseUrl(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetFragmentBaseUrl(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -496,9 +665,17 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_ResetFileContents(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        _m.ResetFileContents();
+            _m.ResetFileContents();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -508,11 +685,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_AddFile(_cef_drag_data_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = CefStringRef.ToString(arg1);
-        _m.AddFile(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = CefStringRef.ToString(arg1);
+            _m.AddFile(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -522,9 +707,17 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_ClearFilenames(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        _m.ClearFilenames();
+            _m.ClearFilenames();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -534,11 +727,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static _cef_image_t* Bridge_GetImage(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetImage();
+            var _result = _m.GetImage();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -548,11 +750,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static _cef_point_t Bridge_GetImageHotspot(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetImageHotspot();
+            var _result = _m.GetImageHotspot();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -562,11 +772,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_HasImage(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.HasImage();
+            var _result = _m.HasImage();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -777,11 +995,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static _cef_drag_data_t* Bridge_Clone(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.Clone();
+            var _result = _m.Clone();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -791,11 +1018,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_IsReadOnly(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.IsReadOnly();
+            var _result = _m.IsReadOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -805,11 +1040,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_IsLink(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.IsLink();
+            var _result = _m.IsLink();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -819,11 +1062,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_IsFragment(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.IsFragment();
+            var _result = _m.IsFragment();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -833,11 +1084,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_IsFile(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.IsFile();
+            var _result = _m.IsFile();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -847,11 +1106,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkUrl(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetLinkUrl();
+            var _result = _m.GetLinkUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -861,11 +1128,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkTitle(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetLinkTitle();
+            var _result = _m.GetLinkTitle();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -875,11 +1150,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkMetadata(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetLinkMetadata();
+            var _result = _m.GetLinkMetadata();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -889,11 +1172,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFragmentText(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetFragmentText();
+            var _result = _m.GetFragmentText();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -903,11 +1194,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFragmentHtml(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetFragmentHtml();
+            var _result = _m.GetFragmentHtml();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -917,11 +1216,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFragmentBaseUrl(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetFragmentBaseUrl();
+            var _result = _m.GetFragmentBaseUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -931,11 +1238,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFileName(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetFileName();
+            var _result = _m.GetFileName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -945,12 +1260,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static nuint Bridge_GetFileContents(_cef_drag_data_t* self, _cef_stream_writer_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = arg0 != null ? new CefStreamWriterRef(arg0) : null;
-        var _result = _m.GetFileContents(_a0);
+            var _a0 = arg0 != null ? new CefStreamWriterRef(arg0) : null;
+            var _result = _m.GetFileContents(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -960,12 +1283,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_GetFileNames(_cef_drag_data_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        var _result = _m.GetFileNames(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            var _result = _m.GetFileNames(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -975,12 +1306,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_GetFilePaths(_cef_drag_data_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        var _result = _m.GetFilePaths(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            var _result = _m.GetFilePaths(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -990,10 +1329,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetLinkUrl(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetLinkUrl(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetLinkUrl(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1003,10 +1350,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetLinkTitle(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetLinkTitle(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetLinkTitle(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1016,10 +1371,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetLinkMetadata(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetLinkMetadata(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetLinkMetadata(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1029,10 +1392,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetFragmentText(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetFragmentText(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetFragmentText(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1042,10 +1413,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetFragmentHtml(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetFragmentHtml(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetFragmentHtml(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1055,10 +1434,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetFragmentBaseUrl(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetFragmentBaseUrl(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetFragmentBaseUrl(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1068,9 +1455,17 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_ResetFileContents(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        _m.ResetFileContents();
+            _m.ResetFileContents();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1080,11 +1475,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_AddFile(_cef_drag_data_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = CefStringRef.ToString(arg1);
-        _m.AddFile(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = CefStringRef.ToString(arg1);
+            _m.AddFile(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1094,9 +1497,17 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_ClearFilenames(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        _m.ClearFilenames();
+            _m.ClearFilenames();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1106,11 +1517,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static _cef_image_t* Bridge_GetImage(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetImage();
+            var _result = _m.GetImage();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1120,11 +1540,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static _cef_point_t Bridge_GetImageHotspot(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetImageHotspot();
+            var _result = _m.GetImageHotspot();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1134,11 +1562,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_HasImage(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.HasImage();
+            var _result = _m.HasImage();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -1349,11 +1785,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static _cef_drag_data_t* Bridge_Clone(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.Clone();
+            var _result = _m.Clone();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1363,11 +1808,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_IsReadOnly(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.IsReadOnly();
+            var _result = _m.IsReadOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1377,11 +1830,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_IsLink(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.IsLink();
+            var _result = _m.IsLink();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1391,11 +1852,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_IsFragment(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.IsFragment();
+            var _result = _m.IsFragment();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1405,11 +1874,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_IsFile(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.IsFile();
+            var _result = _m.IsFile();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1419,11 +1896,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkUrl(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetLinkUrl();
+            var _result = _m.GetLinkUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1433,11 +1918,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkTitle(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetLinkTitle();
+            var _result = _m.GetLinkTitle();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1447,11 +1940,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkMetadata(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetLinkMetadata();
+            var _result = _m.GetLinkMetadata();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1461,11 +1962,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFragmentText(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetFragmentText();
+            var _result = _m.GetFragmentText();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1475,11 +1984,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFragmentHtml(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetFragmentHtml();
+            var _result = _m.GetFragmentHtml();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1489,11 +2006,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFragmentBaseUrl(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetFragmentBaseUrl();
+            var _result = _m.GetFragmentBaseUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1503,11 +2028,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFileName(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetFileName();
+            var _result = _m.GetFileName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1517,12 +2050,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static nuint Bridge_GetFileContents(_cef_drag_data_t* self, _cef_stream_writer_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = arg0 != null ? new CefStreamWriterRef(arg0) : null;
-        var _result = _m.GetFileContents(_a0);
+            var _a0 = arg0 != null ? new CefStreamWriterRef(arg0) : null;
+            var _result = _m.GetFileContents(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1532,12 +2073,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_GetFileNames(_cef_drag_data_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        var _result = _m.GetFileNames(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            var _result = _m.GetFileNames(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1547,12 +2096,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_GetFilePaths(_cef_drag_data_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        var _result = _m.GetFilePaths(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            var _result = _m.GetFilePaths(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1562,10 +2119,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetLinkUrl(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetLinkUrl(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetLinkUrl(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1575,10 +2140,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetLinkTitle(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetLinkTitle(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetLinkTitle(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1588,10 +2161,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetLinkMetadata(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetLinkMetadata(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetLinkMetadata(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1601,10 +2182,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetFragmentText(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetFragmentText(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetFragmentText(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1614,10 +2203,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetFragmentHtml(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetFragmentHtml(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetFragmentHtml(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1627,10 +2224,18 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_SetFragmentBaseUrl(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.SetFragmentBaseUrl(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.SetFragmentBaseUrl(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1640,9 +2245,17 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_ResetFileContents(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        _m.ResetFileContents();
+            _m.ResetFileContents();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1652,11 +2265,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_AddFile(_cef_drag_data_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = CefStringRef.ToString(arg1);
-        _m.AddFile(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = CefStringRef.ToString(arg1);
+            _m.AddFile(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1666,9 +2287,17 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static void Bridge_ClearFilenames(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        _m.ClearFilenames();
+            _m.ClearFilenames();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1678,11 +2307,20 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static _cef_image_t* Bridge_GetImage(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetImage();
+            var _result = _m.GetImage();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1692,11 +2330,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static _cef_point_t Bridge_GetImageHotspot(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.GetImageHotspot();
+            var _result = _m.GetImageHotspot();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1706,11 +2352,19 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     #endif
     private static int Bridge_HasImage(_cef_drag_data_t* self)
     {
-        var _m = GetManaged<CefDragData>(self);
+        try
+        {
+            var _m = GetManaged<CefDragData>(self);
 
-        var _result = _m.HasImage();
+            var _result = _m.HasImage();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

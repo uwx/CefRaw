@@ -24,7 +24,9 @@ public unsafe class SimpleBrowserProcessHandler : CefBrowserProcessHandler
     /// </summary>
     public override void OnContextInitialized()
     {
-        Cef.CreateBrowser(_client, _startUrl);
+        var windowInfo = new CefWindowInfo();
+        var browserSettings = new _cef_browser_settings_t { size = (nuint)sizeof(_cef_browser_settings_t) };
+        Cef.CreateBrowser(_client, _startUrl, windowInfo, &browserSettings);
     }
 
     // ── Remaining abstract overrides (default no-op / null) ──────────

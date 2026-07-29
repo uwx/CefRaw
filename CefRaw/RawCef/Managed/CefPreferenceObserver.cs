@@ -49,10 +49,18 @@ public unsafe abstract partial class CefPreferenceObserver : CefBaseRefCounted, 
     #endif
     private static void Bridge_OnPreferenceChanged(_cef_preference_observer_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefPreferenceObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefPreferenceObserver>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.OnPreferenceChanged(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.OnPreferenceChanged(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -107,10 +115,18 @@ public unsafe abstract partial class CefPreferenceObserver : CefBaseRefCounted, 
     #endif
     private static void Bridge_OnPreferenceChanged(_cef_preference_observer_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefPreferenceObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefPreferenceObserver>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.OnPreferenceChanged(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.OnPreferenceChanged(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -165,10 +181,18 @@ public unsafe abstract partial class CefPreferenceObserver : CefBaseRefCounted, 
     #endif
     private static void Bridge_OnPreferenceChanged(_cef_preference_observer_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefPreferenceObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefPreferenceObserver>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        _m.OnPreferenceChanged(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            _m.OnPreferenceChanged(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

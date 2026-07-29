@@ -49,13 +49,21 @@ public unsafe abstract partial class CefSchemeRegistrar : CefBaseScoped, ICefSch
     #endif
     private static int Bridge_AddCustomScheme(_cef_scheme_registrar_t* self, _cef_string_utf16_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefSchemeRegistrar>(self);
+        try
+        {
+            var _m = GetManaged<CefSchemeRegistrar>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        var _result = _m.AddCustomScheme(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            var _result = _m.AddCustomScheme(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -110,13 +118,21 @@ public unsafe abstract partial class CefSchemeRegistrar : CefBaseScoped, ICefSch
     #endif
     private static int Bridge_AddCustomScheme(_cef_scheme_registrar_t* self, _cef_string_utf16_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefSchemeRegistrar>(self);
+        try
+        {
+            var _m = GetManaged<CefSchemeRegistrar>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        var _result = _m.AddCustomScheme(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            var _result = _m.AddCustomScheme(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -171,13 +187,21 @@ public unsafe abstract partial class CefSchemeRegistrar : CefBaseScoped, ICefSch
     #endif
     private static int Bridge_AddCustomScheme(_cef_scheme_registrar_t* self, _cef_string_utf16_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefSchemeRegistrar>(self);
+        try
+        {
+            var _m = GetManaged<CefSchemeRegistrar>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        var _result = _m.AddCustomScheme(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            var _result = _m.AddCustomScheme(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

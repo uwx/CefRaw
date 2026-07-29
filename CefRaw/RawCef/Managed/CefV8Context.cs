@@ -97,11 +97,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static _cef_task_runner_t* Bridge_GetTaskRunner(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.GetTaskRunner();
+            var _result = _m.GetTaskRunner();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -111,11 +120,19 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_IsValid(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -125,11 +142,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static _cef_browser_t* Bridge_GetBrowser(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.GetBrowser();
+            var _result = _m.GetBrowser();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -139,11 +165,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static _cef_frame_t* Bridge_GetFrame(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.GetFrame();
+            var _result = _m.GetFrame();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -153,11 +188,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static _cef_v8_value_t* Bridge_GetGlobal(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.GetGlobal();
+            var _result = _m.GetGlobal();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -167,11 +211,19 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_Enter(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.Enter();
+            var _result = _m.Enter();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -181,11 +233,19 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_Exit(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.Exit();
+            var _result = _m.Exit();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -195,12 +255,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_IsSame(_cef_v8_context_t* self, _cef_v8_context_t* arg0)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _a0 = arg0 != null ? new CefV8ContextRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
+            var _a0 = arg0 != null ? new CefV8ContextRef(arg0) : null;
+            var _result = _m.IsSame(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -210,20 +278,28 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_Eval(_cef_v8_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, int arg2, _cef_v8_value_t** arg3, _cef_v8_exception_t** arg4)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2;
-        ICefV8Value? _out3 = null;
-        if (arg3 != null && *arg3 != null) _out3 = new CefV8ValueRef(*arg3);
-        ICefV8Exception? _out4 = null;
-        if (arg4 != null && *arg4 != null) _out4 = new CefV8ExceptionRef(*arg4);
-        var _result = _m.Eval(_a0, _a1, _a2, out _out3, out _out4);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2;
+            ICefV8Value? _out3 = null;
+            if (arg3 != null && *arg3 != null) _out3 = new CefV8ValueRef(*arg3);
+            ICefV8Exception? _out4 = null;
+            if (arg4 != null && *arg4 != null) _out4 = new CefV8ExceptionRef(*arg4);
+            var _result = _m.Eval(_a0, _a1, _a2, out _out3, out _out4);
 
-        return _result;
-        if (arg3 != null) *arg3 = _out3 != null ? _out3.NativePtr : null;
-        if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+            return _result;
+            if (arg3 != null) *arg3 = _out3 != null ? _out3.NativePtr : null;
+            if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -326,11 +402,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static _cef_task_runner_t* Bridge_GetTaskRunner(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.GetTaskRunner();
+            var _result = _m.GetTaskRunner();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -340,11 +425,19 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_IsValid(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -354,11 +447,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static _cef_browser_t* Bridge_GetBrowser(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.GetBrowser();
+            var _result = _m.GetBrowser();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -368,11 +470,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static _cef_frame_t* Bridge_GetFrame(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.GetFrame();
+            var _result = _m.GetFrame();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -382,11 +493,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static _cef_v8_value_t* Bridge_GetGlobal(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.GetGlobal();
+            var _result = _m.GetGlobal();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -396,11 +516,19 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_Enter(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.Enter();
+            var _result = _m.Enter();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -410,11 +538,19 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_Exit(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.Exit();
+            var _result = _m.Exit();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -424,12 +560,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_IsSame(_cef_v8_context_t* self, _cef_v8_context_t* arg0)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _a0 = arg0 != null ? new CefV8ContextRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
+            var _a0 = arg0 != null ? new CefV8ContextRef(arg0) : null;
+            var _result = _m.IsSame(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -439,20 +583,28 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_Eval(_cef_v8_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, int arg2, _cef_v8_value_t** arg3, _cef_v8_exception_t** arg4)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2;
-        ICefV8Value? _out3 = null;
-        if (arg3 != null && *arg3 != null) _out3 = new CefV8ValueRef(*arg3);
-        ICefV8Exception? _out4 = null;
-        if (arg4 != null && *arg4 != null) _out4 = new CefV8ExceptionRef(*arg4);
-        var _result = _m.Eval(_a0, _a1, _a2, out _out3, out _out4);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2;
+            ICefV8Value? _out3 = null;
+            if (arg3 != null && *arg3 != null) _out3 = new CefV8ValueRef(*arg3);
+            ICefV8Exception? _out4 = null;
+            if (arg4 != null && *arg4 != null) _out4 = new CefV8ExceptionRef(*arg4);
+            var _result = _m.Eval(_a0, _a1, _a2, out _out3, out _out4);
 
-        return _result;
-        if (arg3 != null) *arg3 = _out3 != null ? _out3.NativePtr : null;
-        if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+            return _result;
+            if (arg3 != null) *arg3 = _out3 != null ? _out3.NativePtr : null;
+            if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -555,11 +707,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static _cef_task_runner_t* Bridge_GetTaskRunner(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.GetTaskRunner();
+            var _result = _m.GetTaskRunner();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -569,11 +730,19 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_IsValid(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -583,11 +752,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static _cef_browser_t* Bridge_GetBrowser(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.GetBrowser();
+            var _result = _m.GetBrowser();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -597,11 +775,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static _cef_frame_t* Bridge_GetFrame(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.GetFrame();
+            var _result = _m.GetFrame();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -611,11 +798,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static _cef_v8_value_t* Bridge_GetGlobal(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.GetGlobal();
+            var _result = _m.GetGlobal();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -625,11 +821,19 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_Enter(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.Enter();
+            var _result = _m.Enter();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -639,11 +843,19 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_Exit(_cef_v8_context_t* self)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _result = _m.Exit();
+            var _result = _m.Exit();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -653,12 +865,20 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_IsSame(_cef_v8_context_t* self, _cef_v8_context_t* arg0)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _a0 = arg0 != null ? new CefV8ContextRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
+            var _a0 = arg0 != null ? new CefV8ContextRef(arg0) : null;
+            var _result = _m.IsSame(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -668,20 +888,28 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     #endif
     private static int Bridge_Eval(_cef_v8_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, int arg2, _cef_v8_value_t** arg3, _cef_v8_exception_t** arg4)
     {
-        var _m = GetManaged<CefV8Context>(self);
+        try
+        {
+            var _m = GetManaged<CefV8Context>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2;
-        ICefV8Value? _out3 = null;
-        if (arg3 != null && *arg3 != null) _out3 = new CefV8ValueRef(*arg3);
-        ICefV8Exception? _out4 = null;
-        if (arg4 != null && *arg4 != null) _out4 = new CefV8ExceptionRef(*arg4);
-        var _result = _m.Eval(_a0, _a1, _a2, out _out3, out _out4);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2;
+            ICefV8Value? _out3 = null;
+            if (arg3 != null && *arg3 != null) _out3 = new CefV8ValueRef(*arg3);
+            ICefV8Exception? _out4 = null;
+            if (arg4 != null && *arg4 != null) _out4 = new CefV8ExceptionRef(*arg4);
+            var _result = _m.Eval(_a0, _a1, _a2, out _out3, out _out4);
 
-        return _result;
-        if (arg3 != null) *arg3 = _out3 != null ? _out3.NativePtr : null;
-        if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+            return _result;
+            if (arg3 != null) *arg3 = _out3 != null ? _out3.NativePtr : null;
+            if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

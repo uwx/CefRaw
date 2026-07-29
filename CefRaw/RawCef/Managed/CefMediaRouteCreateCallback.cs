@@ -49,12 +49,20 @@ public unsafe abstract partial class CefMediaRouteCreateCallback : CefBaseRefCou
     #endif
     private static void Bridge_OnMediaRouteCreateFinished(_cef_media_route_create_callback_t* self, cef_media_route_create_result_t arg0, _cef_string_utf16_t* arg1, _cef_media_route_t* arg2)
     {
-        var _m = GetManaged<CefMediaRouteCreateCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRouteCreateCallback>(self);
 
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2 != null ? new CefMediaRouteRef(arg2) : null;
-        _m.OnMediaRouteCreateFinished(_a0, _a1, _a2);
+            var _a0 = arg0;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2 != null ? new CefMediaRouteRef(arg2) : null;
+            _m.OnMediaRouteCreateFinished(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -109,12 +117,20 @@ public unsafe abstract partial class CefMediaRouteCreateCallback : CefBaseRefCou
     #endif
     private static void Bridge_OnMediaRouteCreateFinished(_cef_media_route_create_callback_t* self, cef_media_route_create_result_t arg0, _cef_string_utf16_t* arg1, _cef_media_route_t* arg2)
     {
-        var _m = GetManaged<CefMediaRouteCreateCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRouteCreateCallback>(self);
 
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2 != null ? new CefMediaRouteRef(arg2) : null;
-        _m.OnMediaRouteCreateFinished(_a0, _a1, _a2);
+            var _a0 = arg0;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2 != null ? new CefMediaRouteRef(arg2) : null;
+            _m.OnMediaRouteCreateFinished(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -169,12 +185,20 @@ public unsafe abstract partial class CefMediaRouteCreateCallback : CefBaseRefCou
     #endif
     private static void Bridge_OnMediaRouteCreateFinished(_cef_media_route_create_callback_t* self, cef_media_route_create_result_t arg0, _cef_string_utf16_t* arg1, _cef_media_route_t* arg2)
     {
-        var _m = GetManaged<CefMediaRouteCreateCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaRouteCreateCallback>(self);
 
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _a2 = arg2 != null ? new CefMediaRouteRef(arg2) : null;
-        _m.OnMediaRouteCreateFinished(_a0, _a1, _a2);
+            var _a0 = arg0;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _a2 = arg2 != null ? new CefMediaRouteRef(arg2) : null;
+            _m.OnMediaRouteCreateFinished(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

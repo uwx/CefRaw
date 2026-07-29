@@ -85,11 +85,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.GetId();
+            var _result = _m.GetId();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -99,11 +107,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetName(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.GetName();
+            var _result = _m.GetName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -113,11 +129,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static cef_media_sink_icon_type_t Bridge_GetIconType(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.GetIconType();
+            var _result = _m.GetIconType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -127,10 +151,18 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static void Bridge_GetDeviceInfo(_cef_media_sink_t* self, _cef_media_sink_device_info_callback_t* arg0)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoCallbackRef(arg0) : null;
-        _m.GetDeviceInfo(_a0);
+            var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoCallbackRef(arg0) : null;
+            _m.GetDeviceInfo(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -140,11 +172,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static int Bridge_IsCastSink(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.IsCastSink();
+            var _result = _m.IsCastSink();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -154,11 +194,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static int Bridge_IsDialSink(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.IsDialSink();
+            var _result = _m.IsDialSink();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -168,12 +216,20 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static int Bridge_IsCompatibleWith(_cef_media_sink_t* self, _cef_media_source_t* arg0)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _a0 = arg0 != null ? new CefMediaSourceRef(arg0) : null;
-        var _result = _m.IsCompatibleWith(_a0);
+            var _a0 = arg0 != null ? new CefMediaSourceRef(arg0) : null;
+            var _result = _m.IsCompatibleWith(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -264,11 +320,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.GetId();
+            var _result = _m.GetId();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -278,11 +342,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetName(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.GetName();
+            var _result = _m.GetName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -292,11 +364,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static cef_media_sink_icon_type_t Bridge_GetIconType(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.GetIconType();
+            var _result = _m.GetIconType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -306,10 +386,18 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static void Bridge_GetDeviceInfo(_cef_media_sink_t* self, _cef_media_sink_device_info_callback_t* arg0)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoCallbackRef(arg0) : null;
-        _m.GetDeviceInfo(_a0);
+            var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoCallbackRef(arg0) : null;
+            _m.GetDeviceInfo(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -319,11 +407,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static int Bridge_IsCastSink(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.IsCastSink();
+            var _result = _m.IsCastSink();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -333,11 +429,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static int Bridge_IsDialSink(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.IsDialSink();
+            var _result = _m.IsDialSink();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -347,12 +451,20 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static int Bridge_IsCompatibleWith(_cef_media_sink_t* self, _cef_media_source_t* arg0)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _a0 = arg0 != null ? new CefMediaSourceRef(arg0) : null;
-        var _result = _m.IsCompatibleWith(_a0);
+            var _a0 = arg0 != null ? new CefMediaSourceRef(arg0) : null;
+            var _result = _m.IsCompatibleWith(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -443,11 +555,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.GetId();
+            var _result = _m.GetId();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -457,11 +577,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetName(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.GetName();
+            var _result = _m.GetName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -471,11 +599,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static cef_media_sink_icon_type_t Bridge_GetIconType(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.GetIconType();
+            var _result = _m.GetIconType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -485,10 +621,18 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static void Bridge_GetDeviceInfo(_cef_media_sink_t* self, _cef_media_sink_device_info_callback_t* arg0)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoCallbackRef(arg0) : null;
-        _m.GetDeviceInfo(_a0);
+            var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoCallbackRef(arg0) : null;
+            _m.GetDeviceInfo(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -498,11 +642,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static int Bridge_IsCastSink(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.IsCastSink();
+            var _result = _m.IsCastSink();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -512,11 +664,19 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static int Bridge_IsDialSink(_cef_media_sink_t* self)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _result = _m.IsDialSink();
+            var _result = _m.IsDialSink();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -526,12 +686,20 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
     #endif
     private static int Bridge_IsCompatibleWith(_cef_media_sink_t* self, _cef_media_source_t* arg0)
     {
-        var _m = GetManaged<CefMediaSink>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSink>(self);
 
-        var _a0 = arg0 != null ? new CefMediaSourceRef(arg0) : null;
-        var _result = _m.IsCompatibleWith(_a0);
+            var _a0 = arg0 != null ? new CefMediaSourceRef(arg0) : null;
+            var _result = _m.IsCompatibleWith(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

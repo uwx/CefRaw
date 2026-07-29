@@ -55,9 +55,17 @@ public unsafe abstract partial class CefCallback : CefBaseRefCounted, ICefCallba
     #endif
     private static void Bridge_Cont(_cef_callback_t* self)
     {
-        var _m = GetManaged<CefCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefCallback>(self);
 
-        _m.Cont();
+            _m.Cont();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -67,9 +75,17 @@ public unsafe abstract partial class CefCallback : CefBaseRefCounted, ICefCallba
     #endif
     private static void Bridge_Cancel(_cef_callback_t* self)
     {
-        var _m = GetManaged<CefCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefCallback>(self);
 
-        _m.Cancel();
+            _m.Cancel();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -130,9 +146,17 @@ public unsafe abstract partial class CefCallback : CefBaseRefCounted, ICefCallba
     #endif
     private static void Bridge_Cont(_cef_callback_t* self)
     {
-        var _m = GetManaged<CefCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefCallback>(self);
 
-        _m.Cont();
+            _m.Cont();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -142,9 +166,17 @@ public unsafe abstract partial class CefCallback : CefBaseRefCounted, ICefCallba
     #endif
     private static void Bridge_Cancel(_cef_callback_t* self)
     {
-        var _m = GetManaged<CefCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefCallback>(self);
 
-        _m.Cancel();
+            _m.Cancel();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -205,9 +237,17 @@ public unsafe abstract partial class CefCallback : CefBaseRefCounted, ICefCallba
     #endif
     private static void Bridge_Cont(_cef_callback_t* self)
     {
-        var _m = GetManaged<CefCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefCallback>(self);
 
-        _m.Cont();
+            _m.Cont();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -217,9 +257,17 @@ public unsafe abstract partial class CefCallback : CefBaseRefCounted, ICefCallba
     #endif
     private static void Bridge_Cancel(_cef_callback_t* self)
     {
-        var _m = GetManaged<CefCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefCallback>(self);
 
-        _m.Cancel();
+            _m.Cancel();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

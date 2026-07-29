@@ -85,11 +85,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetDisplayName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetDisplayName();
+            var _result = _m.GetDisplayName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -99,11 +107,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetCommonName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetCommonName();
+            var _result = _m.GetCommonName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -113,11 +129,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLocalityName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetLocalityName();
+            var _result = _m.GetLocalityName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -127,11 +151,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetStateOrProvinceName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetStateOrProvinceName();
+            var _result = _m.GetStateOrProvinceName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -141,11 +173,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetCountryName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetCountryName();
+            var _result = _m.GetCountryName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -155,10 +195,18 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static void Bridge_GetOrganizationNames(_cef_x509_cert_principal_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.GetOrganizationNames(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.GetOrganizationNames(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -168,10 +216,18 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static void Bridge_GetOrganizationUnitNames(_cef_x509_cert_principal_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.GetOrganizationUnitNames(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.GetOrganizationUnitNames(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -262,11 +318,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetDisplayName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetDisplayName();
+            var _result = _m.GetDisplayName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -276,11 +340,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetCommonName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetCommonName();
+            var _result = _m.GetCommonName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -290,11 +362,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLocalityName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetLocalityName();
+            var _result = _m.GetLocalityName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -304,11 +384,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetStateOrProvinceName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetStateOrProvinceName();
+            var _result = _m.GetStateOrProvinceName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -318,11 +406,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetCountryName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetCountryName();
+            var _result = _m.GetCountryName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -332,10 +428,18 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static void Bridge_GetOrganizationNames(_cef_x509_cert_principal_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.GetOrganizationNames(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.GetOrganizationNames(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -345,10 +449,18 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static void Bridge_GetOrganizationUnitNames(_cef_x509_cert_principal_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.GetOrganizationUnitNames(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.GetOrganizationUnitNames(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -439,11 +551,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetDisplayName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetDisplayName();
+            var _result = _m.GetDisplayName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -453,11 +573,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetCommonName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetCommonName();
+            var _result = _m.GetCommonName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -467,11 +595,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLocalityName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetLocalityName();
+            var _result = _m.GetLocalityName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -481,11 +617,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetStateOrProvinceName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetStateOrProvinceName();
+            var _result = _m.GetStateOrProvinceName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -495,11 +639,19 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetCountryName(_cef_x509_cert_principal_t* self)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _result = _m.GetCountryName();
+            var _result = _m.GetCountryName();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -509,10 +661,18 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static void Bridge_GetOrganizationNames(_cef_x509_cert_principal_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.GetOrganizationNames(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.GetOrganizationNames(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -522,10 +682,18 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     #endif
     private static void Bridge_GetOrganizationUnitNames(_cef_x509_cert_principal_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
+        try
+        {
+            var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.GetOrganizationUnitNames(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.GetOrganizationUnitNames(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

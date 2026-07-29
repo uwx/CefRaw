@@ -67,22 +67,30 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     #endif
     private static int Bridge_GetByname(_cef_v8_interceptor_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, _cef_v8_value_t** arg2, _cef_string_utf16_t* arg3)
     {
-        var _m = GetManaged<CefV8Interceptor>(self);
-
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        ICefV8Value? _out2 = null;
-        if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
-        string? _out3 = null;
-        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.GetByname(_a0, _a1, out _out2, out _out3);
-
-        return _result;
-        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
-        if (arg3 != null)
+        try
         {
-            fixed (char* _p3 = _out3)
-                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            var _m = GetManaged<CefV8Interceptor>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            ICefV8Value? _out2 = null;
+            if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
+            string? _out3 = null;
+            if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+            var _result = _m.GetByname(_a0, _a1, out _out2, out _out3);
+
+            return _result;
+            if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+            if (arg3 != null)
+            {
+                fixed (char* _p3 = _out3)
+                    CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -93,22 +101,30 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     #endif
     private static int Bridge_GetByindex(_cef_v8_interceptor_t* self, int arg0, _cef_v8_value_t* arg1, _cef_v8_value_t** arg2, _cef_string_utf16_t* arg3)
     {
-        var _m = GetManaged<CefV8Interceptor>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        ICefV8Value? _out2 = null;
-        if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
-        string? _out3 = null;
-        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.GetByindex(_a0, _a1, out _out2, out _out3);
-
-        return _result;
-        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
-        if (arg3 != null)
+        try
         {
-            fixed (char* _p3 = _out3)
-                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            var _m = GetManaged<CefV8Interceptor>(self);
+
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            ICefV8Value? _out2 = null;
+            if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
+            string? _out3 = null;
+            if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+            var _result = _m.GetByindex(_a0, _a1, out _out2, out _out3);
+
+            return _result;
+            if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+            if (arg3 != null)
+            {
+                fixed (char* _p3 = _out3)
+                    CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -119,20 +135,28 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     #endif
     private static int Bridge_SetByname(_cef_v8_interceptor_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, _cef_v8_value_t* arg2, _cef_string_utf16_t* arg3)
     {
-        var _m = GetManaged<CefV8Interceptor>(self);
-
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        string? _out3 = null;
-        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.SetByname(_a0, _a1, _a2, out _out3);
-
-        return _result;
-        if (arg3 != null)
+        try
         {
-            fixed (char* _p3 = _out3)
-                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            var _m = GetManaged<CefV8Interceptor>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
+            string? _out3 = null;
+            if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+            var _result = _m.SetByname(_a0, _a1, _a2, out _out3);
+
+            return _result;
+            if (arg3 != null)
+            {
+                fixed (char* _p3 = _out3)
+                    CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -143,20 +167,28 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     #endif
     private static int Bridge_SetByindex(_cef_v8_interceptor_t* self, int arg0, _cef_v8_value_t* arg1, _cef_v8_value_t* arg2, _cef_string_utf16_t* arg3)
     {
-        var _m = GetManaged<CefV8Interceptor>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        string? _out3 = null;
-        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.SetByindex(_a0, _a1, _a2, out _out3);
-
-        return _result;
-        if (arg3 != null)
+        try
         {
-            fixed (char* _p3 = _out3)
-                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            var _m = GetManaged<CefV8Interceptor>(self);
+
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
+            string? _out3 = null;
+            if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+            var _result = _m.SetByindex(_a0, _a1, _a2, out _out3);
+
+            return _result;
+            if (arg3 != null)
+            {
+                fixed (char* _p3 = _out3)
+                    CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 }
@@ -230,22 +262,30 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     #endif
     private static int Bridge_GetByname(_cef_v8_interceptor_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, _cef_v8_value_t** arg2, _cef_string_utf16_t* arg3)
     {
-        var _m = GetManaged<CefV8Interceptor>(self);
-
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        ICefV8Value? _out2 = null;
-        if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
-        string? _out3 = null;
-        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.GetByname(_a0, _a1, out _out2, out _out3);
-
-        return _result;
-        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
-        if (arg3 != null)
+        try
         {
-            fixed (char* _p3 = _out3)
-                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            var _m = GetManaged<CefV8Interceptor>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            ICefV8Value? _out2 = null;
+            if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
+            string? _out3 = null;
+            if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+            var _result = _m.GetByname(_a0, _a1, out _out2, out _out3);
+
+            return _result;
+            if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+            if (arg3 != null)
+            {
+                fixed (char* _p3 = _out3)
+                    CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -256,22 +296,30 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     #endif
     private static int Bridge_GetByindex(_cef_v8_interceptor_t* self, int arg0, _cef_v8_value_t* arg1, _cef_v8_value_t** arg2, _cef_string_utf16_t* arg3)
     {
-        var _m = GetManaged<CefV8Interceptor>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        ICefV8Value? _out2 = null;
-        if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
-        string? _out3 = null;
-        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.GetByindex(_a0, _a1, out _out2, out _out3);
-
-        return _result;
-        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
-        if (arg3 != null)
+        try
         {
-            fixed (char* _p3 = _out3)
-                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            var _m = GetManaged<CefV8Interceptor>(self);
+
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            ICefV8Value? _out2 = null;
+            if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
+            string? _out3 = null;
+            if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+            var _result = _m.GetByindex(_a0, _a1, out _out2, out _out3);
+
+            return _result;
+            if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+            if (arg3 != null)
+            {
+                fixed (char* _p3 = _out3)
+                    CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -282,20 +330,28 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     #endif
     private static int Bridge_SetByname(_cef_v8_interceptor_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, _cef_v8_value_t* arg2, _cef_string_utf16_t* arg3)
     {
-        var _m = GetManaged<CefV8Interceptor>(self);
-
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        string? _out3 = null;
-        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.SetByname(_a0, _a1, _a2, out _out3);
-
-        return _result;
-        if (arg3 != null)
+        try
         {
-            fixed (char* _p3 = _out3)
-                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            var _m = GetManaged<CefV8Interceptor>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
+            string? _out3 = null;
+            if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+            var _result = _m.SetByname(_a0, _a1, _a2, out _out3);
+
+            return _result;
+            if (arg3 != null)
+            {
+                fixed (char* _p3 = _out3)
+                    CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -306,20 +362,28 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     #endif
     private static int Bridge_SetByindex(_cef_v8_interceptor_t* self, int arg0, _cef_v8_value_t* arg1, _cef_v8_value_t* arg2, _cef_string_utf16_t* arg3)
     {
-        var _m = GetManaged<CefV8Interceptor>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        string? _out3 = null;
-        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.SetByindex(_a0, _a1, _a2, out _out3);
-
-        return _result;
-        if (arg3 != null)
+        try
         {
-            fixed (char* _p3 = _out3)
-                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            var _m = GetManaged<CefV8Interceptor>(self);
+
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
+            string? _out3 = null;
+            if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+            var _result = _m.SetByindex(_a0, _a1, _a2, out _out3);
+
+            return _result;
+            if (arg3 != null)
+            {
+                fixed (char* _p3 = _out3)
+                    CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 }
@@ -393,22 +457,30 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     #endif
     private static int Bridge_GetByname(_cef_v8_interceptor_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, _cef_v8_value_t** arg2, _cef_string_utf16_t* arg3)
     {
-        var _m = GetManaged<CefV8Interceptor>(self);
-
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        ICefV8Value? _out2 = null;
-        if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
-        string? _out3 = null;
-        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.GetByname(_a0, _a1, out _out2, out _out3);
-
-        return _result;
-        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
-        if (arg3 != null)
+        try
         {
-            fixed (char* _p3 = _out3)
-                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            var _m = GetManaged<CefV8Interceptor>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            ICefV8Value? _out2 = null;
+            if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
+            string? _out3 = null;
+            if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+            var _result = _m.GetByname(_a0, _a1, out _out2, out _out3);
+
+            return _result;
+            if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+            if (arg3 != null)
+            {
+                fixed (char* _p3 = _out3)
+                    CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -419,22 +491,30 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     #endif
     private static int Bridge_GetByindex(_cef_v8_interceptor_t* self, int arg0, _cef_v8_value_t* arg1, _cef_v8_value_t** arg2, _cef_string_utf16_t* arg3)
     {
-        var _m = GetManaged<CefV8Interceptor>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        ICefV8Value? _out2 = null;
-        if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
-        string? _out3 = null;
-        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.GetByindex(_a0, _a1, out _out2, out _out3);
-
-        return _result;
-        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
-        if (arg3 != null)
+        try
         {
-            fixed (char* _p3 = _out3)
-                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            var _m = GetManaged<CefV8Interceptor>(self);
+
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            ICefV8Value? _out2 = null;
+            if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
+            string? _out3 = null;
+            if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+            var _result = _m.GetByindex(_a0, _a1, out _out2, out _out3);
+
+            return _result;
+            if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+            if (arg3 != null)
+            {
+                fixed (char* _p3 = _out3)
+                    CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -445,20 +525,28 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     #endif
     private static int Bridge_SetByname(_cef_v8_interceptor_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, _cef_v8_value_t* arg2, _cef_string_utf16_t* arg3)
     {
-        var _m = GetManaged<CefV8Interceptor>(self);
-
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        string? _out3 = null;
-        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.SetByname(_a0, _a1, _a2, out _out3);
-
-        return _result;
-        if (arg3 != null)
+        try
         {
-            fixed (char* _p3 = _out3)
-                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            var _m = GetManaged<CefV8Interceptor>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
+            string? _out3 = null;
+            if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+            var _result = _m.SetByname(_a0, _a1, _a2, out _out3);
+
+            return _result;
+            if (arg3 != null)
+            {
+                fixed (char* _p3 = _out3)
+                    CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 
@@ -469,20 +557,28 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     #endif
     private static int Bridge_SetByindex(_cef_v8_interceptor_t* self, int arg0, _cef_v8_value_t* arg1, _cef_v8_value_t* arg2, _cef_string_utf16_t* arg3)
     {
-        var _m = GetManaged<CefV8Interceptor>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        string? _out3 = null;
-        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.SetByindex(_a0, _a1, _a2, out _out3);
-
-        return _result;
-        if (arg3 != null)
+        try
         {
-            fixed (char* _p3 = _out3)
-                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            var _m = GetManaged<CefV8Interceptor>(self);
+
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
+            string? _out3 = null;
+            if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+            var _result = _m.SetByindex(_a0, _a1, _a2, out _out3);
+
+            return _result;
+            if (arg3 != null)
+            {
+                fixed (char* _p3 = _out3)
+                    CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 }

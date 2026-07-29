@@ -73,11 +73,19 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static int Bridge_IsSecureConnection(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.IsSecureConnection();
+            var _result = _m.IsSecureConnection();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -87,11 +95,19 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static cef_cert_status_t Bridge_GetCertStatus(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.GetCertStatus();
+            var _result = _m.GetCertStatus();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -101,11 +117,19 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static cef_ssl_version_t Bridge_GetSslversion(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.GetSslversion();
+            var _result = _m.GetSslversion();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -115,11 +139,19 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static cef_ssl_content_status_t Bridge_GetContentStatus(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.GetContentStatus();
+            var _result = _m.GetContentStatus();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -129,11 +161,20 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static _cef_x509_certificate_t* Bridge_GetX509Certificate(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.GetX509Certificate();
+            var _result = _m.GetX509Certificate();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -212,11 +253,19 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static int Bridge_IsSecureConnection(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.IsSecureConnection();
+            var _result = _m.IsSecureConnection();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -226,11 +275,19 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static cef_cert_status_t Bridge_GetCertStatus(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.GetCertStatus();
+            var _result = _m.GetCertStatus();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -240,11 +297,19 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static cef_ssl_version_t Bridge_GetSslversion(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.GetSslversion();
+            var _result = _m.GetSslversion();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -254,11 +319,19 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static cef_ssl_content_status_t Bridge_GetContentStatus(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.GetContentStatus();
+            var _result = _m.GetContentStatus();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -268,11 +341,20 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static _cef_x509_certificate_t* Bridge_GetX509Certificate(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.GetX509Certificate();
+            var _result = _m.GetX509Certificate();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -351,11 +433,19 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static int Bridge_IsSecureConnection(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.IsSecureConnection();
+            var _result = _m.IsSecureConnection();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -365,11 +455,19 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static cef_cert_status_t Bridge_GetCertStatus(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.GetCertStatus();
+            var _result = _m.GetCertStatus();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -379,11 +477,19 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static cef_ssl_version_t Bridge_GetSslversion(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.GetSslversion();
+            var _result = _m.GetSslversion();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -393,11 +499,19 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static cef_ssl_content_status_t Bridge_GetContentStatus(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.GetContentStatus();
+            var _result = _m.GetContentStatus();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -407,11 +521,20 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
     #endif
     private static _cef_x509_certificate_t* Bridge_GetX509Certificate(_cef_sslstatus_t* self)
     {
-        var _m = GetManaged<CefSslstatus>(self);
+        try
+        {
+            var _m = GetManaged<CefSslstatus>(self);
 
-        var _result = _m.GetX509Certificate();
+            var _result = _m.GetX509Certificate();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

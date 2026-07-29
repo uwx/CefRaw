@@ -662,129 +662,160 @@ internal static class Emitter
 
         using (sb.Indent())
         {
-            sb.AppendLine($"var _m = GetManaged<{managedName}>(self);");
-            sb.AppendLine();
-
-            var managedArgs = new List<string>();
-            int managedIdx = 0;
-
-            for (int i = 1; i < nativeArgTypes.Length; i++)
+            sb.AppendLine("try");
+            sb.AppendLine("{");
+            using (sb.Indent())
             {
-                var kind = paramKinds.Count > i ? paramKinds[i] : TypeMapper.ParamKind.Input;
-                var nativeType = nativeArgTypes[i];
+                sb.AppendLine($"var _m = GetManaged<{managedName}>(self);");
+                sb.AppendLine();
 
-                // Merge size_t + InputArray
-                if (IsSizeType(nativeType) && i + 1 < nativeArgTypes.Length
-                    && paramKinds.Count > i + 1 && paramKinds[i + 1] == TypeMapper.ParamKind.InputArray)
-                {
-                    i++; // skip count, consume the array param below
-                    nativeType = nativeArgTypes[i];
-                    kind = TypeMapper.ParamKind.InputArray;
-                }
+                var managedArgs = new List<string>();
+                int managedIdx = 0;
 
-                var argIdx = i - 1; // native arg index
+                for (int i = 1; i < nativeArgTypes.Length; i++)
+                {
+                    var kind = paramKinds.Count > i ? paramKinds[i] : TypeMapper.ParamKind.Input;
+                    var nativeType = nativeArgTypes[i];
 
-                if (kind == TypeMapper.ParamKind.InputString)
-                {
-                    sb.AppendLine($"var _a{managedIdx} = CefStringRef.ToString(arg{argIdx});");
-                    managedArgs.Add($"_a{managedIdx}");
-                }
-                else if (kind == TypeMapper.ParamKind.InputArray)
-                {
-                    // The count was at position (original i) before the merge; it's at argIdx-1
-                    var countArgIdx = argIdx - 1;
-                    // Map inner type to get the managed element name
-                    var innerType = nativeType.EndsWith("*") ? nativeType[..^1] : nativeType;
-                    var elementManaged = TypeMapper.MapNativeToManaged(innerType, out _, out _, out var elCefName);
-                    sb.AppendLine($"var _count{managedIdx} = (int)arg{countArgIdx};");
-                    sb.AppendLine($"var _span{managedIdx} = new {elementManaged}[_count{managedIdx}];");
-                    sb.AppendLine($"for (int _j{managedIdx} = 0; _j{managedIdx} < _count{managedIdx}; _j{managedIdx}++)");
-                    sb.AppendLine($"    _span{managedIdx}[_j{managedIdx}] = arg{argIdx}[_j{managedIdx}] != null ? new {elCefName}Ref(arg{argIdx}[_j{managedIdx}]) : null;");
-                    managedArgs.Add($"_span{managedIdx}");
-                }
-                else if (kind == TypeMapper.ParamKind.Output)
-                {
-                    var managed = TypeMapper.MapNativeToManaged(nativeType, out _, out _, out var cefName);
-                    sb.AppendLine($"{managed} _out{managedIdx} = null;");
-                    sb.AppendLine($"if (arg{argIdx} != null && *arg{argIdx} != null) _out{managedIdx} = new {cefName}Ref(*arg{argIdx});");
-                    managedArgs.Add($"out _out{managedIdx}");
-                }
-                else if (kind == TypeMapper.ParamKind.OutputString)
-                {
-                    sb.AppendLine($"string? _out{managedIdx} = null;");
-                    sb.AppendLine($"if (arg{argIdx} != null) _out{managedIdx} = CefStringRef.ToStringAndFree(arg{argIdx});");
-                    managedArgs.Add($"out _out{managedIdx}");
-                }
-                else if (kind == TypeMapper.ParamKind.Input)
-                {
-                    var managed = TypeMapper.MapNativeToManaged(nativeType, out _, out var isCef, out var cefName);
-                    if (isCef)
+                    // Merge size_t + InputArray
+                    if (IsSizeType(nativeType) && i + 1 < nativeArgTypes.Length
+                                               && paramKinds.Count > i + 1 &&
+                                               paramKinds[i + 1] == TypeMapper.ParamKind.InputArray)
                     {
-                        sb.AppendLine($"var _a{managedIdx} = arg{argIdx} != null ? new {cefName}Ref(arg{argIdx}) : null;");
+                        i++; // skip count, consume the array param below
+                        nativeType = nativeArgTypes[i];
+                        kind = TypeMapper.ParamKind.InputArray;
+                    }
+
+                    var argIdx = i - 1; // native arg index
+
+                    if (kind == TypeMapper.ParamKind.InputString)
+                    {
+                        sb.AppendLine($"var _a{managedIdx} = CefStringRef.ToString(arg{argIdx});");
+                        managedArgs.Add($"_a{managedIdx}");
+                    }
+                    else if (kind == TypeMapper.ParamKind.InputArray)
+                    {
+                        // The count was at position (original i) before the merge; it's at argIdx-1
+                        var countArgIdx = argIdx - 1;
+                        // Map inner type to get the managed element name
+                        var innerType = nativeType.EndsWith("*") ? nativeType[..^1] : nativeType;
+                        var elementManaged = TypeMapper.MapNativeToManaged(innerType, out _, out _, out var elCefName);
+                        sb.AppendLine($"var _count{managedIdx} = (int)arg{countArgIdx};");
+                        sb.AppendLine($"var _span{managedIdx} = new {elementManaged}[_count{managedIdx}];");
+                        sb.AppendLine(
+                            $"for (int _j{managedIdx} = 0; _j{managedIdx} < _count{managedIdx}; _j{managedIdx}++)");
+                        sb.AppendLine(
+                            $"    _span{managedIdx}[_j{managedIdx}] = arg{argIdx}[_j{managedIdx}] != null ? new {elCefName}Ref(arg{argIdx}[_j{managedIdx}]) : null;");
+                        managedArgs.Add($"_span{managedIdx}");
+                    }
+                    else if (kind == TypeMapper.ParamKind.Output)
+                    {
+                        var managed = TypeMapper.MapNativeToManaged(nativeType, out _, out _, out var cefName);
+                        sb.AppendLine($"{managed} _out{managedIdx} = null;");
+                        sb.AppendLine(
+                            $"if (arg{argIdx} != null && *arg{argIdx} != null) _out{managedIdx} = new {cefName}Ref(*arg{argIdx});");
+                        managedArgs.Add($"out _out{managedIdx}");
+                    }
+                    else if (kind == TypeMapper.ParamKind.OutputString)
+                    {
+                        sb.AppendLine($"string? _out{managedIdx} = null;");
+                        sb.AppendLine(
+                            $"if (arg{argIdx} != null) _out{managedIdx} = CefStringRef.ToStringAndFree(arg{argIdx});");
+                        managedArgs.Add($"out _out{managedIdx}");
+                    }
+                    else if (kind == TypeMapper.ParamKind.Input)
+                    {
+                        var managed = TypeMapper.MapNativeToManaged(nativeType, out _, out var isCef, out var cefName);
+                        if (isCef)
+                        {
+                            sb.AppendLine(
+                                $"var _a{managedIdx} = arg{argIdx} != null ? new {cefName}Ref(arg{argIdx}) : null;");
+                        }
+                        else
+                        {
+                            sb.AppendLine($"var _a{managedIdx} = arg{argIdx};");
+                        }
+
+                        managedArgs.Add($"_a{managedIdx}");
                     }
                     else
                     {
                         sb.AppendLine($"var _a{managedIdx} = arg{argIdx};");
+                        managedArgs.Add($"_a{managedIdx}");
                     }
-                    managedArgs.Add($"_a{managedIdx}");
+
+                    managedIdx++;
+                }
+
+                // Call managed method
+                if (returnManaged == "void")
+                {
+                    sb.AppendLine($"_m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
                 }
                 else
                 {
-                    sb.AppendLine($"var _a{managedIdx} = arg{argIdx};");
-                    managedArgs.Add($"_a{managedIdx}");
+                    sb.AppendLine(
+                        $"var _result = _m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
+                    sb.AppendLine();
+
+                    if (returnIsString)
+                        sb.AppendLine("return CefStringRef.AllocUserfree(_result);");
+                    else if (returnIsCefObject)
+                    {
+                        sb.AppendLine($"if (_result is ICefBaseRefCounted _rc) _rc.AddRef();");
+                        sb.AppendLine($"return _result != null ? _result.NativePtr : null;");
+                    }
+                    else
+                        sb.AppendLine("return _result;");
                 }
 
-                managedIdx++;
-            }
-
-            // Call managed method
-            if (returnManaged == "void")
-            {
-                sb.AppendLine($"_m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
-            }
-            else
-            {
-                sb.AppendLine($"var _result = _m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
-                sb.AppendLine();
-
-                if (returnIsString)
-                    sb.AppendLine("return CefStringRef.AllocUserfree(_result);");
-                else if (returnIsCefObject)
-                    sb.AppendLine($"return _result != null ? _result.NativePtr : null;");
-                else
-                    sb.AppendLine("return _result;");
-            }
-
-            // Write back output params
-            managedIdx = 0;
-            for (int i = 1; i < nativeArgTypes.Length; i++)
-            {
-                var kind = paramKinds.Count > i ? paramKinds[i] : TypeMapper.ParamKind.Input;
-                var nativeType = nativeArgTypes[i];
-
-                if (IsSizeType(nativeType) && i + 1 < nativeArgTypes.Length
-                    && paramKinds.Count > i + 1 && paramKinds[i + 1] == TypeMapper.ParamKind.InputArray)
+                // Write back output params
+                managedIdx = 0;
+                for (int i = 1; i < nativeArgTypes.Length; i++)
                 {
-                    i++; nativeType = nativeArgTypes[i]; kind = TypeMapper.ParamKind.InputArray;
-                }
+                    var kind = paramKinds.Count > i ? paramKinds[i] : TypeMapper.ParamKind.Input;
+                    var nativeType = nativeArgTypes[i];
 
-                var argIdx = i - 1;
+                    if (IsSizeType(nativeType) && i + 1 < nativeArgTypes.Length
+                                               && paramKinds.Count > i + 1 &&
+                                               paramKinds[i + 1] == TypeMapper.ParamKind.InputArray)
+                    {
+                        i++;
+                        nativeType = nativeArgTypes[i];
+                        kind = TypeMapper.ParamKind.InputArray;
+                    }
 
-                if (kind == TypeMapper.ParamKind.Output)
-                {
-                    sb.AppendLine($"if (arg{argIdx} != null) *arg{argIdx} = _out{managedIdx} != null ? _out{managedIdx}.NativePtr : null;");
-                }
-                else if (kind == TypeMapper.ParamKind.OutputString)
-                {
-                    sb.AppendLine($"if (arg{argIdx} != null)");
-                    sb.AppendLine("{");
-                    sb.AppendLine($"    fixed (char* _p{managedIdx} = _out{managedIdx})");
-                    sb.AppendLine($"        CefUnsafe.StringUtf16Set((ushort*)_p{managedIdx}, (nuint)(_out{managedIdx}?.Length ?? 0), arg{argIdx}, copy: 1);");
-                    sb.AppendLine("}");
-                }
+                    var argIdx = i - 1;
 
-                managedIdx++;
+                    if (kind == TypeMapper.ParamKind.Output)
+                    {
+                        sb.AppendLine(
+                            $"if (arg{argIdx} != null) *arg{argIdx} = _out{managedIdx} != null ? _out{managedIdx}.NativePtr : null;");
+                    }
+                    else if (kind == TypeMapper.ParamKind.OutputString)
+                    {
+                        sb.AppendLine($"if (arg{argIdx} != null)");
+                        sb.AppendLine("{");
+                        sb.AppendLine($"    fixed (char* _p{managedIdx} = _out{managedIdx})");
+                        sb.AppendLine(
+                            $"        CefUnsafe.StringUtf16Set((ushort*)_p{managedIdx}, (nuint)(_out{managedIdx}?.Length ?? 0), arg{argIdx}, copy: 1);");
+                        sb.AppendLine("}");
+                    }
+
+                    managedIdx++;
+                }
             }
+
+            sb.AppendLine("}");
+            sb.AppendLine("catch (Exception ex)");
+            sb.AppendLine("{");
+            using (sb.Indent())
+            {
+                sb.AppendLine("Console.WriteLine(\"Managed exception in callback: \" + ex.Message);");
+                sb.AppendLine("throw;");
+            }
+            sb.AppendLine("}");
         }
 
         sb.AppendLine("}");

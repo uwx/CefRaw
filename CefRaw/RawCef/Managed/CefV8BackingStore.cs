@@ -61,11 +61,19 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
     #endif
     private static void* Bridge_Data(_cef_v8_backing_store_t* self)
     {
-        var _m = GetManaged<CefV8BackingStore>(self);
+        try
+        {
+            var _m = GetManaged<CefV8BackingStore>(self);
 
-        var _result = _m.Data();
+            var _result = _m.Data();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -75,11 +83,19 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
     #endif
     private static nuint Bridge_ByteLength(_cef_v8_backing_store_t* self)
     {
-        var _m = GetManaged<CefV8BackingStore>(self);
+        try
+        {
+            var _m = GetManaged<CefV8BackingStore>(self);
 
-        var _result = _m.ByteLength();
+            var _result = _m.ByteLength();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -89,11 +105,19 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsValid(_cef_v8_backing_store_t* self)
     {
-        var _m = GetManaged<CefV8BackingStore>(self);
+        try
+        {
+            var _m = GetManaged<CefV8BackingStore>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -160,11 +184,19 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
     #endif
     private static void* Bridge_Data(_cef_v8_backing_store_t* self)
     {
-        var _m = GetManaged<CefV8BackingStore>(self);
+        try
+        {
+            var _m = GetManaged<CefV8BackingStore>(self);
 
-        var _result = _m.Data();
+            var _result = _m.Data();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -174,11 +206,19 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
     #endif
     private static nuint Bridge_ByteLength(_cef_v8_backing_store_t* self)
     {
-        var _m = GetManaged<CefV8BackingStore>(self);
+        try
+        {
+            var _m = GetManaged<CefV8BackingStore>(self);
 
-        var _result = _m.ByteLength();
+            var _result = _m.ByteLength();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -188,11 +228,19 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsValid(_cef_v8_backing_store_t* self)
     {
-        var _m = GetManaged<CefV8BackingStore>(self);
+        try
+        {
+            var _m = GetManaged<CefV8BackingStore>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -259,11 +307,19 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
     #endif
     private static void* Bridge_Data(_cef_v8_backing_store_t* self)
     {
-        var _m = GetManaged<CefV8BackingStore>(self);
+        try
+        {
+            var _m = GetManaged<CefV8BackingStore>(self);
 
-        var _result = _m.Data();
+            var _result = _m.Data();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -273,11 +329,19 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
     #endif
     private static nuint Bridge_ByteLength(_cef_v8_backing_store_t* self)
     {
-        var _m = GetManaged<CefV8BackingStore>(self);
+        try
+        {
+            var _m = GetManaged<CefV8BackingStore>(self);
 
-        var _result = _m.ByteLength();
+            var _result = _m.ByteLength();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -287,11 +351,19 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_IsValid(_cef_v8_backing_store_t* self)
     {
-        var _m = GetManaged<CefV8BackingStore>(self);
+        try
+        {
+            var _m = GetManaged<CefV8BackingStore>(self);
 
-        var _result = _m.IsValid();
+            var _result = _m.IsValid();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

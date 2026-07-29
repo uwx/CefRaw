@@ -49,11 +49,19 @@ public unsafe abstract partial class CefPdfPrintCallback : CefBaseRefCounted, IC
     #endif
     private static void Bridge_OnPdfPrintFinished(_cef_pdf_print_callback_t* self, _cef_string_utf16_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefPdfPrintCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefPdfPrintCallback>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        _m.OnPdfPrintFinished(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            _m.OnPdfPrintFinished(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -108,11 +116,19 @@ public unsafe abstract partial class CefPdfPrintCallback : CefBaseRefCounted, IC
     #endif
     private static void Bridge_OnPdfPrintFinished(_cef_pdf_print_callback_t* self, _cef_string_utf16_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefPdfPrintCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefPdfPrintCallback>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        _m.OnPdfPrintFinished(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            _m.OnPdfPrintFinished(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -167,11 +183,19 @@ public unsafe abstract partial class CefPdfPrintCallback : CefBaseRefCounted, IC
     #endif
     private static void Bridge_OnPdfPrintFinished(_cef_pdf_print_callback_t* self, _cef_string_utf16_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefPdfPrintCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefPdfPrintCallback>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1;
-        _m.OnPdfPrintFinished(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1;
+            _m.OnPdfPrintFinished(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

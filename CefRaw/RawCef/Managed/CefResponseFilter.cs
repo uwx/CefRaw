@@ -55,11 +55,19 @@ public unsafe abstract partial class CefResponseFilter : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_InitFilter(_cef_response_filter_t* self)
     {
-        var _m = GetManaged<CefResponseFilter>(self);
+        try
+        {
+            var _m = GetManaged<CefResponseFilter>(self);
 
-        var _result = _m.InitFilter();
+            var _result = _m.InitFilter();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -69,17 +77,25 @@ public unsafe abstract partial class CefResponseFilter : CefBaseRefCounted, ICef
     #endif
     private static cef_response_filter_status_t Bridge_Filter(_cef_response_filter_t* self, void* arg0, nuint arg1, nuint* arg2, void* arg3, nuint arg4, nuint* arg5)
     {
-        var _m = GetManaged<CefResponseFilter>(self);
+        try
+        {
+            var _m = GetManaged<CefResponseFilter>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _a5 = arg5;
-        var _result = _m.Filter(_a0, _a1, _a2, _a3, _a4, _a5);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _a3 = arg3;
+            var _a4 = arg4;
+            var _a5 = arg5;
+            var _result = _m.Filter(_a0, _a1, _a2, _a3, _a4, _a5);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -140,11 +156,19 @@ public unsafe abstract partial class CefResponseFilter : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_InitFilter(_cef_response_filter_t* self)
     {
-        var _m = GetManaged<CefResponseFilter>(self);
+        try
+        {
+            var _m = GetManaged<CefResponseFilter>(self);
 
-        var _result = _m.InitFilter();
+            var _result = _m.InitFilter();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -154,17 +178,25 @@ public unsafe abstract partial class CefResponseFilter : CefBaseRefCounted, ICef
     #endif
     private static cef_response_filter_status_t Bridge_Filter(_cef_response_filter_t* self, void* arg0, nuint arg1, nuint* arg2, void* arg3, nuint arg4, nuint* arg5)
     {
-        var _m = GetManaged<CefResponseFilter>(self);
+        try
+        {
+            var _m = GetManaged<CefResponseFilter>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _a5 = arg5;
-        var _result = _m.Filter(_a0, _a1, _a2, _a3, _a4, _a5);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _a3 = arg3;
+            var _a4 = arg4;
+            var _a5 = arg5;
+            var _result = _m.Filter(_a0, _a1, _a2, _a3, _a4, _a5);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -225,11 +257,19 @@ public unsafe abstract partial class CefResponseFilter : CefBaseRefCounted, ICef
     #endif
     private static int Bridge_InitFilter(_cef_response_filter_t* self)
     {
-        var _m = GetManaged<CefResponseFilter>(self);
+        try
+        {
+            var _m = GetManaged<CefResponseFilter>(self);
 
-        var _result = _m.InitFilter();
+            var _result = _m.InitFilter();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -239,17 +279,25 @@ public unsafe abstract partial class CefResponseFilter : CefBaseRefCounted, ICef
     #endif
     private static cef_response_filter_status_t Bridge_Filter(_cef_response_filter_t* self, void* arg0, nuint arg1, nuint* arg2, void* arg3, nuint arg4, nuint* arg5)
     {
-        var _m = GetManaged<CefResponseFilter>(self);
+        try
+        {
+            var _m = GetManaged<CefResponseFilter>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _a5 = arg5;
-        var _result = _m.Filter(_a0, _a1, _a2, _a3, _a4, _a5);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _a3 = arg3;
+            var _a4 = arg4;
+            var _a5 = arg5;
+            var _result = _m.Filter(_a0, _a1, _a2, _a3, _a4, _a5);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

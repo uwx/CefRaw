@@ -163,11 +163,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_GetXcoord(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetXcoord();
+            var _result = _m.GetXcoord();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -177,11 +185,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_GetYcoord(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetYcoord();
+            var _result = _m.GetYcoord();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -191,11 +207,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_context_menu_type_flags_t Bridge_GetTypeFlags(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetTypeFlags();
+            var _result = _m.GetTypeFlags();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -205,11 +229,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetLinkUrl();
+            var _result = _m.GetLinkUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -219,11 +251,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetUnfilteredLinkUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetUnfilteredLinkUrl();
+            var _result = _m.GetUnfilteredLinkUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -233,11 +273,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetSourceUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetSourceUrl();
+            var _result = _m.GetSourceUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -247,11 +295,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_HasImageContents(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.HasImageContents();
+            var _result = _m.HasImageContents();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -261,11 +317,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetTitleText(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetTitleText();
+            var _result = _m.GetTitleText();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -275,11 +339,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetPageUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetPageUrl();
+            var _result = _m.GetPageUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -289,11 +361,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFrameUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetFrameUrl();
+            var _result = _m.GetFrameUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -303,11 +383,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFrameCharset(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetFrameCharset();
+            var _result = _m.GetFrameCharset();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -317,11 +405,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_context_menu_media_type_t Bridge_GetMediaType(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetMediaType();
+            var _result = _m.GetMediaType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -331,11 +427,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_context_menu_media_state_flags_t Bridge_GetMediaStateFlags(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetMediaStateFlags();
+            var _result = _m.GetMediaStateFlags();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -345,11 +449,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetSelectionText(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetSelectionText();
+            var _result = _m.GetSelectionText();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -359,11 +471,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetMisspelledWord(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetMisspelledWord();
+            var _result = _m.GetMisspelledWord();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -373,12 +493,20 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_GetDictionarySuggestions(_cef_context_menu_params_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        var _result = _m.GetDictionarySuggestions(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            var _result = _m.GetDictionarySuggestions(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -388,11 +516,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_IsEditable(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.IsEditable();
+            var _result = _m.IsEditable();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -402,11 +538,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_IsSpellCheckEnabled(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.IsSpellCheckEnabled();
+            var _result = _m.IsSpellCheckEnabled();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -416,11 +560,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_context_menu_edit_state_flags_t Bridge_GetEditStateFlags(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetEditStateFlags();
+            var _result = _m.GetEditStateFlags();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -430,11 +582,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_IsCustomMenu(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.IsCustomMenu();
+            var _result = _m.IsCustomMenu();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -603,11 +763,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_GetXcoord(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetXcoord();
+            var _result = _m.GetXcoord();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -617,11 +785,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_GetYcoord(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetYcoord();
+            var _result = _m.GetYcoord();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -631,11 +807,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_context_menu_type_flags_t Bridge_GetTypeFlags(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetTypeFlags();
+            var _result = _m.GetTypeFlags();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -645,11 +829,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetLinkUrl();
+            var _result = _m.GetLinkUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -659,11 +851,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetUnfilteredLinkUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetUnfilteredLinkUrl();
+            var _result = _m.GetUnfilteredLinkUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -673,11 +873,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetSourceUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetSourceUrl();
+            var _result = _m.GetSourceUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -687,11 +895,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_HasImageContents(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.HasImageContents();
+            var _result = _m.HasImageContents();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -701,11 +917,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetTitleText(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetTitleText();
+            var _result = _m.GetTitleText();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -715,11 +939,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetPageUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetPageUrl();
+            var _result = _m.GetPageUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -729,11 +961,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFrameUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetFrameUrl();
+            var _result = _m.GetFrameUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -743,11 +983,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFrameCharset(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetFrameCharset();
+            var _result = _m.GetFrameCharset();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -757,11 +1005,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_context_menu_media_type_t Bridge_GetMediaType(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetMediaType();
+            var _result = _m.GetMediaType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -771,11 +1027,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_context_menu_media_state_flags_t Bridge_GetMediaStateFlags(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetMediaStateFlags();
+            var _result = _m.GetMediaStateFlags();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -785,11 +1049,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetSelectionText(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetSelectionText();
+            var _result = _m.GetSelectionText();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -799,11 +1071,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetMisspelledWord(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetMisspelledWord();
+            var _result = _m.GetMisspelledWord();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -813,12 +1093,20 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_GetDictionarySuggestions(_cef_context_menu_params_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        var _result = _m.GetDictionarySuggestions(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            var _result = _m.GetDictionarySuggestions(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -828,11 +1116,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_IsEditable(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.IsEditable();
+            var _result = _m.IsEditable();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -842,11 +1138,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_IsSpellCheckEnabled(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.IsSpellCheckEnabled();
+            var _result = _m.IsSpellCheckEnabled();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -856,11 +1160,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_context_menu_edit_state_flags_t Bridge_GetEditStateFlags(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetEditStateFlags();
+            var _result = _m.GetEditStateFlags();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -870,11 +1182,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_IsCustomMenu(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.IsCustomMenu();
+            var _result = _m.IsCustomMenu();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -1043,11 +1363,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_GetXcoord(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetXcoord();
+            var _result = _m.GetXcoord();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1057,11 +1385,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_GetYcoord(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetYcoord();
+            var _result = _m.GetYcoord();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1071,11 +1407,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_context_menu_type_flags_t Bridge_GetTypeFlags(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetTypeFlags();
+            var _result = _m.GetTypeFlags();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1085,11 +1429,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetLinkUrl();
+            var _result = _m.GetLinkUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1099,11 +1451,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetUnfilteredLinkUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetUnfilteredLinkUrl();
+            var _result = _m.GetUnfilteredLinkUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1113,11 +1473,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetSourceUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetSourceUrl();
+            var _result = _m.GetSourceUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1127,11 +1495,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_HasImageContents(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.HasImageContents();
+            var _result = _m.HasImageContents();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1141,11 +1517,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetTitleText(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetTitleText();
+            var _result = _m.GetTitleText();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1155,11 +1539,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetPageUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetPageUrl();
+            var _result = _m.GetPageUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1169,11 +1561,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFrameUrl(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetFrameUrl();
+            var _result = _m.GetFrameUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1183,11 +1583,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetFrameCharset(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetFrameCharset();
+            var _result = _m.GetFrameCharset();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1197,11 +1605,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_context_menu_media_type_t Bridge_GetMediaType(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetMediaType();
+            var _result = _m.GetMediaType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1211,11 +1627,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_context_menu_media_state_flags_t Bridge_GetMediaStateFlags(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetMediaStateFlags();
+            var _result = _m.GetMediaStateFlags();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1225,11 +1649,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetSelectionText(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetSelectionText();
+            var _result = _m.GetSelectionText();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1239,11 +1671,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetMisspelledWord(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetMisspelledWord();
+            var _result = _m.GetMisspelledWord();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1253,12 +1693,20 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_GetDictionarySuggestions(_cef_context_menu_params_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        var _result = _m.GetDictionarySuggestions(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            var _result = _m.GetDictionarySuggestions(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1268,11 +1716,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_IsEditable(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.IsEditable();
+            var _result = _m.IsEditable();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1282,11 +1738,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_IsSpellCheckEnabled(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.IsSpellCheckEnabled();
+            var _result = _m.IsSpellCheckEnabled();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1296,11 +1760,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static cef_context_menu_edit_state_flags_t Bridge_GetEditStateFlags(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.GetEditStateFlags();
+            var _result = _m.GetEditStateFlags();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -1310,11 +1782,19 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     #endif
     private static int Bridge_IsCustomMenu(_cef_context_menu_params_t* self)
     {
-        var _m = GetManaged<CefContextMenuParams>(self);
+        try
+        {
+            var _m = GetManaged<CefContextMenuParams>(self);
 
-        var _result = _m.IsCustomMenu();
+            var _result = _m.IsCustomMenu();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

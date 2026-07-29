@@ -49,15 +49,24 @@ public unsafe abstract partial class CefSchemeHandlerFactory : CefBaseRefCounted
     #endif
     private static _cef_resource_handler_t* Bridge_Create(_cef_scheme_handler_factory_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_string_utf16_t* arg2, _cef_request_t* arg3)
     {
-        var _m = GetManaged<CefSchemeHandlerFactory>(self);
+        try
+        {
+            var _m = GetManaged<CefSchemeHandlerFactory>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = CefStringRef.ToString(arg2);
-        var _a3 = arg3 != null ? new CefRequestRef(arg3) : null;
-        var _result = _m.Create(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = CefStringRef.ToString(arg2);
+            var _a3 = arg3 != null ? new CefRequestRef(arg3) : null;
+            var _result = _m.Create(_a0, _a1, _a2, _a3);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -112,15 +121,24 @@ public unsafe abstract partial class CefSchemeHandlerFactory : CefBaseRefCounted
     #endif
     private static _cef_resource_handler_t* Bridge_Create(_cef_scheme_handler_factory_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_string_utf16_t* arg2, _cef_request_t* arg3)
     {
-        var _m = GetManaged<CefSchemeHandlerFactory>(self);
+        try
+        {
+            var _m = GetManaged<CefSchemeHandlerFactory>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = CefStringRef.ToString(arg2);
-        var _a3 = arg3 != null ? new CefRequestRef(arg3) : null;
-        var _result = _m.Create(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = CefStringRef.ToString(arg2);
+            var _a3 = arg3 != null ? new CefRequestRef(arg3) : null;
+            var _result = _m.Create(_a0, _a1, _a2, _a3);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -175,15 +193,24 @@ public unsafe abstract partial class CefSchemeHandlerFactory : CefBaseRefCounted
     #endif
     private static _cef_resource_handler_t* Bridge_Create(_cef_scheme_handler_factory_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_string_utf16_t* arg2, _cef_request_t* arg3)
     {
-        var _m = GetManaged<CefSchemeHandlerFactory>(self);
+        try
+        {
+            var _m = GetManaged<CefSchemeHandlerFactory>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = CefStringRef.ToString(arg2);
-        var _a3 = arg3 != null ? new CefRequestRef(arg3) : null;
-        var _result = _m.Create(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
+            var _a2 = CefStringRef.ToString(arg2);
+            var _a3 = arg3 != null ? new CefRequestRef(arg3) : null;
+            var _result = _m.Create(_a0, _a1, _a2, _a3);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

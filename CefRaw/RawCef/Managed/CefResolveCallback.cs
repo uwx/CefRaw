@@ -49,11 +49,19 @@ public unsafe abstract partial class CefResolveCallback : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnResolveCompleted(_cef_resolve_callback_t* self, cef_errorcode_t arg0, _cef_string_list_t* arg1)
     {
-        var _m = GetManaged<CefResolveCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefResolveCallback>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefStringListRef(arg1) : null;
-        _m.OnResolveCompleted(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefStringListRef(arg1) : null;
+            _m.OnResolveCompleted(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -108,11 +116,19 @@ public unsafe abstract partial class CefResolveCallback : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnResolveCompleted(_cef_resolve_callback_t* self, cef_errorcode_t arg0, _cef_string_list_t* arg1)
     {
-        var _m = GetManaged<CefResolveCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefResolveCallback>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefStringListRef(arg1) : null;
-        _m.OnResolveCompleted(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefStringListRef(arg1) : null;
+            _m.OnResolveCompleted(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -167,11 +183,19 @@ public unsafe abstract partial class CefResolveCallback : CefBaseRefCounted, ICe
     #endif
     private static void Bridge_OnResolveCompleted(_cef_resolve_callback_t* self, cef_errorcode_t arg0, _cef_string_list_t* arg1)
     {
-        var _m = GetManaged<CefResolveCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefResolveCallback>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefStringListRef(arg1) : null;
-        _m.OnResolveCompleted(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefStringListRef(arg1) : null;
+            _m.OnResolveCompleted(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

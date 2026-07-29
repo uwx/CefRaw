@@ -61,11 +61,19 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
     #endif
     private static void Bridge_OnTakeFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefFocusHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFocusHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnTakeFocus(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            _m.OnTakeFocus(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -75,13 +83,21 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
     #endif
     private static int Bridge_OnSetFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0, cef_focus_source_t arg1)
     {
-        var _m = GetManaged<CefFocusHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFocusHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.OnSetFocus(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _result = _m.OnSetFocus(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -91,10 +107,18 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
     #endif
     private static void Bridge_OnGotFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefFocusHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFocusHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnGotFocus(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnGotFocus(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -161,11 +185,19 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
     #endif
     private static void Bridge_OnTakeFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefFocusHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFocusHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnTakeFocus(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            _m.OnTakeFocus(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -175,13 +207,21 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
     #endif
     private static int Bridge_OnSetFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0, cef_focus_source_t arg1)
     {
-        var _m = GetManaged<CefFocusHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFocusHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.OnSetFocus(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _result = _m.OnSetFocus(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -191,10 +231,18 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
     #endif
     private static void Bridge_OnGotFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefFocusHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFocusHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnGotFocus(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnGotFocus(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -261,11 +309,19 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
     #endif
     private static void Bridge_OnTakeFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
-        var _m = GetManaged<CefFocusHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFocusHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnTakeFocus(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            _m.OnTakeFocus(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -275,13 +331,21 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
     #endif
     private static int Bridge_OnSetFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0, cef_focus_source_t arg1)
     {
-        var _m = GetManaged<CefFocusHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFocusHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.OnSetFocus(_a0, _a1);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            var _a1 = arg1;
+            var _result = _m.OnSetFocus(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -291,10 +355,18 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
     #endif
     private static void Bridge_OnGotFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0)
     {
-        var _m = GetManaged<CefFocusHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefFocusHandler>(self);
 
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnGotFocus(_a0);
+            var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
+            _m.OnGotFocus(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

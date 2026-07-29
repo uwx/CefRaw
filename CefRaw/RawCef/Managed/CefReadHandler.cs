@@ -73,14 +73,22 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static nuint Bridge_Read(_cef_read_handler_t* self, void* arg0, nuint arg1, nuint arg2)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.Read(_a0, _a1, _a2);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _result = _m.Read(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -90,13 +98,21 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static int Bridge_Seek(_cef_read_handler_t* self, long arg0, int arg1)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.Seek(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _result = _m.Seek(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -106,11 +122,19 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static long Bridge_Tell(_cef_read_handler_t* self)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _result = _m.Tell();
+            var _result = _m.Tell();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -120,11 +144,19 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static int Bridge_Eof(_cef_read_handler_t* self)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _result = _m.Eof();
+            var _result = _m.Eof();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -134,11 +166,19 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static int Bridge_MayBlock(_cef_read_handler_t* self)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _result = _m.MayBlock();
+            var _result = _m.MayBlock();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -217,14 +257,22 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static nuint Bridge_Read(_cef_read_handler_t* self, void* arg0, nuint arg1, nuint arg2)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.Read(_a0, _a1, _a2);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _result = _m.Read(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -234,13 +282,21 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static int Bridge_Seek(_cef_read_handler_t* self, long arg0, int arg1)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.Seek(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _result = _m.Seek(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -250,11 +306,19 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static long Bridge_Tell(_cef_read_handler_t* self)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _result = _m.Tell();
+            var _result = _m.Tell();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -264,11 +328,19 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static int Bridge_Eof(_cef_read_handler_t* self)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _result = _m.Eof();
+            var _result = _m.Eof();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -278,11 +350,19 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static int Bridge_MayBlock(_cef_read_handler_t* self)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _result = _m.MayBlock();
+            var _result = _m.MayBlock();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -361,14 +441,22 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static nuint Bridge_Read(_cef_read_handler_t* self, void* arg0, nuint arg1, nuint arg2)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.Read(_a0, _a1, _a2);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _result = _m.Read(_a0, _a1, _a2);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -378,13 +466,21 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static int Bridge_Seek(_cef_read_handler_t* self, long arg0, int arg1)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.Seek(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1;
+            var _result = _m.Seek(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -394,11 +490,19 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static long Bridge_Tell(_cef_read_handler_t* self)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _result = _m.Tell();
+            var _result = _m.Tell();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -408,11 +512,19 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static int Bridge_Eof(_cef_read_handler_t* self)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _result = _m.Eof();
+            var _result = _m.Eof();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -422,11 +534,19 @@ public unsafe abstract partial class CefReadHandler : CefBaseRefCounted, ICefRea
     #endif
     private static int Bridge_MayBlock(_cef_read_handler_t* self)
     {
-        var _m = GetManaged<CefReadHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefReadHandler>(self);
 
-        var _result = _m.MayBlock();
+            var _result = _m.MayBlock();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

@@ -61,11 +61,19 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_source_t* self)
     {
-        var _m = GetManaged<CefMediaSource>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSource>(self);
 
-        var _result = _m.GetId();
+            var _result = _m.GetId();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -75,11 +83,19 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
     #endif
     private static int Bridge_IsCastSource(_cef_media_source_t* self)
     {
-        var _m = GetManaged<CefMediaSource>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSource>(self);
 
-        var _result = _m.IsCastSource();
+            var _result = _m.IsCastSource();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -89,11 +105,19 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
     #endif
     private static int Bridge_IsDialSource(_cef_media_source_t* self)
     {
-        var _m = GetManaged<CefMediaSource>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSource>(self);
 
-        var _result = _m.IsDialSource();
+            var _result = _m.IsDialSource();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -160,11 +184,19 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_source_t* self)
     {
-        var _m = GetManaged<CefMediaSource>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSource>(self);
 
-        var _result = _m.GetId();
+            var _result = _m.GetId();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -174,11 +206,19 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
     #endif
     private static int Bridge_IsCastSource(_cef_media_source_t* self)
     {
-        var _m = GetManaged<CefMediaSource>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSource>(self);
 
-        var _result = _m.IsCastSource();
+            var _result = _m.IsCastSource();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -188,11 +228,19 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
     #endif
     private static int Bridge_IsDialSource(_cef_media_source_t* self)
     {
-        var _m = GetManaged<CefMediaSource>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSource>(self);
 
-        var _result = _m.IsDialSource();
+            var _result = _m.IsDialSource();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -259,11 +307,19 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_source_t* self)
     {
-        var _m = GetManaged<CefMediaSource>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSource>(self);
 
-        var _result = _m.GetId();
+            var _result = _m.GetId();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -273,11 +329,19 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
     #endif
     private static int Bridge_IsCastSource(_cef_media_source_t* self)
     {
-        var _m = GetManaged<CefMediaSource>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSource>(self);
 
-        var _result = _m.IsCastSource();
+            var _result = _m.IsCastSource();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -287,11 +351,19 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
     #endif
     private static int Bridge_IsDialSource(_cef_media_source_t* self)
     {
-        var _m = GetManaged<CefMediaSource>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaSource>(self);
 
-        var _result = _m.IsDialSource();
+            var _result = _m.IsDialSource();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

@@ -85,11 +85,19 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static int Bridge_IsReadOnly(_cef_post_data_t* self)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _result = _m.IsReadOnly();
+            var _result = _m.IsReadOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -99,11 +107,19 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static int Bridge_HasExcludedElements(_cef_post_data_t* self)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _result = _m.HasExcludedElements();
+            var _result = _m.HasExcludedElements();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -113,11 +129,19 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static nuint Bridge_GetElementCount(_cef_post_data_t* self)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _result = _m.GetElementCount();
+            var _result = _m.GetElementCount();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -127,13 +151,21 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static void Bridge_GetElements(_cef_post_data_t* self, nuint* arg0, _cef_post_data_element_t** arg1)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _a0 = arg0;
-        ICefPostDataElement? _out1 = null;
-        if (arg1 != null && *arg1 != null) _out1 = new CefPostDataElementRef(*arg1);
-        _m.GetElements(_a0, out _out1);
-        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+            var _a0 = arg0;
+            ICefPostDataElement? _out1 = null;
+            if (arg1 != null && *arg1 != null) _out1 = new CefPostDataElementRef(*arg1);
+            _m.GetElements(_a0, out _out1);
+            if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -143,12 +175,20 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static int Bridge_RemoveElement(_cef_post_data_t* self, _cef_post_data_element_t* arg0)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
-        var _result = _m.RemoveElement(_a0);
+            var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
+            var _result = _m.RemoveElement(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -158,12 +198,20 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static int Bridge_AddElement(_cef_post_data_t* self, _cef_post_data_element_t* arg0)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
-        var _result = _m.AddElement(_a0);
+            var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
+            var _result = _m.AddElement(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -173,9 +221,17 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static void Bridge_RemoveElements(_cef_post_data_t* self)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        _m.RemoveElements();
+            _m.RemoveElements();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -266,11 +322,19 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static int Bridge_IsReadOnly(_cef_post_data_t* self)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _result = _m.IsReadOnly();
+            var _result = _m.IsReadOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -280,11 +344,19 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static int Bridge_HasExcludedElements(_cef_post_data_t* self)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _result = _m.HasExcludedElements();
+            var _result = _m.HasExcludedElements();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -294,11 +366,19 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static nuint Bridge_GetElementCount(_cef_post_data_t* self)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _result = _m.GetElementCount();
+            var _result = _m.GetElementCount();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -308,13 +388,21 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static void Bridge_GetElements(_cef_post_data_t* self, nuint* arg0, _cef_post_data_element_t** arg1)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _a0 = arg0;
-        ICefPostDataElement? _out1 = null;
-        if (arg1 != null && *arg1 != null) _out1 = new CefPostDataElementRef(*arg1);
-        _m.GetElements(_a0, out _out1);
-        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+            var _a0 = arg0;
+            ICefPostDataElement? _out1 = null;
+            if (arg1 != null && *arg1 != null) _out1 = new CefPostDataElementRef(*arg1);
+            _m.GetElements(_a0, out _out1);
+            if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -324,12 +412,20 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static int Bridge_RemoveElement(_cef_post_data_t* self, _cef_post_data_element_t* arg0)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
-        var _result = _m.RemoveElement(_a0);
+            var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
+            var _result = _m.RemoveElement(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -339,12 +435,20 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static int Bridge_AddElement(_cef_post_data_t* self, _cef_post_data_element_t* arg0)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
-        var _result = _m.AddElement(_a0);
+            var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
+            var _result = _m.AddElement(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -354,9 +458,17 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static void Bridge_RemoveElements(_cef_post_data_t* self)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        _m.RemoveElements();
+            _m.RemoveElements();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -447,11 +559,19 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static int Bridge_IsReadOnly(_cef_post_data_t* self)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _result = _m.IsReadOnly();
+            var _result = _m.IsReadOnly();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -461,11 +581,19 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static int Bridge_HasExcludedElements(_cef_post_data_t* self)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _result = _m.HasExcludedElements();
+            var _result = _m.HasExcludedElements();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -475,11 +603,19 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static nuint Bridge_GetElementCount(_cef_post_data_t* self)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _result = _m.GetElementCount();
+            var _result = _m.GetElementCount();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -489,13 +625,21 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static void Bridge_GetElements(_cef_post_data_t* self, nuint* arg0, _cef_post_data_element_t** arg1)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _a0 = arg0;
-        ICefPostDataElement? _out1 = null;
-        if (arg1 != null && *arg1 != null) _out1 = new CefPostDataElementRef(*arg1);
-        _m.GetElements(_a0, out _out1);
-        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+            var _a0 = arg0;
+            ICefPostDataElement? _out1 = null;
+            if (arg1 != null && *arg1 != null) _out1 = new CefPostDataElementRef(*arg1);
+            _m.GetElements(_a0, out _out1);
+            if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -505,12 +649,20 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static int Bridge_RemoveElement(_cef_post_data_t* self, _cef_post_data_element_t* arg0)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
-        var _result = _m.RemoveElement(_a0);
+            var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
+            var _result = _m.RemoveElement(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -520,12 +672,20 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static int Bridge_AddElement(_cef_post_data_t* self, _cef_post_data_element_t* arg0)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
-        var _result = _m.AddElement(_a0);
+            var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
+            var _result = _m.AddElement(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -535,9 +695,17 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     #endif
     private static void Bridge_RemoveElements(_cef_post_data_t* self)
     {
-        var _m = GetManaged<CefPostData>(self);
+        try
+        {
+            var _m = GetManaged<CefPostData>(self);
 
-        _m.RemoveElements();
+            _m.RemoveElements();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

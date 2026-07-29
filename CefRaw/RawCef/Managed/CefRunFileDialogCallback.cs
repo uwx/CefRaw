@@ -49,10 +49,18 @@ public unsafe abstract partial class CefRunFileDialogCallback : CefBaseRefCounte
     #endif
     private static void Bridge_OnFileDialogDismissed(_cef_run_file_dialog_callback_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefRunFileDialogCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefRunFileDialogCallback>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.OnFileDialogDismissed(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.OnFileDialogDismissed(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -107,10 +115,18 @@ public unsafe abstract partial class CefRunFileDialogCallback : CefBaseRefCounte
     #endif
     private static void Bridge_OnFileDialogDismissed(_cef_run_file_dialog_callback_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefRunFileDialogCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefRunFileDialogCallback>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.OnFileDialogDismissed(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.OnFileDialogDismissed(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -165,10 +181,18 @@ public unsafe abstract partial class CefRunFileDialogCallback : CefBaseRefCounte
     #endif
     private static void Bridge_OnFileDialogDismissed(_cef_run_file_dialog_callback_t* self, _cef_string_list_t* arg0)
     {
-        var _m = GetManaged<CefRunFileDialogCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefRunFileDialogCallback>(self);
 
-        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
-        _m.OnFileDialogDismissed(_a0);
+            var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
+            _m.OnFileDialogDismissed(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

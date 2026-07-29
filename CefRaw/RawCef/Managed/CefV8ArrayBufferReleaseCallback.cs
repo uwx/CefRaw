@@ -49,10 +49,18 @@ public unsafe abstract partial class CefV8ArrayBufferReleaseCallback : CefBaseRe
     #endif
     private static void Bridge_ReleaseBuffer(_cef_v8_array_buffer_release_callback_t* self, void* arg0)
     {
-        var _m = GetManaged<CefV8ArrayBufferReleaseCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefV8ArrayBufferReleaseCallback>(self);
 
-        var _a0 = arg0;
-        _m.ReleaseBuffer(_a0);
+            var _a0 = arg0;
+            _m.ReleaseBuffer(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -107,10 +115,18 @@ public unsafe abstract partial class CefV8ArrayBufferReleaseCallback : CefBaseRe
     #endif
     private static void Bridge_ReleaseBuffer(_cef_v8_array_buffer_release_callback_t* self, void* arg0)
     {
-        var _m = GetManaged<CefV8ArrayBufferReleaseCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefV8ArrayBufferReleaseCallback>(self);
 
-        var _a0 = arg0;
-        _m.ReleaseBuffer(_a0);
+            var _a0 = arg0;
+            _m.ReleaseBuffer(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -165,10 +181,18 @@ public unsafe abstract partial class CefV8ArrayBufferReleaseCallback : CefBaseRe
     #endif
     private static void Bridge_ReleaseBuffer(_cef_v8_array_buffer_release_callback_t* self, void* arg0)
     {
-        var _m = GetManaged<CefV8ArrayBufferReleaseCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefV8ArrayBufferReleaseCallback>(self);
 
-        var _a0 = arg0;
-        _m.ReleaseBuffer(_a0);
+            var _a0 = arg0;
+            _m.ReleaseBuffer(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

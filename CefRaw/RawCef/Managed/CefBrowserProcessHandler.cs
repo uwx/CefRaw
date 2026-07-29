@@ -85,11 +85,19 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static void Bridge_OnRegisterCustomPreferences(_cef_browser_process_handler_t* self, cef_preferences_type_t arg0, _cef_preference_registrar_t* arg1)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefPreferenceRegistrarRef(arg1) : null;
-        _m.OnRegisterCustomPreferences(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefPreferenceRegistrarRef(arg1) : null;
+            _m.OnRegisterCustomPreferences(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -99,9 +107,17 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static void Bridge_OnContextInitialized(_cef_browser_process_handler_t* self)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        _m.OnContextInitialized();
+            _m.OnContextInitialized();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -111,10 +127,18 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static void Bridge_OnBeforeChildProcessLaunch(_cef_browser_process_handler_t* self, _cef_command_line_t* arg0)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
-        _m.OnBeforeChildProcessLaunch(_a0);
+            var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
+            _m.OnBeforeChildProcessLaunch(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -124,13 +148,21 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static int Bridge_OnAlreadyRunningAppRelaunch(_cef_browser_process_handler_t* self, _cef_command_line_t* arg0, _cef_string_utf16_t* arg1)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _result = _m.OnAlreadyRunningAppRelaunch(_a0, _a1);
+            var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _result = _m.OnAlreadyRunningAppRelaunch(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -140,10 +172,18 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static void Bridge_OnScheduleMessagePumpWork(_cef_browser_process_handler_t* self, long arg0)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _a0 = arg0;
-        _m.OnScheduleMessagePumpWork(_a0);
+            var _a0 = arg0;
+            _m.OnScheduleMessagePumpWork(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -153,11 +193,20 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static _cef_client_t* Bridge_GetDefaultClient(_cef_browser_process_handler_t* self)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _result = _m.GetDefaultClient();
+            var _result = _m.GetDefaultClient();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -167,11 +216,20 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static _cef_request_context_handler_t* Bridge_GetDefaultRequestContextHandler(_cef_browser_process_handler_t* self)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _result = _m.GetDefaultRequestContextHandler();
+            var _result = _m.GetDefaultRequestContextHandler();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -262,11 +320,19 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static void Bridge_OnRegisterCustomPreferences(_cef_browser_process_handler_t* self, cef_preferences_type_t arg0, _cef_preference_registrar_t* arg1)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefPreferenceRegistrarRef(arg1) : null;
-        _m.OnRegisterCustomPreferences(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefPreferenceRegistrarRef(arg1) : null;
+            _m.OnRegisterCustomPreferences(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -276,9 +342,17 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static void Bridge_OnContextInitialized(_cef_browser_process_handler_t* self)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        _m.OnContextInitialized();
+            _m.OnContextInitialized();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -288,10 +362,18 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static void Bridge_OnBeforeChildProcessLaunch(_cef_browser_process_handler_t* self, _cef_command_line_t* arg0)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
-        _m.OnBeforeChildProcessLaunch(_a0);
+            var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
+            _m.OnBeforeChildProcessLaunch(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -301,13 +383,21 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static int Bridge_OnAlreadyRunningAppRelaunch(_cef_browser_process_handler_t* self, _cef_command_line_t* arg0, _cef_string_utf16_t* arg1)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _result = _m.OnAlreadyRunningAppRelaunch(_a0, _a1);
+            var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _result = _m.OnAlreadyRunningAppRelaunch(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -317,10 +407,18 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static void Bridge_OnScheduleMessagePumpWork(_cef_browser_process_handler_t* self, long arg0)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _a0 = arg0;
-        _m.OnScheduleMessagePumpWork(_a0);
+            var _a0 = arg0;
+            _m.OnScheduleMessagePumpWork(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -330,11 +428,20 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static _cef_client_t* Bridge_GetDefaultClient(_cef_browser_process_handler_t* self)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _result = _m.GetDefaultClient();
+            var _result = _m.GetDefaultClient();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -344,11 +451,20 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static _cef_request_context_handler_t* Bridge_GetDefaultRequestContextHandler(_cef_browser_process_handler_t* self)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _result = _m.GetDefaultRequestContextHandler();
+            var _result = _m.GetDefaultRequestContextHandler();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -439,11 +555,19 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static void Bridge_OnRegisterCustomPreferences(_cef_browser_process_handler_t* self, cef_preferences_type_t arg0, _cef_preference_registrar_t* arg1)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefPreferenceRegistrarRef(arg1) : null;
-        _m.OnRegisterCustomPreferences(_a0, _a1);
+            var _a0 = arg0;
+            var _a1 = arg1 != null ? new CefPreferenceRegistrarRef(arg1) : null;
+            _m.OnRegisterCustomPreferences(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -453,9 +577,17 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static void Bridge_OnContextInitialized(_cef_browser_process_handler_t* self)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        _m.OnContextInitialized();
+            _m.OnContextInitialized();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -465,10 +597,18 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static void Bridge_OnBeforeChildProcessLaunch(_cef_browser_process_handler_t* self, _cef_command_line_t* arg0)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
-        _m.OnBeforeChildProcessLaunch(_a0);
+            var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
+            _m.OnBeforeChildProcessLaunch(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -478,13 +618,21 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static int Bridge_OnAlreadyRunningAppRelaunch(_cef_browser_process_handler_t* self, _cef_command_line_t* arg0, _cef_string_utf16_t* arg1)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
-        var _a1 = CefStringRef.ToString(arg1);
-        var _result = _m.OnAlreadyRunningAppRelaunch(_a0, _a1);
+            var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
+            var _a1 = CefStringRef.ToString(arg1);
+            var _result = _m.OnAlreadyRunningAppRelaunch(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -494,10 +642,18 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static void Bridge_OnScheduleMessagePumpWork(_cef_browser_process_handler_t* self, long arg0)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _a0 = arg0;
-        _m.OnScheduleMessagePumpWork(_a0);
+            var _a0 = arg0;
+            _m.OnScheduleMessagePumpWork(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -507,11 +663,20 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static _cef_client_t* Bridge_GetDefaultClient(_cef_browser_process_handler_t* self)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _result = _m.GetDefaultClient();
+            var _result = _m.GetDefaultClient();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -521,11 +686,20 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
     #endif
     private static _cef_request_context_handler_t* Bridge_GetDefaultRequestContextHandler(_cef_browser_process_handler_t* self)
     {
-        var _m = GetManaged<CefBrowserProcessHandler>(self);
+        try
+        {
+            var _m = GetManaged<CefBrowserProcessHandler>(self);
 
-        var _result = _m.GetDefaultRequestContextHandler();
+            var _result = _m.GetDefaultRequestContextHandler();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

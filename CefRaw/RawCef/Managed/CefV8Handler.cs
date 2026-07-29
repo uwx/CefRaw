@@ -49,26 +49,34 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
     #endif
     private static int Bridge_Execute(_cef_v8_handler_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, nuint arg2, _cef_v8_value_t** arg3, _cef_v8_value_t** arg4, _cef_string_utf16_t* arg5)
     {
-        var _m = GetManaged<CefV8Handler>(self);
-
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _count2 = (int)arg2;
-        var _span2 = new ICefV8Value?[_count2];
-        for (int _j2 = 0; _j2 < _count2; _j2++)
-            _span2[_j2] = arg3[_j2] != null ? new CefV8ValueRef(arg3[_j2]) : null;
-        ICefV8Value? _out3 = null;
-        if (arg4 != null && *arg4 != null) _out3 = new CefV8ValueRef(*arg4);
-        string? _out4 = null;
-        if (arg5 != null) _out4 = CefStringRef.ToStringAndFree(arg5);
-        var _result = _m.Execute(_a0, _a1, _span2, out _out3, out _out4);
-
-        return _result;
-        if (arg4 != null) *arg4 = _out3 != null ? _out3.NativePtr : null;
-        if (arg5 != null)
+        try
         {
-            fixed (char* _p4 = _out4)
-                CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg5, copy: 1);
+            var _m = GetManaged<CefV8Handler>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            var _count2 = (int)arg2;
+            var _span2 = new ICefV8Value?[_count2];
+            for (int _j2 = 0; _j2 < _count2; _j2++)
+                _span2[_j2] = arg3[_j2] != null ? new CefV8ValueRef(arg3[_j2]) : null;
+            ICefV8Value? _out3 = null;
+            if (arg4 != null && *arg4 != null) _out3 = new CefV8ValueRef(*arg4);
+            string? _out4 = null;
+            if (arg5 != null) _out4 = CefStringRef.ToStringAndFree(arg5);
+            var _result = _m.Execute(_a0, _a1, _span2, out _out3, out _out4);
+
+            return _result;
+            if (arg4 != null) *arg4 = _out3 != null ? _out3.NativePtr : null;
+            if (arg5 != null)
+            {
+                fixed (char* _p4 = _out4)
+                    CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg5, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 }
@@ -124,26 +132,34 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
     #endif
     private static int Bridge_Execute(_cef_v8_handler_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, nuint arg2, _cef_v8_value_t** arg3, _cef_v8_value_t** arg4, _cef_string_utf16_t* arg5)
     {
-        var _m = GetManaged<CefV8Handler>(self);
-
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _count2 = (int)arg2;
-        var _span2 = new ICefV8Value?[_count2];
-        for (int _j2 = 0; _j2 < _count2; _j2++)
-            _span2[_j2] = arg3[_j2] != null ? new CefV8ValueRef(arg3[_j2]) : null;
-        ICefV8Value? _out3 = null;
-        if (arg4 != null && *arg4 != null) _out3 = new CefV8ValueRef(*arg4);
-        string? _out4 = null;
-        if (arg5 != null) _out4 = CefStringRef.ToStringAndFree(arg5);
-        var _result = _m.Execute(_a0, _a1, _span2, out _out3, out _out4);
-
-        return _result;
-        if (arg4 != null) *arg4 = _out3 != null ? _out3.NativePtr : null;
-        if (arg5 != null)
+        try
         {
-            fixed (char* _p4 = _out4)
-                CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg5, copy: 1);
+            var _m = GetManaged<CefV8Handler>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            var _count2 = (int)arg2;
+            var _span2 = new ICefV8Value?[_count2];
+            for (int _j2 = 0; _j2 < _count2; _j2++)
+                _span2[_j2] = arg3[_j2] != null ? new CefV8ValueRef(arg3[_j2]) : null;
+            ICefV8Value? _out3 = null;
+            if (arg4 != null && *arg4 != null) _out3 = new CefV8ValueRef(*arg4);
+            string? _out4 = null;
+            if (arg5 != null) _out4 = CefStringRef.ToStringAndFree(arg5);
+            var _result = _m.Execute(_a0, _a1, _span2, out _out3, out _out4);
+
+            return _result;
+            if (arg4 != null) *arg4 = _out3 != null ? _out3.NativePtr : null;
+            if (arg5 != null)
+            {
+                fixed (char* _p4 = _out4)
+                    CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg5, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 }
@@ -199,26 +215,34 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
     #endif
     private static int Bridge_Execute(_cef_v8_handler_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, nuint arg2, _cef_v8_value_t** arg3, _cef_v8_value_t** arg4, _cef_string_utf16_t* arg5)
     {
-        var _m = GetManaged<CefV8Handler>(self);
-
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _count2 = (int)arg2;
-        var _span2 = new ICefV8Value?[_count2];
-        for (int _j2 = 0; _j2 < _count2; _j2++)
-            _span2[_j2] = arg3[_j2] != null ? new CefV8ValueRef(arg3[_j2]) : null;
-        ICefV8Value? _out3 = null;
-        if (arg4 != null && *arg4 != null) _out3 = new CefV8ValueRef(*arg4);
-        string? _out4 = null;
-        if (arg5 != null) _out4 = CefStringRef.ToStringAndFree(arg5);
-        var _result = _m.Execute(_a0, _a1, _span2, out _out3, out _out4);
-
-        return _result;
-        if (arg4 != null) *arg4 = _out3 != null ? _out3.NativePtr : null;
-        if (arg5 != null)
+        try
         {
-            fixed (char* _p4 = _out4)
-                CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg5, copy: 1);
+            var _m = GetManaged<CefV8Handler>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
+            var _count2 = (int)arg2;
+            var _span2 = new ICefV8Value?[_count2];
+            for (int _j2 = 0; _j2 < _count2; _j2++)
+                _span2[_j2] = arg3[_j2] != null ? new CefV8ValueRef(arg3[_j2]) : null;
+            ICefV8Value? _out3 = null;
+            if (arg4 != null && *arg4 != null) _out3 = new CefV8ValueRef(*arg4);
+            string? _out4 = null;
+            if (arg5 != null) _out4 = CefStringRef.ToStringAndFree(arg5);
+            var _result = _m.Execute(_a0, _a1, _span2, out _out3, out _out4);
+
+            return _result;
+            if (arg4 != null) *arg4 = _out3 != null ? _out3.NativePtr : null;
+            if (arg5 != null)
+            {
+                fixed (char* _p4 = _out4)
+                    CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg5, copy: 1);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
         }
     }
 }

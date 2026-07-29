@@ -49,10 +49,18 @@ public unsafe abstract partial class CefPermissionPromptCallback : CefBaseRefCou
     #endif
     private static void Bridge_Cont(_cef_permission_prompt_callback_t* self, cef_permission_request_result_t arg0)
     {
-        var _m = GetManaged<CefPermissionPromptCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefPermissionPromptCallback>(self);
 
-        var _a0 = arg0;
-        _m.Cont(_a0);
+            var _a0 = arg0;
+            _m.Cont(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -107,10 +115,18 @@ public unsafe abstract partial class CefPermissionPromptCallback : CefBaseRefCou
     #endif
     private static void Bridge_Cont(_cef_permission_prompt_callback_t* self, cef_permission_request_result_t arg0)
     {
-        var _m = GetManaged<CefPermissionPromptCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefPermissionPromptCallback>(self);
 
-        var _a0 = arg0;
-        _m.Cont(_a0);
+            var _a0 = arg0;
+            _m.Cont(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -165,10 +181,18 @@ public unsafe abstract partial class CefPermissionPromptCallback : CefBaseRefCou
     #endif
     private static void Bridge_Cont(_cef_permission_prompt_callback_t* self, cef_permission_request_result_t arg0)
     {
-        var _m = GetManaged<CefPermissionPromptCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefPermissionPromptCallback>(self);
 
-        var _a0 = arg0;
-        _m.Cont(_a0);
+            var _a0 = arg0;
+            _m.Cont(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

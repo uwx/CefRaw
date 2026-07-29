@@ -49,13 +49,21 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
     #endif
     private static int Bridge_AddPreference(_cef_preference_registrar_t* self, _cef_string_utf16_t* arg0, _cef_value_t* arg1)
     {
-        var _m = GetManaged<CefPreferenceRegistrar>(self);
+        try
+        {
+            var _m = GetManaged<CefPreferenceRegistrar>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
-        var _result = _m.AddPreference(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
+            var _result = _m.AddPreference(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -110,13 +118,21 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
     #endif
     private static int Bridge_AddPreference(_cef_preference_registrar_t* self, _cef_string_utf16_t* arg0, _cef_value_t* arg1)
     {
-        var _m = GetManaged<CefPreferenceRegistrar>(self);
+        try
+        {
+            var _m = GetManaged<CefPreferenceRegistrar>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
-        var _result = _m.AddPreference(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
+            var _result = _m.AddPreference(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -171,13 +187,21 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
     #endif
     private static int Bridge_AddPreference(_cef_preference_registrar_t* self, _cef_string_utf16_t* arg0, _cef_value_t* arg1)
     {
-        var _m = GetManaged<CefPreferenceRegistrar>(self);
+        try
+        {
+            var _m = GetManaged<CefPreferenceRegistrar>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
-        var _result = _m.AddPreference(_a0, _a1);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
+            var _result = _m.AddPreference(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

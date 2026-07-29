@@ -49,10 +49,18 @@ public unsafe abstract partial class CefDomvisitor : CefBaseRefCounted, ICefDomv
     #endif
     private static void Bridge_Visit(_cef_domvisitor_t* self, _cef_domdocument_t* arg0)
     {
-        var _m = GetManaged<CefDomvisitor>(self);
+        try
+        {
+            var _m = GetManaged<CefDomvisitor>(self);
 
-        var _a0 = arg0 != null ? new CefDomdocumentRef(arg0) : null;
-        _m.Visit(_a0);
+            var _a0 = arg0 != null ? new CefDomdocumentRef(arg0) : null;
+            _m.Visit(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -107,10 +115,18 @@ public unsafe abstract partial class CefDomvisitor : CefBaseRefCounted, ICefDomv
     #endif
     private static void Bridge_Visit(_cef_domvisitor_t* self, _cef_domdocument_t* arg0)
     {
-        var _m = GetManaged<CefDomvisitor>(self);
+        try
+        {
+            var _m = GetManaged<CefDomvisitor>(self);
 
-        var _a0 = arg0 != null ? new CefDomdocumentRef(arg0) : null;
-        _m.Visit(_a0);
+            var _a0 = arg0 != null ? new CefDomdocumentRef(arg0) : null;
+            _m.Visit(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -165,10 +181,18 @@ public unsafe abstract partial class CefDomvisitor : CefBaseRefCounted, ICefDomv
     #endif
     private static void Bridge_Visit(_cef_domvisitor_t* self, _cef_domdocument_t* arg0)
     {
-        var _m = GetManaged<CefDomvisitor>(self);
+        try
+        {
+            var _m = GetManaged<CefDomvisitor>(self);
 
-        var _a0 = arg0 != null ? new CefDomdocumentRef(arg0) : null;
-        _m.Visit(_a0);
+            var _a0 = arg0 != null ? new CefDomdocumentRef(arg0) : null;
+            _m.Visit(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

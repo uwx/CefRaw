@@ -49,10 +49,18 @@ public unsafe abstract partial class CefSetCookieCallback : CefBaseRefCounted, I
     #endif
     private static void Bridge_OnComplete(_cef_set_cookie_callback_t* self, int arg0)
     {
-        var _m = GetManaged<CefSetCookieCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefSetCookieCallback>(self);
 
-        var _a0 = arg0;
-        _m.OnComplete(_a0);
+            var _a0 = arg0;
+            _m.OnComplete(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -107,10 +115,18 @@ public unsafe abstract partial class CefSetCookieCallback : CefBaseRefCounted, I
     #endif
     private static void Bridge_OnComplete(_cef_set_cookie_callback_t* self, int arg0)
     {
-        var _m = GetManaged<CefSetCookieCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefSetCookieCallback>(self);
 
-        var _a0 = arg0;
-        _m.OnComplete(_a0);
+            var _a0 = arg0;
+            _m.OnComplete(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -165,10 +181,18 @@ public unsafe abstract partial class CefSetCookieCallback : CefBaseRefCounted, I
     #endif
     private static void Bridge_OnComplete(_cef_set_cookie_callback_t* self, int arg0)
     {
-        var _m = GetManaged<CefSetCookieCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefSetCookieCallback>(self);
 
-        var _a0 = arg0;
-        _m.OnComplete(_a0);
+            var _a0 = arg0;
+            _m.OnComplete(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

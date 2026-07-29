@@ -73,12 +73,20 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_IsSame(_cef_task_runner_t* self, _cef_task_runner_t* arg0)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _a0 = arg0 != null ? new CefTaskRunnerRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
+            var _a0 = arg0 != null ? new CefTaskRunnerRef(arg0) : null;
+            var _result = _m.IsSame(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -88,11 +96,19 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_BelongsToCurrentThread(_cef_task_runner_t* self)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _result = _m.BelongsToCurrentThread();
+            var _result = _m.BelongsToCurrentThread();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -102,12 +118,20 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_BelongsToThread(_cef_task_runner_t* self, cef_thread_id_t arg0)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _a0 = arg0;
-        var _result = _m.BelongsToThread(_a0);
+            var _a0 = arg0;
+            var _result = _m.BelongsToThread(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -117,12 +141,20 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_PostTask(_cef_task_runner_t* self, _cef_task_t* arg0)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _a0 = arg0 != null ? new CefTaskRef(arg0) : null;
-        var _result = _m.PostTask(_a0);
+            var _a0 = arg0 != null ? new CefTaskRef(arg0) : null;
+            var _result = _m.PostTask(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -132,13 +164,21 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_PostDelayedTask(_cef_task_runner_t* self, _cef_task_t* arg0, long arg1)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _a0 = arg0 != null ? new CefTaskRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.PostDelayedTask(_a0, _a1);
+            var _a0 = arg0 != null ? new CefTaskRef(arg0) : null;
+            var _a1 = arg1;
+            var _result = _m.PostDelayedTask(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -217,12 +257,20 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_IsSame(_cef_task_runner_t* self, _cef_task_runner_t* arg0)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _a0 = arg0 != null ? new CefTaskRunnerRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
+            var _a0 = arg0 != null ? new CefTaskRunnerRef(arg0) : null;
+            var _result = _m.IsSame(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -232,11 +280,19 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_BelongsToCurrentThread(_cef_task_runner_t* self)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _result = _m.BelongsToCurrentThread();
+            var _result = _m.BelongsToCurrentThread();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -246,12 +302,20 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_BelongsToThread(_cef_task_runner_t* self, cef_thread_id_t arg0)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _a0 = arg0;
-        var _result = _m.BelongsToThread(_a0);
+            var _a0 = arg0;
+            var _result = _m.BelongsToThread(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -261,12 +325,20 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_PostTask(_cef_task_runner_t* self, _cef_task_t* arg0)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _a0 = arg0 != null ? new CefTaskRef(arg0) : null;
-        var _result = _m.PostTask(_a0);
+            var _a0 = arg0 != null ? new CefTaskRef(arg0) : null;
+            var _result = _m.PostTask(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -276,13 +348,21 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_PostDelayedTask(_cef_task_runner_t* self, _cef_task_t* arg0, long arg1)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _a0 = arg0 != null ? new CefTaskRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.PostDelayedTask(_a0, _a1);
+            var _a0 = arg0 != null ? new CefTaskRef(arg0) : null;
+            var _a1 = arg1;
+            var _result = _m.PostDelayedTask(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -361,12 +441,20 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_IsSame(_cef_task_runner_t* self, _cef_task_runner_t* arg0)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _a0 = arg0 != null ? new CefTaskRunnerRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
+            var _a0 = arg0 != null ? new CefTaskRunnerRef(arg0) : null;
+            var _result = _m.IsSame(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -376,11 +464,19 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_BelongsToCurrentThread(_cef_task_runner_t* self)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _result = _m.BelongsToCurrentThread();
+            var _result = _m.BelongsToCurrentThread();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -390,12 +486,20 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_BelongsToThread(_cef_task_runner_t* self, cef_thread_id_t arg0)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _a0 = arg0;
-        var _result = _m.BelongsToThread(_a0);
+            var _a0 = arg0;
+            var _result = _m.BelongsToThread(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -405,12 +509,20 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_PostTask(_cef_task_runner_t* self, _cef_task_t* arg0)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _a0 = arg0 != null ? new CefTaskRef(arg0) : null;
-        var _result = _m.PostTask(_a0);
+            var _a0 = arg0 != null ? new CefTaskRef(arg0) : null;
+            var _result = _m.PostTask(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -420,13 +532,21 @@ public unsafe abstract partial class CefTaskRunner : CefBaseRefCounted, ICefTask
     #endif
     private static int Bridge_PostDelayedTask(_cef_task_runner_t* self, _cef_task_t* arg0, long arg1)
     {
-        var _m = GetManaged<CefTaskRunner>(self);
+        try
+        {
+            var _m = GetManaged<CefTaskRunner>(self);
 
-        var _a0 = arg0 != null ? new CefTaskRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.PostDelayedTask(_a0, _a1);
+            var _a0 = arg0 != null ? new CefTaskRef(arg0) : null;
+            var _a1 = arg1;
+            var _result = _m.PostDelayedTask(_a0, _a1);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

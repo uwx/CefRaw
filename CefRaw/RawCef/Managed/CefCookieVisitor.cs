@@ -49,15 +49,23 @@ public unsafe abstract partial class CefCookieVisitor : CefBaseRefCounted, ICefC
     #endif
     private static int Bridge_Visit(_cef_cookie_visitor_t* self, _cef_cookie_t* arg0, int arg1, int arg2, int* arg3)
     {
-        var _m = GetManaged<CefCookieVisitor>(self);
+        try
+        {
+            var _m = GetManaged<CefCookieVisitor>(self);
 
-        var _a0 = arg0 != null ? new CefCookieRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.Visit(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefCookieRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _a3 = arg3;
+            var _result = _m.Visit(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -112,15 +120,23 @@ public unsafe abstract partial class CefCookieVisitor : CefBaseRefCounted, ICefC
     #endif
     private static int Bridge_Visit(_cef_cookie_visitor_t* self, _cef_cookie_t* arg0, int arg1, int arg2, int* arg3)
     {
-        var _m = GetManaged<CefCookieVisitor>(self);
+        try
+        {
+            var _m = GetManaged<CefCookieVisitor>(self);
 
-        var _a0 = arg0 != null ? new CefCookieRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.Visit(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefCookieRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _a3 = arg3;
+            var _result = _m.Visit(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -175,15 +191,23 @@ public unsafe abstract partial class CefCookieVisitor : CefBaseRefCounted, ICefC
     #endif
     private static int Bridge_Visit(_cef_cookie_visitor_t* self, _cef_cookie_t* arg0, int arg1, int arg2, int* arg3)
     {
-        var _m = GetManaged<CefCookieVisitor>(self);
+        try
+        {
+            var _m = GetManaged<CefCookieVisitor>(self);
 
-        var _a0 = arg0 != null ? new CefCookieRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.Visit(_a0, _a1, _a2, _a3);
+            var _a0 = arg0 != null ? new CefCookieRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            var _a3 = arg3;
+            var _result = _m.Visit(_a0, _a1, _a2, _a3);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

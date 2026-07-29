@@ -67,13 +67,21 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     #endif
     private static void Bridge_OnSinks(_cef_media_observer_t* self, nuint arg0, _cef_media_sink_t** arg1)
     {
-        var _m = GetManaged<CefMediaObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaObserver>(self);
 
-        var _count0 = (int)arg0;
-        var _span0 = new ICefMediaSink?[_count0];
-        for (int _j0 = 0; _j0 < _count0; _j0++)
-            _span0[_j0] = arg1[_j0] != null ? new CefMediaSinkRef(arg1[_j0]) : null;
-        _m.OnSinks(_span0);
+            var _count0 = (int)arg0;
+            var _span0 = new ICefMediaSink?[_count0];
+            for (int _j0 = 0; _j0 < _count0; _j0++)
+                _span0[_j0] = arg1[_j0] != null ? new CefMediaSinkRef(arg1[_j0]) : null;
+            _m.OnSinks(_span0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -83,13 +91,21 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     #endif
     private static void Bridge_OnRoutes(_cef_media_observer_t* self, nuint arg0, _cef_media_route_t** arg1)
     {
-        var _m = GetManaged<CefMediaObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaObserver>(self);
 
-        var _count0 = (int)arg0;
-        var _span0 = new ICefMediaRoute?[_count0];
-        for (int _j0 = 0; _j0 < _count0; _j0++)
-            _span0[_j0] = arg1[_j0] != null ? new CefMediaRouteRef(arg1[_j0]) : null;
-        _m.OnRoutes(_span0);
+            var _count0 = (int)arg0;
+            var _span0 = new ICefMediaRoute?[_count0];
+            for (int _j0 = 0; _j0 < _count0; _j0++)
+                _span0[_j0] = arg1[_j0] != null ? new CefMediaRouteRef(arg1[_j0]) : null;
+            _m.OnRoutes(_span0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -99,11 +115,19 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     #endif
     private static void Bridge_OnRouteStateChanged(_cef_media_observer_t* self, _cef_media_route_t* arg0, cef_media_route_connection_state_t arg1)
     {
-        var _m = GetManaged<CefMediaObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaObserver>(self);
 
-        var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnRouteStateChanged(_a0, _a1);
+            var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
+            var _a1 = arg1;
+            _m.OnRouteStateChanged(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -113,12 +137,20 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     #endif
     private static void Bridge_OnRouteMessageReceived(_cef_media_observer_t* self, _cef_media_route_t* arg0, void* arg1, nuint arg2)
     {
-        var _m = GetManaged<CefMediaObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaObserver>(self);
 
-        var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        _m.OnRouteMessageReceived(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            _m.OnRouteMessageReceived(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -191,13 +223,21 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     #endif
     private static void Bridge_OnSinks(_cef_media_observer_t* self, nuint arg0, _cef_media_sink_t** arg1)
     {
-        var _m = GetManaged<CefMediaObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaObserver>(self);
 
-        var _count0 = (int)arg0;
-        var _span0 = new ICefMediaSink?[_count0];
-        for (int _j0 = 0; _j0 < _count0; _j0++)
-            _span0[_j0] = arg1[_j0] != null ? new CefMediaSinkRef(arg1[_j0]) : null;
-        _m.OnSinks(_span0);
+            var _count0 = (int)arg0;
+            var _span0 = new ICefMediaSink?[_count0];
+            for (int _j0 = 0; _j0 < _count0; _j0++)
+                _span0[_j0] = arg1[_j0] != null ? new CefMediaSinkRef(arg1[_j0]) : null;
+            _m.OnSinks(_span0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -207,13 +247,21 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     #endif
     private static void Bridge_OnRoutes(_cef_media_observer_t* self, nuint arg0, _cef_media_route_t** arg1)
     {
-        var _m = GetManaged<CefMediaObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaObserver>(self);
 
-        var _count0 = (int)arg0;
-        var _span0 = new ICefMediaRoute?[_count0];
-        for (int _j0 = 0; _j0 < _count0; _j0++)
-            _span0[_j0] = arg1[_j0] != null ? new CefMediaRouteRef(arg1[_j0]) : null;
-        _m.OnRoutes(_span0);
+            var _count0 = (int)arg0;
+            var _span0 = new ICefMediaRoute?[_count0];
+            for (int _j0 = 0; _j0 < _count0; _j0++)
+                _span0[_j0] = arg1[_j0] != null ? new CefMediaRouteRef(arg1[_j0]) : null;
+            _m.OnRoutes(_span0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -223,11 +271,19 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     #endif
     private static void Bridge_OnRouteStateChanged(_cef_media_observer_t* self, _cef_media_route_t* arg0, cef_media_route_connection_state_t arg1)
     {
-        var _m = GetManaged<CefMediaObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaObserver>(self);
 
-        var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnRouteStateChanged(_a0, _a1);
+            var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
+            var _a1 = arg1;
+            _m.OnRouteStateChanged(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -237,12 +293,20 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     #endif
     private static void Bridge_OnRouteMessageReceived(_cef_media_observer_t* self, _cef_media_route_t* arg0, void* arg1, nuint arg2)
     {
-        var _m = GetManaged<CefMediaObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaObserver>(self);
 
-        var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        _m.OnRouteMessageReceived(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            _m.OnRouteMessageReceived(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -315,13 +379,21 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     #endif
     private static void Bridge_OnSinks(_cef_media_observer_t* self, nuint arg0, _cef_media_sink_t** arg1)
     {
-        var _m = GetManaged<CefMediaObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaObserver>(self);
 
-        var _count0 = (int)arg0;
-        var _span0 = new ICefMediaSink?[_count0];
-        for (int _j0 = 0; _j0 < _count0; _j0++)
-            _span0[_j0] = arg1[_j0] != null ? new CefMediaSinkRef(arg1[_j0]) : null;
-        _m.OnSinks(_span0);
+            var _count0 = (int)arg0;
+            var _span0 = new ICefMediaSink?[_count0];
+            for (int _j0 = 0; _j0 < _count0; _j0++)
+                _span0[_j0] = arg1[_j0] != null ? new CefMediaSinkRef(arg1[_j0]) : null;
+            _m.OnSinks(_span0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -331,13 +403,21 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     #endif
     private static void Bridge_OnRoutes(_cef_media_observer_t* self, nuint arg0, _cef_media_route_t** arg1)
     {
-        var _m = GetManaged<CefMediaObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaObserver>(self);
 
-        var _count0 = (int)arg0;
-        var _span0 = new ICefMediaRoute?[_count0];
-        for (int _j0 = 0; _j0 < _count0; _j0++)
-            _span0[_j0] = arg1[_j0] != null ? new CefMediaRouteRef(arg1[_j0]) : null;
-        _m.OnRoutes(_span0);
+            var _count0 = (int)arg0;
+            var _span0 = new ICefMediaRoute?[_count0];
+            for (int _j0 = 0; _j0 < _count0; _j0++)
+                _span0[_j0] = arg1[_j0] != null ? new CefMediaRouteRef(arg1[_j0]) : null;
+            _m.OnRoutes(_span0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -347,11 +427,19 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     #endif
     private static void Bridge_OnRouteStateChanged(_cef_media_observer_t* self, _cef_media_route_t* arg0, cef_media_route_connection_state_t arg1)
     {
-        var _m = GetManaged<CefMediaObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaObserver>(self);
 
-        var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnRouteStateChanged(_a0, _a1);
+            var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
+            var _a1 = arg1;
+            _m.OnRouteStateChanged(_a0, _a1);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -361,12 +449,20 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     #endif
     private static void Bridge_OnRouteMessageReceived(_cef_media_observer_t* self, _cef_media_route_t* arg0, void* arg1, nuint arg2)
     {
-        var _m = GetManaged<CefMediaObserver>(self);
+        try
+        {
+            var _m = GetManaged<CefMediaObserver>(self);
 
-        var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        _m.OnRouteMessageReceived(_a0, _a1, _a2);
+            var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
+            var _a1 = arg1;
+            var _a2 = arg2;
+            _m.OnRouteMessageReceived(_a0, _a1, _a2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

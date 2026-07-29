@@ -61,9 +61,17 @@ public unsafe abstract partial class CefDownloadItemCallback : CefBaseRefCounted
     #endif
     private static void Bridge_Cancel(_cef_download_item_callback_t* self)
     {
-        var _m = GetManaged<CefDownloadItemCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadItemCallback>(self);
 
-        _m.Cancel();
+            _m.Cancel();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -73,9 +81,17 @@ public unsafe abstract partial class CefDownloadItemCallback : CefBaseRefCounted
     #endif
     private static void Bridge_Pause(_cef_download_item_callback_t* self)
     {
-        var _m = GetManaged<CefDownloadItemCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadItemCallback>(self);
 
-        _m.Pause();
+            _m.Pause();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -85,9 +101,17 @@ public unsafe abstract partial class CefDownloadItemCallback : CefBaseRefCounted
     #endif
     private static void Bridge_Resume(_cef_download_item_callback_t* self)
     {
-        var _m = GetManaged<CefDownloadItemCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadItemCallback>(self);
 
-        _m.Resume();
+            _m.Resume();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -154,9 +178,17 @@ public unsafe abstract partial class CefDownloadItemCallback : CefBaseRefCounted
     #endif
     private static void Bridge_Cancel(_cef_download_item_callback_t* self)
     {
-        var _m = GetManaged<CefDownloadItemCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadItemCallback>(self);
 
-        _m.Cancel();
+            _m.Cancel();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -166,9 +198,17 @@ public unsafe abstract partial class CefDownloadItemCallback : CefBaseRefCounted
     #endif
     private static void Bridge_Pause(_cef_download_item_callback_t* self)
     {
-        var _m = GetManaged<CefDownloadItemCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadItemCallback>(self);
 
-        _m.Pause();
+            _m.Pause();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -178,9 +218,17 @@ public unsafe abstract partial class CefDownloadItemCallback : CefBaseRefCounted
     #endif
     private static void Bridge_Resume(_cef_download_item_callback_t* self)
     {
-        var _m = GetManaged<CefDownloadItemCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadItemCallback>(self);
 
-        _m.Resume();
+            _m.Resume();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -247,9 +295,17 @@ public unsafe abstract partial class CefDownloadItemCallback : CefBaseRefCounted
     #endif
     private static void Bridge_Cancel(_cef_download_item_callback_t* self)
     {
-        var _m = GetManaged<CefDownloadItemCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadItemCallback>(self);
 
-        _m.Cancel();
+            _m.Cancel();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -259,9 +315,17 @@ public unsafe abstract partial class CefDownloadItemCallback : CefBaseRefCounted
     #endif
     private static void Bridge_Pause(_cef_download_item_callback_t* self)
     {
-        var _m = GetManaged<CefDownloadItemCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadItemCallback>(self);
 
-        _m.Pause();
+            _m.Pause();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -271,9 +335,17 @@ public unsafe abstract partial class CefDownloadItemCallback : CefBaseRefCounted
     #endif
     private static void Bridge_Resume(_cef_download_item_callback_t* self)
     {
-        var _m = GetManaged<CefDownloadItemCallback>(self);
+        try
+        {
+            var _m = GetManaged<CefDownloadItemCallback>(self);
 
-        _m.Resume();
+            _m.Resume();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif

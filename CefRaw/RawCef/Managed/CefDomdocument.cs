@@ -127,11 +127,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_dom_document_type_t Bridge_GetType(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetType();
+            var _result = _m.GetType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -141,11 +149,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetDocument(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetDocument();
+            var _result = _m.GetDocument();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -155,11 +172,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetBody(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetBody();
+            var _result = _m.GetBody();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -169,11 +195,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetHead(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetHead();
+            var _result = _m.GetHead();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -183,11 +218,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetTitle(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetTitle();
+            var _result = _m.GetTitle();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -197,12 +240,21 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetElementById(_cef_domdocument_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetElementById(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetElementById(_a0);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -212,11 +264,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetFocusedNode(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetFocusedNode();
+            var _result = _m.GetFocusedNode();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -226,11 +287,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static int Bridge_HasSelection(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.HasSelection();
+            var _result = _m.HasSelection();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -240,11 +309,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static int Bridge_GetSelectionStartOffset(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetSelectionStartOffset();
+            var _result = _m.GetSelectionStartOffset();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -254,11 +331,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static int Bridge_GetSelectionEndOffset(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetSelectionEndOffset();
+            var _result = _m.GetSelectionEndOffset();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -268,11 +353,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetSelectionAsMarkup(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetSelectionAsMarkup();
+            var _result = _m.GetSelectionAsMarkup();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -282,11 +375,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetSelectionAsText(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetSelectionAsText();
+            var _result = _m.GetSelectionAsText();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -296,11 +397,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetBaseUrl(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetBaseUrl();
+            var _result = _m.GetBaseUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -310,12 +419,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetCompleteUrl(_cef_domdocument_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetCompleteUrl(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetCompleteUrl(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -448,11 +565,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_dom_document_type_t Bridge_GetType(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetType();
+            var _result = _m.GetType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -462,11 +587,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetDocument(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetDocument();
+            var _result = _m.GetDocument();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -476,11 +610,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetBody(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetBody();
+            var _result = _m.GetBody();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -490,11 +633,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetHead(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetHead();
+            var _result = _m.GetHead();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -504,11 +656,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetTitle(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetTitle();
+            var _result = _m.GetTitle();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -518,12 +678,21 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetElementById(_cef_domdocument_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetElementById(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetElementById(_a0);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -533,11 +702,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetFocusedNode(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetFocusedNode();
+            var _result = _m.GetFocusedNode();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -547,11 +725,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static int Bridge_HasSelection(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.HasSelection();
+            var _result = _m.HasSelection();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -561,11 +747,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static int Bridge_GetSelectionStartOffset(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetSelectionStartOffset();
+            var _result = _m.GetSelectionStartOffset();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -575,11 +769,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static int Bridge_GetSelectionEndOffset(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetSelectionEndOffset();
+            var _result = _m.GetSelectionEndOffset();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -589,11 +791,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetSelectionAsMarkup(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetSelectionAsMarkup();
+            var _result = _m.GetSelectionAsMarkup();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -603,11 +813,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetSelectionAsText(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetSelectionAsText();
+            var _result = _m.GetSelectionAsText();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -617,11 +835,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetBaseUrl(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetBaseUrl();
+            var _result = _m.GetBaseUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -631,12 +857,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetCompleteUrl(_cef_domdocument_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetCompleteUrl(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetCompleteUrl(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
@@ -769,11 +1003,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_dom_document_type_t Bridge_GetType(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetType();
+            var _result = _m.GetType();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -783,11 +1025,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetDocument(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetDocument();
+            var _result = _m.GetDocument();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -797,11 +1048,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetBody(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetBody();
+            var _result = _m.GetBody();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -811,11 +1071,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetHead(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetHead();
+            var _result = _m.GetHead();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -825,11 +1094,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetTitle(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetTitle();
+            var _result = _m.GetTitle();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -839,12 +1116,21 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetElementById(_cef_domdocument_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetElementById(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetElementById(_a0);
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -854,11 +1140,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static _cef_domnode_t* Bridge_GetFocusedNode(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetFocusedNode();
+            var _result = _m.GetFocusedNode();
 
-        return _result != null ? _result.NativePtr : null;
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -868,11 +1163,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static int Bridge_HasSelection(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.HasSelection();
+            var _result = _m.HasSelection();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -882,11 +1185,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static int Bridge_GetSelectionStartOffset(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetSelectionStartOffset();
+            var _result = _m.GetSelectionStartOffset();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -896,11 +1207,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static int Bridge_GetSelectionEndOffset(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetSelectionEndOffset();
+            var _result = _m.GetSelectionEndOffset();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -910,11 +1229,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetSelectionAsMarkup(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetSelectionAsMarkup();
+            var _result = _m.GetSelectionAsMarkup();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -924,11 +1251,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetSelectionAsText(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetSelectionAsText();
+            var _result = _m.GetSelectionAsText();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -938,11 +1273,19 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetBaseUrl(_cef_domdocument_t* self)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _result = _m.GetBaseUrl();
+            var _result = _m.GetBaseUrl();
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 
     #if OS_WIN
@@ -952,12 +1295,20 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     #endif
     private static cef_string_userfree_utf16_t Bridge_GetCompleteUrl(_cef_domdocument_t* self, _cef_string_utf16_t* arg0)
     {
-        var _m = GetManaged<CefDomdocument>(self);
+        try
+        {
+            var _m = GetManaged<CefDomdocument>(self);
 
-        var _a0 = CefStringRef.ToString(arg0);
-        var _result = _m.GetCompleteUrl(_a0);
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetCompleteUrl(_a0);
 
-        return _result;
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
     }
 }
 #endif
