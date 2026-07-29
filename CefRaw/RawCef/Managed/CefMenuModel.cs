@@ -438,7 +438,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.AddItem(_a0, _a1);
 
         return _result;
@@ -454,7 +454,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.AddCheckItem(_a0, _a1);
 
         return _result;
@@ -470,7 +470,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _result = _m.AddRadioItem(_a0, _a1, _a2);
 
@@ -487,7 +487,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.AddSubMenu(_a0, _a1);
 
         return _result != null ? _result.NativePtr : null;
@@ -519,7 +519,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         var _a0 = arg0;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _result = _m.InsertItemAt(_a0, _a1, _a2);
 
         return _result;
@@ -536,7 +536,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         var _a0 = arg0;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _result = _m.InsertCheckItemAt(_a0, _a1, _a2);
 
         return _result;
@@ -553,7 +553,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         var _a0 = arg0;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3;
         var _result = _m.InsertRadioItemAt(_a0, _a1, _a2, _a3);
 
@@ -571,7 +571,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         var _a0 = arg0;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _result = _m.InsertSubMenuAt(_a0, _a1, _a2);
 
         return _result != null ? _result.NativePtr : null;
@@ -693,7 +693,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetLabel(_a0, _a1);
 
         return _result;
@@ -709,7 +709,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetLabelAt(_a0, _a1);
 
         return _result;
@@ -1237,7 +1237,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetFontList(_a0, _a1);
 
         return _result;
@@ -1253,7 +1253,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetFontListAt(_a0, _a1);
 
         return _result;
@@ -1700,7 +1700,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.AddItem(_a0, _a1);
 
         return _result;
@@ -1716,7 +1716,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.AddCheckItem(_a0, _a1);
 
         return _result;
@@ -1732,7 +1732,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _result = _m.AddRadioItem(_a0, _a1, _a2);
 
@@ -1749,7 +1749,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.AddSubMenu(_a0, _a1);
 
         return _result != null ? _result.NativePtr : null;
@@ -1781,7 +1781,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         var _a0 = arg0;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _result = _m.InsertItemAt(_a0, _a1, _a2);
 
         return _result;
@@ -1798,7 +1798,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         var _a0 = arg0;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _result = _m.InsertCheckItemAt(_a0, _a1, _a2);
 
         return _result;
@@ -1815,7 +1815,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         var _a0 = arg0;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3;
         var _result = _m.InsertRadioItemAt(_a0, _a1, _a2, _a3);
 
@@ -1833,7 +1833,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         var _a0 = arg0;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _result = _m.InsertSubMenuAt(_a0, _a1, _a2);
 
         return _result != null ? _result.NativePtr : null;
@@ -1955,7 +1955,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetLabel(_a0, _a1);
 
         return _result;
@@ -1971,7 +1971,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetLabelAt(_a0, _a1);
 
         return _result;
@@ -2499,7 +2499,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetFontList(_a0, _a1);
 
         return _result;
@@ -2515,7 +2515,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetFontListAt(_a0, _a1);
 
         return _result;
@@ -2962,7 +2962,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.AddItem(_a0, _a1);
 
         return _result;
@@ -2978,7 +2978,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.AddCheckItem(_a0, _a1);
 
         return _result;
@@ -2994,7 +2994,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _result = _m.AddRadioItem(_a0, _a1, _a2);
 
@@ -3011,7 +3011,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.AddSubMenu(_a0, _a1);
 
         return _result != null ? _result.NativePtr : null;
@@ -3043,7 +3043,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         var _a0 = arg0;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _result = _m.InsertItemAt(_a0, _a1, _a2);
 
         return _result;
@@ -3060,7 +3060,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         var _a0 = arg0;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _result = _m.InsertCheckItemAt(_a0, _a1, _a2);
 
         return _result;
@@ -3077,7 +3077,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         var _a0 = arg0;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3;
         var _result = _m.InsertRadioItemAt(_a0, _a1, _a2, _a3);
 
@@ -3095,7 +3095,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         var _a0 = arg0;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _result = _m.InsertSubMenuAt(_a0, _a1, _a2);
 
         return _result != null ? _result.NativePtr : null;
@@ -3217,7 +3217,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetLabel(_a0, _a1);
 
         return _result;
@@ -3233,7 +3233,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetLabelAt(_a0, _a1);
 
         return _result;
@@ -3761,7 +3761,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetFontList(_a0, _a1);
 
         return _result;
@@ -3777,7 +3777,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _m = GetManaged<CefMenuModel>(self);
 
         var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetFontListAt(_a0, _a1);
 
         return _result;

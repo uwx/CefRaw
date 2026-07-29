@@ -270,8 +270,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2 != null ? new CefSchemeHandlerFactoryRef(arg2) : null;
         var _result = _m.RegisterSchemeHandlerFactory(_a0, _a1, _a2);
 
@@ -340,7 +340,7 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefResolveCallbackRef(arg1) : null;
         _m.ResolveHost(_a0, _a1);
     }
@@ -369,8 +369,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _result = _m.GetWebsiteSetting(_a0, _a1, _a2);
 
@@ -386,8 +386,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _a3 = arg3 != null ? new CefValueRef(arg3) : null;
         _m.SetWebsiteSetting(_a0, _a1, _a2, _a3);
@@ -402,8 +402,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _result = _m.GetContentSetting(_a0, _a1, _a2);
 
@@ -419,8 +419,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _a3 = arg3;
         _m.SetContentSetting(_a0, _a1, _a2, _a3);
@@ -783,8 +783,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2 != null ? new CefSchemeHandlerFactoryRef(arg2) : null;
         var _result = _m.RegisterSchemeHandlerFactory(_a0, _a1, _a2);
 
@@ -853,7 +853,7 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefResolveCallbackRef(arg1) : null;
         _m.ResolveHost(_a0, _a1);
     }
@@ -882,8 +882,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _result = _m.GetWebsiteSetting(_a0, _a1, _a2);
 
@@ -899,8 +899,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _a3 = arg3 != null ? new CefValueRef(arg3) : null;
         _m.SetWebsiteSetting(_a0, _a1, _a2, _a3);
@@ -915,8 +915,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _result = _m.GetContentSetting(_a0, _a1, _a2);
 
@@ -932,8 +932,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _a3 = arg3;
         _m.SetContentSetting(_a0, _a1, _a2, _a3);
@@ -1296,8 +1296,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2 != null ? new CefSchemeHandlerFactoryRef(arg2) : null;
         var _result = _m.RegisterSchemeHandlerFactory(_a0, _a1, _a2);
 
@@ -1366,7 +1366,7 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefResolveCallbackRef(arg1) : null;
         _m.ResolveHost(_a0, _a1);
     }
@@ -1395,8 +1395,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _result = _m.GetWebsiteSetting(_a0, _a1, _a2);
 
@@ -1412,8 +1412,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _a3 = arg3 != null ? new CefValueRef(arg3) : null;
         _m.SetWebsiteSetting(_a0, _a1, _a2, _a3);
@@ -1428,8 +1428,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _result = _m.GetContentSetting(_a0, _a1, _a2);
 
@@ -1445,8 +1445,8 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     {
         var _m = GetManaged<CefRequestContext>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _a3 = arg3;
         _m.SetContentSetting(_a0, _a1, _a2, _a3);

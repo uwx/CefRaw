@@ -90,7 +90,7 @@ public unsafe abstract partial class CefMediaRouter : CefBaseRefCounted, ICefMed
     {
         var _m = GetManaged<CefMediaRouter>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetSource(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -228,7 +228,7 @@ public unsafe abstract partial class CefMediaRouter : CefBaseRefCounted, ICefMed
     {
         var _m = GetManaged<CefMediaRouter>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetSource(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -366,7 +366,7 @@ public unsafe abstract partial class CefMediaRouter : CefBaseRefCounted, ICefMed
     {
         var _m = GetManaged<CefMediaRouter>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetSource(_a0);
 
         return _result != null ? _result.NativePtr : null;

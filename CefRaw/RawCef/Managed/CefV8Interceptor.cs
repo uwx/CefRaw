@@ -69,7 +69,7 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     {
         var _m = GetManaged<CefV8Interceptor>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         ICefV8Value? _out2 = null;
         if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
@@ -121,7 +121,7 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     {
         var _m = GetManaged<CefV8Interceptor>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
         string? _out3 = null;
@@ -232,7 +232,7 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     {
         var _m = GetManaged<CefV8Interceptor>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         ICefV8Value? _out2 = null;
         if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
@@ -284,7 +284,7 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     {
         var _m = GetManaged<CefV8Interceptor>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
         string? _out3 = null;
@@ -395,7 +395,7 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     {
         var _m = GetManaged<CefV8Interceptor>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         ICefV8Value? _out2 = null;
         if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
@@ -447,7 +447,7 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     {
         var _m = GetManaged<CefV8Interceptor>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
         string? _out3 = null;

@@ -51,7 +51,7 @@ public unsafe abstract partial class CefSchemeRegistrar : CefBaseScoped, ICefSch
     {
         var _m = GetManaged<CefSchemeRegistrar>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.AddCustomScheme(_a0, _a1);
 
@@ -112,7 +112,7 @@ public unsafe abstract partial class CefSchemeRegistrar : CefBaseScoped, ICefSch
     {
         var _m = GetManaged<CefSchemeRegistrar>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.AddCustomScheme(_a0, _a1);
 
@@ -173,7 +173,7 @@ public unsafe abstract partial class CefSchemeRegistrar : CefBaseScoped, ICefSch
     {
         var _m = GetManaged<CefSchemeRegistrar>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.AddCustomScheme(_a0, _a1);
 

@@ -75,7 +75,7 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     {
         var _m = GetManaged<CefApp>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefCommandLineRef(arg1) : null;
         _m.OnBeforeCommandLineProcessing(_a0, _a1);
     }
@@ -213,7 +213,7 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     {
         var _m = GetManaged<CefApp>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefCommandLineRef(arg1) : null;
         _m.OnBeforeCommandLineProcessing(_a0, _a1);
     }
@@ -351,7 +351,7 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
     {
         var _m = GetManaged<CefApp>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefCommandLineRef(arg1) : null;
         _m.OnBeforeCommandLineProcessing(_a0, _a1);
     }

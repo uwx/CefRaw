@@ -84,8 +84,8 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
         var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
-        var _a4 = CefStringRef.ToStringAndFree(arg4);
+        var _a3 = CefStringRef.ToString(arg3);
+        var _a4 = CefStringRef.ToString(arg4);
         var _a5 = arg5;
         var _a6 = arg6;
         var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;
@@ -267,8 +267,8 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
         var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
-        var _a4 = CefStringRef.ToStringAndFree(arg4);
+        var _a3 = CefStringRef.ToString(arg3);
+        var _a4 = CefStringRef.ToString(arg4);
         var _a5 = arg5;
         var _a6 = arg6;
         var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;
@@ -450,8 +450,8 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
         var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
-        var _a4 = CefStringRef.ToStringAndFree(arg4);
+        var _a3 = CefStringRef.ToString(arg3);
+        var _a4 = CefStringRef.ToString(arg4);
         var _a5 = arg5;
         var _a6 = arg6;
         var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;

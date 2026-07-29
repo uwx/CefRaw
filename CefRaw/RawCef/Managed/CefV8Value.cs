@@ -737,7 +737,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.HasValueBykey(_a0);
 
         return _result;
@@ -767,7 +767,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.DeleteValueBykey(_a0);
 
         return _result;
@@ -797,7 +797,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetValueBykey(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -827,7 +827,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _a2 = arg2;
         var _result = _m.SetValueBykey(_a0, _a1, _a2);
@@ -860,7 +860,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.SetValueByaccessor(_a0, _a1);
 
@@ -1101,7 +1101,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.RejectPromise(_a0);
 
         return _result;
@@ -1847,7 +1847,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.HasValueBykey(_a0);
 
         return _result;
@@ -1877,7 +1877,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.DeleteValueBykey(_a0);
 
         return _result;
@@ -1907,7 +1907,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetValueBykey(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -1937,7 +1937,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _a2 = arg2;
         var _result = _m.SetValueBykey(_a0, _a1, _a2);
@@ -1970,7 +1970,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.SetValueByaccessor(_a0, _a1);
 
@@ -2211,7 +2211,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.RejectPromise(_a0);
 
         return _result;
@@ -2957,7 +2957,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.HasValueBykey(_a0);
 
         return _result;
@@ -2987,7 +2987,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.DeleteValueBykey(_a0);
 
         return _result;
@@ -3017,7 +3017,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetValueBykey(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -3047,7 +3047,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _a2 = arg2;
         var _result = _m.SetValueBykey(_a0, _a1, _a2);
@@ -3080,7 +3080,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.SetValueByaccessor(_a0, _a1);
 
@@ -3321,7 +3321,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.RejectPromise(_a0);
 
         return _result;

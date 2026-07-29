@@ -344,7 +344,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
     {
         var _m = GetManaged<CefFrame>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.LoadUrl(_a0);
     }
 
@@ -357,8 +357,8 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
     {
         var _m = GetManaged<CefFrame>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         _m.ExecuteJavaScript(_a0, _a1, _a2);
     }
@@ -865,7 +865,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
     {
         var _m = GetManaged<CefFrame>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.LoadUrl(_a0);
     }
 
@@ -878,8 +878,8 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
     {
         var _m = GetManaged<CefFrame>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         _m.ExecuteJavaScript(_a0, _a1, _a2);
     }
@@ -1386,7 +1386,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
     {
         var _m = GetManaged<CefFrame>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.LoadUrl(_a0);
     }
 
@@ -1399,8 +1399,8 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
     {
         var _m = GetManaged<CefFrame>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         _m.ExecuteJavaScript(_a0, _a1, _a2);
     }

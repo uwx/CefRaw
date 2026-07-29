@@ -51,7 +51,7 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
     {
         var _m = GetManaged<CefV8Handler>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _count2 = (int)arg2;
         var _span2 = new ICefV8Value?[_count2];
@@ -126,7 +126,7 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
     {
         var _m = GetManaged<CefV8Handler>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _count2 = (int)arg2;
         var _span2 = new ICefV8Value?[_count2];
@@ -201,7 +201,7 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
     {
         var _m = GetManaged<CefV8Handler>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _count2 = (int)arg2;
         var _span2 = new ICefV8Value?[_count2];

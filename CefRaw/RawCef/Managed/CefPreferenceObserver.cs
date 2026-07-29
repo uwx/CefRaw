@@ -51,7 +51,7 @@ public unsafe abstract partial class CefPreferenceObserver : CefBaseRefCounted, 
     {
         var _m = GetManaged<CefPreferenceObserver>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.OnPreferenceChanged(_a0);
     }
 }
@@ -109,7 +109,7 @@ public unsafe abstract partial class CefPreferenceObserver : CefBaseRefCounted, 
     {
         var _m = GetManaged<CefPreferenceObserver>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.OnPreferenceChanged(_a0);
     }
 }
@@ -167,7 +167,7 @@ public unsafe abstract partial class CefPreferenceObserver : CefBaseRefCounted, 
     {
         var _m = GetManaged<CefPreferenceObserver>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.OnPreferenceChanged(_a0);
     }
 }

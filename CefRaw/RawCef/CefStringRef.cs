@@ -51,6 +51,21 @@ public static unsafe class CefStringRef
     }
 
     /// <summary>
+    /// Creates a managed <see cref="string"/> from a CEF string pointer
+    /// WITHOUT freeing the native allocation. Use this for <c>const</c>
+    /// callback parameters where CEF retains ownership.
+    /// </summary>
+    public static string? ToString(_cef_string_utf16_t* str)
+    {
+        if (str is null)
+            return null;
+
+        return str->str is not null
+            ? new string((char*)str->str, 0, (int)str->length)
+            : string.Empty;
+    }
+
+    /// <summary>
     /// Allocates a CEF userfree string from a managed <see cref="string"/>.
     /// The returned pointer transfers ownership to the caller (or to CEF),
     /// who must free it via <c>cef_string_userfree_free</c>.

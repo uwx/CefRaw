@@ -127,8 +127,8 @@ public unsafe abstract partial class CefPrintHandler : CefBaseRefCounted, ICefPr
         var _m = GetManaged<CefPrintHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a1 = CefStringRef.ToString(arg1);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3 != null ? new CefPrintJobCallbackRef(arg3) : null;
         var _result = _m.OnPrintJob(_a0, _a1, _a2, _a3);
 
@@ -294,8 +294,8 @@ public unsafe abstract partial class CefPrintHandler : CefBaseRefCounted, ICefPr
         var _m = GetManaged<CefPrintHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a1 = CefStringRef.ToString(arg1);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3 != null ? new CefPrintJobCallbackRef(arg3) : null;
         var _result = _m.OnPrintJob(_a0, _a1, _a2, _a3);
 
@@ -461,8 +461,8 @@ public unsafe abstract partial class CefPrintHandler : CefBaseRefCounted, ICefPr
         var _m = GetManaged<CefPrintHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a1 = CefStringRef.ToString(arg1);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3 != null ? new CefPrintJobCallbackRef(arg3) : null;
         var _result = _m.OnPrintJob(_a0, _a1, _a2, _a3);
 

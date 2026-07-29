@@ -53,8 +53,8 @@ public unsafe abstract partial class CefDialogHandler : CefBaseRefCounted, ICefD
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
+        var _a2 = CefStringRef.ToString(arg2);
+        var _a3 = CefStringRef.ToString(arg3);
         var _a4 = arg4 != null ? new CefStringListRef(arg4) : null;
         var _a5 = arg5 != null ? new CefStringListRef(arg5) : null;
         var _a6 = arg6 != null ? new CefStringListRef(arg6) : null;
@@ -120,8 +120,8 @@ public unsafe abstract partial class CefDialogHandler : CefBaseRefCounted, ICefD
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
+        var _a2 = CefStringRef.ToString(arg2);
+        var _a3 = CefStringRef.ToString(arg3);
         var _a4 = arg4 != null ? new CefStringListRef(arg4) : null;
         var _a5 = arg5 != null ? new CefStringListRef(arg5) : null;
         var _a6 = arg6 != null ? new CefStringListRef(arg6) : null;
@@ -187,8 +187,8 @@ public unsafe abstract partial class CefDialogHandler : CefBaseRefCounted, ICefD
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
+        var _a2 = CefStringRef.ToString(arg2);
+        var _a3 = CefStringRef.ToString(arg3);
         var _a4 = arg4 != null ? new CefStringListRef(arg4) : null;
         var _a5 = arg5 != null ? new CefStringListRef(arg5) : null;
         var _a6 = arg6 != null ? new CefStringListRef(arg6) : null;

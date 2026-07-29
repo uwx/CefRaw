@@ -51,7 +51,7 @@ public unsafe abstract partial class CefPdfPrintCallback : CefBaseRefCounted, IC
     {
         var _m = GetManaged<CefPdfPrintCallback>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         _m.OnPdfPrintFinished(_a0, _a1);
     }
@@ -110,7 +110,7 @@ public unsafe abstract partial class CefPdfPrintCallback : CefBaseRefCounted, IC
     {
         var _m = GetManaged<CefPdfPrintCallback>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         _m.OnPdfPrintFinished(_a0, _a1);
     }
@@ -169,7 +169,7 @@ public unsafe abstract partial class CefPdfPrintCallback : CefBaseRefCounted, IC
     {
         var _m = GetManaged<CefPdfPrintCallback>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         _m.OnPdfPrintFinished(_a0, _a1);
     }

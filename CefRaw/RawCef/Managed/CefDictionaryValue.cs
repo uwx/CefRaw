@@ -334,7 +334,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.HasKey(_a0);
 
         return _result;
@@ -364,7 +364,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.Remove(_a0);
 
         return _result;
@@ -379,7 +379,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetType(_a0);
 
         return _result;
@@ -394,7 +394,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetValue(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -409,7 +409,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetBool(_a0);
 
         return _result;
@@ -424,7 +424,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetInt(_a0);
 
         return _result;
@@ -439,7 +439,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetDouble(_a0);
 
         return _result;
@@ -454,7 +454,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetString(_a0);
 
         return _result;
@@ -469,7 +469,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetBinary(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -484,7 +484,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetDictionary(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -499,7 +499,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetList(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -514,7 +514,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
         var _result = _m.SetValue(_a0, _a1);
 
@@ -530,7 +530,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.SetNull(_a0);
 
         return _result;
@@ -545,7 +545,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.SetBool(_a0, _a1);
 
@@ -561,7 +561,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.SetInt(_a0, _a1);
 
@@ -577,7 +577,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.SetDouble(_a0, _a1);
 
@@ -593,8 +593,8 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetString(_a0, _a1);
 
         return _result;
@@ -609,7 +609,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefBinaryValueRef(arg1) : null;
         var _result = _m.SetBinary(_a0, _a1);
 
@@ -625,7 +625,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefDictionaryValueRef(arg1) : null;
         var _result = _m.SetDictionary(_a0, _a1);
 
@@ -641,7 +641,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefListValueRef(arg1) : null;
         var _result = _m.SetList(_a0, _a1);
 
@@ -985,7 +985,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.HasKey(_a0);
 
         return _result;
@@ -1015,7 +1015,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.Remove(_a0);
 
         return _result;
@@ -1030,7 +1030,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetType(_a0);
 
         return _result;
@@ -1045,7 +1045,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetValue(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -1060,7 +1060,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetBool(_a0);
 
         return _result;
@@ -1075,7 +1075,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetInt(_a0);
 
         return _result;
@@ -1090,7 +1090,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetDouble(_a0);
 
         return _result;
@@ -1105,7 +1105,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetString(_a0);
 
         return _result;
@@ -1120,7 +1120,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetBinary(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -1135,7 +1135,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetDictionary(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -1150,7 +1150,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetList(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -1165,7 +1165,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
         var _result = _m.SetValue(_a0, _a1);
 
@@ -1181,7 +1181,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.SetNull(_a0);
 
         return _result;
@@ -1196,7 +1196,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.SetBool(_a0, _a1);
 
@@ -1212,7 +1212,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.SetInt(_a0, _a1);
 
@@ -1228,7 +1228,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.SetDouble(_a0, _a1);
 
@@ -1244,8 +1244,8 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetString(_a0, _a1);
 
         return _result;
@@ -1260,7 +1260,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefBinaryValueRef(arg1) : null;
         var _result = _m.SetBinary(_a0, _a1);
 
@@ -1276,7 +1276,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefDictionaryValueRef(arg1) : null;
         var _result = _m.SetDictionary(_a0, _a1);
 
@@ -1292,7 +1292,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefListValueRef(arg1) : null;
         var _result = _m.SetList(_a0, _a1);
 
@@ -1636,7 +1636,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.HasKey(_a0);
 
         return _result;
@@ -1666,7 +1666,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.Remove(_a0);
 
         return _result;
@@ -1681,7 +1681,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetType(_a0);
 
         return _result;
@@ -1696,7 +1696,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetValue(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -1711,7 +1711,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetBool(_a0);
 
         return _result;
@@ -1726,7 +1726,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetInt(_a0);
 
         return _result;
@@ -1741,7 +1741,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetDouble(_a0);
 
         return _result;
@@ -1756,7 +1756,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetString(_a0);
 
         return _result;
@@ -1771,7 +1771,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetBinary(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -1786,7 +1786,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetDictionary(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -1801,7 +1801,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.GetList(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -1816,7 +1816,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
         var _result = _m.SetValue(_a0, _a1);
 
@@ -1832,7 +1832,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _result = _m.SetNull(_a0);
 
         return _result;
@@ -1847,7 +1847,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.SetBool(_a0, _a1);
 
@@ -1863,7 +1863,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.SetInt(_a0, _a1);
 
@@ -1879,7 +1879,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1;
         var _result = _m.SetDouble(_a0, _a1);
 
@@ -1895,8 +1895,8 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.SetString(_a0, _a1);
 
         return _result;
@@ -1911,7 +1911,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefBinaryValueRef(arg1) : null;
         var _result = _m.SetBinary(_a0, _a1);
 
@@ -1927,7 +1927,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefDictionaryValueRef(arg1) : null;
         var _result = _m.SetDictionary(_a0, _a1);
 
@@ -1943,7 +1943,7 @@ public unsafe abstract partial class CefDictionaryValue : CefBaseRefCounted, ICe
     {
         var _m = GetManaged<CefDictionaryValue>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         var _a1 = arg1 != null ? new CefListValueRef(arg1) : null;
         var _result = _m.SetList(_a0, _a1);
 

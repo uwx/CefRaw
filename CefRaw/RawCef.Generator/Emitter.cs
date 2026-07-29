@@ -686,7 +686,7 @@ internal static class Emitter
 
                 if (kind == TypeMapper.ParamKind.InputString)
                 {
-                    sb.AppendLine($"var _a{managedIdx} = CefStringRef.ToStringAndFree(arg{argIdx});");
+                    sb.AppendLine($"var _a{managedIdx} = CefStringRef.ToString(arg{argIdx});");
                     managedArgs.Add($"_a{managedIdx}");
                 }
                 else if (kind == TypeMapper.ParamKind.InputArray)

@@ -132,7 +132,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3;
         var _a4 = arg4;
         var _result = _m.OnOpenUrlfromTab(_a0, _a1, _a2, _a3, _a4);
@@ -154,7 +154,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
         var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
         var _a3 = arg3;
         var _a4 = arg4;
-        var _a5 = CefStringRef.ToStringAndFree(arg5);
+        var _a5 = CefStringRef.ToString(arg5);
         var _a6 = arg6;
         var _result = _m.GetResourceRequestHandler(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
 
@@ -171,12 +171,12 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
         var _m = GetManaged<CefRequestHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
+        var _a3 = CefStringRef.ToString(arg3);
         var _a4 = arg4;
-        var _a5 = CefStringRef.ToStringAndFree(arg5);
-        var _a6 = CefStringRef.ToStringAndFree(arg6);
+        var _a5 = CefStringRef.ToString(arg5);
+        var _a6 = CefStringRef.ToString(arg6);
         var _a7 = arg7 != null ? new CefAuthCallbackRef(arg7) : null;
         var _result = _m.GetAuthCredentials(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7);
 
@@ -194,7 +194,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3 != null ? new CefSslinfoRef(arg3) : null;
         var _a4 = arg4 != null ? new CefCallbackRef(arg4) : null;
         var _result = _m.OnCertificateError(_a0, _a1, _a2, _a3, _a4);
@@ -213,7 +213,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3;
         var _count4 = (int)arg4;
         var _span4 = new ICefX509Certificate?[_count4];
@@ -279,7 +279,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
         var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
+        var _a3 = CefStringRef.ToString(arg3);
         _m.OnRenderProcessTerminated(_a0, _a1, _a2, _a3);
     }
 
@@ -431,7 +431,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3;
         var _a4 = arg4;
         var _result = _m.OnOpenUrlfromTab(_a0, _a1, _a2, _a3, _a4);
@@ -453,7 +453,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
         var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
         var _a3 = arg3;
         var _a4 = arg4;
-        var _a5 = CefStringRef.ToStringAndFree(arg5);
+        var _a5 = CefStringRef.ToString(arg5);
         var _a6 = arg6;
         var _result = _m.GetResourceRequestHandler(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
 
@@ -470,12 +470,12 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
         var _m = GetManaged<CefRequestHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
+        var _a3 = CefStringRef.ToString(arg3);
         var _a4 = arg4;
-        var _a5 = CefStringRef.ToStringAndFree(arg5);
-        var _a6 = CefStringRef.ToStringAndFree(arg6);
+        var _a5 = CefStringRef.ToString(arg5);
+        var _a6 = CefStringRef.ToString(arg6);
         var _a7 = arg7 != null ? new CefAuthCallbackRef(arg7) : null;
         var _result = _m.GetAuthCredentials(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7);
 
@@ -493,7 +493,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3 != null ? new CefSslinfoRef(arg3) : null;
         var _a4 = arg4 != null ? new CefCallbackRef(arg4) : null;
         var _result = _m.OnCertificateError(_a0, _a1, _a2, _a3, _a4);
@@ -512,7 +512,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3;
         var _count4 = (int)arg4;
         var _span4 = new ICefX509Certificate?[_count4];
@@ -578,7 +578,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
         var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
+        var _a3 = CefStringRef.ToString(arg3);
         _m.OnRenderProcessTerminated(_a0, _a1, _a2, _a3);
     }
 
@@ -730,7 +730,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3;
         var _a4 = arg4;
         var _result = _m.OnOpenUrlfromTab(_a0, _a1, _a2, _a3, _a4);
@@ -752,7 +752,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
         var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
         var _a3 = arg3;
         var _a4 = arg4;
-        var _a5 = CefStringRef.ToStringAndFree(arg5);
+        var _a5 = CefStringRef.ToString(arg5);
         var _a6 = arg6;
         var _result = _m.GetResourceRequestHandler(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
 
@@ -769,12 +769,12 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
         var _m = GetManaged<CefRequestHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
+        var _a3 = CefStringRef.ToString(arg3);
         var _a4 = arg4;
-        var _a5 = CefStringRef.ToStringAndFree(arg5);
-        var _a6 = CefStringRef.ToStringAndFree(arg6);
+        var _a5 = CefStringRef.ToString(arg5);
+        var _a6 = CefStringRef.ToString(arg6);
         var _a7 = arg7 != null ? new CefAuthCallbackRef(arg7) : null;
         var _result = _m.GetAuthCredentials(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7);
 
@@ -792,7 +792,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3 != null ? new CefSslinfoRef(arg3) : null;
         var _a4 = arg4 != null ? new CefCallbackRef(arg4) : null;
         var _result = _m.OnCertificateError(_a0, _a1, _a2, _a3, _a4);
@@ -811,7 +811,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a2 = CefStringRef.ToString(arg2);
         var _a3 = arg3;
         var _count4 = (int)arg4;
         var _span4 = new ICefX509Certificate?[_count4];
@@ -877,7 +877,7 @@ public unsafe abstract partial class CefRequestHandler : CefBaseRefCounted, ICef
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
         var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
+        var _a3 = CefStringRef.ToString(arg3);
         _m.OnRenderProcessTerminated(_a0, _a1, _a2, _a3);
     }
 

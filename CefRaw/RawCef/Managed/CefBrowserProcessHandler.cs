@@ -127,7 +127,7 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
         var _m = GetManaged<CefBrowserProcessHandler>(self);
 
         var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.OnAlreadyRunningAppRelaunch(_a0, _a1);
 
         return _result;
@@ -304,7 +304,7 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
         var _m = GetManaged<CefBrowserProcessHandler>(self);
 
         var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.OnAlreadyRunningAppRelaunch(_a0, _a1);
 
         return _result;
@@ -481,7 +481,7 @@ public unsafe abstract partial class CefBrowserProcessHandler : CefBaseRefCounte
         var _m = GetManaged<CefBrowserProcessHandler>(self);
 
         var _a0 = arg0 != null ? new CefCommandLineRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _result = _m.OnAlreadyRunningAppRelaunch(_a0, _a1);
 
         return _result;

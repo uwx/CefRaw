@@ -57,8 +57,8 @@ public unsafe abstract partial class CefAuthCallback : CefBaseRefCounted, ICefAu
     {
         var _m = GetManaged<CefAuthCallback>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         _m.Cont(_a0, _a1);
     }
 
@@ -134,8 +134,8 @@ public unsafe abstract partial class CefAuthCallback : CefBaseRefCounted, ICefAu
     {
         var _m = GetManaged<CefAuthCallback>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         _m.Cont(_a0, _a1);
     }
 
@@ -211,8 +211,8 @@ public unsafe abstract partial class CefAuthCallback : CefBaseRefCounted, ICefAu
     {
         var _m = GetManaged<CefAuthCallback>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         _m.Cont(_a0, _a1);
     }
 

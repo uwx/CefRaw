@@ -75,7 +75,7 @@ public unsafe abstract partial class CefRequestContextHandler : CefBaseRefCounte
         var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
         var _a3 = arg3;
         var _a4 = arg4;
-        var _a5 = CefStringRef.ToStringAndFree(arg5);
+        var _a5 = CefStringRef.ToString(arg5);
         var _a6 = arg6;
         var _result = _m.GetResourceRequestHandler(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
 
@@ -160,7 +160,7 @@ public unsafe abstract partial class CefRequestContextHandler : CefBaseRefCounte
         var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
         var _a3 = arg3;
         var _a4 = arg4;
-        var _a5 = CefStringRef.ToStringAndFree(arg5);
+        var _a5 = CefStringRef.ToString(arg5);
         var _a6 = arg6;
         var _result = _m.GetResourceRequestHandler(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
 
@@ -245,7 +245,7 @@ public unsafe abstract partial class CefRequestContextHandler : CefBaseRefCounte
         var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
         var _a3 = arg3;
         var _a4 = arg4;
-        var _a5 = CefStringRef.ToStringAndFree(arg5);
+        var _a5 = CefStringRef.ToString(arg5);
         var _a6 = arg6;
         var _result = _m.GetResourceRequestHandler(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
 

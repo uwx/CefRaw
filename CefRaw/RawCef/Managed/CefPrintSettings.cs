@@ -247,7 +247,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     {
         var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetDeviceName(_a0);
     }
 
@@ -719,7 +719,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     {
         var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetDeviceName(_a0);
     }
 
@@ -1191,7 +1191,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     {
         var _m = GetManaged<CefPrintSettings>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetDeviceName(_a0);
     }
 

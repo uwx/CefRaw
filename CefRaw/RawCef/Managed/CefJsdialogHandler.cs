@@ -70,10 +70,10 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
         var _m = GetManaged<CefJsdialogHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
-        var _a4 = CefStringRef.ToStringAndFree(arg4);
+        var _a3 = CefStringRef.ToString(arg3);
+        var _a4 = CefStringRef.ToString(arg4);
         var _a5 = arg5 != null ? new CefJsdialogCallbackRef(arg5) : null;
         var _a6 = arg6;
         var _result = _m.OnJsdialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
@@ -91,7 +91,7 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
         var _m = GetManaged<CefJsdialogHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _a3 = arg3 != null ? new CefJsdialogCallbackRef(arg3) : null;
         var _result = _m.OnBeforeUnloadDialog(_a0, _a1, _a2, _a3);
@@ -198,10 +198,10 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
         var _m = GetManaged<CefJsdialogHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
-        var _a4 = CefStringRef.ToStringAndFree(arg4);
+        var _a3 = CefStringRef.ToString(arg3);
+        var _a4 = CefStringRef.ToString(arg4);
         var _a5 = arg5 != null ? new CefJsdialogCallbackRef(arg5) : null;
         var _a6 = arg6;
         var _result = _m.OnJsdialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
@@ -219,7 +219,7 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
         var _m = GetManaged<CefJsdialogHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _a3 = arg3 != null ? new CefJsdialogCallbackRef(arg3) : null;
         var _result = _m.OnBeforeUnloadDialog(_a0, _a1, _a2, _a3);
@@ -326,10 +326,10 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
         var _m = GetManaged<CefJsdialogHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
-        var _a4 = CefStringRef.ToStringAndFree(arg4);
+        var _a3 = CefStringRef.ToString(arg3);
+        var _a4 = CefStringRef.ToString(arg4);
         var _a5 = arg5 != null ? new CefJsdialogCallbackRef(arg5) : null;
         var _a6 = arg6;
         var _result = _m.OnJsdialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
@@ -347,7 +347,7 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
         var _m = GetManaged<CefJsdialogHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         var _a3 = arg3 != null ? new CefJsdialogCallbackRef(arg3) : null;
         var _result = _m.OnBeforeUnloadDialog(_a0, _a1, _a2, _a3);

@@ -420,7 +420,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetLinkUrl(_a0);
     }
 
@@ -433,7 +433,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetLinkTitle(_a0);
     }
 
@@ -446,7 +446,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetLinkMetadata(_a0);
     }
 
@@ -459,7 +459,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetFragmentText(_a0);
     }
 
@@ -472,7 +472,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetFragmentHtml(_a0);
     }
 
@@ -485,7 +485,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetFragmentBaseUrl(_a0);
     }
 
@@ -510,8 +510,8 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         _m.AddFile(_a0, _a1);
     }
 
@@ -992,7 +992,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetLinkUrl(_a0);
     }
 
@@ -1005,7 +1005,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetLinkTitle(_a0);
     }
 
@@ -1018,7 +1018,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetLinkMetadata(_a0);
     }
 
@@ -1031,7 +1031,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetFragmentText(_a0);
     }
 
@@ -1044,7 +1044,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetFragmentHtml(_a0);
     }
 
@@ -1057,7 +1057,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetFragmentBaseUrl(_a0);
     }
 
@@ -1082,8 +1082,8 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         _m.AddFile(_a0, _a1);
     }
 
@@ -1564,7 +1564,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetLinkUrl(_a0);
     }
 
@@ -1577,7 +1577,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetLinkTitle(_a0);
     }
 
@@ -1590,7 +1590,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetLinkMetadata(_a0);
     }
 
@@ -1603,7 +1603,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetFragmentText(_a0);
     }
 
@@ -1616,7 +1616,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetFragmentHtml(_a0);
     }
 
@@ -1629,7 +1629,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a0 = CefStringRef.ToString(arg0);
         _m.SetFragmentBaseUrl(_a0);
     }
 
@@ -1654,8 +1654,8 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         _m.AddFile(_a0, _a1);
     }
 

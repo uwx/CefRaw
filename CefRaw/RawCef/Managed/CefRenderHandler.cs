@@ -384,7 +384,7 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
         var _m = GetManaged<CefRenderHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2 != null ? new CefRangeRef(arg2) : null;
         _m.OnTextSelectionChanged(_a0, _a1, _a2);
     }
@@ -790,7 +790,7 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
         var _m = GetManaged<CefRenderHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2 != null ? new CefRangeRef(arg2) : null;
         _m.OnTextSelectionChanged(_a0, _a1, _a2);
     }
@@ -1196,7 +1196,7 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
         var _m = GetManaged<CefRenderHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2 != null ? new CefRangeRef(arg2) : null;
         _m.OnTextSelectionChanged(_a0, _a1, _a2);
     }

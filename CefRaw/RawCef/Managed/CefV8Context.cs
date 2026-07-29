@@ -212,8 +212,8 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     {
         var _m = GetManaged<CefV8Context>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         ICefV8Value? _out3 = null;
         if (arg3 != null && *arg3 != null) _out3 = new CefV8ValueRef(*arg3);
@@ -441,8 +441,8 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     {
         var _m = GetManaged<CefV8Context>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         ICefV8Value? _out3 = null;
         if (arg3 != null && *arg3 != null) _out3 = new CefV8ValueRef(*arg3);
@@ -670,8 +670,8 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
     {
         var _m = GetManaged<CefV8Context>(self);
 
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a0 = CefStringRef.ToString(arg0);
+        var _a1 = CefStringRef.ToString(arg1);
         var _a2 = arg2;
         ICefV8Value? _out3 = null;
         if (arg3 != null && *arg3 != null) _out3 = new CefV8ValueRef(*arg3);

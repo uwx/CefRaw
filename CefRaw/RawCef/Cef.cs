@@ -36,11 +36,12 @@ public static unsafe class Cef
     /// call — one for <see cref="ExecuteSubProcess"/> and one for
     /// <see cref="Initialize"/>.
     /// </remarks>
-    public static int ExecuteSubProcess(CefApp? app = null)
+    public static int ExecuteSubProcess(CefApp app)
     {
         _cef_main_args_t mainArgs = BuildMainArgs();
-        _cef_app_t* appPtr = app is not null ? ((ICefApp)app).NativePtr : null;
-        var result = CefUnsafe.ExecuteProcess(&mainArgs, appPtr, null);
+        var result = CefUnsafe.ExecuteProcess(&mainArgs, ((ICefApp)app).NativePtr, null);
+        if (result >= 0)
+            app.Release(); // cef_execute_process consumed its reference
         return result;
     }
 
