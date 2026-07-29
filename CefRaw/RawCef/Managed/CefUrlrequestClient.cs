@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_urlrequest_client_t</code> type.
+/// </summary>
+public unsafe partial interface ICefUrlrequestClient
+{
+    public _cef_urlrequest_client_t* NativePtr { get; }
+}
+
 public unsafe partial class CefUrlrequestClient
 {
     private readonly _cef_urlrequest_client_t* _ptr;
@@ -17,5 +25,5 @@ public unsafe partial class CefUrlrequestClient
 
     partial void Initialize();
 
-    internal _cef_urlrequest_client_t* NativePtr => _ptr;
+    public _cef_urlrequest_client_t* NativePtr => _ptr;
 }

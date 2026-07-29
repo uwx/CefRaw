@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_cursor_info_t</code> type.
+/// </summary>
+public unsafe partial interface ICefCursorInfo
+{
+    public _cef_cursor_info_t* NativePtr { get; }
+}
+
 public unsafe partial class CefCursorInfo
 {
     private readonly _cef_cursor_info_t* _ptr;
@@ -17,29 +25,29 @@ public unsafe partial class CefCursorInfo
 
     partial void Initialize();
 
-    internal _cef_cursor_info_t* NativePtr => _ptr;
+    public _cef_cursor_info_t* NativePtr => _ptr;
 
-        public _cef_point_t Hotspot
-        {
-            get => _ptr->hotspot;
-            set => _ptr->hotspot = value;
-        }
+    public _cef_point_t Hotspot
+    {
+        get => _ptr->hotspot;
+        set => _ptr->hotspot = value;
+    }
 
-        public float ImageScaleFactor
-        {
-            get => _ptr->image_scale_factor;
-            set => _ptr->image_scale_factor = value;
-        }
+    public float ImageScaleFactor
+    {
+        get => _ptr->image_scale_factor;
+        set => _ptr->image_scale_factor = value;
+    }
 
-        public void* Buffer
-        {
-            get => _ptr->buffer;
-            set => _ptr->buffer = value;
-        }
+    public void* Buffer
+    {
+        get => _ptr->buffer;
+        set => _ptr->buffer = value;
+    }
 
-        public _cef_size_t Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public _cef_size_t Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 }

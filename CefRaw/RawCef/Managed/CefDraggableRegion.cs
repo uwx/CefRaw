@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_draggable_region_t</code> type.
+/// </summary>
+public unsafe partial interface ICefDraggableRegion
+{
+    public _cef_draggable_region_t* NativePtr { get; }
+}
+
 public unsafe partial class CefDraggableRegion
 {
     private readonly _cef_draggable_region_t* _ptr;
@@ -17,17 +25,17 @@ public unsafe partial class CefDraggableRegion
 
     partial void Initialize();
 
-    internal _cef_draggable_region_t* NativePtr => _ptr;
+    public _cef_draggable_region_t* NativePtr => _ptr;
 
-        public _cef_rect_t Bounds
-        {
-            get => _ptr->bounds;
-            set => _ptr->bounds = value;
-        }
+    public _cef_rect_t Bounds
+    {
+        get => _ptr->bounds;
+        set => _ptr->bounds = value;
+    }
 
-        public int Draggable
-        {
-            get => _ptr->draggable;
-            set => _ptr->draggable = value;
-        }
+    public int Draggable
+    {
+        get => _ptr->draggable;
+        set => _ptr->draggable = value;
+    }
 }

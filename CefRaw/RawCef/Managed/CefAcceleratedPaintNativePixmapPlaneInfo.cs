@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_accelerated_paint_native_pixmap_plane_info_t</code> type.
+/// </summary>
+public unsafe partial interface ICefAcceleratedPaintNativePixmapPlaneInfo
+{
+    public _cef_accelerated_paint_native_pixmap_plane_info_t* NativePtr { get; }
+}
+
 public unsafe partial class CefAcceleratedPaintNativePixmapPlaneInfo
 {
     private readonly _cef_accelerated_paint_native_pixmap_plane_info_t* _ptr;
@@ -17,29 +25,29 @@ public unsafe partial class CefAcceleratedPaintNativePixmapPlaneInfo
 
     partial void Initialize();
 
-    internal _cef_accelerated_paint_native_pixmap_plane_info_t* NativePtr => _ptr;
+    public _cef_accelerated_paint_native_pixmap_plane_info_t* NativePtr => _ptr;
 
-        public uint Stride
-        {
-            get => _ptr->stride;
-            set => _ptr->stride = value;
-        }
+    public uint Stride
+    {
+        get => _ptr->stride;
+        set => _ptr->stride = value;
+    }
 
-        public ulong Offset
-        {
-            get => _ptr->offset;
-            set => _ptr->offset = value;
-        }
+    public ulong Offset
+    {
+        get => _ptr->offset;
+        set => _ptr->offset = value;
+    }
 
-        public ulong Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public ulong Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 
-        public int Fd
-        {
-            get => _ptr->fd;
-            set => _ptr->fd = value;
-        }
+    public int Fd
+    {
+        get => _ptr->fd;
+        set => _ptr->fd = value;
+    }
 }

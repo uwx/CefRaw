@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_range_t</code> type.
+/// </summary>
+public unsafe partial interface ICefRange
+{
+    public _cef_range_t* NativePtr { get; }
+}
+
 public unsafe partial class CefRange
 {
     private readonly _cef_range_t* _ptr;
@@ -17,17 +25,17 @@ public unsafe partial class CefRange
 
     partial void Initialize();
 
-    internal _cef_range_t* NativePtr => _ptr;
+    public _cef_range_t* NativePtr => _ptr;
 
-        public uint From
-        {
-            get => _ptr->from;
-            set => _ptr->from = value;
-        }
+    public uint From
+    {
+        get => _ptr->from;
+        set => _ptr->from = value;
+    }
 
-        public uint To
-        {
-            get => _ptr->to;
-            set => _ptr->to = value;
-        }
+    public uint To
+    {
+        get => _ptr->to;
+        set => _ptr->to = value;
+    }
 }

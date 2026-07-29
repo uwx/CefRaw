@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_pdf_print_settings_t</code> type.
+/// </summary>
+public unsafe partial interface ICefPdfPrintSettings
+{
+    public _cef_pdf_print_settings_t* NativePtr { get; }
+}
+
 public unsafe partial class CefPdfPrintSettings
 {
     private readonly _cef_pdf_print_settings_t* _ptr;
@@ -17,113 +25,113 @@ public unsafe partial class CefPdfPrintSettings
 
     partial void Initialize();
 
-    internal _cef_pdf_print_settings_t* NativePtr => _ptr;
+    public _cef_pdf_print_settings_t* NativePtr => _ptr;
 
-        public nuint Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public nuint Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 
-        public int Landscape
-        {
-            get => _ptr->landscape;
-            set => _ptr->landscape = value;
-        }
+    public int Landscape
+    {
+        get => _ptr->landscape;
+        set => _ptr->landscape = value;
+    }
 
-        public int PrintBackground
-        {
-            get => _ptr->print_background;
-            set => _ptr->print_background = value;
-        }
+    public int PrintBackground
+    {
+        get => _ptr->print_background;
+        set => _ptr->print_background = value;
+    }
 
-        public double Scale
-        {
-            get => _ptr->scale;
-            set => _ptr->scale = value;
-        }
+    public double Scale
+    {
+        get => _ptr->scale;
+        set => _ptr->scale = value;
+    }
 
-        public double PaperWidth
-        {
-            get => _ptr->paper_width;
-            set => _ptr->paper_width = value;
-        }
+    public double PaperWidth
+    {
+        get => _ptr->paper_width;
+        set => _ptr->paper_width = value;
+    }
 
-        public double PaperHeight
-        {
-            get => _ptr->paper_height;
-            set => _ptr->paper_height = value;
-        }
+    public double PaperHeight
+    {
+        get => _ptr->paper_height;
+        set => _ptr->paper_height = value;
+    }
 
-        public int PreferCssPageSize
-        {
-            get => _ptr->prefer_css_page_size;
-            set => _ptr->prefer_css_page_size = value;
-        }
+    public int PreferCssPageSize
+    {
+        get => _ptr->prefer_css_page_size;
+        set => _ptr->prefer_css_page_size = value;
+    }
 
-        public cef_pdf_print_margin_type_t MarginType
-        {
-            get => _ptr->margin_type;
-            set => _ptr->margin_type = value;
-        }
+    public cef_pdf_print_margin_type_t MarginType
+    {
+        get => _ptr->margin_type;
+        set => _ptr->margin_type = value;
+    }
 
-        public double MarginTop
-        {
-            get => _ptr->margin_top;
-            set => _ptr->margin_top = value;
-        }
+    public double MarginTop
+    {
+        get => _ptr->margin_top;
+        set => _ptr->margin_top = value;
+    }
 
-        public double MarginRight
-        {
-            get => _ptr->margin_right;
-            set => _ptr->margin_right = value;
-        }
+    public double MarginRight
+    {
+        get => _ptr->margin_right;
+        set => _ptr->margin_right = value;
+    }
 
-        public double MarginBottom
-        {
-            get => _ptr->margin_bottom;
-            set => _ptr->margin_bottom = value;
-        }
+    public double MarginBottom
+    {
+        get => _ptr->margin_bottom;
+        set => _ptr->margin_bottom = value;
+    }
 
-        public double MarginLeft
-        {
-            get => _ptr->margin_left;
-            set => _ptr->margin_left = value;
-        }
+    public double MarginLeft
+    {
+        get => _ptr->margin_left;
+        set => _ptr->margin_left = value;
+    }
 
-        public string? PageRanges
-        {
-            get => new CefString(&_ptr->page_ranges).Value;
-            set => new CefString(&_ptr->page_ranges).Value = value;
-        }
+    public string? PageRanges
+    {
+        get => new CefString(&_ptr->page_ranges).Value;
+        set => new CefString(&_ptr->page_ranges).Value = value;
+    }
 
-        public int DisplayHeaderFooter
-        {
-            get => _ptr->display_header_footer;
-            set => _ptr->display_header_footer = value;
-        }
+    public int DisplayHeaderFooter
+    {
+        get => _ptr->display_header_footer;
+        set => _ptr->display_header_footer = value;
+    }
 
-        public string? HeaderTemplate
-        {
-            get => new CefString(&_ptr->header_template).Value;
-            set => new CefString(&_ptr->header_template).Value = value;
-        }
+    public string? HeaderTemplate
+    {
+        get => new CefString(&_ptr->header_template).Value;
+        set => new CefString(&_ptr->header_template).Value = value;
+    }
 
-        public string? FooterTemplate
-        {
-            get => new CefString(&_ptr->footer_template).Value;
-            set => new CefString(&_ptr->footer_template).Value = value;
-        }
+    public string? FooterTemplate
+    {
+        get => new CefString(&_ptr->footer_template).Value;
+        set => new CefString(&_ptr->footer_template).Value = value;
+    }
 
-        public int GenerateTaggedPdf
-        {
-            get => _ptr->generate_tagged_pdf;
-            set => _ptr->generate_tagged_pdf = value;
-        }
+    public int GenerateTaggedPdf
+    {
+        get => _ptr->generate_tagged_pdf;
+        set => _ptr->generate_tagged_pdf = value;
+    }
 
-        public int GenerateDocumentOutline
-        {
-            get => _ptr->generate_document_outline;
-            set => _ptr->generate_document_outline = value;
-        }
+    public int GenerateDocumentOutline
+    {
+        get => _ptr->generate_document_outline;
+        set => _ptr->generate_document_outline = value;
+    }
 }

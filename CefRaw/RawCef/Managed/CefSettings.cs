@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_settings_t</code> type.
+/// </summary>
+public unsafe partial interface ICefSettings
+{
+    public _cef_settings_t* NativePtr { get; }
+}
+
 public unsafe partial class CefSettings
 {
     private readonly _cef_settings_t* _ptr;
@@ -17,191 +25,191 @@ public unsafe partial class CefSettings
 
     partial void Initialize();
 
-    internal _cef_settings_t* NativePtr => _ptr;
+    public _cef_settings_t* NativePtr => _ptr;
 
-        public nuint Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public nuint Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 
-        public int NoSandbox
-        {
-            get => _ptr->no_sandbox;
-            set => _ptr->no_sandbox = value;
-        }
+    public int NoSandbox
+    {
+        get => _ptr->no_sandbox;
+        set => _ptr->no_sandbox = value;
+    }
 
-        public string? BrowserSubprocessPath
-        {
-            get => new CefString(&_ptr->browser_subprocess_path).Value;
-            set => new CefString(&_ptr->browser_subprocess_path).Value = value;
-        }
+    public string? BrowserSubprocessPath
+    {
+        get => new CefString(&_ptr->browser_subprocess_path).Value;
+        set => new CefString(&_ptr->browser_subprocess_path).Value = value;
+    }
 
-        public string? FrameworkDirPath
-        {
-            get => new CefString(&_ptr->framework_dir_path).Value;
-            set => new CefString(&_ptr->framework_dir_path).Value = value;
-        }
+    public string? FrameworkDirPath
+    {
+        get => new CefString(&_ptr->framework_dir_path).Value;
+        set => new CefString(&_ptr->framework_dir_path).Value = value;
+    }
 
-        public string? MainBundlePath
-        {
-            get => new CefString(&_ptr->main_bundle_path).Value;
-            set => new CefString(&_ptr->main_bundle_path).Value = value;
-        }
+    public string? MainBundlePath
+    {
+        get => new CefString(&_ptr->main_bundle_path).Value;
+        set => new CefString(&_ptr->main_bundle_path).Value = value;
+    }
 
-        public int MultiThreadedMessageLoop
-        {
-            get => _ptr->multi_threaded_message_loop;
-            set => _ptr->multi_threaded_message_loop = value;
-        }
+    public int MultiThreadedMessageLoop
+    {
+        get => _ptr->multi_threaded_message_loop;
+        set => _ptr->multi_threaded_message_loop = value;
+    }
 
-        public int ExternalMessagePump
-        {
-            get => _ptr->external_message_pump;
-            set => _ptr->external_message_pump = value;
-        }
+    public int ExternalMessagePump
+    {
+        get => _ptr->external_message_pump;
+        set => _ptr->external_message_pump = value;
+    }
 
-        public int WindowlessRenderingEnabled
-        {
-            get => _ptr->windowless_rendering_enabled;
-            set => _ptr->windowless_rendering_enabled = value;
-        }
+    public int WindowlessRenderingEnabled
+    {
+        get => _ptr->windowless_rendering_enabled;
+        set => _ptr->windowless_rendering_enabled = value;
+    }
 
-        public int CommandLineArgsDisabled
-        {
-            get => _ptr->command_line_args_disabled;
-            set => _ptr->command_line_args_disabled = value;
-        }
+    public int CommandLineArgsDisabled
+    {
+        get => _ptr->command_line_args_disabled;
+        set => _ptr->command_line_args_disabled = value;
+    }
 
-        public string? CachePath
-        {
-            get => new CefString(&_ptr->cache_path).Value;
-            set => new CefString(&_ptr->cache_path).Value = value;
-        }
+    public string? CachePath
+    {
+        get => new CefString(&_ptr->cache_path).Value;
+        set => new CefString(&_ptr->cache_path).Value = value;
+    }
 
-        public string? RootCachePath
-        {
-            get => new CefString(&_ptr->root_cache_path).Value;
-            set => new CefString(&_ptr->root_cache_path).Value = value;
-        }
+    public string? RootCachePath
+    {
+        get => new CefString(&_ptr->root_cache_path).Value;
+        set => new CefString(&_ptr->root_cache_path).Value = value;
+    }
 
-        public int PersistSessionCookies
-        {
-            get => _ptr->persist_session_cookies;
-            set => _ptr->persist_session_cookies = value;
-        }
+    public int PersistSessionCookies
+    {
+        get => _ptr->persist_session_cookies;
+        set => _ptr->persist_session_cookies = value;
+    }
 
-        public string? UserAgent
-        {
-            get => new CefString(&_ptr->user_agent).Value;
-            set => new CefString(&_ptr->user_agent).Value = value;
-        }
+    public string? UserAgent
+    {
+        get => new CefString(&_ptr->user_agent).Value;
+        set => new CefString(&_ptr->user_agent).Value = value;
+    }
 
-        public string? UserAgentProduct
-        {
-            get => new CefString(&_ptr->user_agent_product).Value;
-            set => new CefString(&_ptr->user_agent_product).Value = value;
-        }
+    public string? UserAgentProduct
+    {
+        get => new CefString(&_ptr->user_agent_product).Value;
+        set => new CefString(&_ptr->user_agent_product).Value = value;
+    }
 
-        public string? Locale
-        {
-            get => new CefString(&_ptr->locale).Value;
-            set => new CefString(&_ptr->locale).Value = value;
-        }
+    public string? Locale
+    {
+        get => new CefString(&_ptr->locale).Value;
+        set => new CefString(&_ptr->locale).Value = value;
+    }
 
-        public string? LogFile
-        {
-            get => new CefString(&_ptr->log_file).Value;
-            set => new CefString(&_ptr->log_file).Value = value;
-        }
+    public string? LogFile
+    {
+        get => new CefString(&_ptr->log_file).Value;
+        set => new CefString(&_ptr->log_file).Value = value;
+    }
 
-        public cef_log_severity_t LogSeverity
-        {
-            get => _ptr->log_severity;
-            set => _ptr->log_severity = value;
-        }
+    public cef_log_severity_t LogSeverity
+    {
+        get => _ptr->log_severity;
+        set => _ptr->log_severity = value;
+    }
 
-        public cef_log_items_t LogItems
-        {
-            get => _ptr->log_items;
-            set => _ptr->log_items = value;
-        }
+    public cef_log_items_t LogItems
+    {
+        get => _ptr->log_items;
+        set => _ptr->log_items = value;
+    }
 
-        public string? JavascriptFlags
-        {
-            get => new CefString(&_ptr->javascript_flags).Value;
-            set => new CefString(&_ptr->javascript_flags).Value = value;
-        }
+    public string? JavascriptFlags
+    {
+        get => new CefString(&_ptr->javascript_flags).Value;
+        set => new CefString(&_ptr->javascript_flags).Value = value;
+    }
 
-        public string? ResourcesDirPath
-        {
-            get => new CefString(&_ptr->resources_dir_path).Value;
-            set => new CefString(&_ptr->resources_dir_path).Value = value;
-        }
+    public string? ResourcesDirPath
+    {
+        get => new CefString(&_ptr->resources_dir_path).Value;
+        set => new CefString(&_ptr->resources_dir_path).Value = value;
+    }
 
-        public string? LocalesDirPath
-        {
-            get => new CefString(&_ptr->locales_dir_path).Value;
-            set => new CefString(&_ptr->locales_dir_path).Value = value;
-        }
+    public string? LocalesDirPath
+    {
+        get => new CefString(&_ptr->locales_dir_path).Value;
+        set => new CefString(&_ptr->locales_dir_path).Value = value;
+    }
 
-        public int RemoteDebuggingPort
-        {
-            get => _ptr->remote_debugging_port;
-            set => _ptr->remote_debugging_port = value;
-        }
+    public int RemoteDebuggingPort
+    {
+        get => _ptr->remote_debugging_port;
+        set => _ptr->remote_debugging_port = value;
+    }
 
-        public int UncaughtExceptionStackSize
-        {
-            get => _ptr->uncaught_exception_stack_size;
-            set => _ptr->uncaught_exception_stack_size = value;
-        }
+    public int UncaughtExceptionStackSize
+    {
+        get => _ptr->uncaught_exception_stack_size;
+        set => _ptr->uncaught_exception_stack_size = value;
+    }
 
-        public uint BackgroundColor
-        {
-            get => _ptr->background_color;
-            set => _ptr->background_color = value;
-        }
+    public uint BackgroundColor
+    {
+        get => _ptr->background_color;
+        set => _ptr->background_color = value;
+    }
 
-        public string? AcceptLanguageList
-        {
-            get => new CefString(&_ptr->accept_language_list).Value;
-            set => new CefString(&_ptr->accept_language_list).Value = value;
-        }
+    public string? AcceptLanguageList
+    {
+        get => new CefString(&_ptr->accept_language_list).Value;
+        set => new CefString(&_ptr->accept_language_list).Value = value;
+    }
 
-        public string? CookieableSchemesList
-        {
-            get => new CefString(&_ptr->cookieable_schemes_list).Value;
-            set => new CefString(&_ptr->cookieable_schemes_list).Value = value;
-        }
+    public string? CookieableSchemesList
+    {
+        get => new CefString(&_ptr->cookieable_schemes_list).Value;
+        set => new CefString(&_ptr->cookieable_schemes_list).Value = value;
+    }
 
-        public int CookieableSchemesExcludeDefaults
-        {
-            get => _ptr->cookieable_schemes_exclude_defaults;
-            set => _ptr->cookieable_schemes_exclude_defaults = value;
-        }
+    public int CookieableSchemesExcludeDefaults
+    {
+        get => _ptr->cookieable_schemes_exclude_defaults;
+        set => _ptr->cookieable_schemes_exclude_defaults = value;
+    }
 
-        public string? ChromePolicyId
-        {
-            get => new CefString(&_ptr->chrome_policy_id).Value;
-            set => new CefString(&_ptr->chrome_policy_id).Value = value;
-        }
+    public string? ChromePolicyId
+    {
+        get => new CefString(&_ptr->chrome_policy_id).Value;
+        set => new CefString(&_ptr->chrome_policy_id).Value = value;
+    }
 
-        public int ChromeAppIconId
-        {
-            get => _ptr->chrome_app_icon_id;
-            set => _ptr->chrome_app_icon_id = value;
-        }
+    public int ChromeAppIconId
+    {
+        get => _ptr->chrome_app_icon_id;
+        set => _ptr->chrome_app_icon_id = value;
+    }
 
-        public int DisableSignalHandlers
-        {
-            get => _ptr->disable_signal_handlers;
-            set => _ptr->disable_signal_handlers = value;
-        }
+    public int DisableSignalHandlers
+    {
+        get => _ptr->disable_signal_handlers;
+        set => _ptr->disable_signal_handlers = value;
+    }
 
-        public int UseViewsDefaultPopup
-        {
-            get => _ptr->use_views_default_popup;
-            set => _ptr->use_views_default_popup = value;
-        }
+    public int UseViewsDefaultPopup
+    {
+        get => _ptr->use_views_default_popup;
+        set => _ptr->use_views_default_popup = value;
+    }
 }

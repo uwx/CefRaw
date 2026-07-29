@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_key_event_t</code> type.
+/// </summary>
+public unsafe partial interface ICefKeyEvent
+{
+    public _cef_key_event_t* NativePtr { get; }
+}
+
 public unsafe partial class CefKeyEvent
 {
     private readonly _cef_key_event_t* _ptr;
@@ -17,59 +25,59 @@ public unsafe partial class CefKeyEvent
 
     partial void Initialize();
 
-    internal _cef_key_event_t* NativePtr => _ptr;
+    public _cef_key_event_t* NativePtr => _ptr;
 
-        public nuint Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public nuint Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 
-        public cef_key_event_type_t Type
-        {
-            get => _ptr->type;
-            set => _ptr->type = value;
-        }
+    public cef_key_event_type_t Type
+    {
+        get => _ptr->type;
+        set => _ptr->type = value;
+    }
 
-        public uint Modifiers
-        {
-            get => _ptr->modifiers;
-            set => _ptr->modifiers = value;
-        }
+    public uint Modifiers
+    {
+        get => _ptr->modifiers;
+        set => _ptr->modifiers = value;
+    }
 
-        public int WindowsKeyCode
-        {
-            get => _ptr->windows_key_code;
-            set => _ptr->windows_key_code = value;
-        }
+    public int WindowsKeyCode
+    {
+        get => _ptr->windows_key_code;
+        set => _ptr->windows_key_code = value;
+    }
 
-        public int NativeKeyCode
-        {
-            get => _ptr->native_key_code;
-            set => _ptr->native_key_code = value;
-        }
+    public int NativeKeyCode
+    {
+        get => _ptr->native_key_code;
+        set => _ptr->native_key_code = value;
+    }
 
-        public int IsSystemKey
-        {
-            get => _ptr->is_system_key;
-            set => _ptr->is_system_key = value;
-        }
+    public int IsSystemKey
+    {
+        get => _ptr->is_system_key;
+        set => _ptr->is_system_key = value;
+    }
 
-        public ushort Character
-        {
-            get => _ptr->character;
-            set => _ptr->character = value;
-        }
+    public ushort Character
+    {
+        get => _ptr->character;
+        set => _ptr->character = value;
+    }
 
-        public ushort UnmodifiedCharacter
-        {
-            get => _ptr->unmodified_character;
-            set => _ptr->unmodified_character = value;
-        }
+    public ushort UnmodifiedCharacter
+    {
+        get => _ptr->unmodified_character;
+        set => _ptr->unmodified_character = value;
+    }
 
-        public int FocusOnEditableField
-        {
-            get => _ptr->focus_on_editable_field;
-            set => _ptr->focus_on_editable_field = value;
-        }
+    public int FocusOnEditableField
+    {
+        get => _ptr->focus_on_editable_field;
+        set => _ptr->focus_on_editable_field = value;
+    }
 }

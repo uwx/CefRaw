@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_popup_features_t</code> type.
+/// </summary>
+public unsafe partial interface ICefPopupFeatures
+{
+    public _cef_popup_features_t* NativePtr { get; }
+}
+
 public unsafe partial class CefPopupFeatures
 {
     private readonly _cef_popup_features_t* _ptr;
@@ -17,65 +25,65 @@ public unsafe partial class CefPopupFeatures
 
     partial void Initialize();
 
-    internal _cef_popup_features_t* NativePtr => _ptr;
+    public _cef_popup_features_t* NativePtr => _ptr;
 
-        public nuint Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public nuint Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 
-        public int X
-        {
-            get => _ptr->x;
-            set => _ptr->x = value;
-        }
+    public int X
+    {
+        get => _ptr->x;
+        set => _ptr->x = value;
+    }
 
-        public int XSet
-        {
-            get => _ptr->xSet;
-            set => _ptr->xSet = value;
-        }
+    public int XSet
+    {
+        get => _ptr->xSet;
+        set => _ptr->xSet = value;
+    }
 
-        public int Y
-        {
-            get => _ptr->y;
-            set => _ptr->y = value;
-        }
+    public int Y
+    {
+        get => _ptr->y;
+        set => _ptr->y = value;
+    }
 
-        public int YSet
-        {
-            get => _ptr->ySet;
-            set => _ptr->ySet = value;
-        }
+    public int YSet
+    {
+        get => _ptr->ySet;
+        set => _ptr->ySet = value;
+    }
 
-        public int Width
-        {
-            get => _ptr->width;
-            set => _ptr->width = value;
-        }
+    public int Width
+    {
+        get => _ptr->width;
+        set => _ptr->width = value;
+    }
 
-        public int WidthSet
-        {
-            get => _ptr->widthSet;
-            set => _ptr->widthSet = value;
-        }
+    public int WidthSet
+    {
+        get => _ptr->widthSet;
+        set => _ptr->widthSet = value;
+    }
 
-        public int Height
-        {
-            get => _ptr->height;
-            set => _ptr->height = value;
-        }
+    public int Height
+    {
+        get => _ptr->height;
+        set => _ptr->height = value;
+    }
 
-        public int HeightSet
-        {
-            get => _ptr->heightSet;
-            set => _ptr->heightSet = value;
-        }
+    public int HeightSet
+    {
+        get => _ptr->heightSet;
+        set => _ptr->heightSet = value;
+    }
 
-        public int IsPopup
-        {
-            get => _ptr->isPopup;
-            set => _ptr->isPopup = value;
-        }
+    public int IsPopup
+    {
+        get => _ptr->isPopup;
+        set => _ptr->isPopup = value;
+    }
 }

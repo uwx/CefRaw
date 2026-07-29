@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_urlparts_t</code> type.
+/// </summary>
+public unsafe partial interface ICefUrlparts
+{
+    public _cef_urlparts_t* NativePtr { get; }
+}
+
 public unsafe partial class CefUrlparts
 {
     private readonly _cef_urlparts_t* _ptr;
@@ -17,71 +25,71 @@ public unsafe partial class CefUrlparts
 
     partial void Initialize();
 
-    internal _cef_urlparts_t* NativePtr => _ptr;
+    public _cef_urlparts_t* NativePtr => _ptr;
 
-        public nuint Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public nuint Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 
-        public string? Spec
-        {
-            get => new CefString(&_ptr->spec).Value;
-            set => new CefString(&_ptr->spec).Value = value;
-        }
+    public string? Spec
+    {
+        get => new CefString(&_ptr->spec).Value;
+        set => new CefString(&_ptr->spec).Value = value;
+    }
 
-        public string? Scheme
-        {
-            get => new CefString(&_ptr->scheme).Value;
-            set => new CefString(&_ptr->scheme).Value = value;
-        }
+    public string? Scheme
+    {
+        get => new CefString(&_ptr->scheme).Value;
+        set => new CefString(&_ptr->scheme).Value = value;
+    }
 
-        public string? Username
-        {
-            get => new CefString(&_ptr->username).Value;
-            set => new CefString(&_ptr->username).Value = value;
-        }
+    public string? Username
+    {
+        get => new CefString(&_ptr->username).Value;
+        set => new CefString(&_ptr->username).Value = value;
+    }
 
-        public string? Password
-        {
-            get => new CefString(&_ptr->password).Value;
-            set => new CefString(&_ptr->password).Value = value;
-        }
+    public string? Password
+    {
+        get => new CefString(&_ptr->password).Value;
+        set => new CefString(&_ptr->password).Value = value;
+    }
 
-        public string? Host
-        {
-            get => new CefString(&_ptr->host).Value;
-            set => new CefString(&_ptr->host).Value = value;
-        }
+    public string? Host
+    {
+        get => new CefString(&_ptr->host).Value;
+        set => new CefString(&_ptr->host).Value = value;
+    }
 
-        public string? Port
-        {
-            get => new CefString(&_ptr->port).Value;
-            set => new CefString(&_ptr->port).Value = value;
-        }
+    public string? Port
+    {
+        get => new CefString(&_ptr->port).Value;
+        set => new CefString(&_ptr->port).Value = value;
+    }
 
-        public string? Origin
-        {
-            get => new CefString(&_ptr->origin).Value;
-            set => new CefString(&_ptr->origin).Value = value;
-        }
+    public string? Origin
+    {
+        get => new CefString(&_ptr->origin).Value;
+        set => new CefString(&_ptr->origin).Value = value;
+    }
 
-        public string? Path
-        {
-            get => new CefString(&_ptr->path).Value;
-            set => new CefString(&_ptr->path).Value = value;
-        }
+    public string? Path
+    {
+        get => new CefString(&_ptr->path).Value;
+        set => new CefString(&_ptr->path).Value = value;
+    }
 
-        public string? Query
-        {
-            get => new CefString(&_ptr->query).Value;
-            set => new CefString(&_ptr->query).Value = value;
-        }
+    public string? Query
+    {
+        get => new CefString(&_ptr->query).Value;
+        set => new CefString(&_ptr->query).Value = value;
+    }
 
-        public string? Fragment
-        {
-            get => new CefString(&_ptr->fragment).Value;
-            set => new CefString(&_ptr->fragment).Value = value;
-        }
+    public string? Fragment
+    {
+        get => new CefString(&_ptr->fragment).Value;
+        set => new CefString(&_ptr->fragment).Value = value;
+    }
 }

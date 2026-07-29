@@ -108,7 +108,7 @@ internal static partial class TypeMapper
         if (isPointer && CefStructRegex.IsMatch(baseType))
         {
             isCefObject = true;
-            cefObjectName = GetManagedName(baseType);
+            cefObjectName = "I" + GetManagedName(baseType);
             return cefObjectName + "?";
         }
 
@@ -168,4 +168,8 @@ internal static partial class TypeMapper
         return (args, @return);
     }
 
+    public static string CefFunctionToCSharp(string functionName)
+    {
+        return SnakeToPascal(functionName).Replace("Cef", "");
+    }
 }

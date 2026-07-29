@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_linux_window_properties_t</code> type.
+/// </summary>
+public unsafe partial interface ICefLinuxWindowProperties
+{
+    public _cef_linux_window_properties_t* NativePtr { get; }
+}
+
 public unsafe partial class CefLinuxWindowProperties
 {
     private readonly _cef_linux_window_properties_t* _ptr;
@@ -17,35 +25,35 @@ public unsafe partial class CefLinuxWindowProperties
 
     partial void Initialize();
 
-    internal _cef_linux_window_properties_t* NativePtr => _ptr;
+    public _cef_linux_window_properties_t* NativePtr => _ptr;
 
-        public nuint Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public nuint Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 
-        public string? WaylandAppId
-        {
-            get => new CefString(&_ptr->wayland_app_id).Value;
-            set => new CefString(&_ptr->wayland_app_id).Value = value;
-        }
+    public string? WaylandAppId
+    {
+        get => new CefString(&_ptr->wayland_app_id).Value;
+        set => new CefString(&_ptr->wayland_app_id).Value = value;
+    }
 
-        public string? WmClassClass
-        {
-            get => new CefString(&_ptr->wm_class_class).Value;
-            set => new CefString(&_ptr->wm_class_class).Value = value;
-        }
+    public string? WmClassClass
+    {
+        get => new CefString(&_ptr->wm_class_class).Value;
+        set => new CefString(&_ptr->wm_class_class).Value = value;
+    }
 
-        public string? WmClassName
-        {
-            get => new CefString(&_ptr->wm_class_name).Value;
-            set => new CefString(&_ptr->wm_class_name).Value = value;
-        }
+    public string? WmClassName
+    {
+        get => new CefString(&_ptr->wm_class_name).Value;
+        set => new CefString(&_ptr->wm_class_name).Value = value;
+    }
 
-        public string? WmRoleName
-        {
-            get => new CefString(&_ptr->wm_role_name).Value;
-            set => new CefString(&_ptr->wm_role_name).Value = value;
-        }
+    public string? WmRoleName
+    {
+        get => new CefString(&_ptr->wm_role_name).Value;
+        set => new CefString(&_ptr->wm_role_name).Value = value;
+    }
 }

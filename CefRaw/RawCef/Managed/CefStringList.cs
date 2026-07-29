@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_string_list_t</code> type.
+/// </summary>
+public unsafe partial interface ICefStringList
+{
+    public _cef_string_list_t* NativePtr { get; }
+}
+
 public unsafe partial class CefStringList
 {
     private readonly _cef_string_list_t* _ptr;
@@ -17,5 +25,5 @@ public unsafe partial class CefStringList
 
     partial void Initialize();
 
-    internal _cef_string_list_t* NativePtr => _ptr;
+    public _cef_string_list_t* NativePtr => _ptr;
 }

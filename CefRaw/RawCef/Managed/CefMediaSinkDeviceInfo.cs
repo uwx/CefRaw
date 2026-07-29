@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_media_sink_device_info_t</code> type.
+/// </summary>
+public unsafe partial interface ICefMediaSinkDeviceInfo
+{
+    public _cef_media_sink_device_info_t* NativePtr { get; }
+}
+
 public unsafe partial class CefMediaSinkDeviceInfo
 {
     private readonly _cef_media_sink_device_info_t* _ptr;
@@ -17,29 +25,29 @@ public unsafe partial class CefMediaSinkDeviceInfo
 
     partial void Initialize();
 
-    internal _cef_media_sink_device_info_t* NativePtr => _ptr;
+    public _cef_media_sink_device_info_t* NativePtr => _ptr;
 
-        public nuint Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public nuint Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 
-        public string? IpAddress
-        {
-            get => new CefString(&_ptr->ip_address).Value;
-            set => new CefString(&_ptr->ip_address).Value = value;
-        }
+    public string? IpAddress
+    {
+        get => new CefString(&_ptr->ip_address).Value;
+        set => new CefString(&_ptr->ip_address).Value = value;
+    }
 
-        public int Port
-        {
-            get => _ptr->port;
-            set => _ptr->port = value;
-        }
+    public int Port
+    {
+        get => _ptr->port;
+        set => _ptr->port = value;
+    }
 
-        public string? ModelName
-        {
-            get => new CefString(&_ptr->model_name).Value;
-            set => new CefString(&_ptr->model_name).Value = value;
-        }
+    public string? ModelName
+    {
+        get => new CefString(&_ptr->model_name).Value;
+        set => new CefString(&_ptr->model_name).Value = value;
+    }
 }

@@ -319,7 +319,12 @@ $commonArgs = @(
     '-t', 'include/internal/cef_types_osr.h',
     '-t', 'include/internal/cef_types_runtime.h',
     '--remap', 'HWND=HWND',
-    '--remap', 'HMENU=HMENU'
+    '--remap', 'HMENU=HMENU',
+    '--remap', 'HICON=HICON',
+    '--remap', 'HINSTANCE=HINSTANCE',
+    '--remap', 'cef_string_userfree_wide_t=cef_string_userfree_wide_t',
+    '--remap', 'cef_string_userfree_utf8_t=cef_string_userfree_utf8_t',
+    '--remap', 'cef_string_userfree_utf16_t=cef_string_userfree_utf16_t'
 )
 
 $platforms = @(

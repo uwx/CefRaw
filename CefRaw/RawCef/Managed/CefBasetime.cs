@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_basetime_t</code> type.
+/// </summary>
+public unsafe partial interface ICefBasetime
+{
+    public _cef_basetime_t* NativePtr { get; }
+}
+
 public unsafe partial class CefBasetime
 {
     private readonly _cef_basetime_t* _ptr;
@@ -17,11 +25,11 @@ public unsafe partial class CefBasetime
 
     partial void Initialize();
 
-    internal _cef_basetime_t* NativePtr => _ptr;
+    public _cef_basetime_t* NativePtr => _ptr;
 
-        public long Val
-        {
-            get => _ptr->val;
-            set => _ptr->val = value;
-        }
+    public long Val
+    {
+        get => _ptr->val;
+        set => _ptr->val = value;
+    }
 }

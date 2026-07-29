@@ -15,5 +15,5 @@ public enum CefDragOperationsMask : int
     DRAG_OPERATION_PRIVATE = 8,
     DRAG_OPERATION_MOVE = 16,
     DRAG_OPERATION_DELETE = 32,
-    DRAG_OPERATION_EVERY = ,
+    DRAG_OPERATION_EVERY = unchecked((int)(0xffffffff)),
 }

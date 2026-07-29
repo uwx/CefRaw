@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_composition_underline_t</code> type.
+/// </summary>
+public unsafe partial interface ICefCompositionUnderline
+{
+    public _cef_composition_underline_t* NativePtr { get; }
+}
+
 public unsafe partial class CefCompositionUnderline
 {
     private readonly _cef_composition_underline_t* _ptr;
@@ -17,41 +25,41 @@ public unsafe partial class CefCompositionUnderline
 
     partial void Initialize();
 
-    internal _cef_composition_underline_t* NativePtr => _ptr;
+    public _cef_composition_underline_t* NativePtr => _ptr;
 
-        public nuint Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public nuint Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 
-        public _cef_range_t Range
-        {
-            get => _ptr->range;
-            set => _ptr->range = value;
-        }
+    public _cef_range_t Range
+    {
+        get => _ptr->range;
+        set => _ptr->range = value;
+    }
 
-        public uint Color
-        {
-            get => _ptr->color;
-            set => _ptr->color = value;
-        }
+    public uint Color
+    {
+        get => _ptr->color;
+        set => _ptr->color = value;
+    }
 
-        public uint BackgroundColor
-        {
-            get => _ptr->background_color;
-            set => _ptr->background_color = value;
-        }
+    public uint BackgroundColor
+    {
+        get => _ptr->background_color;
+        set => _ptr->background_color = value;
+    }
 
-        public int Thick
-        {
-            get => _ptr->thick;
-            set => _ptr->thick = value;
-        }
+    public int Thick
+    {
+        get => _ptr->thick;
+        set => _ptr->thick = value;
+    }
 
-        public cef_composition_underline_style_t Style
-        {
-            get => _ptr->style;
-            set => _ptr->style = value;
-        }
+    public cef_composition_underline_style_t Style
+    {
+        get => _ptr->style;
+        set => _ptr->style = value;
+    }
 }

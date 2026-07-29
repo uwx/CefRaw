@@ -42,7 +42,7 @@ internal static class Emitter
 
         return sb.ToString();
     }
-    
+
     public static string GenerateWrapper(StructDefinition structDef)
     {
         var sb = new IndentedStringBuilder();
@@ -58,8 +58,7 @@ internal static class Emitter
         sb.AppendLine();
         sb.AppendLine("namespace RawCef;");
         sb.AppendLine();
-
-        // Class declaration
+        
         var baseClass = GetBaseType(structDef) switch
         {
             "_cef_base_ref_counted_t" => "CefBaseRefCounted",
@@ -67,55 +66,137 @@ internal static class Emitter
             _ => null
         };
 
-        sb.Append($"public unsafe partial class {managedName}");
+        // Interface declaration
+        sb.AppendLine("/// <summary>");
+        sb.AppendLine($"/// Represents an instance of the <code>{structDef.Name}</code> type.");
+        sb.AppendLine("/// </summary>");
+        sb.Append($"public unsafe partial interface I{managedName}");
         if (baseClass != null)
-            sb.Append($" : {baseClass}");
+            sb.Append($" : I{baseClass}");
         sb.AppendLine();
-        
-        sb.AppendLine("{");
 
+        sb.AppendLine("{");
+        
         using (sb.Indent())
         {
-            // Private pointer field
-            sb.Append($"private readonly {nativeName}* _ptr;");
-            sb.AppendLine();
-
-            // Constructor
-            sb.AppendLine();
-            sb.Append($"public {managedName}({nativeName}* ptr)");
-            if (baseClass != null)
-            {
-                sb.Append(" : base(&ptr->@base)");
-            }
-
-            sb.AppendLine();
-            sb.AppendLine("{");
-            sb.AppendLine("    _ptr = ptr;");
-            sb.AppendLine("    Initialize();");
-            sb.AppendLine("}");
-            sb.AppendLine();
-            sb.AppendLine("partial void Initialize();");
-
-            // Internal pointer accessor for other wrappers
-            sb.AppendLine();
-            sb.AppendLine($"internal {nativeName}* NativePtr => _ptr;");
-
-            // Methods for function-pointer fields
-            foreach (var field in structDef.Fields.Where(field => field.Type.CSharpType.Contains("delegate*")))
-            {
-                sb.AppendLine();
-                EmitMethod(sb, structDef, field);
-            }
-
-            // Properties for data fields (data-only structs)
-            foreach (var field in structDef.Fields.Where(field => !field.Type.CSharpType.Contains("delegate*")))
-            {
-                sb.AppendLine();
-                EmitDataProperty(sb, field);
-            }
+            sb.AppendLine($"public {nativeName}* NativePtr {{ get; }}");
         }
 
         sb.AppendLine("}");
+        sb.AppendLine();
+
+        if (baseClass == "CefBaseRefCounted")
+        {
+            // Class declaration
+            sb.AppendLine("/// <summary>");
+            sb.AppendLine($"/// Represents a library-owned instance of the <code>{structDef.Name}</code> type.");
+            sb.AppendLine("/// </summary>");
+            sb.Append($"public unsafe partial class {managedName}Ref");
+            if (baseClass != null)
+                sb.Append($" : {baseClass}, I{managedName}");
+            else
+                sb.Append($" : I{managedName}");
+            sb.AppendLine();
+
+            sb.AppendLine("{");
+
+            using (sb.Indent())
+            {
+                // Private pointer field
+                sb.Append($"private readonly {nativeName}* _ptr;");
+                sb.AppendLine();
+
+                // Constructor
+                sb.AppendLine();
+                sb.Append($"public {managedName}({nativeName}* ptr)");
+                if (baseClass != null)
+                {
+                    sb.Append(" : base(&ptr->@base)");
+                }
+
+                sb.AppendLine();
+                sb.AppendLine("{");
+                sb.AppendLine("    _ptr = ptr;");
+                sb.AppendLine("    Initialize();");
+                sb.AppendLine("}");
+                sb.AppendLine();
+                sb.AppendLine("partial void Initialize();");
+
+                // Internal pointer accessor for other wrappers
+                sb.AppendLine();
+                sb.AppendLine($"public {nativeName}* NativePtr => _ptr;");
+
+                // Methods for function-pointer fields
+                foreach (var field in structDef.Fields.Where(field => field.Type.CSharpType.Contains("delegate*")))
+                {
+                    sb.AppendLine();
+                    EmitMethod(sb, structDef, field);
+                }
+
+                // Properties for data fields (data-only structs)
+                foreach (var field in structDef.Fields.Where(field => !field.Type.CSharpType.Contains("delegate*")))
+                {
+                    sb.AppendLine();
+                    EmitDataProperty(sb, field);
+                }
+            }
+
+            sb.AppendLine("}");
+
+        }
+        else
+        {
+            sb.Append($"public unsafe partial class {managedName}");
+            if (baseClass != null)
+                sb.Append($" : {baseClass}");
+            sb.AppendLine();
+
+            sb.AppendLine("{");
+            
+            using (sb.Indent())
+            {
+                // Private pointer field
+                sb.Append($"private readonly {nativeName}* _ptr;");
+                sb.AppendLine();
+
+                // Constructor
+                sb.AppendLine();
+                sb.Append($"public {managedName}({nativeName}* ptr)");
+                if (baseClass != null)
+                {
+                    sb.Append(" : base(&ptr->@base)");
+                }
+
+                sb.AppendLine();
+                sb.AppendLine("{");
+                sb.AppendLine("    _ptr = ptr;");
+                sb.AppendLine("    Initialize();");
+                sb.AppendLine("}");
+                sb.AppendLine();
+                sb.AppendLine("partial void Initialize();");
+
+                // Internal pointer accessor for other wrappers
+                sb.AppendLine();
+                sb.AppendLine($"public {nativeName}* NativePtr => _ptr;");
+
+                // Methods for function-pointer fields
+                foreach (var field in structDef.Fields.Where(field => field.Type.CSharpType.Contains("delegate*")))
+                {
+                    sb.AppendLine();
+                    EmitMethod(sb, structDef, field);
+                }
+
+                // Properties for data fields (data-only structs)
+                foreach (var field in structDef.Fields.Where(field => !field.Type.CSharpType.Contains("delegate*")))
+                {
+                    sb.AppendLine();
+                    EmitDataProperty(sb, field);
+                }
+            }
+
+            sb.AppendLine("}");
+
+        }
 
         return sb.ToString();
 
@@ -127,6 +208,8 @@ internal static class Emitter
 
     private static void EmitMethod(IndentedStringBuilder sb, StructDefinition model, FieldDefinition method)
     {
+        if (method.Name == "dtor") return; // Intentionally not implemented. dtor is not an instance method.
+
         var (args, @return) = TypeMapper.GetTypeListFromDelegate(method.Type.CSharpType);
 
         var returnManaged = TypeMapper.MapNativeToManaged(@return, out var returnIsString, out var returnIsCefObject, out var returnCefObjectName);
@@ -140,7 +223,7 @@ internal static class Emitter
                 return (Native: arg, Managed: managed, IsString: isString, IsCefObject: isCefObject, CefObjectName: cefObjectName, Index: idx);
             })
             .ToArray();
-        
+
         // Method signature
         sb.Append($"public {(returnIsCefObject ? returnCefObjectName : returnManaged)} {TypeMapper.SnakeToPascal(method.Name)}(");
 
@@ -241,28 +324,28 @@ internal static class Emitter
         {
             // _cef_string_utf16_t embedded by value → CefString wrapper
             // We need to be careful: the CefString holds a pointer to the embedded field
-            sb.AppendLine($"    public string? {propName}");
-            sb.AppendLine("    {");
-            sb.AppendLine($"        get => new CefString(&_ptr->{field.Name}).Value;");
-            sb.AppendLine($"        set => new CefString(&_ptr->{field.Name}).Value = value;");
-            sb.AppendLine("    }");
+            sb.AppendLine($"public string? {propName}");
+            sb.AppendLine("{");
+            sb.AppendLine($"    get => new CefString(&_ptr->{field.Name}).Value;");
+            sb.AppendLine($"    set => new CefString(&_ptr->{field.Name}).Value = value;");
+            sb.AppendLine("}");
         }
         else if (TypeMapper.IsCefEnum(field.Type.CSharpType))
         {
-            // Use raw native enum type (no Cef* wrapper yet)
-            sb.AppendLine($"    public {field.Type.CSharpType} {propName}");
-            sb.AppendLine("    {");
-            sb.AppendLine($"        get => _ptr->{field.Name};");
-            sb.AppendLine($"        set => _ptr->{field.Name} = value;");
-            sb.AppendLine("    }");
+            // Use raw native enum type (no Cef* wrapper)
+            sb.AppendLine($"public {field.Type.CSharpType} {propName}");
+            sb.AppendLine("{");
+            sb.AppendLine($"    get => _ptr->{field.Name};");
+            sb.AppendLine($"    set => _ptr->{field.Name} = value;");
+            sb.AppendLine("}");
         }
         else
         {
-            sb.AppendLine($"    public {field.Type.CSharpType} {propName}");
-            sb.AppendLine("    {");
-            sb.AppendLine($"        get => _ptr->{field.Name};");
-            sb.AppendLine($"        set => _ptr->{field.Name} = value;");
-            sb.AppendLine("    }");
+            sb.AppendLine($"public {field.Type.CSharpType} {propName}");
+            sb.AppendLine("{");
+            sb.AppendLine($"    get => _ptr->{field.Name};");
+            sb.AppendLine($"    set => _ptr->{field.Name} = value;");
+            sb.AppendLine("}");
         }
     }
 
@@ -285,16 +368,13 @@ internal static class Emitter
         {
             foreach (var enumerator in enumeration.Enumerators)
             {
-                if (enumerator.Value != null)
+                var value = enumerator.Value;
+                if (value?.Code is not null && !string.IsNullOrWhiteSpace(value.Code))
                 {
-                    if (enumerator.Value.IsUnchecked)
-                    {
-                        sb.AppendLine($"{enumerator.Name} = unchecked({enumerator.Value.Code}),");
-                    }
+                    if (value.IsUnchecked)
+                        sb.AppendLine($"{enumerator.Name} = unchecked(({enumeration.Type})({value.Code})),");
                     else
-                    {
-                        sb.AppendLine($"{enumerator.Name} = {enumerator.Value.Code},");
-                    }
+                        sb.AppendLine($"{enumerator.Name} = {value.Code},");
                 }
                 else
                 {
@@ -305,5 +385,100 @@ internal static class Emitter
         sb.AppendLine("}");
 
         return sb.ToString();
+    }
+
+    public static void GenerateNativeMethods(ClassDefinition cls, IndentedStringBuilder sb, string platform)
+    {
+        // Header
+        sb.AppendLine($"#if OS_{platform.ToUpperInvariant()}");
+        sb.AppendLine("// <auto-generated/>");
+        sb.AppendLine("#nullable enable");
+        sb.AppendLine();
+        sb.AppendLine("using System.Runtime.InteropServices;");
+        sb.AppendLine("using RawCef.Native;");
+        sb.AppendLine();
+        sb.AppendLine("namespace RawCef;");
+        sb.AppendLine();
+        sb.AppendLine("/// <summary>");
+        sb.AppendLine($"/// Entry points for the Chromium Embedded Framework.");
+        sb.AppendLine("/// </summary>");
+        sb.AppendLine($"public unsafe partial class CefUnsafe");
+        sb.AppendLine("{");
+        using (sb.Indent())
+        {
+            foreach (var constant in cls.Constants.DistinctBy(x => x.Name))
+            {
+                // XML doc comment
+                sb.AppendLine("/// <summary>");
+                sb.AppendLine($"/// {GetConstantSummary(constant)}");
+                sb.AppendLine("/// </summary>");
+
+                if (constant.Value?.IsDeref == true)
+                {
+                    sb.AppendLine($"{constant.Access} static readonly {constant.Type} {TypeMapper.CefFunctionToCSharp(constant.Name)} = &{TypeMapper.CefFunctionToCSharp(constant.Value.Code!)};");
+                }
+                else if (constant.IsPrimitive)
+                {
+                    // Primitive constant — can be emitted as a const
+                    var val = constant.Value?.Code ?? "0";
+                    sb.AppendLine($"{constant.Access} const {constant.Type} {constant.Name} = {val};");
+                }
+                else if (constant.Value?.Code is { } code)
+                {
+                    // Non-primitive value (e.g. ReadOnlySpan<byte>) — emit as static property
+                    sb.AppendLine($"{constant.Access} static {constant.Type} {constant.Name} => {code};");
+                }
+                else
+                {
+                    // Fallback: static readonly field
+                    sb.AppendLine($"{constant.Access} static readonly {constant.Type} {constant.Name};");
+                }
+
+                sb.AppendLine();
+            }
+
+            foreach (var function in cls.Functions.DistinctBy(x => x.Name))
+            {
+                // XML doc comment
+                sb.AppendLine("/// <summary>");
+                sb.AppendLine($"/// Native export: {function.Name} from {function.Lib ?? "libcef"}.");
+                sb.AppendLine("/// </summary>");
+
+                // DllImport attribute
+                var lib = function.Lib ?? "libcef";
+                var callingConvention = function.Convention switch
+                {
+                    "Cdecl" => "CallingConvention.Cdecl",
+                    "StdCall" => "CallingConvention.StdCall",
+                    "ThisCall" => "CallingConvention.ThisCall",
+                    "FastCall" => "CallingConvention.FastCall",
+                    _ => "CallingConvention.Cdecl"
+                };
+                sb.AppendLine($"[DllImport(\"{lib}\", EntryPoint = \"{function.Name}\", CallingConvention = {callingConvention})]");
+
+                // Method signature
+                var modifiers = "";
+                if (function.Static) modifiers += "static ";
+                if (function.Unsafe) modifiers += "unsafe ";
+                modifiers += "extern ";
+
+                var returnType = string.IsNullOrEmpty(function.ReturnType) ? "void" : function.ReturnType;
+                var parameters = string.Join(", ", function.Parameters.Select(p => $"{p.Type} {p.Name}"));
+
+                sb.AppendLine($"{function.Access} {modifiers}{returnType} {TypeMapper.CefFunctionToCSharp(function.Name)}({parameters});");
+                sb.AppendLine();
+            }
+        }
+        sb.AppendLine("}");
+        sb.AppendLine("#endif");
+    }
+
+    private static string GetConstantSummary(ConstantDefinition constant)
+    {
+        if (constant.Value?.IsDeref == true && constant.Value.Code is { } code)
+            return $"Native entry point for {code}.";
+        if (constant.IsPrimitive)
+            return $"Constant value for {constant.Name}.";
+        return $"Value for {constant.Name}.";
     }
 }

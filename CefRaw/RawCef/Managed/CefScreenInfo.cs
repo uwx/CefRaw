@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_screen_info_t</code> type.
+/// </summary>
+public unsafe partial interface ICefScreenInfo
+{
+    public _cef_screen_info_t* NativePtr { get; }
+}
+
 public unsafe partial class CefScreenInfo
 {
     private readonly _cef_screen_info_t* _ptr;
@@ -17,47 +25,47 @@ public unsafe partial class CefScreenInfo
 
     partial void Initialize();
 
-    internal _cef_screen_info_t* NativePtr => _ptr;
+    public _cef_screen_info_t* NativePtr => _ptr;
 
-        public nuint Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public nuint Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 
-        public float DeviceScaleFactor
-        {
-            get => _ptr->device_scale_factor;
-            set => _ptr->device_scale_factor = value;
-        }
+    public float DeviceScaleFactor
+    {
+        get => _ptr->device_scale_factor;
+        set => _ptr->device_scale_factor = value;
+    }
 
-        public int Depth
-        {
-            get => _ptr->depth;
-            set => _ptr->depth = value;
-        }
+    public int Depth
+    {
+        get => _ptr->depth;
+        set => _ptr->depth = value;
+    }
 
-        public int DepthPerComponent
-        {
-            get => _ptr->depth_per_component;
-            set => _ptr->depth_per_component = value;
-        }
+    public int DepthPerComponent
+    {
+        get => _ptr->depth_per_component;
+        set => _ptr->depth_per_component = value;
+    }
 
-        public int IsMonochrome
-        {
-            get => _ptr->is_monochrome;
-            set => _ptr->is_monochrome = value;
-        }
+    public int IsMonochrome
+    {
+        get => _ptr->is_monochrome;
+        set => _ptr->is_monochrome = value;
+    }
 
-        public _cef_rect_t Rect
-        {
-            get => _ptr->rect;
-            set => _ptr->rect = value;
-        }
+    public _cef_rect_t Rect
+    {
+        get => _ptr->rect;
+        set => _ptr->rect = value;
+    }
 
-        public _cef_rect_t AvailableRect
-        {
-            get => _ptr->available_rect;
-            set => _ptr->available_rect = value;
-        }
+    public _cef_rect_t AvailableRect
+    {
+        get => _ptr->available_rect;
+        set => _ptr->available_rect = value;
+    }
 }

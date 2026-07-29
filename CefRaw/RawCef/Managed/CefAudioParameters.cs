@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_audio_parameters_t</code> type.
+/// </summary>
+public unsafe partial interface ICefAudioParameters
+{
+    public _cef_audio_parameters_t* NativePtr { get; }
+}
+
 public unsafe partial class CefAudioParameters
 {
     private readonly _cef_audio_parameters_t* _ptr;
@@ -17,29 +25,29 @@ public unsafe partial class CefAudioParameters
 
     partial void Initialize();
 
-    internal _cef_audio_parameters_t* NativePtr => _ptr;
+    public _cef_audio_parameters_t* NativePtr => _ptr;
 
-        public nuint Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public nuint Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 
-        public cef_channel_layout_t ChannelLayout
-        {
-            get => _ptr->channel_layout;
-            set => _ptr->channel_layout = value;
-        }
+    public cef_channel_layout_t ChannelLayout
+    {
+        get => _ptr->channel_layout;
+        set => _ptr->channel_layout = value;
+    }
 
-        public int SampleRate
-        {
-            get => _ptr->sample_rate;
-            set => _ptr->sample_rate = value;
-        }
+    public int SampleRate
+    {
+        get => _ptr->sample_rate;
+        set => _ptr->sample_rate = value;
+    }
 
-        public int FramesPerBuffer
-        {
-            get => _ptr->frames_per_buffer;
-            set => _ptr->frames_per_buffer = value;
-        }
+    public int FramesPerBuffer
+    {
+        get => _ptr->frames_per_buffer;
+        set => _ptr->frames_per_buffer = value;
+    }
 }

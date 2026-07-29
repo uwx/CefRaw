@@ -5,7 +5,18 @@ using RawCef.Native;
 
 namespace RawCef;
 
-public unsafe partial class CefRegistration : CefBaseRefCounted
+/// <summary>
+/// Represents an instance of the <code>_cef_registration_t</code> type.
+/// </summary>
+public unsafe partial interface ICefRegistration : ICefBaseRefCounted
+{
+    public _cef_registration_t* NativePtr { get; }
+}
+
+/// <summary>
+/// Represents a library-owned instance of the <code>_cef_registration_t</code> type.
+/// </summary>
+public unsafe partial class CefRegistrationRef : CefBaseRefCounted, ICefRegistration
 {
     private readonly _cef_registration_t* _ptr;
 
@@ -17,11 +28,11 @@ public unsafe partial class CefRegistration : CefBaseRefCounted
 
     partial void Initialize();
 
-    internal _cef_registration_t* NativePtr => _ptr;
+    public _cef_registration_t* NativePtr => _ptr;
 
-        public _cef_base_ref_counted_t @base
-        {
-            get => _ptr->@base;
-            set => _ptr->@base = value;
-        }
+    public _cef_base_ref_counted_t @base
+    {
+        get => _ptr->@base;
+        set => _ptr->@base = value;
+    }
 }

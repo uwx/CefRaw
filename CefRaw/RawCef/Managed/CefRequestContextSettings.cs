@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_request_context_settings_t</code> type.
+/// </summary>
+public unsafe partial interface ICefRequestContextSettings
+{
+    public _cef_request_context_settings_t* NativePtr { get; }
+}
+
 public unsafe partial class CefRequestContextSettings
 {
     private readonly _cef_request_context_settings_t* _ptr;
@@ -17,41 +25,41 @@ public unsafe partial class CefRequestContextSettings
 
     partial void Initialize();
 
-    internal _cef_request_context_settings_t* NativePtr => _ptr;
+    public _cef_request_context_settings_t* NativePtr => _ptr;
 
-        public nuint Size
-        {
-            get => _ptr->size;
-            set => _ptr->size = value;
-        }
+    public nuint Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
 
-        public string? CachePath
-        {
-            get => new CefString(&_ptr->cache_path).Value;
-            set => new CefString(&_ptr->cache_path).Value = value;
-        }
+    public string? CachePath
+    {
+        get => new CefString(&_ptr->cache_path).Value;
+        set => new CefString(&_ptr->cache_path).Value = value;
+    }
 
-        public int PersistSessionCookies
-        {
-            get => _ptr->persist_session_cookies;
-            set => _ptr->persist_session_cookies = value;
-        }
+    public int PersistSessionCookies
+    {
+        get => _ptr->persist_session_cookies;
+        set => _ptr->persist_session_cookies = value;
+    }
 
-        public string? AcceptLanguageList
-        {
-            get => new CefString(&_ptr->accept_language_list).Value;
-            set => new CefString(&_ptr->accept_language_list).Value = value;
-        }
+    public string? AcceptLanguageList
+    {
+        get => new CefString(&_ptr->accept_language_list).Value;
+        set => new CefString(&_ptr->accept_language_list).Value = value;
+    }
 
-        public string? CookieableSchemesList
-        {
-            get => new CefString(&_ptr->cookieable_schemes_list).Value;
-            set => new CefString(&_ptr->cookieable_schemes_list).Value = value;
-        }
+    public string? CookieableSchemesList
+    {
+        get => new CefString(&_ptr->cookieable_schemes_list).Value;
+        set => new CefString(&_ptr->cookieable_schemes_list).Value = value;
+    }
 
-        public int CookieableSchemesExcludeDefaults
-        {
-            get => _ptr->cookieable_schemes_exclude_defaults;
-            set => _ptr->cookieable_schemes_exclude_defaults = value;
-        }
+    public int CookieableSchemesExcludeDefaults
+    {
+        get => _ptr->cookieable_schemes_exclude_defaults;
+        set => _ptr->cookieable_schemes_exclude_defaults = value;
+    }
 }

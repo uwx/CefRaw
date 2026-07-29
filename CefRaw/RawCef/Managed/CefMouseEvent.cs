@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_mouse_event_t</code> type.
+/// </summary>
+public unsafe partial interface ICefMouseEvent
+{
+    public _cef_mouse_event_t* NativePtr { get; }
+}
+
 public unsafe partial class CefMouseEvent
 {
     private readonly _cef_mouse_event_t* _ptr;
@@ -17,23 +25,23 @@ public unsafe partial class CefMouseEvent
 
     partial void Initialize();
 
-    internal _cef_mouse_event_t* NativePtr => _ptr;
+    public _cef_mouse_event_t* NativePtr => _ptr;
 
-        public int X
-        {
-            get => _ptr->x;
-            set => _ptr->x = value;
-        }
+    public int X
+    {
+        get => _ptr->x;
+        set => _ptr->x = value;
+    }
 
-        public int Y
-        {
-            get => _ptr->y;
-            set => _ptr->y = value;
-        }
+    public int Y
+    {
+        get => _ptr->y;
+        set => _ptr->y = value;
+    }
 
-        public uint Modifiers
-        {
-            get => _ptr->modifiers;
-            set => _ptr->modifiers = value;
-        }
+    public uint Modifiers
+    {
+        get => _ptr->modifiers;
+        set => _ptr->modifiers = value;
+    }
 }

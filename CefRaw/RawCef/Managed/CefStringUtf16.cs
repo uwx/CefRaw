@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_string_utf16_t</code> type.
+/// </summary>
+public unsafe partial interface ICefStringUtf16
+{
+    public _cef_string_utf16_t* NativePtr { get; }
+}
+
 public unsafe partial class CefStringUtf16
 {
     private readonly _cef_string_utf16_t* _ptr;
@@ -17,22 +25,18 @@ public unsafe partial class CefStringUtf16
 
     partial void Initialize();
 
-    internal _cef_string_utf16_t* NativePtr => _ptr;
+    public _cef_string_utf16_t* NativePtr => _ptr;
 
-    public void Dtor()
+
+    public ushort* Str
     {
-        _ptr->dtor(_ptr);
+        get => _ptr->str;
+        set => _ptr->str = value;
     }
 
-        public ushort* Str
-        {
-            get => _ptr->str;
-            set => _ptr->str = value;
-        }
-
-        public nuint Length
-        {
-            get => _ptr->length;
-            set => _ptr->length = value;
-        }
+    public nuint Length
+    {
+        get => _ptr->length;
+        set => _ptr->length = value;
+    }
 }

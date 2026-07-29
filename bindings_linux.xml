@@ -6710,7 +6710,7 @@
         <type native="double (*)(struct _cef_value_t *)">delegate* unmanaged[Cdecl]&lt;_cef_value_t*, double&gt;</type>
       </field>
       <field name="get_string" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_value_t *)">delegate* unmanaged[Cdecl]&lt;_cef_value_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_value_t *)">delegate* unmanaged[Cdecl]&lt;_cef_value_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_binary" access="public">
         <type native="struct _cef_binary_value_t *(*)(struct _cef_value_t *)">delegate* unmanaged[Cdecl]&lt;_cef_value_t*, _cef_binary_value_t*&gt;</type>
@@ -6828,7 +6828,7 @@
         <type native="double (*)(struct _cef_dictionary_value_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_dictionary_value_t*, _cef_string_utf16_t*, double&gt;</type>
       </field>
       <field name="get_string" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_dictionary_value_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_dictionary_value_t*, _cef_string_utf16_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_dictionary_value_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_dictionary_value_t*, _cef_string_utf16_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_binary" access="public">
         <type native="struct _cef_binary_value_t *(*)(struct _cef_dictionary_value_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_dictionary_value_t*, _cef_string_utf16_t*, _cef_binary_value_t*&gt;</type>
@@ -6917,7 +6917,7 @@
         <type native="double (*)(struct _cef_list_value_t *, size_t)">delegate* unmanaged[Cdecl]&lt;_cef_list_value_t*, nuint, double&gt;</type>
       </field>
       <field name="get_string" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_list_value_t *, size_t)">delegate* unmanaged[Cdecl]&lt;_cef_list_value_t*, nuint, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_list_value_t *, size_t)">delegate* unmanaged[Cdecl]&lt;_cef_list_value_t*, nuint, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_binary" access="public">
         <type native="struct _cef_binary_value_t *(*)(struct _cef_list_value_t *, size_t)">delegate* unmanaged[Cdecl]&lt;_cef_list_value_t*, nuint, _cef_binary_value_t*&gt;</type>
@@ -7100,25 +7100,25 @@
         <type native="int (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, int&gt;</type>
       </field>
       <field name="get_link_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_link_title" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_link_metadata" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_fragment_text" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_fragment_html" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_fragment_base_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_file_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_drag_data_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_file_contents" access="public">
         <type native="size_t (*)(struct _cef_drag_data_t *, struct _cef_stream_writer_t *)">delegate* unmanaged[Cdecl]&lt;_cef_drag_data_t*, _cef_stream_writer_t*, nuint&gt;</type>
@@ -7191,7 +7191,7 @@
         <type native="struct _cef_domnode_t *(*)(struct _cef_domdocument_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, _cef_domnode_t*&gt;</type>
       </field>
       <field name="get_title" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_domdocument_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_domdocument_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_element_by_id" access="public">
         <type native="struct _cef_domnode_t *(*)(struct _cef_domdocument_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, _cef_string_utf16_t*, _cef_domnode_t*&gt;</type>
@@ -7209,16 +7209,16 @@
         <type native="int (*)(struct _cef_domdocument_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, int&gt;</type>
       </field>
       <field name="get_selection_as_markup" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_domdocument_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_domdocument_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_selection_as_text" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_domdocument_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_domdocument_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_base_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_domdocument_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_domdocument_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_complete_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_domdocument_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, _cef_string_utf16_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_domdocument_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domdocument_t*, _cef_string_utf16_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
     </struct>
     <struct name="_cef_domnode_t" access="public" unsafe="true">
@@ -7247,16 +7247,16 @@
         <type native="int (*)(struct _cef_domnode_t *, struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_domnode_t*, int&gt;</type>
       </field>
       <field name="get_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_value" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_value" access="public">
         <type native="int (*)(struct _cef_domnode_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_string_utf16_t*, int&gt;</type>
       </field>
       <field name="get_as_markup" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_document" access="public">
         <type native="struct _cef_domdocument_t *(*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_domdocument_t*&gt;</type>
@@ -7280,7 +7280,7 @@
         <type native="struct _cef_domnode_t *(*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_domnode_t*&gt;</type>
       </field>
       <field name="get_element_tag_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="has_element_attributes" access="public">
         <type native="int (*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, int&gt;</type>
@@ -7289,7 +7289,7 @@
         <type native="int (*)(struct _cef_domnode_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_string_utf16_t*, int&gt;</type>
       </field>
       <field name="get_element_attribute" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_domnode_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_string_utf16_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_domnode_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_string_utf16_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_element_attributes" access="public">
         <type native="void (*)(struct _cef_domnode_t *, cef_string_map_t)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_string_map_t*, void&gt;</type>
@@ -7298,7 +7298,7 @@
         <type native="int (*)(struct _cef_domnode_t *, const cef_string_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_string_utf16_t*, _cef_string_utf16_t*, int&gt;</type>
       </field>
       <field name="get_element_inner_text" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_element_bounds" access="public">
         <type native="cef_rect_t (*)(struct _cef_domnode_t *)">delegate* unmanaged[Cdecl]&lt;_cef_domnode_t*, _cef_rect_t&gt;</type>
@@ -7332,7 +7332,7 @@
         <type native="struct _cef_process_message_t *(*)(struct _cef_process_message_t *)">delegate* unmanaged[Cdecl]&lt;_cef_process_message_t*, _cef_process_message_t*&gt;</type>
       </field>
       <field name="get_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_process_message_t *)">delegate* unmanaged[Cdecl]&lt;_cef_process_message_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_process_message_t *)">delegate* unmanaged[Cdecl]&lt;_cef_process_message_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_argument_list" access="public">
         <type native="struct _cef_list_value_t *(*)(struct _cef_process_message_t *)">delegate* unmanaged[Cdecl]&lt;_cef_process_message_t*, _cef_list_value_t*&gt;</type>
@@ -7349,13 +7349,13 @@
         <type native="int (*)(struct _cef_request_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, int&gt;</type>
       </field>
       <field name="get_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_request_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_request_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_url" access="public">
         <type native="void (*)(struct _cef_request_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, _cef_string_utf16_t*, void&gt;</type>
       </field>
       <field name="get_method" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_request_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_request_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_method" access="public">
         <type native="void (*)(struct _cef_request_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, _cef_string_utf16_t*, void&gt;</type>
@@ -7364,7 +7364,7 @@
         <type native="void (*)(struct _cef_request_t *, const cef_string_t *, cef_referrer_policy_t)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, _cef_string_utf16_t*, cef_referrer_policy_t, void&gt;</type>
       </field>
       <field name="get_referrer_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_request_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_request_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_referrer_policy" access="public">
         <type native="cef_referrer_policy_t (*)(struct _cef_request_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, cef_referrer_policy_t&gt;</type>
@@ -7382,7 +7382,7 @@
         <type native="void (*)(struct _cef_request_t *, cef_string_multimap_t)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, _cef_string_multimap_t*, void&gt;</type>
       </field>
       <field name="get_header_by_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_request_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, _cef_string_utf16_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_request_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, _cef_string_utf16_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_header_by_name" access="public">
         <type native="void (*)(struct _cef_request_t *, const cef_string_t *, const cef_string_t *, int)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, _cef_string_utf16_t*, _cef_string_utf16_t*, int, void&gt;</type>
@@ -7397,7 +7397,7 @@
         <type native="void (*)(struct _cef_request_t *, int)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, int, void&gt;</type>
       </field>
       <field name="get_first_party_for_cookies" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_request_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_request_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_first_party_for_cookies" access="public">
         <type native="void (*)(struct _cef_request_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_t*, _cef_string_utf16_t*, void&gt;</type>
@@ -7458,7 +7458,7 @@
         <type native="cef_postdataelement_type_t (*)(struct _cef_post_data_element_t *)">delegate* unmanaged[Cdecl]&lt;_cef_post_data_element_t*, cef_postdataelement_type_t&gt;</type>
       </field>
       <field name="get_file" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_post_data_element_t *)">delegate* unmanaged[Cdecl]&lt;_cef_post_data_element_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_post_data_element_t *)">delegate* unmanaged[Cdecl]&lt;_cef_post_data_element_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_bytes_count" access="public">
         <type native="size_t (*)(struct _cef_post_data_element_t *)">delegate* unmanaged[Cdecl]&lt;_cef_post_data_element_t*, nuint&gt;</type>
@@ -7533,16 +7533,16 @@
         <type native="int (*)(struct _cef_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_frame_t*, int&gt;</type>
       </field>
       <field name="get_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_frame_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_frame_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_identifier" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_frame_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_frame_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_parent" access="public">
         <type native="struct _cef_frame_t *(*)(struct _cef_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_frame_t*, _cef_frame_t*&gt;</type>
       </field>
       <field name="get_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_frame_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_frame_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_browser" access="public">
         <type native="struct _cef_browser_t *(*)(struct _cef_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_frame_t*, _cef_browser_t*&gt;</type>
@@ -7565,19 +7565,19 @@
         <type native="cef_base_ref_counted_t">_cef_base_ref_counted_t</type>
       </field>
       <field name="get_display_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_x509_cert_principal_t *)">delegate* unmanaged[Cdecl]&lt;_cef_x509_cert_principal_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_x509_cert_principal_t *)">delegate* unmanaged[Cdecl]&lt;_cef_x509_cert_principal_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_common_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_x509_cert_principal_t *)">delegate* unmanaged[Cdecl]&lt;_cef_x509_cert_principal_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_x509_cert_principal_t *)">delegate* unmanaged[Cdecl]&lt;_cef_x509_cert_principal_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_locality_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_x509_cert_principal_t *)">delegate* unmanaged[Cdecl]&lt;_cef_x509_cert_principal_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_x509_cert_principal_t *)">delegate* unmanaged[Cdecl]&lt;_cef_x509_cert_principal_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_state_or_province_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_x509_cert_principal_t *)">delegate* unmanaged[Cdecl]&lt;_cef_x509_cert_principal_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_x509_cert_principal_t *)">delegate* unmanaged[Cdecl]&lt;_cef_x509_cert_principal_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_country_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_x509_cert_principal_t *)">delegate* unmanaged[Cdecl]&lt;_cef_x509_cert_principal_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_x509_cert_principal_t *)">delegate* unmanaged[Cdecl]&lt;_cef_x509_cert_principal_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_organization_names" access="public">
         <type native="void (*)(struct _cef_x509_cert_principal_t *, cef_string_list_t)">delegate* unmanaged[Cdecl]&lt;_cef_x509_cert_principal_t*, _cef_string_list_t*, void&gt;</type>
@@ -7649,16 +7649,16 @@
         <type native="int (*)(struct _cef_navigation_entry_t *)">delegate* unmanaged[Cdecl]&lt;_cef_navigation_entry_t*, int&gt;</type>
       </field>
       <field name="get_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_navigation_entry_t *)">delegate* unmanaged[Cdecl]&lt;_cef_navigation_entry_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_navigation_entry_t *)">delegate* unmanaged[Cdecl]&lt;_cef_navigation_entry_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_display_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_navigation_entry_t *)">delegate* unmanaged[Cdecl]&lt;_cef_navigation_entry_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_navigation_entry_t *)">delegate* unmanaged[Cdecl]&lt;_cef_navigation_entry_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_original_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_navigation_entry_t *)">delegate* unmanaged[Cdecl]&lt;_cef_navigation_entry_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_navigation_entry_t *)">delegate* unmanaged[Cdecl]&lt;_cef_navigation_entry_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_title" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_navigation_entry_t *)">delegate* unmanaged[Cdecl]&lt;_cef_navigation_entry_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_navigation_entry_t *)">delegate* unmanaged[Cdecl]&lt;_cef_navigation_entry_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_transition_type" access="public">
         <type native="cef_transition_type_t (*)(struct _cef_navigation_entry_t *)">delegate* unmanaged[Cdecl]&lt;_cef_navigation_entry_t*, cef_transition_type_t&gt;</type>
@@ -7786,7 +7786,7 @@
         <type native="cef_base_ref_counted_t">_cef_base_ref_counted_t</type>
       </field>
       <field name="get_id" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_media_route_t *)">delegate* unmanaged[Cdecl]&lt;_cef_media_route_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_media_route_t *)">delegate* unmanaged[Cdecl]&lt;_cef_media_route_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_source" access="public">
         <type native="struct _cef_media_source_t *(*)(struct _cef_media_route_t *)">delegate* unmanaged[Cdecl]&lt;_cef_media_route_t*, _cef_media_source_t*&gt;</type>
@@ -7814,10 +7814,10 @@
         <type native="cef_base_ref_counted_t">_cef_base_ref_counted_t</type>
       </field>
       <field name="get_id" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_media_sink_t *)">delegate* unmanaged[Cdecl]&lt;_cef_media_sink_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_media_sink_t *)">delegate* unmanaged[Cdecl]&lt;_cef_media_sink_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_media_sink_t *)">delegate* unmanaged[Cdecl]&lt;_cef_media_sink_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_media_sink_t *)">delegate* unmanaged[Cdecl]&lt;_cef_media_sink_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_icon_type" access="public">
         <type native="cef_media_sink_icon_type_t (*)(struct _cef_media_sink_t *)">delegate* unmanaged[Cdecl]&lt;_cef_media_sink_t*, cef_media_sink_icon_type_t&gt;</type>
@@ -7848,7 +7848,7 @@
         <type native="cef_base_ref_counted_t">_cef_base_ref_counted_t</type>
       </field>
       <field name="get_id" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_media_source_t *)">delegate* unmanaged[Cdecl]&lt;_cef_media_source_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_media_source_t *)">delegate* unmanaged[Cdecl]&lt;_cef_media_source_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="is_cast_source" access="public">
         <type native="int (*)(struct _cef_media_source_t *)">delegate* unmanaged[Cdecl]&lt;_cef_media_source_t*, int&gt;</type>
@@ -7929,7 +7929,7 @@
         <type native="struct _cef_request_context_handler_t *(*)(struct _cef_request_context_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_context_t*, _cef_request_context_handler_t*&gt;</type>
       </field>
       <field name="get_cache_path" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_request_context_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_context_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_request_context_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_context_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_cookie_manager" access="public">
         <type native="struct _cef_cookie_manager_t *(*)(struct _cef_request_context_t *, struct _cef_completion_callback_t *)">delegate* unmanaged[Cdecl]&lt;_cef_request_context_t*, _cef_completion_callback_t*, _cef_cookie_manager_t*&gt;</type>
@@ -8423,10 +8423,10 @@
         <type native="int (*)(struct _cef_menu_model_t *, size_t, int)">delegate* unmanaged[Cdecl]&lt;_cef_menu_model_t*, nuint, int, int&gt;</type>
       </field>
       <field name="get_label" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_menu_model_t *, int)">delegate* unmanaged[Cdecl]&lt;_cef_menu_model_t*, int, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_menu_model_t *, int)">delegate* unmanaged[Cdecl]&lt;_cef_menu_model_t*, int, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_label_at" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_menu_model_t *, size_t)">delegate* unmanaged[Cdecl]&lt;_cef_menu_model_t*, nuint, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_menu_model_t *, size_t)">delegate* unmanaged[Cdecl]&lt;_cef_menu_model_t*, nuint, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_label" access="public">
         <type native="int (*)(struct _cef_menu_model_t *, int, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_menu_model_t*, int, _cef_string_utf16_t*, int&gt;</type>
@@ -8599,28 +8599,28 @@
         <type native="cef_context_menu_type_flags_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, cef_context_menu_type_flags_t&gt;</type>
       </field>
       <field name="get_link_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_unfiltered_link_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_source_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="has_image_contents" access="public">
         <type native="int (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, int&gt;</type>
       </field>
       <field name="get_title_text" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_page_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_frame_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_frame_charset" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_media_type" access="public">
         <type native="cef_context_menu_media_type_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, cef_context_menu_media_type_t&gt;</type>
@@ -8629,10 +8629,10 @@
         <type native="cef_context_menu_media_state_flags_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, cef_context_menu_media_state_flags_t&gt;</type>
       </field>
       <field name="get_selection_text" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_misspelled_word" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_context_menu_params_t *)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_dictionary_suggestions" access="public">
         <type native="int (*)(struct _cef_context_menu_params_t *, cef_string_list_t)">delegate* unmanaged[Cdecl]&lt;_cef_context_menu_params_t*, _cef_string_list_t*, int&gt;</type>
@@ -8754,25 +8754,25 @@
         <type native="cef_basetime_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, _cef_basetime_t&gt;</type>
       </field>
       <field name="get_full_path" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_id" access="public">
         <type native="uint32_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, uint&gt;</type>
       </field>
       <field name="get_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_original_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_suggested_file_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_content_disposition" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_mime_type" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="is_paused" access="public">
         <type native="int (*)(struct _cef_download_item_t *)">delegate* unmanaged[Cdecl]&lt;_cef_download_item_t*, int&gt;</type>
@@ -8999,7 +8999,7 @@
         <type native="void (*)(struct _cef_print_settings_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_print_settings_t*, _cef_string_utf16_t*, void&gt;</type>
       </field>
       <field name="get_device_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_print_settings_t *)">delegate* unmanaged[Cdecl]&lt;_cef_print_settings_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_print_settings_t *)">delegate* unmanaged[Cdecl]&lt;_cef_print_settings_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_dpi" access="public">
         <type native="void (*)(struct _cef_print_settings_t *, int)">delegate* unmanaged[Cdecl]&lt;_cef_print_settings_t*, int, void&gt;</type>
@@ -9187,25 +9187,25 @@
         <type native="void (*)(struct _cef_response_t *, int)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, int, void&gt;</type>
       </field>
       <field name="get_status_text" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_response_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_response_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_status_text" access="public">
         <type native="void (*)(struct _cef_response_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, _cef_string_utf16_t*, void&gt;</type>
       </field>
       <field name="get_mime_type" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_response_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_response_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_mime_type" access="public">
         <type native="void (*)(struct _cef_response_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, _cef_string_utf16_t*, void&gt;</type>
       </field>
       <field name="get_charset" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_response_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_response_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_charset" access="public">
         <type native="void (*)(struct _cef_response_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, _cef_string_utf16_t*, void&gt;</type>
       </field>
       <field name="get_header_by_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_response_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, _cef_string_utf16_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_response_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, _cef_string_utf16_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_header_by_name" access="public">
         <type native="void (*)(struct _cef_response_t *, const cef_string_t *, const cef_string_t *, int)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, _cef_string_utf16_t*, _cef_string_utf16_t*, int, void&gt;</type>
@@ -9217,7 +9217,7 @@
         <type native="void (*)(struct _cef_response_t *, cef_string_multimap_t)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, _cef_string_multimap_t*, void&gt;</type>
       </field>
       <field name="get_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_response_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_response_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_url" access="public">
         <type native="void (*)(struct _cef_response_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_response_t*, _cef_string_utf16_t*, void&gt;</type>
@@ -9472,10 +9472,10 @@
         <type native="void (*)(struct _cef_command_line_t *, cef_string_list_t)">delegate* unmanaged[Cdecl]&lt;_cef_command_line_t*, _cef_string_list_t*, void&gt;</type>
       </field>
       <field name="get_command_line_string" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_command_line_t *)">delegate* unmanaged[Cdecl]&lt;_cef_command_line_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_command_line_t *)">delegate* unmanaged[Cdecl]&lt;_cef_command_line_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_program" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_command_line_t *)">delegate* unmanaged[Cdecl]&lt;_cef_command_line_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_command_line_t *)">delegate* unmanaged[Cdecl]&lt;_cef_command_line_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="set_program" access="public">
         <type native="void (*)(struct _cef_command_line_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_command_line_t*, _cef_string_utf16_t*, void&gt;</type>
@@ -9487,7 +9487,7 @@
         <type native="int (*)(struct _cef_command_line_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_command_line_t*, _cef_string_utf16_t*, int&gt;</type>
       </field>
       <field name="get_switch_value" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_command_line_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_command_line_t*, _cef_string_utf16_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_command_line_t *, const cef_string_t *)">delegate* unmanaged[Cdecl]&lt;_cef_command_line_t*, _cef_string_utf16_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_switches" access="public">
         <type native="void (*)(struct _cef_command_line_t *, cef_string_map_t)">delegate* unmanaged[Cdecl]&lt;_cef_command_line_t*, _cef_string_map_t*, void&gt;</type>
@@ -9652,13 +9652,13 @@
         <type native="cef_base_ref_counted_t">_cef_base_ref_counted_t</type>
       </field>
       <field name="get_message" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_v8_exception_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_exception_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_v8_exception_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_exception_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_source_line" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_v8_exception_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_exception_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_v8_exception_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_exception_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_script_resource_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_v8_exception_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_exception_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_v8_exception_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_exception_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_line_number" access="public">
         <type native="int (*)(struct _cef_v8_exception_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_exception_t*, int&gt;</type>
@@ -9763,7 +9763,7 @@
         <type native="cef_basetime_t (*)(struct _cef_v8_value_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_value_t*, _cef_basetime_t&gt;</type>
       </field>
       <field name="get_string_value" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_v8_value_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_value_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_v8_value_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_value_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="is_user_created" access="public">
         <type native="int (*)(struct _cef_v8_value_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_value_t*, int&gt;</type>
@@ -9841,7 +9841,7 @@
         <type native="void *(*)(struct _cef_v8_value_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_value_t*, void*&gt;</type>
       </field>
       <field name="get_function_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_v8_value_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_value_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_v8_value_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_value_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_function_handler" access="public">
         <type native="struct _cef_v8_handler_t *(*)(struct _cef_v8_value_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_value_t*, _cef_v8_handler_t*&gt;</type>
@@ -9881,13 +9881,13 @@
         <type native="int (*)(struct _cef_v8_stack_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_stack_frame_t*, int&gt;</type>
       </field>
       <field name="get_script_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_v8_stack_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_stack_frame_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_v8_stack_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_stack_frame_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_script_name_or_source_url" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_v8_stack_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_stack_frame_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_v8_stack_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_stack_frame_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_function_name" access="public">
-        <type native="cef_string_userfree_t (*)(struct _cef_v8_stack_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_stack_frame_t*, _cef_string_utf16_t*&gt;</type>
+        <type native="cef_string_userfree_t (*)(struct _cef_v8_stack_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_stack_frame_t*, cef_string_userfree_utf16_t&gt;</type>
       </field>
       <field name="get_line_number" access="public">
         <type native="int (*)(struct _cef_v8_stack_frame_t *)">delegate* unmanaged[Cdecl]&lt;_cef_v8_stack_frame_t*, int&gt;</type>
@@ -10171,31 +10171,31 @@
           <type>_cef_string_utf16_t*</type>
         </param>
       </function>
-      <function name="cef_string_userfree_wide_alloc" access="public" lib="libcef" convention="Cdecl" static="true" unsafe="true">
-        <type native="cef_string_userfree_wide_t">_cef_string_wide_t*</type>
+      <function name="cef_string_userfree_wide_alloc" access="public" lib="libcef" convention="Cdecl" static="true">
+        <type>cef_string_userfree_wide_t</type>
       </function>
-      <function name="cef_string_userfree_utf8_alloc" access="public" lib="libcef" convention="Cdecl" static="true" unsafe="true">
-        <type native="cef_string_userfree_utf8_t">_cef_string_utf8_t*</type>
+      <function name="cef_string_userfree_utf8_alloc" access="public" lib="libcef" convention="Cdecl" static="true">
+        <type>cef_string_userfree_utf8_t</type>
       </function>
-      <function name="cef_string_userfree_utf16_alloc" access="public" lib="libcef" convention="Cdecl" static="true" unsafe="true">
-        <type native="cef_string_userfree_utf16_t">_cef_string_utf16_t*</type>
+      <function name="cef_string_userfree_utf16_alloc" access="public" lib="libcef" convention="Cdecl" static="true">
+        <type>cef_string_userfree_utf16_t</type>
       </function>
-      <function name="cef_string_userfree_wide_free" access="public" lib="libcef" convention="Cdecl" static="true" unsafe="true">
+      <function name="cef_string_userfree_wide_free" access="public" lib="libcef" convention="Cdecl" static="true">
         <type>void</type>
         <param name="str">
-          <type>_cef_string_wide_t*</type>
+          <type>cef_string_userfree_wide_t</type>
         </param>
       </function>
-      <function name="cef_string_userfree_utf8_free" access="public" lib="libcef" convention="Cdecl" static="true" unsafe="true">
+      <function name="cef_string_userfree_utf8_free" access="public" lib="libcef" convention="Cdecl" static="true">
         <type>void</type>
         <param name="str">
-          <type>_cef_string_utf8_t*</type>
+          <type>cef_string_userfree_utf8_t</type>
         </param>
       </function>
-      <function name="cef_string_userfree_utf16_free" access="public" lib="libcef" convention="Cdecl" static="true" unsafe="true">
+      <function name="cef_string_userfree_utf16_free" access="public" lib="libcef" convention="Cdecl" static="true">
         <type>void</type>
         <param name="str">
-          <type>_cef_string_utf16_t*</type>
+          <type>cef_string_userfree_utf16_t</type>
         </param>
       </function>
       <function name="cef_string_utf16_to_lower" access="public" lib="libcef" convention="Cdecl" static="true" unsafe="true">
@@ -10950,7 +10950,7 @@
         </value>
       </constant>
       <constant name="cef_string_userfree_alloc" access="public">
-        <type primitive="True">delegate*&lt;_cef_string_utf16_t*&gt;</type>
+        <type primitive="True">delegate*&lt;cef_string_userfree_utf16_t&gt;</type>
         <value>
           <deref>
             <code>cef_string_userfree_utf16_alloc</code>
@@ -10958,7 +10958,7 @@
         </value>
       </constant>
       <constant name="cef_string_userfree_free" access="public">
-        <type primitive="True">delegate*&lt;_cef_string_utf16_t*, void&gt;</type>
+        <type primitive="True">delegate*&lt;cef_string_userfree_utf16_t, void&gt;</type>
         <value>
           <deref>
             <code>cef_string_userfree_utf16_free</code>

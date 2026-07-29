@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_rect_t</code> type.
+/// </summary>
+public unsafe partial interface ICefRect
+{
+    public _cef_rect_t* NativePtr { get; }
+}
+
 public unsafe partial class CefRect
 {
     private readonly _cef_rect_t* _ptr;
@@ -17,29 +25,29 @@ public unsafe partial class CefRect
 
     partial void Initialize();
 
-    internal _cef_rect_t* NativePtr => _ptr;
+    public _cef_rect_t* NativePtr => _ptr;
 
-        public int X
-        {
-            get => _ptr->x;
-            set => _ptr->x = value;
-        }
+    public int X
+    {
+        get => _ptr->x;
+        set => _ptr->x = value;
+    }
 
-        public int Y
-        {
-            get => _ptr->y;
-            set => _ptr->y = value;
-        }
+    public int Y
+    {
+        get => _ptr->y;
+        set => _ptr->y = value;
+    }
 
-        public int Width
-        {
-            get => _ptr->width;
-            set => _ptr->width = value;
-        }
+    public int Width
+    {
+        get => _ptr->width;
+        set => _ptr->width = value;
+    }
 
-        public int Height
-        {
-            get => _ptr->height;
-            set => _ptr->height = value;
-        }
+    public int Height
+    {
+        get => _ptr->height;
+        set => _ptr->height = value;
+    }
 }

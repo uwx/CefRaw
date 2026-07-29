@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_point_t</code> type.
+/// </summary>
+public unsafe partial interface ICefPoint
+{
+    public _cef_point_t* NativePtr { get; }
+}
+
 public unsafe partial class CefPoint
 {
     private readonly _cef_point_t* _ptr;
@@ -17,17 +25,17 @@ public unsafe partial class CefPoint
 
     partial void Initialize();
 
-    internal _cef_point_t* NativePtr => _ptr;
+    public _cef_point_t* NativePtr => _ptr;
 
-        public int X
-        {
-            get => _ptr->x;
-            set => _ptr->x = value;
-        }
+    public int X
+    {
+        get => _ptr->x;
+        set => _ptr->x = value;
+    }
 
-        public int Y
-        {
-            get => _ptr->y;
-            set => _ptr->y = value;
-        }
+    public int Y
+    {
+        get => _ptr->y;
+        set => _ptr->y = value;
+    }
 }

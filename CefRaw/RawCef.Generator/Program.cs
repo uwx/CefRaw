@@ -2,6 +2,7 @@
 using CefRaw.BindingsParser;
 using CefRaw.BindingsParser.Models;
 using CefRaw.SourceGen;
+using WorldXaml.Generator.Common;
 
 var outputDir = args[0];
 
@@ -48,6 +49,16 @@ foreach (var enumeration in winBindings.Namespace.Enumerations)
     
     File.AppendAllText(Path.Combine(outputDir, "GlobalUsings.g.cs"), $"global using {enumeration.Name} = RawCef.Native.{TypeMapper.GetManagedName(enumeration.Name)};\n");
 }
+
+var sb = new IndentedStringBuilder();
+foreach (var (binding, platform) in (ReadOnlySpan<(BindingsRoot Root, string Platform)>)[(Root: winBindings, Platform: "Win"), (Root: macBindings, Platform: "Mac"), (Root: linuxBindings, Platform: "Linux")])
+{
+    if (binding.Namespace.Class is { } cls)
+    {
+        Emitter.GenerateNativeMethods(cls, sb, platform);
+    }
+}
+File.WriteAllText(Path.Combine(outputDir, "CefUnsafe.g.cs"), sb.ToString());
 
 return;
 

@@ -5,6 +5,14 @@ using RawCef.Native;
 
 namespace RawCef;
 
+/// <summary>
+/// Represents an instance of the <code>_cef_insets_t</code> type.
+/// </summary>
+public unsafe partial interface ICefInsets
+{
+    public _cef_insets_t* NativePtr { get; }
+}
+
 public unsafe partial class CefInsets
 {
     private readonly _cef_insets_t* _ptr;
@@ -17,29 +25,29 @@ public unsafe partial class CefInsets
 
     partial void Initialize();
 
-    internal _cef_insets_t* NativePtr => _ptr;
+    public _cef_insets_t* NativePtr => _ptr;
 
-        public int Top
-        {
-            get => _ptr->top;
-            set => _ptr->top = value;
-        }
+    public int Top
+    {
+        get => _ptr->top;
+        set => _ptr->top = value;
+    }
 
-        public int Left
-        {
-            get => _ptr->left;
-            set => _ptr->left = value;
-        }
+    public int Left
+    {
+        get => _ptr->left;
+        set => _ptr->left = value;
+    }
 
-        public int Bottom
-        {
-            get => _ptr->bottom;
-            set => _ptr->bottom = value;
-        }
+    public int Bottom
+    {
+        get => _ptr->bottom;
+        set => _ptr->bottom = value;
+    }
 
-        public int Right
-        {
-            get => _ptr->right;
-            set => _ptr->right = value;
-        }
+    public int Right
+    {
+        get => _ptr->right;
+        set => _ptr->right = value;
+    }
 }
