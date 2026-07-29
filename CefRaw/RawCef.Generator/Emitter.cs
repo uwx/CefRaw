@@ -43,7 +43,7 @@ internal static class Emitter
         return sb.ToString();
     }
 
-    public static string GenerateWrapper(StructDefinition structDef)
+    public static string GenerateInterface(StructDefinition structDef)
     {
         var sb = new IndentedStringBuilder();
 
@@ -58,152 +58,246 @@ internal static class Emitter
         sb.AppendLine();
         sb.AppendLine("namespace RawCef;");
         sb.AppendLine();
-        
-        var baseClass = GetBaseType(structDef) switch
-        {
-            "_cef_base_ref_counted_t" => "CefBaseRefCounted",
-            "_cef_base_scoped_t" => "CefBaseScoped",
-            _ => null
-        };
+
+        var baseClass = GetBaseClassName(structDef);
 
         // Interface declaration
         sb.AppendLine("/// <summary>");
         sb.AppendLine($"/// Represents an instance of the <code>{structDef.Name}</code> type.");
         sb.AppendLine("/// </summary>");
         sb.Append($"public unsafe partial interface I{managedName}");
-        if (baseClass != null)
+        if (baseClass is not null)
             sb.Append($" : I{baseClass}");
         sb.AppendLine();
 
         sb.AppendLine("{");
-        
+
         using (sb.Indent())
         {
-            sb.AppendLine($"public {nativeName}* NativePtr {{ get; }}");
+            if (baseClass is not null)
+                sb.AppendLine($"new {nativeName}* NativePtr {{ get; }}");
+            else
+                sb.AppendLine($"{nativeName}* NativePtr {{ get; }}");
+
+            // Method signatures (no bodies) for each function-pointer field
+            foreach (var field in structDef.Fields.Where(f => f.Type.CSharpType.Contains("delegate*")))
+            {
+                if (field.Name is "dtor" or "add_ref" or "release" or "has_one_ref" or "has_at_least_one_ref" or "del")
+                    continue;
+
+                sb.AppendLine();
+                EmitInterfaceMethod(sb, field);
+            }
+
+            // Property signatures for data fields
+            foreach (var field in structDef.Fields.Where(f => !f.Type.CSharpType.Contains("delegate*")))
+            {
+                if (field.Name == "@base")
+                    continue;
+                sb.AppendLine();
+                EmitInterfaceProperty(sb, field);
+            }
         }
 
         sb.AppendLine("}");
-        sb.AppendLine();
-
-        if (baseClass == "CefBaseRefCounted")
-        {
-            // Class declaration
-            sb.AppendLine("/// <summary>");
-            sb.AppendLine($"/// Represents a library-owned instance of the <code>{structDef.Name}</code> type.");
-            sb.AppendLine("/// </summary>");
-            sb.Append($"public unsafe partial class {managedName}Ref");
-            if (baseClass != null)
-                sb.Append($" : {baseClass}, I{managedName}");
-            else
-                sb.Append($" : I{managedName}");
-            sb.AppendLine();
-
-            sb.AppendLine("{");
-
-            using (sb.Indent())
-            {
-                // Private pointer field
-                sb.Append($"private readonly {nativeName}* _ptr;");
-                sb.AppendLine();
-
-                // Constructor
-                sb.AppendLine();
-                sb.Append($"public {managedName}({nativeName}* ptr)");
-                if (baseClass != null)
-                {
-                    sb.Append(" : base(&ptr->@base)");
-                }
-
-                sb.AppendLine();
-                sb.AppendLine("{");
-                sb.AppendLine("    _ptr = ptr;");
-                sb.AppendLine("    Initialize();");
-                sb.AppendLine("}");
-                sb.AppendLine();
-                sb.AppendLine("partial void Initialize();");
-
-                // Internal pointer accessor for other wrappers
-                sb.AppendLine();
-                sb.AppendLine($"public {nativeName}* NativePtr => _ptr;");
-
-                // Methods for function-pointer fields
-                foreach (var field in structDef.Fields.Where(field => field.Type.CSharpType.Contains("delegate*")))
-                {
-                    sb.AppendLine();
-                    EmitMethod(sb, structDef, field);
-                }
-
-                // Properties for data fields (data-only structs)
-                foreach (var field in structDef.Fields.Where(field => !field.Type.CSharpType.Contains("delegate*")))
-                {
-                    sb.AppendLine();
-                    EmitDataProperty(sb, field);
-                }
-            }
-
-            sb.AppendLine("}");
-
-        }
-        else
-        {
-            sb.Append($"public unsafe partial class {managedName}");
-            if (baseClass != null)
-                sb.Append($" : {baseClass}");
-            sb.AppendLine();
-
-            sb.AppendLine("{");
-            
-            using (sb.Indent())
-            {
-                // Private pointer field
-                sb.Append($"private readonly {nativeName}* _ptr;");
-                sb.AppendLine();
-
-                // Constructor
-                sb.AppendLine();
-                sb.Append($"public {managedName}({nativeName}* ptr)");
-                if (baseClass != null)
-                {
-                    sb.Append(" : base(&ptr->@base)");
-                }
-
-                sb.AppendLine();
-                sb.AppendLine("{");
-                sb.AppendLine("    _ptr = ptr;");
-                sb.AppendLine("    Initialize();");
-                sb.AppendLine("}");
-                sb.AppendLine();
-                sb.AppendLine("partial void Initialize();");
-
-                // Internal pointer accessor for other wrappers
-                sb.AppendLine();
-                sb.AppendLine($"public {nativeName}* NativePtr => _ptr;");
-
-                // Methods for function-pointer fields
-                foreach (var field in structDef.Fields.Where(field => field.Type.CSharpType.Contains("delegate*")))
-                {
-                    sb.AppendLine();
-                    EmitMethod(sb, structDef, field);
-                }
-
-                // Properties for data fields (data-only structs)
-                foreach (var field in structDef.Fields.Where(field => !field.Type.CSharpType.Contains("delegate*")))
-                {
-                    sb.AppendLine();
-                    EmitDataProperty(sb, field);
-                }
-            }
-
-            sb.AppendLine("}");
-
-        }
 
         return sb.ToString();
+    }
 
-        static string? GetBaseType(StructDefinition structDefinition)
+    public static string GenerateAbstractClass(StructDefinition structDef)
+    {
+        var sb = new IndentedStringBuilder();
+
+        var nativeName = structDef.Name;
+        var managedName = TypeMapper.GetManagedName(structDef.Name);
+        var baseClass = GetBaseClassName(structDef);
+
+        if (baseClass is null)
+            return string.Empty; // No base class = can't generate abstract client-side type
+
+        // Header
+        sb.AppendLine("// <auto-generated/>");
+        sb.AppendLine("#nullable enable");
+        sb.AppendLine();
+        sb.AppendLine("using System.Runtime.CompilerServices;");
+        sb.AppendLine("using System.Runtime.InteropServices;");
+        sb.AppendLine("using RawCef.Native;");
+        sb.AppendLine();
+        sb.AppendLine("namespace RawCef;");
+        sb.AppendLine();
+
+        sb.AppendLine("/// <summary>");
+        sb.AppendLine($"/// Abstract base class for client-side implementations of <c>{structDef.Name}</c>.");
+        sb.AppendLine($"/// Subclass this to implement a custom {managedName}.");
+        sb.AppendLine("/// </summary>");
+        sb.Append($"public unsafe abstract partial class {managedName}");
+        sb.Append($" : {baseClass}, I{managedName}");
+        sb.AppendLine();
+
+        sb.AppendLine("{");
+
+        using (sb.Indent())
         {
-            return structDefinition.Fields.FirstOrDefault(f => f.Name == "@base")?.Type.CSharpType;
+            // Typed pointer field
+            sb.AppendLine($"private {nativeName}* _typedPtr;");
+            sb.AppendLine();
+
+            // Constructor — default (leaf) and forwarding (intermediate) overloads
+            sb.AppendLine($"protected {managedName}() : this((nuint)sizeof({nativeName}))");
+            sb.AppendLine("{");
+            sb.AppendLine("}");
+            sb.AppendLine();
+            sb.AppendLine($"protected {managedName}(nuint structSize) : base(structSize)");
+            sb.AppendLine("{");
+            sb.AppendLine($"    _typedPtr = ({nativeName}*)NativePtr;");
+            sb.AppendLine("    InitializeNativeStruct();");
+            sb.AppendLine("}");
+            sb.AppendLine();
+
+            // Typed NativePtr
+            sb.AppendLine($"{nativeName}* I{managedName}.NativePtr => _typedPtr;");
+            sb.AppendLine();
+
+            // Override InitializeNativeStruct to set up bridge methods
+            sb.AppendLine("/// <inheritdoc />");
+            sb.AppendLine("protected override void InitializeNativeStruct()");
+            sb.AppendLine("{");
+            sb.AppendLine("    base.InitializeNativeStruct();");
+            sb.AppendLine();
+
+            var methodFields = structDef.Fields.Where(f => f.Type.CSharpType.Contains("delegate*")).ToArray();
+            foreach (var field in methodFields)
+            {
+                if (field.Name is "dtor" or "add_ref" or "release" or "has_one_ref" or "has_at_least_one_ref" or "del")
+                    continue;
+                sb.AppendLine($"    _typedPtr->{field.Name} = &Bridge_{TypeMapper.SnakeToPascal(field.Name)};");
+            }
+
+            sb.AppendLine("}");
+            sb.AppendLine();
+
+            // Abstract methods
+            foreach (var field in methodFields)
+            {
+                if (field.Name is "dtor" or "add_ref" or "release" or "has_one_ref" or "has_at_least_one_ref" or "del")
+                    continue;
+                sb.AppendLine();
+                EmitAbstractMethod(sb, field);
+            }
+
+            // Data properties
+            foreach (var field in structDef.Fields.Where(f => !f.Type.CSharpType.Contains("delegate*")))
+            {
+                if (field.Name == "@base")
+                    continue;
+                sb.AppendLine();
+                EmitAbstractProperty(sb, field);
+            }
+
+            // Bridge methods
+            foreach (var field in methodFields)
+            {
+                if (field.Name is "dtor" or "add_ref" or "release" or "has_one_ref" or "has_at_least_one_ref" or "del")
+                    continue;
+                sb.AppendLine();
+                EmitBridgeMethod(sb, structDef, field);
+            }
         }
+
+        sb.AppendLine("}");
+
+        return sb.ToString();
+    }
+
+    public static string GenerateRefClass(StructDefinition structDef)
+    {
+        var sb = new IndentedStringBuilder();
+
+        var nativeName = structDef.Name;
+        var managedName = TypeMapper.GetManagedName(structDef.Name);
+        var baseClass = GetBaseClassName(structDef);
+
+        var refBaseClass = baseClass is not null ? baseClass + "Ref" : null;
+
+        // Header
+        sb.AppendLine("// <auto-generated/>");
+        sb.AppendLine("#nullable enable");
+        sb.AppendLine();
+        sb.AppendLine("using RawCef.Native;");
+        sb.AppendLine();
+        sb.AppendLine("namespace RawCef;");
+        sb.AppendLine();
+
+        sb.AppendLine("/// <summary>");
+        sb.AppendLine($"/// Wraps a library-owned instance of <c>{structDef.Name}</c>.");
+        if (baseClass is not null)
+        {
+            sb.AppendLine($"/// Calls <c>add_ref</c> on construction and <c>release</c> on dispose");
+            sb.AppendLine($"/// (for ref-counted types) or <c>del</c> on dispose (for scoped types).");
+        }
+        sb.AppendLine("/// </summary>");
+        sb.Append($"public unsafe partial class {managedName}Ref");
+        if (refBaseClass is not null)
+            sb.Append($" : {refBaseClass}, I{managedName}");
+        else
+            sb.Append($" : I{managedName}");
+        sb.AppendLine();
+
+        sb.AppendLine("{");
+
+        using (sb.Indent())
+        {
+            // Private typed pointer
+            sb.AppendLine($"private readonly {nativeName}* _ptr;");
+            sb.AppendLine();
+
+            // Constructor
+            if (refBaseClass is not null)
+            {
+                sb.AppendLine($"public {managedName}Ref({nativeName}* ptr) : base(&ptr->@base)");
+            }
+            else
+            {
+                sb.AppendLine($"public {managedName}Ref({nativeName}* ptr)");
+            }
+            sb.AppendLine("{");
+            sb.AppendLine("    _ptr = ptr;");
+            sb.AppendLine("    Initialize();");
+            sb.AppendLine("}");
+            sb.AppendLine();
+            sb.AppendLine("partial void Initialize();");
+            sb.AppendLine();
+
+            // Typed NativePtr
+            sb.AppendLine($"{nativeName}* I{managedName}.NativePtr => _ptr;");
+            sb.AppendLine();
+
+            // Methods for function-pointer fields
+            foreach (var field in structDef.Fields.Where(f => f.Type.CSharpType.Contains("delegate*")))
+            {
+                sb.AppendLine();
+                EmitMethod(sb, structDef, field);
+            }
+
+            // Properties for data fields
+            foreach (var field in structDef.Fields.Where(f => !f.Type.CSharpType.Contains("delegate*")))
+            {
+                sb.AppendLine();
+                EmitDataProperty(sb, field);
+            }
+        }
+
+        sb.AppendLine("}");
+
+        return sb.ToString();
+    }
+
+    private static string? GetBaseClassName(StructDefinition structDefinition)
+    {
+        var baseField = structDefinition.Fields.FirstOrDefault(f => f.Name == "@base");
+        if (baseField is null) return null;
+        // Use the managed name of the direct base struct (e.g. _cef_preference_manager_t → CefPreferenceManager)
+        return TypeMapper.GetManagedName(baseField.Type.CSharpType);
     }
 
     private static void EmitMethod(IndentedStringBuilder sb, StructDefinition model, FieldDefinition method)
@@ -224,8 +318,8 @@ internal static class Emitter
             })
             .ToArray();
 
-        // Method signature
-        sb.Append($"public {(returnIsCefObject ? returnCefObjectName : returnManaged)} {TypeMapper.SnakeToPascal(method.Name)}(");
+        // Method signature — use returnManaged for the return type (includes ? for nullable)
+        sb.Append($"public {returnManaged} {TypeMapper.SnakeToPascal(method.Name)}(");
 
         for (int i = 0; i < argsManaged.Length; i++)
         {
@@ -296,7 +390,8 @@ internal static class Emitter
                 }
                 else if (returnIsCefObject)
                 {
-                    sb.AppendLine($"return _result != null ? new {returnCefObjectName}(_result) : null;");
+                    // returnCefObjectName is the managed name (e.g. "CefFrame"), Ref class is "CefFrameRef"
+                    sb.AppendLine($"return _result != null ? new {returnCefObjectName}Ref(_result) : null;");
                 }
                 else
                 {
@@ -346,6 +441,199 @@ internal static class Emitter
             sb.AppendLine($"    get => _ptr->{field.Name};");
             sb.AppendLine($"    set => _ptr->{field.Name} = value;");
             sb.AppendLine("}");
+        }
+    }
+
+    // ── Interface helpers ────────────────────────────────────────────
+
+    private static void EmitInterfaceMethod(IndentedStringBuilder sb, FieldDefinition method)
+    {
+        var (args, @return) = TypeMapper.GetTypeListFromDelegate(method.Type.CSharpType);
+
+        var returnManaged = TypeMapper.MapNativeToManaged(@return, out _, out _, out _);
+        var argsManaged = args
+            .Skip(1) // skip instance
+            .Select((arg, idx) =>
+            {
+                var managed = TypeMapper.MapNativeToManaged(arg, out _, out _, out _);
+                return (Managed: managed, Index: idx);
+            })
+            .ToArray();
+
+        sb.Append($"public {returnManaged} {TypeMapper.SnakeToPascal(method.Name)}(");
+        for (int i = 0; i < argsManaged.Length; i++)
+        {
+            if (i > 0) sb.Append(", ");
+            sb.Append($"{argsManaged[i].Managed} arg{argsManaged[i].Index}");
+        }
+        sb.AppendLine(");");
+    }
+
+    private static void EmitInterfaceProperty(IndentedStringBuilder sb, FieldDefinition field)
+    {
+        var propName = TypeMapper.SnakeToPascal(field.Name);
+
+        if (TypeMapper.IsStringValueField(field.Type.CSharpType, field.Type.Native))
+        {
+            sb.AppendLine($"string? {propName} {{ get; set; }}");
+        }
+        else if (TypeMapper.IsCefEnum(field.Type.CSharpType))
+        {
+            sb.AppendLine($"{field.Type.CSharpType} {propName} {{ get; set; }}");
+        }
+        else
+        {
+            TypeMapper.MapNativeToManaged(field.Type.CSharpType, out _, out _, out _);
+            sb.AppendLine($"{field.Type.CSharpType} {propName} {{ get; set; }}");
+        }
+    }
+
+    // ── Abstract class helpers ────────────────────────────────────────
+
+    private static void EmitAbstractMethod(IndentedStringBuilder sb, FieldDefinition method)
+    {
+        var (args, @return) = TypeMapper.GetTypeListFromDelegate(method.Type.CSharpType);
+
+        var returnManaged = TypeMapper.MapNativeToManaged(@return, out _, out _, out _);
+        var argsManaged = args
+            .Skip(1) // skip instance
+            .Select((arg, idx) =>
+            {
+                var managed = TypeMapper.MapNativeToManaged(arg, out _, out _, out _);
+                return (Managed: managed, Index: idx);
+            })
+            .ToArray();
+
+        sb.AppendLine("/// <summary>");
+        sb.AppendLine($"/// Implement the <c>{method.Name}</c> callback.");
+        sb.AppendLine("/// </summary>");
+        sb.Append($"public abstract {returnManaged} {TypeMapper.SnakeToPascal(method.Name)}(");
+        for (int i = 0; i < argsManaged.Length; i++)
+        {
+            if (i > 0) sb.Append(", ");
+            sb.Append($"{argsManaged[i].Managed} arg{argsManaged[i].Index}");
+        }
+        sb.AppendLine(");");
+    }
+
+    private static void EmitAbstractProperty(IndentedStringBuilder sb, FieldDefinition field)
+    {
+        var propName = TypeMapper.SnakeToPascal(field.Name);
+
+        if (TypeMapper.IsStringValueField(field.Type.CSharpType, field.Type.Native))
+        {
+            sb.AppendLine($"public virtual string? {propName}");
+            sb.AppendLine("{");
+            sb.AppendLine($"    get => new CefString(&_typedPtr->{field.Name}).Value;");
+            sb.AppendLine($"    set => new CefString(&_typedPtr->{field.Name}).Value = value;");
+            sb.AppendLine("}");
+        }
+        else if (TypeMapper.IsCefEnum(field.Type.CSharpType))
+        {
+            sb.AppendLine($"public virtual {field.Type.CSharpType} {propName}");
+            sb.AppendLine("{");
+            sb.AppendLine($"    get => _typedPtr->{field.Name};");
+            sb.AppendLine($"    set => _typedPtr->{field.Name} = value;");
+            sb.AppendLine("}");
+        }
+        else
+        {
+            sb.AppendLine($"public virtual {field.Type.CSharpType} {propName}");
+            sb.AppendLine("{");
+            sb.AppendLine($"    get => _typedPtr->{field.Name};");
+            sb.AppendLine($"    set => _typedPtr->{field.Name} = value;");
+            sb.AppendLine("}");
+        }
+    }
+
+    // ── Bridge method generation ─────────────────────────────────────
+
+    private static void EmitBridgeMethod(IndentedStringBuilder sb, StructDefinition structDef, FieldDefinition method)
+    {
+        var nativeName = structDef.Name;
+        var managedName = TypeMapper.GetManagedName(structDef.Name);
+        var (args, @return) = TypeMapper.GetTypeListFromDelegate(method.Type.CSharpType);
+
+        // Parse args and return types for marshaling
+        var nativeReturnType = @return;
+        var nativeArgTypes = args.ToArray(); // includes self at index 0
+
+        var returnManaged = TypeMapper.MapNativeToManaged(@return, out var returnIsString, out var returnIsCefObject, out var returnCefObjectName);
+
+        var bridgeName = $"Bridge_{TypeMapper.SnakeToPascal(method.Name)}";
+
+        // Emit platform-specific bridge methods
+        foreach (var platformConv in new[] { ("OS_WIN", "CallConvStdcall"), ("OS_MAC || OS_LINUX", "CallConvCdecl") })
+        {
+            sb.AppendLine($"#if {platformConv.Item1}");
+            sb.AppendLine($"[UnmanagedCallersOnly(CallConvs = new[] {{ typeof({platformConv.Item2}) }})]");
+            sb.Append($"private static {nativeReturnType} {bridgeName}({nativeArgTypes[0]} self");
+
+            // Additional params (after self)
+            for (int i = 1; i < nativeArgTypes.Length; i++)
+            {
+                sb.Append($", {nativeArgTypes[i]} arg{i - 1}");
+            }
+            sb.AppendLine(")");
+
+            sb.AppendLine("{");
+
+            using (sb.Indent())
+            {
+                sb.AppendLine($"var _m = GetManaged<{managedName}>(self);");
+                sb.AppendLine();
+
+                // Marshal managed params
+                var managedArgs = new List<string>();
+                for (int i = 1; i < nativeArgTypes.Length; i++)
+                {
+                    var argManaged = TypeMapper.MapNativeToManaged(nativeArgTypes[i], out var argIsString, out var argIsCefObject, out var argCefName);
+
+                    if (argIsString)
+                    {
+                        sb.AppendLine($"var _a{i - 1} = CefStringRef.ToStringAndFree(arg{i - 1});");
+                    }
+                    else if (argIsCefObject)
+                    {
+                        sb.AppendLine($"var _a{i - 1} = arg{i - 1} != null ? new {argCefName}Ref(arg{i - 1}) : null;");
+                    }
+                    else
+                    {
+                        sb.AppendLine($"var _a{i - 1} = arg{i - 1};");
+                    }
+
+                    managedArgs.Add($"_a{i - 1}");
+                }
+
+                // Call managed method
+                if (returnManaged == "void")
+                {
+                    sb.AppendLine($"_m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
+                }
+                else
+                {
+                    sb.AppendLine($"var _result = _m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
+                    sb.AppendLine();
+
+                    // Marshal return
+                    if (returnIsString)
+                    {
+                        sb.AppendLine("return CefStringRef.AllocUserfree(_result);");
+                    }
+                    else if (returnIsCefObject)
+                    {
+                        sb.AppendLine($"return _result?.NativePtr;");
+                    }
+                    else
+                    {
+                        sb.AppendLine("return _result;");
+                    }
+                }
+            }
+
+            sb.AppendLine("}");
+            sb.AppendLine("#endif");
+            sb.AppendLine();
         }
     }
 

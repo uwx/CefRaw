@@ -23,30 +23,55 @@ File.WriteAllText(Path.Combine(outputDir, "GlobalUsings.g.cs"), """
                                                               """);
 foreach (var (name, groups) in groupedStructs)
 {
+    var managedName = TypeMapper.GetManagedName(name);
+    var isBaseType = name is "_cef_base_ref_counted_t" or "_cef_base_scoped_t";
+
     if (groups.Count == 1)
     {
         var native = Emitter.GenerateNative(groups.First().Struct);
-        var managed = Emitter.GenerateWrapper(groups.First().Struct);
-        
+
         File.WriteAllText(Path.Combine(outputDir, "Native", $"{name}.cs"), native);
-        File.WriteAllText(Path.Combine(outputDir, "Managed", $"{TypeMapper.GetManagedName(name)}.cs"), managed);
+
+        if (!isBaseType)
+        {
+            var iface = Emitter.GenerateInterface(groups.First().Struct);
+            var abstractClass = Emitter.GenerateAbstractClass(groups.First().Struct);
+            var refClass = Emitter.GenerateRefClass(groups.First().Struct);
+
+            File.WriteAllText(Path.Combine(outputDir, "Managed", $"I{managedName}.cs"), iface);
+            File.WriteAllText(Path.Combine(outputDir, "Managed", $"{managedName}.cs"), abstractClass);
+            File.WriteAllText(Path.Combine(outputDir, "Managed", $"{managedName}Ref.cs"), refClass);
+        }
     }
     else
     {
         var native = string.Join("\n",
             groups.Select(e => $"#if OS_{e.Platform!.ToUpperInvariant()}\n" + Emitter.GenerateNative(e.Struct) + "#endif")
         );
-        
+
         File.WriteAllText(Path.Combine(outputDir, "Native", $"{name}.cs"), native);
+
+        if (!isBaseType)
+        {
+            // For platform-specific structs, use the first platform's definition for managed types
+            // (the managed wrapper is the same regardless of calling convention)
+            var iface = Emitter.GenerateInterface(groups.First().Struct);
+            var abstractClass = Emitter.GenerateAbstractClass(groups.First().Struct);
+            var refClass = Emitter.GenerateRefClass(groups.First().Struct);
+
+            File.WriteAllText(Path.Combine(outputDir, "Managed", $"I{managedName}.cs"), iface);
+            File.WriteAllText(Path.Combine(outputDir, "Managed", $"{managedName}.cs"), abstractClass);
+            File.WriteAllText(Path.Combine(outputDir, "Managed", $"{managedName}Ref.cs"), refClass);
+        }
     }
 }
 
 foreach (var enumeration in winBindings.Namespace.Enumerations)
 {
     var native = Emitter.GenerateEnum(enumeration);
-    
+
     File.WriteAllText(Path.Combine(outputDir, "Enums", $"{TypeMapper.GetManagedName(enumeration.Name)}.cs"), native);
-    
+
     File.AppendAllText(Path.Combine(outputDir, "GlobalUsings.g.cs"), $"global using {enumeration.Name} = RawCef.Native.{TypeMapper.GetManagedName(enumeration.Name)};\n");
 }
 

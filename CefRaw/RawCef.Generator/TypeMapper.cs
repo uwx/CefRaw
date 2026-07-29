@@ -46,6 +46,11 @@ internal static partial class TypeMapper
         isCefObject = false;
         cefObjectName = null;
 
+        // Double-pointer types (e.g. _cef_v8_value_t**) are output parameters
+        // that cannot be wrapped/unwrapped automatically. Pass through raw.
+        if (nativeType.Count(c => c == '*') >= 2)
+            return nativeType;
+
         // Strip pointer suffix for analysis
         var baseType = nativeType.TrimEnd('*', ' ');
         var isPointer = nativeType.Contains("*");
@@ -108,8 +113,8 @@ internal static partial class TypeMapper
         if (isPointer && CefStructRegex.IsMatch(baseType))
         {
             isCefObject = true;
-            cefObjectName = "I" + GetManagedName(baseType);
-            return cefObjectName + "?";
+            cefObjectName = GetManagedName(baseType);
+            return "I" + cefObjectName + "?";
         }
 
         // cef_*_t (CEF enum, no pointer) — pass through as native type name for now
@@ -152,10 +157,10 @@ internal static partial class TypeMapper
         }
         return string.Concat(parts);
     }
-    
+
     [GeneratedRegex(@"delegate\* unmanaged\[(?:Cdecl|Stdcall)\]<((?:[\w_*]+, )+)([\w_*]+)>")]
     private static partial Regex DelegateRegex { get; }
-    
+
     public static (string[] Args, string Return) GetTypeListFromDelegate(string delegateTypeName)
     {
         // delegate* unmanaged[Cdecl]<ushort*, void>

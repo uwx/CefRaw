@@ -49,4 +49,27 @@ public static unsafe class CefStringRef
         CefUnsafe.StringUserfreeUtf16Free(str);
         return result;
     }
+
+    /// <summary>
+    /// Allocates a CEF userfree string from a managed <see cref="string"/>.
+    /// The returned pointer transfers ownership to the caller (or to CEF),
+    /// who must free it via <c>cef_string_userfree_free</c>.
+    /// </summary>
+    /// <param name="value">The managed string, or null.</param>
+    /// <returns>
+    /// A newly allocated <c>cef_string_userfree_utf16_t</c>, or null if
+    /// <paramref name="value"/> is null.
+    /// </returns>
+    public static _cef_string_utf16_t* AllocUserfree(string? value)
+    {
+        if (value is null)
+            return null;
+
+        var userfree = CefUnsafe.StringUserfreeUtf16Alloc();
+        fixed (char* p = value)
+        {
+            CefUnsafe.StringUtf16Set((ushort*)p, (nuint)value.Length, userfree, copy: 1);
+        }
+        return userfree;
+    }
 }
