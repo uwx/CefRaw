@@ -17,6 +17,90 @@ internal static partial class TypeMapper
     private static partial Regex CefStructRegex { get; }
 
     /// <summary>
+    /// Classifies a parameter in a CEF function-pointer signature.
+    /// </summary>
+    public enum ParamKind
+    {
+        /// <summary>Normal input — passed through as-is.</summary>
+        Input,
+
+        /// <summary>Input string — <c>const cef_string_t*</c> → <c>string?</c>.</summary>
+        InputString,
+
+        /// <summary>Output string — <c>cef_string_t*</c> (non-const) → writable by CEF.</summary>
+        OutputString,
+
+        /// <summary>Input array — <c>T* const*</c> → <c>ReadOnlySpan&lt;ICefT?&gt;</c>.</summary>
+        InputArray,
+
+        /// <summary>Output CEF object — <c>T**</c> (non-const) → <c>out ICefT?</c>.</summary>
+        Output,
+    }
+
+    // Regex to extract the parameter list from a C function-pointer type:
+    //   return_type (*)(params) __attribute__((cc))
+    [GeneratedRegex(@"\(\*\)\((.+)\)\s*__attribute__")]
+    private static partial Regex NativeParamListRegex { get; }
+
+    /// <summary>
+    /// Parses the native C type string (which preserves <c>const</c>) and returns
+    /// a <see cref="ParamKind"/> for every parameter position, including <c>self</c> at index 0.
+    /// The count matches the C# delegate parameter count.
+    /// </summary>
+    public static List<ParamKind> ClassifyParams(string nativeCType)
+    {
+        var kinds = new List<ParamKind>();
+
+        var m = NativeParamListRegex.Match(nativeCType);
+        if (!m.Success) return kinds;
+
+        var paramList = m.Groups[1].Value;
+        // Split by ", " (the CEF translator uses a single space after comma)
+        var @params = paramList.Split(", ");
+
+        foreach (var p in @params)
+        {
+            var trimmed = p.Trim();
+            kinds.Add(ClassifySingleParam(trimmed));
+        }
+
+        return kinds;
+    }
+
+    private static ParamKind ClassifySingleParam(string nativeParamType)
+    {
+        // void** is a generic write-back pointer, not a CEF object output
+        if (nativeParamType.Contains("void"))
+            return ParamKind.Input;
+
+        // T* const* or T*const* or T*const * → InputArray (only for CEF struct types)
+        if (nativeParamType.Contains("*const") && nativeParamType.Contains("_cef_"))
+            return ParamKind.InputArray;
+
+        // T** (no const between stars) → Output
+        var starCount = nativeParamType.Count(c => c == '*');
+        if (starCount >= 2 && !nativeParamType.Contains("const"))
+            return ParamKind.Output;
+
+        // Check if this is a CEF string type (exact match, not _cef_string_visitor_t etc.)
+        var isCefStringType = nativeParamType.Contains("cef_string_t")    // cef_string_t
+            || nativeParamType.Contains("_cef_string_utf16_t")           // _cef_string_utf16_t
+            || nativeParamType.Contains("_cef_string_utf8_t")            // _cef_string_utf8_t
+            || nativeParamType.Contains("_cef_string_wide_t");           // _cef_string_wide_t
+
+        // cef_string_t* (non-const, single pointer) → OutputString
+        if (starCount == 1 && !nativeParamType.Contains("const") && isCefStringType)
+            return ParamKind.OutputString;
+
+        // const cef_string_t* → InputString
+        if (starCount == 1 && nativeParamType.Contains("const") && isCefStringType)
+            return ParamKind.InputString;
+
+        // Everything else → Input
+        return ParamKind.Input;
+    }
+
+    /// <summary>
     /// Compute the managed wrapper class name from a native struct name.
     /// "_cef_response_t" → "CefResponse"
     /// "_cef_browser_host_t" → "CefBrowserHost"
@@ -45,11 +129,6 @@ internal static partial class TypeMapper
         isString = false;
         isCefObject = false;
         cefObjectName = null;
-
-        // Double-pointer types (e.g. _cef_v8_value_t**) are output parameters
-        // that cannot be wrapped/unwrapped automatically. Pass through raw.
-        if (nativeType.Count(c => c == '*') >= 2)
-            return nativeType;
 
         // Strip pointer suffix for analysis
         var baseType = nativeType.TrimEnd('*', ' ');

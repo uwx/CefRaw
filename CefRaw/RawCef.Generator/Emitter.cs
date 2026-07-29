@@ -302,75 +302,89 @@ internal static class Emitter
 
     private static void EmitMethod(IndentedStringBuilder sb, StructDefinition model, FieldDefinition method)
     {
-        if (method.Name == "dtor") return; // Intentionally not implemented. dtor is not an instance method.
+        if (method.Name == "dtor") return;
 
         var (args, @return) = TypeMapper.GetTypeListFromDelegate(method.Type.CSharpType);
+        var paramKinds = TypeMapper.ClassifyParams(method.Type.Native!);
 
         var returnManaged = TypeMapper.MapNativeToManaged(@return, out var returnIsString, out var returnIsCefObject, out var returnCefObjectName);
-        var argsManaged = args
-            .Skip(1) // skip instance
-            .Select((arg, idx) =>
-            {
-                var managed =
-                    TypeMapper.MapNativeToManaged(arg, out var isString, out var isCefObject, out var cefObjectName);
 
-                return (Native: arg, Managed: managed, IsString: isString, IsCefObject: isCefObject, CefObjectName: cefObjectName, Index: idx);
-            })
-            .ToArray();
+        var nativeArgTypes = args.ToArray(); // includes self at index 0
 
-        // Method signature — use returnManaged for the return type (includes ? for nullable)
+        // Build effective parameter list (skip self, optionally merge count+array pairs)
+        var effectiveParams = BuildEffectiveParams(nativeArgTypes, paramKinds);
+
+        // Method signature
         sb.Append($"public {returnManaged} {TypeMapper.SnakeToPascal(method.Name)}(");
-
-        for (int i = 0; i < argsManaged.Length; i++)
+        for (int i = 0; i < effectiveParams.Count; i++)
         {
             if (i > 0) sb.Append(", ");
-            sb.Append($"{argsManaged[i].Managed} arg{argsManaged[i].Index}");
+            sb.Append($"{effectiveParams[i].ManagedType} arg{effectiveParams[i].ManagedIndex}");
         }
         sb.AppendLine(")");
         sb.AppendLine("{");
 
         using (sb.Indent())
         {
+            // Pre-declare output locals
+            foreach (var ep in effectiveParams)
+            {
+                if (ep.Kind == TypeMapper.ParamKind.Output)
+                {
+                    // Strip exactly one '*' to get the pointed-to type: _cef_v8_value_t** → _cef_v8_value_t*
+                    var outputLocalType = ep.NativeType.EndsWith("*") ? ep.NativeType[..^1] : ep.NativeType;
+                    sb.AppendLine($"{outputLocalType} _out{ep.ManagedIndex} = null;");
+                }
+                else if (ep.Kind == TypeMapper.ParamKind.OutputString)
+                    sb.AppendLine($"_cef_string_utf16_t _out{ep.ManagedIndex} = default;");
+            }
+
             // Collect string params for fixed blocks
-            var stringParams = argsManaged.Where(p => p.IsString).ToArray();
+            var stringParams = effectiveParams.Where(p => p.Kind == TypeMapper.ParamKind.InputString).ToArray();
             var hasStrings = stringParams.Length > 0;
 
-            // Emit fixed blocks for each string param
             if (hasStrings)
             {
                 foreach (var p in stringParams)
-                {
-                    sb.AppendLine($"fixed (char* _p{p.Index} = arg{p.Index})");
-                }
-
+                    sb.AppendLine($"fixed (char* _p{p.ManagedIndex} = arg{p.ManagedIndex})");
                 sb.AppendLine("{");
                 sb.IncrementIndent();
-
-                // Declare string struct locals inside fixed block
                 foreach (var sp in stringParams)
                 {
-                    sb.AppendLine($"_cef_string_utf16_t _s{sp.Index};");
-                    sb.AppendLine($"CefStringRef.FillFromPinned(&_s{sp.Index}, _p{sp.Index}, arg{sp.Index}?.Length ?? 0);");
+                    sb.AppendLine($"_cef_string_utf16_t _s{sp.ManagedIndex};");
+                    sb.AppendLine($"CefStringRef.FillFromPinned(&_s{sp.ManagedIndex}, _p{sp.ManagedIndex}, arg{sp.ManagedIndex}?.Length ?? 0);");
                 }
             }
 
-            // Marshal parameters: build native arg list
-            List<string> nativeArgs = ["_ptr"];
-
-            foreach (var p in argsManaged)
+            // Marshal InputArray params: pin span elements
+            var arrayParams = effectiveParams.Where(p => p.Kind == TypeMapper.ParamKind.InputArray).ToArray();
+            foreach (var ap in arrayParams)
             {
-                if (p.IsString)
+                sb.AppendLine($"var _a{ap.ManagedIndex} = arg{ap.ManagedIndex};");
+                sb.AppendLine($"{ap.ElementNativeType}* _pinned{ap.ManagedIndex} = stackalloc {ap.ElementNativeType}[_a{ap.ManagedIndex}.Length];");
+                sb.AppendLine($"for (int _i{ap.ManagedIndex} = 0; _i{ap.ManagedIndex} < _a{ap.ManagedIndex}.Length; _i{ap.ManagedIndex}++)");
+                sb.AppendLine($"    _pinned{ap.ManagedIndex}[_i{ap.ManagedIndex}] = _a{ap.ManagedIndex}[_i{ap.ManagedIndex}] is null ? null : _a{ap.ManagedIndex}[_i{ap.ManagedIndex}].NativePtr;");
+            }
+
+            // Build native arg list
+            List<string> nativeArgs = ["_ptr"];
+            foreach (var ep in effectiveParams)
+            {
+                if (ep.Kind == TypeMapper.ParamKind.InputString)
+                    nativeArgs.Add($"&_s{ep.ManagedIndex}");
+                else if (ep.Kind == TypeMapper.ParamKind.InputArray)
                 {
-                    nativeArgs.Add("&_s" + p.Index);
+                    nativeArgs.Add($"(nuint)_a{ep.ManagedIndex}.Length");
+                    nativeArgs.Add($"_pinned{ep.ManagedIndex}");
                 }
-                else if (p.IsCefObject)
-                {
-                    nativeArgs.Add($"arg{p.Index} is null ? null : arg{p.Index}.NativePtr");
-                }
+                else if (ep.Kind == TypeMapper.ParamKind.Output)
+                    nativeArgs.Add($"&_out{ep.ManagedIndex}");
+                else if (ep.Kind == TypeMapper.ParamKind.OutputString)
+                    nativeArgs.Add($"&_out{ep.ManagedIndex}");
+                else if (ep.IsCefObject)
+                    nativeArgs.Add($"arg{ep.ManagedIndex} is null ? null : arg{ep.ManagedIndex}.NativePtr");
                 else
-                {
-                    nativeArgs.Add($"arg{p.Index}");
-                }
+                    nativeArgs.Add($"arg{ep.ManagedIndex}");
             }
 
             // Call native
@@ -383,33 +397,113 @@ internal static class Emitter
                 sb.AppendLine($"var _result = _ptr->{method.Name}({string.Join(", ", nativeArgs)});");
                 sb.AppendLine();
 
-                // Marshal return
+                // Write back output params BEFORE return
+                foreach (var ep in effectiveParams)
+                {
+                    if (ep.Kind == TypeMapper.ParamKind.Output)
+                        sb.AppendLine($"arg{ep.ManagedIndex} = _out{ep.ManagedIndex} != null ? new {ep.CefName}Ref(_out{ep.ManagedIndex}) : null;");
+                    else if (ep.Kind == TypeMapper.ParamKind.OutputString)
+                        sb.AppendLine($"arg{ep.ManagedIndex} = CefStringRef.ToStringAndFree(&_out{ep.ManagedIndex});");
+                }
+
                 if (returnIsString)
-                {
                     sb.AppendLine("return CefStringRef.ToStringAndFree(_result);");
-                }
                 else if (returnIsCefObject)
-                {
-                    // returnCefObjectName is the managed name (e.g. "CefFrame"), Ref class is "CefFrameRef"
                     sb.AppendLine($"return _result != null ? new {returnCefObjectName}Ref(_result) : null;");
-                }
                 else
-                {
                     sb.AppendLine("return _result;");
+            }
+
+            // Write back output params for void returns
+            if (returnManaged == "void")
+            {
+                foreach (var ep in effectiveParams)
+                {
+                    if (ep.Kind == TypeMapper.ParamKind.Output)
+                        sb.AppendLine($"arg{ep.ManagedIndex} = _out{ep.ManagedIndex} != null ? new {ep.CefName}Ref(_out{ep.ManagedIndex}) : null;");
+                    else if (ep.Kind == TypeMapper.ParamKind.OutputString)
+                        sb.AppendLine($"arg{ep.ManagedIndex} = CefStringRef.ToStringAndFree(&_out{ep.ManagedIndex});");
                 }
             }
 
-            // Close fixed blocks
             if (hasStrings)
             {
                 sb.DecrementIndent();
                 sb.AppendLine("}");
             }
-
         }
 
         sb.AppendLine("}");
     }
+
+    /// <summary>
+    /// Builds a list of effective parameters, merging <c>size_t</c> + <c>InputArray</c> pairs.
+    /// </summary>
+    private static List<EffectiveParam> BuildEffectiveParams(string[] nativeArgTypes, List<TypeMapper.ParamKind> paramKinds)
+    {
+        var result = new List<EffectiveParam>();
+        int managedIdx = 0;
+
+        for (int i = 1; i < nativeArgTypes.Length; i++) // skip self
+        {
+            var kind = paramKinds.Count > i ? paramKinds[i] : TypeMapper.ParamKind.Input;
+            var nativeType = nativeArgTypes[i];
+
+            // Merge size_t + InputArray pair
+            if (IsSizeType(nativeType) && i + 1 < nativeArgTypes.Length
+                && paramKinds.Count > i + 1 && paramKinds[i + 1] == TypeMapper.ParamKind.InputArray)
+            {
+                i++; // skip the count; consume the InputArray instead
+                nativeType = nativeArgTypes[i];
+                kind = TypeMapper.ParamKind.InputArray;
+            }
+
+            var managed = TypeMapper.MapNativeToManaged(nativeType, out var isStr, out var isCef, out var cefName);
+
+            // Determine managed signature type for special kinds
+            var managedType = managed;
+            if (kind == TypeMapper.ParamKind.Output)
+                managedType = "out " + managed; // managed is "ICefXxx?" already
+            else if (kind == TypeMapper.ParamKind.InputArray)
+                managedType = $"ReadOnlySpan<{managed}>"; // managed is "ICefXxx?"
+            else if (kind == TypeMapper.ParamKind.OutputString)
+                managedType = "out string?";
+
+            // For InputArray, determine the element native pointer type (strip exactly one *)
+            var elementNativeType = kind == TypeMapper.ParamKind.InputArray
+                ? (nativeType.EndsWith("*") ? nativeType[..^1] : nativeType)
+                : null;
+
+            result.Add(new EffectiveParam(
+                NativeType: nativeType,
+                ManagedType: managedType,
+                Kind: kind,
+                ManagedIndex: managedIdx,
+                IsCefObject: isCef,
+                CefName: cefName,
+                ElementNativeType: elementNativeType
+            ));
+
+            managedIdx++;
+        }
+
+        return result;
+    }
+
+    private static bool IsSizeType(string csharpType)
+    {
+        return csharpType == "nuint" || csharpType == "size_t";
+    }
+
+    private sealed record EffectiveParam(
+        string NativeType,
+        string ManagedType,
+        TypeMapper.ParamKind Kind,
+        int ManagedIndex,
+        bool IsCefObject,
+        string? CefName,
+        string? ElementNativeType
+    );
 
     private static void EmitDataProperty(IndentedStringBuilder sb, FieldDefinition field)
     {
@@ -449,22 +543,17 @@ internal static class Emitter
     private static void EmitInterfaceMethod(IndentedStringBuilder sb, FieldDefinition method)
     {
         var (args, @return) = TypeMapper.GetTypeListFromDelegate(method.Type.CSharpType);
+        var paramKinds = TypeMapper.ClassifyParams(method.Type.Native!);
+        var nativeArgTypes = args.ToArray();
 
         var returnManaged = TypeMapper.MapNativeToManaged(@return, out _, out _, out _);
-        var argsManaged = args
-            .Skip(1) // skip instance
-            .Select((arg, idx) =>
-            {
-                var managed = TypeMapper.MapNativeToManaged(arg, out _, out _, out _);
-                return (Managed: managed, Index: idx);
-            })
-            .ToArray();
+        var effectiveParams = BuildEffectiveParams(nativeArgTypes, paramKinds);
 
         sb.Append($"public {returnManaged} {TypeMapper.SnakeToPascal(method.Name)}(");
-        for (int i = 0; i < argsManaged.Length; i++)
+        for (int i = 0; i < effectiveParams.Count; i++)
         {
             if (i > 0) sb.Append(", ");
-            sb.Append($"{argsManaged[i].Managed} arg{argsManaged[i].Index}");
+            sb.Append($"{effectiveParams[i].ManagedType} arg{effectiveParams[i].ManagedIndex}");
         }
         sb.AppendLine(");");
     }
@@ -493,25 +582,20 @@ internal static class Emitter
     private static void EmitAbstractMethod(IndentedStringBuilder sb, FieldDefinition method)
     {
         var (args, @return) = TypeMapper.GetTypeListFromDelegate(method.Type.CSharpType);
+        var paramKinds = TypeMapper.ClassifyParams(method.Type.Native!);
+        var nativeArgTypes = args.ToArray();
 
         var returnManaged = TypeMapper.MapNativeToManaged(@return, out _, out _, out _);
-        var argsManaged = args
-            .Skip(1) // skip instance
-            .Select((arg, idx) =>
-            {
-                var managed = TypeMapper.MapNativeToManaged(arg, out _, out _, out _);
-                return (Managed: managed, Index: idx);
-            })
-            .ToArray();
+        var effectiveParams = BuildEffectiveParams(nativeArgTypes, paramKinds);
 
         sb.AppendLine("/// <summary>");
         sb.AppendLine($"/// Implement the <c>{method.Name}</c> callback.");
         sb.AppendLine("/// </summary>");
         sb.Append($"public abstract {returnManaged} {TypeMapper.SnakeToPascal(method.Name)}(");
-        for (int i = 0; i < argsManaged.Length; i++)
+        for (int i = 0; i < effectiveParams.Count; i++)
         {
             if (i > 0) sb.Append(", ");
-            sb.Append($"{argsManaged[i].Managed} arg{argsManaged[i].Index}");
+            sb.Append($"{effectiveParams[i].ManagedType} arg{effectiveParams[i].ManagedIndex}");
         }
         sb.AppendLine(");");
     }
@@ -553,10 +637,10 @@ internal static class Emitter
         var nativeName = structDef.Name;
         var managedName = TypeMapper.GetManagedName(structDef.Name);
         var (args, @return) = TypeMapper.GetTypeListFromDelegate(method.Type.CSharpType);
+        var paramKinds = TypeMapper.ClassifyParams(method.Type.Native!);
 
-        // Parse args and return types for marshaling
         var nativeReturnType = @return;
-        var nativeArgTypes = args.ToArray(); // includes self at index 0
+        var nativeArgTypes = args.ToArray();
 
         var returnManaged = TypeMapper.MapNativeToManaged(@return, out var returnIsString, out var returnIsCefObject, out var returnCefObjectName);
 
@@ -570,11 +654,8 @@ internal static class Emitter
         sb.AppendLine("#endif");
         sb.Append($"private static {nativeReturnType} {bridgeName}({nativeArgTypes[0]} self");
 
-        // Additional params (after self)
         for (int i = 1; i < nativeArgTypes.Length; i++)
-        {
             sb.Append($", {nativeArgTypes[i]} arg{i - 1}");
-        }
         sb.AppendLine(")");
 
         sb.AppendLine("{");
@@ -584,26 +665,76 @@ internal static class Emitter
             sb.AppendLine($"var _m = GetManaged<{managedName}>(self);");
             sb.AppendLine();
 
-            // Marshal managed params
             var managedArgs = new List<string>();
+            int managedIdx = 0;
+
             for (int i = 1; i < nativeArgTypes.Length; i++)
             {
-                var argManaged = TypeMapper.MapNativeToManaged(nativeArgTypes[i], out var argIsString, out var argIsCefObject, out var argCefName);
+                var kind = paramKinds.Count > i ? paramKinds[i] : TypeMapper.ParamKind.Input;
+                var nativeType = nativeArgTypes[i];
 
-                if (argIsString)
+                // Merge size_t + InputArray
+                if (IsSizeType(nativeType) && i + 1 < nativeArgTypes.Length
+                    && paramKinds.Count > i + 1 && paramKinds[i + 1] == TypeMapper.ParamKind.InputArray)
                 {
-                    sb.AppendLine($"var _a{i - 1} = CefStringRef.ToStringAndFree(arg{i - 1});");
+                    i++; // skip count, consume the array param below
+                    nativeType = nativeArgTypes[i];
+                    kind = TypeMapper.ParamKind.InputArray;
                 }
-                else if (argIsCefObject)
+
+                var argIdx = i - 1; // native arg index
+
+                if (kind == TypeMapper.ParamKind.InputString)
                 {
-                    sb.AppendLine($"var _a{i - 1} = arg{i - 1} != null ? new {argCefName}Ref(arg{i - 1}) : null;");
+                    sb.AppendLine($"var _a{managedIdx} = CefStringRef.ToStringAndFree(arg{argIdx});");
+                    managedArgs.Add($"_a{managedIdx}");
+                }
+                else if (kind == TypeMapper.ParamKind.InputArray)
+                {
+                    // The count was at position (original i) before the merge; it's at argIdx-1
+                    var countArgIdx = argIdx - 1;
+                    // Map inner type to get the managed element name
+                    var innerType = nativeType.EndsWith("*") ? nativeType[..^1] : nativeType;
+                    var elementManaged = TypeMapper.MapNativeToManaged(innerType, out _, out _, out var elCefName);
+                    sb.AppendLine($"var _count{managedIdx} = (int)arg{countArgIdx};");
+                    sb.AppendLine($"var _span{managedIdx} = new {elementManaged}[_count{managedIdx}];");
+                    sb.AppendLine($"for (int _j{managedIdx} = 0; _j{managedIdx} < _count{managedIdx}; _j{managedIdx}++)");
+                    sb.AppendLine($"    _span{managedIdx}[_j{managedIdx}] = arg{argIdx}[_j{managedIdx}] != null ? new {elCefName}Ref(arg{argIdx}[_j{managedIdx}]) : null;");
+                    managedArgs.Add($"_span{managedIdx}");
+                }
+                else if (kind == TypeMapper.ParamKind.Output)
+                {
+                    var managed = TypeMapper.MapNativeToManaged(nativeType, out _, out _, out var cefName);
+                    sb.AppendLine($"{managed} _out{managedIdx} = null;");
+                    sb.AppendLine($"if (arg{argIdx} != null && *arg{argIdx} != null) _out{managedIdx} = new {cefName}Ref(*arg{argIdx});");
+                    managedArgs.Add($"out _out{managedIdx}");
+                }
+                else if (kind == TypeMapper.ParamKind.OutputString)
+                {
+                    sb.AppendLine($"string? _out{managedIdx} = null;");
+                    sb.AppendLine($"if (arg{argIdx} != null) _out{managedIdx} = CefStringRef.ToStringAndFree(arg{argIdx});");
+                    managedArgs.Add($"out _out{managedIdx}");
+                }
+                else if (kind == TypeMapper.ParamKind.Input)
+                {
+                    var managed = TypeMapper.MapNativeToManaged(nativeType, out _, out var isCef, out var cefName);
+                    if (isCef)
+                    {
+                        sb.AppendLine($"var _a{managedIdx} = arg{argIdx} != null ? new {cefName}Ref(arg{argIdx}) : null;");
+                    }
+                    else
+                    {
+                        sb.AppendLine($"var _a{managedIdx} = arg{argIdx};");
+                    }
+                    managedArgs.Add($"_a{managedIdx}");
                 }
                 else
                 {
-                    sb.AppendLine($"var _a{i - 1} = arg{i - 1};");
+                    sb.AppendLine($"var _a{managedIdx} = arg{argIdx};");
+                    managedArgs.Add($"_a{managedIdx}");
                 }
 
-                managedArgs.Add($"_a{i - 1}");
+                managedIdx++;
             }
 
             // Call managed method
@@ -616,19 +747,43 @@ internal static class Emitter
                 sb.AppendLine($"var _result = _m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
                 sb.AppendLine();
 
-                // Marshal return
                 if (returnIsString)
-                {
                     sb.AppendLine("return CefStringRef.AllocUserfree(_result);");
-                }
                 else if (returnIsCefObject)
-                {
                     sb.AppendLine($"return _result != null ? _result.NativePtr : null;");
-                }
                 else
-                {
                     sb.AppendLine("return _result;");
+            }
+
+            // Write back output params
+            managedIdx = 0;
+            for (int i = 1; i < nativeArgTypes.Length; i++)
+            {
+                var kind = paramKinds.Count > i ? paramKinds[i] : TypeMapper.ParamKind.Input;
+                var nativeType = nativeArgTypes[i];
+
+                if (IsSizeType(nativeType) && i + 1 < nativeArgTypes.Length
+                    && paramKinds.Count > i + 1 && paramKinds[i + 1] == TypeMapper.ParamKind.InputArray)
+                {
+                    i++; nativeType = nativeArgTypes[i]; kind = TypeMapper.ParamKind.InputArray;
                 }
+
+                var argIdx = i - 1;
+
+                if (kind == TypeMapper.ParamKind.Output)
+                {
+                    sb.AppendLine($"if (arg{argIdx} != null) *arg{argIdx} = _out{managedIdx} != null ? _out{managedIdx}.NativePtr : null;");
+                }
+                else if (kind == TypeMapper.ParamKind.OutputString)
+                {
+                    sb.AppendLine($"if (arg{argIdx} != null)");
+                    sb.AppendLine("{");
+                    sb.AppendLine($"    fixed (char* _p{managedIdx} = _out{managedIdx})");
+                    sb.AppendLine($"        CefUnsafe.StringUtf16Set((ushort*)_p{managedIdx}, (nuint)(_out{managedIdx}?.Length ?? 0), arg{argIdx}, copy: 1);");
+                    sb.AppendLine("}");
+                }
+
+                managedIdx++;
             }
         }
 
