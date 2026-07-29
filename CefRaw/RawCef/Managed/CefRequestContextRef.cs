@@ -295,9 +295,17 @@ public unsafe partial class CefRequestContextRef : CefPreferenceManagerRef, ICef
 
     public int RegisterSchemeHandlerFactory(string? arg0, string? arg1, ICefSchemeHandlerFactory? arg2)
     {
-        var _result = _ptr->register_scheme_handler_factory(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->register_scheme_handler_factory(_ptr, &_s0, &_s1, arg2 is null ? null : arg2.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int ClearSchemeHandlerFactories()
@@ -324,7 +332,12 @@ public unsafe partial class CefRequestContextRef : CefPreferenceManagerRef, ICef
 
     public void ResolveHost(string? arg0, ICefResolveCallback? arg1)
     {
-        _ptr->resolve_host(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->resolve_host(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
+        }
     }
 
     public ICefMediaRouter? GetMediaRouter(ICefCompletionCallback? arg0)
@@ -336,26 +349,58 @@ public unsafe partial class CefRequestContextRef : CefPreferenceManagerRef, ICef
 
     public ICefValue? GetWebsiteSetting(string? arg0, string? arg1, cef_content_setting_types_t arg2)
     {
-        var _result = _ptr->get_website_setting(_ptr, arg0, arg1, arg2);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->get_website_setting(_ptr, &_s0, &_s1, arg2);
 
-        return _result != null ? new CefValueRef(_result) : null;
+            return _result != null ? new CefValueRef(_result) : null;
+        }
     }
 
     public void SetWebsiteSetting(string? arg0, string? arg1, cef_content_setting_types_t arg2, ICefValue? arg3)
     {
-        _ptr->set_website_setting(_ptr, arg0, arg1, arg2, arg3 is null ? null : arg3.NativePtr);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->set_website_setting(_ptr, &_s0, &_s1, arg2, arg3 is null ? null : arg3.NativePtr);
+        }
     }
 
     public cef_content_setting_values_t GetContentSetting(string? arg0, string? arg1, cef_content_setting_types_t arg2)
     {
-        var _result = _ptr->get_content_setting(_ptr, arg0, arg1, arg2);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->get_content_setting(_ptr, &_s0, &_s1, arg2);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void SetContentSetting(string? arg0, string? arg1, cef_content_setting_types_t arg2, cef_content_setting_values_t arg3)
     {
-        _ptr->set_content_setting(_ptr, arg0, arg1, arg2, arg3);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->set_content_setting(_ptr, &_s0, &_s1, arg2, arg3);
+        }
     }
 
     public void SetChromeColorScheme(cef_color_variant_t arg0, uint arg1)
@@ -475,9 +520,17 @@ public unsafe partial class CefRequestContextRef : CefPreferenceManagerRef, ICef
 
     public int RegisterSchemeHandlerFactory(string? arg0, string? arg1, ICefSchemeHandlerFactory? arg2)
     {
-        var _result = _ptr->register_scheme_handler_factory(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->register_scheme_handler_factory(_ptr, &_s0, &_s1, arg2 is null ? null : arg2.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int ClearSchemeHandlerFactories()
@@ -504,7 +557,12 @@ public unsafe partial class CefRequestContextRef : CefPreferenceManagerRef, ICef
 
     public void ResolveHost(string? arg0, ICefResolveCallback? arg1)
     {
-        _ptr->resolve_host(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->resolve_host(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
+        }
     }
 
     public ICefMediaRouter? GetMediaRouter(ICefCompletionCallback? arg0)
@@ -516,26 +574,58 @@ public unsafe partial class CefRequestContextRef : CefPreferenceManagerRef, ICef
 
     public ICefValue? GetWebsiteSetting(string? arg0, string? arg1, cef_content_setting_types_t arg2)
     {
-        var _result = _ptr->get_website_setting(_ptr, arg0, arg1, arg2);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->get_website_setting(_ptr, &_s0, &_s1, arg2);
 
-        return _result != null ? new CefValueRef(_result) : null;
+            return _result != null ? new CefValueRef(_result) : null;
+        }
     }
 
     public void SetWebsiteSetting(string? arg0, string? arg1, cef_content_setting_types_t arg2, ICefValue? arg3)
     {
-        _ptr->set_website_setting(_ptr, arg0, arg1, arg2, arg3 is null ? null : arg3.NativePtr);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->set_website_setting(_ptr, &_s0, &_s1, arg2, arg3 is null ? null : arg3.NativePtr);
+        }
     }
 
     public cef_content_setting_values_t GetContentSetting(string? arg0, string? arg1, cef_content_setting_types_t arg2)
     {
-        var _result = _ptr->get_content_setting(_ptr, arg0, arg1, arg2);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->get_content_setting(_ptr, &_s0, &_s1, arg2);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void SetContentSetting(string? arg0, string? arg1, cef_content_setting_types_t arg2, cef_content_setting_values_t arg3)
     {
-        _ptr->set_content_setting(_ptr, arg0, arg1, arg2, arg3);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->set_content_setting(_ptr, &_s0, &_s1, arg2, arg3);
+        }
     }
 
     public void SetChromeColorScheme(cef_color_variant_t arg0, uint arg1)

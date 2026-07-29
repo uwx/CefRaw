@@ -187,14 +187,18 @@ public unsafe partial class CefX509CertificateRef : CefBaseRefCountedRef, ICefX5
         return _result;
     }
 
-    public void GetDerencodedIssuerChain(nuint* arg0, ICefBinaryValue? arg1)
+    public void GetDerencodedIssuerChain(nuint* arg0, out ICefBinaryValue? arg1)
     {
-        _ptr->get_derencoded_issuer_chain(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        _cef_binary_value_t* _out1 = null;
+        _ptr->get_derencoded_issuer_chain(_ptr, arg0, &_out1);
+        arg1 = _out1 != null ? new CefBinaryValueRef(_out1) : null;
     }
 
-    public void GetPemencodedIssuerChain(nuint* arg0, ICefBinaryValue? arg1)
+    public void GetPemencodedIssuerChain(nuint* arg0, out ICefBinaryValue? arg1)
     {
-        _ptr->get_pemencoded_issuer_chain(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        _cef_binary_value_t* _out1 = null;
+        _ptr->get_pemencoded_issuer_chain(_ptr, arg0, &_out1);
+        arg1 = _out1 != null ? new CefBinaryValueRef(_out1) : null;
     }
 
     public _cef_base_ref_counted_t @base
@@ -288,14 +292,18 @@ public unsafe partial class CefX509CertificateRef : CefBaseRefCountedRef, ICefX5
         return _result;
     }
 
-    public void GetDerencodedIssuerChain(nuint* arg0, ICefBinaryValue? arg1)
+    public void GetDerencodedIssuerChain(nuint* arg0, out ICefBinaryValue? arg1)
     {
-        _ptr->get_derencoded_issuer_chain(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        _cef_binary_value_t* _out1 = null;
+        _ptr->get_derencoded_issuer_chain(_ptr, arg0, &_out1);
+        arg1 = _out1 != null ? new CefBinaryValueRef(_out1) : null;
     }
 
-    public void GetPemencodedIssuerChain(nuint* arg0, ICefBinaryValue? arg1)
+    public void GetPemencodedIssuerChain(nuint* arg0, out ICefBinaryValue? arg1)
     {
-        _ptr->get_pemencoded_issuer_chain(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        _cef_binary_value_t* _out1 = null;
+        _ptr->get_pemencoded_issuer_chain(_ptr, arg0, &_out1);
+        arg1 = _out1 != null ? new CefBinaryValueRef(_out1) : null;
     }
 
     public _cef_base_ref_counted_t @base

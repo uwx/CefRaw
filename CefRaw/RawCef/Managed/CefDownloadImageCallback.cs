@@ -111,7 +111,7 @@ public unsafe abstract partial class CefDownloadImageCallback : CefBaseRefCounte
     {
         var _m = GetManaged<CefDownloadImageCallback>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         var _a2 = arg2 != null ? new CefImageRef(arg2) : null;
         _m.OnDownloadImageFinished(_a0, _a1, _a2);
@@ -171,7 +171,7 @@ public unsafe abstract partial class CefDownloadImageCallback : CefBaseRefCounte
     {
         var _m = GetManaged<CefDownloadImageCallback>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         var _a2 = arg2 != null ? new CefImageRef(arg2) : null;
         _m.OnDownloadImageFinished(_a0, _a1, _a2);

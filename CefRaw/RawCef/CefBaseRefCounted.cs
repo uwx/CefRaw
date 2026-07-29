@@ -95,17 +95,10 @@ public abstract unsafe class CefBaseRefCounted : ICefBaseRefCounted
     /// </summary>
     protected virtual void InitializeNativeStruct()
     {
-#if OS_WIN
         _nativePtr->add_ref = &BridgeAddRef;
         _nativePtr->release = &BridgeRelease;
         _nativePtr->has_one_ref = &BridgeHasOneRef;
         _nativePtr->has_at_least_one_ref = &BridgeHasAtLeastOneRef;
-#elif OS_MAC || OS_LINUX
-        _nativePtr->add_ref = &BridgeAddRef;
-        _nativePtr->release = &BridgeRelease;
-        _nativePtr->has_one_ref = &BridgeHasOneRef;
-        _nativePtr->has_at_least_one_ref = &BridgeHasAtLeastOneRef;
-#endif
     }
 
     /// <summary>

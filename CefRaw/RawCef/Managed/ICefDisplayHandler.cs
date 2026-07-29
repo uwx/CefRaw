@@ -63,7 +63,7 @@ public unsafe partial interface ICefDisplayHandler : ICefBaseRefCounted
 
     public void OnFullscreenModeChange(ICefBrowser? arg0, int arg1);
 
-    public int OnTooltip(ICefBrowser? arg0, string? arg1);
+    public int OnTooltip(ICefBrowser? arg0, out string? arg1);
 
     public void OnStatusMessage(ICefBrowser? arg0, string? arg1);
 
@@ -105,7 +105,7 @@ public unsafe partial interface ICefDisplayHandler : ICefBaseRefCounted
 
     public void OnFullscreenModeChange(ICefBrowser? arg0, int arg1);
 
-    public int OnTooltip(ICefBrowser? arg0, string? arg1);
+    public int OnTooltip(ICefBrowser? arg0, out string? arg1);
 
     public void OnStatusMessage(ICefBrowser? arg0, string? arg1);
 

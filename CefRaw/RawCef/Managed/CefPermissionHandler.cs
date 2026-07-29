@@ -175,7 +175,7 @@ public unsafe abstract partial class CefPermissionHandler : CefBaseRefCounted, I
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _a3 = arg3;
         var _a4 = arg4 != null ? new CefMediaAccessCallbackRef(arg4) : null;
         var _result = _m.OnRequestMediaAccessPermission(_a0, _a1, _a2, _a3, _a4);
@@ -194,7 +194,7 @@ public unsafe abstract partial class CefPermissionHandler : CefBaseRefCounted, I
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = arg2;
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _a3 = arg3;
         var _a4 = arg4 != null ? new CefPermissionPromptCallbackRef(arg4) : null;
         var _result = _m.OnShowPermissionPrompt(_a0, _a1, _a2, _a3, _a4);
@@ -285,7 +285,7 @@ public unsafe abstract partial class CefPermissionHandler : CefBaseRefCounted, I
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _a3 = arg3;
         var _a4 = arg4 != null ? new CefMediaAccessCallbackRef(arg4) : null;
         var _result = _m.OnRequestMediaAccessPermission(_a0, _a1, _a2, _a3, _a4);
@@ -304,7 +304,7 @@ public unsafe abstract partial class CefPermissionHandler : CefBaseRefCounted, I
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = arg2;
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _a3 = arg3;
         var _a4 = arg4 != null ? new CefPermissionPromptCallbackRef(arg4) : null;
         var _result = _m.OnShowPermissionPrompt(_a0, _a1, _a2, _a3, _a4);

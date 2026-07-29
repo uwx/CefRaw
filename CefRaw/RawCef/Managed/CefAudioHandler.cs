@@ -279,7 +279,7 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
         var _m = GetManaged<CefAudioHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.OnAudioStreamError(_a0, _a1);
     }
 }
@@ -422,7 +422,7 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
         var _m = GetManaged<CefAudioHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.OnAudioStreamError(_a0, _a1);
     }
 }

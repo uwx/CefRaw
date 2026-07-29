@@ -123,23 +123,41 @@ public unsafe partial class CefCookieManagerRef : CefBaseRefCountedRef, ICefCook
 
     public int VisitUrlCookies(string? arg0, int arg1, ICefCookieVisitor? arg2)
     {
-        var _result = _ptr->visit_url_cookies(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->visit_url_cookies(_ptr, &_s0, arg1, arg2 is null ? null : arg2.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetCookie(string? arg0, ICefCookie? arg1, ICefSetCookieCallback? arg2)
     {
-        var _result = _ptr->set_cookie(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_cookie(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int DeleteCookies(string? arg0, string? arg1, ICefDeleteCookiesCallback? arg2)
     {
-        var _result = _ptr->delete_cookies(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->delete_cookies(_ptr, &_s0, &_s1, arg2 is null ? null : arg2.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int FlushStore(ICefCompletionCallback? arg0)
@@ -193,23 +211,41 @@ public unsafe partial class CefCookieManagerRef : CefBaseRefCountedRef, ICefCook
 
     public int VisitUrlCookies(string? arg0, int arg1, ICefCookieVisitor? arg2)
     {
-        var _result = _ptr->visit_url_cookies(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->visit_url_cookies(_ptr, &_s0, arg1, arg2 is null ? null : arg2.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetCookie(string? arg0, ICefCookie? arg1, ICefSetCookieCallback? arg2)
     {
-        var _result = _ptr->set_cookie(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_cookie(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int DeleteCookies(string? arg0, string? arg1, ICefDeleteCookiesCallback? arg2)
     {
-        var _result = _ptr->delete_cookies(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->delete_cookies(_ptr, &_s0, &_s1, arg2 is null ? null : arg2.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int FlushStore(ICefCompletionCallback? arg0)

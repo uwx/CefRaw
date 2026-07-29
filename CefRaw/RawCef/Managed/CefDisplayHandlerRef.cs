@@ -165,12 +165,22 @@ public unsafe partial class CefDisplayHandlerRef : CefBaseRefCountedRef, ICefDis
 
     public void OnAddressChange(ICefBrowser? arg0, ICefFrame? arg1, string? arg2)
     {
-        _ptr->on_address_change(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            _ptr->on_address_change(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, &_s2);
+        }
     }
 
     public void OnTitleChange(ICefBrowser? arg0, string? arg1)
     {
-        _ptr->on_title_change(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->on_title_change(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1);
+        }
     }
 
     public void OnFaviconUrlchange(ICefBrowser? arg0, ICefStringList? arg1)
@@ -183,23 +193,38 @@ public unsafe partial class CefDisplayHandlerRef : CefBaseRefCountedRef, ICefDis
         _ptr->on_fullscreen_mode_change(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
     }
 
-    public int OnTooltip(ICefBrowser? arg0, string? arg1)
+    public int OnTooltip(ICefBrowser? arg0, out string? arg1)
     {
-        var _result = _ptr->on_tooltip(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
+        _cef_string_utf16_t _out1 = default;
+        var _result = _ptr->on_tooltip(_ptr, arg0 is null ? null : arg0.NativePtr, &_out1);
 
+        arg1 = CefStringRef.ToStringAndFree(&_out1);
         return _result;
     }
 
     public void OnStatusMessage(ICefBrowser? arg0, string? arg1)
     {
-        _ptr->on_status_message(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->on_status_message(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1);
+        }
     }
 
     public int OnConsoleMessage(ICefBrowser? arg0, cef_log_severity_t arg1, string? arg2, string? arg3, int arg4)
     {
-        var _result = _ptr->on_console_message(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3, arg4);
+        fixed (char* _p2 = arg2)
+        fixed (char* _p3 = arg3)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            var _result = _ptr->on_console_message(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_s2, &_s3, arg4);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int OnAutoResize(ICefBrowser? arg0, ICefSize? arg1)
@@ -277,12 +302,22 @@ public unsafe partial class CefDisplayHandlerRef : CefBaseRefCountedRef, ICefDis
 
     public void OnAddressChange(ICefBrowser? arg0, ICefFrame? arg1, string? arg2)
     {
-        _ptr->on_address_change(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            _ptr->on_address_change(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, &_s2);
+        }
     }
 
     public void OnTitleChange(ICefBrowser? arg0, string? arg1)
     {
-        _ptr->on_title_change(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->on_title_change(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1);
+        }
     }
 
     public void OnFaviconUrlchange(ICefBrowser? arg0, ICefStringList? arg1)
@@ -295,23 +330,38 @@ public unsafe partial class CefDisplayHandlerRef : CefBaseRefCountedRef, ICefDis
         _ptr->on_fullscreen_mode_change(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
     }
 
-    public int OnTooltip(ICefBrowser? arg0, string? arg1)
+    public int OnTooltip(ICefBrowser? arg0, out string? arg1)
     {
-        var _result = _ptr->on_tooltip(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
+        _cef_string_utf16_t _out1 = default;
+        var _result = _ptr->on_tooltip(_ptr, arg0 is null ? null : arg0.NativePtr, &_out1);
 
+        arg1 = CefStringRef.ToStringAndFree(&_out1);
         return _result;
     }
 
     public void OnStatusMessage(ICefBrowser? arg0, string? arg1)
     {
-        _ptr->on_status_message(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->on_status_message(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1);
+        }
     }
 
     public int OnConsoleMessage(ICefBrowser? arg0, cef_log_severity_t arg1, string? arg2, string? arg3, int arg4)
     {
-        var _result = _ptr->on_console_message(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3, arg4);
+        fixed (char* _p2 = arg2)
+        fixed (char* _p3 = arg3)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            var _result = _ptr->on_console_message(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_s2, &_s3, arg4);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int OnAutoResize(ICefBrowser? arg0, ICefSize? arg1)

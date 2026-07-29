@@ -89,14 +89,22 @@ public unsafe partial class CefMediaObserverRef : CefBaseRefCountedRef, ICefMedi
     _cef_media_observer_t* ICefMediaObserver.NativePtr => _ptr;
 
 
-    public void OnSinks(nuint arg0, ICefMediaSink? arg1)
+    public void OnSinks(ReadOnlySpan<ICefMediaSink?> arg0)
     {
-        _ptr->on_sinks(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        var _a0 = arg0;
+        _cef_media_sink_t** _pinned0 = stackalloc _cef_media_sink_t*[_a0.Length];
+        for (int _i0 = 0; _i0 < _a0.Length; _i0++)
+            _pinned0[_i0] = _a0[_i0] is null ? null : _a0[_i0].NativePtr;
+        _ptr->on_sinks(_ptr, (nuint)_a0.Length, _pinned0);
     }
 
-    public void OnRoutes(nuint arg0, ICefMediaRoute? arg1)
+    public void OnRoutes(ReadOnlySpan<ICefMediaRoute?> arg0)
     {
-        _ptr->on_routes(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        var _a0 = arg0;
+        _cef_media_route_t** _pinned0 = stackalloc _cef_media_route_t*[_a0.Length];
+        for (int _i0 = 0; _i0 < _a0.Length; _i0++)
+            _pinned0[_i0] = _a0[_i0] is null ? null : _a0[_i0].NativePtr;
+        _ptr->on_routes(_ptr, (nuint)_a0.Length, _pinned0);
     }
 
     public void OnRouteStateChanged(ICefMediaRoute? arg0, cef_media_route_connection_state_t arg1)
@@ -144,14 +152,22 @@ public unsafe partial class CefMediaObserverRef : CefBaseRefCountedRef, ICefMedi
     _cef_media_observer_t* ICefMediaObserver.NativePtr => _ptr;
 
 
-    public void OnSinks(nuint arg0, ICefMediaSink? arg1)
+    public void OnSinks(ReadOnlySpan<ICefMediaSink?> arg0)
     {
-        _ptr->on_sinks(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        var _a0 = arg0;
+        _cef_media_sink_t** _pinned0 = stackalloc _cef_media_sink_t*[_a0.Length];
+        for (int _i0 = 0; _i0 < _a0.Length; _i0++)
+            _pinned0[_i0] = _a0[_i0] is null ? null : _a0[_i0].NativePtr;
+        _ptr->on_sinks(_ptr, (nuint)_a0.Length, _pinned0);
     }
 
-    public void OnRoutes(nuint arg0, ICefMediaRoute? arg1)
+    public void OnRoutes(ReadOnlySpan<ICefMediaRoute?> arg0)
     {
-        _ptr->on_routes(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        var _a0 = arg0;
+        _cef_media_route_t** _pinned0 = stackalloc _cef_media_route_t*[_a0.Length];
+        for (int _i0 = 0; _i0 < _a0.Length; _i0++)
+            _pinned0[_i0] = _a0[_i0] is null ? null : _a0[_i0].NativePtr;
+        _ptr->on_routes(_ptr, (nuint)_a0.Length, _pinned0);
     }
 
     public void OnRouteStateChanged(ICefMediaRoute? arg0, cef_media_route_connection_state_t arg1)

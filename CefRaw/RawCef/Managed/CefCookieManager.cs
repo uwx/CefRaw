@@ -240,7 +240,7 @@ public unsafe abstract partial class CefCookieManager : CefBaseRefCounted, ICefC
     {
         var _m = GetManaged<CefCookieManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         var _a2 = arg2 != null ? new CefCookieVisitorRef(arg2) : null;
         var _result = _m.VisitUrlCookies(_a0, _a1, _a2);
@@ -257,7 +257,7 @@ public unsafe abstract partial class CefCookieManager : CefBaseRefCounted, ICefC
     {
         var _m = GetManaged<CefCookieManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefCookieRef(arg1) : null;
         var _a2 = arg2 != null ? new CefSetCookieCallbackRef(arg2) : null;
         var _result = _m.SetCookie(_a0, _a1, _a2);
@@ -274,8 +274,8 @@ public unsafe abstract partial class CefCookieManager : CefBaseRefCounted, ICefC
     {
         var _m = GetManaged<CefCookieManager>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _a2 = arg2 != null ? new CefDeleteCookiesCallbackRef(arg2) : null;
         var _result = _m.DeleteCookies(_a0, _a1, _a2);
 
@@ -390,7 +390,7 @@ public unsafe abstract partial class CefCookieManager : CefBaseRefCounted, ICefC
     {
         var _m = GetManaged<CefCookieManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         var _a2 = arg2 != null ? new CefCookieVisitorRef(arg2) : null;
         var _result = _m.VisitUrlCookies(_a0, _a1, _a2);
@@ -407,7 +407,7 @@ public unsafe abstract partial class CefCookieManager : CefBaseRefCounted, ICefC
     {
         var _m = GetManaged<CefCookieManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefCookieRef(arg1) : null;
         var _a2 = arg2 != null ? new CefSetCookieCallbackRef(arg2) : null;
         var _result = _m.SetCookie(_a0, _a1, _a2);
@@ -424,8 +424,8 @@ public unsafe abstract partial class CefCookieManager : CefBaseRefCounted, ICefC
     {
         var _m = GetManaged<CefCookieManager>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _a2 = arg2 != null ? new CefDeleteCookiesCallbackRef(arg2) : null;
         var _result = _m.DeleteCookies(_a0, _a1, _a2);
 

@@ -75,9 +75,14 @@ public unsafe partial class CefSchemeHandlerFactoryRef : CefBaseRefCountedRef, I
 
     public ICefResourceHandler? Create(ICefBrowser? arg0, ICefFrame? arg1, string? arg2, ICefRequest? arg3)
     {
-        var _result = _ptr->create(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3 is null ? null : arg3.NativePtr);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->create(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, &_s2, arg3 is null ? null : arg3.NativePtr);
 
-        return _result != null ? new CefResourceHandlerRef(_result) : null;
+            return _result != null ? new CefResourceHandlerRef(_result) : null;
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -117,9 +122,14 @@ public unsafe partial class CefSchemeHandlerFactoryRef : CefBaseRefCountedRef, I
 
     public ICefResourceHandler? Create(ICefBrowser? arg0, ICefFrame? arg1, string? arg2, ICefRequest? arg3)
     {
-        var _result = _ptr->create(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3 is null ? null : arg3.NativePtr);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->create(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, &_s2, arg3 is null ? null : arg3.NativePtr);
 
-        return _result != null ? new CefResourceHandlerRef(_result) : null;
+            return _result != null ? new CefResourceHandlerRef(_result) : null;
+        }
     }
 
     public _cef_base_ref_counted_t @base

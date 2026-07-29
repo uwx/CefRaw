@@ -41,11 +41,11 @@ public unsafe partial interface ICefLifeSpanHandler : ICefBaseRefCounted
 {
     new _cef_life_span_handler_t* NativePtr { get; }
 
-    public int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ICefPopupFeatures? arg7, ICefWindowInfo? arg8, ICefClient? arg9, ICefBrowserSettings? arg10, ICefDictionaryValue? arg11, int* arg12);
+    public int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ICefPopupFeatures? arg7, ICefWindowInfo? arg8, out ICefClient? arg9, ICefBrowserSettings? arg10, out ICefDictionaryValue? arg11, int* arg12);
 
     public void OnBeforePopupAborted(ICefBrowser? arg0, int arg1);
 
-    public void OnBeforeDevToolsPopup(ICefBrowser? arg0, ICefWindowInfo? arg1, ICefClient? arg2, ICefBrowserSettings? arg3, ICefDictionaryValue? arg4, int* arg5);
+    public void OnBeforeDevToolsPopup(ICefBrowser? arg0, ICefWindowInfo? arg1, out ICefClient? arg2, ICefBrowserSettings? arg3, out ICefDictionaryValue? arg4, int* arg5);
 
     public void OnAfterCreated(ICefBrowser? arg0);
 
@@ -69,11 +69,11 @@ public unsafe partial interface ICefLifeSpanHandler : ICefBaseRefCounted
 {
     new _cef_life_span_handler_t* NativePtr { get; }
 
-    public int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ICefPopupFeatures? arg7, ICefWindowInfo? arg8, ICefClient? arg9, ICefBrowserSettings? arg10, ICefDictionaryValue? arg11, int* arg12);
+    public int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ICefPopupFeatures? arg7, ICefWindowInfo? arg8, out ICefClient? arg9, ICefBrowserSettings? arg10, out ICefDictionaryValue? arg11, int* arg12);
 
     public void OnBeforePopupAborted(ICefBrowser? arg0, int arg1);
 
-    public void OnBeforeDevToolsPopup(ICefBrowser? arg0, ICefWindowInfo? arg1, ICefClient? arg2, ICefBrowserSettings? arg3, ICefDictionaryValue? arg4, int* arg5);
+    public void OnBeforeDevToolsPopup(ICefBrowser? arg0, ICefWindowInfo? arg1, out ICefClient? arg2, ICefBrowserSettings? arg3, out ICefDictionaryValue? arg4, int* arg5);
 
     public void OnAfterCreated(ICefBrowser? arg0);
 

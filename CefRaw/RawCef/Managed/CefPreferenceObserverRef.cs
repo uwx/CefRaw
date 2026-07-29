@@ -73,7 +73,12 @@ public unsafe partial class CefPreferenceObserverRef : CefBaseRefCountedRef, ICe
 
     public void OnPreferenceChanged(string? arg0)
     {
-        _ptr->on_preference_changed(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->on_preference_changed(_ptr, &_s0);
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -113,7 +118,12 @@ public unsafe partial class CefPreferenceObserverRef : CefBaseRefCountedRef, ICe
 
     public void OnPreferenceChanged(string? arg0)
     {
-        _ptr->on_preference_changed(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->on_preference_changed(_ptr, &_s0);
+        }
     }
 
     public _cef_base_ref_counted_t @base

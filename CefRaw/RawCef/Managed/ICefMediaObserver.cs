@@ -37,9 +37,9 @@ public unsafe partial interface ICefMediaObserver : ICefBaseRefCounted
 {
     new _cef_media_observer_t* NativePtr { get; }
 
-    public void OnSinks(nuint arg0, ICefMediaSink? arg1);
+    public void OnSinks(ReadOnlySpan<ICefMediaSink?> arg0);
 
-    public void OnRoutes(nuint arg0, ICefMediaRoute? arg1);
+    public void OnRoutes(ReadOnlySpan<ICefMediaRoute?> arg0);
 
     public void OnRouteStateChanged(ICefMediaRoute? arg0, cef_media_route_connection_state_t arg1);
 
@@ -61,9 +61,9 @@ public unsafe partial interface ICefMediaObserver : ICefBaseRefCounted
 {
     new _cef_media_observer_t* NativePtr { get; }
 
-    public void OnSinks(nuint arg0, ICefMediaSink? arg1);
+    public void OnSinks(ReadOnlySpan<ICefMediaSink?> arg0);
 
-    public void OnRoutes(nuint arg0, ICefMediaRoute? arg1);
+    public void OnRoutes(ReadOnlySpan<ICefMediaRoute?> arg0);
 
     public void OnRouteStateChanged(ICefMediaRoute? arg0, cef_media_route_connection_state_t arg1);
 

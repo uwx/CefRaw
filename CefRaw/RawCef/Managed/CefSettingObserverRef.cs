@@ -76,7 +76,15 @@ public unsafe partial class CefSettingObserverRef : CefBaseRefCountedRef, ICefSe
 
     public void OnSettingChanged(string? arg0, string? arg1, cef_content_setting_types_t arg2)
     {
-        _ptr->on_setting_changed(_ptr, arg0, arg1, arg2);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->on_setting_changed(_ptr, &_s0, &_s1, arg2);
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -116,7 +124,15 @@ public unsafe partial class CefSettingObserverRef : CefBaseRefCountedRef, ICefSe
 
     public void OnSettingChanged(string? arg0, string? arg1, cef_content_setting_types_t arg2)
     {
-        _ptr->on_setting_changed(_ptr, arg0, arg1, arg2);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->on_setting_changed(_ptr, &_s0, &_s1, arg2);
+        }
     }
 
     public _cef_base_ref_counted_t @base

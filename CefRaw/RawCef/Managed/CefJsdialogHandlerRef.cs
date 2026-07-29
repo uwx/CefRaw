@@ -103,16 +103,32 @@ public unsafe partial class CefJsdialogHandlerRef : CefBaseRefCountedRef, ICefJs
 
     public int OnJsdialog(ICefBrowser? arg0, string? arg1, cef_jsdialog_type_t arg2, string? arg3, string? arg4, ICefJsdialogCallback? arg5, int* arg6)
     {
-        var _result = _ptr->on_jsdialog(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3, arg4, arg5 is null ? null : arg5.NativePtr, arg6);
+        fixed (char* _p1 = arg1)
+        fixed (char* _p3 = arg3)
+        fixed (char* _p4 = arg4)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            _cef_string_utf16_t _s4;
+            CefStringRef.FillFromPinned(&_s4, _p4, arg4?.Length ?? 0);
+            var _result = _ptr->on_jsdialog(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1, arg2, &_s3, &_s4, arg5 is null ? null : arg5.NativePtr, arg6);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int OnBeforeUnloadDialog(ICefBrowser? arg0, string? arg1, int arg2, ICefJsdialogCallback? arg3)
     {
-        var _result = _ptr->on_before_unload_dialog(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3 is null ? null : arg3.NativePtr);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->on_before_unload_dialog(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1, arg2, arg3 is null ? null : arg3.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void OnResetDialogState(ICefBrowser? arg0)
@@ -162,16 +178,32 @@ public unsafe partial class CefJsdialogHandlerRef : CefBaseRefCountedRef, ICefJs
 
     public int OnJsdialog(ICefBrowser? arg0, string? arg1, cef_jsdialog_type_t arg2, string? arg3, string? arg4, ICefJsdialogCallback? arg5, int* arg6)
     {
-        var _result = _ptr->on_jsdialog(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3, arg4, arg5 is null ? null : arg5.NativePtr, arg6);
+        fixed (char* _p1 = arg1)
+        fixed (char* _p3 = arg3)
+        fixed (char* _p4 = arg4)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            _cef_string_utf16_t _s4;
+            CefStringRef.FillFromPinned(&_s4, _p4, arg4?.Length ?? 0);
+            var _result = _ptr->on_jsdialog(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1, arg2, &_s3, &_s4, arg5 is null ? null : arg5.NativePtr, arg6);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int OnBeforeUnloadDialog(ICefBrowser? arg0, string? arg1, int arg2, ICefJsdialogCallback? arg3)
     {
-        var _result = _ptr->on_before_unload_dialog(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3 is null ? null : arg3.NativePtr);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->on_before_unload_dialog(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1, arg2, arg3 is null ? null : arg3.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void OnResetDialogState(ICefBrowser? arg0)

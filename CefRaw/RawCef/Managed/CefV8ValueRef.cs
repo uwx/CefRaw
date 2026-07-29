@@ -654,9 +654,14 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
 
     public int HasValueBykey(string? arg0)
     {
-        var _result = _ptr->has_value_bykey(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->has_value_bykey(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int HasValueByindex(int arg0)
@@ -668,9 +673,14 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
 
     public int DeleteValueBykey(string? arg0)
     {
-        var _result = _ptr->delete_value_bykey(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->delete_value_bykey(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int DeleteValueByindex(int arg0)
@@ -682,9 +692,14 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
 
     public ICefV8Value? GetValueBykey(string? arg0)
     {
-        var _result = _ptr->get_value_bykey(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_value_bykey(_ptr, &_s0);
 
-        return _result != null ? new CefV8ValueRef(_result) : null;
+            return _result != null ? new CefV8ValueRef(_result) : null;
+        }
     }
 
     public ICefV8Value? GetValueByindex(int arg0)
@@ -696,9 +711,14 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
 
     public int SetValueBykey(string? arg0, ICefV8Value? arg1, cef_v8_propertyattribute_t arg2)
     {
-        var _result = _ptr->set_value_bykey(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_value_bykey(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, arg2);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetValueByindex(int arg0, ICefV8Value? arg1)
@@ -710,9 +730,14 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
 
     public int SetValueByaccessor(string? arg0, cef_v8_propertyattribute_t arg1)
     {
-        var _result = _ptr->set_value_byaccessor(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_value_byaccessor(_ptr, &_s0, arg1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int GetKeys(ICefStringList? arg0)
@@ -799,16 +824,24 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
         return _result != null ? new CefV8HandlerRef(_result) : null;
     }
 
-    public ICefV8Value? ExecuteFunction(ICefV8Value? arg0, nuint arg1, ICefV8Value? arg2)
+    public ICefV8Value? ExecuteFunction(ICefV8Value? arg0, ReadOnlySpan<ICefV8Value?> arg1)
     {
-        var _result = _ptr->execute_function(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2 is null ? null : arg2.NativePtr);
+        var _a1 = arg1;
+        _cef_v8_value_t** _pinned1 = stackalloc _cef_v8_value_t*[_a1.Length];
+        for (int _i1 = 0; _i1 < _a1.Length; _i1++)
+            _pinned1[_i1] = _a1[_i1] is null ? null : _a1[_i1].NativePtr;
+        var _result = _ptr->execute_function(_ptr, arg0 is null ? null : arg0.NativePtr, (nuint)_a1.Length, _pinned1);
 
         return _result != null ? new CefV8ValueRef(_result) : null;
     }
 
-    public ICefV8Value? ExecuteFunctionWithContext(ICefV8Context? arg0, ICefV8Value? arg1, nuint arg2, ICefV8Value? arg3)
+    public ICefV8Value? ExecuteFunctionWithContext(ICefV8Context? arg0, ICefV8Value? arg1, ReadOnlySpan<ICefV8Value?> arg2)
     {
-        var _result = _ptr->execute_function_with_context(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3 is null ? null : arg3.NativePtr);
+        var _a2 = arg2;
+        _cef_v8_value_t** _pinned2 = stackalloc _cef_v8_value_t*[_a2.Length];
+        for (int _i2 = 0; _i2 < _a2.Length; _i2++)
+            _pinned2[_i2] = _a2[_i2] is null ? null : _a2[_i2].NativePtr;
+        var _result = _ptr->execute_function_with_context(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, (nuint)_a2.Length, _pinned2);
 
         return _result != null ? new CefV8ValueRef(_result) : null;
     }
@@ -822,9 +855,14 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
 
     public int RejectPromise(string? arg0)
     {
-        var _result = _ptr->reject_promise(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->reject_promise(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -1053,9 +1091,14 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
 
     public int HasValueBykey(string? arg0)
     {
-        var _result = _ptr->has_value_bykey(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->has_value_bykey(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int HasValueByindex(int arg0)
@@ -1067,9 +1110,14 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
 
     public int DeleteValueBykey(string? arg0)
     {
-        var _result = _ptr->delete_value_bykey(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->delete_value_bykey(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int DeleteValueByindex(int arg0)
@@ -1081,9 +1129,14 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
 
     public ICefV8Value? GetValueBykey(string? arg0)
     {
-        var _result = _ptr->get_value_bykey(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_value_bykey(_ptr, &_s0);
 
-        return _result != null ? new CefV8ValueRef(_result) : null;
+            return _result != null ? new CefV8ValueRef(_result) : null;
+        }
     }
 
     public ICefV8Value? GetValueByindex(int arg0)
@@ -1095,9 +1148,14 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
 
     public int SetValueBykey(string? arg0, ICefV8Value? arg1, cef_v8_propertyattribute_t arg2)
     {
-        var _result = _ptr->set_value_bykey(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_value_bykey(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, arg2);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetValueByindex(int arg0, ICefV8Value? arg1)
@@ -1109,9 +1167,14 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
 
     public int SetValueByaccessor(string? arg0, cef_v8_propertyattribute_t arg1)
     {
-        var _result = _ptr->set_value_byaccessor(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_value_byaccessor(_ptr, &_s0, arg1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int GetKeys(ICefStringList? arg0)
@@ -1198,16 +1261,24 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
         return _result != null ? new CefV8HandlerRef(_result) : null;
     }
 
-    public ICefV8Value? ExecuteFunction(ICefV8Value? arg0, nuint arg1, ICefV8Value? arg2)
+    public ICefV8Value? ExecuteFunction(ICefV8Value? arg0, ReadOnlySpan<ICefV8Value?> arg1)
     {
-        var _result = _ptr->execute_function(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2 is null ? null : arg2.NativePtr);
+        var _a1 = arg1;
+        _cef_v8_value_t** _pinned1 = stackalloc _cef_v8_value_t*[_a1.Length];
+        for (int _i1 = 0; _i1 < _a1.Length; _i1++)
+            _pinned1[_i1] = _a1[_i1] is null ? null : _a1[_i1].NativePtr;
+        var _result = _ptr->execute_function(_ptr, arg0 is null ? null : arg0.NativePtr, (nuint)_a1.Length, _pinned1);
 
         return _result != null ? new CefV8ValueRef(_result) : null;
     }
 
-    public ICefV8Value? ExecuteFunctionWithContext(ICefV8Context? arg0, ICefV8Value? arg1, nuint arg2, ICefV8Value? arg3)
+    public ICefV8Value? ExecuteFunctionWithContext(ICefV8Context? arg0, ICefV8Value? arg1, ReadOnlySpan<ICefV8Value?> arg2)
     {
-        var _result = _ptr->execute_function_with_context(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3 is null ? null : arg3.NativePtr);
+        var _a2 = arg2;
+        _cef_v8_value_t** _pinned2 = stackalloc _cef_v8_value_t*[_a2.Length];
+        for (int _i2 = 0; _i2 < _a2.Length; _i2++)
+            _pinned2[_i2] = _a2[_i2] is null ? null : _a2[_i2].NativePtr;
+        var _result = _ptr->execute_function_with_context(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, (nuint)_a2.Length, _pinned2);
 
         return _result != null ? new CefV8ValueRef(_result) : null;
     }
@@ -1221,9 +1292,14 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
 
     public int RejectPromise(string? arg0)
     {
-        var _result = _ptr->reject_promise(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->reject_promise(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base

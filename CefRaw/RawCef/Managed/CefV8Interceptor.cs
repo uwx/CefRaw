@@ -206,22 +206,22 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     /// <summary>
     /// Implement the <c>get_byname</c> callback.
     /// </summary>
-    public abstract int GetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public abstract int GetByname(string? arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3);
 
     /// <summary>
     /// Implement the <c>get_byindex</c> callback.
     /// </summary>
-    public abstract int GetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public abstract int GetByindex(int arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3);
 
     /// <summary>
     /// Implement the <c>set_byname</c> callback.
     /// </summary>
-    public abstract int SetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public abstract int SetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3);
 
     /// <summary>
     /// Implement the <c>set_byindex</c> callback.
     /// </summary>
-    public abstract int SetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public abstract int SetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -232,13 +232,21 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     {
         var _m = GetManaged<CefV8Interceptor>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        var _a3 = arg3;
-        var _result = _m.GetByname(_a0, _a1, _a2, _a3);
+        ICefV8Value? _out2 = null;
+        if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
+        string? _out3 = null;
+        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+        var _result = _m.GetByname(_a0, _a1, out _out2, out _out3);
 
         return _result;
+        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+        if (arg3 != null)
+        {
+            fixed (char* _p3 = _out3)
+                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -252,11 +260,19 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
 
         var _a0 = arg0;
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        var _a3 = arg3;
-        var _result = _m.GetByindex(_a0, _a1, _a2, _a3);
+        ICefV8Value? _out2 = null;
+        if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
+        string? _out3 = null;
+        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+        var _result = _m.GetByindex(_a0, _a1, out _out2, out _out3);
 
         return _result;
+        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+        if (arg3 != null)
+        {
+            fixed (char* _p3 = _out3)
+                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -268,13 +284,19 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     {
         var _m = GetManaged<CefV8Interceptor>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        var _a3 = arg3;
-        var _result = _m.SetByname(_a0, _a1, _a2, _a3);
+        string? _out3 = null;
+        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+        var _result = _m.SetByname(_a0, _a1, _a2, out _out3);
 
         return _result;
+        if (arg3 != null)
+        {
+            fixed (char* _p3 = _out3)
+                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -289,10 +311,16 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
         var _a0 = arg0;
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        var _a3 = arg3;
-        var _result = _m.SetByindex(_a0, _a1, _a2, _a3);
+        string? _out3 = null;
+        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+        var _result = _m.SetByindex(_a0, _a1, _a2, out _out3);
 
         return _result;
+        if (arg3 != null)
+        {
+            fixed (char* _p3 = _out3)
+                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+        }
     }
 }
 #endif
@@ -341,22 +369,22 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     /// <summary>
     /// Implement the <c>get_byname</c> callback.
     /// </summary>
-    public abstract int GetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public abstract int GetByname(string? arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3);
 
     /// <summary>
     /// Implement the <c>get_byindex</c> callback.
     /// </summary>
-    public abstract int GetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public abstract int GetByindex(int arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3);
 
     /// <summary>
     /// Implement the <c>set_byname</c> callback.
     /// </summary>
-    public abstract int SetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public abstract int SetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3);
 
     /// <summary>
     /// Implement the <c>set_byindex</c> callback.
     /// </summary>
-    public abstract int SetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public abstract int SetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -367,13 +395,21 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     {
         var _m = GetManaged<CefV8Interceptor>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        var _a3 = arg3;
-        var _result = _m.GetByname(_a0, _a1, _a2, _a3);
+        ICefV8Value? _out2 = null;
+        if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
+        string? _out3 = null;
+        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+        var _result = _m.GetByname(_a0, _a1, out _out2, out _out3);
 
         return _result;
+        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+        if (arg3 != null)
+        {
+            fixed (char* _p3 = _out3)
+                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -387,11 +423,19 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
 
         var _a0 = arg0;
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        var _a3 = arg3;
-        var _result = _m.GetByindex(_a0, _a1, _a2, _a3);
+        ICefV8Value? _out2 = null;
+        if (arg2 != null && *arg2 != null) _out2 = new CefV8ValueRef(*arg2);
+        string? _out3 = null;
+        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+        var _result = _m.GetByindex(_a0, _a1, out _out2, out _out3);
 
         return _result;
+        if (arg2 != null) *arg2 = _out2 != null ? _out2.NativePtr : null;
+        if (arg3 != null)
+        {
+            fixed (char* _p3 = _out3)
+                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -403,13 +447,19 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
     {
         var _m = GetManaged<CefV8Interceptor>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        var _a3 = arg3;
-        var _result = _m.SetByname(_a0, _a1, _a2, _a3);
+        string? _out3 = null;
+        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+        var _result = _m.SetByname(_a0, _a1, _a2, out _out3);
 
         return _result;
+        if (arg3 != null)
+        {
+            fixed (char* _p3 = _out3)
+                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -424,10 +474,16 @@ public unsafe abstract partial class CefV8Interceptor : CefBaseRefCounted, ICefV
         var _a0 = arg0;
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        var _a3 = arg3;
-        var _result = _m.SetByindex(_a0, _a1, _a2, _a3);
+        string? _out3 = null;
+        if (arg3 != null) _out3 = CefStringRef.ToStringAndFree(arg3);
+        var _result = _m.SetByindex(_a0, _a1, _a2, out _out3);
 
         return _result;
+        if (arg3 != null)
+        {
+            fixed (char* _p3 = _out3)
+                CefUnsafe.StringUtf16Set((ushort*)_p3, (nuint)(_out3?.Length ?? 0), arg3, copy: 1);
+        }
     }
 }
 #endif

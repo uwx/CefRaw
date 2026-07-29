@@ -836,7 +836,7 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     {
         var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetFrameByIdentifier(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -851,7 +851,7 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     {
         var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetFrameByName(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -1286,7 +1286,7 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     {
         var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetFrameByIdentifier(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -1301,7 +1301,7 @@ public unsafe abstract partial class CefBrowser : CefBaseRefCounted, ICefBrowser
     {
         var _m = GetManaged<CefBrowser>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetFrameByName(_a0);
 
         return _result != null ? _result.NativePtr : null;

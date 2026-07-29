@@ -293,12 +293,25 @@ public unsafe partial class CefFrameRef : CefBaseRefCountedRef, ICefFrame
 
     public void LoadUrl(string? arg0)
     {
-        _ptr->load_url(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->load_url(_ptr, &_s0);
+        }
     }
 
     public void ExecuteJavaScript(string? arg0, string? arg1, int arg2)
     {
-        _ptr->execute_java_script(_ptr, arg0, arg1, arg2);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->execute_java_script(_ptr, &_s0, &_s1, arg2);
+        }
     }
 
     public int IsMain()
@@ -478,12 +491,25 @@ public unsafe partial class CefFrameRef : CefBaseRefCountedRef, ICefFrame
 
     public void LoadUrl(string? arg0)
     {
-        _ptr->load_url(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->load_url(_ptr, &_s0);
+        }
     }
 
     public void ExecuteJavaScript(string? arg0, string? arg1, int arg2)
     {
-        _ptr->execute_java_script(_ptr, arg0, arg1, arg2);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->execute_java_script(_ptr, &_s0, &_s1, arg2);
+        }
     }
 
     public int IsMain()

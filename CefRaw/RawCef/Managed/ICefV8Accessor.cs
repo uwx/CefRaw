@@ -33,9 +33,9 @@ public unsafe partial interface ICefV8Accessor : ICefBaseRefCounted
 {
     new _cef_v8_accessor_t* NativePtr { get; }
 
-    public int Get(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public int Get(string? arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3);
 
-    public int Set(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public int Set(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3);
 }
 #endif
 #if OS_LINUX
@@ -53,8 +53,8 @@ public unsafe partial interface ICefV8Accessor : ICefBaseRefCounted
 {
     new _cef_v8_accessor_t* NativePtr { get; }
 
-    public int Get(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public int Get(string? arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3);
 
-    public int Set(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public int Set(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3);
 }
 #endif

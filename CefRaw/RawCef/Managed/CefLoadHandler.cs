@@ -244,8 +244,8 @@ public unsafe abstract partial class CefLoadHandler : CefBaseRefCounted, ICefLoa
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
         var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
+        var _a3 = CefStringRef.ToStringAndFree(arg3);
+        var _a4 = CefStringRef.ToStringAndFree(arg4);
         _m.OnLoadError(_a0, _a1, _a2, _a3, _a4);
     }
 }
@@ -370,8 +370,8 @@ public unsafe abstract partial class CefLoadHandler : CefBaseRefCounted, ICefLoa
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
         var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
+        var _a3 = CefStringRef.ToStringAndFree(arg3);
+        var _a4 = CefStringRef.ToStringAndFree(arg4);
         _m.OnLoadError(_a0, _a1, _a2, _a3, _a4);
     }
 }

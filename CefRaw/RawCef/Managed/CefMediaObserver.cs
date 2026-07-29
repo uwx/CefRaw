@@ -167,12 +167,12 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     /// <summary>
     /// Implement the <c>on_sinks</c> callback.
     /// </summary>
-    public abstract void OnSinks(nuint arg0, ICefMediaSink? arg1);
+    public abstract void OnSinks(ReadOnlySpan<ICefMediaSink?> arg0);
 
     /// <summary>
     /// Implement the <c>on_routes</c> callback.
     /// </summary>
-    public abstract void OnRoutes(nuint arg0, ICefMediaRoute? arg1);
+    public abstract void OnRoutes(ReadOnlySpan<ICefMediaRoute?> arg0);
 
     /// <summary>
     /// Implement the <c>on_route_state_changed</c> callback.
@@ -193,9 +193,11 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     {
         var _m = GetManaged<CefMediaObserver>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefMediaSinkRef(arg1) : null;
-        _m.OnSinks(_a0, _a1);
+        var _count0 = (int)arg0;
+        var _span0 = new ICefMediaSink?[_count0];
+        for (int _j0 = 0; _j0 < _count0; _j0++)
+            _span0[_j0] = arg1[_j0] != null ? new CefMediaSinkRef(arg1[_j0]) : null;
+        _m.OnSinks(_span0);
     }
 
     #if OS_WIN
@@ -207,9 +209,11 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     {
         var _m = GetManaged<CefMediaObserver>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefMediaRouteRef(arg1) : null;
-        _m.OnRoutes(_a0, _a1);
+        var _count0 = (int)arg0;
+        var _span0 = new ICefMediaRoute?[_count0];
+        for (int _j0 = 0; _j0 < _count0; _j0++)
+            _span0[_j0] = arg1[_j0] != null ? new CefMediaRouteRef(arg1[_j0]) : null;
+        _m.OnRoutes(_span0);
     }
 
     #if OS_WIN
@@ -287,12 +291,12 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     /// <summary>
     /// Implement the <c>on_sinks</c> callback.
     /// </summary>
-    public abstract void OnSinks(nuint arg0, ICefMediaSink? arg1);
+    public abstract void OnSinks(ReadOnlySpan<ICefMediaSink?> arg0);
 
     /// <summary>
     /// Implement the <c>on_routes</c> callback.
     /// </summary>
-    public abstract void OnRoutes(nuint arg0, ICefMediaRoute? arg1);
+    public abstract void OnRoutes(ReadOnlySpan<ICefMediaRoute?> arg0);
 
     /// <summary>
     /// Implement the <c>on_route_state_changed</c> callback.
@@ -313,9 +317,11 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     {
         var _m = GetManaged<CefMediaObserver>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefMediaSinkRef(arg1) : null;
-        _m.OnSinks(_a0, _a1);
+        var _count0 = (int)arg0;
+        var _span0 = new ICefMediaSink?[_count0];
+        for (int _j0 = 0; _j0 < _count0; _j0++)
+            _span0[_j0] = arg1[_j0] != null ? new CefMediaSinkRef(arg1[_j0]) : null;
+        _m.OnSinks(_span0);
     }
 
     #if OS_WIN
@@ -327,9 +333,11 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
     {
         var _m = GetManaged<CefMediaObserver>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefMediaRouteRef(arg1) : null;
-        _m.OnRoutes(_a0, _a1);
+        var _count0 = (int)arg0;
+        var _span0 = new ICefMediaRoute?[_count0];
+        for (int _j0 = 0; _j0 < _count0; _j0++)
+            _span0[_j0] = arg1[_j0] != null ? new CefMediaRouteRef(arg1[_j0]) : null;
+        _m.OnRoutes(_span0);
     }
 
     #if OS_WIN

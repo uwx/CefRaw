@@ -92,16 +92,26 @@ public unsafe partial class CefPermissionHandlerRef : CefBaseRefCountedRef, ICef
 
     public int OnRequestMediaAccessPermission(ICefBrowser? arg0, ICefFrame? arg1, string? arg2, uint arg3, ICefMediaAccessCallback? arg4)
     {
-        var _result = _ptr->on_request_media_access_permission(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3, arg4 is null ? null : arg4.NativePtr);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->on_request_media_access_permission(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, &_s2, arg3, arg4 is null ? null : arg4.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int OnShowPermissionPrompt(ICefBrowser? arg0, ulong arg1, string? arg2, uint arg3, ICefPermissionPromptCallback? arg4)
     {
-        var _result = _ptr->on_show_permission_prompt(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3, arg4 is null ? null : arg4.NativePtr);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->on_show_permission_prompt(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_s2, arg3, arg4 is null ? null : arg4.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void OnDismissPermissionPrompt(ICefBrowser? arg0, ulong arg1, cef_permission_request_result_t arg2)
@@ -146,16 +156,26 @@ public unsafe partial class CefPermissionHandlerRef : CefBaseRefCountedRef, ICef
 
     public int OnRequestMediaAccessPermission(ICefBrowser? arg0, ICefFrame? arg1, string? arg2, uint arg3, ICefMediaAccessCallback? arg4)
     {
-        var _result = _ptr->on_request_media_access_permission(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3, arg4 is null ? null : arg4.NativePtr);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->on_request_media_access_permission(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, &_s2, arg3, arg4 is null ? null : arg4.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int OnShowPermissionPrompt(ICefBrowser? arg0, ulong arg1, string? arg2, uint arg3, ICefPermissionPromptCallback? arg4)
     {
-        var _result = _ptr->on_show_permission_prompt(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3, arg4 is null ? null : arg4.NativePtr);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->on_show_permission_prompt(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_s2, arg3, arg4 is null ? null : arg4.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void OnDismissPermissionPrompt(ICefBrowser? arg0, ulong arg1, cef_permission_request_result_t arg2)

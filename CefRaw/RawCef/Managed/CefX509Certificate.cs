@@ -332,12 +332,12 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_derencoded_issuer_chain</c> callback.
     /// </summary>
-    public abstract void GetDerencodedIssuerChain(nuint* arg0, ICefBinaryValue? arg1);
+    public abstract void GetDerencodedIssuerChain(nuint* arg0, out ICefBinaryValue? arg1);
 
     /// <summary>
     /// Implement the <c>get_pemencoded_issuer_chain</c> callback.
     /// </summary>
-    public abstract void GetPemencodedIssuerChain(nuint* arg0, ICefBinaryValue? arg1);
+    public abstract void GetPemencodedIssuerChain(nuint* arg0, out ICefBinaryValue? arg1);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -461,8 +461,10 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
         var _m = GetManaged<CefX509Certificate>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefBinaryValueRef(arg1) : null;
-        _m.GetDerencodedIssuerChain(_a0, _a1);
+        ICefBinaryValue? _out1 = null;
+        if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
+        _m.GetDerencodedIssuerChain(_a0, out _out1);
+        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
     }
 
     #if OS_WIN
@@ -475,8 +477,10 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
         var _m = GetManaged<CefX509Certificate>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefBinaryValueRef(arg1) : null;
-        _m.GetPemencodedIssuerChain(_a0, _a1);
+        ICefBinaryValue? _out1 = null;
+        if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
+        _m.GetPemencodedIssuerChain(_a0, out _out1);
+        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
     }
 }
 #endif
@@ -571,12 +575,12 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_derencoded_issuer_chain</c> callback.
     /// </summary>
-    public abstract void GetDerencodedIssuerChain(nuint* arg0, ICefBinaryValue? arg1);
+    public abstract void GetDerencodedIssuerChain(nuint* arg0, out ICefBinaryValue? arg1);
 
     /// <summary>
     /// Implement the <c>get_pemencoded_issuer_chain</c> callback.
     /// </summary>
-    public abstract void GetPemencodedIssuerChain(nuint* arg0, ICefBinaryValue? arg1);
+    public abstract void GetPemencodedIssuerChain(nuint* arg0, out ICefBinaryValue? arg1);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -700,8 +704,10 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
         var _m = GetManaged<CefX509Certificate>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefBinaryValueRef(arg1) : null;
-        _m.GetDerencodedIssuerChain(_a0, _a1);
+        ICefBinaryValue? _out1 = null;
+        if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
+        _m.GetDerencodedIssuerChain(_a0, out _out1);
+        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
     }
 
     #if OS_WIN
@@ -714,8 +720,10 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
         var _m = GetManaged<CefX509Certificate>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefBinaryValueRef(arg1) : null;
-        _m.GetPemencodedIssuerChain(_a0, _a1);
+        ICefBinaryValue? _out1 = null;
+        if (arg1 != null && *arg1 != null) _out1 = new CefBinaryValueRef(*arg1);
+        _m.GetPemencodedIssuerChain(_a0, out _out1);
+        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
     }
 }
 #endif

@@ -85,9 +85,14 @@ public unsafe partial class CefRequestContextHandlerRef : CefBaseRefCountedRef, 
 
     public ICefResourceRequestHandler? GetResourceRequestHandler(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, int arg3, int arg4, string? arg5, int* arg6)
     {
-        var _result = _ptr->get_resource_request_handler(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3, arg4, arg5, arg6);
+        fixed (char* _p5 = arg5)
+        {
+            _cef_string_utf16_t _s5;
+            CefStringRef.FillFromPinned(&_s5, _p5, arg5?.Length ?? 0);
+            var _result = _ptr->get_resource_request_handler(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3, arg4, &_s5, arg6);
 
-        return _result != null ? new CefResourceRequestHandlerRef(_result) : null;
+            return _result != null ? new CefResourceRequestHandlerRef(_result) : null;
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -132,9 +137,14 @@ public unsafe partial class CefRequestContextHandlerRef : CefBaseRefCountedRef, 
 
     public ICefResourceRequestHandler? GetResourceRequestHandler(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, int arg3, int arg4, string? arg5, int* arg6)
     {
-        var _result = _ptr->get_resource_request_handler(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3, arg4, arg5, arg6);
+        fixed (char* _p5 = arg5)
+        {
+            _cef_string_utf16_t _s5;
+            CefStringRef.FillFromPinned(&_s5, _p5, arg5?.Length ?? 0);
+            var _result = _ptr->get_resource_request_handler(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3, arg4, &_s5, arg6);
 
-        return _result != null ? new CefResourceRequestHandlerRef(_result) : null;
+            return _result != null ? new CefResourceRequestHandlerRef(_result) : null;
+        }
     }
 
     public _cef_base_ref_counted_t @base

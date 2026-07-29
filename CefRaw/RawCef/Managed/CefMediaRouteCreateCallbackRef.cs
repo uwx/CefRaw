@@ -73,7 +73,12 @@ public unsafe partial class CefMediaRouteCreateCallbackRef : CefBaseRefCountedRe
 
     public void OnMediaRouteCreateFinished(cef_media_route_create_result_t arg0, string? arg1, ICefMediaRoute? arg2)
     {
-        _ptr->on_media_route_create_finished(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->on_media_route_create_finished(_ptr, arg0, &_s1, arg2 is null ? null : arg2.NativePtr);
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -113,7 +118,12 @@ public unsafe partial class CefMediaRouteCreateCallbackRef : CefBaseRefCountedRe
 
     public void OnMediaRouteCreateFinished(cef_media_route_create_result_t arg0, string? arg1, ICefMediaRoute? arg2)
     {
-        _ptr->on_media_route_create_finished(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->on_media_route_create_finished(_ptr, arg0, &_s1, arg2 is null ? null : arg2.NativePtr);
+        }
     }
 
     public _cef_base_ref_counted_t @base

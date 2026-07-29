@@ -171,8 +171,8 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
         var _m = GetManaged<CefDownloadHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _result = _m.CanDownload(_a0, _a1, _a2);
 
         return _result;
@@ -189,7 +189,7 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
-        var _a2 = arg2;
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _a3 = arg3 != null ? new CefBeforeDownloadCallbackRef(arg3) : null;
         var _result = _m.OnBeforeDownload(_a0, _a1, _a2, _a3);
 
@@ -278,8 +278,8 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
         var _m = GetManaged<CefDownloadHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _result = _m.CanDownload(_a0, _a1, _a2);
 
         return _result;
@@ -296,7 +296,7 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
-        var _a2 = arg2;
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _a3 = arg3 != null ? new CefBeforeDownloadCallbackRef(arg3) : null;
         var _result = _m.OnBeforeDownload(_a0, _a1, _a2, _a3);
 

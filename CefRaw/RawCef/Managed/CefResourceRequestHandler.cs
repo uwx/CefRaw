@@ -294,7 +294,7 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     /// <summary>
     /// Implement the <c>on_resource_redirect</c> callback.
     /// </summary>
-    public abstract void OnResourceRedirect(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3, string? arg4);
+    public abstract void OnResourceRedirect(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3, out string? arg4);
 
     /// <summary>
     /// Implement the <c>on_resource_response</c> callback.
@@ -381,8 +381,14 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
         var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
         var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        var _a4 = arg4;
-        _m.OnResourceRedirect(_a0, _a1, _a2, _a3, _a4);
+        string? _out4 = null;
+        if (arg4 != null) _out4 = CefStringRef.ToStringAndFree(arg4);
+        _m.OnResourceRedirect(_a0, _a1, _a2, _a3, out _out4);
+        if (arg4 != null)
+        {
+            fixed (char* _p4 = _out4)
+                CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg4, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -520,7 +526,7 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
     /// <summary>
     /// Implement the <c>on_resource_redirect</c> callback.
     /// </summary>
-    public abstract void OnResourceRedirect(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3, string? arg4);
+    public abstract void OnResourceRedirect(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3, out string? arg4);
 
     /// <summary>
     /// Implement the <c>on_resource_response</c> callback.
@@ -607,8 +613,14 @@ public unsafe abstract partial class CefResourceRequestHandler : CefBaseRefCount
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
         var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
         var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        var _a4 = arg4;
-        _m.OnResourceRedirect(_a0, _a1, _a2, _a3, _a4);
+        string? _out4 = null;
+        if (arg4 != null) _out4 = CefStringRef.ToStringAndFree(arg4);
+        _m.OnResourceRedirect(_a0, _a1, _a2, _a3, out _out4);
+        if (arg4 != null)
+        {
+            fixed (char* _p4 = _out4)
+                CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg4, copy: 1);
+        }
     }
 
     #if OS_WIN

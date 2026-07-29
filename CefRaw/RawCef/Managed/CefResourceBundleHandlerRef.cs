@@ -84,10 +84,12 @@ public unsafe partial class CefResourceBundleHandlerRef : CefBaseRefCountedRef, 
     _cef_resource_bundle_handler_t* ICefResourceBundleHandler.NativePtr => _ptr;
 
 
-    public int GetLocalizedString(int arg0, string? arg1)
+    public int GetLocalizedString(int arg0, out string? arg1)
     {
-        var _result = _ptr->get_localized_string(_ptr, arg0, arg1);
+        _cef_string_utf16_t _out1 = default;
+        var _result = _ptr->get_localized_string(_ptr, arg0, &_out1);
 
+        arg1 = CefStringRef.ToStringAndFree(&_out1);
         return _result;
     }
 
@@ -140,10 +142,12 @@ public unsafe partial class CefResourceBundleHandlerRef : CefBaseRefCountedRef, 
     _cef_resource_bundle_handler_t* ICefResourceBundleHandler.NativePtr => _ptr;
 
 
-    public int GetLocalizedString(int arg0, string? arg1)
+    public int GetLocalizedString(int arg0, out string? arg1)
     {
-        var _result = _ptr->get_localized_string(_ptr, arg0, arg1);
+        _cef_string_utf16_t _out1 = default;
+        var _result = _ptr->get_localized_string(_ptr, arg0, &_out1);
 
+        arg1 = CefStringRef.ToStringAndFree(&_out1);
         return _result;
     }
 

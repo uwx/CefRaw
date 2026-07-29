@@ -73,7 +73,12 @@ public unsafe partial class CefDownloadImageCallbackRef : CefBaseRefCountedRef, 
 
     public void OnDownloadImageFinished(string? arg0, int arg1, ICefImage? arg2)
     {
-        _ptr->on_download_image_finished(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->on_download_image_finished(_ptr, &_s0, arg1, arg2 is null ? null : arg2.NativePtr);
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -113,7 +118,12 @@ public unsafe partial class CefDownloadImageCallbackRef : CefBaseRefCountedRef, 
 
     public void OnDownloadImageFinished(string? arg0, int arg1, ICefImage? arg2)
     {
-        _ptr->on_download_image_finished(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->on_download_image_finished(_ptr, &_s0, arg1, arg2 is null ? null : arg2.NativePtr);
+        }
     }
 
     public _cef_base_ref_counted_t @base

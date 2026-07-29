@@ -111,11 +111,23 @@ public unsafe partial class CefLifeSpanHandlerRef : CefBaseRefCountedRef, ICefLi
     _cef_life_span_handler_t* ICefLifeSpanHandler.NativePtr => _ptr;
 
 
-    public int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ICefPopupFeatures? arg7, ICefWindowInfo? arg8, ICefClient? arg9, ICefBrowserSettings? arg10, ICefDictionaryValue? arg11, int* arg12)
+    public int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ICefPopupFeatures? arg7, ICefWindowInfo? arg8, out ICefClient? arg9, ICefBrowserSettings? arg10, out ICefDictionaryValue? arg11, int* arg12)
     {
-        var _result = _ptr->on_before_popup(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3, arg4, arg5, arg6, arg7 is null ? null : arg7.NativePtr, arg8 is null ? null : arg8.NativePtr, arg9 is null ? null : arg9.NativePtr, arg10 is null ? null : arg10.NativePtr, arg11 is null ? null : arg11.NativePtr, arg12);
+        _cef_client_t* _out9 = null;
+        _cef_dictionary_value_t* _out11 = null;
+        fixed (char* _p3 = arg3)
+        fixed (char* _p4 = arg4)
+        {
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            _cef_string_utf16_t _s4;
+            CefStringRef.FillFromPinned(&_s4, _p4, arg4?.Length ?? 0);
+            var _result = _ptr->on_before_popup(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, &_s3, &_s4, arg5, arg6, arg7 is null ? null : arg7.NativePtr, arg8 is null ? null : arg8.NativePtr, &_out9, arg10 is null ? null : arg10.NativePtr, &_out11, arg12);
 
-        return _result;
+            arg9 = _out9 != null ? new CefClientRef(_out9) : null;
+            arg11 = _out11 != null ? new CefDictionaryValueRef(_out11) : null;
+            return _result;
+        }
     }
 
     public void OnBeforePopupAborted(ICefBrowser? arg0, int arg1)
@@ -123,9 +135,13 @@ public unsafe partial class CefLifeSpanHandlerRef : CefBaseRefCountedRef, ICefLi
         _ptr->on_before_popup_aborted(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
     }
 
-    public void OnBeforeDevToolsPopup(ICefBrowser? arg0, ICefWindowInfo? arg1, ICefClient? arg2, ICefBrowserSettings? arg3, ICefDictionaryValue? arg4, int* arg5)
+    public void OnBeforeDevToolsPopup(ICefBrowser? arg0, ICefWindowInfo? arg1, out ICefClient? arg2, ICefBrowserSettings? arg3, out ICefDictionaryValue? arg4, int* arg5)
     {
-        _ptr->on_before_dev_tools_popup(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr, arg5);
+        _cef_client_t* _out2 = null;
+        _cef_dictionary_value_t* _out4 = null;
+        _ptr->on_before_dev_tools_popup(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, &_out2, arg3 is null ? null : arg3.NativePtr, &_out4, arg5);
+        arg2 = _out2 != null ? new CefClientRef(_out2) : null;
+        arg4 = _out4 != null ? new CefDictionaryValueRef(_out4) : null;
     }
 
     public void OnAfterCreated(ICefBrowser? arg0)
@@ -180,11 +196,23 @@ public unsafe partial class CefLifeSpanHandlerRef : CefBaseRefCountedRef, ICefLi
     _cef_life_span_handler_t* ICefLifeSpanHandler.NativePtr => _ptr;
 
 
-    public int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ICefPopupFeatures? arg7, ICefWindowInfo? arg8, ICefClient? arg9, ICefBrowserSettings? arg10, ICefDictionaryValue? arg11, int* arg12)
+    public int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ICefPopupFeatures? arg7, ICefWindowInfo? arg8, out ICefClient? arg9, ICefBrowserSettings? arg10, out ICefDictionaryValue? arg11, int* arg12)
     {
-        var _result = _ptr->on_before_popup(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3, arg4, arg5, arg6, arg7 is null ? null : arg7.NativePtr, arg8 is null ? null : arg8.NativePtr, arg9 is null ? null : arg9.NativePtr, arg10 is null ? null : arg10.NativePtr, arg11 is null ? null : arg11.NativePtr, arg12);
+        _cef_client_t* _out9 = null;
+        _cef_dictionary_value_t* _out11 = null;
+        fixed (char* _p3 = arg3)
+        fixed (char* _p4 = arg4)
+        {
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            _cef_string_utf16_t _s4;
+            CefStringRef.FillFromPinned(&_s4, _p4, arg4?.Length ?? 0);
+            var _result = _ptr->on_before_popup(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, &_s3, &_s4, arg5, arg6, arg7 is null ? null : arg7.NativePtr, arg8 is null ? null : arg8.NativePtr, &_out9, arg10 is null ? null : arg10.NativePtr, &_out11, arg12);
 
-        return _result;
+            arg9 = _out9 != null ? new CefClientRef(_out9) : null;
+            arg11 = _out11 != null ? new CefDictionaryValueRef(_out11) : null;
+            return _result;
+        }
     }
 
     public void OnBeforePopupAborted(ICefBrowser? arg0, int arg1)
@@ -192,9 +220,13 @@ public unsafe partial class CefLifeSpanHandlerRef : CefBaseRefCountedRef, ICefLi
         _ptr->on_before_popup_aborted(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
     }
 
-    public void OnBeforeDevToolsPopup(ICefBrowser? arg0, ICefWindowInfo? arg1, ICefClient? arg2, ICefBrowserSettings? arg3, ICefDictionaryValue? arg4, int* arg5)
+    public void OnBeforeDevToolsPopup(ICefBrowser? arg0, ICefWindowInfo? arg1, out ICefClient? arg2, ICefBrowserSettings? arg3, out ICefDictionaryValue? arg4, int* arg5)
     {
-        _ptr->on_before_dev_tools_popup(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr, arg5);
+        _cef_client_t* _out2 = null;
+        _cef_dictionary_value_t* _out4 = null;
+        _ptr->on_before_dev_tools_popup(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, &_out2, arg3 is null ? null : arg3.NativePtr, &_out4, arg5);
+        arg2 = _out2 != null ? new CefClientRef(_out2) : null;
+        arg4 = _out4 != null ? new CefDictionaryValueRef(_out4) : null;
     }
 
     public void OnAfterCreated(ICefBrowser? arg0)

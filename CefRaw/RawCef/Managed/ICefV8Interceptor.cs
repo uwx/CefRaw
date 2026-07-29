@@ -37,13 +37,13 @@ public unsafe partial interface ICefV8Interceptor : ICefBaseRefCounted
 {
     new _cef_v8_interceptor_t* NativePtr { get; }
 
-    public int GetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public int GetByname(string? arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3);
 
-    public int GetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public int GetByindex(int arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3);
 
-    public int SetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public int SetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3);
 
-    public int SetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public int SetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3);
 }
 #endif
 #if OS_LINUX
@@ -61,12 +61,12 @@ public unsafe partial interface ICefV8Interceptor : ICefBaseRefCounted
 {
     new _cef_v8_interceptor_t* NativePtr { get; }
 
-    public int GetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public int GetByname(string? arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3);
 
-    public int GetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public int GetByindex(int arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3);
 
-    public int SetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public int SetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3);
 
-    public int SetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3);
+    public int SetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3);
 }
 #endif

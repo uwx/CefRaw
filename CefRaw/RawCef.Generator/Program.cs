@@ -55,9 +55,15 @@ foreach (var (name, groups) in groupedStructs)
         {
             // For platform-specific structs, use the first platform's definition for managed types
             // (the managed wrapper is the same regardless of calling convention)
-            var iface = Emitter.GenerateInterface(groups.First().Struct);
-            var abstractClass = Emitter.GenerateAbstractClass(groups.First().Struct);
-            var refClass = Emitter.GenerateRefClass(groups.First().Struct);
+            var iface = string.Join("\n",
+                groups.Select(e => $"#if OS_{e.Platform!.ToUpperInvariant()}\n" + Emitter.GenerateInterface(e.Struct) + "#endif")
+            );
+            var abstractClass = string.Join("\n",
+                groups.Select(e => $"#if OS_{e.Platform!.ToUpperInvariant()}\n" + Emitter.GenerateAbstractClass(e.Struct) + "#endif")
+            );
+            var refClass =  string.Join("\n",
+                groups.Select(e => $"#if OS_{e.Platform!.ToUpperInvariant()}\n" + Emitter.GenerateRefClass(e.Struct) + "#endif")
+            );
 
             File.WriteAllText(Path.Combine(outputDir, "Managed", $"I{managedName}.cs"), iface);
             File.WriteAllText(Path.Combine(outputDir, "Managed", $"{managedName}.cs"), abstractClass);

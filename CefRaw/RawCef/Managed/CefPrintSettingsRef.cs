@@ -231,7 +231,12 @@ public unsafe partial class CefPrintSettingsRef : CefBaseRefCountedRef, ICefPrin
 
     public void SetDeviceName(string? arg0)
     {
-        _ptr->set_device_name(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_device_name(_ptr, &_s0);
+        }
     }
 
     public cef_string_userfree_utf16_t GetDeviceName()
@@ -398,7 +403,12 @@ public unsafe partial class CefPrintSettingsRef : CefBaseRefCountedRef, ICefPrin
 
     public void SetDeviceName(string? arg0)
     {
-        _ptr->set_device_name(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_device_name(_ptr, &_s0);
+        }
     }
 
     public cef_string_userfree_utf16_t GetDeviceName()

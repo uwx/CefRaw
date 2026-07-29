@@ -182,37 +182,75 @@ public unsafe partial class CefRequestHandlerRef : CefBaseRefCountedRef, ICefReq
 
     public int OnOpenUrlfromTab(ICefBrowser? arg0, ICefFrame? arg1, string? arg2, cef_window_open_disposition_t arg3, int arg4)
     {
-        var _result = _ptr->on_open_urlfrom_tab(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3, arg4);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->on_open_urlfrom_tab(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, &_s2, arg3, arg4);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefResourceRequestHandler? GetResourceRequestHandler(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, int arg3, int arg4, string? arg5, int* arg6)
     {
-        var _result = _ptr->get_resource_request_handler(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3, arg4, arg5, arg6);
+        fixed (char* _p5 = arg5)
+        {
+            _cef_string_utf16_t _s5;
+            CefStringRef.FillFromPinned(&_s5, _p5, arg5?.Length ?? 0);
+            var _result = _ptr->get_resource_request_handler(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3, arg4, &_s5, arg6);
 
-        return _result != null ? new CefResourceRequestHandlerRef(_result) : null;
+            return _result != null ? new CefResourceRequestHandlerRef(_result) : null;
+        }
     }
 
     public int GetAuthCredentials(ICefBrowser? arg0, string? arg1, int arg2, string? arg3, int arg4, string? arg5, string? arg6, ICefAuthCallback? arg7)
     {
-        var _result = _ptr->get_auth_credentials(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3, arg4, arg5, arg6, arg7 is null ? null : arg7.NativePtr);
+        fixed (char* _p1 = arg1)
+        fixed (char* _p3 = arg3)
+        fixed (char* _p5 = arg5)
+        fixed (char* _p6 = arg6)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            _cef_string_utf16_t _s5;
+            CefStringRef.FillFromPinned(&_s5, _p5, arg5?.Length ?? 0);
+            _cef_string_utf16_t _s6;
+            CefStringRef.FillFromPinned(&_s6, _p6, arg6?.Length ?? 0);
+            var _result = _ptr->get_auth_credentials(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1, arg2, &_s3, arg4, &_s5, &_s6, arg7 is null ? null : arg7.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int OnCertificateError(ICefBrowser? arg0, cef_errorcode_t arg1, string? arg2, ICefSslinfo? arg3, ICefCallback? arg4)
     {
-        var _result = _ptr->on_certificate_error(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->on_certificate_error(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_s2, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
-    public int OnSelectClientCertificate(ICefBrowser? arg0, int arg1, string? arg2, int arg3, nuint arg4, ICefX509Certificate? arg5, ICefSelectClientCertificateCallback? arg6)
+    public int OnSelectClientCertificate(ICefBrowser? arg0, int arg1, string? arg2, int arg3, ReadOnlySpan<ICefX509Certificate?> arg4, ICefSelectClientCertificateCallback? arg5)
     {
-        var _result = _ptr->on_select_client_certificate(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3, arg4, arg5 is null ? null : arg5.NativePtr, arg6 is null ? null : arg6.NativePtr);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _a4 = arg4;
+            _cef_x509_certificate_t** _pinned4 = stackalloc _cef_x509_certificate_t*[_a4.Length];
+            for (int _i4 = 0; _i4 < _a4.Length; _i4++)
+                _pinned4[_i4] = _a4[_i4] is null ? null : _a4[_i4].NativePtr;
+            var _result = _ptr->on_select_client_certificate(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_s2, arg3, (nuint)_a4.Length, _pinned4, arg5 is null ? null : arg5.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void OnRenderViewReady(ICefBrowser? arg0)
@@ -234,7 +272,12 @@ public unsafe partial class CefRequestHandlerRef : CefBaseRefCountedRef, ICefReq
 
     public void OnRenderProcessTerminated(ICefBrowser? arg0, cef_termination_status_t arg1, int arg2, string? arg3)
     {
-        _ptr->on_render_process_terminated(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3);
+        fixed (char* _p3 = arg3)
+        {
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            _ptr->on_render_process_terminated(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, &_s3);
+        }
     }
 
     public void OnDocumentAvailableInMainFrame(ICefBrowser? arg0)
@@ -286,37 +329,75 @@ public unsafe partial class CefRequestHandlerRef : CefBaseRefCountedRef, ICefReq
 
     public int OnOpenUrlfromTab(ICefBrowser? arg0, ICefFrame? arg1, string? arg2, cef_window_open_disposition_t arg3, int arg4)
     {
-        var _result = _ptr->on_open_urlfrom_tab(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3, arg4);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->on_open_urlfrom_tab(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, &_s2, arg3, arg4);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefResourceRequestHandler? GetResourceRequestHandler(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, int arg3, int arg4, string? arg5, int* arg6)
     {
-        var _result = _ptr->get_resource_request_handler(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3, arg4, arg5, arg6);
+        fixed (char* _p5 = arg5)
+        {
+            _cef_string_utf16_t _s5;
+            CefStringRef.FillFromPinned(&_s5, _p5, arg5?.Length ?? 0);
+            var _result = _ptr->get_resource_request_handler(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3, arg4, &_s5, arg6);
 
-        return _result != null ? new CefResourceRequestHandlerRef(_result) : null;
+            return _result != null ? new CefResourceRequestHandlerRef(_result) : null;
+        }
     }
 
     public int GetAuthCredentials(ICefBrowser? arg0, string? arg1, int arg2, string? arg3, int arg4, string? arg5, string? arg6, ICefAuthCallback? arg7)
     {
-        var _result = _ptr->get_auth_credentials(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3, arg4, arg5, arg6, arg7 is null ? null : arg7.NativePtr);
+        fixed (char* _p1 = arg1)
+        fixed (char* _p3 = arg3)
+        fixed (char* _p5 = arg5)
+        fixed (char* _p6 = arg6)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            _cef_string_utf16_t _s5;
+            CefStringRef.FillFromPinned(&_s5, _p5, arg5?.Length ?? 0);
+            _cef_string_utf16_t _s6;
+            CefStringRef.FillFromPinned(&_s6, _p6, arg6?.Length ?? 0);
+            var _result = _ptr->get_auth_credentials(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1, arg2, &_s3, arg4, &_s5, &_s6, arg7 is null ? null : arg7.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int OnCertificateError(ICefBrowser? arg0, cef_errorcode_t arg1, string? arg2, ICefSslinfo? arg3, ICefCallback? arg4)
     {
-        var _result = _ptr->on_certificate_error(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->on_certificate_error(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_s2, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
-    public int OnSelectClientCertificate(ICefBrowser? arg0, int arg1, string? arg2, int arg3, nuint arg4, ICefX509Certificate? arg5, ICefSelectClientCertificateCallback? arg6)
+    public int OnSelectClientCertificate(ICefBrowser? arg0, int arg1, string? arg2, int arg3, ReadOnlySpan<ICefX509Certificate?> arg4, ICefSelectClientCertificateCallback? arg5)
     {
-        var _result = _ptr->on_select_client_certificate(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3, arg4, arg5 is null ? null : arg5.NativePtr, arg6 is null ? null : arg6.NativePtr);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _a4 = arg4;
+            _cef_x509_certificate_t** _pinned4 = stackalloc _cef_x509_certificate_t*[_a4.Length];
+            for (int _i4 = 0; _i4 < _a4.Length; _i4++)
+                _pinned4[_i4] = _a4[_i4] is null ? null : _a4[_i4].NativePtr;
+            var _result = _ptr->on_select_client_certificate(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_s2, arg3, (nuint)_a4.Length, _pinned4, arg5 is null ? null : arg5.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void OnRenderViewReady(ICefBrowser? arg0)
@@ -338,7 +419,12 @@ public unsafe partial class CefRequestHandlerRef : CefBaseRefCountedRef, ICefReq
 
     public void OnRenderProcessTerminated(ICefBrowser? arg0, cef_termination_status_t arg1, int arg2, string? arg3)
     {
-        _ptr->on_render_process_terminated(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3);
+        fixed (char* _p3 = arg3)
+        {
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            _ptr->on_render_process_terminated(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, &_s3);
+        }
     }
 
     public void OnDocumentAvailableInMainFrame(ICefBrowser? arg0)

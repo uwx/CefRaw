@@ -377,32 +377,62 @@ public unsafe partial class CefDragDataRef : CefBaseRefCountedRef, ICefDragData
 
     public void SetLinkUrl(string? arg0)
     {
-        _ptr->set_link_url(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_link_url(_ptr, &_s0);
+        }
     }
 
     public void SetLinkTitle(string? arg0)
     {
-        _ptr->set_link_title(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_link_title(_ptr, &_s0);
+        }
     }
 
     public void SetLinkMetadata(string? arg0)
     {
-        _ptr->set_link_metadata(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_link_metadata(_ptr, &_s0);
+        }
     }
 
     public void SetFragmentText(string? arg0)
     {
-        _ptr->set_fragment_text(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_fragment_text(_ptr, &_s0);
+        }
     }
 
     public void SetFragmentHtml(string? arg0)
     {
-        _ptr->set_fragment_html(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_fragment_html(_ptr, &_s0);
+        }
     }
 
     public void SetFragmentBaseUrl(string? arg0)
     {
-        _ptr->set_fragment_base_url(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_fragment_base_url(_ptr, &_s0);
+        }
     }
 
     public void ResetFileContents()
@@ -412,7 +442,15 @@ public unsafe partial class CefDragDataRef : CefBaseRefCountedRef, ICefDragData
 
     public void AddFile(string? arg0, string? arg1)
     {
-        _ptr->add_file(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->add_file(_ptr, &_s0, &_s1);
+        }
     }
 
     public void ClearFilenames()
@@ -583,32 +621,62 @@ public unsafe partial class CefDragDataRef : CefBaseRefCountedRef, ICefDragData
 
     public void SetLinkUrl(string? arg0)
     {
-        _ptr->set_link_url(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_link_url(_ptr, &_s0);
+        }
     }
 
     public void SetLinkTitle(string? arg0)
     {
-        _ptr->set_link_title(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_link_title(_ptr, &_s0);
+        }
     }
 
     public void SetLinkMetadata(string? arg0)
     {
-        _ptr->set_link_metadata(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_link_metadata(_ptr, &_s0);
+        }
     }
 
     public void SetFragmentText(string? arg0)
     {
-        _ptr->set_fragment_text(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_fragment_text(_ptr, &_s0);
+        }
     }
 
     public void SetFragmentHtml(string? arg0)
     {
-        _ptr->set_fragment_html(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_fragment_html(_ptr, &_s0);
+        }
     }
 
     public void SetFragmentBaseUrl(string? arg0)
     {
-        _ptr->set_fragment_base_url(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_fragment_base_url(_ptr, &_s0);
+        }
     }
 
     public void ResetFileContents()
@@ -618,7 +686,15 @@ public unsafe partial class CefDragDataRef : CefBaseRefCountedRef, ICefDragData
 
     public void AddFile(string? arg0, string? arg1)
     {
-        _ptr->add_file(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->add_file(_ptr, &_s0, &_s1);
+        }
     }
 
     public void ClearFilenames()

@@ -38,8 +38,10 @@ internal static partial class TypeMapper
     }
 
     // Regex to extract the parameter list from a C function-pointer type:
-    //   return_type (*)(params) __attribute__((cc))
-    [GeneratedRegex(@"\(\*\)\((.+)\)\s*__attribute__")]
+    //   return_type (*)(params) [__attribute__((cc))]
+    // Uses non-greedy match so it stops at the first ')' (param list end),
+    // working with or without the trailing __attribute__.
+    [GeneratedRegex(@"\(\*\)\((.+?)\)")]
     private static partial Regex NativeParamListRegex { get; }
 
     /// <summary>

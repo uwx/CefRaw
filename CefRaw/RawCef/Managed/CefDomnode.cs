@@ -892,7 +892,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     {
         var _m = GetManaged<CefDomnode>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.SetValue(_a0);
 
         return _result;
@@ -1047,7 +1047,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     {
         var _m = GetManaged<CefDomnode>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.HasElementAttribute(_a0);
 
         return _result;
@@ -1062,7 +1062,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     {
         var _m = GetManaged<CefDomnode>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetElementAttribute(_a0);
 
         return _result;
@@ -1090,8 +1090,8 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     {
         var _m = GetManaged<CefDomnode>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _result = _m.SetElementAttribute(_a0, _a1);
 
         return _result;
@@ -1456,7 +1456,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     {
         var _m = GetManaged<CefDomnode>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.SetValue(_a0);
 
         return _result;
@@ -1611,7 +1611,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     {
         var _m = GetManaged<CefDomnode>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.HasElementAttribute(_a0);
 
         return _result;
@@ -1626,7 +1626,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     {
         var _m = GetManaged<CefDomnode>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetElementAttribute(_a0);
 
         return _result;
@@ -1654,8 +1654,8 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     {
         var _m = GetManaged<CefDomnode>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _result = _m.SetElementAttribute(_a0, _a1);
 
         return _result;

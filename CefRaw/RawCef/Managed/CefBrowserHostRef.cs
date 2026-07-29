@@ -613,17 +613,35 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
 
     public void RunFileDialog(cef_file_dialog_mode_t arg0, string? arg1, string? arg2, ICefStringList? arg3, ICefRunFileDialogCallback? arg4)
     {
-        _ptr->run_file_dialog(_ptr, arg0, arg1, arg2, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
+        fixed (char* _p1 = arg1)
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            _ptr->run_file_dialog(_ptr, arg0, &_s1, &_s2, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
+        }
     }
 
     public void StartDownload(string? arg0)
     {
-        _ptr->start_download(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->start_download(_ptr, &_s0);
+        }
     }
 
     public void DownloadImage(string? arg0, int arg1, uint arg2, int arg3, ICefDownloadImageCallback? arg4)
     {
-        _ptr->download_image(_ptr, arg0, arg1, arg2, arg3, arg4 is null ? null : arg4.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->download_image(_ptr, &_s0, arg1, arg2, arg3, arg4 is null ? null : arg4.NativePtr);
+        }
     }
 
     public void Print()
@@ -633,12 +651,22 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
 
     public void PrintToPdf(string? arg0, ICefPdfPrintSettings? arg1, ICefPdfPrintCallback? arg2)
     {
-        _ptr->print_to_pdf(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->print_to_pdf(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr);
+        }
     }
 
     public void Find(string? arg0, int arg1, int arg2, int arg3)
     {
-        _ptr->find(_ptr, arg0, arg1, arg2, arg3);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->find(_ptr, &_s0, arg1, arg2, arg3);
+        }
     }
 
     public void StopFinding(int arg0)
@@ -672,9 +700,14 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
 
     public int ExecuteDevToolsMethod(int arg0, string? arg1, ICefDictionaryValue? arg2)
     {
-        var _result = _ptr->execute_dev_tools_method(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->execute_dev_tools_method(_ptr, arg0, &_s1, arg2 is null ? null : arg2.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefRegistration? AddDevToolsMessageObserver(ICefDevToolsMessageObserver? arg0)
@@ -691,12 +724,22 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
 
     public void ReplaceMisspelling(string? arg0)
     {
-        _ptr->replace_misspelling(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->replace_misspelling(_ptr, &_s0);
+        }
     }
 
     public void AddWordToDictionary(string? arg0)
     {
-        _ptr->add_word_to_dictionary(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->add_word_to_dictionary(_ptr, &_s0);
+        }
     }
 
     public int IsWindowRenderingDisabled()
@@ -780,12 +823,22 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
 
     public void ImeSetComposition(string? arg0, nuint arg1, ICefCompositionUnderline? arg2, ICefRange? arg3, ICefRange? arg4)
     {
-        _ptr->ime_set_composition(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->ime_set_composition(_ptr, &_s0, arg1, arg2 is null ? null : arg2.NativePtr, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
+        }
     }
 
     public void ImeCommitText(string? arg0, ICefRange? arg1, int arg2)
     {
-        _ptr->ime_commit_text(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->ime_commit_text(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, arg2);
+        }
     }
 
     public void ImeFinishComposingText(int arg0)
@@ -1041,17 +1094,35 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
 
     public void RunFileDialog(cef_file_dialog_mode_t arg0, string? arg1, string? arg2, ICefStringList? arg3, ICefRunFileDialogCallback? arg4)
     {
-        _ptr->run_file_dialog(_ptr, arg0, arg1, arg2, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
+        fixed (char* _p1 = arg1)
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            _ptr->run_file_dialog(_ptr, arg0, &_s1, &_s2, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
+        }
     }
 
     public void StartDownload(string? arg0)
     {
-        _ptr->start_download(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->start_download(_ptr, &_s0);
+        }
     }
 
     public void DownloadImage(string? arg0, int arg1, uint arg2, int arg3, ICefDownloadImageCallback? arg4)
     {
-        _ptr->download_image(_ptr, arg0, arg1, arg2, arg3, arg4 is null ? null : arg4.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->download_image(_ptr, &_s0, arg1, arg2, arg3, arg4 is null ? null : arg4.NativePtr);
+        }
     }
 
     public void Print()
@@ -1061,12 +1132,22 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
 
     public void PrintToPdf(string? arg0, ICefPdfPrintSettings? arg1, ICefPdfPrintCallback? arg2)
     {
-        _ptr->print_to_pdf(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->print_to_pdf(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr);
+        }
     }
 
     public void Find(string? arg0, int arg1, int arg2, int arg3)
     {
-        _ptr->find(_ptr, arg0, arg1, arg2, arg3);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->find(_ptr, &_s0, arg1, arg2, arg3);
+        }
     }
 
     public void StopFinding(int arg0)
@@ -1100,9 +1181,14 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
 
     public int ExecuteDevToolsMethod(int arg0, string? arg1, ICefDictionaryValue? arg2)
     {
-        var _result = _ptr->execute_dev_tools_method(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->execute_dev_tools_method(_ptr, arg0, &_s1, arg2 is null ? null : arg2.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefRegistration? AddDevToolsMessageObserver(ICefDevToolsMessageObserver? arg0)
@@ -1119,12 +1205,22 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
 
     public void ReplaceMisspelling(string? arg0)
     {
-        _ptr->replace_misspelling(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->replace_misspelling(_ptr, &_s0);
+        }
     }
 
     public void AddWordToDictionary(string? arg0)
     {
-        _ptr->add_word_to_dictionary(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->add_word_to_dictionary(_ptr, &_s0);
+        }
     }
 
     public int IsWindowRenderingDisabled()
@@ -1208,12 +1304,22 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
 
     public void ImeSetComposition(string? arg0, nuint arg1, ICefCompositionUnderline? arg2, ICefRange? arg3, ICefRange? arg4)
     {
-        _ptr->ime_set_composition(_ptr, arg0, arg1, arg2 is null ? null : arg2.NativePtr, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->ime_set_composition(_ptr, &_s0, arg1, arg2 is null ? null : arg2.NativePtr, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
+        }
     }
 
     public void ImeCommitText(string? arg0, ICefRange? arg1, int arg2)
     {
-        _ptr->ime_commit_text(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->ime_commit_text(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, arg2);
+        }
     }
 
     public void ImeFinishComposingText(int arg0)

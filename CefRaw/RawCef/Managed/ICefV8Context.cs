@@ -63,7 +63,7 @@ public unsafe partial interface ICefV8Context : ICefBaseRefCounted
 
     public int IsSame(ICefV8Context? arg0);
 
-    public int Eval(string? arg0, string? arg1, int arg2, ICefV8Value? arg3, ICefV8Exception? arg4);
+    public int Eval(string? arg0, string? arg1, int arg2, out ICefV8Value? arg3, out ICefV8Exception? arg4);
 }
 #endif
 #if OS_LINUX
@@ -97,6 +97,6 @@ public unsafe partial interface ICefV8Context : ICefBaseRefCounted
 
     public int IsSame(ICefV8Context? arg0);
 
-    public int Eval(string? arg0, string? arg1, int arg2, ICefV8Value? arg3, ICefV8Exception? arg4);
+    public int Eval(string? arg0, string? arg1, int arg2, out ICefV8Value? arg3, out ICefV8Exception? arg4);
 }
 #endif

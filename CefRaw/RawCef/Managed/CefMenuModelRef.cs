@@ -543,30 +543,50 @@ public unsafe partial class CefMenuModelRef : CefBaseRefCountedRef, ICefMenuMode
 
     public int AddItem(int arg0, string? arg1)
     {
-        var _result = _ptr->add_item(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->add_item(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int AddCheckItem(int arg0, string? arg1)
     {
-        var _result = _ptr->add_check_item(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->add_check_item(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int AddRadioItem(int arg0, string? arg1, int arg2)
     {
-        var _result = _ptr->add_radio_item(_ptr, arg0, arg1, arg2);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->add_radio_item(_ptr, arg0, &_s1, arg2);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefMenuModel? AddSubMenu(int arg0, string? arg1)
     {
-        var _result = _ptr->add_sub_menu(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->add_sub_menu(_ptr, arg0, &_s1);
 
-        return _result != null ? new CefMenuModelRef(_result) : null;
+            return _result != null ? new CefMenuModelRef(_result) : null;
+        }
     }
 
     public int InsertSeparatorAt(nuint arg0)
@@ -578,30 +598,50 @@ public unsafe partial class CefMenuModelRef : CefBaseRefCountedRef, ICefMenuMode
 
     public int InsertItemAt(nuint arg0, int arg1, string? arg2)
     {
-        var _result = _ptr->insert_item_at(_ptr, arg0, arg1, arg2);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->insert_item_at(_ptr, arg0, arg1, &_s2);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int InsertCheckItemAt(nuint arg0, int arg1, string? arg2)
     {
-        var _result = _ptr->insert_check_item_at(_ptr, arg0, arg1, arg2);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->insert_check_item_at(_ptr, arg0, arg1, &_s2);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int InsertRadioItemAt(nuint arg0, int arg1, string? arg2, int arg3)
     {
-        var _result = _ptr->insert_radio_item_at(_ptr, arg0, arg1, arg2, arg3);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->insert_radio_item_at(_ptr, arg0, arg1, &_s2, arg3);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefMenuModel? InsertSubMenuAt(nuint arg0, int arg1, string? arg2)
     {
-        var _result = _ptr->insert_sub_menu_at(_ptr, arg0, arg1, arg2);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->insert_sub_menu_at(_ptr, arg0, arg1, &_s2);
 
-        return _result != null ? new CefMenuModelRef(_result) : null;
+            return _result != null ? new CefMenuModelRef(_result) : null;
+        }
     }
 
     public int Remove(int arg0)
@@ -655,16 +695,26 @@ public unsafe partial class CefMenuModelRef : CefBaseRefCountedRef, ICefMenuMode
 
     public int SetLabel(int arg0, string? arg1)
     {
-        var _result = _ptr->set_label(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_label(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetLabelAt(nuint arg0, string? arg1)
     {
-        var _result = _ptr->set_label_at(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_label_at(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_menu_item_type_t GetType(int arg0)
@@ -893,16 +943,26 @@ public unsafe partial class CefMenuModelRef : CefBaseRefCountedRef, ICefMenuMode
 
     public int SetFontList(int arg0, string? arg1)
     {
-        var _result = _ptr->set_font_list(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_font_list(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetFontListAt(int arg0, string? arg1)
     {
-        var _result = _ptr->set_font_list_at(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_font_list_at(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -970,30 +1030,50 @@ public unsafe partial class CefMenuModelRef : CefBaseRefCountedRef, ICefMenuMode
 
     public int AddItem(int arg0, string? arg1)
     {
-        var _result = _ptr->add_item(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->add_item(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int AddCheckItem(int arg0, string? arg1)
     {
-        var _result = _ptr->add_check_item(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->add_check_item(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int AddRadioItem(int arg0, string? arg1, int arg2)
     {
-        var _result = _ptr->add_radio_item(_ptr, arg0, arg1, arg2);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->add_radio_item(_ptr, arg0, &_s1, arg2);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefMenuModel? AddSubMenu(int arg0, string? arg1)
     {
-        var _result = _ptr->add_sub_menu(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->add_sub_menu(_ptr, arg0, &_s1);
 
-        return _result != null ? new CefMenuModelRef(_result) : null;
+            return _result != null ? new CefMenuModelRef(_result) : null;
+        }
     }
 
     public int InsertSeparatorAt(nuint arg0)
@@ -1005,30 +1085,50 @@ public unsafe partial class CefMenuModelRef : CefBaseRefCountedRef, ICefMenuMode
 
     public int InsertItemAt(nuint arg0, int arg1, string? arg2)
     {
-        var _result = _ptr->insert_item_at(_ptr, arg0, arg1, arg2);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->insert_item_at(_ptr, arg0, arg1, &_s2);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int InsertCheckItemAt(nuint arg0, int arg1, string? arg2)
     {
-        var _result = _ptr->insert_check_item_at(_ptr, arg0, arg1, arg2);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->insert_check_item_at(_ptr, arg0, arg1, &_s2);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int InsertRadioItemAt(nuint arg0, int arg1, string? arg2, int arg3)
     {
-        var _result = _ptr->insert_radio_item_at(_ptr, arg0, arg1, arg2, arg3);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->insert_radio_item_at(_ptr, arg0, arg1, &_s2, arg3);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefMenuModel? InsertSubMenuAt(nuint arg0, int arg1, string? arg2)
     {
-        var _result = _ptr->insert_sub_menu_at(_ptr, arg0, arg1, arg2);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->insert_sub_menu_at(_ptr, arg0, arg1, &_s2);
 
-        return _result != null ? new CefMenuModelRef(_result) : null;
+            return _result != null ? new CefMenuModelRef(_result) : null;
+        }
     }
 
     public int Remove(int arg0)
@@ -1082,16 +1182,26 @@ public unsafe partial class CefMenuModelRef : CefBaseRefCountedRef, ICefMenuMode
 
     public int SetLabel(int arg0, string? arg1)
     {
-        var _result = _ptr->set_label(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_label(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetLabelAt(nuint arg0, string? arg1)
     {
-        var _result = _ptr->set_label_at(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_label_at(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_menu_item_type_t GetType(int arg0)
@@ -1320,16 +1430,26 @@ public unsafe partial class CefMenuModelRef : CefBaseRefCountedRef, ICefMenuMode
 
     public int SetFontList(int arg0, string? arg1)
     {
-        var _result = _ptr->set_font_list(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_font_list(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetFontListAt(int arg0, string? arg1)
     {
-        var _result = _ptr->set_font_list_at(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_font_list_at(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base

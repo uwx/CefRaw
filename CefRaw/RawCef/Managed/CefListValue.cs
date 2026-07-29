@@ -1201,7 +1201,7 @@ public unsafe abstract partial class CefListValue : CefBaseRefCounted, ICefListV
         var _m = GetManaged<CefListValue>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _result = _m.SetString(_a0, _a1);
 
         return _result;
@@ -1830,7 +1830,7 @@ public unsafe abstract partial class CefListValue : CefBaseRefCounted, ICefListV
         var _m = GetManaged<CefListValue>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _result = _m.SetString(_a0, _a1);
 
         return _result;

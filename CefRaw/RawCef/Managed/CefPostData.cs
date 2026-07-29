@@ -242,7 +242,7 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     /// <summary>
     /// Implement the <c>get_elements</c> callback.
     /// </summary>
-    public abstract void GetElements(nuint* arg0, ICefPostDataElement? arg1);
+    public abstract void GetElements(nuint* arg0, out ICefPostDataElement? arg1);
 
     /// <summary>
     /// Implement the <c>remove_element</c> callback.
@@ -311,8 +311,10 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
         var _m = GetManaged<CefPostData>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefPostDataElementRef(arg1) : null;
-        _m.GetElements(_a0, _a1);
+        ICefPostDataElement? _out1 = null;
+        if (arg1 != null && *arg1 != null) _out1 = new CefPostDataElementRef(*arg1);
+        _m.GetElements(_a0, out _out1);
+        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
     }
 
     #if OS_WIN
@@ -421,7 +423,7 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
     /// <summary>
     /// Implement the <c>get_elements</c> callback.
     /// </summary>
-    public abstract void GetElements(nuint* arg0, ICefPostDataElement? arg1);
+    public abstract void GetElements(nuint* arg0, out ICefPostDataElement? arg1);
 
     /// <summary>
     /// Implement the <c>remove_element</c> callback.
@@ -490,8 +492,10 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
         var _m = GetManaged<CefPostData>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefPostDataElementRef(arg1) : null;
-        _m.GetElements(_a0, _a1);
+        ICefPostDataElement? _out1 = null;
+        if (arg1 != null && *arg1 != null) _out1 = new CefPostDataElementRef(*arg1);
+        _m.GetElements(_a0, out _out1);
+        if (arg1 != null) *arg1 = _out1 != null ? _out1.NativePtr : null;
     }
 
     #if OS_WIN

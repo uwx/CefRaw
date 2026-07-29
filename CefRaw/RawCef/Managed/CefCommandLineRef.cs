@@ -260,7 +260,12 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
 
     public void InitFromString(string? arg0)
     {
-        _ptr->init_from_string(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->init_from_string(_ptr, &_s0);
+        }
     }
 
     public void Reset()
@@ -289,7 +294,12 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
 
     public void SetProgram(string? arg0)
     {
-        _ptr->set_program(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_program(_ptr, &_s0);
+        }
     }
 
     public int HasSwitches()
@@ -301,16 +311,26 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
 
     public int HasSwitch(string? arg0)
     {
-        var _result = _ptr->has_switch(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->has_switch(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_string_userfree_utf16_t GetSwitchValue(string? arg0)
     {
-        var _result = _ptr->get_switch_value(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_switch_value(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void GetSwitches(_cef_string_map_t* arg0)
@@ -320,12 +340,25 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
 
     public void AppendSwitch(string? arg0)
     {
-        _ptr->append_switch(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->append_switch(_ptr, &_s0);
+        }
     }
 
     public void AppendSwitchWithValue(string? arg0, string? arg1)
     {
-        _ptr->append_switch_with_value(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->append_switch_with_value(_ptr, &_s0, &_s1);
+        }
     }
 
     public int HasArguments()
@@ -342,17 +375,32 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
 
     public void AppendArgument(string? arg0)
     {
-        _ptr->append_argument(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->append_argument(_ptr, &_s0);
+        }
     }
 
     public void PrependWrapper(string? arg0)
     {
-        _ptr->prepend_wrapper(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->prepend_wrapper(_ptr, &_s0);
+        }
     }
 
     public void RemoveSwitch(string? arg0)
     {
-        _ptr->remove_switch(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->remove_switch(_ptr, &_s0);
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -418,7 +466,12 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
 
     public void InitFromString(string? arg0)
     {
-        _ptr->init_from_string(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->init_from_string(_ptr, &_s0);
+        }
     }
 
     public void Reset()
@@ -447,7 +500,12 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
 
     public void SetProgram(string? arg0)
     {
-        _ptr->set_program(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_program(_ptr, &_s0);
+        }
     }
 
     public int HasSwitches()
@@ -459,16 +517,26 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
 
     public int HasSwitch(string? arg0)
     {
-        var _result = _ptr->has_switch(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->has_switch(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_string_userfree_utf16_t GetSwitchValue(string? arg0)
     {
-        var _result = _ptr->get_switch_value(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_switch_value(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void GetSwitches(_cef_string_map_t* arg0)
@@ -478,12 +546,25 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
 
     public void AppendSwitch(string? arg0)
     {
-        _ptr->append_switch(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->append_switch(_ptr, &_s0);
+        }
     }
 
     public void AppendSwitchWithValue(string? arg0, string? arg1)
     {
-        _ptr->append_switch_with_value(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->append_switch_with_value(_ptr, &_s0, &_s1);
+        }
     }
 
     public int HasArguments()
@@ -500,17 +581,32 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
 
     public void AppendArgument(string? arg0)
     {
-        _ptr->append_argument(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->append_argument(_ptr, &_s0);
+        }
     }
 
     public void PrependWrapper(string? arg0)
     {
-        _ptr->prepend_wrapper(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->prepend_wrapper(_ptr, &_s0);
+        }
     }
 
     public void RemoveSwitch(string? arg0)
     {
-        _ptr->remove_switch(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->remove_switch(_ptr, &_s0);
+        }
     }
 
     public _cef_base_ref_counted_t @base

@@ -425,9 +425,14 @@ public unsafe partial class CefDictionaryValueRef : CefBaseRefCountedRef, ICefDi
 
     public int HasKey(string? arg0)
     {
-        var _result = _ptr->has_key(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->has_key(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int GetKeys(ICefStringList? arg0)
@@ -439,135 +444,233 @@ public unsafe partial class CefDictionaryValueRef : CefBaseRefCountedRef, ICefDi
 
     public int Remove(string? arg0)
     {
-        var _result = _ptr->remove(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->remove(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_value_type_t GetType(string? arg0)
     {
-        var _result = _ptr->get_type(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_type(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefValue? GetValue(string? arg0)
     {
-        var _result = _ptr->get_value(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_value(_ptr, &_s0);
 
-        return _result != null ? new CefValueRef(_result) : null;
+            return _result != null ? new CefValueRef(_result) : null;
+        }
     }
 
     public int GetBool(string? arg0)
     {
-        var _result = _ptr->get_bool(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_bool(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int GetInt(string? arg0)
     {
-        var _result = _ptr->get_int(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_int(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public double GetDouble(string? arg0)
     {
-        var _result = _ptr->get_double(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_double(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_string_userfree_utf16_t GetString(string? arg0)
     {
-        var _result = _ptr->get_string(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_string(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefBinaryValue? GetBinary(string? arg0)
     {
-        var _result = _ptr->get_binary(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_binary(_ptr, &_s0);
 
-        return _result != null ? new CefBinaryValueRef(_result) : null;
+            return _result != null ? new CefBinaryValueRef(_result) : null;
+        }
     }
 
     public ICefDictionaryValue? GetDictionary(string? arg0)
     {
-        var _result = _ptr->get_dictionary(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_dictionary(_ptr, &_s0);
 
-        return _result != null ? new CefDictionaryValueRef(_result) : null;
+            return _result != null ? new CefDictionaryValueRef(_result) : null;
+        }
     }
 
     public ICefListValue? GetList(string? arg0)
     {
-        var _result = _ptr->get_list(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_list(_ptr, &_s0);
 
-        return _result != null ? new CefListValueRef(_result) : null;
+            return _result != null ? new CefListValueRef(_result) : null;
+        }
     }
 
     public int SetValue(string? arg0, ICefValue? arg1)
     {
-        var _result = _ptr->set_value(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_value(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetNull(string? arg0)
     {
-        var _result = _ptr->set_null(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_null(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetBool(string? arg0, int arg1)
     {
-        var _result = _ptr->set_bool(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_bool(_ptr, &_s0, arg1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetInt(string? arg0, int arg1)
     {
-        var _result = _ptr->set_int(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_int(_ptr, &_s0, arg1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetDouble(string? arg0, double arg1)
     {
-        var _result = _ptr->set_double(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_double(_ptr, &_s0, arg1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetString(string? arg0, string? arg1)
     {
-        var _result = _ptr->set_string(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_string(_ptr, &_s0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetBinary(string? arg0, ICefBinaryValue? arg1)
     {
-        var _result = _ptr->set_binary(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_binary(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetDictionary(string? arg0, ICefDictionaryValue? arg1)
     {
-        var _result = _ptr->set_dictionary(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_dictionary(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetList(string? arg0, ICefListValue? arg1)
     {
-        var _result = _ptr->set_list(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_list(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -663,9 +766,14 @@ public unsafe partial class CefDictionaryValueRef : CefBaseRefCountedRef, ICefDi
 
     public int HasKey(string? arg0)
     {
-        var _result = _ptr->has_key(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->has_key(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int GetKeys(ICefStringList? arg0)
@@ -677,135 +785,233 @@ public unsafe partial class CefDictionaryValueRef : CefBaseRefCountedRef, ICefDi
 
     public int Remove(string? arg0)
     {
-        var _result = _ptr->remove(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->remove(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_value_type_t GetType(string? arg0)
     {
-        var _result = _ptr->get_type(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_type(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefValue? GetValue(string? arg0)
     {
-        var _result = _ptr->get_value(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_value(_ptr, &_s0);
 
-        return _result != null ? new CefValueRef(_result) : null;
+            return _result != null ? new CefValueRef(_result) : null;
+        }
     }
 
     public int GetBool(string? arg0)
     {
-        var _result = _ptr->get_bool(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_bool(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int GetInt(string? arg0)
     {
-        var _result = _ptr->get_int(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_int(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public double GetDouble(string? arg0)
     {
-        var _result = _ptr->get_double(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_double(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_string_userfree_utf16_t GetString(string? arg0)
     {
-        var _result = _ptr->get_string(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_string(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefBinaryValue? GetBinary(string? arg0)
     {
-        var _result = _ptr->get_binary(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_binary(_ptr, &_s0);
 
-        return _result != null ? new CefBinaryValueRef(_result) : null;
+            return _result != null ? new CefBinaryValueRef(_result) : null;
+        }
     }
 
     public ICefDictionaryValue? GetDictionary(string? arg0)
     {
-        var _result = _ptr->get_dictionary(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_dictionary(_ptr, &_s0);
 
-        return _result != null ? new CefDictionaryValueRef(_result) : null;
+            return _result != null ? new CefDictionaryValueRef(_result) : null;
+        }
     }
 
     public ICefListValue? GetList(string? arg0)
     {
-        var _result = _ptr->get_list(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_list(_ptr, &_s0);
 
-        return _result != null ? new CefListValueRef(_result) : null;
+            return _result != null ? new CefListValueRef(_result) : null;
+        }
     }
 
     public int SetValue(string? arg0, ICefValue? arg1)
     {
-        var _result = _ptr->set_value(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_value(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetNull(string? arg0)
     {
-        var _result = _ptr->set_null(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_null(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetBool(string? arg0, int arg1)
     {
-        var _result = _ptr->set_bool(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_bool(_ptr, &_s0, arg1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetInt(string? arg0, int arg1)
     {
-        var _result = _ptr->set_int(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_int(_ptr, &_s0, arg1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetDouble(string? arg0, double arg1)
     {
-        var _result = _ptr->set_double(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_double(_ptr, &_s0, arg1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetString(string? arg0, string? arg1)
     {
-        var _result = _ptr->set_string(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_string(_ptr, &_s0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetBinary(string? arg0, ICefBinaryValue? arg1)
     {
-        var _result = _ptr->set_binary(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_binary(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetDictionary(string? arg0, ICefDictionaryValue? arg1)
     {
-        var _result = _ptr->set_dictionary(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_dictionary(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetList(string? arg0, ICefListValue? arg1)
     {
-        var _result = _ptr->set_list(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_list(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base

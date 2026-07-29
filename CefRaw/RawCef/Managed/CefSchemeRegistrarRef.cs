@@ -75,9 +75,14 @@ public unsafe partial class CefSchemeRegistrarRef : CefBaseScopedRef, ICefScheme
 
     public int AddCustomScheme(string? arg0, int arg1)
     {
-        var _result = _ptr->add_custom_scheme(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->add_custom_scheme(_ptr, &_s0, arg1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public _cef_base_scoped_t @base
@@ -117,9 +122,14 @@ public unsafe partial class CefSchemeRegistrarRef : CefBaseScopedRef, ICefScheme
 
     public int AddCustomScheme(string? arg0, int arg1)
     {
-        var _result = _ptr->add_custom_scheme(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->add_custom_scheme(_ptr, &_s0, arg1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public _cef_base_scoped_t @base

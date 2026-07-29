@@ -49,7 +49,7 @@ public unsafe partial interface ICefPostData : ICefBaseRefCounted
 
     public nuint GetElementCount();
 
-    public void GetElements(nuint* arg0, ICefPostDataElement? arg1);
+    public void GetElements(nuint* arg0, out ICefPostDataElement? arg1);
 
     public int RemoveElement(ICefPostDataElement? arg0);
 
@@ -79,7 +79,7 @@ public unsafe partial interface ICefPostData : ICefBaseRefCounted
 
     public nuint GetElementCount();
 
-    public void GetElements(nuint* arg0, ICefPostDataElement? arg1);
+    public void GetElements(nuint* arg0, out ICefPostDataElement? arg1);
 
     public int RemoveElement(ICefPostDataElement? arg0);
 

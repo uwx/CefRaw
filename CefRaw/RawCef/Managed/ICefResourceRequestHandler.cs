@@ -51,7 +51,7 @@ public unsafe partial interface ICefResourceRequestHandler : ICefBaseRefCounted
 
     public ICefResourceHandler? GetResourceHandler(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2);
 
-    public void OnResourceRedirect(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3, string? arg4);
+    public void OnResourceRedirect(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3, out string? arg4);
 
     public int OnResourceResponse(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3);
 
@@ -83,7 +83,7 @@ public unsafe partial interface ICefResourceRequestHandler : ICefBaseRefCounted
 
     public ICefResourceHandler? GetResourceHandler(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2);
 
-    public void OnResourceRedirect(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3, string? arg4);
+    public void OnResourceRedirect(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3, out string? arg4);
 
     public int OnResourceResponse(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3);
 

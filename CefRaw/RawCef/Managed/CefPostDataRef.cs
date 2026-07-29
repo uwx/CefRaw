@@ -129,9 +129,11 @@ public unsafe partial class CefPostDataRef : CefBaseRefCountedRef, ICefPostData
         return _result;
     }
 
-    public void GetElements(nuint* arg0, ICefPostDataElement? arg1)
+    public void GetElements(nuint* arg0, out ICefPostDataElement? arg1)
     {
-        _ptr->get_elements(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        _cef_post_data_element_t* _out1 = null;
+        _ptr->get_elements(_ptr, arg0, &_out1);
+        arg1 = _out1 != null ? new CefPostDataElementRef(_out1) : null;
     }
 
     public int RemoveElement(ICefPostDataElement? arg0)
@@ -209,9 +211,11 @@ public unsafe partial class CefPostDataRef : CefBaseRefCountedRef, ICefPostData
         return _result;
     }
 
-    public void GetElements(nuint* arg0, ICefPostDataElement? arg1)
+    public void GetElements(nuint* arg0, out ICefPostDataElement? arg1)
     {
-        _ptr->get_elements(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        _cef_post_data_element_t* _out1 = null;
+        _ptr->get_elements(_ptr, arg0, &_out1);
+        arg1 = _out1 != null ? new CefPostDataElementRef(_out1) : null;
     }
 
     public int RemoveElement(ICefPostDataElement? arg0)

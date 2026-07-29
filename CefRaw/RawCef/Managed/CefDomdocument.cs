@@ -520,7 +520,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     {
         var _m = GetManaged<CefDomdocument>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetElementById(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -633,7 +633,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     {
         var _m = GetManaged<CefDomdocument>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetCompleteUrl(_a0);
 
         return _result;
@@ -841,7 +841,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     {
         var _m = GetManaged<CefDomdocument>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetElementById(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -954,7 +954,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     {
         var _m = GetManaged<CefDomdocument>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetCompleteUrl(_a0);
 
         return _result;

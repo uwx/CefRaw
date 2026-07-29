@@ -239,7 +239,7 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>set_preference</c> callback.
     /// </summary>
-    public abstract int SetPreference(string? arg0, ICefValue? arg1, string? arg2);
+    public abstract int SetPreference(string? arg0, ICefValue? arg1, out string? arg2);
 
     /// <summary>
     /// Implement the <c>add_preference_observer</c> callback.
@@ -255,7 +255,7 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
     {
         var _m = GetManaged<CefPreferenceManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.HasPreference(_a0);
 
         return _result;
@@ -270,7 +270,7 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
     {
         var _m = GetManaged<CefPreferenceManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetPreference(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -300,7 +300,7 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
     {
         var _m = GetManaged<CefPreferenceManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.CanSetPreference(_a0);
 
         return _result;
@@ -315,12 +315,18 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
     {
         var _m = GetManaged<CefPreferenceManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
-        var _a2 = arg2;
-        var _result = _m.SetPreference(_a0, _a1, _a2);
+        string? _out2 = null;
+        if (arg2 != null) _out2 = CefStringRef.ToStringAndFree(arg2);
+        var _result = _m.SetPreference(_a0, _a1, out _out2);
 
         return _result;
+        if (arg2 != null)
+        {
+            fixed (char* _p2 = _out2)
+                CefUnsafe.StringUtf16Set((ushort*)_p2, (nuint)(_out2?.Length ?? 0), arg2, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -332,7 +338,7 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
     {
         var _m = GetManaged<CefPreferenceManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefPreferenceObserverRef(arg1) : null;
         var _result = _m.AddPreferenceObserver(_a0, _a1);
 
@@ -407,7 +413,7 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>set_preference</c> callback.
     /// </summary>
-    public abstract int SetPreference(string? arg0, ICefValue? arg1, string? arg2);
+    public abstract int SetPreference(string? arg0, ICefValue? arg1, out string? arg2);
 
     /// <summary>
     /// Implement the <c>add_preference_observer</c> callback.
@@ -423,7 +429,7 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
     {
         var _m = GetManaged<CefPreferenceManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.HasPreference(_a0);
 
         return _result;
@@ -438,7 +444,7 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
     {
         var _m = GetManaged<CefPreferenceManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetPreference(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -468,7 +474,7 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
     {
         var _m = GetManaged<CefPreferenceManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.CanSetPreference(_a0);
 
         return _result;
@@ -483,12 +489,18 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
     {
         var _m = GetManaged<CefPreferenceManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
-        var _a2 = arg2;
-        var _result = _m.SetPreference(_a0, _a1, _a2);
+        string? _out2 = null;
+        if (arg2 != null) _out2 = CefStringRef.ToStringAndFree(arg2);
+        var _result = _m.SetPreference(_a0, _a1, out _out2);
 
         return _result;
+        if (arg2 != null)
+        {
+            fixed (char* _p2 = _out2)
+                CefUnsafe.StringUtf16Set((ushort*)_p2, (nuint)(_out2?.Length ?? 0), arg2, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -500,7 +512,7 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
     {
         var _m = GetManaged<CefPreferenceManager>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefPreferenceObserverRef(arg1) : null;
         var _result = _m.AddPreferenceObserver(_a0, _a1);
 

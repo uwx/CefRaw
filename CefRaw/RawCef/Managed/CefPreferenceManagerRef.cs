@@ -132,16 +132,26 @@ public unsafe partial class CefPreferenceManagerRef : CefBaseRefCountedRef, ICef
 
     public int HasPreference(string? arg0)
     {
-        var _result = _ptr->has_preference(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->has_preference(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefValue? GetPreference(string? arg0)
     {
-        var _result = _ptr->get_preference(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_preference(_ptr, &_s0);
 
-        return _result != null ? new CefValueRef(_result) : null;
+            return _result != null ? new CefValueRef(_result) : null;
+        }
     }
 
     public ICefDictionaryValue? GetAllPreferences(int arg0)
@@ -153,23 +163,40 @@ public unsafe partial class CefPreferenceManagerRef : CefBaseRefCountedRef, ICef
 
     public int CanSetPreference(string? arg0)
     {
-        var _result = _ptr->can_set_preference(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->can_set_preference(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
-    public int SetPreference(string? arg0, ICefValue? arg1, string? arg2)
+    public int SetPreference(string? arg0, ICefValue? arg1, out string? arg2)
     {
-        var _result = _ptr->set_preference(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2);
+        _cef_string_utf16_t _out2 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_preference(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, &_out2);
 
-        return _result;
+            arg2 = CefStringRef.ToStringAndFree(&_out2);
+            return _result;
+        }
     }
 
     public ICefRegistration? AddPreferenceObserver(string? arg0, ICefPreferenceObserver? arg1)
     {
-        var _result = _ptr->add_preference_observer(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->add_preference_observer(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
 
-        return _result != null ? new CefRegistrationRef(_result) : null;
+            return _result != null ? new CefRegistrationRef(_result) : null;
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -209,16 +236,26 @@ public unsafe partial class CefPreferenceManagerRef : CefBaseRefCountedRef, ICef
 
     public int HasPreference(string? arg0)
     {
-        var _result = _ptr->has_preference(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->has_preference(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public ICefValue? GetPreference(string? arg0)
     {
-        var _result = _ptr->get_preference(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_preference(_ptr, &_s0);
 
-        return _result != null ? new CefValueRef(_result) : null;
+            return _result != null ? new CefValueRef(_result) : null;
+        }
     }
 
     public ICefDictionaryValue? GetAllPreferences(int arg0)
@@ -230,23 +267,40 @@ public unsafe partial class CefPreferenceManagerRef : CefBaseRefCountedRef, ICef
 
     public int CanSetPreference(string? arg0)
     {
-        var _result = _ptr->can_set_preference(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->can_set_preference(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
-    public int SetPreference(string? arg0, ICefValue? arg1, string? arg2)
+    public int SetPreference(string? arg0, ICefValue? arg1, out string? arg2)
     {
-        var _result = _ptr->set_preference(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2);
+        _cef_string_utf16_t _out2 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_preference(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, &_out2);
 
-        return _result;
+            arg2 = CefStringRef.ToStringAndFree(&_out2);
+            return _result;
+        }
     }
 
     public ICefRegistration? AddPreferenceObserver(string? arg0, ICefPreferenceObserver? arg1)
     {
-        var _result = _ptr->add_preference_observer(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->add_preference_observer(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
 
-        return _result != null ? new CefRegistrationRef(_result) : null;
+            return _result != null ? new CefRegistrationRef(_result) : null;
+        }
     }
 
     public _cef_base_ref_counted_t @base

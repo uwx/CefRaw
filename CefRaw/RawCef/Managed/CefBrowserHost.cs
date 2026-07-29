@@ -2090,8 +2090,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _m = GetManaged<CefBrowserHost>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _a3 = arg3 != null ? new CefStringListRef(arg3) : null;
         var _a4 = arg4 != null ? new CefRunFileDialogCallbackRef(arg4) : null;
         _m.RunFileDialog(_a0, _a1, _a2, _a3, _a4);
@@ -2106,7 +2106,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.StartDownload(_a0);
     }
 
@@ -2119,7 +2119,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         var _a2 = arg2;
         var _a3 = arg3;
@@ -2148,7 +2148,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefPdfPrintSettingsRef(arg1) : null;
         var _a2 = arg2 != null ? new CefPdfPrintCallbackRef(arg2) : null;
         _m.PrintToPdf(_a0, _a1, _a2);
@@ -2163,7 +2163,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         var _a2 = arg2;
         var _a3 = arg3;
@@ -2251,7 +2251,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _m = GetManaged<CefBrowserHost>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _a2 = arg2 != null ? new CefDictionaryValueRef(arg2) : null;
         var _result = _m.ExecuteDevToolsMethod(_a0, _a1, _a2);
 
@@ -2296,7 +2296,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.ReplaceMisspelling(_a0);
     }
 
@@ -2309,7 +2309,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.AddWordToDictionary(_a0);
     }
 
@@ -2520,7 +2520,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         var _a2 = arg2 != null ? new CefCompositionUnderlineRef(arg2) : null;
         var _a3 = arg3 != null ? new CefRangeRef(arg3) : null;
@@ -2537,7 +2537,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
         var _a2 = arg2;
         _m.ImeCommitText(_a0, _a1, _a2);
@@ -3499,8 +3499,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _m = GetManaged<CefBrowserHost>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _a3 = arg3 != null ? new CefStringListRef(arg3) : null;
         var _a4 = arg4 != null ? new CefRunFileDialogCallbackRef(arg4) : null;
         _m.RunFileDialog(_a0, _a1, _a2, _a3, _a4);
@@ -3515,7 +3515,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.StartDownload(_a0);
     }
 
@@ -3528,7 +3528,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         var _a2 = arg2;
         var _a3 = arg3;
@@ -3557,7 +3557,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefPdfPrintSettingsRef(arg1) : null;
         var _a2 = arg2 != null ? new CefPdfPrintCallbackRef(arg2) : null;
         _m.PrintToPdf(_a0, _a1, _a2);
@@ -3572,7 +3572,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         var _a2 = arg2;
         var _a3 = arg3;
@@ -3660,7 +3660,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _m = GetManaged<CefBrowserHost>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _a2 = arg2 != null ? new CefDictionaryValueRef(arg2) : null;
         var _result = _m.ExecuteDevToolsMethod(_a0, _a1, _a2);
 
@@ -3705,7 +3705,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.ReplaceMisspelling(_a0);
     }
 
@@ -3718,7 +3718,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.AddWordToDictionary(_a0);
     }
 
@@ -3929,7 +3929,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         var _a2 = arg2 != null ? new CefCompositionUnderlineRef(arg2) : null;
         var _a3 = arg3 != null ? new CefRangeRef(arg3) : null;
@@ -3946,7 +3946,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
         var _a2 = arg2;
         _m.ImeCommitText(_a0, _a1, _a2);

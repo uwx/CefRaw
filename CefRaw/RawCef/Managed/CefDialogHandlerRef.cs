@@ -78,9 +78,17 @@ public unsafe partial class CefDialogHandlerRef : CefBaseRefCountedRef, ICefDial
 
     public int OnFileDialog(ICefBrowser? arg0, cef_file_dialog_mode_t arg1, string? arg2, string? arg3, ICefStringList? arg4, ICefStringList? arg5, ICefStringList? arg6, ICefFileDialogCallback? arg7)
     {
-        var _result = _ptr->on_file_dialog(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3, arg4 is null ? null : arg4.NativePtr, arg5 is null ? null : arg5.NativePtr, arg6 is null ? null : arg6.NativePtr, arg7 is null ? null : arg7.NativePtr);
+        fixed (char* _p2 = arg2)
+        fixed (char* _p3 = arg3)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            var _result = _ptr->on_file_dialog(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_s2, &_s3, arg4 is null ? null : arg4.NativePtr, arg5 is null ? null : arg5.NativePtr, arg6 is null ? null : arg6.NativePtr, arg7 is null ? null : arg7.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -120,9 +128,17 @@ public unsafe partial class CefDialogHandlerRef : CefBaseRefCountedRef, ICefDial
 
     public int OnFileDialog(ICefBrowser? arg0, cef_file_dialog_mode_t arg1, string? arg2, string? arg3, ICefStringList? arg4, ICefStringList? arg5, ICefStringList? arg6, ICefFileDialogCallback? arg7)
     {
-        var _result = _ptr->on_file_dialog(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3, arg4 is null ? null : arg4.NativePtr, arg5 is null ? null : arg5.NativePtr, arg6 is null ? null : arg6.NativePtr, arg7 is null ? null : arg7.NativePtr);
+        fixed (char* _p2 = arg2)
+        fixed (char* _p3 = arg3)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            var _result = _ptr->on_file_dialog(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_s2, &_s3, arg4 is null ? null : arg4.NativePtr, arg5 is null ? null : arg5.NativePtr, arg6 is null ? null : arg6.NativePtr, arg7 is null ? null : arg7.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base

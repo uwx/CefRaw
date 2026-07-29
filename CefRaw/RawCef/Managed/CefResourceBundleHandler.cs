@@ -156,7 +156,7 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
     /// <summary>
     /// Implement the <c>get_localized_string</c> callback.
     /// </summary>
-    public abstract int GetLocalizedString(int arg0, string? arg1);
+    public abstract int GetLocalizedString(int arg0, out string? arg1);
 
     /// <summary>
     /// Implement the <c>get_data_resource</c> callback.
@@ -178,10 +178,16 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
         var _m = GetManaged<CefResourceBundleHandler>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.GetLocalizedString(_a0, _a1);
+        string? _out1 = null;
+        if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
+        var _result = _m.GetLocalizedString(_a0, out _out1);
 
         return _result;
+        if (arg1 != null)
+        {
+            fixed (char* _p1 = _out1)
+                CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -264,7 +270,7 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
     /// <summary>
     /// Implement the <c>get_localized_string</c> callback.
     /// </summary>
-    public abstract int GetLocalizedString(int arg0, string? arg1);
+    public abstract int GetLocalizedString(int arg0, out string? arg1);
 
     /// <summary>
     /// Implement the <c>get_data_resource</c> callback.
@@ -286,10 +292,16 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
         var _m = GetManaged<CefResourceBundleHandler>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.GetLocalizedString(_a0, _a1);
+        string? _out1 = null;
+        if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
+        var _result = _m.GetLocalizedString(_a0, out _out1);
 
         return _result;
+        if (arg1 != null)
+        {
+            fixed (char* _p1 = _out1)
+                CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+        }
     }
 
     #if OS_WIN

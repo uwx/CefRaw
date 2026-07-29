@@ -104,9 +104,14 @@ public unsafe partial class CefMediaRouterRef : CefBaseRefCountedRef, ICefMediaR
 
     public ICefMediaSource? GetSource(string? arg0)
     {
-        var _result = _ptr->get_source(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_source(_ptr, &_s0);
 
-        return _result != null ? new CefMediaSourceRef(_result) : null;
+            return _result != null ? new CefMediaSourceRef(_result) : null;
+        }
     }
 
     public void NotifyCurrentSinks()
@@ -168,9 +173,14 @@ public unsafe partial class CefMediaRouterRef : CefBaseRefCountedRef, ICefMediaR
 
     public ICefMediaSource? GetSource(string? arg0)
     {
-        var _result = _ptr->get_source(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_source(_ptr, &_s0);
 
-        return _result != null ? new CefMediaSourceRef(_result) : null;
+            return _result != null ? new CefMediaSourceRef(_result) : null;
+        }
     }
 
     public void NotifyCurrentSinks()

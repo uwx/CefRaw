@@ -91,18 +91,34 @@ public unsafe partial class CefV8AccessorRef : CefBaseRefCountedRef, ICefV8Acces
     _cef_v8_accessor_t* ICefV8Accessor.NativePtr => _ptr;
 
 
-    public int Get(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3)
+    public int Get(string? arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3)
     {
-        var _result = _ptr->get(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3);
+        _cef_v8_value_t* _out2 = null;
+        _cef_string_utf16_t _out3 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, &_out2, &_out3);
 
-        return _result;
+            arg2 = _out2 != null ? new CefV8ValueRef(_out2) : null;
+            arg3 = CefStringRef.ToStringAndFree(&_out3);
+            return _result;
+        }
     }
 
-    public int Set(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3)
+    public int Set(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3)
     {
-        var _result = _ptr->set(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3);
+        _cef_string_utf16_t _out3 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, &_out3);
 
-        return _result;
+            arg3 = CefStringRef.ToStringAndFree(&_out3);
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -140,18 +156,34 @@ public unsafe partial class CefV8AccessorRef : CefBaseRefCountedRef, ICefV8Acces
     _cef_v8_accessor_t* ICefV8Accessor.NativePtr => _ptr;
 
 
-    public int Get(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3)
+    public int Get(string? arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3)
     {
-        var _result = _ptr->get(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3);
+        _cef_v8_value_t* _out2 = null;
+        _cef_string_utf16_t _out3 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, &_out2, &_out3);
 
-        return _result;
+            arg2 = _out2 != null ? new CefV8ValueRef(_out2) : null;
+            arg3 = CefStringRef.ToStringAndFree(&_out3);
+            return _result;
+        }
     }
 
-    public int Set(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3)
+    public int Set(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3)
     {
-        var _result = _ptr->set(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3);
+        _cef_string_utf16_t _out3 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, &_out3);
 
-        return _result;
+            arg3 = CefStringRef.ToStringAndFree(&_out3);
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base

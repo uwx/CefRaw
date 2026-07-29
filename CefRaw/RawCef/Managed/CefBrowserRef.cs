@@ -308,16 +308,26 @@ public unsafe partial class CefBrowserRef : CefBaseRefCountedRef, ICefBrowser
 
     public ICefFrame? GetFrameByIdentifier(string? arg0)
     {
-        var _result = _ptr->get_frame_by_identifier(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_frame_by_identifier(_ptr, &_s0);
 
-        return _result != null ? new CefFrameRef(_result) : null;
+            return _result != null ? new CefFrameRef(_result) : null;
+        }
     }
 
     public ICefFrame? GetFrameByName(string? arg0)
     {
-        var _result = _ptr->get_frame_by_name(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_frame_by_name(_ptr, &_s0);
 
-        return _result != null ? new CefFrameRef(_result) : null;
+            return _result != null ? new CefFrameRef(_result) : null;
+        }
     }
 
     public nuint GetFrameCount()
@@ -476,16 +486,26 @@ public unsafe partial class CefBrowserRef : CefBaseRefCountedRef, ICefBrowser
 
     public ICefFrame? GetFrameByIdentifier(string? arg0)
     {
-        var _result = _ptr->get_frame_by_identifier(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_frame_by_identifier(_ptr, &_s0);
 
-        return _result != null ? new CefFrameRef(_result) : null;
+            return _result != null ? new CefFrameRef(_result) : null;
+        }
     }
 
     public ICefFrame? GetFrameByName(string? arg0)
     {
-        var _result = _ptr->get_frame_by_name(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_frame_by_name(_ptr, &_s0);
 
-        return _result != null ? new CefFrameRef(_result) : null;
+            return _result != null ? new CefFrameRef(_result) : null;
+        }
     }
 
     public nuint GetFrameCount()

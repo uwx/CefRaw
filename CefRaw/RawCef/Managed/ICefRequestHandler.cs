@@ -61,7 +61,7 @@ public unsafe partial interface ICefRequestHandler : ICefBaseRefCounted
 
     public int OnCertificateError(ICefBrowser? arg0, cef_errorcode_t arg1, string? arg2, ICefSslinfo? arg3, ICefCallback? arg4);
 
-    public int OnSelectClientCertificate(ICefBrowser? arg0, int arg1, string? arg2, int arg3, nuint arg4, ICefX509Certificate? arg5, ICefSelectClientCertificateCallback? arg6);
+    public int OnSelectClientCertificate(ICefBrowser? arg0, int arg1, string? arg2, int arg3, ReadOnlySpan<ICefX509Certificate?> arg4, ICefSelectClientCertificateCallback? arg5);
 
     public void OnRenderViewReady(ICefBrowser? arg0);
 
@@ -99,7 +99,7 @@ public unsafe partial interface ICefRequestHandler : ICefBaseRefCounted
 
     public int OnCertificateError(ICefBrowser? arg0, cef_errorcode_t arg1, string? arg2, ICefSslinfo? arg3, ICefCallback? arg4);
 
-    public int OnSelectClientCertificate(ICefBrowser? arg0, int arg1, string? arg2, int arg3, nuint arg4, ICefX509Certificate? arg5, ICefSelectClientCertificateCallback? arg6);
+    public int OnSelectClientCertificate(ICefBrowser? arg0, int arg1, string? arg2, int arg3, ReadOnlySpan<ICefX509Certificate?> arg4, ICefSelectClientCertificateCallback? arg5);
 
     public void OnRenderViewReady(ICefBrowser? arg0);
 

@@ -107,7 +107,12 @@ public unsafe partial class CefDevToolsMessageObserverRef : CefBaseRefCountedRef
 
     public void OnDevToolsEvent(ICefBrowser? arg0, string? arg1, void* arg2, nuint arg3)
     {
-        _ptr->on_dev_tools_event(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->on_dev_tools_event(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1, arg2, arg3);
+        }
     }
 
     public void OnDevToolsAgentAttached(ICefBrowser? arg0)
@@ -169,7 +174,12 @@ public unsafe partial class CefDevToolsMessageObserverRef : CefBaseRefCountedRef
 
     public void OnDevToolsEvent(ICefBrowser? arg0, string? arg1, void* arg2, nuint arg3)
     {
-        _ptr->on_dev_tools_event(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2, arg3);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->on_dev_tools_event(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1, arg2, arg3);
+        }
     }
 
     public void OnDevToolsAgentAttached(ICefBrowser? arg0)

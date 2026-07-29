@@ -262,7 +262,7 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>format_label</c> callback.
     /// </summary>
-    public abstract int FormatLabel(ICefMenuModel? arg0, string? arg1);
+    public abstract int FormatLabel(ICefMenuModel? arg0, out string? arg1);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -357,10 +357,16 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
         var _m = GetManaged<CefMenuModelDelegate>(self);
 
         var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.FormatLabel(_a0, _a1);
+        string? _out1 = null;
+        if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
+        var _result = _m.FormatLabel(_a0, out _out1);
 
         return _result;
+        if (arg1 != null)
+        {
+            fixed (char* _p1 = _out1)
+                CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+        }
     }
 }
 #endif
@@ -442,7 +448,7 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>format_label</c> callback.
     /// </summary>
-    public abstract int FormatLabel(ICefMenuModel? arg0, string? arg1);
+    public abstract int FormatLabel(ICefMenuModel? arg0, out string? arg1);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -537,10 +543,16 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
         var _m = GetManaged<CefMenuModelDelegate>(self);
 
         var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.FormatLabel(_a0, _a1);
+        string? _out1 = null;
+        if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
+        var _result = _m.FormatLabel(_a0, out _out1);
 
         return _result;
+        if (arg1 != null)
+        {
+            fixed (char* _p1 = _out1)
+                CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+        }
     }
 }
 #endif

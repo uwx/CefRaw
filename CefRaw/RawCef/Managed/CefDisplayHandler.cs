@@ -396,7 +396,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>on_tooltip</c> callback.
     /// </summary>
-    public abstract int OnTooltip(ICefBrowser? arg0, string? arg1);
+    public abstract int OnTooltip(ICefBrowser? arg0, out string? arg1);
 
     /// <summary>
     /// Implement the <c>on_status_message</c> callback.
@@ -449,7 +449,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         _m.OnAddressChange(_a0, _a1, _a2);
     }
 
@@ -463,7 +463,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
         var _m = GetManaged<CefDisplayHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.OnTitleChange(_a0, _a1);
     }
 
@@ -505,10 +505,16 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
         var _m = GetManaged<CefDisplayHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.OnTooltip(_a0, _a1);
+        string? _out1 = null;
+        if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
+        var _result = _m.OnTooltip(_a0, out _out1);
 
         return _result;
+        if (arg1 != null)
+        {
+            fixed (char* _p1 = _out1)
+                CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -521,7 +527,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
         var _m = GetManaged<CefDisplayHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.OnStatusMessage(_a0, _a1);
     }
 
@@ -536,8 +542,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a3 = CefStringRef.ToStringAndFree(arg3);
         var _a4 = arg4;
         var _result = _m.OnConsoleMessage(_a0, _a1, _a2, _a3, _a4);
 
@@ -714,7 +720,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>on_tooltip</c> callback.
     /// </summary>
-    public abstract int OnTooltip(ICefBrowser? arg0, string? arg1);
+    public abstract int OnTooltip(ICefBrowser? arg0, out string? arg1);
 
     /// <summary>
     /// Implement the <c>on_status_message</c> callback.
@@ -767,7 +773,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         _m.OnAddressChange(_a0, _a1, _a2);
     }
 
@@ -781,7 +787,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
         var _m = GetManaged<CefDisplayHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.OnTitleChange(_a0, _a1);
     }
 
@@ -823,10 +829,16 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
         var _m = GetManaged<CefDisplayHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.OnTooltip(_a0, _a1);
+        string? _out1 = null;
+        if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
+        var _result = _m.OnTooltip(_a0, out _out1);
 
         return _result;
+        if (arg1 != null)
+        {
+            fixed (char* _p1 = _out1)
+                CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -839,7 +851,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
         var _m = GetManaged<CefDisplayHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.OnStatusMessage(_a0, _a1);
     }
 
@@ -854,8 +866,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
+        var _a3 = CefStringRef.ToStringAndFree(arg3);
         var _a4 = arg4;
         var _result = _m.OnConsoleMessage(_a0, _a1, _a2, _a3, _a4);
 

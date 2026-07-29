@@ -109,7 +109,7 @@ public unsafe abstract partial class CefStringVisitor : CefBaseRefCounted, ICefS
     {
         var _m = GetManaged<CefStringVisitor>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.Visit(_a0);
     }
 }
@@ -167,7 +167,7 @@ public unsafe abstract partial class CefStringVisitor : CefBaseRefCounted, ICefS
     {
         var _m = GetManaged<CefStringVisitor>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.Visit(_a0);
     }
 }

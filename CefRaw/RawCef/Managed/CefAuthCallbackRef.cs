@@ -81,7 +81,15 @@ public unsafe partial class CefAuthCallbackRef : CefBaseRefCountedRef, ICefAuthC
 
     public void Cont(string? arg0, string? arg1)
     {
-        _ptr->cont(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->cont(_ptr, &_s0, &_s1);
+        }
     }
 
     public void Cancel()
@@ -126,7 +134,15 @@ public unsafe partial class CefAuthCallbackRef : CefBaseRefCountedRef, ICefAuthC
 
     public void Cont(string? arg0, string? arg1)
     {
-        _ptr->cont(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->cont(_ptr, &_s0, &_s1);
+        }
     }
 
     public void Cancel()

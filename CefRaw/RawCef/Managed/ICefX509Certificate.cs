@@ -65,9 +65,9 @@ public unsafe partial interface ICefX509Certificate : ICefBaseRefCounted
 
     public nuint GetIssuerChainSize();
 
-    public void GetDerencodedIssuerChain(nuint* arg0, ICefBinaryValue? arg1);
+    public void GetDerencodedIssuerChain(nuint* arg0, out ICefBinaryValue? arg1);
 
-    public void GetPemencodedIssuerChain(nuint* arg0, ICefBinaryValue? arg1);
+    public void GetPemencodedIssuerChain(nuint* arg0, out ICefBinaryValue? arg1);
 }
 #endif
 #if OS_LINUX
@@ -101,8 +101,8 @@ public unsafe partial interface ICefX509Certificate : ICefBaseRefCounted
 
     public nuint GetIssuerChainSize();
 
-    public void GetDerencodedIssuerChain(nuint* arg0, ICefBinaryValue? arg1);
+    public void GetDerencodedIssuerChain(nuint* arg0, out ICefBinaryValue? arg1);
 
-    public void GetPemencodedIssuerChain(nuint* arg0, ICefBinaryValue? arg1);
+    public void GetPemencodedIssuerChain(nuint* arg0, out ICefBinaryValue? arg1);
 }
 #endif

@@ -1441,12 +1441,12 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     /// <summary>
     /// Implement the <c>execute_function</c> callback.
     /// </summary>
-    public abstract ICefV8Value? ExecuteFunction(ICefV8Value? arg0, nuint arg1, ICefV8Value? arg2);
+    public abstract ICefV8Value? ExecuteFunction(ICefV8Value? arg0, ReadOnlySpan<ICefV8Value?> arg1);
 
     /// <summary>
     /// Implement the <c>execute_function_with_context</c> callback.
     /// </summary>
-    public abstract ICefV8Value? ExecuteFunctionWithContext(ICefV8Context? arg0, ICefV8Value? arg1, nuint arg2, ICefV8Value? arg3);
+    public abstract ICefV8Value? ExecuteFunctionWithContext(ICefV8Context? arg0, ICefV8Value? arg1, ReadOnlySpan<ICefV8Value?> arg2);
 
     /// <summary>
     /// Implement the <c>resolve_promise</c> callback.
@@ -1847,7 +1847,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.HasValueBykey(_a0);
 
         return _result;
@@ -1877,7 +1877,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.DeleteValueBykey(_a0);
 
         return _result;
@@ -1907,7 +1907,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetValueBykey(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -1937,7 +1937,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _a2 = arg2;
         var _result = _m.SetValueBykey(_a0, _a1, _a2);
@@ -1970,7 +1970,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         var _result = _m.SetValueByaccessor(_a0, _a1);
 
@@ -2158,9 +2158,11 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
         var _m = GetManaged<CefV8Value>(self);
 
         var _a0 = arg0 != null ? new CefV8ValueRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        var _result = _m.ExecuteFunction(_a0, _a1, _a2);
+        var _count1 = (int)arg1;
+        var _span1 = new ICefV8Value?[_count1];
+        for (int _j1 = 0; _j1 < _count1; _j1++)
+            _span1[_j1] = arg2[_j1] != null ? new CefV8ValueRef(arg2[_j1]) : null;
+        var _result = _m.ExecuteFunction(_a0, _span1);
 
         return _result != null ? _result.NativePtr : null;
     }
@@ -2176,9 +2178,11 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
 
         var _a0 = arg0 != null ? new CefV8ContextRef(arg0) : null;
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefV8ValueRef(arg3) : null;
-        var _result = _m.ExecuteFunctionWithContext(_a0, _a1, _a2, _a3);
+        var _count2 = (int)arg2;
+        var _span2 = new ICefV8Value?[_count2];
+        for (int _j2 = 0; _j2 < _count2; _j2++)
+            _span2[_j2] = arg3[_j2] != null ? new CefV8ValueRef(arg3[_j2]) : null;
+        var _result = _m.ExecuteFunctionWithContext(_a0, _a1, _span2);
 
         return _result != null ? _result.NativePtr : null;
     }
@@ -2207,7 +2211,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.RejectPromise(_a0);
 
         return _result;
@@ -2547,12 +2551,12 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     /// <summary>
     /// Implement the <c>execute_function</c> callback.
     /// </summary>
-    public abstract ICefV8Value? ExecuteFunction(ICefV8Value? arg0, nuint arg1, ICefV8Value? arg2);
+    public abstract ICefV8Value? ExecuteFunction(ICefV8Value? arg0, ReadOnlySpan<ICefV8Value?> arg1);
 
     /// <summary>
     /// Implement the <c>execute_function_with_context</c> callback.
     /// </summary>
-    public abstract ICefV8Value? ExecuteFunctionWithContext(ICefV8Context? arg0, ICefV8Value? arg1, nuint arg2, ICefV8Value? arg3);
+    public abstract ICefV8Value? ExecuteFunctionWithContext(ICefV8Context? arg0, ICefV8Value? arg1, ReadOnlySpan<ICefV8Value?> arg2);
 
     /// <summary>
     /// Implement the <c>resolve_promise</c> callback.
@@ -2953,7 +2957,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.HasValueBykey(_a0);
 
         return _result;
@@ -2983,7 +2987,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.DeleteValueBykey(_a0);
 
         return _result;
@@ -3013,7 +3017,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetValueBykey(_a0);
 
         return _result != null ? _result.NativePtr : null;
@@ -3043,7 +3047,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
         var _a2 = arg2;
         var _result = _m.SetValueBykey(_a0, _a1, _a2);
@@ -3076,7 +3080,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         var _result = _m.SetValueByaccessor(_a0, _a1);
 
@@ -3264,9 +3268,11 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
         var _m = GetManaged<CefV8Value>(self);
 
         var _a0 = arg0 != null ? new CefV8ValueRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        var _result = _m.ExecuteFunction(_a0, _a1, _a2);
+        var _count1 = (int)arg1;
+        var _span1 = new ICefV8Value?[_count1];
+        for (int _j1 = 0; _j1 < _count1; _j1++)
+            _span1[_j1] = arg2[_j1] != null ? new CefV8ValueRef(arg2[_j1]) : null;
+        var _result = _m.ExecuteFunction(_a0, _span1);
 
         return _result != null ? _result.NativePtr : null;
     }
@@ -3282,9 +3288,11 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
 
         var _a0 = arg0 != null ? new CefV8ContextRef(arg0) : null;
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefV8ValueRef(arg3) : null;
-        var _result = _m.ExecuteFunctionWithContext(_a0, _a1, _a2, _a3);
+        var _count2 = (int)arg2;
+        var _span2 = new ICefV8Value?[_count2];
+        for (int _j2 = 0; _j2 < _count2; _j2++)
+            _span2[_j2] = arg3[_j2] != null ? new CefV8ValueRef(arg3[_j2]) : null;
+        var _result = _m.ExecuteFunctionWithContext(_a0, _a1, _span2);
 
         return _result != null ? _result.NativePtr : null;
     }
@@ -3313,7 +3321,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     {
         var _m = GetManaged<CefV8Value>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.RejectPromise(_a0);
 
         return _result;

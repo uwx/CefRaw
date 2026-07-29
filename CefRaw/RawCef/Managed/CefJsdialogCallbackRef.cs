@@ -73,7 +73,12 @@ public unsafe partial class CefJsdialogCallbackRef : CefBaseRefCountedRef, ICefJ
 
     public void Cont(int arg0, string? arg1)
     {
-        _ptr->cont(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->cont(_ptr, arg0, &_s1);
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -113,7 +118,12 @@ public unsafe partial class CefJsdialogCallbackRef : CefBaseRefCountedRef, ICefJ
 
     public void Cont(int arg0, string? arg1)
     {
-        _ptr->cont(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->cont(_ptr, arg0, &_s1);
+        }
     }
 
     public _cef_base_ref_counted_t @base

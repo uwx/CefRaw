@@ -124,9 +124,14 @@ public unsafe partial class CefBrowserProcessHandlerRef : CefBaseRefCountedRef, 
 
     public int OnAlreadyRunningAppRelaunch(ICefCommandLine? arg0, string? arg1)
     {
-        var _result = _ptr->on_already_running_app_relaunch(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->on_already_running_app_relaunch(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void OnScheduleMessagePumpWork(long arg0)
@@ -200,9 +205,14 @@ public unsafe partial class CefBrowserProcessHandlerRef : CefBaseRefCountedRef, 
 
     public int OnAlreadyRunningAppRelaunch(ICefCommandLine? arg0, string? arg1)
     {
-        var _result = _ptr->on_already_running_app_relaunch(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->on_already_running_app_relaunch(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void OnScheduleMessagePumpWork(long arg0)

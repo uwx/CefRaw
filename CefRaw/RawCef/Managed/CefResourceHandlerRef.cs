@@ -122,9 +122,11 @@ public unsafe partial class CefResourceHandlerRef : CefBaseRefCountedRef, ICefRe
         return _result;
     }
 
-    public void GetResponseHeaders(ICefResponse? arg0, long* arg1, string? arg2)
+    public void GetResponseHeaders(ICefResponse? arg0, long* arg1, out string? arg2)
     {
-        _ptr->get_response_headers(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2);
+        _cef_string_utf16_t _out2 = default;
+        _ptr->get_response_headers(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_out2);
+        arg2 = CefStringRef.ToStringAndFree(&_out2);
     }
 
     public int Skip(long arg0, long* arg1, ICefResourceSkipCallback? arg2)
@@ -202,9 +204,11 @@ public unsafe partial class CefResourceHandlerRef : CefBaseRefCountedRef, ICefRe
         return _result;
     }
 
-    public void GetResponseHeaders(ICefResponse? arg0, long* arg1, string? arg2)
+    public void GetResponseHeaders(ICefResponse? arg0, long* arg1, out string? arg2)
     {
-        _ptr->get_response_headers(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2);
+        _cef_string_utf16_t _out2 = default;
+        _ptr->get_response_headers(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_out2);
+        arg2 = CefStringRef.ToStringAndFree(&_out2);
     }
 
     public int Skip(long arg0, long* arg1, ICefResourceSkipCallback? arg2)

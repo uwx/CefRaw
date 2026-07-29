@@ -31,7 +31,7 @@ public unsafe partial interface ICefV8Handler : ICefBaseRefCounted
 {
     new _cef_v8_handler_t* NativePtr { get; }
 
-    public int Execute(string? arg0, ICefV8Value? arg1, nuint arg2, ICefV8Value? arg3, ICefV8Value? arg4, string? arg5);
+    public int Execute(string? arg0, ICefV8Value? arg1, ReadOnlySpan<ICefV8Value?> arg2, out ICefV8Value? arg3, out string? arg4);
 }
 #endif
 #if OS_LINUX
@@ -49,6 +49,6 @@ public unsafe partial interface ICefV8Handler : ICefBaseRefCounted
 {
     new _cef_v8_handler_t* NativePtr { get; }
 
-    public int Execute(string? arg0, ICefV8Value? arg1, nuint arg2, ICefV8Value? arg3, ICefV8Value? arg4, string? arg5);
+    public int Execute(string? arg0, ICefV8Value? arg1, ReadOnlySpan<ICefV8Value?> arg2, out ICefV8Value? arg3, out string? arg4);
 }
 #endif

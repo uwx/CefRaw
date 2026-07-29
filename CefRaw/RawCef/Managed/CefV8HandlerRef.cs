@@ -81,11 +81,24 @@ public unsafe partial class CefV8HandlerRef : CefBaseRefCountedRef, ICefV8Handle
     _cef_v8_handler_t* ICefV8Handler.NativePtr => _ptr;
 
 
-    public int Execute(string? arg0, ICefV8Value? arg1, nuint arg2, ICefV8Value? arg3, ICefV8Value? arg4, string? arg5)
+    public int Execute(string? arg0, ICefV8Value? arg1, ReadOnlySpan<ICefV8Value?> arg2, out ICefV8Value? arg3, out string? arg4)
     {
-        var _result = _ptr->execute(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr, arg5);
+        _cef_v8_value_t* _out3 = null;
+        _cef_string_utf16_t _out4 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _a2 = arg2;
+            _cef_v8_value_t** _pinned2 = stackalloc _cef_v8_value_t*[_a2.Length];
+            for (int _i2 = 0; _i2 < _a2.Length; _i2++)
+                _pinned2[_i2] = _a2[_i2] is null ? null : _a2[_i2].NativePtr;
+            var _result = _ptr->execute(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, (nuint)_a2.Length, _pinned2, &_out3, &_out4);
 
-        return _result;
+            arg3 = _out3 != null ? new CefV8ValueRef(_out3) : null;
+            arg4 = CefStringRef.ToStringAndFree(&_out4);
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -123,11 +136,24 @@ public unsafe partial class CefV8HandlerRef : CefBaseRefCountedRef, ICefV8Handle
     _cef_v8_handler_t* ICefV8Handler.NativePtr => _ptr;
 
 
-    public int Execute(string? arg0, ICefV8Value? arg1, nuint arg2, ICefV8Value? arg3, ICefV8Value? arg4, string? arg5)
+    public int Execute(string? arg0, ICefV8Value? arg1, ReadOnlySpan<ICefV8Value?> arg2, out ICefV8Value? arg3, out string? arg4)
     {
-        var _result = _ptr->execute(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr, arg5);
+        _cef_v8_value_t* _out3 = null;
+        _cef_string_utf16_t _out4 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _a2 = arg2;
+            _cef_v8_value_t** _pinned2 = stackalloc _cef_v8_value_t*[_a2.Length];
+            for (int _i2 = 0; _i2 < _a2.Length; _i2++)
+                _pinned2[_i2] = _a2[_i2] is null ? null : _a2[_i2].NativePtr;
+            var _result = _ptr->execute(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, (nuint)_a2.Length, _pinned2, &_out3, &_out4);
 
-        return _result;
+            arg3 = _out3 != null ? new CefV8ValueRef(_out3) : null;
+            arg4 = CefStringRef.ToStringAndFree(&_out4);
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base

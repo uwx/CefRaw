@@ -206,9 +206,14 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
 
     public ICefDomnode? GetElementById(string? arg0)
     {
-        var _result = _ptr->get_element_by_id(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_element_by_id(_ptr, &_s0);
 
-        return _result != null ? new CefDomnodeRef(_result) : null;
+            return _result != null ? new CefDomnodeRef(_result) : null;
+        }
     }
 
     public ICefDomnode? GetFocusedNode()
@@ -262,9 +267,14 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
 
     public cef_string_userfree_utf16_t GetCompleteUrl(string? arg0)
     {
-        var _result = _ptr->get_complete_url(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_complete_url(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -339,9 +349,14 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
 
     public ICefDomnode? GetElementById(string? arg0)
     {
-        var _result = _ptr->get_element_by_id(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_element_by_id(_ptr, &_s0);
 
-        return _result != null ? new CefDomnodeRef(_result) : null;
+            return _result != null ? new CefDomnodeRef(_result) : null;
+        }
     }
 
     public ICefDomnode? GetFocusedNode()
@@ -395,9 +410,14 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
 
     public cef_string_userfree_utf16_t GetCompleteUrl(string? arg0)
     {
-        var _result = _ptr->get_complete_url(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_complete_url(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public _cef_base_ref_counted_t @base

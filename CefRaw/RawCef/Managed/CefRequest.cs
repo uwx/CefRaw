@@ -681,7 +681,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetUrl(_a0);
     }
 
@@ -708,7 +708,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetMethod(_a0);
     }
 
@@ -721,7 +721,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         _m.SetReferrer(_a0, _a1);
     }
@@ -816,7 +816,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetHeaderByName(_a0);
 
         return _result;
@@ -831,8 +831,8 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _a2 = arg2;
         _m.SetHeaderByName(_a0, _a1, _a2);
     }
@@ -846,8 +846,8 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _a2 = arg2 != null ? new CefPostDataRef(arg2) : null;
         var _a3 = arg3;
         _m.Set(_a0, _a1, _a2, _a3);
@@ -903,7 +903,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetFirstPartyForCookies(_a0);
     }
 
@@ -1157,7 +1157,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetUrl(_a0);
     }
 
@@ -1184,7 +1184,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetMethod(_a0);
     }
 
@@ -1197,7 +1197,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1;
         _m.SetReferrer(_a0, _a1);
     }
@@ -1292,7 +1292,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetHeaderByName(_a0);
 
         return _result;
@@ -1307,8 +1307,8 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _a2 = arg2;
         _m.SetHeaderByName(_a0, _a1, _a2);
     }
@@ -1322,8 +1322,8 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _a2 = arg2 != null ? new CefPostDataRef(arg2) : null;
         var _a3 = arg3;
         _m.Set(_a0, _a1, _a2, _a3);
@@ -1379,7 +1379,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     {
         var _m = GetManaged<CefRequest>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetFirstPartyForCookies(_a0);
     }
 

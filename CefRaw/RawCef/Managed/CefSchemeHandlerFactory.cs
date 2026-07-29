@@ -116,7 +116,7 @@ public unsafe abstract partial class CefSchemeHandlerFactory : CefBaseRefCounted
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _a3 = arg3 != null ? new CefRequestRef(arg3) : null;
         var _result = _m.Create(_a0, _a1, _a2, _a3);
 
@@ -179,7 +179,7 @@ public unsafe abstract partial class CefSchemeHandlerFactory : CefBaseRefCounted
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
+        var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _a3 = arg3 != null ? new CefRequestRef(arg3) : null;
         var _result = _m.Create(_a0, _a1, _a2, _a3);
 

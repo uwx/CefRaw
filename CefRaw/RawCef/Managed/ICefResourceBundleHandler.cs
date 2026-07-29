@@ -35,7 +35,7 @@ public unsafe partial interface ICefResourceBundleHandler : ICefBaseRefCounted
 {
     new _cef_resource_bundle_handler_t* NativePtr { get; }
 
-    public int GetLocalizedString(int arg0, string? arg1);
+    public int GetLocalizedString(int arg0, out string? arg1);
 
     public int GetDataResource(int arg0, void** arg1, nuint* arg2);
 
@@ -57,7 +57,7 @@ public unsafe partial interface ICefResourceBundleHandler : ICefBaseRefCounted
 {
     new _cef_resource_bundle_handler_t* NativePtr { get; }
 
-    public int GetLocalizedString(int arg0, string? arg1);
+    public int GetLocalizedString(int arg0, out string? arg1);
 
     public int GetDataResource(int arg0, void** arg1, nuint* arg2);
 

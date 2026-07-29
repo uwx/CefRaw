@@ -111,31 +111,53 @@ public unsafe partial class CefV8InterceptorRef : CefBaseRefCountedRef, ICefV8In
     _cef_v8_interceptor_t* ICefV8Interceptor.NativePtr => _ptr;
 
 
-    public int GetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3)
+    public int GetByname(string? arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3)
     {
-        var _result = _ptr->get_byname(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3);
+        _cef_v8_value_t* _out2 = null;
+        _cef_string_utf16_t _out3 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_byname(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, &_out2, &_out3);
 
+            arg2 = _out2 != null ? new CefV8ValueRef(_out2) : null;
+            arg3 = CefStringRef.ToStringAndFree(&_out3);
+            return _result;
+        }
+    }
+
+    public int GetByindex(int arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3)
+    {
+        _cef_v8_value_t* _out2 = null;
+        _cef_string_utf16_t _out3 = default;
+        var _result = _ptr->get_byindex(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, &_out2, &_out3);
+
+        arg2 = _out2 != null ? new CefV8ValueRef(_out2) : null;
+        arg3 = CefStringRef.ToStringAndFree(&_out3);
         return _result;
     }
 
-    public int GetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3)
+    public int SetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3)
     {
-        var _result = _ptr->get_byindex(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3);
+        _cef_string_utf16_t _out3 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_byname(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, &_out3);
 
-        return _result;
+            arg3 = CefStringRef.ToStringAndFree(&_out3);
+            return _result;
+        }
     }
 
-    public int SetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3)
+    public int SetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3)
     {
-        var _result = _ptr->set_byname(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3);
+        _cef_string_utf16_t _out3 = default;
+        var _result = _ptr->set_byindex(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, &_out3);
 
-        return _result;
-    }
-
-    public int SetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3)
-    {
-        var _result = _ptr->set_byindex(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3);
-
+        arg3 = CefStringRef.ToStringAndFree(&_out3);
         return _result;
     }
 
@@ -174,31 +196,53 @@ public unsafe partial class CefV8InterceptorRef : CefBaseRefCountedRef, ICefV8In
     _cef_v8_interceptor_t* ICefV8Interceptor.NativePtr => _ptr;
 
 
-    public int GetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3)
+    public int GetByname(string? arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3)
     {
-        var _result = _ptr->get_byname(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3);
+        _cef_v8_value_t* _out2 = null;
+        _cef_string_utf16_t _out3 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_byname(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, &_out2, &_out3);
 
+            arg2 = _out2 != null ? new CefV8ValueRef(_out2) : null;
+            arg3 = CefStringRef.ToStringAndFree(&_out3);
+            return _result;
+        }
+    }
+
+    public int GetByindex(int arg0, ICefV8Value? arg1, out ICefV8Value? arg2, out string? arg3)
+    {
+        _cef_v8_value_t* _out2 = null;
+        _cef_string_utf16_t _out3 = default;
+        var _result = _ptr->get_byindex(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, &_out2, &_out3);
+
+        arg2 = _out2 != null ? new CefV8ValueRef(_out2) : null;
+        arg3 = CefStringRef.ToStringAndFree(&_out3);
         return _result;
     }
 
-    public int GetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3)
+    public int SetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3)
     {
-        var _result = _ptr->get_byindex(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3);
+        _cef_string_utf16_t _out3 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_byname(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, &_out3);
 
-        return _result;
+            arg3 = CefStringRef.ToStringAndFree(&_out3);
+            return _result;
+        }
     }
 
-    public int SetByname(string? arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3)
+    public int SetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, out string? arg3)
     {
-        var _result = _ptr->set_byname(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3);
+        _cef_string_utf16_t _out3 = default;
+        var _result = _ptr->set_byindex(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, &_out3);
 
-        return _result;
-    }
-
-    public int SetByindex(int arg0, ICefV8Value? arg1, ICefV8Value? arg2, string? arg3)
-    {
-        var _result = _ptr->set_byindex(_ptr, arg0, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3);
-
+        arg3 = CefStringRef.ToStringAndFree(&_out3);
         return _result;
     }
 

@@ -256,7 +256,7 @@ public unsafe abstract partial class CefResourceHandler : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_response_headers</c> callback.
     /// </summary>
-    public abstract void GetResponseHeaders(ICefResponse? arg0, long* arg1, string? arg2);
+    public abstract void GetResponseHeaders(ICefResponse? arg0, long* arg1, out string? arg2);
 
     /// <summary>
     /// Implement the <c>skip</c> callback.
@@ -322,8 +322,14 @@ public unsafe abstract partial class CefResourceHandler : CefBaseRefCounted, ICe
 
         var _a0 = arg0 != null ? new CefResponseRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = arg2;
-        _m.GetResponseHeaders(_a0, _a1, _a2);
+        string? _out2 = null;
+        if (arg2 != null) _out2 = CefStringRef.ToStringAndFree(arg2);
+        _m.GetResponseHeaders(_a0, _a1, out _out2);
+        if (arg2 != null)
+        {
+            fixed (char* _p2 = _out2)
+                CefUnsafe.StringUtf16Set((ushort*)_p2, (nuint)(_out2?.Length ?? 0), arg2, copy: 1);
+        }
     }
 
     #if OS_WIN
@@ -450,7 +456,7 @@ public unsafe abstract partial class CefResourceHandler : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_response_headers</c> callback.
     /// </summary>
-    public abstract void GetResponseHeaders(ICefResponse? arg0, long* arg1, string? arg2);
+    public abstract void GetResponseHeaders(ICefResponse? arg0, long* arg1, out string? arg2);
 
     /// <summary>
     /// Implement the <c>skip</c> callback.
@@ -516,8 +522,14 @@ public unsafe abstract partial class CefResourceHandler : CefBaseRefCounted, ICe
 
         var _a0 = arg0 != null ? new CefResponseRef(arg0) : null;
         var _a1 = arg1;
-        var _a2 = arg2;
-        _m.GetResponseHeaders(_a0, _a1, _a2);
+        string? _out2 = null;
+        if (arg2 != null) _out2 = CefStringRef.ToStringAndFree(arg2);
+        _m.GetResponseHeaders(_a0, _a1, out _out2);
+        if (arg2 != null)
+        {
+            fixed (char* _p2 = _out2)
+                CefUnsafe.StringUtf16Set((ushort*)_p2, (nuint)(_out2?.Length ?? 0), arg2, copy: 1);
+        }
     }
 
     #if OS_WIN

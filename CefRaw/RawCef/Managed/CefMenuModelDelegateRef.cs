@@ -130,10 +130,12 @@ public unsafe partial class CefMenuModelDelegateRef : CefBaseRefCountedRef, ICef
         _ptr->menu_closed(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
-    public int FormatLabel(ICefMenuModel? arg0, string? arg1)
+    public int FormatLabel(ICefMenuModel? arg0, out string? arg1)
     {
-        var _result = _ptr->format_label(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
+        _cef_string_utf16_t _out1 = default;
+        var _result = _ptr->format_label(_ptr, arg0 is null ? null : arg0.NativePtr, &_out1);
 
+        arg1 = CefStringRef.ToStringAndFree(&_out1);
         return _result;
     }
 
@@ -202,10 +204,12 @@ public unsafe partial class CefMenuModelDelegateRef : CefBaseRefCountedRef, ICef
         _ptr->menu_closed(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
-    public int FormatLabel(ICefMenuModel? arg0, string? arg1)
+    public int FormatLabel(ICefMenuModel? arg0, out string? arg1)
     {
-        var _result = _ptr->format_label(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
+        _cef_string_utf16_t _out1 = default;
+        var _result = _ptr->format_label(_ptr, arg0 is null ? null : arg0.NativePtr, &_out1);
 
+        arg1 = CefStringRef.ToStringAndFree(&_out1);
         return _result;
     }
 

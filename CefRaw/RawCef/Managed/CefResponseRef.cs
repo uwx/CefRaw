@@ -235,7 +235,12 @@ public unsafe partial class CefResponseRef : CefBaseRefCountedRef, ICefResponse
 
     public void SetStatusText(string? arg0)
     {
-        _ptr->set_status_text(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_status_text(_ptr, &_s0);
+        }
     }
 
     public cef_string_userfree_utf16_t GetMimeType()
@@ -247,7 +252,12 @@ public unsafe partial class CefResponseRef : CefBaseRefCountedRef, ICefResponse
 
     public void SetMimeType(string? arg0)
     {
-        _ptr->set_mime_type(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_mime_type(_ptr, &_s0);
+        }
     }
 
     public cef_string_userfree_utf16_t GetCharset()
@@ -259,19 +269,37 @@ public unsafe partial class CefResponseRef : CefBaseRefCountedRef, ICefResponse
 
     public void SetCharset(string? arg0)
     {
-        _ptr->set_charset(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_charset(_ptr, &_s0);
+        }
     }
 
     public cef_string_userfree_utf16_t GetHeaderByName(string? arg0)
     {
-        var _result = _ptr->get_header_by_name(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_header_by_name(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void SetHeaderByName(string? arg0, string? arg1, int arg2)
     {
-        _ptr->set_header_by_name(_ptr, arg0, arg1, arg2);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->set_header_by_name(_ptr, &_s0, &_s1, arg2);
+        }
     }
 
     public void GetHeaderMap(_cef_string_multimap_t* arg0)
@@ -293,7 +321,12 @@ public unsafe partial class CefResponseRef : CefBaseRefCountedRef, ICefResponse
 
     public void SetUrl(string? arg0)
     {
-        _ptr->set_url(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_url(_ptr, &_s0);
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -371,7 +404,12 @@ public unsafe partial class CefResponseRef : CefBaseRefCountedRef, ICefResponse
 
     public void SetStatusText(string? arg0)
     {
-        _ptr->set_status_text(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_status_text(_ptr, &_s0);
+        }
     }
 
     public cef_string_userfree_utf16_t GetMimeType()
@@ -383,7 +421,12 @@ public unsafe partial class CefResponseRef : CefBaseRefCountedRef, ICefResponse
 
     public void SetMimeType(string? arg0)
     {
-        _ptr->set_mime_type(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_mime_type(_ptr, &_s0);
+        }
     }
 
     public cef_string_userfree_utf16_t GetCharset()
@@ -395,19 +438,37 @@ public unsafe partial class CefResponseRef : CefBaseRefCountedRef, ICefResponse
 
     public void SetCharset(string? arg0)
     {
-        _ptr->set_charset(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_charset(_ptr, &_s0);
+        }
     }
 
     public cef_string_userfree_utf16_t GetHeaderByName(string? arg0)
     {
-        var _result = _ptr->get_header_by_name(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_header_by_name(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void SetHeaderByName(string? arg0, string? arg1, int arg2)
     {
-        _ptr->set_header_by_name(_ptr, arg0, arg1, arg2);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->set_header_by_name(_ptr, &_s0, &_s1, arg2);
+        }
     }
 
     public void GetHeaderMap(_cef_string_multimap_t* arg0)
@@ -429,7 +490,12 @@ public unsafe partial class CefResponseRef : CefBaseRefCountedRef, ICefResponse
 
     public void SetUrl(string? arg0)
     {
-        _ptr->set_url(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_url(_ptr, &_s0);
+        }
     }
 
     public _cef_base_ref_counted_t @base

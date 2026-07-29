@@ -99,7 +99,12 @@ public unsafe partial class CefAppRef : CefBaseRefCountedRef, ICefApp
 
     public void OnBeforeCommandLineProcessing(string? arg0, ICefCommandLine? arg1)
     {
-        _ptr->on_before_command_line_processing(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->on_before_command_line_processing(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
+        }
     }
 
     public void OnRegisterCustomSchemes(ICefSchemeRegistrar? arg0)
@@ -165,7 +170,12 @@ public unsafe partial class CefAppRef : CefBaseRefCountedRef, ICefApp
 
     public void OnBeforeCommandLineProcessing(string? arg0, ICefCommandLine? arg1)
     {
-        _ptr->on_before_command_line_processing(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->on_before_command_line_processing(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
+        }
     }
 
     public void OnRegisterCustomSchemes(ICefSchemeRegistrar? arg0)

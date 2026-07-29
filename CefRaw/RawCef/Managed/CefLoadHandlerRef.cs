@@ -106,7 +106,15 @@ public unsafe partial class CefLoadHandlerRef : CefBaseRefCountedRef, ICefLoadHa
 
     public void OnLoadError(ICefBrowser? arg0, ICefFrame? arg1, cef_errorcode_t arg2, string? arg3, string? arg4)
     {
-        _ptr->on_load_error(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3, arg4);
+        fixed (char* _p3 = arg3)
+        fixed (char* _p4 = arg4)
+        {
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            _cef_string_utf16_t _s4;
+            CefStringRef.FillFromPinned(&_s4, _p4, arg4?.Length ?? 0);
+            _ptr->on_load_error(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, &_s3, &_s4);
+        }
     }
 
     public _cef_base_ref_counted_t @base
@@ -161,7 +169,15 @@ public unsafe partial class CefLoadHandlerRef : CefBaseRefCountedRef, ICefLoadHa
 
     public void OnLoadError(ICefBrowser? arg0, ICefFrame? arg1, cef_errorcode_t arg2, string? arg3, string? arg4)
     {
-        _ptr->on_load_error(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3, arg4);
+        fixed (char* _p3 = arg3)
+        fixed (char* _p4 = arg4)
+        {
+            _cef_string_utf16_t _s3;
+            CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
+            _cef_string_utf16_t _s4;
+            CefStringRef.FillFromPinned(&_s4, _p4, arg4?.Length ?? 0);
+            _ptr->on_load_error(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, &_s3, &_s4);
+        }
     }
 
     public _cef_base_ref_counted_t @base

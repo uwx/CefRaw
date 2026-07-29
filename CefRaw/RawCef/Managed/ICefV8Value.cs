@@ -229,9 +229,9 @@ public unsafe partial interface ICefV8Value : ICefBaseRefCounted
 
     public ICefV8Handler? GetFunctionHandler();
 
-    public ICefV8Value? ExecuteFunction(ICefV8Value? arg0, nuint arg1, ICefV8Value? arg2);
+    public ICefV8Value? ExecuteFunction(ICefV8Value? arg0, ReadOnlySpan<ICefV8Value?> arg1);
 
-    public ICefV8Value? ExecuteFunctionWithContext(ICefV8Context? arg0, ICefV8Value? arg1, nuint arg2, ICefV8Value? arg3);
+    public ICefV8Value? ExecuteFunctionWithContext(ICefV8Context? arg0, ICefV8Value? arg1, ReadOnlySpan<ICefV8Value?> arg2);
 
     public int ResolvePromise(ICefV8Value? arg0);
 
@@ -349,9 +349,9 @@ public unsafe partial interface ICefV8Value : ICefBaseRefCounted
 
     public ICefV8Handler? GetFunctionHandler();
 
-    public ICefV8Value? ExecuteFunction(ICefV8Value? arg0, nuint arg1, ICefV8Value? arg2);
+    public ICefV8Value? ExecuteFunction(ICefV8Value? arg0, ReadOnlySpan<ICefV8Value?> arg1);
 
-    public ICefV8Value? ExecuteFunctionWithContext(ICefV8Context? arg0, ICefV8Value? arg1, nuint arg2, ICefV8Value? arg3);
+    public ICefV8Value? ExecuteFunctionWithContext(ICefV8Context? arg0, ICefV8Value? arg1, ReadOnlySpan<ICefV8Value?> arg2);
 
     public int ResolvePromise(ICefV8Value? arg0);
 

@@ -248,7 +248,12 @@ public unsafe partial class CefRenderHandlerRef : CefBaseRefCountedRef, ICefRend
 
     public void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ICefRange? arg2)
     {
-        _ptr->on_text_selection_changed(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->on_text_selection_changed(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1, arg2 is null ? null : arg2.NativePtr);
+        }
     }
 
     public void OnVirtualKeyboardRequested(ICefBrowser? arg0, cef_text_input_mode_t arg1)
@@ -378,7 +383,12 @@ public unsafe partial class CefRenderHandlerRef : CefBaseRefCountedRef, ICefRend
 
     public void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ICefRange? arg2)
     {
-        _ptr->on_text_selection_changed(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2 is null ? null : arg2.NativePtr);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _ptr->on_text_selection_changed(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1, arg2 is null ? null : arg2.NativePtr);
+        }
     }
 
     public void OnVirtualKeyboardRequested(ICefBrowser? arg0, cef_text_input_mode_t arg1)

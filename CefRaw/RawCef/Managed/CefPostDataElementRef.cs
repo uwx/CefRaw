@@ -130,7 +130,12 @@ public unsafe partial class CefPostDataElementRef : CefBaseRefCountedRef, ICefPo
 
     public void SetToFile(string? arg0)
     {
-        _ptr->set_to_file(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_to_file(_ptr, &_s0);
+        }
     }
 
     public void SetToBytes(nuint arg0, void* arg1)
@@ -215,7 +220,12 @@ public unsafe partial class CefPostDataElementRef : CefBaseRefCountedRef, ICefPo
 
     public void SetToFile(string? arg0)
     {
-        _ptr->set_to_file(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _ptr->set_to_file(_ptr, &_s0);
+        }
     }
 
     public void SetToBytes(nuint arg0, void* arg1)

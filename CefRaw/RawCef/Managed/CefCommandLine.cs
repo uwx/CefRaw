@@ -677,7 +677,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.InitFromString(_a0);
     }
 
@@ -743,7 +743,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetProgram(_a0);
     }
 
@@ -770,7 +770,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.HasSwitch(_a0);
 
         return _result;
@@ -785,7 +785,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetSwitchValue(_a0);
 
         return _result;
@@ -813,7 +813,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.AppendSwitch(_a0);
     }
 
@@ -826,8 +826,8 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.AppendSwitchWithValue(_a0, _a1);
     }
 
@@ -867,7 +867,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.AppendArgument(_a0);
     }
 
@@ -880,7 +880,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.PrependWrapper(_a0);
     }
 
@@ -893,7 +893,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.RemoveSwitch(_a0);
     }
 }
@@ -1127,7 +1127,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.InitFromString(_a0);
     }
 
@@ -1193,7 +1193,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetProgram(_a0);
     }
 
@@ -1220,7 +1220,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.HasSwitch(_a0);
 
         return _result;
@@ -1235,7 +1235,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetSwitchValue(_a0);
 
         return _result;
@@ -1263,7 +1263,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.AppendSwitch(_a0);
     }
 
@@ -1276,8 +1276,8 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
-        var _a1 = arg1;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.AppendSwitchWithValue(_a0, _a1);
     }
 
@@ -1317,7 +1317,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.AppendArgument(_a0);
     }
 
@@ -1330,7 +1330,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.PrependWrapper(_a0);
     }
 
@@ -1343,7 +1343,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     {
         var _m = GetManaged<CefCommandLine>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.RemoveSwitch(_a0);
     }
 }

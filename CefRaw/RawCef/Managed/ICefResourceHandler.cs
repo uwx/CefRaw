@@ -47,7 +47,7 @@ public unsafe partial interface ICefResourceHandler : ICefBaseRefCounted
 
     public int ProcessRequest(ICefRequest? arg0, ICefCallback? arg1);
 
-    public void GetResponseHeaders(ICefResponse? arg0, long* arg1, string? arg2);
+    public void GetResponseHeaders(ICefResponse? arg0, long* arg1, out string? arg2);
 
     public int Skip(long arg0, long* arg1, ICefResourceSkipCallback? arg2);
 
@@ -77,7 +77,7 @@ public unsafe partial interface ICefResourceHandler : ICefBaseRefCounted
 
     public int ProcessRequest(ICefRequest? arg0, ICefCallback? arg1);
 
-    public void GetResponseHeaders(ICefResponse? arg0, long* arg1, string? arg2);
+    public void GetResponseHeaders(ICefResponse? arg0, long* arg1, out string? arg2);
 
     public int Skip(long arg0, long* arg1, ICefResourceSkipCallback? arg2);
 

@@ -134,9 +134,11 @@ public unsafe partial class CefResourceRequestHandlerRef : CefBaseRefCountedRef,
         return _result != null ? new CefResourceHandlerRef(_result) : null;
     }
 
-    public void OnResourceRedirect(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3, string? arg4)
+    public void OnResourceRedirect(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3, out string? arg4)
     {
-        _ptr->on_resource_redirect(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3 is null ? null : arg3.NativePtr, arg4);
+        _cef_string_utf16_t _out4 = default;
+        _ptr->on_resource_redirect(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3 is null ? null : arg3.NativePtr, &_out4);
+        arg4 = CefStringRef.ToStringAndFree(&_out4);
     }
 
     public int OnResourceResponse(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3)
@@ -219,9 +221,11 @@ public unsafe partial class CefResourceRequestHandlerRef : CefBaseRefCountedRef,
         return _result != null ? new CefResourceHandlerRef(_result) : null;
     }
 
-    public void OnResourceRedirect(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3, string? arg4)
+    public void OnResourceRedirect(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3, out string? arg4)
     {
-        _ptr->on_resource_redirect(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3 is null ? null : arg3.NativePtr, arg4);
+        _cef_string_utf16_t _out4 = default;
+        _ptr->on_resource_redirect(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2 is null ? null : arg2.NativePtr, arg3 is null ? null : arg3.NativePtr, &_out4);
+        arg4 = CefStringRef.ToStringAndFree(&_out4);
     }
 
     public int OnResourceResponse(ICefBrowser? arg0, ICefFrame? arg1, ICefRequest? arg2, ICefResponse? arg3)

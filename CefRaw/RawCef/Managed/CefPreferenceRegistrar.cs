@@ -112,7 +112,7 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
     {
         var _m = GetManaged<CefPreferenceRegistrar>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
         var _result = _m.AddPreference(_a0, _a1);
 
@@ -173,7 +173,7 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
     {
         var _m = GetManaged<CefPreferenceRegistrar>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
         var _result = _m.AddPreference(_a0, _a1);
 

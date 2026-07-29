@@ -55,7 +55,7 @@ public unsafe partial interface ICefMenuModelDelegate : ICefBaseRefCounted
 
     public void MenuClosed(ICefMenuModel? arg0);
 
-    public int FormatLabel(ICefMenuModel? arg0, string? arg1);
+    public int FormatLabel(ICefMenuModel? arg0, out string? arg1);
 }
 #endif
 #if OS_LINUX
@@ -85,6 +85,6 @@ public unsafe partial interface ICefMenuModelDelegate : ICefBaseRefCounted
 
     public void MenuClosed(ICefMenuModel? arg0);
 
-    public int FormatLabel(ICefMenuModel? arg0, string? arg1);
+    public int FormatLabel(ICefMenuModel? arg0, out string? arg1);
 }
 #endif

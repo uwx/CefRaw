@@ -111,7 +111,7 @@ public unsafe abstract partial class CefJsdialogCallback : CefBaseRefCounted, IC
         var _m = GetManaged<CefJsdialogCallback>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.Cont(_a0, _a1);
     }
 }
@@ -170,7 +170,7 @@ public unsafe abstract partial class CefJsdialogCallback : CefBaseRefCounted, IC
         var _m = GetManaged<CefJsdialogCallback>(self);
 
         var _a0 = arg0;
-        var _a1 = arg1;
+        var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.Cont(_a0, _a1);
     }
 }

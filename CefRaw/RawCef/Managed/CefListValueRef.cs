@@ -432,9 +432,14 @@ public unsafe partial class CefListValueRef : CefBaseRefCountedRef, ICefListValu
 
     public int SetString(nuint arg0, string? arg1)
     {
-        var _result = _ptr->set_string(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_string(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetBinary(nuint arg0, ICefBinaryValue? arg1)
@@ -663,9 +668,14 @@ public unsafe partial class CefListValueRef : CefBaseRefCountedRef, ICefListValu
 
     public int SetString(nuint arg0, string? arg1)
     {
-        var _result = _ptr->set_string(_ptr, arg0, arg1);
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_string(_ptr, arg0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int SetBinary(nuint arg0, ICefBinaryValue? arg1)

@@ -49,7 +49,7 @@ public unsafe partial interface ICefPreferenceManager : ICefBaseRefCounted
 
     public int CanSetPreference(string? arg0);
 
-    public int SetPreference(string? arg0, ICefValue? arg1, string? arg2);
+    public int SetPreference(string? arg0, ICefValue? arg1, out string? arg2);
 
     public ICefRegistration? AddPreferenceObserver(string? arg0, ICefPreferenceObserver? arg1);
 }
@@ -77,7 +77,7 @@ public unsafe partial interface ICefPreferenceManager : ICefBaseRefCounted
 
     public int CanSetPreference(string? arg0);
 
-    public int SetPreference(string? arg0, ICefValue? arg1, string? arg2);
+    public int SetPreference(string? arg0, ICefValue? arg1, out string? arg2);
 
     public ICefRegistration? AddPreferenceObserver(string? arg0, ICefPreferenceObserver? arg1);
 }

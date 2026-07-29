@@ -115,7 +115,7 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
     /// <summary>
     /// Implement the <c>execute</c> callback.
     /// </summary>
-    public abstract int Execute(string? arg0, ICefV8Value? arg1, nuint arg2, ICefV8Value? arg3, ICefV8Value? arg4, string? arg5);
+    public abstract int Execute(string? arg0, ICefV8Value? arg1, ReadOnlySpan<ICefV8Value?> arg2, out ICefV8Value? arg3, out string? arg4);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -126,15 +126,25 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
     {
         var _m = GetManaged<CefV8Handler>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefV8ValueRef(arg3) : null;
-        var _a4 = arg4 != null ? new CefV8ValueRef(arg4) : null;
-        var _a5 = arg5;
-        var _result = _m.Execute(_a0, _a1, _a2, _a3, _a4, _a5);
+        var _count2 = (int)arg2;
+        var _span2 = new ICefV8Value?[_count2];
+        for (int _j2 = 0; _j2 < _count2; _j2++)
+            _span2[_j2] = arg3[_j2] != null ? new CefV8ValueRef(arg3[_j2]) : null;
+        ICefV8Value? _out3 = null;
+        if (arg4 != null && *arg4 != null) _out3 = new CefV8ValueRef(*arg4);
+        string? _out4 = null;
+        if (arg5 != null) _out4 = CefStringRef.ToStringAndFree(arg5);
+        var _result = _m.Execute(_a0, _a1, _span2, out _out3, out _out4);
 
         return _result;
+        if (arg4 != null) *arg4 = _out3 != null ? _out3.NativePtr : null;
+        if (arg5 != null)
+        {
+            fixed (char* _p4 = _out4)
+                CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg5, copy: 1);
+        }
     }
 }
 #endif
@@ -180,7 +190,7 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
     /// <summary>
     /// Implement the <c>execute</c> callback.
     /// </summary>
-    public abstract int Execute(string? arg0, ICefV8Value? arg1, nuint arg2, ICefV8Value? arg3, ICefV8Value? arg4, string? arg5);
+    public abstract int Execute(string? arg0, ICefV8Value? arg1, ReadOnlySpan<ICefV8Value?> arg2, out ICefV8Value? arg3, out string? arg4);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -191,15 +201,25 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
     {
         var _m = GetManaged<CefV8Handler>(self);
 
-        var _a0 = arg0;
+        var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefV8ValueRef(arg3) : null;
-        var _a4 = arg4 != null ? new CefV8ValueRef(arg4) : null;
-        var _a5 = arg5;
-        var _result = _m.Execute(_a0, _a1, _a2, _a3, _a4, _a5);
+        var _count2 = (int)arg2;
+        var _span2 = new ICefV8Value?[_count2];
+        for (int _j2 = 0; _j2 < _count2; _j2++)
+            _span2[_j2] = arg3[_j2] != null ? new CefV8ValueRef(arg3[_j2]) : null;
+        ICefV8Value? _out3 = null;
+        if (arg4 != null && *arg4 != null) _out3 = new CefV8ValueRef(*arg4);
+        string? _out4 = null;
+        if (arg5 != null) _out4 = CefStringRef.ToStringAndFree(arg5);
+        var _result = _m.Execute(_a0, _a1, _span2, out _out3, out _out4);
 
         return _result;
+        if (arg4 != null) *arg4 = _out3 != null ? _out3.NativePtr : null;
+        if (arg5 != null)
+        {
+            fixed (char* _p4 = _out4)
+                CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg5, copy: 1);
+        }
     }
 }
 #endif

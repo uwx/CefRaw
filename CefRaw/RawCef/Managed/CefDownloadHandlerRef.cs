@@ -95,16 +95,29 @@ public unsafe partial class CefDownloadHandlerRef : CefBaseRefCountedRef, ICefDo
 
     public int CanDownload(ICefBrowser? arg0, string? arg1, string? arg2)
     {
-        var _result = _ptr->can_download(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2);
+        fixed (char* _p1 = arg1)
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->can_download(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1, &_s2);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int OnBeforeDownload(ICefBrowser? arg0, ICefDownloadItem? arg1, string? arg2, ICefBeforeDownloadCallback? arg3)
     {
-        var _result = _ptr->on_before_download(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3 is null ? null : arg3.NativePtr);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->on_before_download(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, &_s2, arg3 is null ? null : arg3.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void OnDownloadUpdated(ICefBrowser? arg0, ICefDownloadItem? arg1, ICefDownloadItemCallback? arg2)
@@ -149,16 +162,29 @@ public unsafe partial class CefDownloadHandlerRef : CefBaseRefCountedRef, ICefDo
 
     public int CanDownload(ICefBrowser? arg0, string? arg1, string? arg2)
     {
-        var _result = _ptr->can_download(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, arg2);
+        fixed (char* _p1 = arg1)
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->can_download(_ptr, arg0 is null ? null : arg0.NativePtr, &_s1, &_s2);
 
-        return _result;
+            return _result;
+        }
     }
 
     public int OnBeforeDownload(ICefBrowser? arg0, ICefDownloadItem? arg1, string? arg2, ICefBeforeDownloadCallback? arg3)
     {
-        var _result = _ptr->on_before_download(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3 is null ? null : arg3.NativePtr);
+        fixed (char* _p2 = arg2)
+        {
+            _cef_string_utf16_t _s2;
+            CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
+            var _result = _ptr->on_before_download(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, &_s2, arg3 is null ? null : arg3.NativePtr);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void OnDownloadUpdated(ICefBrowser? arg0, ICefDownloadItem? arg1, ICefDownloadItemCallback? arg2)

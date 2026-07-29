@@ -329,9 +329,14 @@ public unsafe partial class CefDomnodeRef : CefBaseRefCountedRef, ICefDomnode
 
     public int SetValue(string? arg0)
     {
-        var _result = _ptr->set_value(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_value(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_string_userfree_utf16_t GetAsMarkup()
@@ -406,16 +411,26 @@ public unsafe partial class CefDomnodeRef : CefBaseRefCountedRef, ICefDomnode
 
     public int HasElementAttribute(string? arg0)
     {
-        var _result = _ptr->has_element_attribute(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->has_element_attribute(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_string_userfree_utf16_t GetElementAttribute(string? arg0)
     {
-        var _result = _ptr->get_element_attribute(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_element_attribute(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void GetElementAttributes(_cef_string_map_t* arg0)
@@ -425,9 +440,17 @@ public unsafe partial class CefDomnodeRef : CefBaseRefCountedRef, ICefDomnode
 
     public int SetElementAttribute(string? arg0, string? arg1)
     {
-        var _result = _ptr->set_element_attribute(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_element_attribute(_ptr, &_s0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_string_userfree_utf16_t GetElementInnerText()
@@ -544,9 +567,14 @@ public unsafe partial class CefDomnodeRef : CefBaseRefCountedRef, ICefDomnode
 
     public int SetValue(string? arg0)
     {
-        var _result = _ptr->set_value(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_value(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_string_userfree_utf16_t GetAsMarkup()
@@ -621,16 +649,26 @@ public unsafe partial class CefDomnodeRef : CefBaseRefCountedRef, ICefDomnode
 
     public int HasElementAttribute(string? arg0)
     {
-        var _result = _ptr->has_element_attribute(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->has_element_attribute(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_string_userfree_utf16_t GetElementAttribute(string? arg0)
     {
-        var _result = _ptr->get_element_attribute(_ptr, arg0);
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_element_attribute(_ptr, &_s0);
 
-        return _result;
+            return _result;
+        }
     }
 
     public void GetElementAttributes(_cef_string_map_t* arg0)
@@ -640,9 +678,17 @@ public unsafe partial class CefDomnodeRef : CefBaseRefCountedRef, ICefDomnode
 
     public int SetElementAttribute(string? arg0, string? arg1)
     {
-        var _result = _ptr->set_element_attribute(_ptr, arg0, arg1);
+        fixed (char* _p0 = arg0)
+        fixed (char* _p1 = arg1)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            _cef_string_utf16_t _s1;
+            CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
+            var _result = _ptr->set_element_attribute(_ptr, &_s0, &_s1);
 
-        return _result;
+            return _result;
+        }
     }
 
     public cef_string_userfree_utf16_t GetElementInnerText()
