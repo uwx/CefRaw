@@ -43,17 +43,9 @@ public unsafe abstract partial class CefResourceReadCallback : CefBaseRefCounted
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cont(_cef_resource_read_callback_t* self, int arg0)
-    {
-        var _m = GetManaged<CefResourceReadCallback>(self);
-
-        var _a0 = arg0;
-        _m.Cont(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cont(_cef_resource_read_callback_t* self, int arg0)
     {
         var _m = GetManaged<CefResourceReadCallback>(self);
@@ -61,6 +53,4 @@ public unsafe abstract partial class CefResourceReadCallback : CefBaseRefCounted
         var _a0 = arg0;
         _m.Cont(_a0);
     }
-    #endif
-
 }

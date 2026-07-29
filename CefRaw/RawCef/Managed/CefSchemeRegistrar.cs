@@ -43,20 +43,9 @@ public unsafe abstract partial class CefSchemeRegistrar : CefBaseScoped, ICefSch
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_AddCustomScheme(_cef_scheme_registrar_t* self, _cef_string_utf16_t* arg0, int arg1)
-    {
-        var _m = GetManaged<CefSchemeRegistrar>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1;
-        var _result = _m.AddCustomScheme(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_AddCustomScheme(_cef_scheme_registrar_t* self, _cef_string_utf16_t* arg0, int arg1)
     {
         var _m = GetManaged<CefSchemeRegistrar>(self);
@@ -67,6 +56,4 @@ public unsafe abstract partial class CefSchemeRegistrar : CefBaseScoped, ICefSch
 
         return _result;
     }
-    #endif
-
 }

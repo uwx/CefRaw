@@ -130,9 +130,9 @@ public unsafe partial class CefContextMenuParamsRef : CefBaseRefCountedRef, ICef
         return _result;
     }
 
-    public int GetDictionarySuggestions(_cef_string_list_t* arg0)
+    public int GetDictionarySuggestions(ICefStringList? arg0)
     {
-        var _result = _ptr->get_dictionary_suggestions(_ptr, arg0);
+        var _result = _ptr->get_dictionary_suggestions(_ptr, arg0 is null ? null : arg0.NativePtr);
 
         return _result;
     }

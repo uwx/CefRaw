@@ -129,7 +129,7 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
         _ptr->set_zoom_level(_ptr, arg0);
     }
 
-    public void RunFileDialog(cef_file_dialog_mode_t arg0, string? arg1, string? arg2, _cef_string_list_t* arg3, ICefRunFileDialogCallback? arg4)
+    public void RunFileDialog(cef_file_dialog_mode_t arg0, string? arg1, string? arg2, ICefStringList? arg3, ICefRunFileDialogCallback? arg4)
     {
         fixed (char* _p1 = arg1)
         fixed (char* _p2 = arg2)
@@ -138,7 +138,7 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
             CefStringRef.FillFromPinned(&_s1, _p1, arg1?.Length ?? 0);
             _cef_string_utf16_t _s2;
             CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
-            _ptr->run_file_dialog(_ptr, arg0, &_s1, &_s2, arg3, arg4 is null ? null : arg4.NativePtr);
+            _ptr->run_file_dialog(_ptr, arg0, &_s1, &_s2, arg3 is null ? null : arg3.NativePtr, arg4 is null ? null : arg4.NativePtr);
         }
     }
 

@@ -67,6 +67,9 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnBeforeCommandLineProcessing(_cef_app_t* self, _cef_string_utf16_t* arg0, _cef_command_line_t* arg1)
     {
         var _m = GetManaged<CefApp>(self);
@@ -75,23 +78,12 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
         var _a1 = arg1 != null ? new CefCommandLineRef(arg1) : null;
         _m.OnBeforeCommandLineProcessing(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnBeforeCommandLineProcessing(_cef_app_t* self, _cef_string_utf16_t* arg0, _cef_command_line_t* arg1)
-    {
-        var _m = GetManaged<CefApp>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1 != null ? new CefCommandLineRef(arg1) : null;
-        _m.OnBeforeCommandLineProcessing(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnRegisterCustomSchemes(_cef_app_t* self, _cef_scheme_registrar_t* arg0)
     {
         var _m = GetManaged<CefApp>(self);
@@ -99,92 +91,46 @@ public unsafe abstract partial class CefApp : CefBaseRefCounted, ICefApp
         var _a0 = arg0 != null ? new CefSchemeRegistrarRef(arg0) : null;
         _m.OnRegisterCustomSchemes(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnRegisterCustomSchemes(_cef_app_t* self, _cef_scheme_registrar_t* arg0)
-    {
-        var _m = GetManaged<CefApp>(self);
-
-        var _a0 = arg0 != null ? new CefSchemeRegistrarRef(arg0) : null;
-        _m.OnRegisterCustomSchemes(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_resource_bundle_handler_t* Bridge_GetResourceBundleHandler(_cef_app_t* self)
     {
         var _m = GetManaged<CefApp>(self);
 
         var _result = _m.GetResourceBundleHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_resource_bundle_handler_t* Bridge_GetResourceBundleHandler(_cef_app_t* self)
-    {
-        var _m = GetManaged<CefApp>(self);
-
-        var _result = _m.GetResourceBundleHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_browser_process_handler_t* Bridge_GetBrowserProcessHandler(_cef_app_t* self)
     {
         var _m = GetManaged<CefApp>(self);
 
         var _result = _m.GetBrowserProcessHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_browser_process_handler_t* Bridge_GetBrowserProcessHandler(_cef_app_t* self)
-    {
-        var _m = GetManaged<CefApp>(self);
-
-        var _result = _m.GetBrowserProcessHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static _cef_render_process_handler_t* Bridge_GetRenderProcessHandler(_cef_app_t* self)
-    {
-        var _m = GetManaged<CefApp>(self);
-
-        var _result = _m.GetRenderProcessHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_render_process_handler_t* Bridge_GetRenderProcessHandler(_cef_app_t* self)
     {
         var _m = GetManaged<CefApp>(self);
 
         var _result = _m.GetRenderProcessHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
 }

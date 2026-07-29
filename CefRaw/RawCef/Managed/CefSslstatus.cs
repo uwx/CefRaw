@@ -67,6 +67,9 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsSecureConnection(_cef_sslstatus_t* self)
     {
         var _m = GetManaged<CefSslstatus>(self);
@@ -75,23 +78,12 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsSecureConnection(_cef_sslstatus_t* self)
-    {
-        var _m = GetManaged<CefSslstatus>(self);
-
-        var _result = _m.IsSecureConnection();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_cert_status_t Bridge_GetCertStatus(_cef_sslstatus_t* self)
     {
         var _m = GetManaged<CefSslstatus>(self);
@@ -100,23 +92,12 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_cert_status_t Bridge_GetCertStatus(_cef_sslstatus_t* self)
-    {
-        var _m = GetManaged<CefSslstatus>(self);
-
-        var _result = _m.GetCertStatus();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_ssl_version_t Bridge_GetSslversion(_cef_sslstatus_t* self)
     {
         var _m = GetManaged<CefSslstatus>(self);
@@ -125,23 +106,12 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_ssl_version_t Bridge_GetSslversion(_cef_sslstatus_t* self)
-    {
-        var _m = GetManaged<CefSslstatus>(self);
-
-        var _result = _m.GetSslversion();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_ssl_content_status_t Bridge_GetContentStatus(_cef_sslstatus_t* self)
     {
         var _m = GetManaged<CefSslstatus>(self);
@@ -150,43 +120,18 @@ public unsafe abstract partial class CefSslstatus : CefBaseRefCounted, ICefSslst
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_ssl_content_status_t Bridge_GetContentStatus(_cef_sslstatus_t* self)
-    {
-        var _m = GetManaged<CefSslstatus>(self);
-
-        var _result = _m.GetContentStatus();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static _cef_x509_certificate_t* Bridge_GetX509Certificate(_cef_sslstatus_t* self)
-    {
-        var _m = GetManaged<CefSslstatus>(self);
-
-        var _result = _m.GetX509Certificate();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_x509_certificate_t* Bridge_GetX509Certificate(_cef_sslstatus_t* self)
     {
         var _m = GetManaged<CefSslstatus>(self);
 
         var _result = _m.GetX509Certificate();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
 }

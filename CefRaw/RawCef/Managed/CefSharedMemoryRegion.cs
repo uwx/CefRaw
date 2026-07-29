@@ -55,6 +55,9 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsValid(_cef_shared_memory_region_t* self)
     {
         var _m = GetManaged<CefSharedMemoryRegion>(self);
@@ -63,23 +66,12 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsValid(_cef_shared_memory_region_t* self)
-    {
-        var _m = GetManaged<CefSharedMemoryRegion>(self);
-
-        var _result = _m.IsValid();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_Size(_cef_shared_memory_region_t* self)
     {
         var _m = GetManaged<CefSharedMemoryRegion>(self);
@@ -88,35 +80,12 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_Size(_cef_shared_memory_region_t* self)
-    {
-        var _m = GetManaged<CefSharedMemoryRegion>(self);
-
-        var _result = _m.Size();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void* Bridge_Memory(_cef_shared_memory_region_t* self)
-    {
-        var _m = GetManaged<CefSharedMemoryRegion>(self);
-
-        var _result = _m.Memory();
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void* Bridge_Memory(_cef_shared_memory_region_t* self)
     {
         var _m = GetManaged<CefSharedMemoryRegion>(self);
@@ -125,6 +94,4 @@ public unsafe abstract partial class CefSharedMemoryRegion : CefBaseRefCounted, 
 
         return _result;
     }
-    #endif
-
 }

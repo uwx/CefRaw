@@ -24,7 +24,7 @@ public unsafe partial interface ICefCommandLine : ICefBaseRefCounted
 
     public void Reset();
 
-    public void GetArgv(_cef_string_list_t* arg0);
+    public void GetArgv(ICefStringList? arg0);
 
     public cef_string_userfree_utf16_t GetCommandLineString();
 
@@ -46,7 +46,7 @@ public unsafe partial interface ICefCommandLine : ICefBaseRefCounted
 
     public int HasArguments();
 
-    public void GetArguments(_cef_string_list_t* arg0);
+    public void GetArguments(ICefStringList? arg0);
 
     public void AppendArgument(string? arg0);
 

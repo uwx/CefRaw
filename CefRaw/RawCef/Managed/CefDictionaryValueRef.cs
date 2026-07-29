@@ -93,9 +93,9 @@ public unsafe partial class CefDictionaryValueRef : CefBaseRefCountedRef, ICefDi
         }
     }
 
-    public int GetKeys(_cef_string_list_t* arg0)
+    public int GetKeys(ICefStringList? arg0)
     {
-        var _result = _ptr->get_keys(_ptr, arg0);
+        var _result = _ptr->get_keys(_ptr, arg0 is null ? null : arg0.NativePtr);
 
         return _result;
     }

@@ -16,7 +16,7 @@ public unsafe partial interface ICefDisplayHandler : ICefBaseRefCounted
 
     public void OnTitleChange(ICefBrowser? arg0, string? arg1);
 
-    public void OnFaviconUrlchange(ICefBrowser? arg0, _cef_string_list_t* arg1);
+    public void OnFaviconUrlchange(ICefBrowser? arg0, ICefStringList? arg1);
 
     public void OnFullscreenModeChange(ICefBrowser? arg0, int arg1);
 

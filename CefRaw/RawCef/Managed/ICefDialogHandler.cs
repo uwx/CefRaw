@@ -12,5 +12,5 @@ public unsafe partial interface ICefDialogHandler : ICefBaseRefCounted
 {
     new _cef_dialog_handler_t* NativePtr { get; }
 
-    public int OnFileDialog(ICefBrowser? arg0, cef_file_dialog_mode_t arg1, string? arg2, string? arg3, _cef_string_list_t* arg4, _cef_string_list_t* arg5, _cef_string_list_t* arg6, ICefFileDialogCallback? arg7);
+    public int OnFileDialog(ICefBrowser? arg0, cef_file_dialog_mode_t arg1, string? arg2, string? arg3, ICefStringList? arg4, ICefStringList? arg5, ICefStringList? arg6, ICefFileDialogCallback? arg7);
 }

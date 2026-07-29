@@ -30,7 +30,7 @@ public unsafe partial interface ICefDictionaryValue : ICefBaseRefCounted
 
     public int HasKey(string? arg0);
 
-    public int GetKeys(_cef_string_list_t* arg0);
+    public int GetKeys(ICefStringList? arg0);
 
     public int Remove(string? arg0);
 

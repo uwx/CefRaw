@@ -60,14 +60,14 @@ public unsafe partial class CefX509CertPrincipalRef : CefBaseRefCountedRef, ICef
         return _result;
     }
 
-    public void GetOrganizationNames(_cef_string_list_t* arg0)
+    public void GetOrganizationNames(ICefStringList? arg0)
     {
-        _ptr->get_organization_names(_ptr, arg0);
+        _ptr->get_organization_names(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
-    public void GetOrganizationUnitNames(_cef_string_list_t* arg0)
+    public void GetOrganizationUnitNames(ICefStringList? arg0)
     {
-        _ptr->get_organization_unit_names(_ptr, arg0);
+        _ptr->get_organization_unit_names(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
     public _cef_base_ref_counted_t @base

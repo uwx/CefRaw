@@ -43,17 +43,9 @@ public unsafe abstract partial class CefPermissionPromptCallback : CefBaseRefCou
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cont(_cef_permission_prompt_callback_t* self, cef_permission_request_result_t arg0)
-    {
-        var _m = GetManaged<CefPermissionPromptCallback>(self);
-
-        var _a0 = arg0;
-        _m.Cont(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cont(_cef_permission_prompt_callback_t* self, cef_permission_request_result_t arg0)
     {
         var _m = GetManaged<CefPermissionPromptCallback>(self);
@@ -61,6 +53,4 @@ public unsafe abstract partial class CefPermissionPromptCallback : CefBaseRefCou
         var _a0 = arg0;
         _m.Cont(_a0);
     }
-    #endif
-
 }

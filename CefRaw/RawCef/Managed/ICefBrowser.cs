@@ -50,7 +50,7 @@ public unsafe partial interface ICefBrowser : ICefBaseRefCounted
 
     public nuint GetFrameCount();
 
-    public void GetFrameIdentifiers(_cef_string_list_t* arg0);
+    public void GetFrameIdentifiers(ICefStringList? arg0);
 
-    public void GetFrameNames(_cef_string_list_t* arg0);
+    public void GetFrameNames(ICefStringList? arg0);
 }

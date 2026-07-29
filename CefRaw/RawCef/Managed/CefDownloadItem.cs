@@ -157,6 +157,9 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsValid(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -165,23 +168,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsValid(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.IsValid();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsInProgress(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -190,23 +182,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsInProgress(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.IsInProgress();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsComplete(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -215,23 +196,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsComplete(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.IsComplete();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsCanceled(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -240,23 +210,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsCanceled(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.IsCanceled();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsInterrupted(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -265,23 +224,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsInterrupted(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.IsInterrupted();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_download_interrupt_reason_t Bridge_GetInterruptReason(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -290,23 +238,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_download_interrupt_reason_t Bridge_GetInterruptReason(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetInterruptReason();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static long Bridge_GetCurrentSpeed(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -315,23 +252,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static long Bridge_GetCurrentSpeed(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetCurrentSpeed();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetPercentComplete(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -340,23 +266,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetPercentComplete(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetPercentComplete();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static long Bridge_GetTotalBytes(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -365,23 +280,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static long Bridge_GetTotalBytes(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetTotalBytes();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static long Bridge_GetReceivedBytes(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -390,23 +294,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static long Bridge_GetReceivedBytes(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetReceivedBytes();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_basetime_t Bridge_GetStartTime(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -415,23 +308,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_basetime_t Bridge_GetStartTime(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetStartTime();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_basetime_t Bridge_GetEndTime(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -440,23 +322,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_basetime_t Bridge_GetEndTime(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetEndTime();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetFullPath(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -465,23 +336,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetFullPath(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetFullPath();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static uint Bridge_GetId(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -490,23 +350,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static uint Bridge_GetId(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetId();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetUrl(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -515,23 +364,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetUrl(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetUrl();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetOriginalUrl(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -540,23 +378,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetOriginalUrl(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetOriginalUrl();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetSuggestedFileName(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -565,23 +392,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetSuggestedFileName(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetSuggestedFileName();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetContentDisposition(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -590,23 +406,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetContentDisposition(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetContentDisposition();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetMimeType(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -615,35 +420,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetMimeType(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.GetMimeType();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_IsPaused(_cef_download_item_t* self)
-    {
-        var _m = GetManaged<CefDownloadItem>(self);
-
-        var _result = _m.IsPaused();
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsPaused(_cef_download_item_t* self)
     {
         var _m = GetManaged<CefDownloadItem>(self);
@@ -652,6 +434,4 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
         return _result;
     }
-    #endif
-
 }

@@ -38,9 +38,9 @@ public unsafe partial interface ICefDragData : ICefBaseRefCounted
 
     public nuint GetFileContents(ICefStreamWriter? arg0);
 
-    public int GetFileNames(_cef_string_list_t* arg0);
+    public int GetFileNames(ICefStringList? arg0);
 
-    public int GetFilePaths(_cef_string_list_t* arg0);
+    public int GetFilePaths(ICefStringList? arg0);
 
     public void SetLinkUrl(string? arg0);
 

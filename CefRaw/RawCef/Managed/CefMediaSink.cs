@@ -79,6 +79,9 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_sink_t* self)
     {
         var _m = GetManaged<CefMediaSink>(self);
@@ -87,23 +90,12 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_sink_t* self)
-    {
-        var _m = GetManaged<CefMediaSink>(self);
-
-        var _result = _m.GetId();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetName(_cef_media_sink_t* self)
     {
         var _m = GetManaged<CefMediaSink>(self);
@@ -112,23 +104,12 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetName(_cef_media_sink_t* self)
-    {
-        var _m = GetManaged<CefMediaSink>(self);
-
-        var _result = _m.GetName();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_media_sink_icon_type_t Bridge_GetIconType(_cef_media_sink_t* self)
     {
         var _m = GetManaged<CefMediaSink>(self);
@@ -137,23 +118,12 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_media_sink_icon_type_t Bridge_GetIconType(_cef_media_sink_t* self)
-    {
-        var _m = GetManaged<CefMediaSink>(self);
-
-        var _result = _m.GetIconType();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_GetDeviceInfo(_cef_media_sink_t* self, _cef_media_sink_device_info_callback_t* arg0)
     {
         var _m = GetManaged<CefMediaSink>(self);
@@ -161,22 +131,12 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
         var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoCallbackRef(arg0) : null;
         _m.GetDeviceInfo(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_GetDeviceInfo(_cef_media_sink_t* self, _cef_media_sink_device_info_callback_t* arg0)
-    {
-        var _m = GetManaged<CefMediaSink>(self);
-
-        var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoCallbackRef(arg0) : null;
-        _m.GetDeviceInfo(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsCastSink(_cef_media_sink_t* self)
     {
         var _m = GetManaged<CefMediaSink>(self);
@@ -185,23 +145,12 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsCastSink(_cef_media_sink_t* self)
-    {
-        var _m = GetManaged<CefMediaSink>(self);
-
-        var _result = _m.IsCastSink();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsDialSink(_cef_media_sink_t* self)
     {
         var _m = GetManaged<CefMediaSink>(self);
@@ -210,23 +159,12 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsDialSink(_cef_media_sink_t* self)
-    {
-        var _m = GetManaged<CefMediaSink>(self);
-
-        var _result = _m.IsDialSink();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsCompatibleWith(_cef_media_sink_t* self, _cef_media_source_t* arg0)
     {
         var _m = GetManaged<CefMediaSink>(self);
@@ -236,19 +174,4 @@ public unsafe abstract partial class CefMediaSink : CefBaseRefCounted, ICefMedia
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsCompatibleWith(_cef_media_sink_t* self, _cef_media_source_t* arg0)
-    {
-        var _m = GetManaged<CefMediaSink>(self);
-
-        var _a0 = arg0 != null ? new CefMediaSourceRef(arg0) : null;
-        var _result = _m.IsCompatibleWith(_a0);
-
-        return _result;
-    }
-    #endif
-
 }

@@ -85,6 +85,9 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsReadOnly(_cef_post_data_element_t* self)
     {
         var _m = GetManaged<CefPostDataElement>(self);
@@ -93,44 +96,24 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsReadOnly(_cef_post_data_element_t* self)
-    {
-        var _m = GetManaged<CefPostDataElement>(self);
-
-        var _result = _m.IsReadOnly();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetToEmpty(_cef_post_data_element_t* self)
     {
         var _m = GetManaged<CefPostDataElement>(self);
 
         _m.SetToEmpty();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetToEmpty(_cef_post_data_element_t* self)
-    {
-        var _m = GetManaged<CefPostDataElement>(self);
-
-        _m.SetToEmpty();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetToFile(_cef_post_data_element_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefPostDataElement>(self);
@@ -138,22 +121,12 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetToFile(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetToFile(_cef_post_data_element_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefPostDataElement>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.SetToFile(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetToBytes(_cef_post_data_element_t* self, nuint arg0, void* arg1)
     {
         var _m = GetManaged<CefPostDataElement>(self);
@@ -162,23 +135,12 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
         var _a1 = arg1;
         _m.SetToBytes(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetToBytes(_cef_post_data_element_t* self, nuint arg0, void* arg1)
-    {
-        var _m = GetManaged<CefPostDataElement>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        _m.SetToBytes(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_postdataelement_type_t Bridge_GetType(_cef_post_data_element_t* self)
     {
         var _m = GetManaged<CefPostDataElement>(self);
@@ -187,23 +149,12 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_postdataelement_type_t Bridge_GetType(_cef_post_data_element_t* self)
-    {
-        var _m = GetManaged<CefPostDataElement>(self);
-
-        var _result = _m.GetType();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetFile(_cef_post_data_element_t* self)
     {
         var _m = GetManaged<CefPostDataElement>(self);
@@ -212,23 +163,12 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetFile(_cef_post_data_element_t* self)
-    {
-        var _m = GetManaged<CefPostDataElement>(self);
-
-        var _result = _m.GetFile();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_GetBytesCount(_cef_post_data_element_t* self)
     {
         var _m = GetManaged<CefPostDataElement>(self);
@@ -237,23 +177,12 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_GetBytesCount(_cef_post_data_element_t* self)
-    {
-        var _m = GetManaged<CefPostDataElement>(self);
-
-        var _result = _m.GetBytesCount();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_GetBytes(_cef_post_data_element_t* self, nuint arg0, void* arg1)
     {
         var _m = GetManaged<CefPostDataElement>(self);
@@ -264,20 +193,4 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_GetBytes(_cef_post_data_element_t* self, nuint arg0, void* arg1)
-    {
-        var _m = GetManaged<CefPostDataElement>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.GetBytes(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 }

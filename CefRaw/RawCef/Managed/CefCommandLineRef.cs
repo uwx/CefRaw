@@ -66,9 +66,9 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
         _ptr->reset(_ptr);
     }
 
-    public void GetArgv(_cef_string_list_t* arg0)
+    public void GetArgv(ICefStringList? arg0)
     {
-        _ptr->get_argv(_ptr, arg0);
+        _ptr->get_argv(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
     public cef_string_userfree_utf16_t GetCommandLineString()
@@ -161,9 +161,9 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
         return _result;
     }
 
-    public void GetArguments(_cef_string_list_t* arg0)
+    public void GetArguments(ICefStringList? arg0)
     {
-        _ptr->get_arguments(_ptr, arg0);
+        _ptr->get_arguments(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
     public void AppendArgument(string? arg0)

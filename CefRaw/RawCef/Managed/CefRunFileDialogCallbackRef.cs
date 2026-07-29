@@ -25,9 +25,9 @@ public unsafe partial class CefRunFileDialogCallbackRef : CefBaseRefCountedRef, 
     _cef_run_file_dialog_callback_t* ICefRunFileDialogCallback.NativePtr => _ptr;
 
 
-    public void OnFileDialogDismissed(_cef_string_list_t* arg0)
+    public void OnFileDialogDismissed(ICefStringList? arg0)
     {
-        _ptr->on_file_dialog_dismissed(_ptr, arg0);
+        _ptr->on_file_dialog_dismissed(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
     public _cef_base_ref_counted_t @base

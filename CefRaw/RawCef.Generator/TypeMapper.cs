@@ -90,16 +90,12 @@ internal static partial class TypeMapper
             return "string?";
         }
 
-        // cef_string_multimap_t — keep raw for now
+        // cef_string_multimap_t — keep raw for now (no struct definition in XML)
         if (baseType == "cef_string_multimap_t" || baseType == "_cef_string_multimap_t")
             return nativeType;
 
-        // cef_string_map_t
+        // cef_string_map_t — keep raw for now (no struct definition in XML)
         if (baseType == "cef_string_map_t" || baseType == "_cef_string_map_t")
-            return nativeType;
-
-        // cef_string_list_t
-        if (baseType == "cef_string_list_t" || baseType == "_cef_string_list_t")
             return nativeType;
 
         // cef_string_userfree_t is an alias for _cef_string_utf16_t*

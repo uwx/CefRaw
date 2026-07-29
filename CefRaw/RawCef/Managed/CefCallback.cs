@@ -49,43 +49,25 @@ public unsafe abstract partial class CefCallback : CefBaseRefCounted, ICefCallba
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cont(_cef_callback_t* self)
-    {
-        var _m = GetManaged<CefCallback>(self);
-
-        _m.Cont();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cont(_cef_callback_t* self)
     {
         var _m = GetManaged<CefCallback>(self);
 
         _m.Cont();
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cancel(_cef_callback_t* self)
-    {
-        var _m = GetManaged<CefCallback>(self);
-
-        _m.Cancel();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cancel(_cef_callback_t* self)
     {
         var _m = GetManaged<CefCallback>(self);
 
         _m.Cancel();
     }
-    #endif
-
 }

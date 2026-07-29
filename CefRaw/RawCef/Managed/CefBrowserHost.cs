@@ -187,7 +187,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>run_file_dialog</c> callback.
     /// </summary>
-    public abstract void RunFileDialog(cef_file_dialog_mode_t arg0, string? arg1, string? arg2, _cef_string_list_t* arg3, ICefRunFileDialogCallback? arg4);
+    public abstract void RunFileDialog(cef_file_dialog_mode_t arg0, string? arg1, string? arg2, ICefStringList? arg3, ICefRunFileDialogCallback? arg4);
 
     /// <summary>
     /// Implement the <c>start_download</c> callback.
@@ -451,31 +451,23 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static _cef_browser_t* Bridge_GetBrowser(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.GetBrowser();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_browser_t* Bridge_GetBrowser(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         var _result = _m.GetBrowser();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_CloseBrowser(_cef_browser_host_t* self, int arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -483,22 +475,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.CloseBrowser(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_CloseBrowser(_cef_browser_host_t* self, int arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.CloseBrowser(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_TryCloseBrowser(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -507,23 +489,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_TryCloseBrowser(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.TryCloseBrowser();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsReadyToBeClosed(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -532,23 +503,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsReadyToBeClosed(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.IsReadyToBeClosed();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetFocus(_cef_browser_host_t* self, int arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -556,22 +516,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.SetFocus(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetFocus(_cef_browser_host_t* self, int arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.SetFocus(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static HWND Bridge_GetWindowHandle(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -580,23 +530,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static HWND Bridge_GetWindowHandle(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.GetWindowHandle();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static HWND Bridge_GetOpenerWindowHandle(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -605,23 +544,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static HWND Bridge_GetOpenerWindowHandle(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.GetOpenerWindowHandle();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetOpenerIdentifier(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -630,23 +558,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetOpenerIdentifier(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.GetOpenerIdentifier();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_HasView(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -655,73 +572,40 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_HasView(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.HasView();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_client_t* Bridge_GetClient(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         var _result = _m.GetClient();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_client_t* Bridge_GetClient(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.GetClient();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_request_context_t* Bridge_GetRequestContext(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         var _result = _m.GetRequestContext();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_request_context_t* Bridge_GetRequestContext(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.GetRequestContext();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_CanZoom(_cef_browser_host_t* self, cef_zoom_command_t arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -731,24 +615,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_CanZoom(_cef_browser_host_t* self, cef_zoom_command_t arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        var _result = _m.CanZoom(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Zoom(_cef_browser_host_t* self, cef_zoom_command_t arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -756,22 +628,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.Zoom(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_Zoom(_cef_browser_host_t* self, cef_zoom_command_t arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.Zoom(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static double Bridge_GetDefaultZoomLevel(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -780,23 +642,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static double Bridge_GetDefaultZoomLevel(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.GetDefaultZoomLevel();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static double Bridge_GetZoomLevel(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -805,23 +656,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static double Bridge_GetZoomLevel(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.GetZoomLevel();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetZoomLevel(_cef_browser_host_t* self, double arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -829,22 +669,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.SetZoomLevel(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetZoomLevel(_cef_browser_host_t* self, double arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.SetZoomLevel(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_RunFileDialog(_cef_browser_host_t* self, cef_file_dialog_mode_t arg0, _cef_string_utf16_t* arg1, _cef_string_utf16_t* arg2, _cef_string_list_t* arg3, _cef_run_file_dialog_callback_t* arg4)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -852,30 +682,16 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _a3 = arg3;
+        var _a3 = arg3 != null ? new CefStringListRef(arg3) : null;
         var _a4 = arg4 != null ? new CefRunFileDialogCallbackRef(arg4) : null;
         _m.RunFileDialog(_a0, _a1, _a2, _a3, _a4);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_RunFileDialog(_cef_browser_host_t* self, cef_file_dialog_mode_t arg0, _cef_string_utf16_t* arg1, _cef_string_utf16_t* arg2, _cef_string_list_t* arg3, _cef_run_file_dialog_callback_t* arg4)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _a3 = arg3;
-        var _a4 = arg4 != null ? new CefRunFileDialogCallbackRef(arg4) : null;
-        _m.RunFileDialog(_a0, _a1, _a2, _a3, _a4);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_StartDownload(_cef_browser_host_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -883,22 +699,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.StartDownload(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_StartDownload(_cef_browser_host_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.StartDownload(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_DownloadImage(_cef_browser_host_t* self, _cef_string_utf16_t* arg0, int arg1, uint arg2, int arg3, _cef_download_image_callback_t* arg4)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -910,47 +716,24 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a4 = arg4 != null ? new CefDownloadImageCallbackRef(arg4) : null;
         _m.DownloadImage(_a0, _a1, _a2, _a3, _a4);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_DownloadImage(_cef_browser_host_t* self, _cef_string_utf16_t* arg0, int arg1, uint arg2, int arg3, _cef_download_image_callback_t* arg4)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4 != null ? new CefDownloadImageCallbackRef(arg4) : null;
-        _m.DownloadImage(_a0, _a1, _a2, _a3, _a4);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Print(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         _m.Print();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_Print(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        _m.Print();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_PrintToPdf(_cef_browser_host_t* self, _cef_string_utf16_t* arg0, _cef_pdf_print_settings_t* arg1, _cef_pdf_print_callback_t* arg2)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -960,24 +743,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a2 = arg2 != null ? new CefPdfPrintCallbackRef(arg2) : null;
         _m.PrintToPdf(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_PrintToPdf(_cef_browser_host_t* self, _cef_string_utf16_t* arg0, _cef_pdf_print_settings_t* arg1, _cef_pdf_print_callback_t* arg2)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1 != null ? new CefPdfPrintSettingsRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefPdfPrintCallbackRef(arg2) : null;
-        _m.PrintToPdf(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Find(_cef_browser_host_t* self, _cef_string_utf16_t* arg0, int arg1, int arg2, int arg3)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -988,25 +759,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a3 = arg3;
         _m.Find(_a0, _a1, _a2, _a3);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_Find(_cef_browser_host_t* self, _cef_string_utf16_t* arg0, int arg1, int arg2, int arg3)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        _m.Find(_a0, _a1, _a2, _a3);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_StopFinding(_cef_browser_host_t* self, int arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1014,22 +772,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.StopFinding(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_StopFinding(_cef_browser_host_t* self, int arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.StopFinding(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ShowDevTools(_cef_browser_host_t* self, _cef_window_info_t* arg0, _cef_client_t* arg1, _cef_browser_settings_t* arg2, _cef_point_t* arg3)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1040,46 +788,24 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a3 = arg3 != null ? new CefPointRef(arg3) : null;
         _m.ShowDevTools(_a0, _a1, _a2, _a3);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ShowDevTools(_cef_browser_host_t* self, _cef_window_info_t* arg0, _cef_client_t* arg1, _cef_browser_settings_t* arg2, _cef_point_t* arg3)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0 != null ? new CefWindowInfoRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefClientRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefBrowserSettingsRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefPointRef(arg3) : null;
-        _m.ShowDevTools(_a0, _a1, _a2, _a3);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_CloseDevTools(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         _m.CloseDevTools();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_CloseDevTools(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        _m.CloseDevTools();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_HasDevTools(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1088,23 +814,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_HasDevTools(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.HasDevTools();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SendDevToolsMessage(_cef_browser_host_t* self, void* arg0, nuint arg1)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1115,25 +830,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SendDevToolsMessage(_cef_browser_host_t* self, void* arg0, nuint arg1)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.SendDevToolsMessage(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_ExecuteDevToolsMethod(_cef_browser_host_t* self, int arg0, _cef_string_utf16_t* arg1, _cef_dictionary_value_t* arg2)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1145,26 +847,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_ExecuteDevToolsMethod(_cef_browser_host_t* self, int arg0, _cef_string_utf16_t* arg1, _cef_dictionary_value_t* arg2)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2 != null ? new CefDictionaryValueRef(arg2) : null;
-        var _result = _m.ExecuteDevToolsMethod(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_registration_t* Bridge_AddDevToolsMessageObserver(_cef_browser_host_t* self, _cef_dev_tools_message_observer_t* arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1172,26 +860,14 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0 != null ? new CefDevToolsMessageObserverRef(arg0) : null;
         var _result = _m.AddDevToolsMessageObserver(_a0);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_registration_t* Bridge_AddDevToolsMessageObserver(_cef_browser_host_t* self, _cef_dev_tools_message_observer_t* arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0 != null ? new CefDevToolsMessageObserverRef(arg0) : null;
-        var _result = _m.AddDevToolsMessageObserver(_a0);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_GetNavigationEntries(_cef_browser_host_t* self, _cef_navigation_entry_visitor_t* arg0, int arg1)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1200,23 +876,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a1 = arg1;
         _m.GetNavigationEntries(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_GetNavigationEntries(_cef_browser_host_t* self, _cef_navigation_entry_visitor_t* arg0, int arg1)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0 != null ? new CefNavigationEntryVisitorRef(arg0) : null;
-        var _a1 = arg1;
-        _m.GetNavigationEntries(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ReplaceMisspelling(_cef_browser_host_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1224,22 +889,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.ReplaceMisspelling(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ReplaceMisspelling(_cef_browser_host_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.ReplaceMisspelling(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_AddWordToDictionary(_cef_browser_host_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1247,22 +902,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.AddWordToDictionary(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_AddWordToDictionary(_cef_browser_host_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.AddWordToDictionary(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsWindowRenderingDisabled(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1271,44 +916,24 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsWindowRenderingDisabled(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.IsWindowRenderingDisabled();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_WasResized(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         _m.WasResized();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_WasResized(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        _m.WasResized();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_WasHidden(_cef_browser_host_t* self, int arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1316,43 +941,24 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.WasHidden(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_WasHidden(_cef_browser_host_t* self, int arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.WasHidden(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_NotifyScreenInfoChanged(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         _m.NotifyScreenInfoChanged();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_NotifyScreenInfoChanged(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        _m.NotifyScreenInfoChanged();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Invalidate(_cef_browser_host_t* self, cef_paint_element_type_t arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1360,43 +966,24 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.Invalidate(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_Invalidate(_cef_browser_host_t* self, cef_paint_element_type_t arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.Invalidate(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SendExternalBeginFrame(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         _m.SendExternalBeginFrame();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SendExternalBeginFrame(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        _m.SendExternalBeginFrame();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SendKeyEvent(_cef_browser_host_t* self, _cef_key_event_t* arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1404,22 +991,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0 != null ? new CefKeyEventRef(arg0) : null;
         _m.SendKeyEvent(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SendKeyEvent(_cef_browser_host_t* self, _cef_key_event_t* arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0 != null ? new CefKeyEventRef(arg0) : null;
-        _m.SendKeyEvent(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SendMouseClickEvent(_cef_browser_host_t* self, _cef_mouse_event_t* arg0, cef_mouse_button_type_t arg1, int arg2, int arg3)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1430,25 +1007,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a3 = arg3;
         _m.SendMouseClickEvent(_a0, _a1, _a2, _a3);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SendMouseClickEvent(_cef_browser_host_t* self, _cef_mouse_event_t* arg0, cef_mouse_button_type_t arg1, int arg2, int arg3)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        _m.SendMouseClickEvent(_a0, _a1, _a2, _a3);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SendMouseMoveEvent(_cef_browser_host_t* self, _cef_mouse_event_t* arg0, int arg1)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1457,23 +1021,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a1 = arg1;
         _m.SendMouseMoveEvent(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SendMouseMoveEvent(_cef_browser_host_t* self, _cef_mouse_event_t* arg0, int arg1)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
-        var _a1 = arg1;
-        _m.SendMouseMoveEvent(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SendMouseWheelEvent(_cef_browser_host_t* self, _cef_mouse_event_t* arg0, int arg1, int arg2)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1483,24 +1036,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a2 = arg2;
         _m.SendMouseWheelEvent(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SendMouseWheelEvent(_cef_browser_host_t* self, _cef_mouse_event_t* arg0, int arg1, int arg2)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        _m.SendMouseWheelEvent(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SendTouchEvent(_cef_browser_host_t* self, _cef_touch_event_t* arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1508,64 +1049,36 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0 != null ? new CefTouchEventRef(arg0) : null;
         _m.SendTouchEvent(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SendTouchEvent(_cef_browser_host_t* self, _cef_touch_event_t* arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0 != null ? new CefTouchEventRef(arg0) : null;
-        _m.SendTouchEvent(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SendCaptureLostEvent(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         _m.SendCaptureLostEvent();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SendCaptureLostEvent(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        _m.SendCaptureLostEvent();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_NotifyMoveOrResizeStarted(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         _m.NotifyMoveOrResizeStarted();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_NotifyMoveOrResizeStarted(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        _m.NotifyMoveOrResizeStarted();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetWindowlessFrameRate(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1574,23 +1087,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetWindowlessFrameRate(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.GetWindowlessFrameRate();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetWindowlessFrameRate(_cef_browser_host_t* self, int arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1598,22 +1100,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.SetWindowlessFrameRate(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetWindowlessFrameRate(_cef_browser_host_t* self, int arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.SetWindowlessFrameRate(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ImeSetComposition(_cef_browser_host_t* self, _cef_string_utf16_t* arg0, nuint arg1, _cef_composition_underline_t* arg2, _cef_range_t* arg3, _cef_range_t* arg4)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1625,26 +1117,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a4 = arg4 != null ? new CefRangeRef(arg4) : null;
         _m.ImeSetComposition(_a0, _a1, _a2, _a3, _a4);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ImeSetComposition(_cef_browser_host_t* self, _cef_string_utf16_t* arg0, nuint arg1, _cef_composition_underline_t* arg2, _cef_range_t* arg3, _cef_range_t* arg4)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1;
-        var _a2 = arg2 != null ? new CefCompositionUnderlineRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefRangeRef(arg3) : null;
-        var _a4 = arg4 != null ? new CefRangeRef(arg4) : null;
-        _m.ImeSetComposition(_a0, _a1, _a2, _a3, _a4);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ImeCommitText(_cef_browser_host_t* self, _cef_string_utf16_t* arg0, _cef_range_t* arg1, int arg2)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1654,24 +1132,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a2 = arg2;
         _m.ImeCommitText(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ImeCommitText(_cef_browser_host_t* self, _cef_string_utf16_t* arg0, _cef_range_t* arg1, int arg2)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-        var _a2 = arg2;
-        _m.ImeCommitText(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ImeFinishComposingText(_cef_browser_host_t* self, int arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1679,43 +1145,24 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.ImeFinishComposingText(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ImeFinishComposingText(_cef_browser_host_t* self, int arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.ImeFinishComposingText(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ImeCancelComposition(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         _m.ImeCancelComposition();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ImeCancelComposition(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        _m.ImeCancelComposition();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_DragTargetDragEnter(_cef_browser_host_t* self, _cef_drag_data_t* arg0, _cef_mouse_event_t* arg1, cef_drag_operations_mask_t arg2)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1725,24 +1172,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a2 = arg2;
         _m.DragTargetDragEnter(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_DragTargetDragEnter(_cef_browser_host_t* self, _cef_drag_data_t* arg0, _cef_mouse_event_t* arg1, cef_drag_operations_mask_t arg2)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0 != null ? new CefDragDataRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefMouseEventRef(arg1) : null;
-        var _a2 = arg2;
-        _m.DragTargetDragEnter(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_DragTargetDragOver(_cef_browser_host_t* self, _cef_mouse_event_t* arg0, cef_drag_operations_mask_t arg1)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1751,44 +1186,24 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a1 = arg1;
         _m.DragTargetDragOver(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_DragTargetDragOver(_cef_browser_host_t* self, _cef_mouse_event_t* arg0, cef_drag_operations_mask_t arg1)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
-        var _a1 = arg1;
-        _m.DragTargetDragOver(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_DragTargetDragLeave(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         _m.DragTargetDragLeave();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_DragTargetDragLeave(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        _m.DragTargetDragLeave();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_DragTargetDrop(_cef_browser_host_t* self, _cef_mouse_event_t* arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1796,22 +1211,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
         _m.DragTargetDrop(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_DragTargetDrop(_cef_browser_host_t* self, _cef_mouse_event_t* arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
-        _m.DragTargetDrop(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_DragSourceEndedAt(_cef_browser_host_t* self, int arg0, int arg1, cef_drag_operations_mask_t arg2)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1821,70 +1226,38 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a2 = arg2;
         _m.DragSourceEndedAt(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_DragSourceEndedAt(_cef_browser_host_t* self, int arg0, int arg1, cef_drag_operations_mask_t arg2)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        _m.DragSourceEndedAt(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_DragSourceSystemDragEnded(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         _m.DragSourceSystemDragEnded();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_DragSourceSystemDragEnded(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        _m.DragSourceSystemDragEnded();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_navigation_entry_t* Bridge_GetVisibleNavigationEntry(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
 
         var _result = _m.GetVisibleNavigationEntry();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_navigation_entry_t* Bridge_GetVisibleNavigationEntry(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.GetVisibleNavigationEntry();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetAccessibilityState(_cef_browser_host_t* self, cef_state_t arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1892,22 +1265,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.SetAccessibilityState(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetAccessibilityState(_cef_browser_host_t* self, cef_state_t arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.SetAccessibilityState(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetAutoResizeEnabled(_cef_browser_host_t* self, int arg0, _cef_size_t* arg1, _cef_size_t* arg2)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1917,24 +1280,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a2 = arg2 != null ? new CefSizeRef(arg2) : null;
         _m.SetAutoResizeEnabled(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetAutoResizeEnabled(_cef_browser_host_t* self, int arg0, _cef_size_t* arg1, _cef_size_t* arg2)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1 != null ? new CefSizeRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefSizeRef(arg2) : null;
-        _m.SetAutoResizeEnabled(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetAudioMuted(_cef_browser_host_t* self, int arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1942,22 +1293,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.SetAudioMuted(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetAudioMuted(_cef_browser_host_t* self, int arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.SetAudioMuted(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsAudioMuted(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1966,23 +1307,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsAudioMuted(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.IsAudioMuted();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsFullscreen(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -1991,23 +1321,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsFullscreen(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.IsFullscreen();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ExitFullscreen(_cef_browser_host_t* self, int arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -2015,22 +1334,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.ExitFullscreen(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ExitFullscreen(_cef_browser_host_t* self, int arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.ExitFullscreen(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_CanExecuteChromeCommand(_cef_browser_host_t* self, int arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -2040,24 +1349,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_CanExecuteChromeCommand(_cef_browser_host_t* self, int arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        var _result = _m.CanExecuteChromeCommand(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ExecuteChromeCommand(_cef_browser_host_t* self, int arg0, cef_window_open_disposition_t arg1)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -2066,23 +1363,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a1 = arg1;
         _m.ExecuteChromeCommand(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ExecuteChromeCommand(_cef_browser_host_t* self, int arg0, cef_window_open_disposition_t arg1)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        _m.ExecuteChromeCommand(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsRenderProcessUnresponsive(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -2091,23 +1377,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsRenderProcessUnresponsive(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.IsRenderProcessUnresponsive();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_runtime_style_t Bridge_GetRuntimeStyle(_cef_browser_host_t* self)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -2116,34 +1391,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_runtime_style_t Bridge_GetRuntimeStyle(_cef_browser_host_t* self)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _result = _m.GetRuntimeStyle();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_SetAxViewportCollapse(_cef_browser_host_t* self, int arg0)
-    {
-        var _m = GetManaged<CefBrowserHost>(self);
-
-        var _a0 = arg0;
-        _m.SetAxViewportCollapse(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetAxViewportCollapse(_cef_browser_host_t* self, int arg0)
     {
         var _m = GetManaged<CefBrowserHost>(self);
@@ -2151,6 +1404,4 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         var _a0 = arg0;
         _m.SetAxViewportCollapse(_a0);
     }
-    #endif
-
 }

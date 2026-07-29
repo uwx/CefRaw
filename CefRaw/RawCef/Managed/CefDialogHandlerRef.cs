@@ -25,7 +25,7 @@ public unsafe partial class CefDialogHandlerRef : CefBaseRefCountedRef, ICefDial
     _cef_dialog_handler_t* ICefDialogHandler.NativePtr => _ptr;
 
 
-    public int OnFileDialog(ICefBrowser? arg0, cef_file_dialog_mode_t arg1, string? arg2, string? arg3, _cef_string_list_t* arg4, _cef_string_list_t* arg5, _cef_string_list_t* arg6, ICefFileDialogCallback? arg7)
+    public int OnFileDialog(ICefBrowser? arg0, cef_file_dialog_mode_t arg1, string? arg2, string? arg3, ICefStringList? arg4, ICefStringList? arg5, ICefStringList? arg6, ICefFileDialogCallback? arg7)
     {
         fixed (char* _p2 = arg2)
         fixed (char* _p3 = arg3)
@@ -34,7 +34,7 @@ public unsafe partial class CefDialogHandlerRef : CefBaseRefCountedRef, ICefDial
             CefStringRef.FillFromPinned(&_s2, _p2, arg2?.Length ?? 0);
             _cef_string_utf16_t _s3;
             CefStringRef.FillFromPinned(&_s3, _p3, arg3?.Length ?? 0);
-            var _result = _ptr->on_file_dialog(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_s2, &_s3, arg4, arg5, arg6, arg7 is null ? null : arg7.NativePtr);
+            var _result = _ptr->on_file_dialog(_ptr, arg0 is null ? null : arg0.NativePtr, arg1, &_s2, &_s3, arg4 is null ? null : arg4.NativePtr, arg5 is null ? null : arg5.NativePtr, arg6 is null ? null : arg6.NativePtr, arg7 is null ? null : arg7.NativePtr);
 
             return _result;
         }

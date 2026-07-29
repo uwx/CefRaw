@@ -43,17 +43,9 @@ public unsafe abstract partial class CefV8ArrayBufferReleaseCallback : CefBaseRe
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_ReleaseBuffer(_cef_v8_array_buffer_release_callback_t* self, void* arg0)
-    {
-        var _m = GetManaged<CefV8ArrayBufferReleaseCallback>(self);
-
-        var _a0 = arg0;
-        _m.ReleaseBuffer(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ReleaseBuffer(_cef_v8_array_buffer_release_callback_t* self, void* arg0)
     {
         var _m = GetManaged<CefV8ArrayBufferReleaseCallback>(self);
@@ -61,6 +53,4 @@ public unsafe abstract partial class CefV8ArrayBufferReleaseCallback : CefBaseRe
         var _a0 = arg0;
         _m.ReleaseBuffer(_a0);
     }
-    #endif
-
 }

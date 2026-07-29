@@ -61,6 +61,9 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnSinks(_cef_media_observer_t* self, nuint arg0, _cef_media_sink_t** arg1)
     {
         var _m = GetManaged<CefMediaObserver>(self);
@@ -69,23 +72,12 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
         var _a1 = arg1;
         _m.OnSinks(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnSinks(_cef_media_observer_t* self, nuint arg0, _cef_media_sink_t** arg1)
-    {
-        var _m = GetManaged<CefMediaObserver>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        _m.OnSinks(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnRoutes(_cef_media_observer_t* self, nuint arg0, _cef_media_route_t** arg1)
     {
         var _m = GetManaged<CefMediaObserver>(self);
@@ -94,23 +86,12 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
         var _a1 = arg1;
         _m.OnRoutes(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnRoutes(_cef_media_observer_t* self, nuint arg0, _cef_media_route_t** arg1)
-    {
-        var _m = GetManaged<CefMediaObserver>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        _m.OnRoutes(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnRouteStateChanged(_cef_media_observer_t* self, _cef_media_route_t* arg0, cef_media_route_connection_state_t arg1)
     {
         var _m = GetManaged<CefMediaObserver>(self);
@@ -119,23 +100,12 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
         var _a1 = arg1;
         _m.OnRouteStateChanged(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnRouteStateChanged(_cef_media_observer_t* self, _cef_media_route_t* arg0, cef_media_route_connection_state_t arg1)
-    {
-        var _m = GetManaged<CefMediaObserver>(self);
-
-        var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnRouteStateChanged(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnRouteMessageReceived(_cef_media_observer_t* self, _cef_media_route_t* arg0, void* arg1, nuint arg2)
     {
         var _m = GetManaged<CefMediaObserver>(self);
@@ -145,19 +115,4 @@ public unsafe abstract partial class CefMediaObserver : CefBaseRefCounted, ICefM
         var _a2 = arg2;
         _m.OnRouteMessageReceived(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnRouteMessageReceived(_cef_media_observer_t* self, _cef_media_route_t* arg0, void* arg1, nuint arg2)
-    {
-        var _m = GetManaged<CefMediaObserver>(self);
-
-        var _a0 = arg0 != null ? new CefMediaRouteRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        _m.OnRouteMessageReceived(_a0, _a1, _a2);
-    }
-    #endif
-
 }

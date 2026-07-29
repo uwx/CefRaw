@@ -43,24 +43,9 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_Execute(_cef_v8_handler_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, nuint arg2, _cef_v8_value_t** arg3, _cef_v8_value_t** arg4, _cef_string_utf16_t* arg5)
-    {
-        var _m = GetManaged<CefV8Handler>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _a5 = CefStringRef.ToStringAndFree(arg5);
-        var _result = _m.Execute(_a0, _a1, _a2, _a3, _a4, _a5);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_Execute(_cef_v8_handler_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, nuint arg2, _cef_v8_value_t** arg3, _cef_v8_value_t** arg4, _cef_string_utf16_t* arg5)
     {
         var _m = GetManaged<CefV8Handler>(self);
@@ -75,6 +60,4 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
 
         return _result;
     }
-    #endif
-
 }

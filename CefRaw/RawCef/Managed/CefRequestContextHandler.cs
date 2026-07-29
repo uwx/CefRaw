@@ -49,17 +49,9 @@ public unsafe abstract partial class CefRequestContextHandler : CefBaseRefCounte
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnRequestContextInitialized(_cef_request_context_handler_t* self, _cef_request_context_t* arg0)
-    {
-        var _m = GetManaged<CefRequestContextHandler>(self);
-
-        var _a0 = arg0 != null ? new CefRequestContextRef(arg0) : null;
-        _m.OnRequestContextInitialized(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnRequestContextInitialized(_cef_request_context_handler_t* self, _cef_request_context_t* arg0)
     {
         var _m = GetManaged<CefRequestContextHandler>(self);
@@ -67,30 +59,12 @@ public unsafe abstract partial class CefRequestContextHandler : CefBaseRefCounte
         var _a0 = arg0 != null ? new CefRequestContextRef(arg0) : null;
         _m.OnRequestContextInitialized(_a0);
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static _cef_resource_request_handler_t* Bridge_GetResourceRequestHandler(_cef_request_context_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, int arg3, int arg4, _cef_string_utf16_t* arg5, int* arg6)
-    {
-        var _m = GetManaged<CefRequestContextHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _a5 = CefStringRef.ToStringAndFree(arg5);
-        var _a6 = arg6;
-        var _result = _m.GetResourceRequestHandler(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_resource_request_handler_t* Bridge_GetResourceRequestHandler(_cef_request_context_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, int arg3, int arg4, _cef_string_utf16_t* arg5, int* arg6)
     {
         var _m = GetManaged<CefRequestContextHandler>(self);
@@ -104,8 +78,6 @@ public unsafe abstract partial class CefRequestContextHandler : CefBaseRefCounte
         var _a6 = arg6;
         var _result = _m.GetResourceRequestHandler(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
 }

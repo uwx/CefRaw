@@ -49,18 +49,9 @@ public unsafe abstract partial class CefAuthCallback : CefBaseRefCounted, ICefAu
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cont(_cef_auth_callback_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefAuthCallback>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        _m.Cont(_a0, _a1);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cont(_cef_auth_callback_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefAuthCallback>(self);
@@ -69,27 +60,16 @@ public unsafe abstract partial class CefAuthCallback : CefBaseRefCounted, ICefAu
         var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.Cont(_a0, _a1);
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cancel(_cef_auth_callback_t* self)
-    {
-        var _m = GetManaged<CefAuthCallback>(self);
-
-        _m.Cancel();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cancel(_cef_auth_callback_t* self)
     {
         var _m = GetManaged<CefAuthCallback>(self);
 
         _m.Cancel();
     }
-    #endif
-
 }

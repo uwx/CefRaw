@@ -43,19 +43,9 @@ public unsafe abstract partial class CefDownloadImageCallback : CefBaseRefCounte
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnDownloadImageFinished(_cef_download_image_callback_t* self, _cef_string_utf16_t* arg0, int arg1, _cef_image_t* arg2)
-    {
-        var _m = GetManaged<CefDownloadImageCallback>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1;
-        var _a2 = arg2 != null ? new CefImageRef(arg2) : null;
-        _m.OnDownloadImageFinished(_a0, _a1, _a2);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnDownloadImageFinished(_cef_download_image_callback_t* self, _cef_string_utf16_t* arg0, int arg1, _cef_image_t* arg2)
     {
         var _m = GetManaged<CefDownloadImageCallback>(self);
@@ -65,6 +55,4 @@ public unsafe abstract partial class CefDownloadImageCallback : CefBaseRefCounte
         var _a2 = arg2 != null ? new CefImageRef(arg2) : null;
         _m.OnDownloadImageFinished(_a0, _a1, _a2);
     }
-    #endif
-
 }

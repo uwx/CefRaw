@@ -73,6 +73,9 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnBeforePopup(_cef_life_span_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, int arg2, _cef_string_utf16_t* arg3, _cef_string_utf16_t* arg4, cef_window_open_disposition_t arg5, int arg6, _cef_popup_features_t* arg7, _cef_window_info_t* arg8, _cef_client_t** arg9, _cef_browser_settings_t* arg10, _cef_dictionary_value_t** arg11, int* arg12)
     {
         var _m = GetManaged<CefLifeSpanHandler>(self);
@@ -94,36 +97,12 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnBeforePopup(_cef_life_span_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, int arg2, _cef_string_utf16_t* arg3, _cef_string_utf16_t* arg4, cef_window_open_disposition_t arg5, int arg6, _cef_popup_features_t* arg7, _cef_window_info_t* arg8, _cef_client_t** arg9, _cef_browser_settings_t* arg10, _cef_dictionary_value_t** arg11, int* arg12)
-    {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
-        var _a4 = CefStringRef.ToStringAndFree(arg4);
-        var _a5 = arg5;
-        var _a6 = arg6;
-        var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;
-        var _a8 = arg8 != null ? new CefWindowInfoRef(arg8) : null;
-        var _a9 = arg9;
-        var _a10 = arg10 != null ? new CefBrowserSettingsRef(arg10) : null;
-        var _a11 = arg11;
-        var _a12 = arg12;
-        var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7, _a8, _a9, _a10, _a11, _a12);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnBeforePopupAborted(_cef_life_span_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
         var _m = GetManaged<CefLifeSpanHandler>(self);
@@ -132,23 +111,12 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
         var _a1 = arg1;
         _m.OnBeforePopupAborted(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnBeforePopupAborted(_cef_life_span_handler_t* self, _cef_browser_t* arg0, int arg1)
-    {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnBeforePopupAborted(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnBeforeDevToolsPopup(_cef_life_span_handler_t* self, _cef_browser_t* arg0, _cef_window_info_t* arg1, _cef_client_t** arg2, _cef_browser_settings_t* arg3, _cef_dictionary_value_t** arg4, int* arg5)
     {
         var _m = GetManaged<CefLifeSpanHandler>(self);
@@ -161,27 +129,12 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
         var _a5 = arg5;
         _m.OnBeforeDevToolsPopup(_a0, _a1, _a2, _a3, _a4, _a5);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnBeforeDevToolsPopup(_cef_life_span_handler_t* self, _cef_browser_t* arg0, _cef_window_info_t* arg1, _cef_client_t** arg2, _cef_browser_settings_t* arg3, _cef_dictionary_value_t** arg4, int* arg5)
-    {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefWindowInfoRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefBrowserSettingsRef(arg3) : null;
-        var _a4 = arg4;
-        var _a5 = arg5;
-        _m.OnBeforeDevToolsPopup(_a0, _a1, _a2, _a3, _a4, _a5);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnAfterCreated(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
     {
         var _m = GetManaged<CefLifeSpanHandler>(self);
@@ -189,22 +142,12 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         _m.OnAfterCreated(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnAfterCreated(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
-    {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnAfterCreated(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_DoClose(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
     {
         var _m = GetManaged<CefLifeSpanHandler>(self);
@@ -214,35 +157,12 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_DoClose(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
-    {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _result = _m.DoClose(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnBeforeClose(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
-    {
-        var _m = GetManaged<CefLifeSpanHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnBeforeClose(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnBeforeClose(_cef_life_span_handler_t* self, _cef_browser_t* arg0)
     {
         var _m = GetManaged<CefLifeSpanHandler>(self);
@@ -250,6 +170,4 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         _m.OnBeforeClose(_a0);
     }
-    #endif
-
 }

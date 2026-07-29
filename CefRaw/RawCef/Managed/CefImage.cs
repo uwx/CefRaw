@@ -115,18 +115,9 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_IsEmpty(_cef_image_t* self)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _result = _m.IsEmpty();
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsEmpty(_cef_image_t* self)
     {
         var _m = GetManaged<CefImage>(self);
@@ -135,11 +126,12 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
 
         return _result;
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsSame(_cef_image_t* self, _cef_image_t* arg0)
     {
         var _m = GetManaged<CefImage>(self);
@@ -149,24 +141,12 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsSame(_cef_image_t* self, _cef_image_t* arg0)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _a0 = arg0 != null ? new CefImageRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_AddBitmap(_cef_image_t* self, float arg0, int arg1, int arg2, cef_color_type_t arg3, cef_alpha_type_t arg4, void* arg5, nuint arg6)
     {
         var _m = GetManaged<CefImage>(self);
@@ -182,30 +162,12 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_AddBitmap(_cef_image_t* self, float arg0, int arg1, int arg2, cef_color_type_t arg3, cef_alpha_type_t arg4, void* arg5, nuint arg6)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _a5 = arg5;
-        var _a6 = arg6;
-        var _result = _m.AddBitmap(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_AddPng(_cef_image_t* self, float arg0, void* arg1, nuint arg2)
     {
         var _m = GetManaged<CefImage>(self);
@@ -217,26 +179,12 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_AddPng(_cef_image_t* self, float arg0, void* arg1, nuint arg2)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.AddPng(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_AddJpeg(_cef_image_t* self, float arg0, void* arg1, nuint arg2)
     {
         var _m = GetManaged<CefImage>(self);
@@ -248,26 +196,12 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_AddJpeg(_cef_image_t* self, float arg0, void* arg1, nuint arg2)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.AddJpeg(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_GetWidth(_cef_image_t* self)
     {
         var _m = GetManaged<CefImage>(self);
@@ -276,23 +210,12 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_GetWidth(_cef_image_t* self)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _result = _m.GetWidth();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_GetHeight(_cef_image_t* self)
     {
         var _m = GetManaged<CefImage>(self);
@@ -301,23 +224,12 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_GetHeight(_cef_image_t* self)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _result = _m.GetHeight();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_HasRepresentation(_cef_image_t* self, float arg0)
     {
         var _m = GetManaged<CefImage>(self);
@@ -327,24 +239,12 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_HasRepresentation(_cef_image_t* self, float arg0)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _a0 = arg0;
-        var _result = _m.HasRepresentation(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_RemoveRepresentation(_cef_image_t* self, float arg0)
     {
         var _m = GetManaged<CefImage>(self);
@@ -354,24 +254,12 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_RemoveRepresentation(_cef_image_t* self, float arg0)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _a0 = arg0;
-        var _result = _m.RemoveRepresentation(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetRepresentationInfo(_cef_image_t* self, float arg0, float* arg1, int* arg2, int* arg3)
     {
         var _m = GetManaged<CefImage>(self);
@@ -384,27 +272,12 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetRepresentationInfo(_cef_image_t* self, float arg0, float* arg1, int* arg2, int* arg3)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.GetRepresentationInfo(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_binary_value_t* Bridge_GetAsBitmap(_cef_image_t* self, float arg0, cef_color_type_t arg1, cef_alpha_type_t arg2, int* arg3, int* arg4)
     {
         var _m = GetManaged<CefImage>(self);
@@ -416,30 +289,14 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
         var _a4 = arg4;
         var _result = _m.GetAsBitmap(_a0, _a1, _a2, _a3, _a4);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_binary_value_t* Bridge_GetAsBitmap(_cef_image_t* self, float arg0, cef_color_type_t arg1, cef_alpha_type_t arg2, int* arg3, int* arg4)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _result = _m.GetAsBitmap(_a0, _a1, _a2, _a3, _a4);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_binary_value_t* Bridge_GetAsPng(_cef_image_t* self, float arg0, int arg1, int* arg2, int* arg3)
     {
         var _m = GetManaged<CefImage>(self);
@@ -450,45 +307,14 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
         var _a3 = arg3;
         var _result = _m.GetAsPng(_a0, _a1, _a2, _a3);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_binary_value_t* Bridge_GetAsPng(_cef_image_t* self, float arg0, int arg1, int* arg2, int* arg3)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.GetAsPng(_a0, _a1, _a2, _a3);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static _cef_binary_value_t* Bridge_GetAsJpeg(_cef_image_t* self, float arg0, int arg1, int* arg2, int* arg3)
-    {
-        var _m = GetManaged<CefImage>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.GetAsJpeg(_a0, _a1, _a2, _a3);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_binary_value_t* Bridge_GetAsJpeg(_cef_image_t* self, float arg0, int arg1, int* arg2, int* arg3)
     {
         var _m = GetManaged<CefImage>(self);
@@ -499,8 +325,6 @@ public unsafe abstract partial class CefImage : CefBaseRefCounted, ICefImage
         var _a3 = arg3;
         var _result = _m.GetAsJpeg(_a0, _a1, _a2, _a3);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
 }

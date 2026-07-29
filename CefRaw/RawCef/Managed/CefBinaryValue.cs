@@ -85,6 +85,9 @@ public unsafe abstract partial class CefBinaryValue : CefBaseRefCounted, ICefBin
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsValid(_cef_binary_value_t* self)
     {
         var _m = GetManaged<CefBinaryValue>(self);
@@ -93,23 +96,12 @@ public unsafe abstract partial class CefBinaryValue : CefBaseRefCounted, ICefBin
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsValid(_cef_binary_value_t* self)
-    {
-        var _m = GetManaged<CefBinaryValue>(self);
-
-        var _result = _m.IsValid();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsOwned(_cef_binary_value_t* self)
     {
         var _m = GetManaged<CefBinaryValue>(self);
@@ -118,23 +110,12 @@ public unsafe abstract partial class CefBinaryValue : CefBaseRefCounted, ICefBin
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsOwned(_cef_binary_value_t* self)
-    {
-        var _m = GetManaged<CefBinaryValue>(self);
-
-        var _result = _m.IsOwned();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsSame(_cef_binary_value_t* self, _cef_binary_value_t* arg0)
     {
         var _m = GetManaged<CefBinaryValue>(self);
@@ -144,24 +125,12 @@ public unsafe abstract partial class CefBinaryValue : CefBaseRefCounted, ICefBin
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsSame(_cef_binary_value_t* self, _cef_binary_value_t* arg0)
-    {
-        var _m = GetManaged<CefBinaryValue>(self);
-
-        var _a0 = arg0 != null ? new CefBinaryValueRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsEqual(_cef_binary_value_t* self, _cef_binary_value_t* arg0)
     {
         var _m = GetManaged<CefBinaryValue>(self);
@@ -171,49 +140,26 @@ public unsafe abstract partial class CefBinaryValue : CefBaseRefCounted, ICefBin
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsEqual(_cef_binary_value_t* self, _cef_binary_value_t* arg0)
-    {
-        var _m = GetManaged<CefBinaryValue>(self);
-
-        var _a0 = arg0 != null ? new CefBinaryValueRef(arg0) : null;
-        var _result = _m.IsEqual(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_binary_value_t* Bridge_Copy(_cef_binary_value_t* self)
     {
         var _m = GetManaged<CefBinaryValue>(self);
 
         var _result = _m.Copy();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_binary_value_t* Bridge_Copy(_cef_binary_value_t* self)
-    {
-        var _m = GetManaged<CefBinaryValue>(self);
-
-        var _result = _m.Copy();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void* Bridge_GetRawData(_cef_binary_value_t* self)
     {
         var _m = GetManaged<CefBinaryValue>(self);
@@ -222,23 +168,12 @@ public unsafe abstract partial class CefBinaryValue : CefBaseRefCounted, ICefBin
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void* Bridge_GetRawData(_cef_binary_value_t* self)
-    {
-        var _m = GetManaged<CefBinaryValue>(self);
-
-        var _result = _m.GetRawData();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_GetSize(_cef_binary_value_t* self)
     {
         var _m = GetManaged<CefBinaryValue>(self);
@@ -247,23 +182,12 @@ public unsafe abstract partial class CefBinaryValue : CefBaseRefCounted, ICefBin
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_GetSize(_cef_binary_value_t* self)
-    {
-        var _m = GetManaged<CefBinaryValue>(self);
-
-        var _result = _m.GetSize();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_GetData(_cef_binary_value_t* self, void* arg0, nuint arg1, nuint arg2)
     {
         var _m = GetManaged<CefBinaryValue>(self);
@@ -275,21 +199,4 @@ public unsafe abstract partial class CefBinaryValue : CefBaseRefCounted, ICefBin
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_GetData(_cef_binary_value_t* self, void* arg0, nuint arg1, nuint arg2)
-    {
-        var _m = GetManaged<CefBinaryValue>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.GetData(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 }

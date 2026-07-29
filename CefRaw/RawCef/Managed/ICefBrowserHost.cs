@@ -44,7 +44,7 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void SetZoomLevel(double arg0);
 
-    public void RunFileDialog(cef_file_dialog_mode_t arg0, string? arg1, string? arg2, _cef_string_list_t* arg3, ICefRunFileDialogCallback? arg4);
+    public void RunFileDialog(cef_file_dialog_mode_t arg0, string? arg1, string? arg2, ICefStringList? arg3, ICefRunFileDialogCallback? arg4);
 
     public void StartDownload(string? arg0);
 

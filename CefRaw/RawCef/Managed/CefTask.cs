@@ -43,22 +43,13 @@ public unsafe abstract partial class CefTask : CefBaseRefCounted, ICefTask
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Execute(_cef_task_t* self)
-    {
-        var _m = GetManaged<CefTask>(self);
-
-        _m.Execute();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Execute(_cef_task_t* self)
     {
         var _m = GetManaged<CefTask>(self);
 
         _m.Execute();
     }
-    #endif
-
 }

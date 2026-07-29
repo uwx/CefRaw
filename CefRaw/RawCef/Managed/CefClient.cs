@@ -151,456 +151,261 @@ public unsafe abstract partial class CefClient : CefBaseRefCounted, ICefClient
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_audio_handler_t* Bridge_GetAudioHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetAudioHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_audio_handler_t* Bridge_GetAudioHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetAudioHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_command_handler_t* Bridge_GetCommandHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetCommandHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_command_handler_t* Bridge_GetCommandHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetCommandHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_context_menu_handler_t* Bridge_GetContextMenuHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetContextMenuHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_context_menu_handler_t* Bridge_GetContextMenuHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetContextMenuHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_dialog_handler_t* Bridge_GetDialogHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetDialogHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_dialog_handler_t* Bridge_GetDialogHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetDialogHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_display_handler_t* Bridge_GetDisplayHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetDisplayHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_display_handler_t* Bridge_GetDisplayHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetDisplayHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_download_handler_t* Bridge_GetDownloadHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetDownloadHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_download_handler_t* Bridge_GetDownloadHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetDownloadHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_drag_handler_t* Bridge_GetDragHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetDragHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_drag_handler_t* Bridge_GetDragHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetDragHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_find_handler_t* Bridge_GetFindHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetFindHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_find_handler_t* Bridge_GetFindHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetFindHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_focus_handler_t* Bridge_GetFocusHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetFocusHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_focus_handler_t* Bridge_GetFocusHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetFocusHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_frame_handler_t* Bridge_GetFrameHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetFrameHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_frame_handler_t* Bridge_GetFrameHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetFrameHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_permission_handler_t* Bridge_GetPermissionHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetPermissionHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_permission_handler_t* Bridge_GetPermissionHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetPermissionHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_jsdialog_handler_t* Bridge_GetJsdialogHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetJsdialogHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_jsdialog_handler_t* Bridge_GetJsdialogHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetJsdialogHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_keyboard_handler_t* Bridge_GetKeyboardHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetKeyboardHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_keyboard_handler_t* Bridge_GetKeyboardHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetKeyboardHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_life_span_handler_t* Bridge_GetLifeSpanHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetLifeSpanHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_life_span_handler_t* Bridge_GetLifeSpanHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetLifeSpanHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_load_handler_t* Bridge_GetLoadHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetLoadHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_load_handler_t* Bridge_GetLoadHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetLoadHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_print_handler_t* Bridge_GetPrintHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetPrintHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_print_handler_t* Bridge_GetPrintHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetPrintHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_render_handler_t* Bridge_GetRenderHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetRenderHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_render_handler_t* Bridge_GetRenderHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetRenderHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_request_handler_t* Bridge_GetRequestHandler(_cef_client_t* self)
     {
         var _m = GetManaged<CefClient>(self);
 
         var _result = _m.GetRequestHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_request_handler_t* Bridge_GetRequestHandler(_cef_client_t* self)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _result = _m.GetRequestHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnProcessMessageReceived(_cef_client_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, cef_process_id_t arg2, _cef_process_message_t* arg3)
     {
         var _m = GetManaged<CefClient>(self);
@@ -613,22 +418,4 @@ public unsafe abstract partial class CefClient : CefBaseRefCounted, ICefClient
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnProcessMessageReceived(_cef_client_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, cef_process_id_t arg2, _cef_process_message_t* arg3)
-    {
-        var _m = GetManaged<CefClient>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefProcessMessageRef(arg3) : null;
-        var _result = _m.OnProcessMessageReceived(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
 }

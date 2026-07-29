@@ -42,7 +42,7 @@ public unsafe partial interface ICefContextMenuParams : ICefBaseRefCounted
 
     public cef_string_userfree_utf16_t GetMisspelledWord();
 
-    public int GetDictionarySuggestions(_cef_string_list_t* arg0);
+    public int GetDictionarySuggestions(ICefStringList? arg0);
 
     public int IsEditable();
 

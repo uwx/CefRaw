@@ -43,22 +43,13 @@ public unsafe abstract partial class CefPrintJobCallback : CefBaseRefCounted, IC
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cont(_cef_print_job_callback_t* self)
-    {
-        var _m = GetManaged<CefPrintJobCallback>(self);
-
-        _m.Cont();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cont(_cef_print_job_callback_t* self)
     {
         var _m = GetManaged<CefPrintJobCallback>(self);
 
         _m.Cont();
     }
-    #endif
-
 }

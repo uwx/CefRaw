@@ -43,20 +43,9 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_AddPreference(_cef_preference_registrar_t* self, _cef_string_utf16_t* arg0, _cef_value_t* arg1)
-    {
-        var _m = GetManaged<CefPreferenceRegistrar>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
-        var _result = _m.AddPreference(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_AddPreference(_cef_preference_registrar_t* self, _cef_string_utf16_t* arg0, _cef_value_t* arg1)
     {
         var _m = GetManaged<CefPreferenceRegistrar>(self);
@@ -67,6 +56,4 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
 
         return _result;
     }
-    #endif
-
 }

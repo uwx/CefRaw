@@ -175,6 +175,9 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsSame(_cef_request_context_t* self, _cef_request_context_t* arg0)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -184,24 +187,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsSame(_cef_request_context_t* self, _cef_request_context_t* arg0)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = arg0 != null ? new CefRequestContextRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsSharingWith(_cef_request_context_t* self, _cef_request_context_t* arg0)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -211,24 +202,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsSharingWith(_cef_request_context_t* self, _cef_request_context_t* arg0)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = arg0 != null ? new CefRequestContextRef(arg0) : null;
-        var _result = _m.IsSharingWith(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsGlobal(_cef_request_context_t* self)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -237,48 +216,26 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsGlobal(_cef_request_context_t* self)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _result = _m.IsGlobal();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_request_context_handler_t* Bridge_GetHandler(_cef_request_context_t* self)
     {
         var _m = GetManaged<CefRequestContext>(self);
 
         var _result = _m.GetHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_request_context_handler_t* Bridge_GetHandler(_cef_request_context_t* self)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _result = _m.GetHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetCachePath(_cef_request_context_t* self)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -287,23 +244,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetCachePath(_cef_request_context_t* self)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _result = _m.GetCachePath();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_cookie_manager_t* Bridge_GetCookieManager(_cef_request_context_t* self, _cef_completion_callback_t* arg0)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -311,26 +257,14 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
         var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
         var _result = _m.GetCookieManager(_a0);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_cookie_manager_t* Bridge_GetCookieManager(_cef_request_context_t* self, _cef_completion_callback_t* arg0)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
-        var _result = _m.GetCookieManager(_a0);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_RegisterSchemeHandlerFactory(_cef_request_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, _cef_scheme_handler_factory_t* arg2)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -342,26 +276,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_RegisterSchemeHandlerFactory(_cef_request_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, _cef_scheme_handler_factory_t* arg2)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2 != null ? new CefSchemeHandlerFactoryRef(arg2) : null;
-        var _result = _m.RegisterSchemeHandlerFactory(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_ClearSchemeHandlerFactories(_cef_request_context_t* self)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -370,23 +290,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_ClearSchemeHandlerFactories(_cef_request_context_t* self)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _result = _m.ClearSchemeHandlerFactories();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ClearCertificateExceptions(_cef_request_context_t* self, _cef_completion_callback_t* arg0)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -394,22 +303,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
         var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
         _m.ClearCertificateExceptions(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ClearCertificateExceptions(_cef_request_context_t* self, _cef_completion_callback_t* arg0)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
-        _m.ClearCertificateExceptions(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ClearHttpAuthCredentials(_cef_request_context_t* self, _cef_completion_callback_t* arg0)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -417,22 +316,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
         var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
         _m.ClearHttpAuthCredentials(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ClearHttpAuthCredentials(_cef_request_context_t* self, _cef_completion_callback_t* arg0)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
-        _m.ClearHttpAuthCredentials(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_CloseAllConnections(_cef_request_context_t* self, _cef_completion_callback_t* arg0)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -440,22 +329,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
         var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
         _m.CloseAllConnections(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_CloseAllConnections(_cef_request_context_t* self, _cef_completion_callback_t* arg0)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
-        _m.CloseAllConnections(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ResolveHost(_cef_request_context_t* self, _cef_string_utf16_t* arg0, _cef_resolve_callback_t* arg1)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -464,23 +343,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
         var _a1 = arg1 != null ? new CefResolveCallbackRef(arg1) : null;
         _m.ResolveHost(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ResolveHost(_cef_request_context_t* self, _cef_string_utf16_t* arg0, _cef_resolve_callback_t* arg1)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1 != null ? new CefResolveCallbackRef(arg1) : null;
-        _m.ResolveHost(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_media_router_t* Bridge_GetMediaRouter(_cef_request_context_t* self, _cef_completion_callback_t* arg0)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -488,26 +356,14 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
         var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
         var _result = _m.GetMediaRouter(_a0);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_media_router_t* Bridge_GetMediaRouter(_cef_request_context_t* self, _cef_completion_callback_t* arg0)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
-        var _result = _m.GetMediaRouter(_a0);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_value_t* Bridge_GetWebsiteSetting(_cef_request_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, cef_content_setting_types_t arg2)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -517,28 +373,14 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
         var _a2 = arg2;
         var _result = _m.GetWebsiteSetting(_a0, _a1, _a2);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_value_t* Bridge_GetWebsiteSetting(_cef_request_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, cef_content_setting_types_t arg2)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2;
-        var _result = _m.GetWebsiteSetting(_a0, _a1, _a2);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetWebsiteSetting(_cef_request_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, cef_content_setting_types_t arg2, _cef_value_t* arg3)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -549,25 +391,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
         var _a3 = arg3 != null ? new CefValueRef(arg3) : null;
         _m.SetWebsiteSetting(_a0, _a1, _a2, _a3);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetWebsiteSetting(_cef_request_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, cef_content_setting_types_t arg2, _cef_value_t* arg3)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefValueRef(arg3) : null;
-        _m.SetWebsiteSetting(_a0, _a1, _a2, _a3);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_content_setting_values_t Bridge_GetContentSetting(_cef_request_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, cef_content_setting_types_t arg2)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -579,26 +408,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_content_setting_values_t Bridge_GetContentSetting(_cef_request_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, cef_content_setting_types_t arg2)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2;
-        var _result = _m.GetContentSetting(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetContentSetting(_cef_request_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, cef_content_setting_types_t arg2, cef_content_setting_values_t arg3)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -609,25 +424,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
         var _a3 = arg3;
         _m.SetContentSetting(_a0, _a1, _a2, _a3);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetContentSetting(_cef_request_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, cef_content_setting_types_t arg2, cef_content_setting_values_t arg3)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2;
-        var _a3 = arg3;
-        _m.SetContentSetting(_a0, _a1, _a2, _a3);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetChromeColorScheme(_cef_request_context_t* self, cef_color_variant_t arg0, uint arg1)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -636,23 +438,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
         var _a1 = arg1;
         _m.SetChromeColorScheme(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetChromeColorScheme(_cef_request_context_t* self, cef_color_variant_t arg0, uint arg1)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        _m.SetChromeColorScheme(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_color_variant_t Bridge_GetChromeColorSchemeMode(_cef_request_context_t* self)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -661,23 +452,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_color_variant_t Bridge_GetChromeColorSchemeMode(_cef_request_context_t* self)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _result = _m.GetChromeColorSchemeMode();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static uint Bridge_GetChromeColorSchemeColor(_cef_request_context_t* self)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -686,23 +466,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static uint Bridge_GetChromeColorSchemeColor(_cef_request_context_t* self)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _result = _m.GetChromeColorSchemeColor();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_color_variant_t Bridge_GetChromeColorSchemeVariant(_cef_request_context_t* self)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -711,23 +480,12 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_color_variant_t Bridge_GetChromeColorSchemeVariant(_cef_request_context_t* self)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _result = _m.GetChromeColorSchemeVariant();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_registration_t* Bridge_AddSettingObserver(_cef_request_context_t* self, _cef_setting_observer_t* arg0)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -735,37 +493,14 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
         var _a0 = arg0 != null ? new CefSettingObserverRef(arg0) : null;
         var _result = _m.AddSettingObserver(_a0);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_registration_t* Bridge_AddSettingObserver(_cef_request_context_t* self, _cef_setting_observer_t* arg0)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = arg0 != null ? new CefSettingObserverRef(arg0) : null;
-        var _result = _m.AddSettingObserver(_a0);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_ClearHttpCache(_cef_request_context_t* self, _cef_completion_callback_t* arg0)
-    {
-        var _m = GetManaged<CefRequestContext>(self);
-
-        var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
-        _m.ClearHttpCache(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ClearHttpCache(_cef_request_context_t* self, _cef_completion_callback_t* arg0)
     {
         var _m = GetManaged<CefRequestContext>(self);
@@ -773,6 +508,4 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
         var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
         _m.ClearHttpCache(_a0);
     }
-    #endif
-
 }

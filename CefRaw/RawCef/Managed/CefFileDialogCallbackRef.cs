@@ -25,9 +25,9 @@ public unsafe partial class CefFileDialogCallbackRef : CefBaseRefCountedRef, ICe
     _cef_file_dialog_callback_t* ICefFileDialogCallback.NativePtr => _ptr;
 
 
-    public void Cont(_cef_string_list_t* arg0)
+    public void Cont(ICefStringList? arg0)
     {
-        _ptr->cont(_ptr, arg0);
+        _ptr->cont(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
     public void Cancel()

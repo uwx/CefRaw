@@ -91,31 +91,23 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static _cef_task_runner_t* Bridge_GetTaskRunner(_cef_v8_context_t* self)
-    {
-        var _m = GetManaged<CefV8Context>(self);
-
-        var _result = _m.GetTaskRunner();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_task_runner_t* Bridge_GetTaskRunner(_cef_v8_context_t* self)
     {
         var _m = GetManaged<CefV8Context>(self);
 
         var _result = _m.GetTaskRunner();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsValid(_cef_v8_context_t* self)
     {
         var _m = GetManaged<CefV8Context>(self);
@@ -124,98 +116,54 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsValid(_cef_v8_context_t* self)
-    {
-        var _m = GetManaged<CefV8Context>(self);
-
-        var _result = _m.IsValid();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_browser_t* Bridge_GetBrowser(_cef_v8_context_t* self)
     {
         var _m = GetManaged<CefV8Context>(self);
 
         var _result = _m.GetBrowser();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_browser_t* Bridge_GetBrowser(_cef_v8_context_t* self)
-    {
-        var _m = GetManaged<CefV8Context>(self);
-
-        var _result = _m.GetBrowser();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_frame_t* Bridge_GetFrame(_cef_v8_context_t* self)
     {
         var _m = GetManaged<CefV8Context>(self);
 
         var _result = _m.GetFrame();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_frame_t* Bridge_GetFrame(_cef_v8_context_t* self)
-    {
-        var _m = GetManaged<CefV8Context>(self);
-
-        var _result = _m.GetFrame();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_v8_value_t* Bridge_GetGlobal(_cef_v8_context_t* self)
     {
         var _m = GetManaged<CefV8Context>(self);
 
         var _result = _m.GetGlobal();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_v8_value_t* Bridge_GetGlobal(_cef_v8_context_t* self)
-    {
-        var _m = GetManaged<CefV8Context>(self);
-
-        var _result = _m.GetGlobal();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_Enter(_cef_v8_context_t* self)
     {
         var _m = GetManaged<CefV8Context>(self);
@@ -224,23 +172,12 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_Enter(_cef_v8_context_t* self)
-    {
-        var _m = GetManaged<CefV8Context>(self);
-
-        var _result = _m.Enter();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_Exit(_cef_v8_context_t* self)
     {
         var _m = GetManaged<CefV8Context>(self);
@@ -249,23 +186,12 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_Exit(_cef_v8_context_t* self)
-    {
-        var _m = GetManaged<CefV8Context>(self);
-
-        var _result = _m.Exit();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsSame(_cef_v8_context_t* self, _cef_v8_context_t* arg0)
     {
         var _m = GetManaged<CefV8Context>(self);
@@ -275,24 +201,12 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsSame(_cef_v8_context_t* self, _cef_v8_context_t* arg0)
-    {
-        var _m = GetManaged<CefV8Context>(self);
-
-        var _a0 = arg0 != null ? new CefV8ContextRef(arg0) : null;
-        var _result = _m.IsSame(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_Eval(_cef_v8_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, int arg2, _cef_v8_value_t** arg3, _cef_v8_exception_t** arg4)
     {
         var _m = GetManaged<CefV8Context>(self);
@@ -306,23 +220,4 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_Eval(_cef_v8_context_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, int arg2, _cef_v8_value_t** arg3, _cef_v8_exception_t** arg4)
-    {
-        var _m = GetManaged<CefV8Context>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _result = _m.Eval(_a0, _a1, _a2, _a3, _a4);
-
-        return _result;
-    }
-    #endif
-
 }

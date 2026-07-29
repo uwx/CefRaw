@@ -43,17 +43,9 @@ public unsafe abstract partial class CefPreferenceObserver : CefBaseRefCounted, 
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnPreferenceChanged(_cef_preference_observer_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefPreferenceObserver>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.OnPreferenceChanged(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnPreferenceChanged(_cef_preference_observer_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefPreferenceObserver>(self);
@@ -61,6 +53,4 @@ public unsafe abstract partial class CefPreferenceObserver : CefBaseRefCounted, 
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.OnPreferenceChanged(_a0);
     }
-    #endif
-
 }

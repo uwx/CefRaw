@@ -121,6 +121,9 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_dom_document_type_t Bridge_GetType(_cef_domdocument_t* self)
     {
         var _m = GetManaged<CefDomdocument>(self);
@@ -129,98 +132,54 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_dom_document_type_t Bridge_GetType(_cef_domdocument_t* self)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _result = _m.GetType();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_domnode_t* Bridge_GetDocument(_cef_domdocument_t* self)
     {
         var _m = GetManaged<CefDomdocument>(self);
 
         var _result = _m.GetDocument();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_domnode_t* Bridge_GetDocument(_cef_domdocument_t* self)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _result = _m.GetDocument();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_domnode_t* Bridge_GetBody(_cef_domdocument_t* self)
     {
         var _m = GetManaged<CefDomdocument>(self);
 
         var _result = _m.GetBody();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_domnode_t* Bridge_GetBody(_cef_domdocument_t* self)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _result = _m.GetBody();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_domnode_t* Bridge_GetHead(_cef_domdocument_t* self)
     {
         var _m = GetManaged<CefDomdocument>(self);
 
         var _result = _m.GetHead();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_domnode_t* Bridge_GetHead(_cef_domdocument_t* self)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _result = _m.GetHead();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetTitle(_cef_domdocument_t* self)
     {
         var _m = GetManaged<CefDomdocument>(self);
@@ -229,23 +188,12 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetTitle(_cef_domdocument_t* self)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _result = _m.GetTitle();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_domnode_t* Bridge_GetElementById(_cef_domdocument_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefDomdocument>(self);
@@ -253,51 +201,28 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetElementById(_a0);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_domnode_t* Bridge_GetElementById(_cef_domdocument_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _result = _m.GetElementById(_a0);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_domnode_t* Bridge_GetFocusedNode(_cef_domdocument_t* self)
     {
         var _m = GetManaged<CefDomdocument>(self);
 
         var _result = _m.GetFocusedNode();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_domnode_t* Bridge_GetFocusedNode(_cef_domdocument_t* self)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _result = _m.GetFocusedNode();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_HasSelection(_cef_domdocument_t* self)
     {
         var _m = GetManaged<CefDomdocument>(self);
@@ -306,23 +231,12 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_HasSelection(_cef_domdocument_t* self)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _result = _m.HasSelection();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetSelectionStartOffset(_cef_domdocument_t* self)
     {
         var _m = GetManaged<CefDomdocument>(self);
@@ -331,23 +245,12 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetSelectionStartOffset(_cef_domdocument_t* self)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _result = _m.GetSelectionStartOffset();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetSelectionEndOffset(_cef_domdocument_t* self)
     {
         var _m = GetManaged<CefDomdocument>(self);
@@ -356,23 +259,12 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetSelectionEndOffset(_cef_domdocument_t* self)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _result = _m.GetSelectionEndOffset();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetSelectionAsMarkup(_cef_domdocument_t* self)
     {
         var _m = GetManaged<CefDomdocument>(self);
@@ -381,23 +273,12 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetSelectionAsMarkup(_cef_domdocument_t* self)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _result = _m.GetSelectionAsMarkup();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetSelectionAsText(_cef_domdocument_t* self)
     {
         var _m = GetManaged<CefDomdocument>(self);
@@ -406,23 +287,12 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetSelectionAsText(_cef_domdocument_t* self)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _result = _m.GetSelectionAsText();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetBaseUrl(_cef_domdocument_t* self)
     {
         var _m = GetManaged<CefDomdocument>(self);
@@ -431,23 +301,12 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetBaseUrl(_cef_domdocument_t* self)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _result = _m.GetBaseUrl();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetCompleteUrl(_cef_domdocument_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefDomdocument>(self);
@@ -457,19 +316,4 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetCompleteUrl(_cef_domdocument_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefDomdocument>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _result = _m.GetCompleteUrl(_a0);
-
-        return _result;
-    }
-    #endif
-
 }

@@ -43,17 +43,9 @@ public unsafe abstract partial class CefMediaSinkDeviceInfoCallback : CefBaseRef
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnMediaSinkDeviceInfo(_cef_media_sink_device_info_callback_t* self, _cef_media_sink_device_info_t* arg0)
-    {
-        var _m = GetManaged<CefMediaSinkDeviceInfoCallback>(self);
-
-        var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoRef(arg0) : null;
-        _m.OnMediaSinkDeviceInfo(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnMediaSinkDeviceInfo(_cef_media_sink_device_info_callback_t* self, _cef_media_sink_device_info_t* arg0)
     {
         var _m = GetManaged<CefMediaSinkDeviceInfoCallback>(self);
@@ -61,6 +53,4 @@ public unsafe abstract partial class CefMediaSinkDeviceInfoCallback : CefBaseRef
         var _a0 = arg0 != null ? new CefMediaSinkDeviceInfoRef(arg0) : null;
         _m.OnMediaSinkDeviceInfo(_a0);
     }
-    #endif
-
 }

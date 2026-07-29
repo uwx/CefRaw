@@ -70,15 +70,18 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_organization_names</c> callback.
     /// </summary>
-    public abstract void GetOrganizationNames(_cef_string_list_t* arg0);
+    public abstract void GetOrganizationNames(ICefStringList? arg0);
 
     /// <summary>
     /// Implement the <c>get_organization_unit_names</c> callback.
     /// </summary>
-    public abstract void GetOrganizationUnitNames(_cef_string_list_t* arg0);
+    public abstract void GetOrganizationUnitNames(ICefStringList? arg0);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetDisplayName(_cef_x509_cert_principal_t* self)
     {
         var _m = GetManaged<CefX509CertPrincipal>(self);
@@ -87,23 +90,12 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetDisplayName(_cef_x509_cert_principal_t* self)
-    {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
-
-        var _result = _m.GetDisplayName();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetCommonName(_cef_x509_cert_principal_t* self)
     {
         var _m = GetManaged<CefX509CertPrincipal>(self);
@@ -112,23 +104,12 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetCommonName(_cef_x509_cert_principal_t* self)
-    {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
-
-        var _result = _m.GetCommonName();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetLocalityName(_cef_x509_cert_principal_t* self)
     {
         var _m = GetManaged<CefX509CertPrincipal>(self);
@@ -137,23 +118,12 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetLocalityName(_cef_x509_cert_principal_t* self)
-    {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
-
-        var _result = _m.GetLocalityName();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetStateOrProvinceName(_cef_x509_cert_principal_t* self)
     {
         var _m = GetManaged<CefX509CertPrincipal>(self);
@@ -162,23 +132,12 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetStateOrProvinceName(_cef_x509_cert_principal_t* self)
-    {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
-
-        var _result = _m.GetStateOrProvinceName();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetCountryName(_cef_x509_cert_principal_t* self)
     {
         var _m = GetManaged<CefX509CertPrincipal>(self);
@@ -187,64 +146,30 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetCountryName(_cef_x509_cert_principal_t* self)
-    {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
-
-        var _result = _m.GetCountryName();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_GetOrganizationNames(_cef_x509_cert_principal_t* self, _cef_string_list_t* arg0)
     {
         var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _a0 = arg0;
+        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
         _m.GetOrganizationNames(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_GetOrganizationNames(_cef_x509_cert_principal_t* self, _cef_string_list_t* arg0)
-    {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
-
-        var _a0 = arg0;
-        _m.GetOrganizationNames(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_GetOrganizationUnitNames(_cef_x509_cert_principal_t* self, _cef_string_list_t* arg0)
-    {
-        var _m = GetManaged<CefX509CertPrincipal>(self);
-
-        var _a0 = arg0;
-        _m.GetOrganizationUnitNames(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_GetOrganizationUnitNames(_cef_x509_cert_principal_t* self, _cef_string_list_t* arg0)
     {
         var _m = GetManaged<CefX509CertPrincipal>(self);
 
-        var _a0 = arg0;
+        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
         _m.GetOrganizationUnitNames(_a0);
     }
-    #endif
-
 }

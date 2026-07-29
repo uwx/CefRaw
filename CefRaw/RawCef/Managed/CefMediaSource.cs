@@ -55,6 +55,9 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_source_t* self)
     {
         var _m = GetManaged<CefMediaSource>(self);
@@ -63,23 +66,12 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetId(_cef_media_source_t* self)
-    {
-        var _m = GetManaged<CefMediaSource>(self);
-
-        var _result = _m.GetId();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsCastSource(_cef_media_source_t* self)
     {
         var _m = GetManaged<CefMediaSource>(self);
@@ -88,35 +80,12 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsCastSource(_cef_media_source_t* self)
-    {
-        var _m = GetManaged<CefMediaSource>(self);
-
-        var _result = _m.IsCastSource();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_IsDialSource(_cef_media_source_t* self)
-    {
-        var _m = GetManaged<CefMediaSource>(self);
-
-        var _result = _m.IsDialSource();
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsDialSource(_cef_media_source_t* self)
     {
         var _m = GetManaged<CefMediaSource>(self);
@@ -125,6 +94,4 @@ public unsafe abstract partial class CefMediaSource : CefBaseRefCounted, ICefMed
 
         return _result;
     }
-    #endif
-
 }

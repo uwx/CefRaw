@@ -55,20 +55,9 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_GetLocalizedString(_cef_resource_bundle_handler_t* self, int arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefResourceBundleHandler>(self);
-
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.GetLocalizedString(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetLocalizedString(_cef_resource_bundle_handler_t* self, int arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefResourceBundleHandler>(self);
@@ -79,11 +68,12 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
 
         return _result;
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetDataResource(_cef_resource_bundle_handler_t* self, int arg0, void** arg1, nuint* arg2)
     {
         var _m = GetManaged<CefResourceBundleHandler>(self);
@@ -95,26 +85,12 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetDataResource(_cef_resource_bundle_handler_t* self, int arg0, void** arg1, nuint* arg2)
-    {
-        var _m = GetManaged<CefResourceBundleHandler>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.GetDataResource(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetDataResourceForScale(_cef_resource_bundle_handler_t* self, int arg0, cef_scale_factor_t arg1, void** arg2, nuint* arg3)
     {
         var _m = GetManaged<CefResourceBundleHandler>(self);
@@ -127,22 +103,4 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetDataResourceForScale(_cef_resource_bundle_handler_t* self, int arg0, cef_scale_factor_t arg1, void** arg2, nuint* arg3)
-    {
-        var _m = GetManaged<CefResourceBundleHandler>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.GetDataResourceForScale(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
 }

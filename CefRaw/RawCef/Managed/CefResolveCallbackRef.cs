@@ -25,9 +25,9 @@ public unsafe partial class CefResolveCallbackRef : CefBaseRefCountedRef, ICefRe
     _cef_resolve_callback_t* ICefResolveCallback.NativePtr => _ptr;
 
 
-    public void OnResolveCompleted(cef_errorcode_t arg0, _cef_string_list_t* arg1)
+    public void OnResolveCompleted(cef_errorcode_t arg0, ICefStringList? arg1)
     {
-        _ptr->on_resolve_completed(_ptr, arg0, arg1);
+        _ptr->on_resolve_completed(_ptr, arg0, arg1 is null ? null : arg1.NativePtr);
     }
 
     public _cef_base_ref_counted_t @base

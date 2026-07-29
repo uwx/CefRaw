@@ -49,18 +49,9 @@ public unsafe abstract partial class CefRunQuickMenuCallback : CefBaseRefCounted
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cont(_cef_run_quick_menu_callback_t* self, int arg0, cef_event_flags_t arg1)
-    {
-        var _m = GetManaged<CefRunQuickMenuCallback>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        _m.Cont(_a0, _a1);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cont(_cef_run_quick_menu_callback_t* self, int arg0, cef_event_flags_t arg1)
     {
         var _m = GetManaged<CefRunQuickMenuCallback>(self);
@@ -69,27 +60,16 @@ public unsafe abstract partial class CefRunQuickMenuCallback : CefBaseRefCounted
         var _a1 = arg1;
         _m.Cont(_a0, _a1);
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cancel(_cef_run_quick_menu_callback_t* self)
-    {
-        var _m = GetManaged<CefRunQuickMenuCallback>(self);
-
-        _m.Cancel();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cancel(_cef_run_quick_menu_callback_t* self)
     {
         var _m = GetManaged<CefRunQuickMenuCallback>(self);
 
         _m.Cancel();
     }
-    #endif
-
 }

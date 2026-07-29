@@ -55,21 +55,9 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_CanDownload(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, _cef_string_utf16_t* arg2)
-    {
-        var _m = GetManaged<CefDownloadHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _result = _m.CanDownload(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_CanDownload(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, _cef_string_utf16_t* arg2)
     {
         var _m = GetManaged<CefDownloadHandler>(self);
@@ -81,11 +69,12 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnBeforeDownload(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_download_item_t* arg1, _cef_string_utf16_t* arg2, _cef_before_download_callback_t* arg3)
     {
         var _m = GetManaged<CefDownloadHandler>(self);
@@ -98,40 +87,12 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnBeforeDownload(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_download_item_t* arg1, _cef_string_utf16_t* arg2, _cef_before_download_callback_t* arg3)
-    {
-        var _m = GetManaged<CefDownloadHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _a3 = arg3 != null ? new CefBeforeDownloadCallbackRef(arg3) : null;
-        var _result = _m.OnBeforeDownload(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnDownloadUpdated(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_download_item_t* arg1, _cef_download_item_callback_t* arg2)
-    {
-        var _m = GetManaged<CefDownloadHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefDownloadItemRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefDownloadItemCallbackRef(arg2) : null;
-        _m.OnDownloadUpdated(_a0, _a1, _a2);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnDownloadUpdated(_cef_download_handler_t* self, _cef_browser_t* arg0, _cef_download_item_t* arg1, _cef_download_item_callback_t* arg2)
     {
         var _m = GetManaged<CefDownloadHandler>(self);
@@ -141,6 +102,4 @@ public unsafe abstract partial class CefDownloadHandler : CefBaseRefCounted, ICe
         var _a2 = arg2 != null ? new CefDownloadItemCallbackRef(arg2) : null;
         _m.OnDownloadUpdated(_a0, _a1, _a2);
     }
-    #endif
-
 }

@@ -139,6 +139,9 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsReadOnly(_cef_response_t* self)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -147,23 +150,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsReadOnly(_cef_response_t* self)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _result = _m.IsReadOnly();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_errorcode_t Bridge_GetError(_cef_response_t* self)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -172,23 +164,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_errorcode_t Bridge_GetError(_cef_response_t* self)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _result = _m.GetError();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetError(_cef_response_t* self, cef_errorcode_t arg0)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -196,22 +177,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
         var _a0 = arg0;
         _m.SetError(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetError(_cef_response_t* self, cef_errorcode_t arg0)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _a0 = arg0;
-        _m.SetError(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetStatus(_cef_response_t* self)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -220,23 +191,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetStatus(_cef_response_t* self)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _result = _m.GetStatus();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetStatus(_cef_response_t* self, int arg0)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -244,22 +204,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
         var _a0 = arg0;
         _m.SetStatus(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetStatus(_cef_response_t* self, int arg0)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _a0 = arg0;
-        _m.SetStatus(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetStatusText(_cef_response_t* self)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -268,23 +218,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetStatusText(_cef_response_t* self)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _result = _m.GetStatusText();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetStatusText(_cef_response_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -292,22 +231,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetStatusText(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetStatusText(_cef_response_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.SetStatusText(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetMimeType(_cef_response_t* self)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -316,23 +245,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetMimeType(_cef_response_t* self)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _result = _m.GetMimeType();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetMimeType(_cef_response_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -340,22 +258,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetMimeType(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetMimeType(_cef_response_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.SetMimeType(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetCharset(_cef_response_t* self)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -364,23 +272,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetCharset(_cef_response_t* self)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _result = _m.GetCharset();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetCharset(_cef_response_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -388,22 +285,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetCharset(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetCharset(_cef_response_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.SetCharset(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetHeaderByName(_cef_response_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -413,24 +300,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetHeaderByName(_cef_response_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _result = _m.GetHeaderByName(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetHeaderByName(_cef_response_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, int arg2)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -440,24 +315,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
         var _a2 = arg2;
         _m.SetHeaderByName(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetHeaderByName(_cef_response_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, int arg2)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2;
-        _m.SetHeaderByName(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_GetHeaderMap(_cef_response_t* self, _cef_string_multimap_t* arg0)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -465,22 +328,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
         var _a0 = arg0;
         _m.GetHeaderMap(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_GetHeaderMap(_cef_response_t* self, _cef_string_multimap_t* arg0)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _a0 = arg0;
-        _m.GetHeaderMap(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetHeaderMap(_cef_response_t* self, _cef_string_multimap_t* arg0)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -488,22 +341,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
         var _a0 = arg0;
         _m.SetHeaderMap(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetHeaderMap(_cef_response_t* self, _cef_string_multimap_t* arg0)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _a0 = arg0;
-        _m.SetHeaderMap(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetUrl(_cef_response_t* self)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -512,34 +355,12 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetUrl(_cef_response_t* self)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _result = _m.GetUrl();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_SetUrl(_cef_response_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefResponse>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.SetUrl(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetUrl(_cef_response_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefResponse>(self);
@@ -547,6 +368,4 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetUrl(_a0);
     }
-    #endif
-
 }

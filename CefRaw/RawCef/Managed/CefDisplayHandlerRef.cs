@@ -45,9 +45,9 @@ public unsafe partial class CefDisplayHandlerRef : CefBaseRefCountedRef, ICefDis
         }
     }
 
-    public void OnFaviconUrlchange(ICefBrowser? arg0, _cef_string_list_t* arg1)
+    public void OnFaviconUrlchange(ICefBrowser? arg0, ICefStringList? arg1)
     {
-        _ptr->on_favicon_urlchange(_ptr, arg0 is null ? null : arg0.NativePtr, arg1);
+        _ptr->on_favicon_urlchange(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr);
     }
 
     public void OnFullscreenModeChange(ICefBrowser? arg0, int arg1)

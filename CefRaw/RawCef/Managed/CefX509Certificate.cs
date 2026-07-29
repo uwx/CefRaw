@@ -97,81 +97,51 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_x509_cert_principal_t* Bridge_GetSubject(_cef_x509_certificate_t* self)
     {
         var _m = GetManaged<CefX509Certificate>(self);
 
         var _result = _m.GetSubject();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_x509_cert_principal_t* Bridge_GetSubject(_cef_x509_certificate_t* self)
-    {
-        var _m = GetManaged<CefX509Certificate>(self);
-
-        var _result = _m.GetSubject();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_x509_cert_principal_t* Bridge_GetIssuer(_cef_x509_certificate_t* self)
     {
         var _m = GetManaged<CefX509Certificate>(self);
 
         var _result = _m.GetIssuer();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_x509_cert_principal_t* Bridge_GetIssuer(_cef_x509_certificate_t* self)
-    {
-        var _m = GetManaged<CefX509Certificate>(self);
-
-        var _result = _m.GetIssuer();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_binary_value_t* Bridge_GetSerialNumber(_cef_x509_certificate_t* self)
     {
         var _m = GetManaged<CefX509Certificate>(self);
 
         var _result = _m.GetSerialNumber();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_binary_value_t* Bridge_GetSerialNumber(_cef_x509_certificate_t* self)
-    {
-        var _m = GetManaged<CefX509Certificate>(self);
-
-        var _result = _m.GetSerialNumber();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_basetime_t Bridge_GetValidStart(_cef_x509_certificate_t* self)
     {
         var _m = GetManaged<CefX509Certificate>(self);
@@ -180,23 +150,12 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_basetime_t Bridge_GetValidStart(_cef_x509_certificate_t* self)
-    {
-        var _m = GetManaged<CefX509Certificate>(self);
-
-        var _result = _m.GetValidStart();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_basetime_t Bridge_GetValidExpiry(_cef_x509_certificate_t* self)
     {
         var _m = GetManaged<CefX509Certificate>(self);
@@ -205,73 +164,40 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_basetime_t Bridge_GetValidExpiry(_cef_x509_certificate_t* self)
-    {
-        var _m = GetManaged<CefX509Certificate>(self);
-
-        var _result = _m.GetValidExpiry();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_binary_value_t* Bridge_GetDerencoded(_cef_x509_certificate_t* self)
     {
         var _m = GetManaged<CefX509Certificate>(self);
 
         var _result = _m.GetDerencoded();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_binary_value_t* Bridge_GetDerencoded(_cef_x509_certificate_t* self)
-    {
-        var _m = GetManaged<CefX509Certificate>(self);
-
-        var _result = _m.GetDerencoded();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_binary_value_t* Bridge_GetPemencoded(_cef_x509_certificate_t* self)
     {
         var _m = GetManaged<CefX509Certificate>(self);
 
         var _result = _m.GetPemencoded();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_binary_value_t* Bridge_GetPemencoded(_cef_x509_certificate_t* self)
-    {
-        var _m = GetManaged<CefX509Certificate>(self);
-
-        var _result = _m.GetPemencoded();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_GetIssuerChainSize(_cef_x509_certificate_t* self)
     {
         var _m = GetManaged<CefX509Certificate>(self);
@@ -280,23 +206,12 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_GetIssuerChainSize(_cef_x509_certificate_t* self)
-    {
-        var _m = GetManaged<CefX509Certificate>(self);
-
-        var _result = _m.GetIssuerChainSize();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_GetDerencodedIssuerChain(_cef_x509_certificate_t* self, nuint* arg0, _cef_binary_value_t** arg1)
     {
         var _m = GetManaged<CefX509Certificate>(self);
@@ -305,35 +220,12 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
         var _a1 = arg1;
         _m.GetDerencodedIssuerChain(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_GetDerencodedIssuerChain(_cef_x509_certificate_t* self, nuint* arg0, _cef_binary_value_t** arg1)
-    {
-        var _m = GetManaged<CefX509Certificate>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        _m.GetDerencodedIssuerChain(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_GetPemencodedIssuerChain(_cef_x509_certificate_t* self, nuint* arg0, _cef_binary_value_t** arg1)
-    {
-        var _m = GetManaged<CefX509Certificate>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        _m.GetPemencodedIssuerChain(_a0, _a1);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_GetPemencodedIssuerChain(_cef_x509_certificate_t* self, nuint* arg0, _cef_binary_value_t** arg1)
     {
         var _m = GetManaged<CefX509Certificate>(self);
@@ -342,6 +234,4 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
         var _a1 = arg1;
         _m.GetPemencodedIssuerChain(_a0, _a1);
     }
-    #endif
-
 }

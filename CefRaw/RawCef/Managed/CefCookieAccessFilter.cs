@@ -49,22 +49,9 @@ public unsafe abstract partial class CefCookieAccessFilter : CefBaseRefCounted, 
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_CanSendCookie(_cef_cookie_access_filter_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_cookie_t* arg3)
-    {
-        var _m = GetManaged<CefCookieAccessFilter>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefCookieRef(arg3) : null;
-        var _result = _m.CanSendCookie(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_CanSendCookie(_cef_cookie_access_filter_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_cookie_t* arg3)
     {
         var _m = GetManaged<CefCookieAccessFilter>(self);
@@ -77,28 +64,12 @@ public unsafe abstract partial class CefCookieAccessFilter : CefBaseRefCounted, 
 
         return _result;
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_CanSaveCookie(_cef_cookie_access_filter_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3, _cef_cookie_t* arg4)
-    {
-        var _m = GetManaged<CefCookieAccessFilter>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefRequestRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefResponseRef(arg3) : null;
-        var _a4 = arg4 != null ? new CefCookieRef(arg4) : null;
-        var _result = _m.CanSaveCookie(_a0, _a1, _a2, _a3, _a4);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_CanSaveCookie(_cef_cookie_access_filter_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_request_t* arg2, _cef_response_t* arg3, _cef_cookie_t* arg4)
     {
         var _m = GetManaged<CefCookieAccessFilter>(self);
@@ -112,6 +83,4 @@ public unsafe abstract partial class CefCookieAccessFilter : CefBaseRefCounted, 
 
         return _result;
     }
-    #endif
-
 }

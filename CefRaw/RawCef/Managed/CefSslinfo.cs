@@ -49,18 +49,9 @@ public unsafe abstract partial class CefSslinfo : CefBaseRefCounted, ICefSslinfo
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static cef_cert_status_t Bridge_GetCertStatus(_cef_sslinfo_t* self)
-    {
-        var _m = GetManaged<CefSslinfo>(self);
-
-        var _result = _m.GetCertStatus();
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_cert_status_t Bridge_GetCertStatus(_cef_sslinfo_t* self)
     {
         var _m = GetManaged<CefSslinfo>(self);
@@ -69,31 +60,18 @@ public unsafe abstract partial class CefSslinfo : CefBaseRefCounted, ICefSslinfo
 
         return _result;
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static _cef_x509_certificate_t* Bridge_GetX509Certificate(_cef_sslinfo_t* self)
-    {
-        var _m = GetManaged<CefSslinfo>(self);
-
-        var _result = _m.GetX509Certificate();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_x509_certificate_t* Bridge_GetX509Certificate(_cef_sslinfo_t* self)
     {
         var _m = GetManaged<CefSslinfo>(self);
 
         var _result = _m.GetX509Certificate();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
 }

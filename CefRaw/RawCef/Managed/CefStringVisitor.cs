@@ -43,17 +43,9 @@ public unsafe abstract partial class CefStringVisitor : CefBaseRefCounted, ICefS
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Visit(_cef_string_visitor_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefStringVisitor>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.Visit(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Visit(_cef_string_visitor_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefStringVisitor>(self);
@@ -61,6 +53,4 @@ public unsafe abstract partial class CefStringVisitor : CefBaseRefCounted, ICefS
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.Visit(_a0);
     }
-    #endif
-
 }

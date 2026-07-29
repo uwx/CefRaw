@@ -43,22 +43,9 @@ public unsafe abstract partial class CefFindHandler : CefBaseRefCounted, ICefFin
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnFindResult(_cef_find_handler_t* self, _cef_browser_t* arg0, int arg1, int arg2, _cef_rect_t* arg3, int arg4, int arg5)
-    {
-        var _m = GetManaged<CefFindHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
-        var _a4 = arg4;
-        var _a5 = arg5;
-        _m.OnFindResult(_a0, _a1, _a2, _a3, _a4, _a5);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnFindResult(_cef_find_handler_t* self, _cef_browser_t* arg0, int arg1, int arg2, _cef_rect_t* arg3, int arg4, int arg5)
     {
         var _m = GetManaged<CefFindHandler>(self);
@@ -71,6 +58,4 @@ public unsafe abstract partial class CefFindHandler : CefBaseRefCounted, ICefFin
         var _a5 = arg5;
         _m.OnFindResult(_a0, _a1, _a2, _a3, _a4, _a5);
     }
-    #endif
-
 }

@@ -373,6 +373,9 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsSubMenu(_cef_menu_model_t* self)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -381,23 +384,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsSubMenu(_cef_menu_model_t* self)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _result = _m.IsSubMenu();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_Clear(_cef_menu_model_t* self)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -406,23 +398,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_Clear(_cef_menu_model_t* self)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _result = _m.Clear();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_GetCount(_cef_menu_model_t* self)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -431,23 +412,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_GetCount(_cef_menu_model_t* self)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _result = _m.GetCount();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_AddSeparator(_cef_menu_model_t* self)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -456,23 +426,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_AddSeparator(_cef_menu_model_t* self)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _result = _m.AddSeparator();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_AddItem(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -483,25 +442,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_AddItem(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.AddItem(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_AddCheckItem(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -512,25 +458,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_AddCheckItem(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.AddCheckItem(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_AddRadioItem(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1, int arg2)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -542,26 +475,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_AddRadioItem(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1, int arg2)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2;
-        var _result = _m.AddRadioItem(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_menu_model_t* Bridge_AddSubMenu(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -570,27 +489,14 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _a1 = CefStringRef.ToStringAndFree(arg1);
         var _result = _m.AddSubMenu(_a0, _a1);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_menu_model_t* Bridge_AddSubMenu(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.AddSubMenu(_a0, _a1);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_InsertSeparatorAt(_cef_menu_model_t* self, nuint arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -600,24 +506,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_InsertSeparatorAt(_cef_menu_model_t* self, nuint arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.InsertSeparatorAt(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_InsertItemAt(_cef_menu_model_t* self, nuint arg0, int arg1, _cef_string_utf16_t* arg2)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -629,26 +523,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_InsertItemAt(_cef_menu_model_t* self, nuint arg0, int arg1, _cef_string_utf16_t* arg2)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _result = _m.InsertItemAt(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_InsertCheckItemAt(_cef_menu_model_t* self, nuint arg0, int arg1, _cef_string_utf16_t* arg2)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -660,26 +540,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_InsertCheckItemAt(_cef_menu_model_t* self, nuint arg0, int arg1, _cef_string_utf16_t* arg2)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _result = _m.InsertCheckItemAt(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_InsertRadioItemAt(_cef_menu_model_t* self, nuint arg0, int arg1, _cef_string_utf16_t* arg2, int arg3)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -692,27 +558,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_InsertRadioItemAt(_cef_menu_model_t* self, nuint arg0, int arg1, _cef_string_utf16_t* arg2, int arg3)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _a3 = arg3;
-        var _result = _m.InsertRadioItemAt(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_menu_model_t* Bridge_InsertSubMenuAt(_cef_menu_model_t* self, nuint arg0, int arg1, _cef_string_utf16_t* arg2)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -722,28 +573,14 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _a2 = CefStringRef.ToStringAndFree(arg2);
         var _result = _m.InsertSubMenuAt(_a0, _a1, _a2);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_menu_model_t* Bridge_InsertSubMenuAt(_cef_menu_model_t* self, nuint arg0, int arg1, _cef_string_utf16_t* arg2)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _result = _m.InsertSubMenuAt(_a0, _a1, _a2);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_Remove(_cef_menu_model_t* self, int arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -753,24 +590,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_Remove(_cef_menu_model_t* self, int arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.Remove(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_RemoveAt(_cef_menu_model_t* self, nuint arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -780,24 +605,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_RemoveAt(_cef_menu_model_t* self, nuint arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.RemoveAt(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetIndexOf(_cef_menu_model_t* self, int arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -807,24 +620,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetIndexOf(_cef_menu_model_t* self, int arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetIndexOf(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetCommandIdAt(_cef_menu_model_t* self, nuint arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -834,24 +635,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetCommandIdAt(_cef_menu_model_t* self, nuint arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetCommandIdAt(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetCommandIdAt(_cef_menu_model_t* self, nuint arg0, int arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -862,25 +651,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetCommandIdAt(_cef_menu_model_t* self, nuint arg0, int arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.SetCommandIdAt(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetLabel(_cef_menu_model_t* self, int arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -890,24 +666,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetLabel(_cef_menu_model_t* self, int arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetLabel(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetLabelAt(_cef_menu_model_t* self, nuint arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -917,24 +681,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetLabelAt(_cef_menu_model_t* self, nuint arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetLabelAt(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetLabel(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -945,25 +697,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetLabel(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.SetLabel(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetLabelAt(_cef_menu_model_t* self, nuint arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -974,25 +713,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetLabelAt(_cef_menu_model_t* self, nuint arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.SetLabelAt(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_menu_item_type_t Bridge_GetType(_cef_menu_model_t* self, int arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1002,24 +728,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_menu_item_type_t Bridge_GetType(_cef_menu_model_t* self, int arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetType(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_menu_item_type_t Bridge_GetTypeAt(_cef_menu_model_t* self, nuint arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1029,24 +743,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_menu_item_type_t Bridge_GetTypeAt(_cef_menu_model_t* self, nuint arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetTypeAt(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetGroupId(_cef_menu_model_t* self, int arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1056,24 +758,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetGroupId(_cef_menu_model_t* self, int arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetGroupId(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetGroupIdAt(_cef_menu_model_t* self, nuint arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1083,24 +773,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetGroupIdAt(_cef_menu_model_t* self, nuint arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetGroupIdAt(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetGroupId(_cef_menu_model_t* self, int arg0, int arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1111,25 +789,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetGroupId(_cef_menu_model_t* self, int arg0, int arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.SetGroupId(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetGroupIdAt(_cef_menu_model_t* self, nuint arg0, int arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1140,25 +805,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetGroupIdAt(_cef_menu_model_t* self, nuint arg0, int arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.SetGroupIdAt(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_menu_model_t* Bridge_GetSubMenu(_cef_menu_model_t* self, int arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1166,26 +818,14 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _a0 = arg0;
         var _result = _m.GetSubMenu(_a0);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_menu_model_t* Bridge_GetSubMenu(_cef_menu_model_t* self, int arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetSubMenu(_a0);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_menu_model_t* Bridge_GetSubMenuAt(_cef_menu_model_t* self, nuint arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1193,26 +833,14 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
         var _a0 = arg0;
         var _result = _m.GetSubMenuAt(_a0);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_menu_model_t* Bridge_GetSubMenuAt(_cef_menu_model_t* self, nuint arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetSubMenuAt(_a0);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsVisible(_cef_menu_model_t* self, int arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1222,24 +850,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsVisible(_cef_menu_model_t* self, int arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.IsVisible(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsVisibleAt(_cef_menu_model_t* self, nuint arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1249,24 +865,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsVisibleAt(_cef_menu_model_t* self, nuint arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.IsVisibleAt(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetVisible(_cef_menu_model_t* self, int arg0, int arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1277,25 +881,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetVisible(_cef_menu_model_t* self, int arg0, int arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.SetVisible(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetVisibleAt(_cef_menu_model_t* self, nuint arg0, int arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1306,25 +897,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetVisibleAt(_cef_menu_model_t* self, nuint arg0, int arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.SetVisibleAt(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsEnabled(_cef_menu_model_t* self, int arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1334,24 +912,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsEnabled(_cef_menu_model_t* self, int arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.IsEnabled(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsEnabledAt(_cef_menu_model_t* self, nuint arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1361,24 +927,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsEnabledAt(_cef_menu_model_t* self, nuint arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.IsEnabledAt(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetEnabled(_cef_menu_model_t* self, int arg0, int arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1389,25 +943,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetEnabled(_cef_menu_model_t* self, int arg0, int arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.SetEnabled(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetEnabledAt(_cef_menu_model_t* self, nuint arg0, int arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1418,25 +959,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetEnabledAt(_cef_menu_model_t* self, nuint arg0, int arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.SetEnabledAt(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsChecked(_cef_menu_model_t* self, int arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1446,24 +974,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsChecked(_cef_menu_model_t* self, int arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.IsChecked(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsCheckedAt(_cef_menu_model_t* self, nuint arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1473,24 +989,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsCheckedAt(_cef_menu_model_t* self, nuint arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.IsCheckedAt(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetChecked(_cef_menu_model_t* self, int arg0, int arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1501,25 +1005,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetChecked(_cef_menu_model_t* self, int arg0, int arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.SetChecked(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetCheckedAt(_cef_menu_model_t* self, nuint arg0, int arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1530,25 +1021,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetCheckedAt(_cef_menu_model_t* self, nuint arg0, int arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.SetCheckedAt(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_HasAccelerator(_cef_menu_model_t* self, int arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1558,24 +1036,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_HasAccelerator(_cef_menu_model_t* self, int arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.HasAccelerator(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_HasAcceleratorAt(_cef_menu_model_t* self, nuint arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1585,24 +1051,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_HasAcceleratorAt(_cef_menu_model_t* self, nuint arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.HasAcceleratorAt(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetAccelerator(_cef_menu_model_t* self, int arg0, int arg1, int arg2, int arg3, int arg4)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1616,28 +1070,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetAccelerator(_cef_menu_model_t* self, int arg0, int arg1, int arg2, int arg3, int arg4)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _result = _m.SetAccelerator(_a0, _a1, _a2, _a3, _a4);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetAcceleratorAt(_cef_menu_model_t* self, nuint arg0, int arg1, int arg2, int arg3, int arg4)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1651,28 +1089,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetAcceleratorAt(_cef_menu_model_t* self, nuint arg0, int arg1, int arg2, int arg3, int arg4)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _result = _m.SetAcceleratorAt(_a0, _a1, _a2, _a3, _a4);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_RemoveAccelerator(_cef_menu_model_t* self, int arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1682,24 +1104,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_RemoveAccelerator(_cef_menu_model_t* self, int arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.RemoveAccelerator(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_RemoveAcceleratorAt(_cef_menu_model_t* self, nuint arg0)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1709,24 +1119,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_RemoveAcceleratorAt(_cef_menu_model_t* self, nuint arg0)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _result = _m.RemoveAcceleratorAt(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetAccelerator(_cef_menu_model_t* self, int arg0, int* arg1, int* arg2, int* arg3, int* arg4)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1740,28 +1138,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetAccelerator(_cef_menu_model_t* self, int arg0, int* arg1, int* arg2, int* arg3, int* arg4)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _result = _m.GetAccelerator(_a0, _a1, _a2, _a3, _a4);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetAcceleratorAt(_cef_menu_model_t* self, nuint arg0, int* arg1, int* arg2, int* arg3, int* arg4)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1775,28 +1157,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetAcceleratorAt(_cef_menu_model_t* self, nuint arg0, int* arg1, int* arg2, int* arg3, int* arg4)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _result = _m.GetAcceleratorAt(_a0, _a1, _a2, _a3, _a4);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetColor(_cef_menu_model_t* self, int arg0, cef_menu_color_type_t arg1, uint arg2)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1808,26 +1174,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetColor(_cef_menu_model_t* self, int arg0, cef_menu_color_type_t arg1, uint arg2)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.SetColor(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetColorAt(_cef_menu_model_t* self, int arg0, cef_menu_color_type_t arg1, uint arg2)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1839,26 +1191,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetColorAt(_cef_menu_model_t* self, int arg0, cef_menu_color_type_t arg1, uint arg2)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.SetColorAt(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetColor(_cef_menu_model_t* self, int arg0, cef_menu_color_type_t arg1, uint* arg2)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1870,26 +1208,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetColor(_cef_menu_model_t* self, int arg0, cef_menu_color_type_t arg1, uint* arg2)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.GetColor(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetColorAt(_cef_menu_model_t* self, int arg0, cef_menu_color_type_t arg1, uint* arg2)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1901,26 +1225,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetColorAt(_cef_menu_model_t* self, int arg0, cef_menu_color_type_t arg1, uint* arg2)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.GetColorAt(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetFontList(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1931,39 +1241,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetFontList(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.SetFontList(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_SetFontListAt(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefMenuModel>(self);
-
-        var _a0 = arg0;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.SetFontListAt(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetFontListAt(_cef_menu_model_t* self, int arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefMenuModel>(self);
@@ -1974,6 +1257,4 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
 
         return _result;
     }
-    #endif
-
 }

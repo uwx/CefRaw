@@ -43,22 +43,9 @@ public unsafe abstract partial class CefNavigationEntryVisitor : CefBaseRefCount
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_Visit(_cef_navigation_entry_visitor_t* self, _cef_navigation_entry_t* arg0, int arg1, int arg2, int arg3)
-    {
-        var _m = GetManaged<CefNavigationEntryVisitor>(self);
-
-        var _a0 = arg0 != null ? new CefNavigationEntryRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.Visit(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_Visit(_cef_navigation_entry_visitor_t* self, _cef_navigation_entry_t* arg0, int arg1, int arg2, int arg3)
     {
         var _m = GetManaged<CefNavigationEntryVisitor>(self);
@@ -71,6 +58,4 @@ public unsafe abstract partial class CefNavigationEntryVisitor : CefBaseRefCount
 
         return _result;
     }
-    #endif
-
 }

@@ -91,27 +91,21 @@ public unsafe abstract partial class CefRenderProcessHandler : CefBaseRefCounted
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnWebKitInitialized(_cef_render_process_handler_t* self)
-    {
-        var _m = GetManaged<CefRenderProcessHandler>(self);
-
-        _m.OnWebKitInitialized();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnWebKitInitialized(_cef_render_process_handler_t* self)
     {
         var _m = GetManaged<CefRenderProcessHandler>(self);
 
         _m.OnWebKitInitialized();
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnBrowserCreated(_cef_render_process_handler_t* self, _cef_browser_t* arg0, _cef_dictionary_value_t* arg1)
     {
         var _m = GetManaged<CefRenderProcessHandler>(self);
@@ -120,23 +114,12 @@ public unsafe abstract partial class CefRenderProcessHandler : CefBaseRefCounted
         var _a1 = arg1 != null ? new CefDictionaryValueRef(arg1) : null;
         _m.OnBrowserCreated(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnBrowserCreated(_cef_render_process_handler_t* self, _cef_browser_t* arg0, _cef_dictionary_value_t* arg1)
-    {
-        var _m = GetManaged<CefRenderProcessHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefDictionaryValueRef(arg1) : null;
-        _m.OnBrowserCreated(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnBrowserDestroyed(_cef_render_process_handler_t* self, _cef_browser_t* arg0)
     {
         var _m = GetManaged<CefRenderProcessHandler>(self);
@@ -144,47 +127,26 @@ public unsafe abstract partial class CefRenderProcessHandler : CefBaseRefCounted
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         _m.OnBrowserDestroyed(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnBrowserDestroyed(_cef_render_process_handler_t* self, _cef_browser_t* arg0)
-    {
-        var _m = GetManaged<CefRenderProcessHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnBrowserDestroyed(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_load_handler_t* Bridge_GetLoadHandler(_cef_render_process_handler_t* self)
     {
         var _m = GetManaged<CefRenderProcessHandler>(self);
 
         var _result = _m.GetLoadHandler();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_load_handler_t* Bridge_GetLoadHandler(_cef_render_process_handler_t* self)
-    {
-        var _m = GetManaged<CefRenderProcessHandler>(self);
-
-        var _result = _m.GetLoadHandler();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnContextCreated(_cef_render_process_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_v8_context_t* arg2)
     {
         var _m = GetManaged<CefRenderProcessHandler>(self);
@@ -194,24 +156,12 @@ public unsafe abstract partial class CefRenderProcessHandler : CefBaseRefCounted
         var _a2 = arg2 != null ? new CefV8ContextRef(arg2) : null;
         _m.OnContextCreated(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnContextCreated(_cef_render_process_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_v8_context_t* arg2)
-    {
-        var _m = GetManaged<CefRenderProcessHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ContextRef(arg2) : null;
-        _m.OnContextCreated(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnContextReleased(_cef_render_process_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_v8_context_t* arg2)
     {
         var _m = GetManaged<CefRenderProcessHandler>(self);
@@ -221,24 +171,12 @@ public unsafe abstract partial class CefRenderProcessHandler : CefBaseRefCounted
         var _a2 = arg2 != null ? new CefV8ContextRef(arg2) : null;
         _m.OnContextReleased(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnContextReleased(_cef_render_process_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_v8_context_t* arg2)
-    {
-        var _m = GetManaged<CefRenderProcessHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ContextRef(arg2) : null;
-        _m.OnContextReleased(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnUncaughtException(_cef_render_process_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_v8_context_t* arg2, _cef_v8_exception_t* arg3, _cef_v8_stack_trace_t* arg4)
     {
         var _m = GetManaged<CefRenderProcessHandler>(self);
@@ -250,26 +188,12 @@ public unsafe abstract partial class CefRenderProcessHandler : CefBaseRefCounted
         var _a4 = arg4 != null ? new CefV8StackTraceRef(arg4) : null;
         _m.OnUncaughtException(_a0, _a1, _a2, _a3, _a4);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnUncaughtException(_cef_render_process_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_v8_context_t* arg2, _cef_v8_exception_t* arg3, _cef_v8_stack_trace_t* arg4)
-    {
-        var _m = GetManaged<CefRenderProcessHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ContextRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefV8ExceptionRef(arg3) : null;
-        var _a4 = arg4 != null ? new CefV8StackTraceRef(arg4) : null;
-        _m.OnUncaughtException(_a0, _a1, _a2, _a3, _a4);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnFocusedNodeChanged(_cef_render_process_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_domnode_t* arg2)
     {
         var _m = GetManaged<CefRenderProcessHandler>(self);
@@ -279,24 +203,12 @@ public unsafe abstract partial class CefRenderProcessHandler : CefBaseRefCounted
         var _a2 = arg2 != null ? new CefDomnodeRef(arg2) : null;
         _m.OnFocusedNodeChanged(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnFocusedNodeChanged(_cef_render_process_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_domnode_t* arg2)
-    {
-        var _m = GetManaged<CefRenderProcessHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefDomnodeRef(arg2) : null;
-        _m.OnFocusedNodeChanged(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnProcessMessageReceived(_cef_render_process_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, cef_process_id_t arg2, _cef_process_message_t* arg3)
     {
         var _m = GetManaged<CefRenderProcessHandler>(self);
@@ -309,22 +221,4 @@ public unsafe abstract partial class CefRenderProcessHandler : CefBaseRefCounted
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnProcessMessageReceived(_cef_render_process_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, cef_process_id_t arg2, _cef_process_message_t* arg3)
-    {
-        var _m = GetManaged<CefRenderProcessHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefProcessMessageRef(arg3) : null;
-        var _result = _m.OnProcessMessageReceived(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
 }

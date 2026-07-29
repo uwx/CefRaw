@@ -61,6 +61,9 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnJsdialog(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, cef_jsdialog_type_t arg2, _cef_string_utf16_t* arg3, _cef_string_utf16_t* arg4, _cef_jsdialog_callback_t* arg5, int* arg6)
     {
         var _m = GetManaged<CefJsdialogHandler>(self);
@@ -76,30 +79,12 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnJsdialog(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, cef_jsdialog_type_t arg2, _cef_string_utf16_t* arg3, _cef_string_utf16_t* arg4, _cef_jsdialog_callback_t* arg5, int* arg6)
-    {
-        var _m = GetManaged<CefJsdialogHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
-        var _a4 = CefStringRef.ToStringAndFree(arg4);
-        var _a5 = arg5 != null ? new CefJsdialogCallbackRef(arg5) : null;
-        var _a6 = arg6;
-        var _result = _m.OnJsdialog(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnBeforeUnloadDialog(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, int arg2, _cef_jsdialog_callback_t* arg3)
     {
         var _m = GetManaged<CefJsdialogHandler>(self);
@@ -112,27 +97,12 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnBeforeUnloadDialog(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, int arg2, _cef_jsdialog_callback_t* arg3)
-    {
-        var _m = GetManaged<CefJsdialogHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefJsdialogCallbackRef(arg3) : null;
-        var _result = _m.OnBeforeUnloadDialog(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnResetDialogState(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0)
     {
         var _m = GetManaged<CefJsdialogHandler>(self);
@@ -140,33 +110,12 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         _m.OnResetDialogState(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnResetDialogState(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0)
-    {
-        var _m = GetManaged<CefJsdialogHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnResetDialogState(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnDialogClosed(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0)
-    {
-        var _m = GetManaged<CefJsdialogHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnDialogClosed(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnDialogClosed(_cef_jsdialog_handler_t* self, _cef_browser_t* arg0)
     {
         var _m = GetManaged<CefJsdialogHandler>(self);
@@ -174,6 +123,4 @@ public unsafe abstract partial class CefJsdialogHandler : CefBaseRefCounted, ICe
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         _m.OnDialogClosed(_a0);
     }
-    #endif
-
 }

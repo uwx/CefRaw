@@ -12,5 +12,5 @@ public unsafe partial interface ICefResolveCallback : ICefBaseRefCounted
 {
     new _cef_resolve_callback_t* NativePtr { get; }
 
-    public void OnResolveCompleted(cef_errorcode_t arg0, _cef_string_list_t* arg1);
+    public void OnResolveCompleted(cef_errorcode_t arg0, ICefStringList? arg1);
 }

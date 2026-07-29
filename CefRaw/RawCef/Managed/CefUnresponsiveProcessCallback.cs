@@ -49,43 +49,25 @@ public unsafe abstract partial class CefUnresponsiveProcessCallback : CefBaseRef
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Wait(_cef_unresponsive_process_callback_t* self)
-    {
-        var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
-
-        _m.Wait();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Wait(_cef_unresponsive_process_callback_t* self)
     {
         var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
 
         _m.Wait();
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Terminate(_cef_unresponsive_process_callback_t* self)
-    {
-        var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
-
-        _m.Terminate();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Terminate(_cef_unresponsive_process_callback_t* self)
     {
         var _m = GetManaged<CefUnresponsiveProcessCallback>(self);
 
         _m.Terminate();
     }
-    #endif
-
 }

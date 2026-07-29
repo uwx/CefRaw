@@ -73,6 +73,9 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_HasPreference(_cef_preference_manager_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefPreferenceManager>(self);
@@ -82,24 +85,12 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_HasPreference(_cef_preference_manager_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefPreferenceManager>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _result = _m.HasPreference(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_value_t* Bridge_GetPreference(_cef_preference_manager_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefPreferenceManager>(self);
@@ -107,26 +98,14 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         var _result = _m.GetPreference(_a0);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_value_t* Bridge_GetPreference(_cef_preference_manager_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefPreferenceManager>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _result = _m.GetPreference(_a0);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_dictionary_value_t* Bridge_GetAllPreferences(_cef_preference_manager_t* self, int arg0)
     {
         var _m = GetManaged<CefPreferenceManager>(self);
@@ -134,26 +113,14 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
         var _a0 = arg0;
         var _result = _m.GetAllPreferences(_a0);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_dictionary_value_t* Bridge_GetAllPreferences(_cef_preference_manager_t* self, int arg0)
-    {
-        var _m = GetManaged<CefPreferenceManager>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetAllPreferences(_a0);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_CanSetPreference(_cef_preference_manager_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefPreferenceManager>(self);
@@ -163,24 +130,12 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_CanSetPreference(_cef_preference_manager_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefPreferenceManager>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _result = _m.CanSetPreference(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetPreference(_cef_preference_manager_t* self, _cef_string_utf16_t* arg0, _cef_value_t* arg1, _cef_string_utf16_t* arg2)
     {
         var _m = GetManaged<CefPreferenceManager>(self);
@@ -192,40 +147,12 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetPreference(_cef_preference_manager_t* self, _cef_string_utf16_t* arg0, _cef_value_t* arg1, _cef_string_utf16_t* arg2)
-    {
-        var _m = GetManaged<CefPreferenceManager>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _result = _m.SetPreference(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static _cef_registration_t* Bridge_AddPreferenceObserver(_cef_preference_manager_t* self, _cef_string_utf16_t* arg0, _cef_preference_observer_t* arg1)
-    {
-        var _m = GetManaged<CefPreferenceManager>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1 != null ? new CefPreferenceObserverRef(arg1) : null;
-        var _result = _m.AddPreferenceObserver(_a0, _a1);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_registration_t* Bridge_AddPreferenceObserver(_cef_preference_manager_t* self, _cef_string_utf16_t* arg0, _cef_preference_observer_t* arg1)
     {
         var _m = GetManaged<CefPreferenceManager>(self);
@@ -234,8 +161,6 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
         var _a1 = arg1 != null ? new CefPreferenceObserverRef(arg1) : null;
         var _result = _m.AddPreferenceObserver(_a0, _a1);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
 }

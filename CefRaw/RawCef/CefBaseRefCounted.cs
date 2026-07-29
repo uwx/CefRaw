@@ -126,51 +126,41 @@ public abstract unsafe class CefBaseRefCounted : ICefBaseRefCounted
 
 #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void BridgeAddRef(_cef_base_ref_counted_t* self)
-    {
-        GetManaged<CefBaseRefCounted>(self)?.AddRef();
-    }
-
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int BridgeRelease(_cef_base_ref_counted_t* self)
-    {
-        return GetManaged<CefBaseRefCounted>(self)?.Release() ?? 0;
-    }
-
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int BridgeHasOneRef(_cef_base_ref_counted_t* self)
-    {
-        return GetManaged<CefBaseRefCounted>(self)?.HasOneRef() ?? 0;
-    }
-
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int BridgeHasAtLeastOneRef(_cef_base_ref_counted_t* self)
-    {
-        return GetManaged<CefBaseRefCounted>(self)?.HasAtLeastOneRef() ?? 0;
-    }
-#elif OS_MAC || OS_LINUX
+#else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void BridgeAddRef(_cef_base_ref_counted_t* self)
-    {
-        GetManaged<CefBaseRefCounted>(self)?.AddRef();
-    }
-
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int BridgeRelease(_cef_base_ref_counted_t* self)
-    {
-        return GetManaged<CefBaseRefCounted>(self)?.Release() ?? 0;
-    }
-
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int BridgeHasOneRef(_cef_base_ref_counted_t* self)
-    {
-        return GetManaged<CefBaseRefCounted>(self)?.HasOneRef() ?? 0;
-    }
-
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int BridgeHasAtLeastOneRef(_cef_base_ref_counted_t* self)
-    {
-        return GetManaged<CefBaseRefCounted>(self)?.HasAtLeastOneRef() ?? 0;
-    }
 #endif
+    private static void BridgeAddRef(_cef_base_ref_counted_t* self)
+    {
+        GetManaged<CefBaseRefCounted>(self)?.AddRef();
+    }
+
+#if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+#else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+#endif
+    private static int BridgeRelease(_cef_base_ref_counted_t* self)
+    {
+        return GetManaged<CefBaseRefCounted>(self)?.Release() ?? 0;
+    }
+
+#if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+#else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+#endif
+    private static int BridgeHasOneRef(_cef_base_ref_counted_t* self)
+    {
+        return GetManaged<CefBaseRefCounted>(self)?.HasOneRef() ?? 0;
+    }
+
+#if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+#else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+#endif
+    private static int BridgeHasAtLeastOneRef(_cef_base_ref_counted_t* self)
+    {
+        return GetManaged<CefBaseRefCounted>(self)?.HasAtLeastOneRef() ?? 0;
+    }
 }

@@ -55,6 +55,9 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsValid(_cef_v8_stack_trace_t* self)
     {
         var _m = GetManaged<CefV8StackTrace>(self);
@@ -63,23 +66,12 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsValid(_cef_v8_stack_trace_t* self)
-    {
-        var _m = GetManaged<CefV8StackTrace>(self);
-
-        var _result = _m.IsValid();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetFrameCount(_cef_v8_stack_trace_t* self)
     {
         var _m = GetManaged<CefV8StackTrace>(self);
@@ -88,36 +80,12 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetFrameCount(_cef_v8_stack_trace_t* self)
-    {
-        var _m = GetManaged<CefV8StackTrace>(self);
-
-        var _result = _m.GetFrameCount();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static _cef_v8_stack_frame_t* Bridge_GetFrame(_cef_v8_stack_trace_t* self, int arg0)
-    {
-        var _m = GetManaged<CefV8StackTrace>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetFrame(_a0);
-
-        return _result?.NativePtr;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_v8_stack_frame_t* Bridge_GetFrame(_cef_v8_stack_trace_t* self, int arg0)
     {
         var _m = GetManaged<CefV8StackTrace>(self);
@@ -125,8 +93,6 @@ public unsafe abstract partial class CefV8StackTrace : CefBaseRefCounted, ICefV8
         var _a0 = arg0;
         var _result = _m.GetFrame(_a0);
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
 }

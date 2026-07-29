@@ -61,7 +61,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>on_favicon_urlchange</c> callback.
     /// </summary>
-    public abstract void OnFaviconUrlchange(ICefBrowser? arg0, _cef_string_list_t* arg1);
+    public abstract void OnFaviconUrlchange(ICefBrowser? arg0, ICefStringList? arg1);
 
     /// <summary>
     /// Implement the <c>on_fullscreen_mode_change</c> callback.
@@ -115,6 +115,9 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnAddressChange(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_string_utf16_t* arg2)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
@@ -124,24 +127,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
         var _a2 = CefStringRef.ToStringAndFree(arg2);
         _m.OnAddressChange(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnAddressChange(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_string_utf16_t* arg2)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        _m.OnAddressChange(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnTitleChange(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
@@ -150,48 +141,26 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
         var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.OnTitleChange(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnTitleChange(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        _m.OnTitleChange(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnFaviconUrlchange(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_string_list_t* arg1)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
 
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
+        var _a1 = arg1 != null ? new CefStringListRef(arg1) : null;
         _m.OnFaviconUrlchange(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnFaviconUrlchange(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_string_list_t* arg1)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnFaviconUrlchange(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnFullscreenModeChange(_cef_display_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
@@ -200,23 +169,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
         var _a1 = arg1;
         _m.OnFullscreenModeChange(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnFullscreenModeChange(_cef_display_handler_t* self, _cef_browser_t* arg0, int arg1)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnFullscreenModeChange(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnTooltip(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
@@ -227,25 +185,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnTooltip(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _result = _m.OnTooltip(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnStatusMessage(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
@@ -254,23 +199,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
         var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.OnStatusMessage(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnStatusMessage(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        _m.OnStatusMessage(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnConsoleMessage(_cef_display_handler_t* self, _cef_browser_t* arg0, cef_log_severity_t arg1, _cef_string_utf16_t* arg2, _cef_string_utf16_t* arg3, int arg4)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
@@ -284,28 +218,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnConsoleMessage(_cef_display_handler_t* self, _cef_browser_t* arg0, cef_log_severity_t arg1, _cef_string_utf16_t* arg2, _cef_string_utf16_t* arg3, int arg4)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
-        var _a4 = arg4;
-        var _result = _m.OnConsoleMessage(_a0, _a1, _a2, _a3, _a4);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnAutoResize(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_size_t* arg1)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
@@ -316,25 +234,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnAutoResize(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_size_t* arg1)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefSizeRef(arg1) : null;
-        var _result = _m.OnAutoResize(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnLoadingProgressChange(_cef_display_handler_t* self, _cef_browser_t* arg0, double arg1)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
@@ -343,23 +248,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
         var _a1 = arg1;
         _m.OnLoadingProgressChange(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnLoadingProgressChange(_cef_display_handler_t* self, _cef_browser_t* arg0, double arg1)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnLoadingProgressChange(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnCursorChange(_cef_display_handler_t* self, _cef_browser_t* arg0, HICON arg1, cef_cursor_type_t arg2, _cef_cursor_info_t* arg3)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
@@ -372,27 +266,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnCursorChange(_cef_display_handler_t* self, _cef_browser_t* arg0, HICON arg1, cef_cursor_type_t arg2, _cef_cursor_info_t* arg3)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3 != null ? new CefCursorInfoRef(arg3) : null;
-        var _result = _m.OnCursorChange(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnMediaAccessChange(_cef_display_handler_t* self, _cef_browser_t* arg0, int arg1, int arg2)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
@@ -402,24 +281,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
         var _a2 = arg2;
         _m.OnMediaAccessChange(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnMediaAccessChange(_cef_display_handler_t* self, _cef_browser_t* arg0, int arg1, int arg2)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        _m.OnMediaAccessChange(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnContentsBoundsChange(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_rect_t* arg1)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
@@ -430,39 +297,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnContentsBoundsChange(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_rect_t* arg1)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-        var _result = _m.OnContentsBoundsChange(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_GetRootWindowScreenRect(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_rect_t* arg1)
-    {
-        var _m = GetManaged<CefDisplayHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-        var _result = _m.GetRootWindowScreenRect(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetRootWindowScreenRect(_cef_display_handler_t* self, _cef_browser_t* arg0, _cef_rect_t* arg1)
     {
         var _m = GetManaged<CefDisplayHandler>(self);
@@ -473,6 +313,4 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
 
         return _result;
     }
-    #endif
-
 }

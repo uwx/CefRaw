@@ -96,15 +96,11 @@ public abstract unsafe class CefBaseScoped : ICefBaseScoped
 
 #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void BridgeDel(_cef_base_scoped_t* self)
-    {
-        GetManaged<CefBaseScoped>(self)?.Del();
-    }
-#elif OS_MAC || OS_LINUX
+#else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+#endif
     private static void BridgeDel(_cef_base_scoped_t* self)
     {
         GetManaged<CefBaseScoped>(self)?.Del();
     }
-#endif
 }

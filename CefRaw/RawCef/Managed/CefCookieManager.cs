@@ -67,19 +67,9 @@ public unsafe abstract partial class CefCookieManager : CefBaseRefCounted, ICefC
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_VisitAllCookies(_cef_cookie_manager_t* self, _cef_cookie_visitor_t* arg0)
-    {
-        var _m = GetManaged<CefCookieManager>(self);
-
-        var _a0 = arg0 != null ? new CefCookieVisitorRef(arg0) : null;
-        var _result = _m.VisitAllCookies(_a0);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_VisitAllCookies(_cef_cookie_manager_t* self, _cef_cookie_visitor_t* arg0)
     {
         var _m = GetManaged<CefCookieManager>(self);
@@ -89,11 +79,12 @@ public unsafe abstract partial class CefCookieManager : CefBaseRefCounted, ICefC
 
         return _result;
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_VisitUrlCookies(_cef_cookie_manager_t* self, _cef_string_utf16_t* arg0, int arg1, _cef_cookie_visitor_t* arg2)
     {
         var _m = GetManaged<CefCookieManager>(self);
@@ -105,26 +96,12 @@ public unsafe abstract partial class CefCookieManager : CefBaseRefCounted, ICefC
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_VisitUrlCookies(_cef_cookie_manager_t* self, _cef_string_utf16_t* arg0, int arg1, _cef_cookie_visitor_t* arg2)
-    {
-        var _m = GetManaged<CefCookieManager>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1;
-        var _a2 = arg2 != null ? new CefCookieVisitorRef(arg2) : null;
-        var _result = _m.VisitUrlCookies(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_SetCookie(_cef_cookie_manager_t* self, _cef_string_utf16_t* arg0, _cef_cookie_t* arg1, _cef_set_cookie_callback_t* arg2)
     {
         var _m = GetManaged<CefCookieManager>(self);
@@ -136,26 +113,12 @@ public unsafe abstract partial class CefCookieManager : CefBaseRefCounted, ICefC
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_SetCookie(_cef_cookie_manager_t* self, _cef_string_utf16_t* arg0, _cef_cookie_t* arg1, _cef_set_cookie_callback_t* arg2)
-    {
-        var _m = GetManaged<CefCookieManager>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1 != null ? new CefCookieRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefSetCookieCallbackRef(arg2) : null;
-        var _result = _m.SetCookie(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_DeleteCookies(_cef_cookie_manager_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, _cef_delete_cookies_callback_t* arg2)
     {
         var _m = GetManaged<CefCookieManager>(self);
@@ -167,39 +130,12 @@ public unsafe abstract partial class CefCookieManager : CefBaseRefCounted, ICefC
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_DeleteCookies(_cef_cookie_manager_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, _cef_delete_cookies_callback_t* arg2)
-    {
-        var _m = GetManaged<CefCookieManager>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2 != null ? new CefDeleteCookiesCallbackRef(arg2) : null;
-        var _result = _m.DeleteCookies(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_FlushStore(_cef_cookie_manager_t* self, _cef_completion_callback_t* arg0)
-    {
-        var _m = GetManaged<CefCookieManager>(self);
-
-        var _a0 = arg0 != null ? new CefCompletionCallbackRef(arg0) : null;
-        var _result = _m.FlushStore(_a0);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_FlushStore(_cef_cookie_manager_t* self, _cef_completion_callback_t* arg0)
     {
         var _m = GetManaged<CefCookieManager>(self);
@@ -209,6 +145,4 @@ public unsafe abstract partial class CefCookieManager : CefBaseRefCounted, ICefC
 
         return _result;
     }
-    #endif
-
 }

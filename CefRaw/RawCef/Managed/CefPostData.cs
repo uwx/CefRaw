@@ -79,6 +79,9 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsReadOnly(_cef_post_data_t* self)
     {
         var _m = GetManaged<CefPostData>(self);
@@ -87,23 +90,12 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsReadOnly(_cef_post_data_t* self)
-    {
-        var _m = GetManaged<CefPostData>(self);
-
-        var _result = _m.IsReadOnly();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_HasExcludedElements(_cef_post_data_t* self)
     {
         var _m = GetManaged<CefPostData>(self);
@@ -112,23 +104,12 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_HasExcludedElements(_cef_post_data_t* self)
-    {
-        var _m = GetManaged<CefPostData>(self);
-
-        var _result = _m.HasExcludedElements();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_GetElementCount(_cef_post_data_t* self)
     {
         var _m = GetManaged<CefPostData>(self);
@@ -137,23 +118,12 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_GetElementCount(_cef_post_data_t* self)
-    {
-        var _m = GetManaged<CefPostData>(self);
-
-        var _result = _m.GetElementCount();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_GetElements(_cef_post_data_t* self, nuint* arg0, _cef_post_data_element_t** arg1)
     {
         var _m = GetManaged<CefPostData>(self);
@@ -162,23 +132,12 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
         var _a1 = arg1;
         _m.GetElements(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_GetElements(_cef_post_data_t* self, nuint* arg0, _cef_post_data_element_t** arg1)
-    {
-        var _m = GetManaged<CefPostData>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        _m.GetElements(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_RemoveElement(_cef_post_data_t* self, _cef_post_data_element_t* arg0)
     {
         var _m = GetManaged<CefPostData>(self);
@@ -188,24 +147,12 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_RemoveElement(_cef_post_data_t* self, _cef_post_data_element_t* arg0)
-    {
-        var _m = GetManaged<CefPostData>(self);
-
-        var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
-        var _result = _m.RemoveElement(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_AddElement(_cef_post_data_t* self, _cef_post_data_element_t* arg0)
     {
         var _m = GetManaged<CefPostData>(self);
@@ -215,40 +162,16 @@ public unsafe abstract partial class CefPostData : CefBaseRefCounted, ICefPostDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_AddElement(_cef_post_data_t* self, _cef_post_data_element_t* arg0)
-    {
-        var _m = GetManaged<CefPostData>(self);
-
-        var _a0 = arg0 != null ? new CefPostDataElementRef(arg0) : null;
-        var _result = _m.AddElement(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_RemoveElements(_cef_post_data_t* self)
-    {
-        var _m = GetManaged<CefPostData>(self);
-
-        _m.RemoveElements();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_RemoveElements(_cef_post_data_t* self)
     {
         var _m = GetManaged<CefPostData>(self);
 
         _m.RemoveElements();
     }
-    #endif
-
 }

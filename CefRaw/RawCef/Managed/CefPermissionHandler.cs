@@ -55,6 +55,9 @@ public unsafe abstract partial class CefPermissionHandler : CefBaseRefCounted, I
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnRequestMediaAccessPermission(_cef_permission_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_string_utf16_t* arg2, uint arg3, _cef_media_access_callback_t* arg4)
     {
         var _m = GetManaged<CefPermissionHandler>(self);
@@ -68,28 +71,12 @@ public unsafe abstract partial class CefPermissionHandler : CefBaseRefCounted, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnRequestMediaAccessPermission(_cef_permission_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_string_utf16_t* arg2, uint arg3, _cef_media_access_callback_t* arg4)
-    {
-        var _m = GetManaged<CefPermissionHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _a3 = arg3;
-        var _a4 = arg4 != null ? new CefMediaAccessCallbackRef(arg4) : null;
-        var _result = _m.OnRequestMediaAccessPermission(_a0, _a1, _a2, _a3, _a4);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnShowPermissionPrompt(_cef_permission_handler_t* self, _cef_browser_t* arg0, ulong arg1, _cef_string_utf16_t* arg2, uint arg3, _cef_permission_prompt_callback_t* arg4)
     {
         var _m = GetManaged<CefPermissionHandler>(self);
@@ -103,41 +90,12 @@ public unsafe abstract partial class CefPermissionHandler : CefBaseRefCounted, I
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnShowPermissionPrompt(_cef_permission_handler_t* self, _cef_browser_t* arg0, ulong arg1, _cef_string_utf16_t* arg2, uint arg3, _cef_permission_prompt_callback_t* arg4)
-    {
-        var _m = GetManaged<CefPermissionHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _a3 = arg3;
-        var _a4 = arg4 != null ? new CefPermissionPromptCallbackRef(arg4) : null;
-        var _result = _m.OnShowPermissionPrompt(_a0, _a1, _a2, _a3, _a4);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnDismissPermissionPrompt(_cef_permission_handler_t* self, _cef_browser_t* arg0, ulong arg1, cef_permission_request_result_t arg2)
-    {
-        var _m = GetManaged<CefPermissionHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        _m.OnDismissPermissionPrompt(_a0, _a1, _a2);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnDismissPermissionPrompt(_cef_permission_handler_t* self, _cef_browser_t* arg0, ulong arg1, cef_permission_request_result_t arg2)
     {
         var _m = GetManaged<CefPermissionHandler>(self);
@@ -147,6 +105,4 @@ public unsafe abstract partial class CefPermissionHandler : CefBaseRefCounted, I
         var _a2 = arg2;
         _m.OnDismissPermissionPrompt(_a0, _a1, _a2);
     }
-    #endif
-
 }

@@ -40,7 +40,7 @@ public unsafe abstract partial class CefFileDialogCallback : CefBaseRefCounted, 
     /// <summary>
     /// Implement the <c>cont</c> callback.
     /// </summary>
-    public abstract void Cont(_cef_string_list_t* arg0);
+    public abstract void Cont(ICefStringList? arg0);
 
     /// <summary>
     /// Implement the <c>cancel</c> callback.
@@ -49,45 +49,26 @@ public unsafe abstract partial class CefFileDialogCallback : CefBaseRefCounted, 
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cont(_cef_file_dialog_callback_t* self, _cef_string_list_t* arg0)
-    {
-        var _m = GetManaged<CefFileDialogCallback>(self);
-
-        var _a0 = arg0;
-        _m.Cont(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cont(_cef_file_dialog_callback_t* self, _cef_string_list_t* arg0)
     {
         var _m = GetManaged<CefFileDialogCallback>(self);
 
-        var _a0 = arg0;
+        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
         _m.Cont(_a0);
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cancel(_cef_file_dialog_callback_t* self)
-    {
-        var _m = GetManaged<CefFileDialogCallback>(self);
-
-        _m.Cancel();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cancel(_cef_file_dialog_callback_t* self)
     {
         var _m = GetManaged<CefFileDialogCallback>(self);
 
         _m.Cancel();
     }
-    #endif
-
 }

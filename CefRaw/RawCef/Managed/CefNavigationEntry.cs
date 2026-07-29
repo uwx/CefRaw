@@ -97,6 +97,9 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsValid(_cef_navigation_entry_t* self)
     {
         var _m = GetManaged<CefNavigationEntry>(self);
@@ -105,23 +108,12 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsValid(_cef_navigation_entry_t* self)
-    {
-        var _m = GetManaged<CefNavigationEntry>(self);
-
-        var _result = _m.IsValid();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetUrl(_cef_navigation_entry_t* self)
     {
         var _m = GetManaged<CefNavigationEntry>(self);
@@ -130,23 +122,12 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetUrl(_cef_navigation_entry_t* self)
-    {
-        var _m = GetManaged<CefNavigationEntry>(self);
-
-        var _result = _m.GetUrl();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetDisplayUrl(_cef_navigation_entry_t* self)
     {
         var _m = GetManaged<CefNavigationEntry>(self);
@@ -155,23 +136,12 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetDisplayUrl(_cef_navigation_entry_t* self)
-    {
-        var _m = GetManaged<CefNavigationEntry>(self);
-
-        var _result = _m.GetDisplayUrl();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetOriginalUrl(_cef_navigation_entry_t* self)
     {
         var _m = GetManaged<CefNavigationEntry>(self);
@@ -180,23 +150,12 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetOriginalUrl(_cef_navigation_entry_t* self)
-    {
-        var _m = GetManaged<CefNavigationEntry>(self);
-
-        var _result = _m.GetOriginalUrl();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetTitle(_cef_navigation_entry_t* self)
     {
         var _m = GetManaged<CefNavigationEntry>(self);
@@ -205,23 +164,12 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetTitle(_cef_navigation_entry_t* self)
-    {
-        var _m = GetManaged<CefNavigationEntry>(self);
-
-        var _result = _m.GetTitle();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_transition_type_t Bridge_GetTransitionType(_cef_navigation_entry_t* self)
     {
         var _m = GetManaged<CefNavigationEntry>(self);
@@ -230,23 +178,12 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_transition_type_t Bridge_GetTransitionType(_cef_navigation_entry_t* self)
-    {
-        var _m = GetManaged<CefNavigationEntry>(self);
-
-        var _result = _m.GetTransitionType();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_HasPostData(_cef_navigation_entry_t* self)
     {
         var _m = GetManaged<CefNavigationEntry>(self);
@@ -255,23 +192,12 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_HasPostData(_cef_navigation_entry_t* self)
-    {
-        var _m = GetManaged<CefNavigationEntry>(self);
-
-        var _result = _m.HasPostData();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_basetime_t Bridge_GetCompletionTime(_cef_navigation_entry_t* self)
     {
         var _m = GetManaged<CefNavigationEntry>(self);
@@ -280,23 +206,12 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_basetime_t Bridge_GetCompletionTime(_cef_navigation_entry_t* self)
-    {
-        var _m = GetManaged<CefNavigationEntry>(self);
-
-        var _result = _m.GetCompletionTime();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetHttpStatusCode(_cef_navigation_entry_t* self)
     {
         var _m = GetManaged<CefNavigationEntry>(self);
@@ -305,43 +220,18 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetHttpStatusCode(_cef_navigation_entry_t* self)
-    {
-        var _m = GetManaged<CefNavigationEntry>(self);
-
-        var _result = _m.GetHttpStatusCode();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static _cef_sslstatus_t* Bridge_GetSslstatus(_cef_navigation_entry_t* self)
-    {
-        var _m = GetManaged<CefNavigationEntry>(self);
-
-        var _result = _m.GetSslstatus();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_sslstatus_t* Bridge_GetSslstatus(_cef_navigation_entry_t* self)
     {
         var _m = GetManaged<CefNavigationEntry>(self);
 
         var _result = _m.GetSslstatus();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
 }

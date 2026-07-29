@@ -55,6 +55,9 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void* Bridge_Data(_cef_v8_backing_store_t* self)
     {
         var _m = GetManaged<CefV8BackingStore>(self);
@@ -63,23 +66,12 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void* Bridge_Data(_cef_v8_backing_store_t* self)
-    {
-        var _m = GetManaged<CefV8BackingStore>(self);
-
-        var _result = _m.Data();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_ByteLength(_cef_v8_backing_store_t* self)
     {
         var _m = GetManaged<CefV8BackingStore>(self);
@@ -88,35 +80,12 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_ByteLength(_cef_v8_backing_store_t* self)
-    {
-        var _m = GetManaged<CefV8BackingStore>(self);
-
-        var _result = _m.ByteLength();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_IsValid(_cef_v8_backing_store_t* self)
-    {
-        var _m = GetManaged<CefV8BackingStore>(self);
-
-        var _result = _m.IsValid();
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsValid(_cef_v8_backing_store_t* self)
     {
         var _m = GetManaged<CefV8BackingStore>(self);
@@ -125,6 +94,4 @@ public unsafe abstract partial class CefV8BackingStore : CefBaseRefCounted, ICef
 
         return _result;
     }
-    #endif
-
 }

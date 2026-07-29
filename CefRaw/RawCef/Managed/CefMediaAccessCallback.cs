@@ -49,17 +49,9 @@ public unsafe abstract partial class CefMediaAccessCallback : CefBaseRefCounted,
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cont(_cef_media_access_callback_t* self, uint arg0)
-    {
-        var _m = GetManaged<CefMediaAccessCallback>(self);
-
-        var _a0 = arg0;
-        _m.Cont(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cont(_cef_media_access_callback_t* self, uint arg0)
     {
         var _m = GetManaged<CefMediaAccessCallback>(self);
@@ -67,27 +59,16 @@ public unsafe abstract partial class CefMediaAccessCallback : CefBaseRefCounted,
         var _a0 = arg0;
         _m.Cont(_a0);
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cancel(_cef_media_access_callback_t* self)
-    {
-        var _m = GetManaged<CefMediaAccessCallback>(self);
-
-        _m.Cancel();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cancel(_cef_media_access_callback_t* self)
     {
         var _m = GetManaged<CefMediaAccessCallback>(self);
 
         _m.Cancel();
     }
-    #endif
-
 }

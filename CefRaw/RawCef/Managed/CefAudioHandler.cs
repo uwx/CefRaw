@@ -67,6 +67,9 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetAudioParameters(_cef_audio_handler_t* self, _cef_browser_t* arg0, _cef_audio_parameters_t* arg1)
     {
         var _m = GetManaged<CefAudioHandler>(self);
@@ -77,25 +80,12 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetAudioParameters(_cef_audio_handler_t* self, _cef_browser_t* arg0, _cef_audio_parameters_t* arg1)
-    {
-        var _m = GetManaged<CefAudioHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefAudioParametersRef(arg1) : null;
-        var _result = _m.GetAudioParameters(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnAudioStreamStarted(_cef_audio_handler_t* self, _cef_browser_t* arg0, _cef_audio_parameters_t* arg1, int arg2)
     {
         var _m = GetManaged<CefAudioHandler>(self);
@@ -105,24 +95,12 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
         var _a2 = arg2;
         _m.OnAudioStreamStarted(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnAudioStreamStarted(_cef_audio_handler_t* self, _cef_browser_t* arg0, _cef_audio_parameters_t* arg1, int arg2)
-    {
-        var _m = GetManaged<CefAudioHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefAudioParametersRef(arg1) : null;
-        var _a2 = arg2;
-        _m.OnAudioStreamStarted(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnAudioStreamPacket(_cef_audio_handler_t* self, _cef_browser_t* arg0, float** arg1, int arg2, long arg3)
     {
         var _m = GetManaged<CefAudioHandler>(self);
@@ -133,25 +111,12 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
         var _a3 = arg3;
         _m.OnAudioStreamPacket(_a0, _a1, _a2, _a3);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnAudioStreamPacket(_cef_audio_handler_t* self, _cef_browser_t* arg0, float** arg1, int arg2, long arg3)
-    {
-        var _m = GetManaged<CefAudioHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        _m.OnAudioStreamPacket(_a0, _a1, _a2, _a3);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnAudioStreamStopped(_cef_audio_handler_t* self, _cef_browser_t* arg0)
     {
         var _m = GetManaged<CefAudioHandler>(self);
@@ -159,22 +124,12 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         _m.OnAudioStreamStopped(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnAudioStreamStopped(_cef_audio_handler_t* self, _cef_browser_t* arg0)
-    {
-        var _m = GetManaged<CefAudioHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnAudioStreamStopped(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnAudioStreamError(_cef_audio_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefAudioHandler>(self);
@@ -183,18 +138,4 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
         var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.OnAudioStreamError(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnAudioStreamError(_cef_audio_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefAudioHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        _m.OnAudioStreamError(_a0, _a1);
-    }
-    #endif
-
 }

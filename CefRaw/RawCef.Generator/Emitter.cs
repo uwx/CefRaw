@@ -562,79 +562,77 @@ internal static class Emitter
 
         var bridgeName = $"Bridge_{TypeMapper.SnakeToPascal(method.Name)}";
 
-        // Emit platform-specific bridge methods
-        foreach (var platformConv in new[] { ("OS_WIN", "CallConvStdcall"), ("OS_MAC || OS_LINUX", "CallConvCdecl") })
-        {
-            sb.AppendLine($"#if {platformConv.Item1}");
-            sb.AppendLine($"[UnmanagedCallersOnly(CallConvs = new[] {{ typeof({platformConv.Item2}) }})]");
-            sb.Append($"private static {nativeReturnType} {bridgeName}({nativeArgTypes[0]} self");
+        // Platform-specific attribute, shared method body
+        sb.AppendLine("#if OS_WIN");
+        sb.AppendLine("[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]");
+        sb.AppendLine("#else");
+        sb.AppendLine("[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]");
+        sb.AppendLine("#endif");
+        sb.Append($"private static {nativeReturnType} {bridgeName}({nativeArgTypes[0]} self");
 
-            // Additional params (after self)
+        // Additional params (after self)
+        for (int i = 1; i < nativeArgTypes.Length; i++)
+        {
+            sb.Append($", {nativeArgTypes[i]} arg{i - 1}");
+        }
+        sb.AppendLine(")");
+
+        sb.AppendLine("{");
+
+        using (sb.Indent())
+        {
+            sb.AppendLine($"var _m = GetManaged<{managedName}>(self);");
+            sb.AppendLine();
+
+            // Marshal managed params
+            var managedArgs = new List<string>();
             for (int i = 1; i < nativeArgTypes.Length; i++)
             {
-                sb.Append($", {nativeArgTypes[i]} arg{i - 1}");
-            }
-            sb.AppendLine(")");
+                var argManaged = TypeMapper.MapNativeToManaged(nativeArgTypes[i], out var argIsString, out var argIsCefObject, out var argCefName);
 
-            sb.AppendLine("{");
-
-            using (sb.Indent())
-            {
-                sb.AppendLine($"var _m = GetManaged<{managedName}>(self);");
-                sb.AppendLine();
-
-                // Marshal managed params
-                var managedArgs = new List<string>();
-                for (int i = 1; i < nativeArgTypes.Length; i++)
+                if (argIsString)
                 {
-                    var argManaged = TypeMapper.MapNativeToManaged(nativeArgTypes[i], out var argIsString, out var argIsCefObject, out var argCefName);
-
-                    if (argIsString)
-                    {
-                        sb.AppendLine($"var _a{i - 1} = CefStringRef.ToStringAndFree(arg{i - 1});");
-                    }
-                    else if (argIsCefObject)
-                    {
-                        sb.AppendLine($"var _a{i - 1} = arg{i - 1} != null ? new {argCefName}Ref(arg{i - 1}) : null;");
-                    }
-                    else
-                    {
-                        sb.AppendLine($"var _a{i - 1} = arg{i - 1};");
-                    }
-
-                    managedArgs.Add($"_a{i - 1}");
+                    sb.AppendLine($"var _a{i - 1} = CefStringRef.ToStringAndFree(arg{i - 1});");
                 }
-
-                // Call managed method
-                if (returnManaged == "void")
+                else if (argIsCefObject)
                 {
-                    sb.AppendLine($"_m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
+                    sb.AppendLine($"var _a{i - 1} = arg{i - 1} != null ? new {argCefName}Ref(arg{i - 1}) : null;");
                 }
                 else
                 {
-                    sb.AppendLine($"var _result = _m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
-                    sb.AppendLine();
-
-                    // Marshal return
-                    if (returnIsString)
-                    {
-                        sb.AppendLine("return CefStringRef.AllocUserfree(_result);");
-                    }
-                    else if (returnIsCefObject)
-                    {
-                        sb.AppendLine($"return _result?.NativePtr;");
-                    }
-                    else
-                    {
-                        sb.AppendLine("return _result;");
-                    }
+                    sb.AppendLine($"var _a{i - 1} = arg{i - 1};");
                 }
+
+                managedArgs.Add($"_a{i - 1}");
             }
 
-            sb.AppendLine("}");
-            sb.AppendLine("#endif");
-            sb.AppendLine();
+            // Call managed method
+            if (returnManaged == "void")
+            {
+                sb.AppendLine($"_m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
+            }
+            else
+            {
+                sb.AppendLine($"var _result = _m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
+                sb.AppendLine();
+
+                // Marshal return
+                if (returnIsString)
+                {
+                    sb.AppendLine("return CefStringRef.AllocUserfree(_result);");
+                }
+                else if (returnIsCefObject)
+                {
+                    sb.AppendLine($"return _result != null ? _result.NativePtr : null;");
+                }
+                else
+                {
+                    sb.AppendLine("return _result;");
+                }
+            }
         }
+
+        sb.AppendLine("}");
     }
 
     public static string GenerateEnum(EnumerationDefinition enumeration)

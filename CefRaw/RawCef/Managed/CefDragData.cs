@@ -130,12 +130,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     /// <summary>
     /// Implement the <c>get_file_names</c> callback.
     /// </summary>
-    public abstract int GetFileNames(_cef_string_list_t* arg0);
+    public abstract int GetFileNames(ICefStringList? arg0);
 
     /// <summary>
     /// Implement the <c>get_file_paths</c> callback.
     /// </summary>
-    public abstract int GetFilePaths(_cef_string_list_t* arg0);
+    public abstract int GetFilePaths(ICefStringList? arg0);
 
     /// <summary>
     /// Implement the <c>set_link_url</c> callback.
@@ -199,31 +199,23 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static _cef_drag_data_t* Bridge_Clone(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.Clone();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_drag_data_t* Bridge_Clone(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
 
         var _result = _m.Clone();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsReadOnly(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -232,23 +224,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsReadOnly(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.IsReadOnly();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsLink(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -257,23 +238,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsLink(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.IsLink();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsFragment(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -282,23 +252,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsFragment(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.IsFragment();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsFile(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -307,23 +266,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsFile(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.IsFile();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkUrl(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -332,23 +280,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetLinkUrl(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.GetLinkUrl();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkTitle(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -357,23 +294,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetLinkTitle(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.GetLinkTitle();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetLinkMetadata(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -382,23 +308,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetLinkMetadata(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.GetLinkMetadata();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetFragmentText(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -407,23 +322,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetFragmentText(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.GetFragmentText();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetFragmentHtml(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -432,23 +336,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetFragmentHtml(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.GetFragmentHtml();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetFragmentBaseUrl(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -457,23 +350,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetFragmentBaseUrl(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.GetFragmentBaseUrl();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetFileName(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -482,23 +364,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetFileName(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.GetFileName();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_GetFileContents(_cef_drag_data_t* self, _cef_stream_writer_t* arg0)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -508,78 +379,42 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_GetFileContents(_cef_drag_data_t* self, _cef_stream_writer_t* arg0)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _a0 = arg0 != null ? new CefStreamWriterRef(arg0) : null;
-        var _result = _m.GetFileContents(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetFileNames(_cef_drag_data_t* self, _cef_string_list_t* arg0)
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = arg0;
+        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
         var _result = _m.GetFileNames(_a0);
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetFileNames(_cef_drag_data_t* self, _cef_string_list_t* arg0)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetFileNames(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_GetFilePaths(_cef_drag_data_t* self, _cef_string_list_t* arg0)
     {
         var _m = GetManaged<CefDragData>(self);
 
-        var _a0 = arg0;
+        var _a0 = arg0 != null ? new CefStringListRef(arg0) : null;
         var _result = _m.GetFilePaths(_a0);
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_GetFilePaths(_cef_drag_data_t* self, _cef_string_list_t* arg0)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _a0 = arg0;
-        var _result = _m.GetFilePaths(_a0);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetLinkUrl(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -587,22 +422,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetLinkUrl(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetLinkUrl(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.SetLinkUrl(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetLinkTitle(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -610,22 +435,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetLinkTitle(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetLinkTitle(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.SetLinkTitle(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetLinkMetadata(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -633,22 +448,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetLinkMetadata(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetLinkMetadata(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.SetLinkMetadata(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetFragmentText(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -656,22 +461,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetFragmentText(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetFragmentText(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.SetFragmentText(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetFragmentHtml(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -679,22 +474,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetFragmentHtml(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetFragmentHtml(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.SetFragmentHtml(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetFragmentBaseUrl(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -702,43 +487,24 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
         var _a0 = CefStringRef.ToStringAndFree(arg0);
         _m.SetFragmentBaseUrl(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_SetFragmentBaseUrl(_cef_drag_data_t* self, _cef_string_utf16_t* arg0)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        _m.SetFragmentBaseUrl(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ResetFileContents(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
 
         _m.ResetFileContents();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ResetFileContents(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        _m.ResetFileContents();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_AddFile(_cef_drag_data_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -747,69 +513,38 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
         var _a1 = CefStringRef.ToStringAndFree(arg1);
         _m.AddFile(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_AddFile(_cef_drag_data_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        _m.AddFile(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_ClearFilenames(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
 
         _m.ClearFilenames();
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_ClearFilenames(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        _m.ClearFilenames();
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_image_t* Bridge_GetImage(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
 
         var _result = _m.GetImage();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_image_t* Bridge_GetImage(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.GetImage();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_point_t Bridge_GetImageHotspot(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -818,35 +553,12 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_point_t Bridge_GetImageHotspot(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.GetImageHotspot();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_HasImage(_cef_drag_data_t* self)
-    {
-        var _m = GetManaged<CefDragData>(self);
-
-        var _result = _m.HasImage();
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_HasImage(_cef_drag_data_t* self)
     {
         var _m = GetManaged<CefDragData>(self);
@@ -855,6 +567,4 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
         return _result;
     }
-    #endif
-
 }

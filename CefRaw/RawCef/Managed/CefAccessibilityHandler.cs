@@ -49,17 +49,9 @@ public unsafe abstract partial class CefAccessibilityHandler : CefBaseRefCounted
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnAccessibilityTreeChange(_cef_accessibility_handler_t* self, _cef_value_t* arg0)
-    {
-        var _m = GetManaged<CefAccessibilityHandler>(self);
-
-        var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
-        _m.OnAccessibilityTreeChange(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnAccessibilityTreeChange(_cef_accessibility_handler_t* self, _cef_value_t* arg0)
     {
         var _m = GetManaged<CefAccessibilityHandler>(self);
@@ -67,22 +59,12 @@ public unsafe abstract partial class CefAccessibilityHandler : CefBaseRefCounted
         var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
         _m.OnAccessibilityTreeChange(_a0);
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnAccessibilityLocationChange(_cef_accessibility_handler_t* self, _cef_value_t* arg0)
-    {
-        var _m = GetManaged<CefAccessibilityHandler>(self);
-
-        var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
-        _m.OnAccessibilityLocationChange(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnAccessibilityLocationChange(_cef_accessibility_handler_t* self, _cef_value_t* arg0)
     {
         var _m = GetManaged<CefAccessibilityHandler>(self);
@@ -90,6 +72,4 @@ public unsafe abstract partial class CefAccessibilityHandler : CefBaseRefCounted
         var _a0 = arg0 != null ? new CefValueRef(arg0) : null;
         _m.OnAccessibilityLocationChange(_a0);
     }
-    #endif
-
 }

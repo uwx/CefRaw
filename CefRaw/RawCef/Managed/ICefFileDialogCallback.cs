@@ -12,7 +12,7 @@ public unsafe partial interface ICefFileDialogCallback : ICefBaseRefCounted
 {
     new _cef_file_dialog_callback_t* NativePtr { get; }
 
-    public void Cont(_cef_string_list_t* arg0);
+    public void Cont(ICefStringList? arg0);
 
     public void Cancel();
 }

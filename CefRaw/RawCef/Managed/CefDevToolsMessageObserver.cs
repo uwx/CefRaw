@@ -67,6 +67,9 @@ public unsafe abstract partial class CefDevToolsMessageObserver : CefBaseRefCoun
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnDevToolsMessage(_cef_dev_tools_message_observer_t* self, _cef_browser_t* arg0, void* arg1, nuint arg2)
     {
         var _m = GetManaged<CefDevToolsMessageObserver>(self);
@@ -78,26 +81,12 @@ public unsafe abstract partial class CefDevToolsMessageObserver : CefBaseRefCoun
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnDevToolsMessage(_cef_dev_tools_message_observer_t* self, _cef_browser_t* arg0, void* arg1, nuint arg2)
-    {
-        var _m = GetManaged<CefDevToolsMessageObserver>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.OnDevToolsMessage(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnDevToolsMethodResult(_cef_dev_tools_message_observer_t* self, _cef_browser_t* arg0, int arg1, int arg2, void* arg3, nuint arg4)
     {
         var _m = GetManaged<CefDevToolsMessageObserver>(self);
@@ -109,26 +98,12 @@ public unsafe abstract partial class CefDevToolsMessageObserver : CefBaseRefCoun
         var _a4 = arg4;
         _m.OnDevToolsMethodResult(_a0, _a1, _a2, _a3, _a4);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnDevToolsMethodResult(_cef_dev_tools_message_observer_t* self, _cef_browser_t* arg0, int arg1, int arg2, void* arg3, nuint arg4)
-    {
-        var _m = GetManaged<CefDevToolsMessageObserver>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        _m.OnDevToolsMethodResult(_a0, _a1, _a2, _a3, _a4);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnDevToolsEvent(_cef_dev_tools_message_observer_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, void* arg2, nuint arg3)
     {
         var _m = GetManaged<CefDevToolsMessageObserver>(self);
@@ -139,25 +114,12 @@ public unsafe abstract partial class CefDevToolsMessageObserver : CefBaseRefCoun
         var _a3 = arg3;
         _m.OnDevToolsEvent(_a0, _a1, _a2, _a3);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnDevToolsEvent(_cef_dev_tools_message_observer_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, void* arg2, nuint arg3)
-    {
-        var _m = GetManaged<CefDevToolsMessageObserver>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2;
-        var _a3 = arg3;
-        _m.OnDevToolsEvent(_a0, _a1, _a2, _a3);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnDevToolsAgentAttached(_cef_dev_tools_message_observer_t* self, _cef_browser_t* arg0)
     {
         var _m = GetManaged<CefDevToolsMessageObserver>(self);
@@ -165,33 +127,12 @@ public unsafe abstract partial class CefDevToolsMessageObserver : CefBaseRefCoun
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         _m.OnDevToolsAgentAttached(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnDevToolsAgentAttached(_cef_dev_tools_message_observer_t* self, _cef_browser_t* arg0)
-    {
-        var _m = GetManaged<CefDevToolsMessageObserver>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnDevToolsAgentAttached(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnDevToolsAgentDetached(_cef_dev_tools_message_observer_t* self, _cef_browser_t* arg0)
-    {
-        var _m = GetManaged<CefDevToolsMessageObserver>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnDevToolsAgentDetached(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnDevToolsAgentDetached(_cef_dev_tools_message_observer_t* self, _cef_browser_t* arg0)
     {
         var _m = GetManaged<CefDevToolsMessageObserver>(self);
@@ -199,6 +140,4 @@ public unsafe abstract partial class CefDevToolsMessageObserver : CefBaseRefCoun
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         _m.OnDevToolsAgentDetached(_a0);
     }
-    #endif
-
 }

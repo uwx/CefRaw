@@ -73,6 +73,9 @@ public unsafe abstract partial class CefProcessMessage : CefBaseRefCounted, ICef
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsValid(_cef_process_message_t* self)
     {
         var _m = GetManaged<CefProcessMessage>(self);
@@ -81,23 +84,12 @@ public unsafe abstract partial class CefProcessMessage : CefBaseRefCounted, ICef
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsValid(_cef_process_message_t* self)
-    {
-        var _m = GetManaged<CefProcessMessage>(self);
-
-        var _result = _m.IsValid();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_IsReadOnly(_cef_process_message_t* self)
     {
         var _m = GetManaged<CefProcessMessage>(self);
@@ -106,48 +98,26 @@ public unsafe abstract partial class CefProcessMessage : CefBaseRefCounted, ICef
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_IsReadOnly(_cef_process_message_t* self)
-    {
-        var _m = GetManaged<CefProcessMessage>(self);
-
-        var _result = _m.IsReadOnly();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_process_message_t* Bridge_Copy(_cef_process_message_t* self)
     {
         var _m = GetManaged<CefProcessMessage>(self);
 
         var _result = _m.Copy();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_process_message_t* Bridge_Copy(_cef_process_message_t* self)
-    {
-        var _m = GetManaged<CefProcessMessage>(self);
-
-        var _result = _m.Copy();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static cef_string_userfree_utf16_t Bridge_GetName(_cef_process_message_t* self)
     {
         var _m = GetManaged<CefProcessMessage>(self);
@@ -156,68 +126,32 @@ public unsafe abstract partial class CefProcessMessage : CefBaseRefCounted, ICef
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static cef_string_userfree_utf16_t Bridge_GetName(_cef_process_message_t* self)
-    {
-        var _m = GetManaged<CefProcessMessage>(self);
-
-        var _result = _m.GetName();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_list_value_t* Bridge_GetArgumentList(_cef_process_message_t* self)
     {
         var _m = GetManaged<CefProcessMessage>(self);
 
         var _result = _m.GetArgumentList();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_list_value_t* Bridge_GetArgumentList(_cef_process_message_t* self)
-    {
-        var _m = GetManaged<CefProcessMessage>(self);
-
-        var _result = _m.GetArgumentList();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static _cef_shared_memory_region_t* Bridge_GetSharedMemoryRegion(_cef_process_message_t* self)
-    {
-        var _m = GetManaged<CefProcessMessage>(self);
-
-        var _result = _m.GetSharedMemoryRegion();
-
-        return _result?.NativePtr;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_shared_memory_region_t* Bridge_GetSharedMemoryRegion(_cef_process_message_t* self)
     {
         var _m = GetManaged<CefProcessMessage>(self);
 
         var _result = _m.GetSharedMemoryRegion();
 
-        return _result?.NativePtr;
+        return _result != null ? _result.NativePtr : null;
     }
-    #endif
-
 }

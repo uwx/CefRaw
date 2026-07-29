@@ -61,6 +61,9 @@ public unsafe abstract partial class CefLoadHandler : CefBaseRefCounted, ICefLoa
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnLoadingStateChange(_cef_load_handler_t* self, _cef_browser_t* arg0, int arg1, int arg2, int arg3)
     {
         var _m = GetManaged<CefLoadHandler>(self);
@@ -71,25 +74,12 @@ public unsafe abstract partial class CefLoadHandler : CefBaseRefCounted, ICefLoa
         var _a3 = arg3;
         _m.OnLoadingStateChange(_a0, _a1, _a2, _a3);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnLoadingStateChange(_cef_load_handler_t* self, _cef_browser_t* arg0, int arg1, int arg2, int arg3)
-    {
-        var _m = GetManaged<CefLoadHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        _m.OnLoadingStateChange(_a0, _a1, _a2, _a3);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnLoadStart(_cef_load_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, cef_transition_type_t arg2)
     {
         var _m = GetManaged<CefLoadHandler>(self);
@@ -99,24 +89,12 @@ public unsafe abstract partial class CefLoadHandler : CefBaseRefCounted, ICefLoa
         var _a2 = arg2;
         _m.OnLoadStart(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnLoadStart(_cef_load_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, cef_transition_type_t arg2)
-    {
-        var _m = GetManaged<CefLoadHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        _m.OnLoadStart(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnLoadEnd(_cef_load_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, int arg2)
     {
         var _m = GetManaged<CefLoadHandler>(self);
@@ -126,24 +104,12 @@ public unsafe abstract partial class CefLoadHandler : CefBaseRefCounted, ICefLoa
         var _a2 = arg2;
         _m.OnLoadEnd(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnLoadEnd(_cef_load_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, int arg2)
-    {
-        var _m = GetManaged<CefLoadHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        _m.OnLoadEnd(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnLoadError(_cef_load_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, cef_errorcode_t arg2, _cef_string_utf16_t* arg3, _cef_string_utf16_t* arg4)
     {
         var _m = GetManaged<CefLoadHandler>(self);
@@ -155,21 +121,4 @@ public unsafe abstract partial class CefLoadHandler : CefBaseRefCounted, ICefLoa
         var _a4 = CefStringRef.ToStringAndFree(arg4);
         _m.OnLoadError(_a0, _a1, _a2, _a3, _a4);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnLoadError(_cef_load_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, cef_errorcode_t arg2, _cef_string_utf16_t* arg3, _cef_string_utf16_t* arg4)
-    {
-        var _m = GetManaged<CefLoadHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
-        var _a4 = CefStringRef.ToStringAndFree(arg4);
-        _m.OnLoadError(_a0, _a1, _a2, _a3, _a4);
-    }
-    #endif
-
 }

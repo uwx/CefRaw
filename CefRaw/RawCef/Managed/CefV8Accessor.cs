@@ -49,22 +49,9 @@ public unsafe abstract partial class CefV8Accessor : CefBaseRefCounted, ICefV8Ac
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_Get(_cef_v8_accessor_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, _cef_v8_value_t** arg2, _cef_string_utf16_t* arg3)
-    {
-        var _m = GetManaged<CefV8Accessor>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.Get(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_Get(_cef_v8_accessor_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, _cef_v8_value_t** arg2, _cef_string_utf16_t* arg3)
     {
         var _m = GetManaged<CefV8Accessor>(self);
@@ -77,27 +64,12 @@ public unsafe abstract partial class CefV8Accessor : CefBaseRefCounted, ICefV8Ac
 
         return _result;
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_Set(_cef_v8_accessor_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, _cef_v8_value_t* arg2, _cef_string_utf16_t* arg3)
-    {
-        var _m = GetManaged<CefV8Accessor>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = arg1 != null ? new CefV8ValueRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefV8ValueRef(arg2) : null;
-        var _a3 = CefStringRef.ToStringAndFree(arg3);
-        var _result = _m.Set(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_Set(_cef_v8_accessor_t* self, _cef_string_utf16_t* arg0, _cef_v8_value_t* arg1, _cef_v8_value_t* arg2, _cef_string_utf16_t* arg3)
     {
         var _m = GetManaged<CefV8Accessor>(self);
@@ -110,6 +82,4 @@ public unsafe abstract partial class CefV8Accessor : CefBaseRefCounted, ICefV8Ac
 
         return _result;
     }
-    #endif
-
 }

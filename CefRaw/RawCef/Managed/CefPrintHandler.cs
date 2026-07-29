@@ -73,17 +73,9 @@ public unsafe abstract partial class CefPrintHandler : CefBaseRefCounted, ICefPr
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnPrintStart(_cef_print_handler_t* self, _cef_browser_t* arg0)
-    {
-        var _m = GetManaged<CefPrintHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnPrintStart(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnPrintStart(_cef_print_handler_t* self, _cef_browser_t* arg0)
     {
         var _m = GetManaged<CefPrintHandler>(self);
@@ -91,11 +83,12 @@ public unsafe abstract partial class CefPrintHandler : CefBaseRefCounted, ICefPr
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         _m.OnPrintStart(_a0);
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnPrintSettings(_cef_print_handler_t* self, _cef_browser_t* arg0, _cef_print_settings_t* arg1, int arg2)
     {
         var _m = GetManaged<CefPrintHandler>(self);
@@ -105,24 +98,12 @@ public unsafe abstract partial class CefPrintHandler : CefBaseRefCounted, ICefPr
         var _a2 = arg2;
         _m.OnPrintSettings(_a0, _a1, _a2);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnPrintSettings(_cef_print_handler_t* self, _cef_browser_t* arg0, _cef_print_settings_t* arg1, int arg2)
-    {
-        var _m = GetManaged<CefPrintHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefPrintSettingsRef(arg1) : null;
-        var _a2 = arg2;
-        _m.OnPrintSettings(_a0, _a1, _a2);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnPrintDialog(_cef_print_handler_t* self, _cef_browser_t* arg0, int arg1, _cef_print_dialog_callback_t* arg2)
     {
         var _m = GetManaged<CefPrintHandler>(self);
@@ -134,26 +115,12 @@ public unsafe abstract partial class CefPrintHandler : CefBaseRefCounted, ICefPr
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnPrintDialog(_cef_print_handler_t* self, _cef_browser_t* arg0, int arg1, _cef_print_dialog_callback_t* arg2)
-    {
-        var _m = GetManaged<CefPrintHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _a2 = arg2 != null ? new CefPrintDialogCallbackRef(arg2) : null;
-        var _result = _m.OnPrintDialog(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnPrintJob(_cef_print_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, _cef_string_utf16_t* arg2, _cef_print_job_callback_t* arg3)
     {
         var _m = GetManaged<CefPrintHandler>(self);
@@ -166,27 +133,12 @@ public unsafe abstract partial class CefPrintHandler : CefBaseRefCounted, ICefPr
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnPrintJob(_cef_print_handler_t* self, _cef_browser_t* arg0, _cef_string_utf16_t* arg1, _cef_string_utf16_t* arg2, _cef_print_job_callback_t* arg3)
-    {
-        var _m = GetManaged<CefPrintHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = CefStringRef.ToStringAndFree(arg2);
-        var _a3 = arg3 != null ? new CefPrintJobCallbackRef(arg3) : null;
-        var _result = _m.OnPrintJob(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnPrintReset(_cef_print_handler_t* self, _cef_browser_t* arg0)
     {
         var _m = GetManaged<CefPrintHandler>(self);
@@ -194,22 +146,12 @@ public unsafe abstract partial class CefPrintHandler : CefBaseRefCounted, ICefPr
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         _m.OnPrintReset(_a0);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnPrintReset(_cef_print_handler_t* self, _cef_browser_t* arg0)
-    {
-        var _m = GetManaged<CefPrintHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnPrintReset(_a0);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static _cef_size_t Bridge_GetPdfPaperSize(_cef_print_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
         var _m = GetManaged<CefPrintHandler>(self);
@@ -220,20 +162,4 @@ public unsafe abstract partial class CefPrintHandler : CefBaseRefCounted, ICefPr
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static _cef_size_t Bridge_GetPdfPaperSize(_cef_print_handler_t* self, _cef_browser_t* arg0, int arg1)
-    {
-        var _m = GetManaged<CefPrintHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.GetPdfPaperSize(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 }

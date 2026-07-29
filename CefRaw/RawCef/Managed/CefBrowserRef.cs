@@ -158,14 +158,14 @@ public unsafe partial class CefBrowserRef : CefBaseRefCountedRef, ICefBrowser
         return _result;
     }
 
-    public void GetFrameIdentifiers(_cef_string_list_t* arg0)
+    public void GetFrameIdentifiers(ICefStringList? arg0)
     {
-        _ptr->get_frame_identifiers(_ptr, arg0);
+        _ptr->get_frame_identifiers(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
-    public void GetFrameNames(_cef_string_list_t* arg0)
+    public void GetFrameNames(ICefStringList? arg0)
     {
-        _ptr->get_frame_names(_ptr, arg0);
+        _ptr->get_frame_names(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
     public _cef_base_ref_counted_t @base

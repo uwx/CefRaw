@@ -22,7 +22,7 @@ public unsafe partial interface ICefX509CertPrincipal : ICefBaseRefCounted
 
     public cef_string_userfree_utf16_t GetCountryName();
 
-    public void GetOrganizationNames(_cef_string_list_t* arg0);
+    public void GetOrganizationNames(ICefStringList? arg0);
 
-    public void GetOrganizationUnitNames(_cef_string_list_t* arg0);
+    public void GetOrganizationUnitNames(ICefStringList? arg0);
 }

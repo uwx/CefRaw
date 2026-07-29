@@ -55,18 +55,9 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnTakeFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0, int arg1)
-    {
-        var _m = GetManaged<CefFocusHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        _m.OnTakeFocus(_a0, _a1);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnTakeFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0, int arg1)
     {
         var _m = GetManaged<CefFocusHandler>(self);
@@ -75,11 +66,12 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
         var _a1 = arg1;
         _m.OnTakeFocus(_a0, _a1);
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnSetFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0, cef_focus_source_t arg1)
     {
         var _m = GetManaged<CefFocusHandler>(self);
@@ -90,36 +82,12 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnSetFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0, cef_focus_source_t arg1)
-    {
-        var _m = GetManaged<CefFocusHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1;
-        var _result = _m.OnSetFocus(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnGotFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0)
-    {
-        var _m = GetManaged<CefFocusHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        _m.OnGotFocus(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnGotFocus(_cef_focus_handler_t* self, _cef_browser_t* arg0)
     {
         var _m = GetManaged<CefFocusHandler>(self);
@@ -127,6 +95,4 @@ public unsafe abstract partial class CefFocusHandler : CefBaseRefCounted, ICefFo
         var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
         _m.OnGotFocus(_a0);
     }
-    #endif
-
 }

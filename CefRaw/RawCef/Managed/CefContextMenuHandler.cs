@@ -79,20 +79,9 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnBeforeContextMenu(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_context_menu_params_t* arg2, _cef_menu_model_t* arg3)
-    {
-        var _m = GetManaged<CefContextMenuHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefContextMenuParamsRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefMenuModelRef(arg3) : null;
-        _m.OnBeforeContextMenu(_a0, _a1, _a2, _a3);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnBeforeContextMenu(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_context_menu_params_t* arg2, _cef_menu_model_t* arg3)
     {
         var _m = GetManaged<CefContextMenuHandler>(self);
@@ -103,11 +92,12 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
         var _a3 = arg3 != null ? new CefMenuModelRef(arg3) : null;
         _m.OnBeforeContextMenu(_a0, _a1, _a2, _a3);
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_RunContextMenu(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_context_menu_params_t* arg2, _cef_menu_model_t* arg3, _cef_run_context_menu_callback_t* arg4)
     {
         var _m = GetManaged<CefContextMenuHandler>(self);
@@ -121,28 +111,12 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_RunContextMenu(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_context_menu_params_t* arg2, _cef_menu_model_t* arg3, _cef_run_context_menu_callback_t* arg4)
-    {
-        var _m = GetManaged<CefContextMenuHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefContextMenuParamsRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefMenuModelRef(arg3) : null;
-        var _a4 = arg4 != null ? new CefRunContextMenuCallbackRef(arg4) : null;
-        var _result = _m.RunContextMenu(_a0, _a1, _a2, _a3, _a4);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnContextMenuCommand(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_context_menu_params_t* arg2, int arg3, cef_event_flags_t arg4)
     {
         var _m = GetManaged<CefContextMenuHandler>(self);
@@ -156,28 +130,12 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnContextMenuCommand(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_context_menu_params_t* arg2, int arg3, cef_event_flags_t arg4)
-    {
-        var _m = GetManaged<CefContextMenuHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefContextMenuParamsRef(arg2) : null;
-        var _a3 = arg3;
-        var _a4 = arg4;
-        var _result = _m.OnContextMenuCommand(_a0, _a1, _a2, _a3, _a4);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnContextMenuDismissed(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
     {
         var _m = GetManaged<CefContextMenuHandler>(self);
@@ -186,23 +144,12 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
         _m.OnContextMenuDismissed(_a0, _a1);
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static void Bridge_OnContextMenuDismissed(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
-    {
-        var _m = GetManaged<CefContextMenuHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        _m.OnContextMenuDismissed(_a0, _a1);
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_RunQuickMenu(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_point_t* arg2, _cef_size_t* arg3, cef_quick_menu_edit_state_flags_t arg4, _cef_run_quick_menu_callback_t* arg5)
     {
         var _m = GetManaged<CefContextMenuHandler>(self);
@@ -217,29 +164,12 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_RunQuickMenu(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, _cef_point_t* arg2, _cef_size_t* arg3, cef_quick_menu_edit_state_flags_t arg4, _cef_run_quick_menu_callback_t* arg5)
-    {
-        var _m = GetManaged<CefContextMenuHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2 != null ? new CefPointRef(arg2) : null;
-        var _a3 = arg3 != null ? new CefSizeRef(arg3) : null;
-        var _a4 = arg4;
-        var _a5 = arg5 != null ? new CefRunQuickMenuCallbackRef(arg5) : null;
-        var _result = _m.RunQuickMenu(_a0, _a1, _a2, _a3, _a4, _a5);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_OnQuickMenuCommand(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, int arg2, cef_event_flags_t arg3)
     {
         var _m = GetManaged<CefContextMenuHandler>(self);
@@ -252,39 +182,12 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_OnQuickMenuCommand(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1, int arg2, cef_event_flags_t arg3)
-    {
-        var _m = GetManaged<CefContextMenuHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        var _a2 = arg2;
-        var _a3 = arg3;
-        var _result = _m.OnQuickMenuCommand(_a0, _a1, _a2, _a3);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnQuickMenuDismissed(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
-    {
-        var _m = GetManaged<CefContextMenuHandler>(self);
-
-        var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-        var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-        _m.OnQuickMenuDismissed(_a0, _a1);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnQuickMenuDismissed(_cef_context_menu_handler_t* self, _cef_browser_t* arg0, _cef_frame_t* arg1)
     {
         var _m = GetManaged<CefContextMenuHandler>(self);
@@ -293,6 +196,4 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
         var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
         _m.OnQuickMenuDismissed(_a0, _a1);
     }
-    #endif
-
 }

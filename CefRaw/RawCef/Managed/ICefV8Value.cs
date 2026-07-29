@@ -84,7 +84,7 @@ public unsafe partial interface ICefV8Value : ICefBaseRefCounted
 
     public int SetValueByaccessor(string? arg0, cef_v8_propertyattribute_t arg1);
 
-    public int GetKeys(_cef_string_list_t* arg0);
+    public int GetKeys(ICefStringList? arg0);
 
     public int SetUserData(ICefBaseRefCounted? arg0);
 

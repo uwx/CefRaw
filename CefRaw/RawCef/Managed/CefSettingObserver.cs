@@ -43,19 +43,9 @@ public unsafe abstract partial class CefSettingObserver : CefBaseRefCounted, ICe
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_OnSettingChanged(_cef_setting_observer_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, cef_content_setting_types_t arg2)
-    {
-        var _m = GetManaged<CefSettingObserver>(self);
-
-        var _a0 = CefStringRef.ToStringAndFree(arg0);
-        var _a1 = CefStringRef.ToStringAndFree(arg1);
-        var _a2 = arg2;
-        _m.OnSettingChanged(_a0, _a1, _a2);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_OnSettingChanged(_cef_setting_observer_t* self, _cef_string_utf16_t* arg0, _cef_string_utf16_t* arg1, cef_content_setting_types_t arg2)
     {
         var _m = GetManaged<CefSettingObserver>(self);
@@ -65,6 +55,4 @@ public unsafe abstract partial class CefSettingObserver : CefBaseRefCounted, ICe
         var _a2 = arg2;
         _m.OnSettingChanged(_a0, _a1, _a2);
     }
-    #endif
-
 }

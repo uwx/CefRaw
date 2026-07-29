@@ -49,17 +49,9 @@ public unsafe abstract partial class CefPrintDialogCallback : CefBaseRefCounted,
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cont(_cef_print_dialog_callback_t* self, _cef_print_settings_t* arg0)
-    {
-        var _m = GetManaged<CefPrintDialogCallback>(self);
-
-        var _a0 = arg0 != null ? new CefPrintSettingsRef(arg0) : null;
-        _m.Cont(_a0);
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cont(_cef_print_dialog_callback_t* self, _cef_print_settings_t* arg0)
     {
         var _m = GetManaged<CefPrintDialogCallback>(self);
@@ -67,27 +59,16 @@ public unsafe abstract partial class CefPrintDialogCallback : CefBaseRefCounted,
         var _a0 = arg0 != null ? new CefPrintSettingsRef(arg0) : null;
         _m.Cont(_a0);
     }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static void Bridge_Cancel(_cef_print_dialog_callback_t* self)
-    {
-        var _m = GetManaged<CefPrintDialogCallback>(self);
-
-        _m.Cancel();
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_Cancel(_cef_print_dialog_callback_t* self)
     {
         var _m = GetManaged<CefPrintDialogCallback>(self);
 
         _m.Cancel();
     }
-    #endif
-
 }

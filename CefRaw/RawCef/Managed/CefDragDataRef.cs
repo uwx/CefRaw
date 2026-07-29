@@ -116,16 +116,16 @@ public unsafe partial class CefDragDataRef : CefBaseRefCountedRef, ICefDragData
         return _result;
     }
 
-    public int GetFileNames(_cef_string_list_t* arg0)
+    public int GetFileNames(ICefStringList? arg0)
     {
-        var _result = _ptr->get_file_names(_ptr, arg0);
+        var _result = _ptr->get_file_names(_ptr, arg0 is null ? null : arg0.NativePtr);
 
         return _result;
     }
 
-    public int GetFilePaths(_cef_string_list_t* arg0)
+    public int GetFilePaths(ICefStringList? arg0)
     {
-        var _result = _ptr->get_file_paths(_ptr, arg0);
+        var _result = _ptr->get_file_paths(_ptr, arg0 is null ? null : arg0.NativePtr);
 
         return _result;
     }

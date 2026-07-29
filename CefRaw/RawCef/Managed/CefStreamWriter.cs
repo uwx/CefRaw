@@ -67,6 +67,9 @@ public unsafe abstract partial class CefStreamWriter : CefBaseRefCounted, ICefSt
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static nuint Bridge_Write(_cef_stream_writer_t* self, void* arg0, nuint arg1, nuint arg2)
     {
         var _m = GetManaged<CefStreamWriter>(self);
@@ -78,26 +81,12 @@ public unsafe abstract partial class CefStreamWriter : CefBaseRefCounted, ICefSt
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static nuint Bridge_Write(_cef_stream_writer_t* self, void* arg0, nuint arg1, nuint arg2)
-    {
-        var _m = GetManaged<CefStreamWriter>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _a2 = arg2;
-        var _result = _m.Write(_a0, _a1, _a2);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_Seek(_cef_stream_writer_t* self, long arg0, int arg1)
     {
         var _m = GetManaged<CefStreamWriter>(self);
@@ -108,25 +97,12 @@ public unsafe abstract partial class CefStreamWriter : CefBaseRefCounted, ICefSt
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_Seek(_cef_stream_writer_t* self, long arg0, int arg1)
-    {
-        var _m = GetManaged<CefStreamWriter>(self);
-
-        var _a0 = arg0;
-        var _a1 = arg1;
-        var _result = _m.Seek(_a0, _a1);
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static long Bridge_Tell(_cef_stream_writer_t* self)
     {
         var _m = GetManaged<CefStreamWriter>(self);
@@ -135,23 +111,12 @@ public unsafe abstract partial class CefStreamWriter : CefBaseRefCounted, ICefSt
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static long Bridge_Tell(_cef_stream_writer_t* self)
-    {
-        var _m = GetManaged<CefStreamWriter>(self);
-
-        var _result = _m.Tell();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_Flush(_cef_stream_writer_t* self)
     {
         var _m = GetManaged<CefStreamWriter>(self);
@@ -160,35 +125,12 @@ public unsafe abstract partial class CefStreamWriter : CefBaseRefCounted, ICefSt
 
         return _result;
     }
-    #endif
-
-    #if OS_MAC || OS_LINUX
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static int Bridge_Flush(_cef_stream_writer_t* self)
-    {
-        var _m = GetManaged<CefStreamWriter>(self);
-
-        var _result = _m.Flush();
-
-        return _result;
-    }
-    #endif
-
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static int Bridge_MayBlock(_cef_stream_writer_t* self)
-    {
-        var _m = GetManaged<CefStreamWriter>(self);
-
-        var _result = _m.MayBlock();
-
-        return _result;
-    }
-    #endif
-
-    #if OS_MAC || OS_LINUX
+    #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static int Bridge_MayBlock(_cef_stream_writer_t* self)
     {
         var _m = GetManaged<CefStreamWriter>(self);
@@ -197,6 +139,4 @@ public unsafe abstract partial class CefStreamWriter : CefBaseRefCounted, ICefSt
 
         return _result;
     }
-    #endif
-
 }
