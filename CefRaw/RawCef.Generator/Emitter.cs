@@ -663,6 +663,11 @@ internal static class Emitter
         using (sb.Indent())
         {
             sb.AppendLine($"var _m = GetManaged<{managedName}>(self);");
+            // Guard against null when GetManaged returns null (e.g. CEF-internal object).
+            if (returnManaged == "void")
+                sb.AppendLine("if (_m is null) return;");
+            else
+                sb.AppendLine("if (_m is null) return default;");
             sb.AppendLine();
 
             var managedArgs = new List<string>();

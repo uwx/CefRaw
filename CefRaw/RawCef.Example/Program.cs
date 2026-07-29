@@ -9,20 +9,50 @@ namespace RawCef.Example;
 /// </summary>
 public static unsafe class Program
 {
-    [STAThread]
+    [STAThread]  // Browser process UI thread needs STA for OLE/COM (drag-drop, clipboard, etc.)
     public static int Main(string[] args)
     {
-        // 1. Initialize the CEF library.
+        // 1. Initialize the CEF library (process-global, no COM dependency).
         Cef.InitializeLibrary();
 
         // 2. Create app (ref count starts at 1 internally).
         var app = new SimpleApp();
 
-        // 3. Execute sub-processes. Both ExecuteSubProcess and Initialize
-        //    will take ownership of a reference, so we need 2 total.
-        app.AddRef(); // one extra ref for ExecuteSubProcess
+        // 3. Execute sub-processes on an MTA thread. GPU, renderer, and utility
+        //    subprocesses need MTA for DirectX and other COM APIs. The browser
+        //    process UI thread needs STA (set by [STAThread]), but subprocesses
+        //    must not pre-initialize COM as STA — so we dispatch them to a
+        //    dedicated MTA thread.
+        app.AddRef(); // extra ref for ExecuteSubProcess (released internally)
 
-        int exitCode = Cef.ExecuteSubProcess(app);
+        int exitCode = -1;
+        Exception? subprocessException = null;
+        using var subprocessDone = new ManualResetEventSlim();
+
+        var subprocessThread = new Thread(() =>
+        {
+            try
+            {
+                exitCode = Cef.ExecuteSubProcess(app);
+            }
+            catch (Exception ex)
+            {
+                subprocessException = ex;
+            }
+            finally
+            {
+                subprocessDone.Set();
+            }
+        });
+        #pragma warning disable CA1416 // SetApartmentState is Windows-only (CEF COM is Windows-only)
+        subprocessThread.SetApartmentState(ApartmentState.MTA);
+        #pragma warning restore CA1416
+        subprocessThread.Start();
+        subprocessDone.Wait();
+
+        if (subprocessException is not null)
+            throw new AggregateException("Subprocess execution failed.", subprocessException);
+
         if (exitCode >= 0)
             return exitCode; // Sub-process — app ref already released by ExecuteSubProcess.
 
