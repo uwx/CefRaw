@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using RawCef.Native;
@@ -34,12 +36,11 @@ public static unsafe class Cef
     /// call — one for <see cref="ExecuteSubProcess"/> and one for
     /// <see cref="Initialize"/>.
     /// </remarks>
-    public static int ExecuteSubProcess(CefApp app)
+    public static int ExecuteSubProcess(CefApp? app = null)
     {
         _cef_main_args_t mainArgs = BuildMainArgs();
-        var result = CefUnsafe.ExecuteProcess(&mainArgs, ((ICefApp)app).NativePtr, null);
-        if (result >= 0)
-            app.Release(); // cef_execute_process consumed its reference
+        _cef_app_t* appPtr = app is not null ? ((ICefApp)app).NativePtr : null;
+        var result = CefUnsafe.ExecuteProcess(&mainArgs, appPtr, null);
         return result;
     }
 
@@ -120,7 +121,31 @@ public static unsafe class Cef
         return result != 0;
     }
 
-    // ── Helpers ──────────────────────────────────────────────────────
+    // ── Subprocess path detection ────────────────────────────────────
+
+    /// <summary>
+    /// Returns the path CEF should use to launch subprocesses (GPU, renderer,
+    /// network, etc.). On Windows, returns the current process path. If running
+    /// via <c>dotnet run</c>, you must set <c>BrowserSubprocessPath</c> manually
+    /// or publish as self-contained.
+    /// </summary>
+    public static string GetDefaultSubprocessPath()
+    {
+#if OS_WIN
+        var path = Environment.ProcessPath;
+        // If we're running via dotnet.exe, the subprocess must be a self-contained exe.
+        // Warn if the process looks like the .NET host rather than a standalone app.
+        if (path is not null && Path.GetFileNameWithoutExtension(path).Equals("dotnet", StringComparison.OrdinalIgnoreCase))
+        {
+            // Running via dotnet run — CEF subprocesses won't work. Publish as self-contained.
+            Debug.Fail("CEF subprocesses require a self-contained publish when using dotnet CLI. " +
+                       "Publish with: dotnet publish -r win-x64 --self-contained");
+        }
+        return path ?? "";
+#else
+        return Environment.ProcessPath ?? "";
+#endif
+    }
 
     private static _cef_main_args_t BuildMainArgs()
     {

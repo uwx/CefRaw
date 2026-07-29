@@ -460,6 +460,9 @@
       <enumerator name="CEF_CONTENT_SETTING_TYPE_SUB_APPS_WITHOUT_PROMPTS" access="public">
         <type primitive="False">int</type>
       </enumerator>
+      <enumerator name="CEF_CONTENT_SETTING_TYPE_INLINE_CUE_MENU" access="public">
+        <type primitive="False">int</type>
+      </enumerator>
       <enumerator name="CEF_CONTENT_SETTING_TYPE_NUM_VALUES" access="public">
         <type primitive="False">int</type>
       </enumerator>
@@ -1779,6 +1782,12 @@
           <code>-188</code>
         </value>
       </enumerator>
+      <enumerator name="ERR_CONTROL_MSG_TOO_BIG" access="public">
+        <type primitive="False">int</type>
+        <value>
+          <code>-189</code>
+        </value>
+      </enumerator>
       <enumerator name="ERR_CERT_COMMON_NAME_INVALID" access="public">
         <type primitive="False">int</type>
         <value>
@@ -2581,6 +2590,12 @@
         <type primitive="False">int</type>
         <value>
           <code>-820</code>
+        </value>
+      </enumerator>
+      <enumerator name="ERR_DNS_DIRECT_ONLY" access="public">
+        <type primitive="False">int</type>
+        <value>
+          <code>-821</code>
         </value>
       </enumerator>
       <enumerator name="ERR_BLOB_INVALID_CONSTRUCTION_ARGUMENTS" access="public">
@@ -5921,7 +5936,7 @@
       <enumerator name="CEF_CTBT_MEDIA" access="public">
         <type primitive="False">int</type>
       </enumerator>
-      <enumerator name="CEF_CTBT_TAB_SEARCH" access="public">
+      <enumerator name="CEF_CTBT_TAB_SEARCH_DEPRECATED" access="public">
         <type primitive="False">int</type>
       </enumerator>
       <enumerator name="CEF_CTBT_BATTERY_SAVER" access="public">
@@ -11015,7 +11030,7 @@
       <constant name="CEF_API_HASH_PLATFORM" access="public">
         <type primitive="False">ReadOnlySpan&lt;byte&gt;</type>
         <value>
-          <code>"0934859000c911cdd75907f63f2ef8e485706e5b"u8</code>
+          <code>"27759c0a4b5b85c632e775838eb599b65129b798"u8</code>
         </value>
       </constant>
       <constant name="kNullCursorHandle" access="public">
@@ -11081,7 +11096,7 @@
       <constant name="CEF_API_HASH_PLATFORM" access="public">
         <type primitive="False">ReadOnlySpan&lt;byte&gt;</type>
         <value>
-          <code>"c63591fb321ac707f8710f296a8ae1ec05a575db"u8</code>
+          <code>"d88ff42c6092b448557bf38b6bcc668ab205793b"u8</code>
         </value>
       </constant>
     </class>

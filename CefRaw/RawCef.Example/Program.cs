@@ -9,6 +9,7 @@ namespace RawCef.Example;
 /// </summary>
 public static unsafe class Program
 {
+    [STAThread]
     public static int Main(string[] args)
     {
         // 1. Initialize the CEF library.
@@ -28,6 +29,17 @@ public static unsafe class Program
         // 4. Initialize CEF for the browser process.
         var settings = new CefSettings();
         settings.NoSandbox = 1;
+        settings.BrowserSubprocessPath = Cef.GetDefaultSubprocessPath();
+
+        // Point CEF to its resource files (cef.pak, devtools_resources.pak, locales/).
+        // These must be in the same directory as libcef.dll.
+        var cefDir = AppContext.BaseDirectory;
+        settings.ResourcesDirPath = cefDir;
+        settings.LocalesDirPath = Path.Combine(cefDir, "locales");
+
+        // Enable verbose logging to diagnose subprocess issues.
+        settings.LogSeverity = CefLogSeverity.LOGSEVERITY_VERBOSE;
+        settings.LogFile = Path.Combine(cefDir, "cef_debug.log");
 
         if (!Cef.Initialize(app, settings))
             return Cef.GetExitCode();
