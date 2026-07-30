@@ -13,7 +13,7 @@ namespace RawCef;
 /// </summary>
 public static unsafe class Cef
 {
-    private static volatile int _isShutdown;
+    private static int _isShutdown;
 
     /// <summary>
     /// Returns <c>true</c> after <see cref="Shutdown"/> has been called.
@@ -74,8 +74,12 @@ public static unsafe class Cef
     // ── Message loop ─────────────────────────────────────────────────
 
     /// <summary>
-    /// Runs the CEF message loop on the current thread. Blocks until
-    /// <see cref="Shutdown"/> or <c>cef_quit_message_loop()</c> is called.
+    /// Run the CEF message loop. Use this function instead of an application-
+    /// provided message loop to get the best balance between performance and CPU
+    /// usage. This function should only be called on the main application thread
+    /// and only if cef_initialize() is called with a
+    /// cef_settings_t.multi_threaded_message_loop value of false (0). This function
+    /// will block until a quit message is received by the system.
     /// </summary>
     public static void RunMessageLoop()
     {
@@ -105,9 +109,14 @@ public static unsafe class Cef
     // ── Browser creation ─────────────────────────────────────────────
 
     /// <summary>
-    /// Creates a new browser window asynchronously. The browser will be
-    /// created on the UI thread and delivered via the life-span handler's
-    /// <c>OnAfterCreated</c> callback.
+    /// Create a new browser using the window parameters specified by |windowInfo|.
+    /// All values will be copied internally and the actual window (if any) will be
+    /// created on the UI thread. If |request_context| is NULL the global request
+    /// context will be used. This function can be called on any browser process
+    /// thread and will not block. The optional |extra_info| parameter provides an
+    /// opportunity to specify extra information specific to the created browser
+    /// that will be passed to cef_render_process_handler_t::on_browser_created() in
+    /// the render process.
     /// </summary>
     public static bool CreateBrowser(
         CefClient client,
@@ -184,4 +193,154 @@ public static unsafe class Cef
     [DllImport("kernel32.dll")]
     private static extern void* GetModuleHandle(string? lpModuleName);
 #endif
+
+    /// <summary>
+    /// Perform a single iteration of CEF message loop processing. This function is
+    /// provided for cases where the CEF message loop must be integrated into an
+    /// existing application message loop. Use of this function is not recommended
+    /// for most users; use either the cef_run_message_loop() function or
+    /// cef_settings_t.multi_threaded_message_loop if possible. When using this
+    /// function care must be taken to balance performance against excessive CPU
+    /// usage. It is recommended to enable the cef_settings_t.external_message_pump
+    /// option when using this function so that
+    /// cef_browser_process_handler_t::on_schedule_message_pump_work() callbacks can
+    /// facilitate the scheduling process. This function should only be called on
+    /// the main application thread and only if cef_initialize() is called with a
+    /// cef_settings_t.multi_threaded_message_loop value of false (0). This function
+    /// will not block.
+    /// </summary>
+    public static void DoMessageLoopWork()
+    {
+        CefUnsafe.DoMessageLoopWork();
+    }
+
+    /// <summary>
+    /// Quit the CEF message loop that was started by calling
+    /// cef_run_message_loop(). This function should only be called on the main
+    /// application thread and only if cef_run_message_loop() was used.
+    /// </summary>
+    public static void QuitMessageLoop()
+    {
+        CefUnsafe.QuitMessageLoop();
+    }
+
+    /// <summary>
+    /// Set to true (1) before calling OS APIs on the CEF UI thread that will enter
+    /// a native message loop (see usage restrictions below). Set to false (0) after
+    /// exiting the native message loop. On Windows, use the CefSetOSModalLoop
+    /// function instead in cases like native top menus where resize of the browser
+    /// content is not required, or in cases like printer APIs where reentrancy
+    /// safety cannot be guaranteed.
+    /// Nested processing of Chromium tasks is disabled by default because common
+    /// controls and/or printer functions may use nested native message loops that
+    /// lead to unplanned reentrancy. This function re-enables nested processing in
+    /// the scope of an upcoming native message loop. It must only be used in cases
+    /// where the stack is reentrancy safe and processing nestable tasks is
+    /// explicitly safe. Do not use in cases (like the printer example) where an OS
+    /// API may experience unplanned reentrancy as a result of a new task executing
+    /// immediately.
+    /// For instance,
+    /// - The UI thread is running a message loop.
+    /// - It receives a task #1 and executes it.
+    /// - The task #1 implicitly starts a nested message loop. For example, via
+    ///   Windows APIs such as MessageBox or GetSaveFileName, or default handling of
+    ///   a user-initiated drag/resize operation (e.g. DefWindowProc handling of
+    ///   WM_SYSCOMMAND for SC_MOVE/SC_SIZE).
+    /// - The UI thread receives a task #2 before or while in this second message
+    ///   loop.
+    /// - With NestableTasksAllowed set to true (1), the task #2 will run right
+    ///   away. Otherwise, it will be executed right after task #1 completes at
+    ///   "thread message loop level".
+    /// </summary>
+    /// <param name="allowed"></param>
+    public static void SetNestableTasksAllowed(bool allowed)
+    {
+        CefUnsafe.SetNestableTasksAllowed(allowed ? 1 : 0);
+    }
+
+    ///
+    /// Register a new V8 extension with the specified JavaScript extension code and
+    /// handler. Functions implemented by the handler are prototyped using the
+    /// keyword 'native'. The calling of a native function is restricted to the
+    /// scope in which the prototype of the native function is defined. This
+    /// function may only be called on the render process main thread.
+    ///
+    /// Example JavaScript extension code: <pre>
+    ///   // create the 'example' global object if it doesn't already exist.
+    ///   if (!example)
+    ///     example = {};
+    ///   // create the 'example.test' global object if it doesn't already exist.
+    ///   if (!example.test)
+    ///     example.test = {};
+    ///   (function() {
+    ///     // Define the function 'example.test.myfunction'.
+    ///     example.test.myfunction = function() {
+    ///       // Call CefV8Handler::Execute() with the function name 'MyFunction'
+    ///       // and no arguments.
+    ///       native function MyFunction();
+    ///       return MyFunction();
+    ///     };
+    ///     // Define the getter function for parameter 'example.test.myparam'.
+    ///     example.test.__defineGetter__('myparam', function() {
+    ///       // Call CefV8Handler::Execute() with the function name 'GetMyParam'
+    ///       // and no arguments.
+    ///       native function GetMyParam();
+    ///       return GetMyParam();
+    ///     });
+    ///     // Define the setter function for parameter 'example.test.myparam'.
+    ///     example.test.__defineSetter__('myparam', function(b) {
+    ///       // Call CefV8Handler::Execute() with the function name 'SetMyParam'
+    ///       // and a single argument.
+    ///       native function SetMyParam();
+    ///       if(b) SetMyParam(b);
+    ///     });
+    ///
+    ///     // Extension definitions can also contain normal JavaScript variables
+    ///     // and functions.
+    ///     var myint = 0;
+    ///     example.test.increment = function() {
+    ///       myint += 1;
+    ///       return myint;
+    ///     };
+    ///   })();
+    /// </pre>
+    ///
+    /// Example usage in the page: <pre>
+    ///   // Call the function.
+    ///   example.test.myfunction();
+    ///   // Set the parameter.
+    ///   example.test.myparam = value;
+    ///   // Get the parameter.
+    ///   value = example.test.myparam;
+    ///   // Call another function.
+    ///   example.test.increment();
+    /// </pre>
+    ///
+    public static int RegisterExtension(string extensionName, string javascriptCode, ICefV8Handler handler)
+    {
+        _cef_string_utf16_t extensionNameStr = default;
+        fixed (char* p = extensionName)
+        {
+            CefUnsafe.StringUtf16Set((ushort*)p, (nuint)extensionName.Length, &extensionNameStr, copy: 1);
+        }
+        
+        _cef_string_utf16_t javascriptCodeStr = default;
+        fixed (char* p = javascriptCode)
+        {
+            CefUnsafe.StringUtf16Set((ushort*)p, (nuint)extensionName.Length, &javascriptCodeStr, copy: 1);
+        }
+
+        var result = CefUnsafe.RegisterExtension(&extensionNameStr, &javascriptCodeStr, handler.NativePtr);
+
+        CefUnsafe.StringUtf16Clear(&extensionNameStr);
+        CefUnsafe.StringUtf16Clear(&javascriptCodeStr);
+        
+        return result;
+    }
+
+    [DllImport("libcef", EntryPoint = "cef_register_scheme_handler_factory", CallingConvention = CallingConvention.Cdecl)]
+    public static extern int RegisterSchemeHandlerFactory(_cef_string_utf16_t* schemeName, _cef_string_utf16_t* domainName, _cef_scheme_handler_factory_t* factory);
+
+    [DllImport("libcef", EntryPoint = "cef_clear_scheme_handler_factories", CallingConvention = CallingConvention.Cdecl)]
+    public static extern int ClearSchemeHandlerFactories();
 }
