@@ -11,85 +11,52 @@ namespace RawCef.Example;
 public static unsafe class Program
 {
 #if OS_WIN
-    // ── Native-thread subprocess execution ─────────────────────────
-    //
-    // .NET worker threads have CET shadow stack entries from runtime init
-    // that cause FAST_FAIL_CONTROL_INVALID_RETURN_ADDRESS in V8.
-    // Using kernel32!CreateThread gives a thread with a clean shadow stack.
-
-    private static _cef_app_t* s_subprocessApp;
-    private static int s_subprocessExitCode;
-
-    [DllImport("kernel32.dll")]
-    private static extern void* GetModuleHandle(string? lpModuleName);
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    private static extern IntPtr CreateThread(
-        void* lpThreadAttributes, nuint dwStackSize,
-        nint lpStartAddress,
-        void* lpParameter, uint dwCreationFlags, out uint lpThreadId);
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    private static extern uint WaitForSingleObject(IntPtr hHandle, uint dwMilliseconds);
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    private static extern bool CloseHandle(IntPtr hObject);
-
-    private const uint INFINITE = 0xFFFFFFFF;
+    private const uint COINIT_APARTMENTTHREADED = 0x2;
     private const uint COINIT_MULTITHREADED = 0x0;
 
     [DllImport("ole32.dll")]
+    private static extern void CoUninitialize();
+
+    [DllImport("ole32.dll")]
     private static extern int CoInitializeEx(void* pvReserved, uint dwCoInit);
-
-    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
-    private static uint SubprocessThreadProc(void* param)
-    {
-        CoInitializeEx(null, COINIT_MULTITHREADED);
-        s_subprocessApp->base.add_ref(&s_subprocessApp->base);
-
-        _cef_main_args_t mainArgs = default;
-        mainArgs.instance = GetModuleHandle(null);
-
-        var result = CefUnsafe.ExecuteProcess(&mainArgs, s_subprocessApp, null);
-
-        if (result >= 0)
-            s_subprocessApp->base.release(&s_subprocessApp->base);
-
-        s_subprocessExitCode = result;
-        return 0;
-    }
 #endif
 
-    [STAThread]  // Browser process UI thread needs STA for OLE/COM
+    [STAThread]  // Browser process UI thread needs STA for OLE/COM (drag-drop, clipboard, etc.)
     public static int Main(string[] args)
     {
-        // 1. Initialize the CEF library.
+        // 1. Initialize the CEF library (process-global, no COM dependency).
         Cef.InitializeLibrary();
 
         // 2. Create app (ref count starts at 1 internally).
         var app = new SimpleApp();
 
-        // 3. Execute sub-processes on a native OS thread (clean CET shadow stack).
+        // 3. Execute sub-processes on an MTA thread. GPU, renderer, and utility
+        //    subprocesses need MTA for DirectX and other COM APIs. The browser
+        //    process UI thread needs STA (set by [STAThread]), but subprocesses
+        //    must not pre-initialize COM as STA.
+        //
+        //    IMPORTANT: .NET's COM initialization on worker threads can leave the
+        //    CET (Control-flow Enforcement Technology) shadow stack in a state
+        //    that conflicts with V8, causing FAST_FAIL_CONTROL_INVALID_RETURN_ADDRESS.
+        //    We fix this by tearing down .NET's COM init and reinitializing COM
+        //    cleanly before calling cef_execute_process.
+        app.AddRef(); // extra ref for ExecuteSubProcess (released internally)
+
 #if OS_WIN
-        s_subprocessApp = ((ICefApp)app).NativePtr;
-        s_subprocessExitCode = -1;
-
-        var fp = (delegate* unmanaged[Stdcall]<void*, uint>)&SubprocessThreadProc;
-        var hThread = CreateThread(null, 0, (nint)fp, null, 0, out _);
-        if (hThread == IntPtr.Zero)
-            throw new InvalidOperationException(
-                $"CreateThread failed: {Marshal.GetLastWin32Error()}");
-
-        WaitForSingleObject(hThread, INFINITE);
-        CloseHandle(hThread);
-
-        if (s_subprocessExitCode >= 0)
-            return s_subprocessExitCode;
-#else
-        app.AddRef();
+        // Undo .NET's COM initialization which may have corrupted the
+        // CET shadow stack state, then reinitialize COM cleanly.
+        CoUninitialize();
+        CoInitializeEx(null, COINIT_MULTITHREADED);
+#endif
         var exitCode = Cef.ExecuteSubProcess(app);
         if (exitCode >= 0)
-            return exitCode;
+            return exitCode; // Sub-process completed.
+
+#if OS_WIN
+        // Undo .NET's COM initialization which may have corrupted the
+        // CET shadow stack state, then reinitialize COM cleanly.
+        CoUninitialize();
+        CoInitializeEx(null, COINIT_APARTMENTTHREADED);
 #endif
 
         // 4. Initialize CEF for the browser process.
@@ -97,9 +64,13 @@ public static unsafe class Program
         settings.NoSandbox = 1;
         settings.BrowserSubprocessPath = Cef.GetDefaultSubprocessPath();
 
+        // Point CEF to its resource files (chrome_100_percent.pak, resources.pak, locales/).
+        // These must be in the same directory as libcef.dll.
         var cefDir = AppContext.BaseDirectory;
         settings.ResourcesDirPath = cefDir;
         settings.LocalesDirPath = Path.Combine(cefDir, "locales");
+
+        // Enable verbose logging to diagnose subprocess issues.
         settings.LogSeverity = CefLogSeverity.LOGSEVERITY_VERBOSE;
         settings.LogFile = Path.Combine(cefDir, "cef_debug.log");
 
