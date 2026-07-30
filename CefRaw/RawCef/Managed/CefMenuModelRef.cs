@@ -192,18 +192,18 @@ public unsafe partial class CefMenuModelRef : CefBaseRefCountedRef, ICefMenuMode
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetLabel(int arg0)
+    public string? GetLabel(int arg0)
     {
         var _result = _ptr->get_label(_ptr, arg0);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetLabelAt(nuint arg0)
+    public string? GetLabelAt(nuint arg0)
     {
         var _result = _ptr->get_label_at(_ptr, arg0);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int SetLabel(int arg0, string? arg1)
@@ -679,18 +679,18 @@ public unsafe partial class CefMenuModelRef : CefBaseRefCountedRef, ICefMenuMode
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetLabel(int arg0)
+    public string? GetLabel(int arg0)
     {
         var _result = _ptr->get_label(_ptr, arg0);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetLabelAt(nuint arg0)
+    public string? GetLabelAt(nuint arg0)
     {
         var _result = _ptr->get_label_at(_ptr, arg0);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int SetLabel(int arg0, string? arg1)
@@ -1166,18 +1166,18 @@ public unsafe partial class CefMenuModelRef : CefBaseRefCountedRef, ICefMenuMode
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetLabel(int arg0)
+    public string? GetLabel(int arg0)
     {
         var _result = _ptr->get_label(_ptr, arg0);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetLabelAt(nuint arg0)
+    public string? GetLabelAt(nuint arg0)
     {
         var _result = _ptr->get_label_at(_ptr, arg0);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int SetLabel(int arg0, string? arg1)

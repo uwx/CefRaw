@@ -21,7 +21,7 @@ public unsafe partial interface ICefRequestContext : ICefPreferenceManager
 
     public ICefRequestContextHandler? GetHandler();
 
-    public cef_string_userfree_utf16_t GetCachePath();
+    public string? GetCachePath();
 
     public ICefCookieManager? GetCookieManager(ICefCompletionCallback? arg0);
 
@@ -83,7 +83,7 @@ public unsafe partial interface ICefRequestContext : ICefPreferenceManager
 
     public ICefRequestContextHandler? GetHandler();
 
-    public cef_string_userfree_utf16_t GetCachePath();
+    public string? GetCachePath();
 
     public ICefCookieManager? GetCookieManager(ICefCompletionCallback? arg0);
 
@@ -145,7 +145,7 @@ public unsafe partial interface ICefRequestContext : ICefPreferenceManager
 
     public ICefRequestContextHandler? GetHandler();
 
-    public cef_string_userfree_utf16_t GetCachePath();
+    public string? GetCachePath();
 
     public ICefCookieManager? GetCookieManager(ICefCompletionCallback? arg0);
 

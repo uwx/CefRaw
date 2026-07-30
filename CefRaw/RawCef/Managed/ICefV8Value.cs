@@ -53,7 +53,7 @@ public unsafe partial interface ICefV8Value : ICefBaseRefCounted
 
     public _cef_basetime_t GetDateValue();
 
-    public cef_string_userfree_utf16_t GetStringValue();
+    public string? GetStringValue();
 
     public int IsUserCreated();
 
@@ -105,7 +105,7 @@ public unsafe partial interface ICefV8Value : ICefBaseRefCounted
 
     public void* GetArrayBufferData();
 
-    public cef_string_userfree_utf16_t GetFunctionName();
+    public string? GetFunctionName();
 
     public ICefV8Handler? GetFunctionHandler();
 
@@ -173,7 +173,7 @@ public unsafe partial interface ICefV8Value : ICefBaseRefCounted
 
     public _cef_basetime_t GetDateValue();
 
-    public cef_string_userfree_utf16_t GetStringValue();
+    public string? GetStringValue();
 
     public int IsUserCreated();
 
@@ -225,7 +225,7 @@ public unsafe partial interface ICefV8Value : ICefBaseRefCounted
 
     public void* GetArrayBufferData();
 
-    public cef_string_userfree_utf16_t GetFunctionName();
+    public string? GetFunctionName();
 
     public ICefV8Handler? GetFunctionHandler();
 
@@ -293,7 +293,7 @@ public unsafe partial interface ICefV8Value : ICefBaseRefCounted
 
     public _cef_basetime_t GetDateValue();
 
-    public cef_string_userfree_utf16_t GetStringValue();
+    public string? GetStringValue();
 
     public int IsUserCreated();
 
@@ -345,7 +345,7 @@ public unsafe partial interface ICefV8Value : ICefBaseRefCounted
 
     public void* GetArrayBufferData();
 
-    public cef_string_userfree_utf16_t GetFunctionName();
+    public string? GetFunctionName();
 
     public ICefV8Handler? GetFunctionHandler();
 

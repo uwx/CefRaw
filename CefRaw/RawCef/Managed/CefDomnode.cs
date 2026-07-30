@@ -100,12 +100,12 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetName();
+    public abstract string? GetName();
 
     /// <summary>
     /// Implement the <c>get_value</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetValue();
+    public abstract string? GetValue();
 
     /// <summary>
     /// Implement the <c>set_value</c> callback.
@@ -115,7 +115,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_as_markup</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetAsMarkup();
+    public abstract string? GetAsMarkup();
 
     /// <summary>
     /// Implement the <c>get_document</c> callback.
@@ -155,7 +155,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_element_tag_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetElementTagName();
+    public abstract string? GetElementTagName();
 
     /// <summary>
     /// Implement the <c>has_element_attributes</c> callback.
@@ -170,7 +170,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_element_attribute</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetElementAttribute(string? arg0);
+    public abstract string? GetElementAttribute(string? arg0);
 
     /// <summary>
     /// Implement the <c>get_element_attributes</c> callback.
@@ -185,7 +185,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_element_inner_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetElementInnerText();
+    public abstract string? GetElementInnerText();
 
     /// <summary>
     /// Implement the <c>get_element_bounds</c> callback.
@@ -360,7 +360,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -382,7 +382,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetValue();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -427,7 +427,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetAsMarkup();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -609,7 +609,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetElementTagName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -677,7 +677,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetElementAttribute(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -744,7 +744,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetElementInnerText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -878,12 +878,12 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetName();
+    public abstract string? GetName();
 
     /// <summary>
     /// Implement the <c>get_value</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetValue();
+    public abstract string? GetValue();
 
     /// <summary>
     /// Implement the <c>set_value</c> callback.
@@ -893,7 +893,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_as_markup</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetAsMarkup();
+    public abstract string? GetAsMarkup();
 
     /// <summary>
     /// Implement the <c>get_document</c> callback.
@@ -933,7 +933,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_element_tag_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetElementTagName();
+    public abstract string? GetElementTagName();
 
     /// <summary>
     /// Implement the <c>has_element_attributes</c> callback.
@@ -948,7 +948,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_element_attribute</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetElementAttribute(string? arg0);
+    public abstract string? GetElementAttribute(string? arg0);
 
     /// <summary>
     /// Implement the <c>get_element_attributes</c> callback.
@@ -963,7 +963,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_element_inner_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetElementInnerText();
+    public abstract string? GetElementInnerText();
 
     /// <summary>
     /// Implement the <c>get_element_bounds</c> callback.
@@ -1138,7 +1138,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1160,7 +1160,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetValue();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1205,7 +1205,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetAsMarkup();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1387,7 +1387,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetElementTagName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1455,7 +1455,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetElementAttribute(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1522,7 +1522,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetElementInnerText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1656,12 +1656,12 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetName();
+    public abstract string? GetName();
 
     /// <summary>
     /// Implement the <c>get_value</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetValue();
+    public abstract string? GetValue();
 
     /// <summary>
     /// Implement the <c>set_value</c> callback.
@@ -1671,7 +1671,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_as_markup</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetAsMarkup();
+    public abstract string? GetAsMarkup();
 
     /// <summary>
     /// Implement the <c>get_document</c> callback.
@@ -1711,7 +1711,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_element_tag_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetElementTagName();
+    public abstract string? GetElementTagName();
 
     /// <summary>
     /// Implement the <c>has_element_attributes</c> callback.
@@ -1726,7 +1726,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_element_attribute</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetElementAttribute(string? arg0);
+    public abstract string? GetElementAttribute(string? arg0);
 
     /// <summary>
     /// Implement the <c>get_element_attributes</c> callback.
@@ -1741,7 +1741,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
     /// <summary>
     /// Implement the <c>get_element_inner_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetElementInnerText();
+    public abstract string? GetElementInnerText();
 
     /// <summary>
     /// Implement the <c>get_element_bounds</c> callback.
@@ -1916,7 +1916,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1938,7 +1938,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetValue();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1983,7 +1983,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetAsMarkup();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -2165,7 +2165,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetElementTagName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -2233,7 +2233,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetElementAttribute(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -2300,7 +2300,7 @@ public unsafe abstract partial class CefDomnode : CefBaseRefCounted, ICefDomnode
 
             var _result = _m.GetElementInnerText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

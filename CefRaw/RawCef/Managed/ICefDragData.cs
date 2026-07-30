@@ -23,19 +23,19 @@ public unsafe partial interface ICefDragData : ICefBaseRefCounted
 
     public int IsFile();
 
-    public cef_string_userfree_utf16_t GetLinkUrl();
+    public string? GetLinkUrl();
 
-    public cef_string_userfree_utf16_t GetLinkTitle();
+    public string? GetLinkTitle();
 
-    public cef_string_userfree_utf16_t GetLinkMetadata();
+    public string? GetLinkMetadata();
 
-    public cef_string_userfree_utf16_t GetFragmentText();
+    public string? GetFragmentText();
 
-    public cef_string_userfree_utf16_t GetFragmentHtml();
+    public string? GetFragmentHtml();
 
-    public cef_string_userfree_utf16_t GetFragmentBaseUrl();
+    public string? GetFragmentBaseUrl();
 
-    public cef_string_userfree_utf16_t GetFileName();
+    public string? GetFileName();
 
     public nuint GetFileContents(ICefStreamWriter? arg0);
 
@@ -93,19 +93,19 @@ public unsafe partial interface ICefDragData : ICefBaseRefCounted
 
     public int IsFile();
 
-    public cef_string_userfree_utf16_t GetLinkUrl();
+    public string? GetLinkUrl();
 
-    public cef_string_userfree_utf16_t GetLinkTitle();
+    public string? GetLinkTitle();
 
-    public cef_string_userfree_utf16_t GetLinkMetadata();
+    public string? GetLinkMetadata();
 
-    public cef_string_userfree_utf16_t GetFragmentText();
+    public string? GetFragmentText();
 
-    public cef_string_userfree_utf16_t GetFragmentHtml();
+    public string? GetFragmentHtml();
 
-    public cef_string_userfree_utf16_t GetFragmentBaseUrl();
+    public string? GetFragmentBaseUrl();
 
-    public cef_string_userfree_utf16_t GetFileName();
+    public string? GetFileName();
 
     public nuint GetFileContents(ICefStreamWriter? arg0);
 
@@ -163,19 +163,19 @@ public unsafe partial interface ICefDragData : ICefBaseRefCounted
 
     public int IsFile();
 
-    public cef_string_userfree_utf16_t GetLinkUrl();
+    public string? GetLinkUrl();
 
-    public cef_string_userfree_utf16_t GetLinkTitle();
+    public string? GetLinkTitle();
 
-    public cef_string_userfree_utf16_t GetLinkMetadata();
+    public string? GetLinkMetadata();
 
-    public cef_string_userfree_utf16_t GetFragmentText();
+    public string? GetFragmentText();
 
-    public cef_string_userfree_utf16_t GetFragmentHtml();
+    public string? GetFragmentHtml();
 
-    public cef_string_userfree_utf16_t GetFragmentBaseUrl();
+    public string? GetFragmentBaseUrl();
 
-    public cef_string_userfree_utf16_t GetFileName();
+    public string? GetFileName();
 
     public nuint GetFileContents(ICefStreamWriter? arg0);
 

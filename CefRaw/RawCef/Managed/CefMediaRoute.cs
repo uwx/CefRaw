@@ -44,7 +44,7 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     /// <summary>
     /// Implement the <c>get_id</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetId();
+    public abstract string? GetId();
 
     /// <summary>
     /// Implement the <c>get_source</c> callback.
@@ -79,7 +79,7 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
 
             var _result = _m.GetId();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -223,7 +223,7 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     /// <summary>
     /// Implement the <c>get_id</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetId();
+    public abstract string? GetId();
 
     /// <summary>
     /// Implement the <c>get_source</c> callback.
@@ -258,7 +258,7 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
 
             var _result = _m.GetId();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -402,7 +402,7 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
     /// <summary>
     /// Implement the <c>get_id</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetId();
+    public abstract string? GetId();
 
     /// <summary>
     /// Implement the <c>get_source</c> callback.
@@ -437,7 +437,7 @@ public unsafe abstract partial class CefMediaRoute : CefBaseRefCounted, ICefMedi
 
             var _result = _m.GetId();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

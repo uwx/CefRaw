@@ -21,7 +21,7 @@ public unsafe partial interface ICefDomdocument : ICefBaseRefCounted
 
     public ICefDomnode? GetHead();
 
-    public cef_string_userfree_utf16_t GetTitle();
+    public string? GetTitle();
 
     public ICefDomnode? GetElementById(string? arg0);
 
@@ -33,13 +33,13 @@ public unsafe partial interface ICefDomdocument : ICefBaseRefCounted
 
     public int GetSelectionEndOffset();
 
-    public cef_string_userfree_utf16_t GetSelectionAsMarkup();
+    public string? GetSelectionAsMarkup();
 
-    public cef_string_userfree_utf16_t GetSelectionAsText();
+    public string? GetSelectionAsText();
 
-    public cef_string_userfree_utf16_t GetBaseUrl();
+    public string? GetBaseUrl();
 
-    public cef_string_userfree_utf16_t GetCompleteUrl(string? arg0);
+    public string? GetCompleteUrl(string? arg0);
 }
 #endif
 #if OS_MAC
@@ -65,7 +65,7 @@ public unsafe partial interface ICefDomdocument : ICefBaseRefCounted
 
     public ICefDomnode? GetHead();
 
-    public cef_string_userfree_utf16_t GetTitle();
+    public string? GetTitle();
 
     public ICefDomnode? GetElementById(string? arg0);
 
@@ -77,13 +77,13 @@ public unsafe partial interface ICefDomdocument : ICefBaseRefCounted
 
     public int GetSelectionEndOffset();
 
-    public cef_string_userfree_utf16_t GetSelectionAsMarkup();
+    public string? GetSelectionAsMarkup();
 
-    public cef_string_userfree_utf16_t GetSelectionAsText();
+    public string? GetSelectionAsText();
 
-    public cef_string_userfree_utf16_t GetBaseUrl();
+    public string? GetBaseUrl();
 
-    public cef_string_userfree_utf16_t GetCompleteUrl(string? arg0);
+    public string? GetCompleteUrl(string? arg0);
 }
 #endif
 #if OS_LINUX
@@ -109,7 +109,7 @@ public unsafe partial interface ICefDomdocument : ICefBaseRefCounted
 
     public ICefDomnode? GetHead();
 
-    public cef_string_userfree_utf16_t GetTitle();
+    public string? GetTitle();
 
     public ICefDomnode? GetElementById(string? arg0);
 
@@ -121,12 +121,12 @@ public unsafe partial interface ICefDomdocument : ICefBaseRefCounted
 
     public int GetSelectionEndOffset();
 
-    public cef_string_userfree_utf16_t GetSelectionAsMarkup();
+    public string? GetSelectionAsMarkup();
 
-    public cef_string_userfree_utf16_t GetSelectionAsText();
+    public string? GetSelectionAsText();
 
-    public cef_string_userfree_utf16_t GetBaseUrl();
+    public string? GetBaseUrl();
 
-    public cef_string_userfree_utf16_t GetCompleteUrl(string? arg0);
+    public string? GetCompleteUrl(string? arg0);
 }
 #endif

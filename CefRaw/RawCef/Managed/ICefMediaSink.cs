@@ -13,9 +13,9 @@ public unsafe partial interface ICefMediaSink : ICefBaseRefCounted
 {
     new _cef_media_sink_t* NativePtr { get; }
 
-    public cef_string_userfree_utf16_t GetId();
+    public string? GetId();
 
-    public cef_string_userfree_utf16_t GetName();
+    public string? GetName();
 
     public cef_media_sink_icon_type_t GetIconType();
 
@@ -43,9 +43,9 @@ public unsafe partial interface ICefMediaSink : ICefBaseRefCounted
 {
     new _cef_media_sink_t* NativePtr { get; }
 
-    public cef_string_userfree_utf16_t GetId();
+    public string? GetId();
 
-    public cef_string_userfree_utf16_t GetName();
+    public string? GetName();
 
     public cef_media_sink_icon_type_t GetIconType();
 
@@ -73,9 +73,9 @@ public unsafe partial interface ICefMediaSink : ICefBaseRefCounted
 {
     new _cef_media_sink_t* NativePtr { get; }
 
-    public cef_string_userfree_utf16_t GetId();
+    public string? GetId();
 
-    public cef_string_userfree_utf16_t GetName();
+    public string? GetName();
 
     public cef_media_sink_icon_type_t GetIconType();
 

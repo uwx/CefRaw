@@ -74,17 +74,17 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_link_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLinkUrl();
+    public abstract string? GetLinkUrl();
 
     /// <summary>
     /// Implement the <c>get_unfiltered_link_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUnfilteredLinkUrl();
+    public abstract string? GetUnfilteredLinkUrl();
 
     /// <summary>
     /// Implement the <c>get_source_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSourceUrl();
+    public abstract string? GetSourceUrl();
 
     /// <summary>
     /// Implement the <c>has_image_contents</c> callback.
@@ -94,22 +94,22 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_title_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetTitleText();
+    public abstract string? GetTitleText();
 
     /// <summary>
     /// Implement the <c>get_page_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetPageUrl();
+    public abstract string? GetPageUrl();
 
     /// <summary>
     /// Implement the <c>get_frame_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFrameUrl();
+    public abstract string? GetFrameUrl();
 
     /// <summary>
     /// Implement the <c>get_frame_charset</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFrameCharset();
+    public abstract string? GetFrameCharset();
 
     /// <summary>
     /// Implement the <c>get_media_type</c> callback.
@@ -124,12 +124,12 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_selection_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSelectionText();
+    public abstract string? GetSelectionText();
 
     /// <summary>
     /// Implement the <c>get_misspelled_word</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMisspelledWord();
+    public abstract string? GetMisspelledWord();
 
     /// <summary>
     /// Implement the <c>get_dictionary_suggestions</c> callback.
@@ -235,7 +235,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetLinkUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -257,7 +257,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetUnfilteredLinkUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -279,7 +279,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetSourceUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -323,7 +323,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetTitleText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -345,7 +345,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetPageUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -367,7 +367,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetFrameUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -389,7 +389,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetFrameCharset();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -455,7 +455,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetSelectionText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -477,7 +477,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetMisspelledWord();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -674,17 +674,17 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_link_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLinkUrl();
+    public abstract string? GetLinkUrl();
 
     /// <summary>
     /// Implement the <c>get_unfiltered_link_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUnfilteredLinkUrl();
+    public abstract string? GetUnfilteredLinkUrl();
 
     /// <summary>
     /// Implement the <c>get_source_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSourceUrl();
+    public abstract string? GetSourceUrl();
 
     /// <summary>
     /// Implement the <c>has_image_contents</c> callback.
@@ -694,22 +694,22 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_title_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetTitleText();
+    public abstract string? GetTitleText();
 
     /// <summary>
     /// Implement the <c>get_page_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetPageUrl();
+    public abstract string? GetPageUrl();
 
     /// <summary>
     /// Implement the <c>get_frame_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFrameUrl();
+    public abstract string? GetFrameUrl();
 
     /// <summary>
     /// Implement the <c>get_frame_charset</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFrameCharset();
+    public abstract string? GetFrameCharset();
 
     /// <summary>
     /// Implement the <c>get_media_type</c> callback.
@@ -724,12 +724,12 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_selection_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSelectionText();
+    public abstract string? GetSelectionText();
 
     /// <summary>
     /// Implement the <c>get_misspelled_word</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMisspelledWord();
+    public abstract string? GetMisspelledWord();
 
     /// <summary>
     /// Implement the <c>get_dictionary_suggestions</c> callback.
@@ -835,7 +835,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetLinkUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -857,7 +857,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetUnfilteredLinkUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -879,7 +879,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetSourceUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -923,7 +923,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetTitleText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -945,7 +945,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetPageUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -967,7 +967,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetFrameUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -989,7 +989,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetFrameCharset();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1055,7 +1055,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetSelectionText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1077,7 +1077,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetMisspelledWord();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1274,17 +1274,17 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_link_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLinkUrl();
+    public abstract string? GetLinkUrl();
 
     /// <summary>
     /// Implement the <c>get_unfiltered_link_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUnfilteredLinkUrl();
+    public abstract string? GetUnfilteredLinkUrl();
 
     /// <summary>
     /// Implement the <c>get_source_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSourceUrl();
+    public abstract string? GetSourceUrl();
 
     /// <summary>
     /// Implement the <c>has_image_contents</c> callback.
@@ -1294,22 +1294,22 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_title_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetTitleText();
+    public abstract string? GetTitleText();
 
     /// <summary>
     /// Implement the <c>get_page_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetPageUrl();
+    public abstract string? GetPageUrl();
 
     /// <summary>
     /// Implement the <c>get_frame_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFrameUrl();
+    public abstract string? GetFrameUrl();
 
     /// <summary>
     /// Implement the <c>get_frame_charset</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFrameCharset();
+    public abstract string? GetFrameCharset();
 
     /// <summary>
     /// Implement the <c>get_media_type</c> callback.
@@ -1324,12 +1324,12 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_selection_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSelectionText();
+    public abstract string? GetSelectionText();
 
     /// <summary>
     /// Implement the <c>get_misspelled_word</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMisspelledWord();
+    public abstract string? GetMisspelledWord();
 
     /// <summary>
     /// Implement the <c>get_dictionary_suggestions</c> callback.
@@ -1435,7 +1435,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetLinkUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1457,7 +1457,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetUnfilteredLinkUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1479,7 +1479,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetSourceUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1523,7 +1523,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetTitleText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1545,7 +1545,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetPageUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1567,7 +1567,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetFrameUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1589,7 +1589,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetFrameCharset();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1655,7 +1655,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetSelectionText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1677,7 +1677,7 @@ public unsafe abstract partial class CefContextMenuParams : CefBaseRefCounted, I
 
             var _result = _m.GetMisspelledWord();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

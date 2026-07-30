@@ -185,12 +185,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
     /// <summary>
     /// Implement the <c>get_label</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLabel(int arg0);
+    public abstract string? GetLabel(int arg0);
 
     /// <summary>
     /// Implement the <c>get_label_at</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLabelAt(nuint arg0);
+    public abstract string? GetLabelAt(nuint arg0);
 
     /// <summary>
     /// Implement the <c>set_label</c> callback.
@@ -813,7 +813,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
             var _a0 = arg0;
             var _result = _m.GetLabel(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -836,7 +836,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
             var _a0 = arg0;
             var _result = _m.GetLabelAt(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1899,12 +1899,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
     /// <summary>
     /// Implement the <c>get_label</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLabel(int arg0);
+    public abstract string? GetLabel(int arg0);
 
     /// <summary>
     /// Implement the <c>get_label_at</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLabelAt(nuint arg0);
+    public abstract string? GetLabelAt(nuint arg0);
 
     /// <summary>
     /// Implement the <c>set_label</c> callback.
@@ -2527,7 +2527,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
             var _a0 = arg0;
             var _result = _m.GetLabel(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -2550,7 +2550,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
             var _a0 = arg0;
             var _result = _m.GetLabelAt(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -3613,12 +3613,12 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
     /// <summary>
     /// Implement the <c>get_label</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLabel(int arg0);
+    public abstract string? GetLabel(int arg0);
 
     /// <summary>
     /// Implement the <c>get_label_at</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLabelAt(nuint arg0);
+    public abstract string? GetLabelAt(nuint arg0);
 
     /// <summary>
     /// Implement the <c>set_label</c> callback.
@@ -4241,7 +4241,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
             var _a0 = arg0;
             var _result = _m.GetLabel(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -4264,7 +4264,7 @@ public unsafe abstract partial class CefMenuModel : CefBaseRefCounted, ICefMenuM
             var _a0 = arg0;
             var _result = _m.GetLabelAt(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

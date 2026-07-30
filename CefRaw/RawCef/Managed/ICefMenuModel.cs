@@ -49,9 +49,9 @@ public unsafe partial interface ICefMenuModel : ICefBaseRefCounted
 
     public int SetCommandIdAt(nuint arg0, int arg1);
 
-    public cef_string_userfree_utf16_t GetLabel(int arg0);
+    public string? GetLabel(int arg0);
 
-    public cef_string_userfree_utf16_t GetLabelAt(nuint arg0);
+    public string? GetLabelAt(nuint arg0);
 
     public int SetLabel(int arg0, string? arg1);
 
@@ -177,9 +177,9 @@ public unsafe partial interface ICefMenuModel : ICefBaseRefCounted
 
     public int SetCommandIdAt(nuint arg0, int arg1);
 
-    public cef_string_userfree_utf16_t GetLabel(int arg0);
+    public string? GetLabel(int arg0);
 
-    public cef_string_userfree_utf16_t GetLabelAt(nuint arg0);
+    public string? GetLabelAt(nuint arg0);
 
     public int SetLabel(int arg0, string? arg1);
 
@@ -305,9 +305,9 @@ public unsafe partial interface ICefMenuModel : ICefBaseRefCounted
 
     public int SetCommandIdAt(nuint arg0, int arg1);
 
-    public cef_string_userfree_utf16_t GetLabel(int arg0);
+    public string? GetLabel(int arg0);
 
-    public cef_string_userfree_utf16_t GetLabelAt(nuint arg0);
+    public string? GetLabelAt(nuint arg0);
 
     public int SetLabel(int arg0, string? arg1);
 

@@ -33,32 +33,32 @@ public unsafe partial class CefNavigationEntryRef : CefBaseRefCountedRef, ICefNa
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetUrl()
+    public string? GetUrl()
     {
         var _result = _ptr->get_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetDisplayUrl()
+    public string? GetDisplayUrl()
     {
         var _result = _ptr->get_display_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetOriginalUrl()
+    public string? GetOriginalUrl()
     {
         var _result = _ptr->get_original_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetTitle()
+    public string? GetTitle()
     {
         var _result = _ptr->get_title(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public cef_transition_type_t GetTransitionType()
@@ -138,32 +138,32 @@ public unsafe partial class CefNavigationEntryRef : CefBaseRefCountedRef, ICefNa
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetUrl()
+    public string? GetUrl()
     {
         var _result = _ptr->get_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetDisplayUrl()
+    public string? GetDisplayUrl()
     {
         var _result = _ptr->get_display_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetOriginalUrl()
+    public string? GetOriginalUrl()
     {
         var _result = _ptr->get_original_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetTitle()
+    public string? GetTitle()
     {
         var _result = _ptr->get_title(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public cef_transition_type_t GetTransitionType()
@@ -243,32 +243,32 @@ public unsafe partial class CefNavigationEntryRef : CefBaseRefCountedRef, ICefNa
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetUrl()
+    public string? GetUrl()
     {
         var _result = _ptr->get_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetDisplayUrl()
+    public string? GetDisplayUrl()
     {
         var _result = _ptr->get_display_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetOriginalUrl()
+    public string? GetOriginalUrl()
     {
         var _result = _ptr->get_original_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetTitle()
+    public string? GetTitle()
     {
         var _result = _ptr->get_title(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public cef_transition_type_t GetTransitionType()

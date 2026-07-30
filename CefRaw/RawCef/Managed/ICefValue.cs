@@ -33,7 +33,7 @@ public unsafe partial interface ICefValue : ICefBaseRefCounted
 
     public double GetDouble();
 
-    public cef_string_userfree_utf16_t GetString();
+    public string? GetString();
 
     public ICefBinaryValue? GetBinary();
 
@@ -93,7 +93,7 @@ public unsafe partial interface ICefValue : ICefBaseRefCounted
 
     public double GetDouble();
 
-    public cef_string_userfree_utf16_t GetString();
+    public string? GetString();
 
     public ICefBinaryValue? GetBinary();
 
@@ -153,7 +153,7 @@ public unsafe partial interface ICefValue : ICefBaseRefCounted
 
     public double GetDouble();
 
-    public cef_string_userfree_utf16_t GetString();
+    public string? GetString();
 
     public ICefBinaryValue? GetBinary();
 

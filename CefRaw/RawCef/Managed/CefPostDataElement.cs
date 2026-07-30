@@ -72,7 +72,7 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_file</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFile();
+    public abstract string? GetFile();
 
     /// <summary>
     /// Implement the <c>get_bytes_count</c> callback.
@@ -204,7 +204,7 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
 
             var _result = _m.GetFile();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -334,7 +334,7 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_file</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFile();
+    public abstract string? GetFile();
 
     /// <summary>
     /// Implement the <c>get_bytes_count</c> callback.
@@ -466,7 +466,7 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
 
             var _result = _m.GetFile();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -596,7 +596,7 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_file</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFile();
+    public abstract string? GetFile();
 
     /// <summary>
     /// Implement the <c>get_bytes_count</c> callback.
@@ -728,7 +728,7 @@ public unsafe abstract partial class CefPostDataElement : CefBaseRefCounted, ICe
 
             var _result = _m.GetFile();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

@@ -27,9 +27,9 @@ public unsafe partial interface ICefCommandLine : ICefBaseRefCounted
 
     public void GetArgv(ICefStringList? arg0);
 
-    public cef_string_userfree_utf16_t GetCommandLineString();
+    public string? GetCommandLineString();
 
-    public cef_string_userfree_utf16_t GetProgram();
+    public string? GetProgram();
 
     public void SetProgram(string? arg0);
 
@@ -37,7 +37,7 @@ public unsafe partial interface ICefCommandLine : ICefBaseRefCounted
 
     public int HasSwitch(string? arg0);
 
-    public cef_string_userfree_utf16_t GetSwitchValue(string? arg0);
+    public string? GetSwitchValue(string? arg0);
 
     public void GetSwitches(_cef_string_map_t* arg0);
 
@@ -85,9 +85,9 @@ public unsafe partial interface ICefCommandLine : ICefBaseRefCounted
 
     public void GetArgv(ICefStringList? arg0);
 
-    public cef_string_userfree_utf16_t GetCommandLineString();
+    public string? GetCommandLineString();
 
-    public cef_string_userfree_utf16_t GetProgram();
+    public string? GetProgram();
 
     public void SetProgram(string? arg0);
 
@@ -95,7 +95,7 @@ public unsafe partial interface ICefCommandLine : ICefBaseRefCounted
 
     public int HasSwitch(string? arg0);
 
-    public cef_string_userfree_utf16_t GetSwitchValue(string? arg0);
+    public string? GetSwitchValue(string? arg0);
 
     public void GetSwitches(_cef_string_map_t* arg0);
 
@@ -143,9 +143,9 @@ public unsafe partial interface ICefCommandLine : ICefBaseRefCounted
 
     public void GetArgv(ICefStringList? arg0);
 
-    public cef_string_userfree_utf16_t GetCommandLineString();
+    public string? GetCommandLineString();
 
-    public cef_string_userfree_utf16_t GetProgram();
+    public string? GetProgram();
 
     public void SetProgram(string? arg0);
 
@@ -153,7 +153,7 @@ public unsafe partial interface ICefCommandLine : ICefBaseRefCounted
 
     public int HasSwitch(string? arg0);
 
-    public cef_string_userfree_utf16_t GetSwitchValue(string? arg0);
+    public string? GetSwitchValue(string? arg0);
 
     public void GetSwitches(_cef_string_map_t* arg0);
 

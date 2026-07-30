@@ -37,19 +37,19 @@ public unsafe partial interface ICefDownloadItem : ICefBaseRefCounted
 
     public _cef_basetime_t GetEndTime();
 
-    public cef_string_userfree_utf16_t GetFullPath();
+    public string? GetFullPath();
 
     public uint GetId();
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
-    public cef_string_userfree_utf16_t GetOriginalUrl();
+    public string? GetOriginalUrl();
 
-    public cef_string_userfree_utf16_t GetSuggestedFileName();
+    public string? GetSuggestedFileName();
 
-    public cef_string_userfree_utf16_t GetContentDisposition();
+    public string? GetContentDisposition();
 
-    public cef_string_userfree_utf16_t GetMimeType();
+    public string? GetMimeType();
 
     public int IsPaused();
 }
@@ -93,19 +93,19 @@ public unsafe partial interface ICefDownloadItem : ICefBaseRefCounted
 
     public _cef_basetime_t GetEndTime();
 
-    public cef_string_userfree_utf16_t GetFullPath();
+    public string? GetFullPath();
 
     public uint GetId();
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
-    public cef_string_userfree_utf16_t GetOriginalUrl();
+    public string? GetOriginalUrl();
 
-    public cef_string_userfree_utf16_t GetSuggestedFileName();
+    public string? GetSuggestedFileName();
 
-    public cef_string_userfree_utf16_t GetContentDisposition();
+    public string? GetContentDisposition();
 
-    public cef_string_userfree_utf16_t GetMimeType();
+    public string? GetMimeType();
 
     public int IsPaused();
 }
@@ -149,19 +149,19 @@ public unsafe partial interface ICefDownloadItem : ICefBaseRefCounted
 
     public _cef_basetime_t GetEndTime();
 
-    public cef_string_userfree_utf16_t GetFullPath();
+    public string? GetFullPath();
 
     public uint GetId();
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
-    public cef_string_userfree_utf16_t GetOriginalUrl();
+    public string? GetOriginalUrl();
 
-    public cef_string_userfree_utf16_t GetSuggestedFileName();
+    public string? GetSuggestedFileName();
 
-    public cef_string_userfree_utf16_t GetContentDisposition();
+    public string? GetContentDisposition();
 
-    public cef_string_userfree_utf16_t GetMimeType();
+    public string? GetMimeType();
 
     public int IsPaused();
 }

@@ -67,11 +67,11 @@ public unsafe partial class CefPrintSettingsRef : CefBaseRefCountedRef, ICefPrin
         }
     }
 
-    public cef_string_userfree_utf16_t GetDeviceName()
+    public string? GetDeviceName()
     {
         var _result = _ptr->get_device_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public void SetDpi(int arg0)
@@ -239,11 +239,11 @@ public unsafe partial class CefPrintSettingsRef : CefBaseRefCountedRef, ICefPrin
         }
     }
 
-    public cef_string_userfree_utf16_t GetDeviceName()
+    public string? GetDeviceName()
     {
         var _result = _ptr->get_device_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public void SetDpi(int arg0)
@@ -411,11 +411,11 @@ public unsafe partial class CefPrintSettingsRef : CefBaseRefCountedRef, ICefPrin
         }
     }
 
-    public cef_string_userfree_utf16_t GetDeviceName()
+    public string? GetDeviceName()
     {
         var _result = _ptr->get_device_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public void SetDpi(int arg0)

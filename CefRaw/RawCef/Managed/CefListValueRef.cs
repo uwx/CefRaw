@@ -131,11 +131,11 @@ public unsafe partial class CefListValueRef : CefBaseRefCountedRef, ICefListValu
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetString(nuint arg0)
+    public string? GetString(nuint arg0)
     {
         var _result = _ptr->get_string(_ptr, arg0);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefBinaryValue? GetBinary(nuint arg0)
@@ -367,11 +367,11 @@ public unsafe partial class CefListValueRef : CefBaseRefCountedRef, ICefListValu
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetString(nuint arg0)
+    public string? GetString(nuint arg0)
     {
         var _result = _ptr->get_string(_ptr, arg0);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefBinaryValue? GetBinary(nuint arg0)
@@ -603,11 +603,11 @@ public unsafe partial class CefListValueRef : CefBaseRefCountedRef, ICefListValu
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetString(nuint arg0)
+    public string? GetString(nuint arg0)
     {
         var _result = _ptr->get_string(_ptr, arg0);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefBinaryValue? GetBinary(nuint arg0)

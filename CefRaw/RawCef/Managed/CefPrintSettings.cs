@@ -91,7 +91,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     /// <summary>
     /// Implement the <c>get_device_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetDeviceName();
+    public abstract string? GetDeviceName();
 
     /// <summary>
     /// Implement the <c>set_dpi</c> callback.
@@ -312,7 +312,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
 
             var _result = _m.GetDeviceName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -739,7 +739,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     /// <summary>
     /// Implement the <c>get_device_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetDeviceName();
+    public abstract string? GetDeviceName();
 
     /// <summary>
     /// Implement the <c>set_dpi</c> callback.
@@ -960,7 +960,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
 
             var _result = _m.GetDeviceName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1387,7 +1387,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     /// <summary>
     /// Implement the <c>get_device_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetDeviceName();
+    public abstract string? GetDeviceName();
 
     /// <summary>
     /// Implement the <c>set_dpi</c> callback.
@@ -1608,7 +1608,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
 
             var _result = _m.GetDeviceName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

@@ -52,17 +52,17 @@ public unsafe abstract partial class CefV8StackFrame : CefBaseRefCounted, ICefV8
     /// <summary>
     /// Implement the <c>get_script_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetScriptName();
+    public abstract string? GetScriptName();
 
     /// <summary>
     /// Implement the <c>get_script_name_or_source_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetScriptNameOrSourceUrl();
+    public abstract string? GetScriptNameOrSourceUrl();
 
     /// <summary>
     /// Implement the <c>get_function_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFunctionName();
+    public abstract string? GetFunctionName();
 
     /// <summary>
     /// Implement the <c>get_line_number</c> callback.
@@ -119,7 +119,7 @@ public unsafe abstract partial class CefV8StackFrame : CefBaseRefCounted, ICefV8
 
             var _result = _m.GetScriptName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -141,7 +141,7 @@ public unsafe abstract partial class CefV8StackFrame : CefBaseRefCounted, ICefV8
 
             var _result = _m.GetScriptNameOrSourceUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -163,7 +163,7 @@ public unsafe abstract partial class CefV8StackFrame : CefBaseRefCounted, ICefV8
 
             var _result = _m.GetFunctionName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -315,17 +315,17 @@ public unsafe abstract partial class CefV8StackFrame : CefBaseRefCounted, ICefV8
     /// <summary>
     /// Implement the <c>get_script_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetScriptName();
+    public abstract string? GetScriptName();
 
     /// <summary>
     /// Implement the <c>get_script_name_or_source_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetScriptNameOrSourceUrl();
+    public abstract string? GetScriptNameOrSourceUrl();
 
     /// <summary>
     /// Implement the <c>get_function_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFunctionName();
+    public abstract string? GetFunctionName();
 
     /// <summary>
     /// Implement the <c>get_line_number</c> callback.
@@ -382,7 +382,7 @@ public unsafe abstract partial class CefV8StackFrame : CefBaseRefCounted, ICefV8
 
             var _result = _m.GetScriptName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -404,7 +404,7 @@ public unsafe abstract partial class CefV8StackFrame : CefBaseRefCounted, ICefV8
 
             var _result = _m.GetScriptNameOrSourceUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -426,7 +426,7 @@ public unsafe abstract partial class CefV8StackFrame : CefBaseRefCounted, ICefV8
 
             var _result = _m.GetFunctionName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -578,17 +578,17 @@ public unsafe abstract partial class CefV8StackFrame : CefBaseRefCounted, ICefV8
     /// <summary>
     /// Implement the <c>get_script_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetScriptName();
+    public abstract string? GetScriptName();
 
     /// <summary>
     /// Implement the <c>get_script_name_or_source_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetScriptNameOrSourceUrl();
+    public abstract string? GetScriptNameOrSourceUrl();
 
     /// <summary>
     /// Implement the <c>get_function_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFunctionName();
+    public abstract string? GetFunctionName();
 
     /// <summary>
     /// Implement the <c>get_line_number</c> callback.
@@ -645,7 +645,7 @@ public unsafe abstract partial class CefV8StackFrame : CefBaseRefCounted, ICefV8
 
             var _result = _m.GetScriptName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -667,7 +667,7 @@ public unsafe abstract partial class CefV8StackFrame : CefBaseRefCounted, ICefV8
 
             var _result = _m.GetScriptNameOrSourceUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -689,7 +689,7 @@ public unsafe abstract partial class CefV8StackFrame : CefBaseRefCounted, ICefV8
 
             var _result = _m.GetFunctionName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

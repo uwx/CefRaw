@@ -95,12 +95,12 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     /// <summary>
     /// Implement the <c>get_command_line_string</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCommandLineString();
+    public abstract string? GetCommandLineString();
 
     /// <summary>
     /// Implement the <c>get_program</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetProgram();
+    public abstract string? GetProgram();
 
     /// <summary>
     /// Implement the <c>set_program</c> callback.
@@ -120,7 +120,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     /// <summary>
     /// Implement the <c>get_switch_value</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSwitchValue(string? arg0);
+    public abstract string? GetSwitchValue(string? arg0);
 
     /// <summary>
     /// Implement the <c>get_switches</c> callback.
@@ -326,7 +326,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
 
             var _result = _m.GetCommandLineString();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -348,7 +348,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
 
             var _result = _m.GetProgram();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -437,7 +437,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetSwitchValue(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -714,12 +714,12 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     /// <summary>
     /// Implement the <c>get_command_line_string</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCommandLineString();
+    public abstract string? GetCommandLineString();
 
     /// <summary>
     /// Implement the <c>get_program</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetProgram();
+    public abstract string? GetProgram();
 
     /// <summary>
     /// Implement the <c>set_program</c> callback.
@@ -739,7 +739,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     /// <summary>
     /// Implement the <c>get_switch_value</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSwitchValue(string? arg0);
+    public abstract string? GetSwitchValue(string? arg0);
 
     /// <summary>
     /// Implement the <c>get_switches</c> callback.
@@ -945,7 +945,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
 
             var _result = _m.GetCommandLineString();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -967,7 +967,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
 
             var _result = _m.GetProgram();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1056,7 +1056,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetSwitchValue(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1333,12 +1333,12 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     /// <summary>
     /// Implement the <c>get_command_line_string</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCommandLineString();
+    public abstract string? GetCommandLineString();
 
     /// <summary>
     /// Implement the <c>get_program</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetProgram();
+    public abstract string? GetProgram();
 
     /// <summary>
     /// Implement the <c>set_program</c> callback.
@@ -1358,7 +1358,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
     /// <summary>
     /// Implement the <c>get_switch_value</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSwitchValue(string? arg0);
+    public abstract string? GetSwitchValue(string? arg0);
 
     /// <summary>
     /// Implement the <c>get_switches</c> callback.
@@ -1564,7 +1564,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
 
             var _result = _m.GetCommandLineString();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1586,7 +1586,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
 
             var _result = _m.GetProgram();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1675,7 +1675,7 @@ public unsafe abstract partial class CefCommandLine : CefBaseRefCounted, ICefCom
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetSwitchValue(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

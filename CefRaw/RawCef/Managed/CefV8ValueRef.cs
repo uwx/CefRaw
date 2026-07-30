@@ -166,11 +166,11 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetStringValue()
+    public string? GetStringValue()
     {
         var _result = _ptr->get_string_value(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int IsUserCreated()
@@ -373,11 +373,11 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetFunctionName()
+    public string? GetFunctionName()
     {
         var _result = _ptr->get_function_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefV8Handler? GetFunctionHandler()
@@ -603,11 +603,11 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetStringValue()
+    public string? GetStringValue()
     {
         var _result = _ptr->get_string_value(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int IsUserCreated()
@@ -810,11 +810,11 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetFunctionName()
+    public string? GetFunctionName()
     {
         var _result = _ptr->get_function_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefV8Handler? GetFunctionHandler()
@@ -1040,11 +1040,11 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetStringValue()
+    public string? GetStringValue()
     {
         var _result = _ptr->get_string_value(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int IsUserCreated()
@@ -1247,11 +1247,11 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetFunctionName()
+    public string? GetFunctionName()
     {
         var _result = _ptr->get_function_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefV8Handler? GetFunctionHandler()

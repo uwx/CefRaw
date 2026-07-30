@@ -26,25 +26,25 @@ public unsafe partial class CefV8ExceptionRef : CefBaseRefCountedRef, ICefV8Exce
     _cef_v8_exception_t* ICefV8Exception.NativePtr => _ptr;
 
 
-    public cef_string_userfree_utf16_t GetMessage()
+    public string? GetMessage()
     {
         var _result = _ptr->get_message(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetSourceLine()
+    public string? GetSourceLine()
     {
         var _result = _ptr->get_source_line(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetScriptResourceName()
+    public string? GetScriptResourceName()
     {
         var _result = _ptr->get_script_resource_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int GetLineNumber()
@@ -117,25 +117,25 @@ public unsafe partial class CefV8ExceptionRef : CefBaseRefCountedRef, ICefV8Exce
     _cef_v8_exception_t* ICefV8Exception.NativePtr => _ptr;
 
 
-    public cef_string_userfree_utf16_t GetMessage()
+    public string? GetMessage()
     {
         var _result = _ptr->get_message(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetSourceLine()
+    public string? GetSourceLine()
     {
         var _result = _ptr->get_source_line(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetScriptResourceName()
+    public string? GetScriptResourceName()
     {
         var _result = _ptr->get_script_resource_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int GetLineNumber()
@@ -208,25 +208,25 @@ public unsafe partial class CefV8ExceptionRef : CefBaseRefCountedRef, ICefV8Exce
     _cef_v8_exception_t* ICefV8Exception.NativePtr => _ptr;
 
 
-    public cef_string_userfree_utf16_t GetMessage()
+    public string? GetMessage()
     {
         var _result = _ptr->get_message(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetSourceLine()
+    public string? GetSourceLine()
     {
         var _result = _ptr->get_source_line(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetScriptResourceName()
+    public string? GetScriptResourceName()
     {
         var _result = _ptr->get_script_resource_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int GetLineNumber()

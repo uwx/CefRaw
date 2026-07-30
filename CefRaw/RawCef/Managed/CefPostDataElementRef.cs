@@ -60,11 +60,11 @@ public unsafe partial class CefPostDataElementRef : CefBaseRefCountedRef, ICefPo
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetFile()
+    public string? GetFile()
     {
         var _result = _ptr->get_file(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public nuint GetBytesCount()
@@ -150,11 +150,11 @@ public unsafe partial class CefPostDataElementRef : CefBaseRefCountedRef, ICefPo
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetFile()
+    public string? GetFile()
     {
         var _result = _ptr->get_file(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public nuint GetBytesCount()
@@ -240,11 +240,11 @@ public unsafe partial class CefPostDataElementRef : CefBaseRefCountedRef, ICefPo
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetFile()
+    public string? GetFile()
     {
         var _result = _ptr->get_file(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public nuint GetBytesCount()

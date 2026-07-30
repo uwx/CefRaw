@@ -46,27 +46,27 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_display_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetDisplayName();
+    public abstract string? GetDisplayName();
 
     /// <summary>
     /// Implement the <c>get_common_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCommonName();
+    public abstract string? GetCommonName();
 
     /// <summary>
     /// Implement the <c>get_locality_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLocalityName();
+    public abstract string? GetLocalityName();
 
     /// <summary>
     /// Implement the <c>get_state_or_province_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetStateOrProvinceName();
+    public abstract string? GetStateOrProvinceName();
 
     /// <summary>
     /// Implement the <c>get_country_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCountryName();
+    public abstract string? GetCountryName();
 
     /// <summary>
     /// Implement the <c>get_organization_names</c> callback.
@@ -91,7 +91,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetDisplayName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -113,7 +113,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetCommonName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -135,7 +135,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetLocalityName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -157,7 +157,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetStateOrProvinceName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -179,7 +179,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetCountryName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -279,27 +279,27 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_display_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetDisplayName();
+    public abstract string? GetDisplayName();
 
     /// <summary>
     /// Implement the <c>get_common_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCommonName();
+    public abstract string? GetCommonName();
 
     /// <summary>
     /// Implement the <c>get_locality_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLocalityName();
+    public abstract string? GetLocalityName();
 
     /// <summary>
     /// Implement the <c>get_state_or_province_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetStateOrProvinceName();
+    public abstract string? GetStateOrProvinceName();
 
     /// <summary>
     /// Implement the <c>get_country_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCountryName();
+    public abstract string? GetCountryName();
 
     /// <summary>
     /// Implement the <c>get_organization_names</c> callback.
@@ -324,7 +324,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetDisplayName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -346,7 +346,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetCommonName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -368,7 +368,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetLocalityName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -390,7 +390,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetStateOrProvinceName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -412,7 +412,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetCountryName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -512,27 +512,27 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>get_display_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetDisplayName();
+    public abstract string? GetDisplayName();
 
     /// <summary>
     /// Implement the <c>get_common_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCommonName();
+    public abstract string? GetCommonName();
 
     /// <summary>
     /// Implement the <c>get_locality_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLocalityName();
+    public abstract string? GetLocalityName();
 
     /// <summary>
     /// Implement the <c>get_state_or_province_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetStateOrProvinceName();
+    public abstract string? GetStateOrProvinceName();
 
     /// <summary>
     /// Implement the <c>get_country_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCountryName();
+    public abstract string? GetCountryName();
 
     /// <summary>
     /// Implement the <c>get_organization_names</c> callback.
@@ -557,7 +557,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetDisplayName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -579,7 +579,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetCommonName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -601,7 +601,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetLocalityName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -623,7 +623,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetStateOrProvinceName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -645,7 +645,7 @@ public unsafe abstract partial class CefX509CertPrincipal : CefBaseRefCounted, I
 
             var _result = _m.GetCountryName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

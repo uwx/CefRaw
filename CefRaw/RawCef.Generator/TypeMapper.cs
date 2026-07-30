@@ -158,14 +158,14 @@ internal static partial class TypeMapper
         }
 
         // _cef_string_utf16_t* (pointer) — userfree return or const param
-        if (baseType == "_cef_string_utf16_t" && isPointer)
+        if ((baseType == "_cef_string_utf16_t" && isPointer) || baseType == "cef_string_userfree_utf16_t")
         {
             isString = true;
             return "string?";
         }
 
         // _cef_string_utf8_t* / _cef_string_wide_t*
-        if ((baseType == "_cef_string_utf8_t" || baseType == "_cef_string_wide_t") && isPointer)
+        if ((baseType == "_cef_string_utf8_t" || baseType == "_cef_string_wide_t" && isPointer) || baseType == "cef_string_userfree_utf8_t" || baseType == "cef_string_userfree_wide_t")
         {
             isString = true;
             return "string?";

@@ -54,11 +54,11 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
         return _result != null ? new CefDomnodeRef(_result) : null;
     }
 
-    public cef_string_userfree_utf16_t GetTitle()
+    public string? GetTitle()
     {
         var _result = _ptr->get_title(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefDomnode? GetElementById(string? arg0)
@@ -101,28 +101,28 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetSelectionAsMarkup()
+    public string? GetSelectionAsMarkup()
     {
         var _result = _ptr->get_selection_as_markup(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetSelectionAsText()
+    public string? GetSelectionAsText()
     {
         var _result = _ptr->get_selection_as_text(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetBaseUrl()
+    public string? GetBaseUrl()
     {
         var _result = _ptr->get_base_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetCompleteUrl(string? arg0)
+    public string? GetCompleteUrl(string? arg0)
     {
         fixed (char* _p0 = arg0)
         {
@@ -130,7 +130,7 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
             CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
             var _result = _ptr->get_complete_url(_ptr, &_s0);
 
-            return _result;
+            return CefStringRef.ToStringAndFree(_result);
         }
     }
 
@@ -197,11 +197,11 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
         return _result != null ? new CefDomnodeRef(_result) : null;
     }
 
-    public cef_string_userfree_utf16_t GetTitle()
+    public string? GetTitle()
     {
         var _result = _ptr->get_title(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefDomnode? GetElementById(string? arg0)
@@ -244,28 +244,28 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetSelectionAsMarkup()
+    public string? GetSelectionAsMarkup()
     {
         var _result = _ptr->get_selection_as_markup(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetSelectionAsText()
+    public string? GetSelectionAsText()
     {
         var _result = _ptr->get_selection_as_text(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetBaseUrl()
+    public string? GetBaseUrl()
     {
         var _result = _ptr->get_base_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetCompleteUrl(string? arg0)
+    public string? GetCompleteUrl(string? arg0)
     {
         fixed (char* _p0 = arg0)
         {
@@ -273,7 +273,7 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
             CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
             var _result = _ptr->get_complete_url(_ptr, &_s0);
 
-            return _result;
+            return CefStringRef.ToStringAndFree(_result);
         }
     }
 
@@ -340,11 +340,11 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
         return _result != null ? new CefDomnodeRef(_result) : null;
     }
 
-    public cef_string_userfree_utf16_t GetTitle()
+    public string? GetTitle()
     {
         var _result = _ptr->get_title(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefDomnode? GetElementById(string? arg0)
@@ -387,28 +387,28 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetSelectionAsMarkup()
+    public string? GetSelectionAsMarkup()
     {
         var _result = _ptr->get_selection_as_markup(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetSelectionAsText()
+    public string? GetSelectionAsText()
     {
         var _result = _ptr->get_selection_as_text(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetBaseUrl()
+    public string? GetBaseUrl()
     {
         var _result = _ptr->get_base_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetCompleteUrl(string? arg0)
+    public string? GetCompleteUrl(string? arg0)
     {
         fixed (char* _p0 = arg0)
         {
@@ -416,7 +416,7 @@ public unsafe partial class CefDomdocumentRef : CefBaseRefCountedRef, ICefDomdoc
             CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
             var _result = _ptr->get_complete_url(_ptr, &_s0);
 
-            return _result;
+            return CefStringRef.ToStringAndFree(_result);
         }
     }
 

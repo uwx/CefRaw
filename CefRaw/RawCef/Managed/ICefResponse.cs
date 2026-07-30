@@ -23,19 +23,19 @@ public unsafe partial interface ICefResponse : ICefBaseRefCounted
 
     public void SetStatus(int arg0);
 
-    public cef_string_userfree_utf16_t GetStatusText();
+    public string? GetStatusText();
 
     public void SetStatusText(string? arg0);
 
-    public cef_string_userfree_utf16_t GetMimeType();
+    public string? GetMimeType();
 
     public void SetMimeType(string? arg0);
 
-    public cef_string_userfree_utf16_t GetCharset();
+    public string? GetCharset();
 
     public void SetCharset(string? arg0);
 
-    public cef_string_userfree_utf16_t GetHeaderByName(string? arg0);
+    public string? GetHeaderByName(string? arg0);
 
     public void SetHeaderByName(string? arg0, string? arg1, int arg2);
 
@@ -43,7 +43,7 @@ public unsafe partial interface ICefResponse : ICefBaseRefCounted
 
     public void SetHeaderMap(_cef_string_multimap_t* arg0);
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
     public void SetUrl(string? arg0);
 }
@@ -73,19 +73,19 @@ public unsafe partial interface ICefResponse : ICefBaseRefCounted
 
     public void SetStatus(int arg0);
 
-    public cef_string_userfree_utf16_t GetStatusText();
+    public string? GetStatusText();
 
     public void SetStatusText(string? arg0);
 
-    public cef_string_userfree_utf16_t GetMimeType();
+    public string? GetMimeType();
 
     public void SetMimeType(string? arg0);
 
-    public cef_string_userfree_utf16_t GetCharset();
+    public string? GetCharset();
 
     public void SetCharset(string? arg0);
 
-    public cef_string_userfree_utf16_t GetHeaderByName(string? arg0);
+    public string? GetHeaderByName(string? arg0);
 
     public void SetHeaderByName(string? arg0, string? arg1, int arg2);
 
@@ -93,7 +93,7 @@ public unsafe partial interface ICefResponse : ICefBaseRefCounted
 
     public void SetHeaderMap(_cef_string_multimap_t* arg0);
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
     public void SetUrl(string? arg0);
 }
@@ -123,19 +123,19 @@ public unsafe partial interface ICefResponse : ICefBaseRefCounted
 
     public void SetStatus(int arg0);
 
-    public cef_string_userfree_utf16_t GetStatusText();
+    public string? GetStatusText();
 
     public void SetStatusText(string? arg0);
 
-    public cef_string_userfree_utf16_t GetMimeType();
+    public string? GetMimeType();
 
     public void SetMimeType(string? arg0);
 
-    public cef_string_userfree_utf16_t GetCharset();
+    public string? GetCharset();
 
     public void SetCharset(string? arg0);
 
-    public cef_string_userfree_utf16_t GetHeaderByName(string? arg0);
+    public string? GetHeaderByName(string? arg0);
 
     public void SetHeaderByName(string? arg0, string? arg1, int arg2);
 
@@ -143,7 +143,7 @@ public unsafe partial interface ICefResponse : ICefBaseRefCounted
 
     public void SetHeaderMap(_cef_string_multimap_t* arg0);
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
     public void SetUrl(string? arg0);
 }

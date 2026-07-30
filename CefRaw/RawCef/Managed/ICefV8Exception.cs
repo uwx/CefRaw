@@ -13,11 +13,11 @@ public unsafe partial interface ICefV8Exception : ICefBaseRefCounted
 {
     new _cef_v8_exception_t* NativePtr { get; }
 
-    public cef_string_userfree_utf16_t GetMessage();
+    public string? GetMessage();
 
-    public cef_string_userfree_utf16_t GetSourceLine();
+    public string? GetSourceLine();
 
-    public cef_string_userfree_utf16_t GetScriptResourceName();
+    public string? GetScriptResourceName();
 
     public int GetLineNumber();
 
@@ -45,11 +45,11 @@ public unsafe partial interface ICefV8Exception : ICefBaseRefCounted
 {
     new _cef_v8_exception_t* NativePtr { get; }
 
-    public cef_string_userfree_utf16_t GetMessage();
+    public string? GetMessage();
 
-    public cef_string_userfree_utf16_t GetSourceLine();
+    public string? GetSourceLine();
 
-    public cef_string_userfree_utf16_t GetScriptResourceName();
+    public string? GetScriptResourceName();
 
     public int GetLineNumber();
 
@@ -77,11 +77,11 @@ public unsafe partial interface ICefV8Exception : ICefBaseRefCounted
 {
     new _cef_v8_exception_t* NativePtr { get; }
 
-    public cef_string_userfree_utf16_t GetMessage();
+    public string? GetMessage();
 
-    public cef_string_userfree_utf16_t GetSourceLine();
+    public string? GetSourceLine();
 
-    public cef_string_userfree_utf16_t GetScriptResourceName();
+    public string? GetScriptResourceName();
 
     public int GetLineNumber();
 

@@ -142,7 +142,7 @@ public unsafe abstract partial class CefListValue : CefBaseRefCounted, ICefListV
     /// <summary>
     /// Implement the <c>get_string</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetString(nuint arg0);
+    public abstract string? GetString(nuint arg0);
 
     /// <summary>
     /// Implement the <c>get_binary</c> callback.
@@ -559,7 +559,7 @@ public unsafe abstract partial class CefListValue : CefBaseRefCounted, ICefListV
             var _a0 = arg0;
             var _result = _m.GetString(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1000,7 +1000,7 @@ public unsafe abstract partial class CefListValue : CefBaseRefCounted, ICefListV
     /// <summary>
     /// Implement the <c>get_string</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetString(nuint arg0);
+    public abstract string? GetString(nuint arg0);
 
     /// <summary>
     /// Implement the <c>get_binary</c> callback.
@@ -1417,7 +1417,7 @@ public unsafe abstract partial class CefListValue : CefBaseRefCounted, ICefListV
             var _a0 = arg0;
             var _result = _m.GetString(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1858,7 +1858,7 @@ public unsafe abstract partial class CefListValue : CefBaseRefCounted, ICefListV
     /// <summary>
     /// Implement the <c>get_string</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetString(nuint arg0);
+    public abstract string? GetString(nuint arg0);
 
     /// <summary>
     /// Implement the <c>get_binary</c> callback.
@@ -2275,7 +2275,7 @@ public unsafe abstract partial class CefListValue : CefBaseRefCounted, ICefListV
             var _a0 = arg0;
             var _result = _m.GetString(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

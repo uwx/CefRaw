@@ -81,7 +81,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_status_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetStatusText();
+    public abstract string? GetStatusText();
 
     /// <summary>
     /// Implement the <c>set_status_text</c> callback.
@@ -91,7 +91,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_mime_type</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMimeType();
+    public abstract string? GetMimeType();
 
     /// <summary>
     /// Implement the <c>set_mime_type</c> callback.
@@ -101,7 +101,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_charset</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCharset();
+    public abstract string? GetCharset();
 
     /// <summary>
     /// Implement the <c>set_charset</c> callback.
@@ -111,7 +111,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_header_by_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetHeaderByName(string? arg0);
+    public abstract string? GetHeaderByName(string? arg0);
 
     /// <summary>
     /// Implement the <c>set_header_by_name</c> callback.
@@ -131,7 +131,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUrl();
+    public abstract string? GetUrl();
 
     /// <summary>
     /// Implement the <c>set_url</c> callback.
@@ -259,7 +259,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
             var _result = _m.GetStatusText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -302,7 +302,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
             var _result = _m.GetMimeType();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -345,7 +345,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
             var _result = _m.GetCharset();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -389,7 +389,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetHeaderByName(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -476,7 +476,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
             var _result = _m.GetUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -590,7 +590,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_status_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetStatusText();
+    public abstract string? GetStatusText();
 
     /// <summary>
     /// Implement the <c>set_status_text</c> callback.
@@ -600,7 +600,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_mime_type</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMimeType();
+    public abstract string? GetMimeType();
 
     /// <summary>
     /// Implement the <c>set_mime_type</c> callback.
@@ -610,7 +610,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_charset</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCharset();
+    public abstract string? GetCharset();
 
     /// <summary>
     /// Implement the <c>set_charset</c> callback.
@@ -620,7 +620,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_header_by_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetHeaderByName(string? arg0);
+    public abstract string? GetHeaderByName(string? arg0);
 
     /// <summary>
     /// Implement the <c>set_header_by_name</c> callback.
@@ -640,7 +640,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUrl();
+    public abstract string? GetUrl();
 
     /// <summary>
     /// Implement the <c>set_url</c> callback.
@@ -768,7 +768,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
             var _result = _m.GetStatusText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -811,7 +811,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
             var _result = _m.GetMimeType();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -854,7 +854,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
             var _result = _m.GetCharset();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -898,7 +898,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetHeaderByName(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -985,7 +985,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
             var _result = _m.GetUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1099,7 +1099,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_status_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetStatusText();
+    public abstract string? GetStatusText();
 
     /// <summary>
     /// Implement the <c>set_status_text</c> callback.
@@ -1109,7 +1109,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_mime_type</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMimeType();
+    public abstract string? GetMimeType();
 
     /// <summary>
     /// Implement the <c>set_mime_type</c> callback.
@@ -1119,7 +1119,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_charset</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCharset();
+    public abstract string? GetCharset();
 
     /// <summary>
     /// Implement the <c>set_charset</c> callback.
@@ -1129,7 +1129,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_header_by_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetHeaderByName(string? arg0);
+    public abstract string? GetHeaderByName(string? arg0);
 
     /// <summary>
     /// Implement the <c>set_header_by_name</c> callback.
@@ -1149,7 +1149,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
     /// <summary>
     /// Implement the <c>get_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUrl();
+    public abstract string? GetUrl();
 
     /// <summary>
     /// Implement the <c>set_url</c> callback.
@@ -1277,7 +1277,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
             var _result = _m.GetStatusText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1320,7 +1320,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
             var _result = _m.GetMimeType();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1363,7 +1363,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
             var _result = _m.GetCharset();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1407,7 +1407,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetHeaderByName(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1494,7 +1494,7 @@ public unsafe abstract partial class CefResponse : CefBaseRefCounted, ICefRespon
 
             var _result = _m.GetUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

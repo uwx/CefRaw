@@ -47,25 +47,25 @@ public unsafe partial class CefContextMenuParamsRef : CefBaseRefCountedRef, ICef
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetLinkUrl()
+    public string? GetLinkUrl()
     {
         var _result = _ptr->get_link_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetUnfilteredLinkUrl()
+    public string? GetUnfilteredLinkUrl()
     {
         var _result = _ptr->get_unfiltered_link_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetSourceUrl()
+    public string? GetSourceUrl()
     {
         var _result = _ptr->get_source_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int HasImageContents()
@@ -75,32 +75,32 @@ public unsafe partial class CefContextMenuParamsRef : CefBaseRefCountedRef, ICef
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetTitleText()
+    public string? GetTitleText()
     {
         var _result = _ptr->get_title_text(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetPageUrl()
+    public string? GetPageUrl()
     {
         var _result = _ptr->get_page_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFrameUrl()
+    public string? GetFrameUrl()
     {
         var _result = _ptr->get_frame_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFrameCharset()
+    public string? GetFrameCharset()
     {
         var _result = _ptr->get_frame_charset(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public cef_context_menu_media_type_t GetMediaType()
@@ -117,18 +117,18 @@ public unsafe partial class CefContextMenuParamsRef : CefBaseRefCountedRef, ICef
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetSelectionText()
+    public string? GetSelectionText()
     {
         var _result = _ptr->get_selection_text(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetMisspelledWord()
+    public string? GetMisspelledWord()
     {
         var _result = _ptr->get_misspelled_word(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int GetDictionarySuggestions(ICefStringList? arg0)
@@ -222,25 +222,25 @@ public unsafe partial class CefContextMenuParamsRef : CefBaseRefCountedRef, ICef
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetLinkUrl()
+    public string? GetLinkUrl()
     {
         var _result = _ptr->get_link_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetUnfilteredLinkUrl()
+    public string? GetUnfilteredLinkUrl()
     {
         var _result = _ptr->get_unfiltered_link_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetSourceUrl()
+    public string? GetSourceUrl()
     {
         var _result = _ptr->get_source_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int HasImageContents()
@@ -250,32 +250,32 @@ public unsafe partial class CefContextMenuParamsRef : CefBaseRefCountedRef, ICef
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetTitleText()
+    public string? GetTitleText()
     {
         var _result = _ptr->get_title_text(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetPageUrl()
+    public string? GetPageUrl()
     {
         var _result = _ptr->get_page_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFrameUrl()
+    public string? GetFrameUrl()
     {
         var _result = _ptr->get_frame_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFrameCharset()
+    public string? GetFrameCharset()
     {
         var _result = _ptr->get_frame_charset(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public cef_context_menu_media_type_t GetMediaType()
@@ -292,18 +292,18 @@ public unsafe partial class CefContextMenuParamsRef : CefBaseRefCountedRef, ICef
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetSelectionText()
+    public string? GetSelectionText()
     {
         var _result = _ptr->get_selection_text(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetMisspelledWord()
+    public string? GetMisspelledWord()
     {
         var _result = _ptr->get_misspelled_word(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int GetDictionarySuggestions(ICefStringList? arg0)
@@ -397,25 +397,25 @@ public unsafe partial class CefContextMenuParamsRef : CefBaseRefCountedRef, ICef
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetLinkUrl()
+    public string? GetLinkUrl()
     {
         var _result = _ptr->get_link_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetUnfilteredLinkUrl()
+    public string? GetUnfilteredLinkUrl()
     {
         var _result = _ptr->get_unfiltered_link_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetSourceUrl()
+    public string? GetSourceUrl()
     {
         var _result = _ptr->get_source_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int HasImageContents()
@@ -425,32 +425,32 @@ public unsafe partial class CefContextMenuParamsRef : CefBaseRefCountedRef, ICef
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetTitleText()
+    public string? GetTitleText()
     {
         var _result = _ptr->get_title_text(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetPageUrl()
+    public string? GetPageUrl()
     {
         var _result = _ptr->get_page_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFrameUrl()
+    public string? GetFrameUrl()
     {
         var _result = _ptr->get_frame_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFrameCharset()
+    public string? GetFrameCharset()
     {
         var _result = _ptr->get_frame_charset(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public cef_context_menu_media_type_t GetMediaType()
@@ -467,18 +467,18 @@ public unsafe partial class CefContextMenuParamsRef : CefBaseRefCountedRef, ICef
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetSelectionText()
+    public string? GetSelectionText()
     {
         var _result = _ptr->get_selection_text(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetMisspelledWord()
+    public string? GetMisspelledWord()
     {
         var _result = _ptr->get_misspelled_word(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int GetDictionarySuggestions(ICefStringList? arg0)

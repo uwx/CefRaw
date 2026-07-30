@@ -47,17 +47,17 @@ public unsafe abstract partial class CefV8Exception : CefBaseRefCounted, ICefV8E
     /// <summary>
     /// Implement the <c>get_message</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMessage();
+    public abstract string? GetMessage();
 
     /// <summary>
     /// Implement the <c>get_source_line</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSourceLine();
+    public abstract string? GetSourceLine();
 
     /// <summary>
     /// Implement the <c>get_script_resource_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetScriptResourceName();
+    public abstract string? GetScriptResourceName();
 
     /// <summary>
     /// Implement the <c>get_line_number</c> callback.
@@ -97,7 +97,7 @@ public unsafe abstract partial class CefV8Exception : CefBaseRefCounted, ICefV8E
 
             var _result = _m.GetMessage();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -119,7 +119,7 @@ public unsafe abstract partial class CefV8Exception : CefBaseRefCounted, ICefV8E
 
             var _result = _m.GetSourceLine();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -141,7 +141,7 @@ public unsafe abstract partial class CefV8Exception : CefBaseRefCounted, ICefV8E
 
             var _result = _m.GetScriptResourceName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -310,17 +310,17 @@ public unsafe abstract partial class CefV8Exception : CefBaseRefCounted, ICefV8E
     /// <summary>
     /// Implement the <c>get_message</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMessage();
+    public abstract string? GetMessage();
 
     /// <summary>
     /// Implement the <c>get_source_line</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSourceLine();
+    public abstract string? GetSourceLine();
 
     /// <summary>
     /// Implement the <c>get_script_resource_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetScriptResourceName();
+    public abstract string? GetScriptResourceName();
 
     /// <summary>
     /// Implement the <c>get_line_number</c> callback.
@@ -360,7 +360,7 @@ public unsafe abstract partial class CefV8Exception : CefBaseRefCounted, ICefV8E
 
             var _result = _m.GetMessage();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -382,7 +382,7 @@ public unsafe abstract partial class CefV8Exception : CefBaseRefCounted, ICefV8E
 
             var _result = _m.GetSourceLine();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -404,7 +404,7 @@ public unsafe abstract partial class CefV8Exception : CefBaseRefCounted, ICefV8E
 
             var _result = _m.GetScriptResourceName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -573,17 +573,17 @@ public unsafe abstract partial class CefV8Exception : CefBaseRefCounted, ICefV8E
     /// <summary>
     /// Implement the <c>get_message</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMessage();
+    public abstract string? GetMessage();
 
     /// <summary>
     /// Implement the <c>get_source_line</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSourceLine();
+    public abstract string? GetSourceLine();
 
     /// <summary>
     /// Implement the <c>get_script_resource_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetScriptResourceName();
+    public abstract string? GetScriptResourceName();
 
     /// <summary>
     /// Implement the <c>get_line_number</c> callback.
@@ -623,7 +623,7 @@ public unsafe abstract partial class CefV8Exception : CefBaseRefCounted, ICefV8E
 
             var _result = _m.GetMessage();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -645,7 +645,7 @@ public unsafe abstract partial class CefV8Exception : CefBaseRefCounted, ICefV8E
 
             var _result = _m.GetSourceLine();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -667,7 +667,7 @@ public unsafe abstract partial class CefV8Exception : CefBaseRefCounted, ICefV8E
 
             var _result = _m.GetScriptResourceName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

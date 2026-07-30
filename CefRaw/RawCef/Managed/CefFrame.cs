@@ -144,12 +144,12 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
     /// <summary>
     /// Implement the <c>get_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetName();
+    public abstract string? GetName();
 
     /// <summary>
     /// Implement the <c>get_identifier</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetIdentifier();
+    public abstract string? GetIdentifier();
 
     /// <summary>
     /// Implement the <c>get_parent</c> callback.
@@ -159,7 +159,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
     /// <summary>
     /// Implement the <c>get_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUrl();
+    public abstract string? GetUrl();
 
     /// <summary>
     /// Implement the <c>get_browser</c> callback.
@@ -532,7 +532,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
 
             var _result = _m.GetName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -554,7 +554,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
 
             var _result = _m.GetIdentifier();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -599,7 +599,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
 
             var _result = _m.GetUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -869,12 +869,12 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
     /// <summary>
     /// Implement the <c>get_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetName();
+    public abstract string? GetName();
 
     /// <summary>
     /// Implement the <c>get_identifier</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetIdentifier();
+    public abstract string? GetIdentifier();
 
     /// <summary>
     /// Implement the <c>get_parent</c> callback.
@@ -884,7 +884,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
     /// <summary>
     /// Implement the <c>get_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUrl();
+    public abstract string? GetUrl();
 
     /// <summary>
     /// Implement the <c>get_browser</c> callback.
@@ -1257,7 +1257,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
 
             var _result = _m.GetName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1279,7 +1279,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
 
             var _result = _m.GetIdentifier();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1324,7 +1324,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
 
             var _result = _m.GetUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1594,12 +1594,12 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
     /// <summary>
     /// Implement the <c>get_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetName();
+    public abstract string? GetName();
 
     /// <summary>
     /// Implement the <c>get_identifier</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetIdentifier();
+    public abstract string? GetIdentifier();
 
     /// <summary>
     /// Implement the <c>get_parent</c> callback.
@@ -1609,7 +1609,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
     /// <summary>
     /// Implement the <c>get_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUrl();
+    public abstract string? GetUrl();
 
     /// <summary>
     /// Implement the <c>get_browser</c> callback.
@@ -1982,7 +1982,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
 
             var _result = _m.GetName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -2004,7 +2004,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
 
             var _result = _m.GetIdentifier();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -2049,7 +2049,7 @@ public unsafe abstract partial class CefFrame : CefBaseRefCounted, ICefFrame
 
             var _result = _m.GetUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

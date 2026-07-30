@@ -13,7 +13,7 @@ public unsafe partial interface ICefMediaRoute : ICefBaseRefCounted
 {
     new _cef_media_route_t* NativePtr { get; }
 
-    public cef_string_userfree_utf16_t GetId();
+    public string? GetId();
 
     public ICefMediaSource? GetSource();
 
@@ -39,7 +39,7 @@ public unsafe partial interface ICefMediaRoute : ICefBaseRefCounted
 {
     new _cef_media_route_t* NativePtr { get; }
 
-    public cef_string_userfree_utf16_t GetId();
+    public string? GetId();
 
     public ICefMediaSource? GetSource();
 
@@ -65,7 +65,7 @@ public unsafe partial interface ICefMediaRoute : ICefBaseRefCounted
 {
     new _cef_media_route_t* NativePtr { get; }
 
-    public cef_string_userfree_utf16_t GetId();
+    public string? GetId();
 
     public ICefMediaSource? GetSource();
 

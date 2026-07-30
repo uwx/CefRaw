@@ -119,7 +119,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
     /// <summary>
     /// Implement the <c>get_full_path</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFullPath();
+    public abstract string? GetFullPath();
 
     /// <summary>
     /// Implement the <c>get_id</c> callback.
@@ -129,27 +129,27 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
     /// <summary>
     /// Implement the <c>get_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUrl();
+    public abstract string? GetUrl();
 
     /// <summary>
     /// Implement the <c>get_original_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetOriginalUrl();
+    public abstract string? GetOriginalUrl();
 
     /// <summary>
     /// Implement the <c>get_suggested_file_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSuggestedFileName();
+    public abstract string? GetSuggestedFileName();
 
     /// <summary>
     /// Implement the <c>get_content_disposition</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetContentDisposition();
+    public abstract string? GetContentDisposition();
 
     /// <summary>
     /// Implement the <c>get_mime_type</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMimeType();
+    public abstract string? GetMimeType();
 
     /// <summary>
     /// Implement the <c>is_paused</c> callback.
@@ -433,7 +433,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetFullPath();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -477,7 +477,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -499,7 +499,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetOriginalUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -521,7 +521,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetSuggestedFileName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -543,7 +543,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetContentDisposition();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -565,7 +565,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetMimeType();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -718,7 +718,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
     /// <summary>
     /// Implement the <c>get_full_path</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFullPath();
+    public abstract string? GetFullPath();
 
     /// <summary>
     /// Implement the <c>get_id</c> callback.
@@ -728,27 +728,27 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
     /// <summary>
     /// Implement the <c>get_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUrl();
+    public abstract string? GetUrl();
 
     /// <summary>
     /// Implement the <c>get_original_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetOriginalUrl();
+    public abstract string? GetOriginalUrl();
 
     /// <summary>
     /// Implement the <c>get_suggested_file_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSuggestedFileName();
+    public abstract string? GetSuggestedFileName();
 
     /// <summary>
     /// Implement the <c>get_content_disposition</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetContentDisposition();
+    public abstract string? GetContentDisposition();
 
     /// <summary>
     /// Implement the <c>get_mime_type</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMimeType();
+    public abstract string? GetMimeType();
 
     /// <summary>
     /// Implement the <c>is_paused</c> callback.
@@ -1032,7 +1032,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetFullPath();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1076,7 +1076,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1098,7 +1098,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetOriginalUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1120,7 +1120,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetSuggestedFileName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1142,7 +1142,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetContentDisposition();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1164,7 +1164,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetMimeType();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1317,7 +1317,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
     /// <summary>
     /// Implement the <c>get_full_path</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFullPath();
+    public abstract string? GetFullPath();
 
     /// <summary>
     /// Implement the <c>get_id</c> callback.
@@ -1327,27 +1327,27 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
     /// <summary>
     /// Implement the <c>get_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUrl();
+    public abstract string? GetUrl();
 
     /// <summary>
     /// Implement the <c>get_original_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetOriginalUrl();
+    public abstract string? GetOriginalUrl();
 
     /// <summary>
     /// Implement the <c>get_suggested_file_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSuggestedFileName();
+    public abstract string? GetSuggestedFileName();
 
     /// <summary>
     /// Implement the <c>get_content_disposition</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetContentDisposition();
+    public abstract string? GetContentDisposition();
 
     /// <summary>
     /// Implement the <c>get_mime_type</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMimeType();
+    public abstract string? GetMimeType();
 
     /// <summary>
     /// Implement the <c>is_paused</c> callback.
@@ -1631,7 +1631,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetFullPath();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1675,7 +1675,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1697,7 +1697,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetOriginalUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1719,7 +1719,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetSuggestedFileName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1741,7 +1741,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetContentDisposition();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1763,7 +1763,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetMimeType();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

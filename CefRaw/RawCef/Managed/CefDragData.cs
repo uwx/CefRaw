@@ -91,37 +91,37 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     /// <summary>
     /// Implement the <c>get_link_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLinkUrl();
+    public abstract string? GetLinkUrl();
 
     /// <summary>
     /// Implement the <c>get_link_title</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLinkTitle();
+    public abstract string? GetLinkTitle();
 
     /// <summary>
     /// Implement the <c>get_link_metadata</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLinkMetadata();
+    public abstract string? GetLinkMetadata();
 
     /// <summary>
     /// Implement the <c>get_fragment_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFragmentText();
+    public abstract string? GetFragmentText();
 
     /// <summary>
     /// Implement the <c>get_fragment_html</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFragmentHtml();
+    public abstract string? GetFragmentHtml();
 
     /// <summary>
     /// Implement the <c>get_fragment_base_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFragmentBaseUrl();
+    public abstract string? GetFragmentBaseUrl();
 
     /// <summary>
     /// Implement the <c>get_file_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFileName();
+    public abstract string? GetFileName();
 
     /// <summary>
     /// Implement the <c>get_file_contents</c> callback.
@@ -322,7 +322,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetLinkUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -344,7 +344,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetLinkTitle();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -366,7 +366,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetLinkMetadata();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -388,7 +388,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetFragmentText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -410,7 +410,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetFragmentHtml();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -432,7 +432,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetFragmentBaseUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -454,7 +454,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetFileName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -881,37 +881,37 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     /// <summary>
     /// Implement the <c>get_link_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLinkUrl();
+    public abstract string? GetLinkUrl();
 
     /// <summary>
     /// Implement the <c>get_link_title</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLinkTitle();
+    public abstract string? GetLinkTitle();
 
     /// <summary>
     /// Implement the <c>get_link_metadata</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLinkMetadata();
+    public abstract string? GetLinkMetadata();
 
     /// <summary>
     /// Implement the <c>get_fragment_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFragmentText();
+    public abstract string? GetFragmentText();
 
     /// <summary>
     /// Implement the <c>get_fragment_html</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFragmentHtml();
+    public abstract string? GetFragmentHtml();
 
     /// <summary>
     /// Implement the <c>get_fragment_base_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFragmentBaseUrl();
+    public abstract string? GetFragmentBaseUrl();
 
     /// <summary>
     /// Implement the <c>get_file_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFileName();
+    public abstract string? GetFileName();
 
     /// <summary>
     /// Implement the <c>get_file_contents</c> callback.
@@ -1112,7 +1112,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetLinkUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1134,7 +1134,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetLinkTitle();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1156,7 +1156,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetLinkMetadata();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1178,7 +1178,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetFragmentText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1200,7 +1200,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetFragmentHtml();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1222,7 +1222,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetFragmentBaseUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1244,7 +1244,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetFileName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1671,37 +1671,37 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
     /// <summary>
     /// Implement the <c>get_link_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLinkUrl();
+    public abstract string? GetLinkUrl();
 
     /// <summary>
     /// Implement the <c>get_link_title</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLinkTitle();
+    public abstract string? GetLinkTitle();
 
     /// <summary>
     /// Implement the <c>get_link_metadata</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetLinkMetadata();
+    public abstract string? GetLinkMetadata();
 
     /// <summary>
     /// Implement the <c>get_fragment_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFragmentText();
+    public abstract string? GetFragmentText();
 
     /// <summary>
     /// Implement the <c>get_fragment_html</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFragmentHtml();
+    public abstract string? GetFragmentHtml();
 
     /// <summary>
     /// Implement the <c>get_fragment_base_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFragmentBaseUrl();
+    public abstract string? GetFragmentBaseUrl();
 
     /// <summary>
     /// Implement the <c>get_file_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFileName();
+    public abstract string? GetFileName();
 
     /// <summary>
     /// Implement the <c>get_file_contents</c> callback.
@@ -1902,7 +1902,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetLinkUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1924,7 +1924,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetLinkTitle();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1946,7 +1946,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetLinkMetadata();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1968,7 +1968,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetFragmentText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1990,7 +1990,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetFragmentHtml();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -2012,7 +2012,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetFragmentBaseUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -2034,7 +2034,7 @@ public unsafe abstract partial class CefDragData : CefBaseRefCounted, ICefDragDa
 
             var _result = _m.GetFileName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

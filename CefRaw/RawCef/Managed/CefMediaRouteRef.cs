@@ -26,11 +26,11 @@ public unsafe partial class CefMediaRouteRef : CefBaseRefCountedRef, ICefMediaRo
     _cef_media_route_t* ICefMediaRoute.NativePtr => _ptr;
 
 
-    public cef_string_userfree_utf16_t GetId()
+    public string? GetId()
     {
         var _result = _ptr->get_id(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefMediaSource? GetSource()
@@ -92,11 +92,11 @@ public unsafe partial class CefMediaRouteRef : CefBaseRefCountedRef, ICefMediaRo
     _cef_media_route_t* ICefMediaRoute.NativePtr => _ptr;
 
 
-    public cef_string_userfree_utf16_t GetId()
+    public string? GetId()
     {
         var _result = _ptr->get_id(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefMediaSource? GetSource()
@@ -158,11 +158,11 @@ public unsafe partial class CefMediaRouteRef : CefBaseRefCountedRef, ICefMediaRo
     _cef_media_route_t* ICefMediaRoute.NativePtr => _ptr;
 
 
-    public cef_string_userfree_utf16_t GetId()
+    public string? GetId()
     {
         var _result = _ptr->get_id(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefMediaSource? GetSource()

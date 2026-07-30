@@ -15,13 +15,13 @@ public unsafe partial interface ICefNavigationEntry : ICefBaseRefCounted
 
     public int IsValid();
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
-    public cef_string_userfree_utf16_t GetDisplayUrl();
+    public string? GetDisplayUrl();
 
-    public cef_string_userfree_utf16_t GetOriginalUrl();
+    public string? GetOriginalUrl();
 
-    public cef_string_userfree_utf16_t GetTitle();
+    public string? GetTitle();
 
     public cef_transition_type_t GetTransitionType();
 
@@ -51,13 +51,13 @@ public unsafe partial interface ICefNavigationEntry : ICefBaseRefCounted
 
     public int IsValid();
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
-    public cef_string_userfree_utf16_t GetDisplayUrl();
+    public string? GetDisplayUrl();
 
-    public cef_string_userfree_utf16_t GetOriginalUrl();
+    public string? GetOriginalUrl();
 
-    public cef_string_userfree_utf16_t GetTitle();
+    public string? GetTitle();
 
     public cef_transition_type_t GetTransitionType();
 
@@ -87,13 +87,13 @@ public unsafe partial interface ICefNavigationEntry : ICefBaseRefCounted
 
     public int IsValid();
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
-    public cef_string_userfree_utf16_t GetDisplayUrl();
+    public string? GetDisplayUrl();
 
-    public cef_string_userfree_utf16_t GetOriginalUrl();
+    public string? GetOriginalUrl();
 
-    public cef_string_userfree_utf16_t GetTitle();
+    public string? GetTitle();
 
     public cef_transition_type_t GetTransitionType();
 

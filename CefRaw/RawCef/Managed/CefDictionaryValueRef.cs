@@ -173,7 +173,7 @@ public unsafe partial class CefDictionaryValueRef : CefBaseRefCountedRef, ICefDi
         }
     }
 
-    public cef_string_userfree_utf16_t GetString(string? arg0)
+    public string? GetString(string? arg0)
     {
         fixed (char* _p0 = arg0)
         {
@@ -181,7 +181,7 @@ public unsafe partial class CefDictionaryValueRef : CefBaseRefCountedRef, ICefDi
             CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
             var _result = _ptr->get_string(_ptr, &_s0);
 
-            return _result;
+            return CefStringRef.ToStringAndFree(_result);
         }
     }
 
@@ -514,7 +514,7 @@ public unsafe partial class CefDictionaryValueRef : CefBaseRefCountedRef, ICefDi
         }
     }
 
-    public cef_string_userfree_utf16_t GetString(string? arg0)
+    public string? GetString(string? arg0)
     {
         fixed (char* _p0 = arg0)
         {
@@ -522,7 +522,7 @@ public unsafe partial class CefDictionaryValueRef : CefBaseRefCountedRef, ICefDi
             CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
             var _result = _ptr->get_string(_ptr, &_s0);
 
-            return _result;
+            return CefStringRef.ToStringAndFree(_result);
         }
     }
 
@@ -855,7 +855,7 @@ public unsafe partial class CefDictionaryValueRef : CefBaseRefCountedRef, ICefDi
         }
     }
 
-    public cef_string_userfree_utf16_t GetString(string? arg0)
+    public string? GetString(string? arg0)
     {
         fixed (char* _p0 = arg0)
         {
@@ -863,7 +863,7 @@ public unsafe partial class CefDictionaryValueRef : CefBaseRefCountedRef, ICefDi
             CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
             var _result = _ptr->get_string(_ptr, &_s0);
 
-            return _result;
+            return CefStringRef.ToStringAndFree(_result);
         }
     }
 

@@ -19,7 +19,7 @@ public unsafe partial interface ICefProcessMessage : ICefBaseRefCounted
 
     public ICefProcessMessage? Copy();
 
-    public cef_string_userfree_utf16_t GetName();
+    public string? GetName();
 
     public ICefListValue? GetArgumentList();
 
@@ -47,7 +47,7 @@ public unsafe partial interface ICefProcessMessage : ICefBaseRefCounted
 
     public ICefProcessMessage? Copy();
 
-    public cef_string_userfree_utf16_t GetName();
+    public string? GetName();
 
     public ICefListValue? GetArgumentList();
 
@@ -75,7 +75,7 @@ public unsafe partial interface ICefProcessMessage : ICefBaseRefCounted
 
     public ICefProcessMessage? Copy();
 
-    public cef_string_userfree_utf16_t GetName();
+    public string? GetName();
 
     public ICefListValue? GetArgumentList();
 

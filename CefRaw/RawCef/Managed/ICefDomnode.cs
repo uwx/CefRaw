@@ -27,13 +27,13 @@ public unsafe partial interface ICefDomnode : ICefBaseRefCounted
 
     public int IsSame(ICefDomnode? arg0);
 
-    public cef_string_userfree_utf16_t GetName();
+    public string? GetName();
 
-    public cef_string_userfree_utf16_t GetValue();
+    public string? GetValue();
 
     public int SetValue(string? arg0);
 
-    public cef_string_userfree_utf16_t GetAsMarkup();
+    public string? GetAsMarkup();
 
     public ICefDomdocument? GetDocument();
 
@@ -49,19 +49,19 @@ public unsafe partial interface ICefDomnode : ICefBaseRefCounted
 
     public ICefDomnode? GetLastChild();
 
-    public cef_string_userfree_utf16_t GetElementTagName();
+    public string? GetElementTagName();
 
     public int HasElementAttributes();
 
     public int HasElementAttribute(string? arg0);
 
-    public cef_string_userfree_utf16_t GetElementAttribute(string? arg0);
+    public string? GetElementAttribute(string? arg0);
 
     public void GetElementAttributes(_cef_string_map_t* arg0);
 
     public int SetElementAttribute(string? arg0, string? arg1);
 
-    public cef_string_userfree_utf16_t GetElementInnerText();
+    public string? GetElementInnerText();
 
     public _cef_rect_t GetElementBounds();
 }
@@ -95,13 +95,13 @@ public unsafe partial interface ICefDomnode : ICefBaseRefCounted
 
     public int IsSame(ICefDomnode? arg0);
 
-    public cef_string_userfree_utf16_t GetName();
+    public string? GetName();
 
-    public cef_string_userfree_utf16_t GetValue();
+    public string? GetValue();
 
     public int SetValue(string? arg0);
 
-    public cef_string_userfree_utf16_t GetAsMarkup();
+    public string? GetAsMarkup();
 
     public ICefDomdocument? GetDocument();
 
@@ -117,19 +117,19 @@ public unsafe partial interface ICefDomnode : ICefBaseRefCounted
 
     public ICefDomnode? GetLastChild();
 
-    public cef_string_userfree_utf16_t GetElementTagName();
+    public string? GetElementTagName();
 
     public int HasElementAttributes();
 
     public int HasElementAttribute(string? arg0);
 
-    public cef_string_userfree_utf16_t GetElementAttribute(string? arg0);
+    public string? GetElementAttribute(string? arg0);
 
     public void GetElementAttributes(_cef_string_map_t* arg0);
 
     public int SetElementAttribute(string? arg0, string? arg1);
 
-    public cef_string_userfree_utf16_t GetElementInnerText();
+    public string? GetElementInnerText();
 
     public _cef_rect_t GetElementBounds();
 }
@@ -163,13 +163,13 @@ public unsafe partial interface ICefDomnode : ICefBaseRefCounted
 
     public int IsSame(ICefDomnode? arg0);
 
-    public cef_string_userfree_utf16_t GetName();
+    public string? GetName();
 
-    public cef_string_userfree_utf16_t GetValue();
+    public string? GetValue();
 
     public int SetValue(string? arg0);
 
-    public cef_string_userfree_utf16_t GetAsMarkup();
+    public string? GetAsMarkup();
 
     public ICefDomdocument? GetDocument();
 
@@ -185,19 +185,19 @@ public unsafe partial interface ICefDomnode : ICefBaseRefCounted
 
     public ICefDomnode? GetLastChild();
 
-    public cef_string_userfree_utf16_t GetElementTagName();
+    public string? GetElementTagName();
 
     public int HasElementAttributes();
 
     public int HasElementAttribute(string? arg0);
 
-    public cef_string_userfree_utf16_t GetElementAttribute(string? arg0);
+    public string? GetElementAttribute(string? arg0);
 
     public void GetElementAttributes(_cef_string_map_t* arg0);
 
     public int SetElementAttribute(string? arg0, string? arg1);
 
-    public cef_string_userfree_utf16_t GetElementInnerText();
+    public string? GetElementInnerText();
 
     public _cef_rect_t GetElementBounds();
 }

@@ -26,39 +26,39 @@ public unsafe partial class CefX509CertPrincipalRef : CefBaseRefCountedRef, ICef
     _cef_x509_cert_principal_t* ICefX509CertPrincipal.NativePtr => _ptr;
 
 
-    public cef_string_userfree_utf16_t GetDisplayName()
+    public string? GetDisplayName()
     {
         var _result = _ptr->get_display_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetCommonName()
+    public string? GetCommonName()
     {
         var _result = _ptr->get_common_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetLocalityName()
+    public string? GetLocalityName()
     {
         var _result = _ptr->get_locality_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetStateOrProvinceName()
+    public string? GetStateOrProvinceName()
     {
         var _result = _ptr->get_state_or_province_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetCountryName()
+    public string? GetCountryName()
     {
         var _result = _ptr->get_country_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public void GetOrganizationNames(ICefStringList? arg0)
@@ -106,39 +106,39 @@ public unsafe partial class CefX509CertPrincipalRef : CefBaseRefCountedRef, ICef
     _cef_x509_cert_principal_t* ICefX509CertPrincipal.NativePtr => _ptr;
 
 
-    public cef_string_userfree_utf16_t GetDisplayName()
+    public string? GetDisplayName()
     {
         var _result = _ptr->get_display_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetCommonName()
+    public string? GetCommonName()
     {
         var _result = _ptr->get_common_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetLocalityName()
+    public string? GetLocalityName()
     {
         var _result = _ptr->get_locality_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetStateOrProvinceName()
+    public string? GetStateOrProvinceName()
     {
         var _result = _ptr->get_state_or_province_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetCountryName()
+    public string? GetCountryName()
     {
         var _result = _ptr->get_country_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public void GetOrganizationNames(ICefStringList? arg0)
@@ -186,39 +186,39 @@ public unsafe partial class CefX509CertPrincipalRef : CefBaseRefCountedRef, ICef
     _cef_x509_cert_principal_t* ICefX509CertPrincipal.NativePtr => _ptr;
 
 
-    public cef_string_userfree_utf16_t GetDisplayName()
+    public string? GetDisplayName()
     {
         var _result = _ptr->get_display_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetCommonName()
+    public string? GetCommonName()
     {
         var _result = _ptr->get_common_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetLocalityName()
+    public string? GetLocalityName()
     {
         var _result = _ptr->get_locality_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetStateOrProvinceName()
+    public string? GetStateOrProvinceName()
     {
         var _result = _ptr->get_state_or_province_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetCountryName()
+    public string? GetCountryName()
     {
         var _result = _ptr->get_country_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public void GetOrganizationNames(ICefStringList? arg0)

@@ -191,7 +191,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     /// <summary>
     /// Implement the <c>get_string_value</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetStringValue();
+    public abstract string? GetStringValue();
 
     /// <summary>
     /// Implement the <c>is_user_created</c> callback.
@@ -321,7 +321,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     /// <summary>
     /// Implement the <c>get_function_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFunctionName();
+    public abstract string? GetFunctionName();
 
     /// <summary>
     /// Implement the <c>get_function_handler</c> callback.
@@ -802,7 +802,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
 
             var _result = _m.GetStringValue();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1396,7 +1396,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
 
             var _result = _m.GetFunctionName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1725,7 +1725,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     /// <summary>
     /// Implement the <c>get_string_value</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetStringValue();
+    public abstract string? GetStringValue();
 
     /// <summary>
     /// Implement the <c>is_user_created</c> callback.
@@ -1855,7 +1855,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     /// <summary>
     /// Implement the <c>get_function_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFunctionName();
+    public abstract string? GetFunctionName();
 
     /// <summary>
     /// Implement the <c>get_function_handler</c> callback.
@@ -2336,7 +2336,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
 
             var _result = _m.GetStringValue();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -2930,7 +2930,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
 
             var _result = _m.GetFunctionName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -3259,7 +3259,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     /// <summary>
     /// Implement the <c>get_string_value</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetStringValue();
+    public abstract string? GetStringValue();
 
     /// <summary>
     /// Implement the <c>is_user_created</c> callback.
@@ -3389,7 +3389,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     /// <summary>
     /// Implement the <c>get_function_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFunctionName();
+    public abstract string? GetFunctionName();
 
     /// <summary>
     /// Implement the <c>get_function_handler</c> callback.
@@ -3870,7 +3870,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
 
             var _result = _m.GetStringValue();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -4464,7 +4464,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
 
             var _result = _m.GetFunctionName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

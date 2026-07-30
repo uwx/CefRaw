@@ -110,11 +110,11 @@ public unsafe partial class CefDownloadItemRef : CefBaseRefCountedRef, ICefDownl
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetFullPath()
+    public string? GetFullPath()
     {
         var _result = _ptr->get_full_path(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public uint GetId()
@@ -124,39 +124,39 @@ public unsafe partial class CefDownloadItemRef : CefBaseRefCountedRef, ICefDownl
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetUrl()
+    public string? GetUrl()
     {
         var _result = _ptr->get_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetOriginalUrl()
+    public string? GetOriginalUrl()
     {
         var _result = _ptr->get_original_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetSuggestedFileName()
+    public string? GetSuggestedFileName()
     {
         var _result = _ptr->get_suggested_file_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetContentDisposition()
+    public string? GetContentDisposition()
     {
         var _result = _ptr->get_content_disposition(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetMimeType()
+    public string? GetMimeType()
     {
         var _result = _ptr->get_mime_type(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int IsPaused()
@@ -285,11 +285,11 @@ public unsafe partial class CefDownloadItemRef : CefBaseRefCountedRef, ICefDownl
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetFullPath()
+    public string? GetFullPath()
     {
         var _result = _ptr->get_full_path(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public uint GetId()
@@ -299,39 +299,39 @@ public unsafe partial class CefDownloadItemRef : CefBaseRefCountedRef, ICefDownl
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetUrl()
+    public string? GetUrl()
     {
         var _result = _ptr->get_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetOriginalUrl()
+    public string? GetOriginalUrl()
     {
         var _result = _ptr->get_original_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetSuggestedFileName()
+    public string? GetSuggestedFileName()
     {
         var _result = _ptr->get_suggested_file_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetContentDisposition()
+    public string? GetContentDisposition()
     {
         var _result = _ptr->get_content_disposition(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetMimeType()
+    public string? GetMimeType()
     {
         var _result = _ptr->get_mime_type(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int IsPaused()
@@ -460,11 +460,11 @@ public unsafe partial class CefDownloadItemRef : CefBaseRefCountedRef, ICefDownl
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetFullPath()
+    public string? GetFullPath()
     {
         var _result = _ptr->get_full_path(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public uint GetId()
@@ -474,39 +474,39 @@ public unsafe partial class CefDownloadItemRef : CefBaseRefCountedRef, ICefDownl
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetUrl()
+    public string? GetUrl()
     {
         var _result = _ptr->get_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetOriginalUrl()
+    public string? GetOriginalUrl()
     {
         var _result = _ptr->get_original_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetSuggestedFileName()
+    public string? GetSuggestedFileName()
     {
         var _result = _ptr->get_suggested_file_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetContentDisposition()
+    public string? GetContentDisposition()
     {
         var _result = _ptr->get_content_disposition(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetMimeType()
+    public string? GetMimeType()
     {
         var _result = _ptr->get_mime_type(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int IsPaused()

@@ -72,18 +72,18 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
         _ptr->get_argv(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
-    public cef_string_userfree_utf16_t GetCommandLineString()
+    public string? GetCommandLineString()
     {
         var _result = _ptr->get_command_line_string(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetProgram()
+    public string? GetProgram()
     {
         var _result = _ptr->get_program(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public void SetProgram(string? arg0)
@@ -115,7 +115,7 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
         }
     }
 
-    public cef_string_userfree_utf16_t GetSwitchValue(string? arg0)
+    public string? GetSwitchValue(string? arg0)
     {
         fixed (char* _p0 = arg0)
         {
@@ -123,7 +123,7 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
             CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
             var _result = _ptr->get_switch_value(_ptr, &_s0);
 
-            return _result;
+            return CefStringRef.ToStringAndFree(_result);
         }
     }
 
@@ -278,18 +278,18 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
         _ptr->get_argv(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
-    public cef_string_userfree_utf16_t GetCommandLineString()
+    public string? GetCommandLineString()
     {
         var _result = _ptr->get_command_line_string(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetProgram()
+    public string? GetProgram()
     {
         var _result = _ptr->get_program(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public void SetProgram(string? arg0)
@@ -321,7 +321,7 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
         }
     }
 
-    public cef_string_userfree_utf16_t GetSwitchValue(string? arg0)
+    public string? GetSwitchValue(string? arg0)
     {
         fixed (char* _p0 = arg0)
         {
@@ -329,7 +329,7 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
             CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
             var _result = _ptr->get_switch_value(_ptr, &_s0);
 
-            return _result;
+            return CefStringRef.ToStringAndFree(_result);
         }
     }
 
@@ -484,18 +484,18 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
         _ptr->get_argv(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
-    public cef_string_userfree_utf16_t GetCommandLineString()
+    public string? GetCommandLineString()
     {
         var _result = _ptr->get_command_line_string(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetProgram()
+    public string? GetProgram()
     {
         var _result = _ptr->get_program(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public void SetProgram(string? arg0)
@@ -527,7 +527,7 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
         }
     }
 
-    public cef_string_userfree_utf16_t GetSwitchValue(string? arg0)
+    public string? GetSwitchValue(string? arg0)
     {
         fixed (char* _p0 = arg0)
         {
@@ -535,7 +535,7 @@ public unsafe partial class CefCommandLineRef : CefBaseRefCountedRef, ICefComman
             CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
             var _result = _ptr->get_switch_value(_ptr, &_s0);
 
-            return _result;
+            return CefStringRef.ToStringAndFree(_result);
         }
     }
 

@@ -66,7 +66,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUrl();
+    public abstract string? GetUrl();
 
     /// <summary>
     /// Implement the <c>set_url</c> callback.
@@ -76,7 +76,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_method</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMethod();
+    public abstract string? GetMethod();
 
     /// <summary>
     /// Implement the <c>set_method</c> callback.
@@ -91,7 +91,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_referrer_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetReferrerUrl();
+    public abstract string? GetReferrerUrl();
 
     /// <summary>
     /// Implement the <c>get_referrer_policy</c> callback.
@@ -121,7 +121,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_header_by_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetHeaderByName(string? arg0);
+    public abstract string? GetHeaderByName(string? arg0);
 
     /// <summary>
     /// Implement the <c>set_header_by_name</c> callback.
@@ -146,7 +146,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_first_party_for_cookies</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFirstPartyForCookies();
+    public abstract string? GetFirstPartyForCookies();
 
     /// <summary>
     /// Implement the <c>set_first_party_for_cookies</c> callback.
@@ -203,7 +203,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
 
             var _result = _m.GetUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -246,7 +246,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
 
             var _result = _m.GetMethod();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -311,7 +311,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
 
             var _result = _m.GetReferrerUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -442,7 +442,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetHeaderByName(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -554,7 +554,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
 
             var _result = _m.GetFirstPartyForCookies();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -719,7 +719,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUrl();
+    public abstract string? GetUrl();
 
     /// <summary>
     /// Implement the <c>set_url</c> callback.
@@ -729,7 +729,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_method</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMethod();
+    public abstract string? GetMethod();
 
     /// <summary>
     /// Implement the <c>set_method</c> callback.
@@ -744,7 +744,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_referrer_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetReferrerUrl();
+    public abstract string? GetReferrerUrl();
 
     /// <summary>
     /// Implement the <c>get_referrer_policy</c> callback.
@@ -774,7 +774,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_header_by_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetHeaderByName(string? arg0);
+    public abstract string? GetHeaderByName(string? arg0);
 
     /// <summary>
     /// Implement the <c>set_header_by_name</c> callback.
@@ -799,7 +799,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_first_party_for_cookies</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFirstPartyForCookies();
+    public abstract string? GetFirstPartyForCookies();
 
     /// <summary>
     /// Implement the <c>set_first_party_for_cookies</c> callback.
@@ -856,7 +856,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
 
             var _result = _m.GetUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -899,7 +899,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
 
             var _result = _m.GetMethod();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -964,7 +964,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
 
             var _result = _m.GetReferrerUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1095,7 +1095,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetHeaderByName(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1207,7 +1207,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
 
             var _result = _m.GetFirstPartyForCookies();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1372,7 +1372,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetUrl();
+    public abstract string? GetUrl();
 
     /// <summary>
     /// Implement the <c>set_url</c> callback.
@@ -1382,7 +1382,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_method</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetMethod();
+    public abstract string? GetMethod();
 
     /// <summary>
     /// Implement the <c>set_method</c> callback.
@@ -1397,7 +1397,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_referrer_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetReferrerUrl();
+    public abstract string? GetReferrerUrl();
 
     /// <summary>
     /// Implement the <c>get_referrer_policy</c> callback.
@@ -1427,7 +1427,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_header_by_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetHeaderByName(string? arg0);
+    public abstract string? GetHeaderByName(string? arg0);
 
     /// <summary>
     /// Implement the <c>set_header_by_name</c> callback.
@@ -1452,7 +1452,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
     /// <summary>
     /// Implement the <c>get_first_party_for_cookies</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetFirstPartyForCookies();
+    public abstract string? GetFirstPartyForCookies();
 
     /// <summary>
     /// Implement the <c>set_first_party_for_cookies</c> callback.
@@ -1509,7 +1509,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
 
             var _result = _m.GetUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1552,7 +1552,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
 
             var _result = _m.GetMethod();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1617,7 +1617,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
 
             var _result = _m.GetReferrerUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1748,7 +1748,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetHeaderByName(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1860,7 +1860,7 @@ public unsafe abstract partial class CefRequest : CefBaseRefCounted, ICefRequest
 
             var _result = _m.GetFirstPartyForCookies();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

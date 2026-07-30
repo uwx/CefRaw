@@ -82,7 +82,7 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     /// <summary>
     /// Implement the <c>get_cache_path</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCachePath();
+    public abstract string? GetCachePath();
 
     /// <summary>
     /// Implement the <c>get_cookie_manager</c> callback.
@@ -278,7 +278,7 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
             var _result = _m.GetCachePath();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -784,7 +784,7 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     /// <summary>
     /// Implement the <c>get_cache_path</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCachePath();
+    public abstract string? GetCachePath();
 
     /// <summary>
     /// Implement the <c>get_cookie_manager</c> callback.
@@ -980,7 +980,7 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
             var _result = _m.GetCachePath();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1486,7 +1486,7 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
     /// <summary>
     /// Implement the <c>get_cache_path</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCachePath();
+    public abstract string? GetCachePath();
 
     /// <summary>
     /// Implement the <c>get_cookie_manager</c> callback.
@@ -1682,7 +1682,7 @@ public unsafe abstract partial class CefRequestContext : CefPreferenceManager, I
 
             var _result = _m.GetCachePath();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

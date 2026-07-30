@@ -47,11 +47,11 @@ public unsafe partial class CefProcessMessageRef : CefBaseRefCountedRef, ICefPro
         return _result != null ? new CefProcessMessageRef(_result) : null;
     }
 
-    public cef_string_userfree_utf16_t GetName()
+    public string? GetName()
     {
         var _result = _ptr->get_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefListValue? GetArgumentList()
@@ -124,11 +124,11 @@ public unsafe partial class CefProcessMessageRef : CefBaseRefCountedRef, ICefPro
         return _result != null ? new CefProcessMessageRef(_result) : null;
     }
 
-    public cef_string_userfree_utf16_t GetName()
+    public string? GetName()
     {
         var _result = _ptr->get_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefListValue? GetArgumentList()
@@ -201,11 +201,11 @@ public unsafe partial class CefProcessMessageRef : CefBaseRefCountedRef, ICefPro
         return _result != null ? new CefProcessMessageRef(_result) : null;
     }
 
-    public cef_string_userfree_utf16_t GetName()
+    public string? GetName()
     {
         var _result = _ptr->get_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefListValue? GetArgumentList()

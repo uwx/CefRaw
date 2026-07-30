@@ -23,7 +23,7 @@ public unsafe partial interface ICefPostDataElement : ICefBaseRefCounted
 
     public cef_postdataelement_type_t GetType();
 
-    public cef_string_userfree_utf16_t GetFile();
+    public string? GetFile();
 
     public nuint GetBytesCount();
 
@@ -55,7 +55,7 @@ public unsafe partial interface ICefPostDataElement : ICefBaseRefCounted
 
     public cef_postdataelement_type_t GetType();
 
-    public cef_string_userfree_utf16_t GetFile();
+    public string? GetFile();
 
     public nuint GetBytesCount();
 
@@ -87,7 +87,7 @@ public unsafe partial interface ICefPostDataElement : ICefBaseRefCounted
 
     public cef_postdataelement_type_t GetType();
 
-    public cef_string_userfree_utf16_t GetFile();
+    public string? GetFile();
 
     public nuint GetBytesCount();
 

@@ -54,11 +54,11 @@ public unsafe partial class CefRequestContextRef : CefPreferenceManagerRef, ICef
         return _result != null ? new CefRequestContextHandlerRef(_result) : null;
     }
 
-    public cef_string_userfree_utf16_t GetCachePath()
+    public string? GetCachePath()
     {
         var _result = _ptr->get_cache_path(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefCookieManager? GetCookieManager(ICefCompletionCallback? arg0)
@@ -279,11 +279,11 @@ public unsafe partial class CefRequestContextRef : CefPreferenceManagerRef, ICef
         return _result != null ? new CefRequestContextHandlerRef(_result) : null;
     }
 
-    public cef_string_userfree_utf16_t GetCachePath()
+    public string? GetCachePath()
     {
         var _result = _ptr->get_cache_path(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefCookieManager? GetCookieManager(ICefCompletionCallback? arg0)
@@ -504,11 +504,11 @@ public unsafe partial class CefRequestContextRef : CefPreferenceManagerRef, ICef
         return _result != null ? new CefRequestContextHandlerRef(_result) : null;
     }
 
-    public cef_string_userfree_utf16_t GetCachePath()
+    public string? GetCachePath()
     {
         var _result = _ptr->get_cache_path(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefCookieManager? GetCookieManager(ICefCompletionCallback? arg0)

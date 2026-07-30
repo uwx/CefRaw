@@ -61,53 +61,53 @@ public unsafe partial class CefDragDataRef : CefBaseRefCountedRef, ICefDragData
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetLinkUrl()
+    public string? GetLinkUrl()
     {
         var _result = _ptr->get_link_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetLinkTitle()
+    public string? GetLinkTitle()
     {
         var _result = _ptr->get_link_title(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetLinkMetadata()
+    public string? GetLinkMetadata()
     {
         var _result = _ptr->get_link_metadata(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFragmentText()
+    public string? GetFragmentText()
     {
         var _result = _ptr->get_fragment_text(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFragmentHtml()
+    public string? GetFragmentHtml()
     {
         var _result = _ptr->get_fragment_html(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFragmentBaseUrl()
+    public string? GetFragmentBaseUrl()
     {
         var _result = _ptr->get_fragment_base_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFileName()
+    public string? GetFileName()
     {
         var _result = _ptr->get_file_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public nuint GetFileContents(ICefStreamWriter? arg0)
@@ -305,53 +305,53 @@ public unsafe partial class CefDragDataRef : CefBaseRefCountedRef, ICefDragData
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetLinkUrl()
+    public string? GetLinkUrl()
     {
         var _result = _ptr->get_link_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetLinkTitle()
+    public string? GetLinkTitle()
     {
         var _result = _ptr->get_link_title(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetLinkMetadata()
+    public string? GetLinkMetadata()
     {
         var _result = _ptr->get_link_metadata(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFragmentText()
+    public string? GetFragmentText()
     {
         var _result = _ptr->get_fragment_text(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFragmentHtml()
+    public string? GetFragmentHtml()
     {
         var _result = _ptr->get_fragment_html(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFragmentBaseUrl()
+    public string? GetFragmentBaseUrl()
     {
         var _result = _ptr->get_fragment_base_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFileName()
+    public string? GetFileName()
     {
         var _result = _ptr->get_file_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public nuint GetFileContents(ICefStreamWriter? arg0)
@@ -549,53 +549,53 @@ public unsafe partial class CefDragDataRef : CefBaseRefCountedRef, ICefDragData
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetLinkUrl()
+    public string? GetLinkUrl()
     {
         var _result = _ptr->get_link_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetLinkTitle()
+    public string? GetLinkTitle()
     {
         var _result = _ptr->get_link_title(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetLinkMetadata()
+    public string? GetLinkMetadata()
     {
         var _result = _ptr->get_link_metadata(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFragmentText()
+    public string? GetFragmentText()
     {
         var _result = _ptr->get_fragment_text(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFragmentHtml()
+    public string? GetFragmentHtml()
     {
         var _result = _ptr->get_fragment_html(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFragmentBaseUrl()
+    public string? GetFragmentBaseUrl()
     {
         var _result = _ptr->get_fragment_base_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFileName()
+    public string? GetFileName()
     {
         var _result = _ptr->get_file_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public nuint GetFileContents(ICefStreamWriter? arg0)

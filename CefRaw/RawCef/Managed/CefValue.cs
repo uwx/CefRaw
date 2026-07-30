@@ -111,7 +111,7 @@ public unsafe abstract partial class CefValue : CefBaseRefCounted, ICefValue
     /// <summary>
     /// Implement the <c>get_string</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetString();
+    public abstract string? GetString();
 
     /// <summary>
     /// Implement the <c>get_binary</c> callback.
@@ -404,7 +404,7 @@ public unsafe abstract partial class CefValue : CefBaseRefCounted, ICefValue
 
             var _result = _m.GetString();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -779,7 +779,7 @@ public unsafe abstract partial class CefValue : CefBaseRefCounted, ICefValue
     /// <summary>
     /// Implement the <c>get_string</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetString();
+    public abstract string? GetString();
 
     /// <summary>
     /// Implement the <c>get_binary</c> callback.
@@ -1072,7 +1072,7 @@ public unsafe abstract partial class CefValue : CefBaseRefCounted, ICefValue
 
             var _result = _m.GetString();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1447,7 +1447,7 @@ public unsafe abstract partial class CefValue : CefBaseRefCounted, ICefValue
     /// <summary>
     /// Implement the <c>get_string</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetString();
+    public abstract string? GetString();
 
     /// <summary>
     /// Implement the <c>get_binary</c> callback.
@@ -1740,7 +1740,7 @@ public unsafe abstract partial class CefValue : CefBaseRefCounted, ICefValue
 
             var _result = _m.GetString();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

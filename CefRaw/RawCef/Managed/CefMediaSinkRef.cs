@@ -26,18 +26,18 @@ public unsafe partial class CefMediaSinkRef : CefBaseRefCountedRef, ICefMediaSin
     _cef_media_sink_t* ICefMediaSink.NativePtr => _ptr;
 
 
-    public cef_string_userfree_utf16_t GetId()
+    public string? GetId()
     {
         var _result = _ptr->get_id(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetName()
+    public string? GetName()
     {
         var _result = _ptr->get_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public cef_media_sink_icon_type_t GetIconType()
@@ -108,18 +108,18 @@ public unsafe partial class CefMediaSinkRef : CefBaseRefCountedRef, ICefMediaSin
     _cef_media_sink_t* ICefMediaSink.NativePtr => _ptr;
 
 
-    public cef_string_userfree_utf16_t GetId()
+    public string? GetId()
     {
         var _result = _ptr->get_id(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetName()
+    public string? GetName()
     {
         var _result = _ptr->get_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public cef_media_sink_icon_type_t GetIconType()
@@ -190,18 +190,18 @@ public unsafe partial class CefMediaSinkRef : CefBaseRefCountedRef, ICefMediaSin
     _cef_media_sink_t* ICefMediaSink.NativePtr => _ptr;
 
 
-    public cef_string_userfree_utf16_t GetId()
+    public string? GetId()
     {
         var _result = _ptr->get_id(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetName()
+    public string? GetName()
     {
         var _result = _ptr->get_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public cef_media_sink_icon_type_t GetIconType()

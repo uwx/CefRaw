@@ -13,15 +13,15 @@ public unsafe partial interface ICefX509CertPrincipal : ICefBaseRefCounted
 {
     new _cef_x509_cert_principal_t* NativePtr { get; }
 
-    public cef_string_userfree_utf16_t GetDisplayName();
+    public string? GetDisplayName();
 
-    public cef_string_userfree_utf16_t GetCommonName();
+    public string? GetCommonName();
 
-    public cef_string_userfree_utf16_t GetLocalityName();
+    public string? GetLocalityName();
 
-    public cef_string_userfree_utf16_t GetStateOrProvinceName();
+    public string? GetStateOrProvinceName();
 
-    public cef_string_userfree_utf16_t GetCountryName();
+    public string? GetCountryName();
 
     public void GetOrganizationNames(ICefStringList? arg0);
 
@@ -43,15 +43,15 @@ public unsafe partial interface ICefX509CertPrincipal : ICefBaseRefCounted
 {
     new _cef_x509_cert_principal_t* NativePtr { get; }
 
-    public cef_string_userfree_utf16_t GetDisplayName();
+    public string? GetDisplayName();
 
-    public cef_string_userfree_utf16_t GetCommonName();
+    public string? GetCommonName();
 
-    public cef_string_userfree_utf16_t GetLocalityName();
+    public string? GetLocalityName();
 
-    public cef_string_userfree_utf16_t GetStateOrProvinceName();
+    public string? GetStateOrProvinceName();
 
-    public cef_string_userfree_utf16_t GetCountryName();
+    public string? GetCountryName();
 
     public void GetOrganizationNames(ICefStringList? arg0);
 
@@ -73,15 +73,15 @@ public unsafe partial interface ICefX509CertPrincipal : ICefBaseRefCounted
 {
     new _cef_x509_cert_principal_t* NativePtr { get; }
 
-    public cef_string_userfree_utf16_t GetDisplayName();
+    public string? GetDisplayName();
 
-    public cef_string_userfree_utf16_t GetCommonName();
+    public string? GetCommonName();
 
-    public cef_string_userfree_utf16_t GetLocalityName();
+    public string? GetLocalityName();
 
-    public cef_string_userfree_utf16_t GetStateOrProvinceName();
+    public string? GetStateOrProvinceName();
 
-    public cef_string_userfree_utf16_t GetCountryName();
+    public string? GetCountryName();
 
     public void GetOrganizationNames(ICefStringList? arg0);
 

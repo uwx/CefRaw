@@ -33,25 +33,25 @@ public unsafe partial class CefV8StackFrameRef : CefBaseRefCountedRef, ICefV8Sta
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetScriptName()
+    public string? GetScriptName()
     {
         var _result = _ptr->get_script_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetScriptNameOrSourceUrl()
+    public string? GetScriptNameOrSourceUrl()
     {
         var _result = _ptr->get_script_name_or_source_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFunctionName()
+    public string? GetFunctionName()
     {
         var _result = _ptr->get_function_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int GetLineNumber()
@@ -124,25 +124,25 @@ public unsafe partial class CefV8StackFrameRef : CefBaseRefCountedRef, ICefV8Sta
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetScriptName()
+    public string? GetScriptName()
     {
         var _result = _ptr->get_script_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetScriptNameOrSourceUrl()
+    public string? GetScriptNameOrSourceUrl()
     {
         var _result = _ptr->get_script_name_or_source_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFunctionName()
+    public string? GetFunctionName()
     {
         var _result = _ptr->get_function_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int GetLineNumber()
@@ -215,25 +215,25 @@ public unsafe partial class CefV8StackFrameRef : CefBaseRefCountedRef, ICefV8Sta
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetScriptName()
+    public string? GetScriptName()
     {
         var _result = _ptr->get_script_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetScriptNameOrSourceUrl()
+    public string? GetScriptNameOrSourceUrl()
     {
         var _result = _ptr->get_script_name_or_source_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetFunctionName()
+    public string? GetFunctionName()
     {
         var _result = _ptr->get_function_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public int GetLineNumber()

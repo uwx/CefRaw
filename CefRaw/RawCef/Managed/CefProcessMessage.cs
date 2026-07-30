@@ -60,7 +60,7 @@ public unsafe abstract partial class CefProcessMessage : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>get_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetName();
+    public abstract string? GetName();
 
     /// <summary>
     /// Implement the <c>get_argument_list</c> callback.
@@ -152,7 +152,7 @@ public unsafe abstract partial class CefProcessMessage : CefBaseRefCounted, ICef
 
             var _result = _m.GetName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -270,7 +270,7 @@ public unsafe abstract partial class CefProcessMessage : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>get_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetName();
+    public abstract string? GetName();
 
     /// <summary>
     /// Implement the <c>get_argument_list</c> callback.
@@ -362,7 +362,7 @@ public unsafe abstract partial class CefProcessMessage : CefBaseRefCounted, ICef
 
             var _result = _m.GetName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -480,7 +480,7 @@ public unsafe abstract partial class CefProcessMessage : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>get_name</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetName();
+    public abstract string? GetName();
 
     /// <summary>
     /// Implement the <c>get_argument_list</c> callback.
@@ -572,7 +572,7 @@ public unsafe abstract partial class CefProcessMessage : CefBaseRefCounted, ICef
 
             var _result = _m.GetName();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

@@ -19,29 +19,29 @@ public unsafe partial interface ICefContextMenuParams : ICefBaseRefCounted
 
     public cef_context_menu_type_flags_t GetTypeFlags();
 
-    public cef_string_userfree_utf16_t GetLinkUrl();
+    public string? GetLinkUrl();
 
-    public cef_string_userfree_utf16_t GetUnfilteredLinkUrl();
+    public string? GetUnfilteredLinkUrl();
 
-    public cef_string_userfree_utf16_t GetSourceUrl();
+    public string? GetSourceUrl();
 
     public int HasImageContents();
 
-    public cef_string_userfree_utf16_t GetTitleText();
+    public string? GetTitleText();
 
-    public cef_string_userfree_utf16_t GetPageUrl();
+    public string? GetPageUrl();
 
-    public cef_string_userfree_utf16_t GetFrameUrl();
+    public string? GetFrameUrl();
 
-    public cef_string_userfree_utf16_t GetFrameCharset();
+    public string? GetFrameCharset();
 
     public cef_context_menu_media_type_t GetMediaType();
 
     public cef_context_menu_media_state_flags_t GetMediaStateFlags();
 
-    public cef_string_userfree_utf16_t GetSelectionText();
+    public string? GetSelectionText();
 
-    public cef_string_userfree_utf16_t GetMisspelledWord();
+    public string? GetMisspelledWord();
 
     public int GetDictionarySuggestions(ICefStringList? arg0);
 
@@ -75,29 +75,29 @@ public unsafe partial interface ICefContextMenuParams : ICefBaseRefCounted
 
     public cef_context_menu_type_flags_t GetTypeFlags();
 
-    public cef_string_userfree_utf16_t GetLinkUrl();
+    public string? GetLinkUrl();
 
-    public cef_string_userfree_utf16_t GetUnfilteredLinkUrl();
+    public string? GetUnfilteredLinkUrl();
 
-    public cef_string_userfree_utf16_t GetSourceUrl();
+    public string? GetSourceUrl();
 
     public int HasImageContents();
 
-    public cef_string_userfree_utf16_t GetTitleText();
+    public string? GetTitleText();
 
-    public cef_string_userfree_utf16_t GetPageUrl();
+    public string? GetPageUrl();
 
-    public cef_string_userfree_utf16_t GetFrameUrl();
+    public string? GetFrameUrl();
 
-    public cef_string_userfree_utf16_t GetFrameCharset();
+    public string? GetFrameCharset();
 
     public cef_context_menu_media_type_t GetMediaType();
 
     public cef_context_menu_media_state_flags_t GetMediaStateFlags();
 
-    public cef_string_userfree_utf16_t GetSelectionText();
+    public string? GetSelectionText();
 
-    public cef_string_userfree_utf16_t GetMisspelledWord();
+    public string? GetMisspelledWord();
 
     public int GetDictionarySuggestions(ICefStringList? arg0);
 
@@ -131,29 +131,29 @@ public unsafe partial interface ICefContextMenuParams : ICefBaseRefCounted
 
     public cef_context_menu_type_flags_t GetTypeFlags();
 
-    public cef_string_userfree_utf16_t GetLinkUrl();
+    public string? GetLinkUrl();
 
-    public cef_string_userfree_utf16_t GetUnfilteredLinkUrl();
+    public string? GetUnfilteredLinkUrl();
 
-    public cef_string_userfree_utf16_t GetSourceUrl();
+    public string? GetSourceUrl();
 
     public int HasImageContents();
 
-    public cef_string_userfree_utf16_t GetTitleText();
+    public string? GetTitleText();
 
-    public cef_string_userfree_utf16_t GetPageUrl();
+    public string? GetPageUrl();
 
-    public cef_string_userfree_utf16_t GetFrameUrl();
+    public string? GetFrameUrl();
 
-    public cef_string_userfree_utf16_t GetFrameCharset();
+    public string? GetFrameCharset();
 
     public cef_context_menu_media_type_t GetMediaType();
 
     public cef_context_menu_media_state_flags_t GetMediaStateFlags();
 
-    public cef_string_userfree_utf16_t GetSelectionText();
+    public string? GetSelectionText();
 
-    public cef_string_userfree_utf16_t GetMisspelledWord();
+    public string? GetMisspelledWord();
 
     public int GetDictionarySuggestions(ICefStringList? arg0);
 

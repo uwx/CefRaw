@@ -45,13 +45,13 @@ public unsafe partial interface ICefFrame : ICefBaseRefCounted
 
     public int IsFocused();
 
-    public cef_string_userfree_utf16_t GetName();
+    public string? GetName();
 
-    public cef_string_userfree_utf16_t GetIdentifier();
+    public string? GetIdentifier();
 
     public ICefFrame? GetParent();
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
     public ICefBrowser? GetBrowser();
 
@@ -111,13 +111,13 @@ public unsafe partial interface ICefFrame : ICefBaseRefCounted
 
     public int IsFocused();
 
-    public cef_string_userfree_utf16_t GetName();
+    public string? GetName();
 
-    public cef_string_userfree_utf16_t GetIdentifier();
+    public string? GetIdentifier();
 
     public ICefFrame? GetParent();
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
     public ICefBrowser? GetBrowser();
 
@@ -177,13 +177,13 @@ public unsafe partial interface ICefFrame : ICefBaseRefCounted
 
     public int IsFocused();
 
-    public cef_string_userfree_utf16_t GetName();
+    public string? GetName();
 
-    public cef_string_userfree_utf16_t GetIdentifier();
+    public string? GetIdentifier();
 
     public ICefFrame? GetParent();
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
     public ICefBrowser? GetBrowser();
 

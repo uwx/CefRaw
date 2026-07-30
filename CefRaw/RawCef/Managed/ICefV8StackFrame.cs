@@ -15,11 +15,11 @@ public unsafe partial interface ICefV8StackFrame : ICefBaseRefCounted
 
     public int IsValid();
 
-    public cef_string_userfree_utf16_t GetScriptName();
+    public string? GetScriptName();
 
-    public cef_string_userfree_utf16_t GetScriptNameOrSourceUrl();
+    public string? GetScriptNameOrSourceUrl();
 
-    public cef_string_userfree_utf16_t GetFunctionName();
+    public string? GetFunctionName();
 
     public int GetLineNumber();
 
@@ -47,11 +47,11 @@ public unsafe partial interface ICefV8StackFrame : ICefBaseRefCounted
 
     public int IsValid();
 
-    public cef_string_userfree_utf16_t GetScriptName();
+    public string? GetScriptName();
 
-    public cef_string_userfree_utf16_t GetScriptNameOrSourceUrl();
+    public string? GetScriptNameOrSourceUrl();
 
-    public cef_string_userfree_utf16_t GetFunctionName();
+    public string? GetFunctionName();
 
     public int GetLineNumber();
 
@@ -79,11 +79,11 @@ public unsafe partial interface ICefV8StackFrame : ICefBaseRefCounted
 
     public int IsValid();
 
-    public cef_string_userfree_utf16_t GetScriptName();
+    public string? GetScriptName();
 
-    public cef_string_userfree_utf16_t GetScriptNameOrSourceUrl();
+    public string? GetScriptNameOrSourceUrl();
 
-    public cef_string_userfree_utf16_t GetFunctionName();
+    public string? GetFunctionName();
 
     public int GetLineNumber();
 

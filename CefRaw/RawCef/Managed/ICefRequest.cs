@@ -15,17 +15,17 @@ public unsafe partial interface ICefRequest : ICefBaseRefCounted
 
     public int IsReadOnly();
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
     public void SetUrl(string? arg0);
 
-    public cef_string_userfree_utf16_t GetMethod();
+    public string? GetMethod();
 
     public void SetMethod(string? arg0);
 
     public void SetReferrer(string? arg0, cef_referrer_policy_t arg1);
 
-    public cef_string_userfree_utf16_t GetReferrerUrl();
+    public string? GetReferrerUrl();
 
     public cef_referrer_policy_t GetReferrerPolicy();
 
@@ -37,7 +37,7 @@ public unsafe partial interface ICefRequest : ICefBaseRefCounted
 
     public void SetHeaderMap(_cef_string_multimap_t* arg0);
 
-    public cef_string_userfree_utf16_t GetHeaderByName(string? arg0);
+    public string? GetHeaderByName(string? arg0);
 
     public void SetHeaderByName(string? arg0, string? arg1, int arg2);
 
@@ -47,7 +47,7 @@ public unsafe partial interface ICefRequest : ICefBaseRefCounted
 
     public void SetFlags(int arg0);
 
-    public cef_string_userfree_utf16_t GetFirstPartyForCookies();
+    public string? GetFirstPartyForCookies();
 
     public void SetFirstPartyForCookies(string? arg0);
 
@@ -75,17 +75,17 @@ public unsafe partial interface ICefRequest : ICefBaseRefCounted
 
     public int IsReadOnly();
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
     public void SetUrl(string? arg0);
 
-    public cef_string_userfree_utf16_t GetMethod();
+    public string? GetMethod();
 
     public void SetMethod(string? arg0);
 
     public void SetReferrer(string? arg0, cef_referrer_policy_t arg1);
 
-    public cef_string_userfree_utf16_t GetReferrerUrl();
+    public string? GetReferrerUrl();
 
     public cef_referrer_policy_t GetReferrerPolicy();
 
@@ -97,7 +97,7 @@ public unsafe partial interface ICefRequest : ICefBaseRefCounted
 
     public void SetHeaderMap(_cef_string_multimap_t* arg0);
 
-    public cef_string_userfree_utf16_t GetHeaderByName(string? arg0);
+    public string? GetHeaderByName(string? arg0);
 
     public void SetHeaderByName(string? arg0, string? arg1, int arg2);
 
@@ -107,7 +107,7 @@ public unsafe partial interface ICefRequest : ICefBaseRefCounted
 
     public void SetFlags(int arg0);
 
-    public cef_string_userfree_utf16_t GetFirstPartyForCookies();
+    public string? GetFirstPartyForCookies();
 
     public void SetFirstPartyForCookies(string? arg0);
 
@@ -135,17 +135,17 @@ public unsafe partial interface ICefRequest : ICefBaseRefCounted
 
     public int IsReadOnly();
 
-    public cef_string_userfree_utf16_t GetUrl();
+    public string? GetUrl();
 
     public void SetUrl(string? arg0);
 
-    public cef_string_userfree_utf16_t GetMethod();
+    public string? GetMethod();
 
     public void SetMethod(string? arg0);
 
     public void SetReferrer(string? arg0, cef_referrer_policy_t arg1);
 
-    public cef_string_userfree_utf16_t GetReferrerUrl();
+    public string? GetReferrerUrl();
 
     public cef_referrer_policy_t GetReferrerPolicy();
 
@@ -157,7 +157,7 @@ public unsafe partial interface ICefRequest : ICefBaseRefCounted
 
     public void SetHeaderMap(_cef_string_multimap_t* arg0);
 
-    public cef_string_userfree_utf16_t GetHeaderByName(string? arg0);
+    public string? GetHeaderByName(string? arg0);
 
     public void SetHeaderByName(string? arg0, string? arg1, int arg2);
 
@@ -167,7 +167,7 @@ public unsafe partial interface ICefRequest : ICefBaseRefCounted
 
     public void SetFlags(int arg0);
 
-    public cef_string_userfree_utf16_t GetFirstPartyForCookies();
+    public string? GetFirstPartyForCookies();
 
     public void SetFirstPartyForCookies(string? arg0);
 

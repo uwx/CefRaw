@@ -73,7 +73,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     /// <summary>
     /// Implement the <c>get_title</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetTitle();
+    public abstract string? GetTitle();
 
     /// <summary>
     /// Implement the <c>get_element_by_id</c> callback.
@@ -103,22 +103,22 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     /// <summary>
     /// Implement the <c>get_selection_as_markup</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSelectionAsMarkup();
+    public abstract string? GetSelectionAsMarkup();
 
     /// <summary>
     /// Implement the <c>get_selection_as_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSelectionAsText();
+    public abstract string? GetSelectionAsText();
 
     /// <summary>
     /// Implement the <c>get_base_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetBaseUrl();
+    public abstract string? GetBaseUrl();
 
     /// <summary>
     /// Implement the <c>get_complete_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCompleteUrl(string? arg0);
+    public abstract string? GetCompleteUrl(string? arg0);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -224,7 +224,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
             var _result = _m.GetTitle();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -359,7 +359,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
             var _result = _m.GetSelectionAsMarkup();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -381,7 +381,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
             var _result = _m.GetSelectionAsText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -403,7 +403,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
             var _result = _m.GetBaseUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -426,7 +426,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetCompleteUrl(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -511,7 +511,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     /// <summary>
     /// Implement the <c>get_title</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetTitle();
+    public abstract string? GetTitle();
 
     /// <summary>
     /// Implement the <c>get_element_by_id</c> callback.
@@ -541,22 +541,22 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     /// <summary>
     /// Implement the <c>get_selection_as_markup</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSelectionAsMarkup();
+    public abstract string? GetSelectionAsMarkup();
 
     /// <summary>
     /// Implement the <c>get_selection_as_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSelectionAsText();
+    public abstract string? GetSelectionAsText();
 
     /// <summary>
     /// Implement the <c>get_base_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetBaseUrl();
+    public abstract string? GetBaseUrl();
 
     /// <summary>
     /// Implement the <c>get_complete_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCompleteUrl(string? arg0);
+    public abstract string? GetCompleteUrl(string? arg0);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -662,7 +662,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
             var _result = _m.GetTitle();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -797,7 +797,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
             var _result = _m.GetSelectionAsMarkup();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -819,7 +819,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
             var _result = _m.GetSelectionAsText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -841,7 +841,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
             var _result = _m.GetBaseUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -864,7 +864,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetCompleteUrl(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -949,7 +949,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     /// <summary>
     /// Implement the <c>get_title</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetTitle();
+    public abstract string? GetTitle();
 
     /// <summary>
     /// Implement the <c>get_element_by_id</c> callback.
@@ -979,22 +979,22 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
     /// <summary>
     /// Implement the <c>get_selection_as_markup</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSelectionAsMarkup();
+    public abstract string? GetSelectionAsMarkup();
 
     /// <summary>
     /// Implement the <c>get_selection_as_text</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetSelectionAsText();
+    public abstract string? GetSelectionAsText();
 
     /// <summary>
     /// Implement the <c>get_base_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetBaseUrl();
+    public abstract string? GetBaseUrl();
 
     /// <summary>
     /// Implement the <c>get_complete_url</c> callback.
     /// </summary>
-    public abstract cef_string_userfree_utf16_t GetCompleteUrl(string? arg0);
+    public abstract string? GetCompleteUrl(string? arg0);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -1100,7 +1100,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
             var _result = _m.GetTitle();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1235,7 +1235,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
             var _result = _m.GetSelectionAsMarkup();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1257,7 +1257,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
             var _result = _m.GetSelectionAsText();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1279,7 +1279,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
 
             var _result = _m.GetBaseUrl();
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {
@@ -1302,7 +1302,7 @@ public unsafe abstract partial class CefDomdocument : CefBaseRefCounted, ICefDom
             var _a0 = CefStringRef.ToString(arg0);
             var _result = _m.GetCompleteUrl(_a0);
 
-            return _result;
+            return CefStringRef.AllocUserfree(_result);
         }
         catch (Exception ex)
         {

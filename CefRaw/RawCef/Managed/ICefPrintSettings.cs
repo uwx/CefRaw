@@ -25,7 +25,7 @@ public unsafe partial interface ICefPrintSettings : ICefBaseRefCounted
 
     public void SetDeviceName(string? arg0);
 
-    public cef_string_userfree_utf16_t GetDeviceName();
+    public string? GetDeviceName();
 
     public void SetDpi(int arg0);
 
@@ -85,7 +85,7 @@ public unsafe partial interface ICefPrintSettings : ICefBaseRefCounted
 
     public void SetDeviceName(string? arg0);
 
-    public cef_string_userfree_utf16_t GetDeviceName();
+    public string? GetDeviceName();
 
     public void SetDpi(int arg0);
 
@@ -145,7 +145,7 @@ public unsafe partial interface ICefPrintSettings : ICefBaseRefCounted
 
     public void SetDeviceName(string? arg0);
 
-    public cef_string_userfree_utf16_t GetDeviceName();
+    public string? GetDeviceName();
 
     public void SetDpi(int arg0);
 

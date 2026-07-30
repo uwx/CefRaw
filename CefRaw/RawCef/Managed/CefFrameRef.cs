@@ -130,18 +130,18 @@ public unsafe partial class CefFrameRef : CefBaseRefCountedRef, ICefFrame
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetName()
+    public string? GetName()
     {
         var _result = _ptr->get_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetIdentifier()
+    public string? GetIdentifier()
     {
         var _result = _ptr->get_identifier(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefFrame? GetParent()
@@ -151,11 +151,11 @@ public unsafe partial class CefFrameRef : CefBaseRefCountedRef, ICefFrame
         return _result != null ? new CefFrameRef(_result) : null;
     }
 
-    public cef_string_userfree_utf16_t GetUrl()
+    public string? GetUrl()
     {
         var _result = _ptr->get_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefBrowser? GetBrowser()
@@ -328,18 +328,18 @@ public unsafe partial class CefFrameRef : CefBaseRefCountedRef, ICefFrame
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetName()
+    public string? GetName()
     {
         var _result = _ptr->get_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetIdentifier()
+    public string? GetIdentifier()
     {
         var _result = _ptr->get_identifier(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefFrame? GetParent()
@@ -349,11 +349,11 @@ public unsafe partial class CefFrameRef : CefBaseRefCountedRef, ICefFrame
         return _result != null ? new CefFrameRef(_result) : null;
     }
 
-    public cef_string_userfree_utf16_t GetUrl()
+    public string? GetUrl()
     {
         var _result = _ptr->get_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefBrowser? GetBrowser()
@@ -526,18 +526,18 @@ public unsafe partial class CefFrameRef : CefBaseRefCountedRef, ICefFrame
         return _result;
     }
 
-    public cef_string_userfree_utf16_t GetName()
+    public string? GetName()
     {
         var _result = _ptr->get_name(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
-    public cef_string_userfree_utf16_t GetIdentifier()
+    public string? GetIdentifier()
     {
         var _result = _ptr->get_identifier(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefFrame? GetParent()
@@ -547,11 +547,11 @@ public unsafe partial class CefFrameRef : CefBaseRefCountedRef, ICefFrame
         return _result != null ? new CefFrameRef(_result) : null;
     }
 
-    public cef_string_userfree_utf16_t GetUrl()
+    public string? GetUrl()
     {
         var _result = _ptr->get_url(_ptr);
 
-        return _result;
+        return CefStringRef.ToStringAndFree(_result);
     }
 
     public ICefBrowser? GetBrowser()
