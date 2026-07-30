@@ -14,6 +14,7 @@ namespace RawCef.CefSimple;
 public static unsafe class Program
 {
 #if OS_WIN
+    private const uint COINIT_APARTMENTTHREADED = 0x2;
     private const uint COINIT_MULTITHREADED = 0x0;
 
     [DllImport("ole32.dll")]
@@ -43,39 +44,22 @@ public static unsafe class Program
         //    cleanly before calling cef_execute_process.
         app.AddRef(); // extra ref for ExecuteSubProcess (released internally)
 
-        var exitCode = -1;
-        Exception? subprocessException = null;
-        using var subprocessDone = new ManualResetEventSlim();
-
-        var subprocessThread = new Thread(() =>
-        {
-            try
-            {
-                exitCode = Cef.ExecuteSubProcess(app);
-            }
-            catch (Exception ex)
-            {
-                subprocessException = ex;
-            }
-            finally
-            {
-                subprocessDone.Set();
-            }
-        }, 4 * 1024 * 1024);
-
 #if OS_WIN
-        #pragma warning disable CA1416
-        subprocessThread.SetApartmentState(ApartmentState.MTA);
-        #pragma warning restore CA1416
+        // Undo .NET's COM initialization which may have corrupted the
+        // CET shadow stack state, then reinitialize COM cleanly.
+        CoUninitialize();
+        CoInitializeEx(null, COINIT_MULTITHREADED);
 #endif
-        subprocessThread.Start();
-        subprocessDone.Wait();
-
-        if (subprocessException is not null)
-            throw new AggregateException("Subprocess execution failed.", subprocessException);
-
+        var exitCode = Cef.ExecuteSubProcess(app);
         if (exitCode >= 0)
             return exitCode; // Sub-process completed.
+
+#if OS_WIN
+        // Undo .NET's COM initialization which may have corrupted the
+        // CET shadow stack state, then reinitialize COM cleanly.
+        CoUninitialize();
+        CoInitializeEx(null, COINIT_APARTMENTTHREADED);
+#endif
 
         // 4. Initialize CEF for the browser process.
         var settings = new CefSettings
