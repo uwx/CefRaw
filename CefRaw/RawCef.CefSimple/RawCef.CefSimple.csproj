@@ -7,6 +7,7 @@
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <IsEditbinEnabled>True</IsEditbinEnabled>
+        <CETCompat>false</CETCompat>
     </PropertyGroup>
 
     <!-- OS-specific builds: define OS_WIN for Windows, OS_LINUX for Linux -->
