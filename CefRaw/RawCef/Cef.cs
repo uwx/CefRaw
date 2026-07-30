@@ -11,7 +11,7 @@ namespace RawCef;
 /// Wraps the low-level <see cref="CefUnsafe"/> imports behind
 /// discoverable, safe-feeling methods.
 /// </summary>
-public static unsafe class Cef
+public static unsafe partial class Cef
 {
     private static int _isShutdown;
 
@@ -257,90 +257,4 @@ public static unsafe class Cef
     {
         CefUnsafe.SetNestableTasksAllowed(allowed ? 1 : 0);
     }
-
-    ///
-    /// Register a new V8 extension with the specified JavaScript extension code and
-    /// handler. Functions implemented by the handler are prototyped using the
-    /// keyword 'native'. The calling of a native function is restricted to the
-    /// scope in which the prototype of the native function is defined. This
-    /// function may only be called on the render process main thread.
-    ///
-    /// Example JavaScript extension code: <pre>
-    ///   // create the 'example' global object if it doesn't already exist.
-    ///   if (!example)
-    ///     example = {};
-    ///   // create the 'example.test' global object if it doesn't already exist.
-    ///   if (!example.test)
-    ///     example.test = {};
-    ///   (function() {
-    ///     // Define the function 'example.test.myfunction'.
-    ///     example.test.myfunction = function() {
-    ///       // Call CefV8Handler::Execute() with the function name 'MyFunction'
-    ///       // and no arguments.
-    ///       native function MyFunction();
-    ///       return MyFunction();
-    ///     };
-    ///     // Define the getter function for parameter 'example.test.myparam'.
-    ///     example.test.__defineGetter__('myparam', function() {
-    ///       // Call CefV8Handler::Execute() with the function name 'GetMyParam'
-    ///       // and no arguments.
-    ///       native function GetMyParam();
-    ///       return GetMyParam();
-    ///     });
-    ///     // Define the setter function for parameter 'example.test.myparam'.
-    ///     example.test.__defineSetter__('myparam', function(b) {
-    ///       // Call CefV8Handler::Execute() with the function name 'SetMyParam'
-    ///       // and a single argument.
-    ///       native function SetMyParam();
-    ///       if(b) SetMyParam(b);
-    ///     });
-    ///
-    ///     // Extension definitions can also contain normal JavaScript variables
-    ///     // and functions.
-    ///     var myint = 0;
-    ///     example.test.increment = function() {
-    ///       myint += 1;
-    ///       return myint;
-    ///     };
-    ///   })();
-    /// </pre>
-    ///
-    /// Example usage in the page: <pre>
-    ///   // Call the function.
-    ///   example.test.myfunction();
-    ///   // Set the parameter.
-    ///   example.test.myparam = value;
-    ///   // Get the parameter.
-    ///   value = example.test.myparam;
-    ///   // Call another function.
-    ///   example.test.increment();
-    /// </pre>
-    ///
-    public static int RegisterExtension(string extensionName, string javascriptCode, ICefV8Handler handler)
-    {
-        _cef_string_utf16_t extensionNameStr = default;
-        fixed (char* p = extensionName)
-        {
-            CefUnsafe.StringUtf16Set((ushort*)p, (nuint)extensionName.Length, &extensionNameStr, copy: 1);
-        }
-        
-        _cef_string_utf16_t javascriptCodeStr = default;
-        fixed (char* p = javascriptCode)
-        {
-            CefUnsafe.StringUtf16Set((ushort*)p, (nuint)extensionName.Length, &javascriptCodeStr, copy: 1);
-        }
-
-        var result = CefUnsafe.RegisterExtension(&extensionNameStr, &javascriptCodeStr, handler.NativePtr);
-
-        CefUnsafe.StringUtf16Clear(&extensionNameStr);
-        CefUnsafe.StringUtf16Clear(&javascriptCodeStr);
-        
-        return result;
-    }
-
-    [DllImport("libcef", EntryPoint = "cef_register_scheme_handler_factory", CallingConvention = CallingConvention.Cdecl)]
-    public static extern int RegisterSchemeHandlerFactory(_cef_string_utf16_t* schemeName, _cef_string_utf16_t* domainName, _cef_scheme_handler_factory_t* factory);
-
-    [DllImport("libcef", EntryPoint = "cef_clear_scheme_handler_factories", CallingConvention = CallingConvention.Cdecl)]
-    public static extern int ClearSchemeHandlerFactories();
 }
