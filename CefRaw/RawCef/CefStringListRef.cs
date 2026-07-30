@@ -12,10 +12,8 @@ public unsafe partial class CefStringListRef : IDisposable
     /// <summary>
     /// Creates a new empty string list. The caller is responsible for disposal.
     /// </summary>
-    public static CefStringListRef Create()
+    public CefStringListRef() : this(CefUnsafe.StringListAlloc())
     {
-        var ptr = CefUnsafe.StringListAlloc();
-        return new CefStringListRef(ptr);
     }
 
     /// <inheritdoc />
