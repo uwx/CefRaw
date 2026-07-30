@@ -63,9 +63,16 @@ public unsafe class SimpleLifeSpanHandler : CefLifeSpanHandler
 
         lock (_browsers)
         {
-            _browsers.Remove(browser);
-            // Release the list's reference.
-            browser.Release();
+            // Use GetIdentifier() for stable identity — pointer and
+            // reference equality are not guaranteed across callbacks.
+            var id = browser.GetIdentifier();
+            var index = _browsers.FindIndex(b => b.GetIdentifier() == id);
+            if (index >= 0)
+            {
+                _browsers.RemoveAt(index);
+                // Release the list's reference.
+                browser.Release();
+            }
         }
 
         lock (_browsers)
@@ -73,7 +80,7 @@ public unsafe class SimpleLifeSpanHandler : CefLifeSpanHandler
             if (_browsers.Count == 0)
             {
                 // All browsers closed — quit the application.
-                CefUnsafe.QuitMessageLoop();
+                Cef.QuitMessageLoop();
             }
         }
     }
