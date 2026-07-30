@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <IsEditbinEnabled>True</IsEditbinEnabled>
+    </PropertyGroup>
+
+    <!-- OS-specific builds: define OS_WIN for Windows, OS_LINUX for Linux -->
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+        <DefineConstants>$(DefineConstants);OS_WIN</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Linux'))">
+        <DefineConstants>$(DefineConstants);OS_LINUX</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\RawCef\RawCef.Windows.csproj" Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
+        <ProjectReference Include="..\RawCef\RawCef.Linux.csproj" Condition="$([MSBuild]::IsOSPlatform('Linux'))" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+        <ProjectReference Include="..\RawCef.Binaries.Win64\RawCef.Binaries.Win64.csproj" />
+    </ItemGroup>
+
+</Project>

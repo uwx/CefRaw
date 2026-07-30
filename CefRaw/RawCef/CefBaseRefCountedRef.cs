@@ -68,20 +68,38 @@ public unsafe class CefBaseRefCountedRef : ICefBaseRefCounted, IDisposable
         if (Interlocked.Exchange(ref _disposed, 1) != 0)
             return;
 
-        if (_ptr is not null)
-        {
-            _ptr->release(_ptr);
-            _ptr = null;
-        }
-
+        DisposeNative();
         GC.SuppressFinalize(this);
     }
 
     /// <summary>
-    /// Finalizer as safety net.
+    /// Releases the native reference. Only safe when CEF has not been
+    /// shut down and the native pointer is still valid.
+    /// </summary>
+    private void DisposeNative()
+    {
+        if (_ptr is not null && !Cef.IsShutdown)
+        {
+            _ptr->release(_ptr);
+            _ptr = null;
+        }
+    }
+
+    /// <summary>
+    /// Finalizer — calls <c>release</c> only if CEF is still alive.
+    /// After <see cref="Cef.Shutdown"/>, native pointers are no longer
+    /// valid and accessing them would cause an
+    /// <see cref="AccessViolationException"/>.
     /// </summary>
     ~CefBaseRefCountedRef()
     {
-        Dispose();
+        if (Cef.IsShutdown)
+        {
+            // CEF has been shut down; native pointers are invalid.
+            Interlocked.Exchange(ref _disposed, 1);
+            return;
+        }
+
+        DisposeNative();
     }
 }

@@ -1,10 +1,11 @@
 using RawCef;
 using RawCef.Native;
 
-namespace RawCef.Example;
+namespace RawCef.CefSimple;
 
 /// <summary>
-/// Minimal CefApp implementation that creates a browser window on startup.
+/// Minimal CefApp that creates a browser on context initialization.
+/// Equivalent to simple_app_t in the C implementation.
 /// </summary>
 public unsafe class SimpleApp : CefApp
 {
@@ -24,11 +25,10 @@ public unsafe class SimpleApp : CefApp
 
     public override void OnBeforeCommandLineProcessing(string? processType, ICefCommandLine? commandLine)
     {
-        // GPU subprocess crashes at CreateWindowEx in child_window_win.cc:117
-        // regardless of backend (ANGLE, SwiftShader, etc.).
+        // Disable GPU to avoid common subprocess crashes.
         // IMPORTANT: Only add --disable-gpu for the browser process.
-        // Adding it to the renderer process destabilizes V8's JIT and can
-        // cause __fastfail crashes during JavaScript deoptimization.
+        // Adding it to the renderer process can destabilize V8's JIT
+        // and cause __fastfail crashes during JavaScript deoptimization.
         if (string.IsNullOrEmpty(processType))
         {
             commandLine?.AppendSwitch("--disable-gpu");
@@ -37,6 +37,6 @@ public unsafe class SimpleApp : CefApp
 
     public override void OnRegisterCustomSchemes(ICefSchemeRegistrar? registrar)
     {
-        // No custom schemes to register.
+        // No custom schemes.
     }
 }

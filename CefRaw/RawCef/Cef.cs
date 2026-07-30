@@ -13,6 +13,14 @@ namespace RawCef;
 /// </summary>
 public static unsafe class Cef
 {
+    private static volatile int _isShutdown;
+
+    /// <summary>
+    /// Returns <c>true</c> after <see cref="Shutdown"/> has been called.
+    /// Native CEF calls should be avoided once this returns <c>true</c>.
+    /// </summary>
+    public static bool IsShutdown => Volatile.Read(ref _isShutdown) != 0;
+
     // ── Library init ─────────────────────────────────────────────────
 
     /// <summary>
@@ -22,6 +30,7 @@ public static unsafe class Cef
     public static void InitializeLibrary()
     {
         CefUnsafe.ApiHash(CefUnsafe.CEF_API_VERSION, 0);
+        Volatile.Write(ref _isShutdown, 0);
     }
 
     // ── Process management ───────────────────────────────────────────
@@ -75,9 +84,12 @@ public static unsafe class Cef
 
     /// <summary>
     /// Requests CEF to shut down and exit the message loop.
+    /// After this call, native CEF pointers are no longer valid
+    /// and <see cref="IsShutdown"/> returns <c>true</c>.
     /// </summary>
     public static void Shutdown()
     {
+        Volatile.Write(ref _isShutdown, 1);
         CefUnsafe.Shutdown();
     }
 
