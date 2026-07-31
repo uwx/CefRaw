@@ -1,4 +1,4 @@
-namespace CefRaw.BindingsParser.Models;
+namespace RawCef.BindingsParser.Models;
 
 /// <summary>Represents a &lt;struct&gt; element.</summary>
 public class StructDefinition : IEquatable<StructDefinition>

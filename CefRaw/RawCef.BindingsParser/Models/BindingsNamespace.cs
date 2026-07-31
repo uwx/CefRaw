@@ -1,4 +1,4 @@
-namespace CefRaw.BindingsParser.Models;
+namespace RawCef.BindingsParser.Models;
 
 /// <summary>Represents a &lt;namespace&gt; element containing structs and a class.</summary>
 public class BindingsNamespace : IEquatable<BindingsNamespace>

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
-using CefRaw.BindingsParser.Models;
+using RawCef.BindingsParser.Models;
 using WorldXaml.Generator.Common;
 
 namespace CefRaw.SourceGen;

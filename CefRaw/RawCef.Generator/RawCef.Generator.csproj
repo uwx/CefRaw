@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CefRaw.BindingsParser\CefRaw.BindingsParser.csproj" />
+      <ProjectReference Include="..\RawCef.BindingsParser\RawCef.BindingsParser.csproj" />
     </ItemGroup>
 
     <ItemGroup>

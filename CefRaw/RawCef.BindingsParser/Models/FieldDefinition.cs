@@ -1,4 +1,4 @@
-namespace CefRaw.BindingsParser.Models;
+namespace RawCef.BindingsParser.Models;
 
 /// <summary>Represents a &lt;field&gt; inside a &lt;struct&gt;.</summary>
 public class FieldDefinition : IEquatable<FieldDefinition>

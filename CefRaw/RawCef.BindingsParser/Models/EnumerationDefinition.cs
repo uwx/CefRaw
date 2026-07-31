@@ -1,4 +1,4 @@
-namespace CefRaw.BindingsParser.Models;
+namespace RawCef.BindingsParser.Models;
 
 /// <summary>Represents an &lt;enumeration&gt; element.</summary>
 public class EnumerationDefinition : IEquatable<EnumerationDefinition>

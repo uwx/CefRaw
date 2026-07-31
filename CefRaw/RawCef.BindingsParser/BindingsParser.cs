@@ -1,7 +1,7 @@
 using System.Xml.Linq;
-using CefRaw.BindingsParser.Models;
+using RawCef.BindingsParser.Models;
 
-namespace CefRaw.BindingsParser;
+namespace RawCef.BindingsParser;
 
 /// <summary>
 /// Parses a CEF bindings XML file (e.g. <c>bindings_win.xml</c>) into

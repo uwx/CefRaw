@@ -1,4 +1,4 @@
-namespace CefRaw.BindingsParser.Models;
+namespace RawCef.BindingsParser.Models;
 
 /// <summary>Root model representing the entire &lt;bindings&gt; document.</summary>
 public class BindingsRoot : IEquatable<BindingsRoot>

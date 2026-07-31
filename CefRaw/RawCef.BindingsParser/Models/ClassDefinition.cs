@@ -1,4 +1,4 @@
-namespace CefRaw.BindingsParser.Models;
+namespace RawCef.BindingsParser.Models;
 
 /// <summary>Represents the single &lt;class&gt; element inside &lt;namespace&gt;.</summary>
 public class ClassDefinition : IEquatable<ClassDefinition>

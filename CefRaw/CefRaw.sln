@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CefRaw.BindingsParser", "CefRaw.BindingsParser\CefRaw.BindingsParser.csproj", "{805B2748-6CF8-461D-98F3-9028A73081A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RawCef.BindingsParser", "RawCef.BindingsParser\RawCef.BindingsParser.csproj", "{805B2748-6CF8-461D-98F3-9028A73081A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RawCef.Generator", "RawCef.Generator\RawCef.Generator.csproj", "{DFD7C6B1-7129-42F6-9D8C-6D7ABFD8D0D9}"
 EndProject

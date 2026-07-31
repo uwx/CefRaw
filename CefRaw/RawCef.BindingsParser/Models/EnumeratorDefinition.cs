@@ -1,4 +1,4 @@
-namespace CefRaw.BindingsParser.Models;
+namespace RawCef.BindingsParser.Models;
 
 /// <summary>Represents an &lt;enumerator&gt; element inside an &lt;enumeration&gt;.</summary>
 public class EnumeratorDefinition : IEquatable<EnumeratorDefinition>

@@ -1,4 +1,4 @@
-namespace CefRaw.BindingsParser.Models;
+namespace RawCef.BindingsParser.Models;
 
 /// <summary>Represents a &lt;constant&gt; inside a &lt;class&gt;.</summary>
 public class ConstantDefinition : IEquatable<ConstantDefinition>

@@ -1,4 +1,4 @@
-namespace CefRaw.BindingsParser.Models;
+namespace RawCef.BindingsParser.Models;
 
 /// <summary>
 /// Represents the &lt;value&gt; child of a &lt;constant&gt;.

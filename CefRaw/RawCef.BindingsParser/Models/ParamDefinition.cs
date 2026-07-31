@@ -1,4 +1,4 @@
-namespace CefRaw.BindingsParser.Models;
+namespace RawCef.BindingsParser.Models;
 
 /// <summary>Represents a &lt;param&gt; inside a &lt;function&gt;.</summary>
 public class ParamDefinition : IEquatable<ParamDefinition>
