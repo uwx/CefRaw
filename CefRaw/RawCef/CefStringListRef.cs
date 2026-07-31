@@ -25,7 +25,7 @@ public unsafe partial class CefStringListRef : IDisposable
         _cef_string_utf16_t str = default;
         if (CefUnsafe.StringListValue(_ptr, (nuint)index, &str) == 0)
             return null;
-        return CefStringRef.ToStringAndFree(&str);
+        return CefStringRef.ToStringAndClear(&str);
     }
 
     /// <inheritdoc />

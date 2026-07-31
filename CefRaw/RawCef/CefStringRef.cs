@@ -51,6 +51,31 @@ public static unsafe class CefStringRef
     }
 
     /// <summary>
+    /// Creates a managed <see cref="string"/> from a stack-allocated
+    /// <see cref="_cef_string_utf16_t"/> whose string data was populated
+    /// by <c>cef_string_copy</c> (e.g. via <c>cef_string_list_value</c>,
+    /// <c>cef_string_map_find</c>, etc.) and then clears the native string
+    /// data.  The struct itself is not freed (it lives on the stack).
+    /// </summary>
+    /// <param name="str">
+    /// Pointer to a stack-allocated CEF string struct whose data must be
+    /// freed via <c>cef_string_utf16_clear</c>.
+    /// </param>
+    /// <returns>The managed string, or null if <paramref name="str"/> is null.</returns>
+    public static string? ToStringAndClear(_cef_string_utf16_t* str)
+    {
+        if (str is null)
+            return null;
+
+        var result = str->str is not null
+            ? new string((char*)str->str, 0, (int)str->length)
+            : string.Empty;
+
+        CefUnsafe.StringUtf16Clear(str);
+        return result;
+    }
+
+    /// <summary>
     /// Creates a managed <see cref="string"/> from a CEF string pointer
     /// WITHOUT freeing the native allocation. Use this for <c>const</c>
     /// callback parameters where CEF retains ownership.

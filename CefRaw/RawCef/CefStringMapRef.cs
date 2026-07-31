@@ -32,7 +32,7 @@ public unsafe partial class CefStringMapRef : IDisposable
         var found = CefUnsafe.StringMapFind(_ptr, &keyStr, &valueStr);
         if (found == 0)
             return null;
-        return CefStringRef.ToStringAndFree(&valueStr);
+        return CefStringRef.ToStringAndClear(&valueStr);
     }
 
     /// <inheritdoc />
@@ -41,7 +41,7 @@ public unsafe partial class CefStringMapRef : IDisposable
         _cef_string_utf16_t str = default;
         if (CefUnsafe.StringMapKey(_ptr, (nuint)index, &str) == 0)
             return null;
-        return CefStringRef.ToStringAndFree(&str);
+        return CefStringRef.ToStringAndClear(&str);
     }
 
     /// <inheritdoc />
@@ -50,7 +50,7 @@ public unsafe partial class CefStringMapRef : IDisposable
         _cef_string_utf16_t str = default;
         if (CefUnsafe.StringMapValue(_ptr, (nuint)index, &str) == 0)
             return null;
-        return CefStringRef.ToStringAndFree(&str);
+        return CefStringRef.ToStringAndClear(&str);
     }
 
     /// <inheritdoc />

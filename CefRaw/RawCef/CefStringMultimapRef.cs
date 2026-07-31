@@ -42,7 +42,7 @@ public unsafe partial class CefStringMultimapRef : IDisposable
 
         if (CefUnsafe.StringMultimapEnumerate(_ptr, &keyStr, (nuint)valueIndex, &valueStr) == 0)
             return null;
-        return CefStringRef.ToStringAndFree(&valueStr);
+        return CefStringRef.ToStringAndClear(&valueStr);
     }
 
     /// <inheritdoc />
@@ -51,7 +51,7 @@ public unsafe partial class CefStringMultimapRef : IDisposable
         _cef_string_utf16_t str = default;
         if (CefUnsafe.StringMultimapKey(_ptr, (nuint)index, &str) == 0)
             return null;
-        return CefStringRef.ToStringAndFree(&str);
+        return CefStringRef.ToStringAndClear(&str);
     }
 
     /// <inheritdoc />
@@ -60,7 +60,7 @@ public unsafe partial class CefStringMultimapRef : IDisposable
         _cef_string_utf16_t str = default;
         if (CefUnsafe.StringMultimapValue(_ptr, (nuint)index, &str) == 0)
             return null;
-        return CefStringRef.ToStringAndFree(&str);
+        return CefStringRef.ToStringAndClear(&str);
     }
 
     /// <inheritdoc />
