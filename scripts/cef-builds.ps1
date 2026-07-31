@@ -502,6 +502,9 @@ function New-CefBinariesProject {
                     $contentItems += @{ Source = $res.FullName; IsDir = $false; Name = $res.Name }
                 }
                 # locales/ subfolder → native/locales/
+                # Only include base locale variants (skip _FEMININE, _MASCULINE,
+                # _NEUTER gender variants — they bloat the package with 150+
+                # unnecessary files).
                 $localesDir = Join-Path $resourcesDir "locales"
                 if (Test-Path $localesDir) {
                     $localesDest = Join-Path $nativeDir "locales"
@@ -509,6 +512,10 @@ function New-CefBinariesProject {
                         New-Item -ItemType Directory -Path $localesDest -Force | Out-Null
                     }
                     foreach ($loc in Get-ChildItem -Path $localesDir -File) {
+                        # Skip gender-variant locale files
+                        if ($loc.Name -match '_(FEMININE|MASCULINE|NEUTER)\.pak$') {
+                            continue
+                        }
                         Copy-Item -Force $loc.FullName $localesDest
                         $contentItems += @{
                             Source = $loc.FullName
@@ -531,16 +538,60 @@ function New-CefBinariesProject {
         $filesToStrip = Get-ChildItem -Path $nativeDir -File | Where-Object {
             $_.Extension -eq '.so'
         }
+        if ($filesToStrip.Count -eq 0) {
+            Write-Host "  No .so files to strip"
+        }
+        else {
+            # Detect ELF architecture from the first .so file so we can pick
+            # the right cross-strip tool (the runner may not match the binary
+            # arch). readelf -h prints the ELF header; Machine: shows e_machine.
+            $sampleElf = $filesToStrip[0].FullName
+            $readelf = & readelf -h $sampleElf 2>&1
+            $global:LASTEXITCODE = 0
+            $elfMachine = if ($readelf -match 'Machine:\s+(.+)') { $Matches[1].Trim() } else { '' }
+            Write-Host "  Detected ELF architecture: $elfMachine"
 
-        foreach ($file in $filesToStrip) {
-            try {
-                # --strip-debug removes DWARF debug sections only
-                strip --strip-debug $file.FullName 2>&1 | Out-Null
-                $newSize = [math]::Round((Get-Item $file.FullName).Length / 1MB, 1)
-                Write-Host "  Stripped: $($file.Name) → $newSize MB"
+            # Map ELF machine name to strip tool + required apt package
+            $stripInfo = switch -Wildcard ($elfMachine) {
+                'Advanced Micro Devices X86-64' { @{ Tool = 'strip'                     ; Pkg = $null } }
+                'AArch64'                       { @{ Tool = 'aarch64-linux-gnu-strip'   ; Pkg = 'binutils-aarch64-linux-gnu' } }
+                'ARM'                           { @{ Tool = 'arm-linux-gnueabihf-strip' ; Pkg = 'binutils-arm-linux-gnueabihf' } }
+                default                         { @{ Tool = $null; Pkg = $null } }
             }
-            catch {
-                Write-Warning "  Failed to strip $($file.Name): $_ (continuing)"
+
+            if ($stripInfo.Tool) {
+                # Install cross-binutils if needed
+                if ($stripInfo.Pkg) {
+                    Write-Host "  Installing cross-strip tool: $($stripInfo.Pkg)"
+                    sudo apt-get update -qq 2>&1 | Out-Null
+                    sudo apt-get install -y -qq $stripInfo.Pkg 2>&1 | Out-Null
+                    if ($LASTEXITCODE -ne 0) {
+                        Write-Warning "  Failed to install $($stripInfo.Pkg) — skipping strip."
+                        $global:LASTEXITCODE = 0
+                        $stripInfo = @{ Tool = $null; Pkg = $null }
+                    }
+                }
+
+                if ($stripInfo.Tool) {
+                    $stripTool = $stripInfo.Tool
+                    Write-Host "  Using strip tool: $stripTool"
+
+                    foreach ($file in $filesToStrip) {
+                        $beforeSize = [math]::Round($file.Length / 1MB, 1)
+                        & $stripTool --strip-debug $file.FullName 2>&1 | Out-Null
+                        if ($LASTEXITCODE -eq 0) {
+                            $afterSize = [math]::Round((Get-Item $file.FullName).Length / 1MB, 1)
+                            Write-Host "  Stripped: $($file.Name) — $beforeSize MB → $afterSize MB"
+                        }
+                        else {
+                            Write-Warning "  Strip failed for $($file.Name) ($beforeSize MB)"
+                        }
+                        $global:LASTEXITCODE = 0
+                    }
+                }
+            }
+            else {
+                Write-Warning "  Unrecognised ELF machine '$elfMachine' — cannot strip, skipping."
             }
         }
     }
