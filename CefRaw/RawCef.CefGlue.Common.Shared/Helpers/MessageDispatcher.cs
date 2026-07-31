@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using RawCef;
+using RawCef.Native;
 
 namespace Xilium.CefGlue.Common.Shared.Helpers
 {
@@ -7,9 +9,9 @@ namespace Xilium.CefGlue.Common.Shared.Helpers
     {
         private readonly Dictionary<string, Action<MessageReceivedEventArgs>> _messageHandlers = new Dictionary<string, Action<MessageReceivedEventArgs>>();
 
-        public void DispatchMessage(CefBrowser browser, CefFrame frame, CefProcessId sourceProcess, CefProcessMessage message)
+        public void DispatchMessage(ICefBrowser browser, ICefFrame frame, CefProcessId sourceProcess, ICefProcessMessage message)
         {
-            if (_messageHandlers.TryGetValue(message.Name, out var existingHandler))
+            if (_messageHandlers.TryGetValue(message.GetName()!, out var existingHandler))
             {
                 existingHandler(new MessageReceivedEventArgs(browser, frame, sourceProcess, message));
             }

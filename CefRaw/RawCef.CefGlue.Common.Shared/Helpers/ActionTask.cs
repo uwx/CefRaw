@@ -1,4 +1,6 @@
 using System;
+using RawCef;
+using RawCef.Native;
 
 namespace Xilium.CefGlue.Common.Shared.Helpers
 {
@@ -11,15 +13,15 @@ namespace Xilium.CefGlue.Common.Shared.Helpers
             _action = action;
         }
 
-        protected override void Execute()
+        public override void Execute()
         {
             _action();
             _action = null;
         }
 
-        public static void Run(Action action, CefThreadId threadId = CefThreadId.UI)
+        public static void Run(Action action, CefThreadId threadId = CefThreadId.Ui)
         {
-            CefRuntime.PostTask(threadId, new ActionTask(action));
+            Cef.PostTask(threadId, new ActionTask(action));
         }
     }
 }

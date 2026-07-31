@@ -1,3 +1,5 @@
+using RawCef;
+
 namespace Xilium.CefGlue.Common.Shared
 {
     internal abstract class CommonCefApp : CefApp
@@ -9,13 +11,13 @@ namespace Xilium.CefGlue.Common.Shared
             _customSchemes = customSchemes;
         }
 
-        protected override void OnRegisterCustomSchemes(CefSchemeRegistrar registrar)
+        public override void OnRegisterCustomSchemes(ICefSchemeRegistrar registrar)
         {
             if (_customSchemes != null)
             {
                 foreach (var scheme in _customSchemes)
                 {
-                    registrar.AddCustomScheme(scheme.SchemeName, scheme.Options);
+                    registrar!.AddCustomScheme(scheme.SchemeName, (int)scheme.Options);
                 }
             }
         }

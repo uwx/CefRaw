@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using RawCef;
+using RawCef.Native;
 
 namespace Xilium.CefGlue.Common.Shared
 {
@@ -96,7 +98,7 @@ namespace Xilium.CefGlue.Common.Shared
         /// Factory class that creates <see cref="CefResourceHandler"/> instances
         /// for handling current scheme requests.
         /// </summary>
-        public CefSchemeHandlerFactory SchemeHandlerFactory { get; set; }
+        public ICefSchemeHandlerFactory SchemeHandlerFactory { get; set; }
 
         /// <summary>
         /// Creates a new CustomScheme.

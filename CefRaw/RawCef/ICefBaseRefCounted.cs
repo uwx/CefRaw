@@ -5,7 +5,7 @@ namespace RawCef;
 /// <summary>
 /// Interface for reference-counted CEF types backed by <c>_cef_base_ref_counted_t</c>.
 /// </summary>
-public unsafe interface ICefBaseRefCounted
+public unsafe interface ICefBaseRefCounted : IDisposable
 {
     /// <summary>
     /// Gets the native pointer to the underlying <see cref="_cef_base_ref_counted_t"/>.

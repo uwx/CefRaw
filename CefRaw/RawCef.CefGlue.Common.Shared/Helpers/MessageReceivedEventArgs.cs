@@ -1,8 +1,11 @@
+using RawCef;
+using RawCef.Native;
+
 namespace Xilium.CefGlue.Common.Shared.Helpers
 {
     internal class MessageReceivedEventArgs
     {
-        public MessageReceivedEventArgs(CefBrowser browser, CefFrame frame, CefProcessId processId, CefProcessMessage message)
+        public MessageReceivedEventArgs(ICefBrowser browser, ICefFrame frame, CefProcessId processId, ICefProcessMessage message)
         {
             Browser = browser;
             Frame = frame;
@@ -10,9 +13,9 @@ namespace Xilium.CefGlue.Common.Shared.Helpers
             Message = message;
         }
 
-        public CefBrowser Browser { get; }
-        public CefFrame Frame { get; }
+        public ICefBrowser Browser { get; }
+        public ICefFrame Frame { get; }
         public CefProcessId ProcessId { get; }
-        public CefProcessMessage Message { get; }
+        public ICefProcessMessage Message { get; }
     }
 }

@@ -16,6 +16,7 @@ public abstract unsafe class CefBaseRefCounted : ICefBaseRefCounted
     private _cef_base_ref_counted_t* _nativePtr;
     private GCHandle _handle;
     private int _refCount;
+    private int _disposed;
 
     /// <summary>
     /// Initializes the base by allocating native memory for the full CEF struct
@@ -155,5 +156,13 @@ public abstract unsafe class CefBaseRefCounted : ICefBaseRefCounted
     private static int BridgeHasAtLeastOneRef(_cef_base_ref_counted_t* self)
     {
         return GetManaged<CefBaseRefCounted>(self)?.HasAtLeastOneRef() ?? 0;
+    }
+
+    public void Dispose()
+    {
+        if (Interlocked.Exchange(ref _disposed, 1) != 0)
+            return;
+
+        Release();
     }
 }
