@@ -164,6 +164,6 @@ jobs:
           Get-ChildItem $env:NUPKG_DIR -Filter "*.nupkg" | ForEach-Object {
             Write-Host "Pushing $($_.Name) to GitHub Packages..."
             dotnet nuget push $_.FullName `
-              --api-key ${{ secrets.GITHUB_TOKEN }} `
+              --api-key ${{ github.token }} `
               --source https://nuget.pkg.github.com/uwx/index.json
           }
