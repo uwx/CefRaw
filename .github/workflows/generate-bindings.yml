@@ -15,8 +15,9 @@ permissions:
   packages: write   # Required for GitHub Packages
 
 jobs:
+  # ── Job 1: Generate bindings & commit ──────────────────────────────
   generate:
-    name: Generate bindings from CEF headers
+    name: Generate & commit
     runs-on: windows-latest
 
     steps:
@@ -35,10 +36,10 @@ jobs:
         shell: pwsh
         run: |
           dotnet tool install --global ClangSharpPInvokeGenerator --prerelease
-          # Add .NET tools to PATH
           "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Append
 
       - name: Fetch CEF build index
+        id: fetch-index
         shell: pwsh
         run: |
           . ./scripts/cef-builds.ps1
@@ -48,21 +49,12 @@ jobs:
           $cefVersion = $null
           foreach ($p in $platforms) {
             $build = Get-LatestBuild -Platform $p -FileType standard -Index $index
-            if (-not $build) {
-              Write-Error "No standard build found for $p"
-              exit 1
-            }
+            if (-not $build) { Write-Error "No standard build found for $p"; exit 1 }
             Write-Host "$p latest: $($build.Name) (v$($build.CefVersion))"
             "BUILD_FILE_$p=$($build.Name)" | Out-File -FilePath $env:GITHUB_ENV -Append
             if (-not $cefVersion) { $cefVersion = $build.CefVersion }
           }
-          # Export for subsequent steps
-          $revision = (Get-Date -Format 'yyyyMMddHHmmss')
           "CEF_VERSION_CLEAN=$cefVersion" | Out-File -FilePath $env:GITHUB_ENV -Append
-          "CEF_VERSION=$cefVersion.$revision" | Out-File -FilePath $env:GITHUB_ENV -Append
-          "NUGET_VERSION=0.0.1-cef.$cefVersion-ci.$revision" | Out-File -FilePath $env:GITHUB_ENV -Append
-          Write-Host "CEF version for commit: $cefVersion"
-          Write-Host "NuGet version: 0.0.1-cef.$cefVersion-ci.$revision"
 
       - name: Create merged include directory
         shell: pwsh
@@ -72,38 +64,23 @@ jobs:
           $workDir = Join-Path $env:RUNNER_TEMP "cef-headers"
           New-Item -ItemType Directory -Path $workDir -Force | Out-Null
 
-          # Download and extract headers from each platform
           $platforms = @("windows64", "linux64", "macosarm64")
           $extractedDirs = @{}
-
           foreach ($p in $platforms) {
-            $envVarName = "BUILD_FILE_$p"
-            $fileName = [Environment]::GetEnvironmentVariable($envVarName)
-            if (-not $fileName) {
-              Write-Error "BUILD_FILE_$p environment variable not set"
-              exit 1
-            }
-            Write-Host "Downloading ${p}: $fileName"
+            $fileName = [Environment]::GetEnvironmentVariable("BUILD_FILE_$p")
+            if (-not $fileName) { Write-Error "BUILD_FILE_$p not set"; exit 1 }
             $extracted = Expand-CefArchive -FileName $fileName -OutputDirectory (Join-Path $workDir $p)
             $extractedDirs[$p] = $extracted
           }
 
-          # Flat-merge: windows64 first (base), then linux64 overlay, then macosarm64 overlay
           $mergedDir = Join-Path $workDir "include-merged"
-          if (Test-Path $mergedDir) {
-            Remove-Item -Recurse -Force $mergedDir
-          }
+          if (Test-Path $mergedDir) { Remove-Item -Recurse -Force $mergedDir }
           New-Item -ItemType Directory -Path $mergedDir -Force | Out-Null
 
           foreach ($p in $platforms) {
             $srcInclude = Join-Path $extractedDirs[$p] "include"
-            if (-not (Test-Path $srcInclude)) {
-              Write-Error "include/ not found in $p build at $srcInclude"
-              exit 1
-            }
+            if (-not (Test-Path $srcInclude)) { Write-Error "include/ not found in $p"; exit 1 }
             Write-Host "Merging include/ from $p..."
-            # Walk items individually so we can resolve file↔directory conflicts
-            # (one platform may have a file where another has a directory).
             $srcLen = $srcInclude.Length + 1
             Get-ChildItem -Recurse -Path $srcInclude | ForEach-Object {
               $relPath = $_.FullName.Substring($srcLen)
@@ -118,12 +95,8 @@ jobs:
             }
           }
 
-          # Copy merged include to repo (item-by-item to handle any conflicts)
           $repoInclude = Join-Path $env:GITHUB_WORKSPACE "include"
-          if (Test-Path $repoInclude) {
-            Remove-Item -Recurse -Force $repoInclude
-          }
-          # Use the same conflict-safe walk for the final copy
+          if (Test-Path $repoInclude) { Remove-Item -Recurse -Force $repoInclude }
           $mergedLen = $mergedDir.Length + 1
           Get-ChildItem -Recurse -Path $mergedDir | ForEach-Object {
             $relPath = $_.FullName.Substring($mergedLen)
@@ -136,7 +109,7 @@ jobs:
               Copy-Item -Force $_.FullName $target
             }
           }
-          Write-Host "Merged $(@(Get-ChildItem -Recurse -File $repoInclude).Count) header files to include/"
+          Write-Host "Merged $(@(Get-ChildItem -Recurse -File $repoInclude).Count) header files"
 
       - name: Run generate.ps1
         shell: pwsh
@@ -146,70 +119,136 @@ jobs:
           ./generate.ps1
           $exit = $LASTEXITCODE
           $global:LASTEXITCODE = 0
-          # ClangSharpPInvokeGenerator often exits non-zero for non-critical
-          # warnings — the XML output is still valid.
           Write-Host "generate.ps1 finished (exit code: $exit, ignored)"
-          Write-Host "Generated bindings XML files:"
           Get-ChildItem bindings_*.xml | ForEach-Object { Write-Host "  $($_.Name) ($($_.Length) bytes)" }
 
       - name: Build BindingsParser
         shell: pwsh
-        run: |
-          dotnet build CefRaw/CefRaw.BindingsParser/CefRaw.BindingsParser.csproj --configuration Release
+        run: dotnet build CefRaw/CefRaw.BindingsParser/CefRaw.BindingsParser.csproj --configuration Release
 
       - name: Run RawCef.Generator
         shell: pwsh
         run: |
           Write-Host "Running RawCef.Generator..."
           dotnet run --project CefRaw/RawCef.Generator/RawCef.Generator.csproj --configuration Release -- CefRaw/RawCef
-          if ($LASTEXITCODE -ne 0) {
-            Write-Error "RawCef.Generator failed with exit code $LASTEXITCODE"
-            exit 1
-          }
-          Write-Host "Generator completed successfully"
+          if ($LASTEXITCODE -ne 0) { Write-Error "RawCef.Generator failed"; exit 1 }
+          Write-Host "Generator completed"
 
-      - name: Download win64 Debug binaries for tests
+      - name: Check for changes
+        id: git-check
+        shell: pwsh
+        run: |
+          git add include/ bindings_*.xml CefRaw/RawCef/Native/ CefRaw/RawCef/Managed/ CefRaw/RawCef/Enums/ CefRaw/RawCef/*.g.cs
+          $hasChanges = git status --porcelain
+          if ($hasChanges) { "HAS_CHANGES=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append }
+          else             { "HAS_CHANGES=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append }
+
+      - name: Commit and push changes
+        if: steps.git-check.outputs.HAS_CHANGES == 'true'
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: regenerate bindings for CEF $env:CEF_VERSION_CLEAN"
+          git push origin HEAD:main
+          Write-Host "Changes pushed for CEF $env:CEF_VERSION_CLEAN"
+
+  # ── Job 2: Test on Windows ─────────────────────────────────────────
+  test-windows:
+    name: Test (Windows)
+    needs: generate
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: CefRaw/global.json
+
+      - name: Fetch & download win64 Debug binaries
         shell: pwsh
         run: |
           . ./scripts/cef-builds.ps1
+          $index = Get-CefBuildIndex
+          $build = Get-LatestBuild -Platform "windows64" -FileType standard -Index $index
+          if (-not $build) { Write-Error "No windows64 standard build found"; exit 1 }
+          Write-Host "Downloading $($build.Name) for tests..."
 
-          $workDir = Join-Path $env:RUNNER_TEMP "cef-win64-test"
-          New-Item -ItemType Directory -Path $workDir -Force | Out-Null
+          $workDir = Join-Path $env:RUNNER_TEMP "cef-win64"
+          $extracted = Expand-CefArchive -FileName $build.Name -OutputDirectory $workDir
 
-          $fileName = [Environment]::GetEnvironmentVariable("BUILD_FILE_windows64")
-          if (-not $fileName) {
-            Write-Error "BUILD_FILE_windows64 not set"
-            exit 1
-          }
-
-          Write-Host "Downloading $fileName for test binaries..."
-          $extracted = Expand-CefArchive -FileName $fileName -OutputDirectory $workDir
-
-          # Copy Debug binaries into the binaries project directory
           $binariesDir = Join-Path $env:GITHUB_WORKSPACE "CefRaw\RawCef.Binaries.Win64.Debug"
-          $debugSrc = Join-Path $extracted "Debug"
-          $resourcesSrc = Join-Path $extracted "Resources"
-
-          # Copy Debug/* to binaries dir
-          Copy-Item -Force "$debugSrc\*" $binariesDir
+          Copy-Item -Force (Join-Path $extracted "Debug\*") $binariesDir
+          if (Test-Path "$binariesDir\Resources") { Remove-Item -Recurse -Force "$binariesDir\Resources" }
+          Copy-Item -Recurse -Force (Join-Path $extracted "Resources") "$binariesDir\Resources"
           Write-Host "Copied Debug binaries to $binariesDir"
 
-          # Copy Resources/ contents
-          if (Test-Path "$binariesDir\Resources") {
-            Remove-Item -Recurse -Force "$binariesDir\Resources"
-          }
-          Copy-Item -Recurse -Force $resourcesSrc "$binariesDir\Resources"
-          Write-Host "Copied Resources to $binariesDir\Resources"
-
-      - name: Build solution
+      - name: Build & test
         shell: pwsh
         run: |
           dotnet build CefRaw/CefRaw.sln --configuration Release
+          dotnet test CefRaw/RawCef.Tests/RawCef.Tests.csproj --configuration Release --no-build
 
-      - name: Run tests
+  # ── Job 3: Test on Linux ───────────────────────────────────────────
+  test-linux:
+    name: Test (Linux)
+    needs: generate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: CefRaw/global.json
+
+      - name: Fetch & download linux64 Debug binaries
         shell: pwsh
         run: |
+          . ./scripts/cef-builds.ps1
+          $index = Get-CefBuildIndex
+          $build = Get-LatestBuild -Platform "linux64" -FileType standard -Index $index
+          if (-not $build) { Write-Error "No linux64 standard build found"; exit 1 }
+          Write-Host "Downloading $($build.Name) for tests..."
+
+          $workDir = Join-Path $env:RUNNER_TEMP "cef-linux64"
+          $extracted = Expand-CefArchive -FileName $build.Name -OutputDirectory $workDir
+
+          $binariesDir = Join-Path $env:GITHUB_WORKSPACE "CefRaw\RawCef.Binaries.Linux64.Debug"
+          Copy-Item -Force (Join-Path $extracted "Debug\*") $binariesDir
+          if (Test-Path "$binariesDir\Resources") { Remove-Item -Recurse -Force "$binariesDir\Resources" }
+          Copy-Item -Recurse -Force (Join-Path $extracted "Resources") "$binariesDir\Resources"
+          Write-Host "Copied Debug binaries to $binariesDir"
+
+      - name: Build & test (Linux)
+        shell: pwsh
+        run: |
+          dotnet build CefRaw/CefRaw.sln --configuration Release
           dotnet test CefRaw/RawCef.Tests/RawCef.Tests.csproj --configuration Release --no-build
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: CefRaw/global.json
+
+      - name: Fetch CEF version for NuGet
+        shell: pwsh
+        run: |
+          . ./scripts/cef-builds.ps1
+          $index = Get-CefBuildIndex
+          $build = Get-LatestBuild -Platform "windows64" -FileType standard -Index $index
+          $cefVersion = $build.CefVersion
+          $revision = (Get-Date -Format 'yyyyMMddHHmmss')
+          $nugetVersion = "0.0.1-cef.$cefVersion-ci.$revision"
+          Write-Host "NuGet version: $nugetVersion"
+          "NUGET_VERSION=$nugetVersion" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Build
+        shell: pwsh
+        run: dotnet build CefRaw/CefRaw.sln --configuration Release
 
       - name: Pack RawCef NuGet packages
         shell: pwsh
@@ -222,18 +261,11 @@ jobs:
             "CefRaw/RawCef/RawCef.Mac.csproj",
             "CefRaw/RawCef/RawCef.Linux.csproj"
           )
-
           foreach ($csproj in $csprojs) {
             Write-Host "Packing $csproj..."
-            dotnet pack $csproj `
-              --configuration Release `
-              --no-build `
-              --output $nupkgDir `
-              /p:PackageVersion=$env:NUGET_VERSION
+            dotnet pack $csproj --configuration Release --no-build --output $nupkgDir /p:PackageVersion=$env:NUGET_VERSION
           }
-
           "NUPKG_DIR=$nupkgDir" | Out-File -FilePath $env:GITHUB_ENV -Append
-
           Get-ChildItem $nupkgDir -Filter "*.nupkg" | ForEach-Object {
             Write-Host "Package: $($_.Name) ($([math]::Round($_.Length / 1KB, 1)) KB)"
           }
@@ -251,50 +283,18 @@ jobs:
         with:
           user: ${{ secrets.NUGET_USER }}
 
-      - name: Push RawCef to nuget.org
+      - name: Push to nuget.org
         shell: pwsh
         run: |
           Get-ChildItem $env:NUPKG_DIR -Filter "*.nupkg" | ForEach-Object {
             Write-Host "Pushing $($_.Name) to nuget.org..."
-            dotnet nuget push $_.FullName `
-              --api-key ${{ steps.login.outputs.NUGET_API_KEY }} `
-              --source https://api.nuget.org/v3/index.json `
-              --skip-duplicate
+            dotnet nuget push $_.FullName --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
           }
 
-      - name: Push RawCef to GitHub Packages
+      - name: Push to GitHub Packages
         shell: pwsh
         run: |
           Get-ChildItem $env:NUPKG_DIR -Filter "*.nupkg" | ForEach-Object {
             Write-Host "Pushing $($_.Name) to GitHub Packages..."
-            dotnet nuget push $_.FullName `
-              --api-key ${{ github.token }} `
-              --source https://nuget.pkg.github.com/uwx/index.json `
-              --skip-duplicate
+            dotnet nuget push $_.FullName --api-key ${{ github.token }} --source https://nuget.pkg.github.com/uwx/index.json --skip-duplicate
           }
-
-      - name: Check for changes
-        id: git-check
-        shell: pwsh
-        run: |
-          git add include/ bindings_*.xml CefRaw/RawCef/Native/ CefRaw/RawCef/Managed/ CefRaw/RawCef/Enums/ CefRaw/RawCef/*.g.cs
-
-          $hasChanges = git status --porcelain
-          if ($hasChanges) {
-            Write-Host "Changes detected, will commit"
-            "HAS_CHANGES=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-          } else {
-            Write-Host "No changes detected"
-            "HAS_CHANGES=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-          }
-
-      - name: Commit and push changes
-        if: steps.git-check.outputs.HAS_CHANGES == 'true'
-        shell: pwsh
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git commit -m "chore: regenerate bindings for CEF $env:CEF_VERSION_CLEAN"
-          git push origin HEAD:main
-          Write-Host "Changes committed and pushed for CEF $env:CEF_VERSION_CLEAN"

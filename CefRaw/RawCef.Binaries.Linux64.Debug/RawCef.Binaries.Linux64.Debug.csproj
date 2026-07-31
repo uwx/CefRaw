@@ -1,0 +1,79 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <RootNamespace>RawCef.Binaries.Linux64</RootNamespace>
+        <PackageId>RawCef.Binaries.Linux64.Debug</PackageId>
+        <Description>CEF native binaries for Linux x64 (Debug)</Description>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+        <NoWarn>$(NoWarn);NU5100;NU5104</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Native binaries copied to runtimes/linux-x64/native/ in NuGet package -->
+        <Content Include="chrome-sandbox">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native/chrome-sandbox</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="libcef.so">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native/libcef.so</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="libEGL.so">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native/libEGL.so</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="libGLESv2.so">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native/libGLESv2.so</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="libvk_swiftshader.so">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native/libvk_swiftshader.so</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="libvulkan.so.1">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native/libvulkan.so.1</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="v8_context_snapshot.bin">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native/v8_context_snapshot.bin</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="vk_swiftshader_icd.json">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native/vk_swiftshader_icd.json</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="icudtl.dat">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native/icudtl.dat</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="snapshot_blob.bin">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native/snapshot_blob.bin</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+
+        <!-- Resources -->
+        <Content Include="Resources\*.pak">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native/%(Filename)%(Extension)</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Resources\locales\*.pak">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native/locales/%(Filename)%(Extension)</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+</Project>
