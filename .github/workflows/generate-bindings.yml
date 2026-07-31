@@ -42,13 +42,13 @@ jobs:
           $platforms = @("windows64", "linux64", "macosarm64")
           $cefVersion = $null
           foreach ($p in $platforms) {
-            $build = Get-LatestBuild -Platform $p -Type Standard -Index $index
+            $build = Get-LatestBuild -Platform $p -FileType standard -Index $index
             if (-not $build) {
               Write-Error "No standard build found for $p"
               exit 1
             }
-            Write-Host "$p latest: $($build.FileName) (v$($build.CefVersion))"
-            "BUILD_FILE_$p=$($build.FileName)" | Out-File -FilePath $env:GITHUB_ENV -Append
+            Write-Host "$p latest: $($build.Name) (v$($build.CefVersion))"
+            "BUILD_FILE_$p=$($build.Name)" | Out-File -FilePath $env:GITHUB_ENV -Append
             if (-not $cefVersion) { $cefVersion = $build.CefVersion }
           }
           "CEF_VERSION=$cefVersion" | Out-File -FilePath $env:GITHUB_ENV -Append
@@ -72,7 +72,7 @@ jobs:
               Write-Error "BUILD_FILE_$p environment variable not set"
               exit 1
             }
-            Write-Host "Downloading $p: $fileName"
+            Write-Host "Downloading ${p}: $fileName"
             $extracted = Expand-CefArchive -FileName $fileName -OutputDirectory (Join-Path $workDir $p)
             $extractedDirs[$p] = $extracted
           }

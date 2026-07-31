@@ -1,4 +1,3 @@
-#Requires -Version 7.0
 <#
 .SYNOPSIS
     Shared helper functions for CefRaw CI/CD workflows.
@@ -10,7 +9,7 @@
 # Spotify CDN base URL
 $Script:CefCdnBase = "https://cef-builds.spotifycdn.com"
 
-# Platform → .NET RID mapping
+# Platform → .NET RID mapping (matches Spotify CDN platform names)
 $Script:PlatformToRid = @{
     "windows64"    = "win-x64"
     "windows32"    = "win-x86"
@@ -18,8 +17,8 @@ $Script:PlatformToRid = @{
     "linux64"      = "linux-x64"
     "linux32"      = "linux-x86"
     "linuxarm64"   = "linux-arm64"
-    "linuxarm32"   = "linux-arm"
-    "macos64"      = "osx-x64"
+    "linuxarm"     = "linux-arm"
+    "macosx64"     = "osx-x64"
     "macosarm64"   = "osx-arm64"
 }
 
@@ -31,8 +30,8 @@ $Script:PlatformToOs = @{
     "linux64"      = "linux"
     "linux32"      = "linux"
     "linuxarm64"   = "linux"
-    "linuxarm32"   = "linux"
-    "macos64"      = "mac"
+    "linuxarm"     = "linux"
+    "macosx64"     = "mac"
     "macosarm64"   = "mac"
 }
 
@@ -41,16 +40,17 @@ $Script:PlatformToOs = @{
     Fetches and parses the Spotify CEF builds index.
 .DESCRIPTION
     Downloads https://cef-builds.spotifycdn.com/index.json and returns
-    a hashtable of platform → build entries. Each build entry has:
-    - FileName: the tar.bz2 filename
-    - Sha1: SHA-1 hash
-    - Size: file size in bytes
-    - CefVersion: parsed CEF version (e.g., "151.3.11")
-    - ChromiumVersion: parsed Chromium version
-    - IsDebugSymbols: true if this is a debug symbols build
+    a structured object. The index.json schema is:
+      { "<platform>": { "versions": [ { "cef_version": "...", "channel": "...",
+        "chromium_version": "...", "files": [ { "name": "...", "sha1": "...",
+        "size": n, "type": "<standard|minimal|client|debug_symbols|release_symbols|signed|tools>",
+        "last_modified": "..." } ], "sandbox_compat": "..." } ] } }
+    Returns a hashtable: platform → @{ Versions = @(...) }
+    Each version entry: @{ CefVersion, ChromiumVersion, Channel, Files = @(...) }
+    Each file entry: @{ Name, Sha1, Size, Type, LastModified }
 .EXAMPLE
-    $builds = Get-CefBuildIndex
-    $builds['windows64']['standard'][0]
+    $index = Get-CefBuildIndex
+    $index['windows64'].Versions[0].Files  # all files for latest windows64 version
 #>
 function Get-CefBuildIndex {
     [CmdletBinding()]
@@ -61,7 +61,7 @@ function Get-CefBuildIndex {
 
     try {
         $response = Invoke-WebRequest -Uri $indexUrl -UseBasicParsing -ErrorAction Stop
-        $index = $response.Content | ConvertFrom-Json -AsHashtable
+        $raw = $response.Content | ConvertFrom-Json
     }
     catch {
         Write-Error "Failed to fetch or parse CEF build index: $_"
@@ -70,48 +70,41 @@ function Get-CefBuildIndex {
 
     $result = @{}
 
-    foreach ($platform in $index.Keys) {
-        $platformBuilds = $index[$platform]
-        $standard = @()
-        $symbols = @()
+    foreach ($platform in $raw.PSObject.Properties.Name) {
+        $platformData = $raw.$platform
+        $versions = @()
 
-        foreach ($fileName in $platformBuilds.Keys) {
-            $entry = $platformBuilds[$fileName]
-            $buildInfo = @{
-                FileName        = $fileName
-                Sha1            = $entry['sha1']
-                Size            = $entry['size']
-                IsDebugSymbols  = $fileName -match '_debug_symbols'
+        foreach ($v in $platformData.versions) {
+            # Parse pure CEF version from "151.3.12+gd9cea67+chromium-151.0.7922.47"
+            $cefVersionStr = $v.cef_version
+            $pureCefVersion = "0.0.0"
+            if ($cefVersionStr -match '^(\d+\.\d+\.\d+)') {
+                $pureCefVersion = $Matches[1]
             }
 
-            # Parse CEF version from filename
-            # Pattern: cef_binary_{version}+g{hash}+chromium-{version}_{platform}.tar.bz2
-            # or:      cef_binary_{version}+g{hash}+chromium-{version}_{platform}_debug_symbols.tar.bz2
-            if ($fileName -match 'cef_binary_(\d+\.\d+\.\d+)\+g[0-9a-f]+\+chromium-(\d+\.\d+\.\d+\.\d+)') {
-                $buildInfo.CefVersion = $Matches[1]
-                $buildInfo.ChromiumVersion = $Matches[2]
-            }
-            elseif ($fileName -match 'cef_binary_(\d+\.\d+\.\d+)') {
-                $buildInfo.CefVersion = $Matches[1]
-                $buildInfo.ChromiumVersion = "unknown"
-            }
-            else {
-                Write-Warning "Could not parse version from filename: $fileName"
-                $buildInfo.CefVersion = "0.0.0"
-                $buildInfo.ChromiumVersion = "unknown"
+            $files = @()
+            foreach ($f in $v.files) {
+                $files += @{
+                    Name         = $f.name
+                    Sha1         = $f.sha1
+                    Size         = $f.size
+                    Type         = $f.type
+                    LastModified = $f.last_modified
+                }
             }
 
-            if ($buildInfo.IsDebugSymbols) {
-                $symbols += $buildInfo
-            }
-            else {
-                $standard += $buildInfo
+            $versions += @{
+                CefVersion       = $pureCefVersion
+                CefVersionFull   = $cefVersionStr
+                ChromiumVersion  = $v.chromium_version
+                Channel          = $v.channel
+                SandboxCompat    = $v.sandbox_compat
+                Files            = $files
             }
         }
 
         $result[$platform] = @{
-            Standard = $standard
-            Symbols  = $symbols
+            Versions = $versions
         }
     }
 
@@ -120,10 +113,20 @@ function Get-CefBuildIndex {
 
 <#
 .SYNOPSIS
-    Gets the latest build for a given platform and type.
+    Gets the latest build file for a given platform and file type.
 .DESCRIPTION
-    Returns the build entry with the highest CefVersion for the given platform.
-    Type can be 'Standard' or 'Symbols'.
+    Returns the file entry (Name, Sha1, Size, etc.) for the latest version of the
+    given platform, filtered by the specified file type.
+    Valid file types: standard, minimal, client, debug_symbols, release_symbols, signed, tools.
+.PARAMETER Platform
+    CEF platform name (e.g., "windows64", "linux64", "macosarm64").
+.PARAMETER FileType
+    File type to filter by (e.g., "standard", "debug_symbols", "release_symbols").
+.PARAMETER Index
+    Optional pre-fetched index (avoids re-fetching).
+.EXAMPLE
+    $file = Get-LatestBuild -Platform "windows64" -FileType "standard"
+    $file.Name  # "cef_binary_151.3.12+..._windows64.tar.bz2"
 #>
 function Get-LatestBuild {
     [CmdletBinding()]
@@ -132,8 +135,7 @@ function Get-LatestBuild {
         [string]$Platform,
 
         [Parameter(Mandatory = $true)]
-        [ValidateSet('Standard', 'Symbols')]
-        [string]$Type,
+        [string]$FileType,
 
         [Parameter(Mandatory = $false)]
         [hashtable]$Index = $null
@@ -143,15 +145,40 @@ function Get-LatestBuild {
         $Index = Get-CefBuildIndex
     }
 
-    $builds = $Index[$Platform][$Type]
-    if (-not $builds -or $builds.Count -eq 0) {
-        Write-Error "No $Type builds found for platform '$Platform'"
+    if (-not $Index.ContainsKey($Platform)) {
+        Write-Error "Platform '$Platform' not found in CEF build index"
         return $null
     }
 
-    # Sort by CefVersion (semantic version) and return the latest
-    $latest = $builds | Sort-Object { [System.Version]$_.CefVersion } -Descending | Select-Object -First 1
-    return $latest
+    $versions = $Index[$Platform].Versions
+    if (-not $versions -or $versions.Count -eq 0) {
+        Write-Error "No versions found for platform '$Platform'"
+        return $null
+    }
+
+    # Sort versions by CefVersion (descending) and take the latest
+    $sortedVersions = $versions | Sort-Object { [System.Version]$_.CefVersion } -Descending
+
+    foreach ($ver in $sortedVersions) {
+        $matchingFile = $ver.Files | Where-Object { $_.Type -eq $FileType } | Select-Object -First 1
+        if ($matchingFile) {
+            # Return a combined result with both file and version info
+            return @{
+                Name             = $matchingFile.Name
+                Sha1             = $matchingFile.Sha1
+                Size             = $matchingFile.Size
+                Type             = $matchingFile.Type
+                LastModified     = $matchingFile.LastModified
+                CefVersion       = $ver.CefVersion
+                CefVersionFull   = $ver.CefVersionFull
+                ChromiumVersion  = $ver.ChromiumVersion
+                Channel          = $ver.Channel
+            }
+        }
+    }
+
+    Write-Warning "No '$FileType' file found in any version for platform '$Platform'"
+    return $null
 }
 
 <#

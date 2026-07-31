@@ -30,8 +30,8 @@ jobs:
           - linux64
           - linux32
           - linuxarm64
-          - linuxarm32
-          - macos64
+          - linuxarm
+          - macosx64
           - macosarm64
 
     steps:
@@ -48,19 +48,29 @@ jobs:
         run: |
           . ./scripts/cef-builds.ps1
           $index = Get-CefBuildIndex
-          $build = Get-LatestBuild -Platform "${{ matrix.platform }}" -Type Symbols -Index $index
 
-          if (-not $build) {
-            Write-Warning "No debug symbols build found for ${{ matrix.platform }} — skipping."
+          # Get both debug and release symbols
+          $debugBuild = Get-LatestBuild -Platform "${{ matrix.platform }}" -FileType debug_symbols -Index $index
+          $releaseBuild = Get-LatestBuild -Platform "${{ matrix.platform }}" -FileType release_symbols -Index $index
+
+          if (-not $debugBuild -and -not $releaseBuild) {
+            Write-Warning "No debug or release symbols found for ${{ matrix.platform }} — skipping."
             "SKIP=true" | Out-File -FilePath $env:GITHUB_ENV -Append
             exit 0
           }
 
-          Write-Host "Latest ${{ matrix.platform }} symbols: $($build.FileName)"
-          Write-Host "CEF version: $($build.CefVersion)"
+          if ($debugBuild) {
+            Write-Host "Latest ${{ matrix.platform }} debug symbols: $($debugBuild.Name)"
+            "BUILD_FILE_DEBUG=$($debugBuild.Name)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          }
+          if ($releaseBuild) {
+            Write-Host "Latest ${{ matrix.platform }} release symbols: $($releaseBuild.Name)"
+            "BUILD_FILE_RELEASE=$($releaseBuild.Name)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          }
 
-          "BUILD_FILE=$($build.FileName)" | Out-File -FilePath $env:GITHUB_ENV -Append
-          "CEF_VERSION=$($build.CefVersion)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          # Use CEF version from whichever build we found
+          $cver = if ($debugBuild) { $debugBuild.CefVersion } else { $releaseBuild.CefVersion }
+          "CEF_VERSION=$cver" | Out-File -FilePath $env:GITHUB_ENV -Append
           "SKIP=false" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: Download and extract symbols
@@ -70,10 +80,28 @@ jobs:
           . ./scripts/cef-builds.ps1
 
           $workDir = Join-Path $env:RUNNER_TEMP "cef-symbols"
-          $extractedDir = Expand-CefArchive -FileName $env:BUILD_FILE -OutputDirectory $workDir
-          Write-Host "Symbols extracted to: $extractedDir"
+          New-Item -ItemType Directory -Path $workDir -Force | Out-Null
 
-          "EXTRACTED_DIR=$extractedDir" | Out-File -FilePath $env:GITHUB_ENV -Append
+          # Download both debug and release symbols archives
+          $extractedDirs = @()
+          if ($env:BUILD_FILE_DEBUG) {
+            Write-Host "Downloading debug symbols: $env:BUILD_FILE_DEBUG"
+            $extractedDirs += Expand-CefArchive -FileName $env:BUILD_FILE_DEBUG -OutputDirectory (Join-Path $workDir "debug")
+          }
+          if ($env:BUILD_FILE_RELEASE) {
+            Write-Host "Downloading release symbols: $env:BUILD_FILE_RELEASE"
+            $extractedDirs += Expand-CefArchive -FileName $env:BUILD_FILE_RELEASE -OutputDirectory (Join-Path $workDir "release")
+          }
+
+          # Merge all extracted files into a single directory for packaging
+          $mergedDir = Join-Path $workDir "merged"
+          New-Item -ItemType Directory -Path $mergedDir -Force | Out-Null
+          foreach ($d in $extractedDirs) {
+            Copy-Item -Recurse -Force "$d\*" $mergedDir
+          }
+
+          Write-Host "Merged symbols to: $mergedDir"
+          "EXTRACTED_DIR=$mergedDir" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: Generate symbols project
         if: env.SKIP != 'true'

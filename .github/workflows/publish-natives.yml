@@ -38,8 +38,8 @@ jobs:
           - linux64
           - linux32
           - linuxarm64
-          - linuxarm32
-          - macos64
+          - linuxarm
+          - macosx64
           - macosarm64
         configuration:
           - Debug
@@ -59,18 +59,18 @@ jobs:
         run: |
           . ./scripts/cef-builds.ps1
           $index = Get-CefBuildIndex
-          $build = Get-LatestBuild -Platform "${{ matrix.platform }}" -Type Standard -Index $index
+          $build = Get-LatestBuild -Platform "${{ matrix.platform }}" -FileType standard -Index $index
 
           if (-not $build) {
             Write-Error "No standard build found for ${{ matrix.platform }}"
             exit 1
           }
 
-          Write-Host "Latest ${{ matrix.platform }} build: $($build.FileName)"
+          Write-Host "Latest ${{ matrix.platform }} build: $($build.Name)"
           Write-Host "CEF version: $($build.CefVersion)"
 
           # Export for subsequent steps
-          "BUILD_FILE=$($build.FileName)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "BUILD_FILE=$($build.Name)" | Out-File -FilePath $env:GITHUB_ENV -Append
           "CEF_VERSION=$($build.CefVersion)" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: Download and extract CEF build
