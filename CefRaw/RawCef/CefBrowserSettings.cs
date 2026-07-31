@@ -1,0 +1,231 @@
+﻿using System.Runtime.InteropServices;
+using RawCef.Native;
+
+namespace RawCef;
+
+/// <summary>
+/// Wraps a library-owned instance of <c>_cef_browser_settings_t</c>.
+/// </summary>
+public unsafe partial class CefBrowserSettings : ICefBrowserSettings
+{
+    private _cef_browser_settings_t* _ptr;
+    private int _disposed;
+
+    public CefBrowserSettings()
+    {
+        _ptr = (_cef_browser_settings_t*)NativeMemory.AllocZeroed((nuint)sizeof(_cef_browser_settings_t));
+        _ptr->size = (nuint)sizeof(_cef_browser_settings_t);
+        Initialize();
+    }
+
+    partial void Initialize();
+
+    _cef_browser_settings_t* ICefBrowserSettings.NativePtr => _ptr;
+    
+    nuint ICefBrowserSettings.Size
+    {
+        get => _ptr->size;
+        set => _ptr->size = value;
+    }
+
+    public int WindowlessFrameRate
+    {
+        get => _ptr->windowless_frame_rate;
+        set => _ptr->windowless_frame_rate = value;
+    }
+
+    public string? StandardFontFamily
+    {
+        get => new CefString(&_ptr->standard_font_family).Value;
+        set => new CefString(&_ptr->standard_font_family).Value = value;
+    }
+
+    public string? FixedFontFamily
+    {
+        get => new CefString(&_ptr->fixed_font_family).Value;
+        set => new CefString(&_ptr->fixed_font_family).Value = value;
+    }
+
+    public string? SerifFontFamily
+    {
+        get => new CefString(&_ptr->serif_font_family).Value;
+        set => new CefString(&_ptr->serif_font_family).Value = value;
+    }
+
+    public string? SansSerifFontFamily
+    {
+        get => new CefString(&_ptr->sans_serif_font_family).Value;
+        set => new CefString(&_ptr->sans_serif_font_family).Value = value;
+    }
+
+    public string? CursiveFontFamily
+    {
+        get => new CefString(&_ptr->cursive_font_family).Value;
+        set => new CefString(&_ptr->cursive_font_family).Value = value;
+    }
+
+    public string? FantasyFontFamily
+    {
+        get => new CefString(&_ptr->fantasy_font_family).Value;
+        set => new CefString(&_ptr->fantasy_font_family).Value = value;
+    }
+
+    public int DefaultFontSize
+    {
+        get => _ptr->default_font_size;
+        set => _ptr->default_font_size = value;
+    }
+
+    public int DefaultFixedFontSize
+    {
+        get => _ptr->default_fixed_font_size;
+        set => _ptr->default_fixed_font_size = value;
+    }
+
+    public int MinimumFontSize
+    {
+        get => _ptr->minimum_font_size;
+        set => _ptr->minimum_font_size = value;
+    }
+
+    public int MinimumLogicalFontSize
+    {
+        get => _ptr->minimum_logical_font_size;
+        set => _ptr->minimum_logical_font_size = value;
+    }
+
+    public string? DefaultEncoding
+    {
+        get => new CefString(&_ptr->default_encoding).Value;
+        set => new CefString(&_ptr->default_encoding).Value = value;
+    }
+
+    public cef_state_t RemoteFonts
+    {
+        get => _ptr->remote_fonts;
+        set => _ptr->remote_fonts = value;
+    }
+
+    public cef_state_t Javascript
+    {
+        get => _ptr->javascript;
+        set => _ptr->javascript = value;
+    }
+
+    public cef_state_t JavascriptCloseWindows
+    {
+        get => _ptr->javascript_close_windows;
+        set => _ptr->javascript_close_windows = value;
+    }
+
+    public cef_state_t JavascriptAccessClipboard
+    {
+        get => _ptr->javascript_access_clipboard;
+        set => _ptr->javascript_access_clipboard = value;
+    }
+
+    public cef_state_t JavascriptDomPaste
+    {
+        get => _ptr->javascript_dom_paste;
+        set => _ptr->javascript_dom_paste = value;
+    }
+
+    public cef_state_t ImageLoading
+    {
+        get => _ptr->image_loading;
+        set => _ptr->image_loading = value;
+    }
+
+    public cef_state_t ImageShrinkStandaloneToFit
+    {
+        get => _ptr->image_shrink_standalone_to_fit;
+        set => _ptr->image_shrink_standalone_to_fit = value;
+    }
+
+    public cef_state_t TextAreaResize
+    {
+        get => _ptr->text_area_resize;
+        set => _ptr->text_area_resize = value;
+    }
+
+    public cef_state_t TabToLinks
+    {
+        get => _ptr->tab_to_links;
+        set => _ptr->tab_to_links = value;
+    }
+
+    public cef_state_t LocalStorage
+    {
+        get => _ptr->local_storage;
+        set => _ptr->local_storage = value;
+    }
+
+    public cef_state_t DatabasesDeprecated
+    {
+        get => _ptr->databases_deprecated;
+        set => _ptr->databases_deprecated = value;
+    }
+
+    public cef_state_t Webgl
+    {
+        get => _ptr->webgl;
+        set => _ptr->webgl = value;
+    }
+
+    public uint BackgroundColor
+    {
+        get => _ptr->background_color;
+        set => _ptr->background_color = value;
+    }
+
+    public cef_state_t ChromeStatusBubble
+    {
+        get => _ptr->chrome_status_bubble;
+        set => _ptr->chrome_status_bubble = value;
+    }
+
+    public cef_state_t ChromeZoomBubble
+    {
+        get => _ptr->chrome_zoom_bubble;
+        set => _ptr->chrome_zoom_bubble = value;
+    }
+
+    public cef_state_t AxViewportCollapse
+    {
+        get => _ptr->ax_viewport_collapse;
+        set => _ptr->ax_viewport_collapse = value;
+    }
+    
+    /// <summary>
+    /// Releases the native reference. Safe to call multiple times.
+    /// </summary>
+    public void Dispose()
+    {
+        if (Interlocked.Exchange(ref _disposed, 1) != 0)
+            return;
+
+        if (_ptr is not null)
+        {
+            CefUnsafe.StringUtf16Clear(&_ptr->standard_font_family);
+            CefUnsafe.StringUtf16Clear(&_ptr->fixed_font_family);
+            CefUnsafe.StringUtf16Clear(&_ptr->serif_font_family);
+            CefUnsafe.StringUtf16Clear(&_ptr->sans_serif_font_family);
+            CefUnsafe.StringUtf16Clear(&_ptr->cursive_font_family);
+            CefUnsafe.StringUtf16Clear(&_ptr->fantasy_font_family);
+            CefUnsafe.StringUtf16Clear(&_ptr->default_encoding);
+            
+            NativeMemory.Free(_ptr);
+            _ptr = null;
+        }
+
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Finalizer as safety net.
+    /// </summary>
+    ~CefBrowserSettings()
+    {
+        Dispose();
+    }
+}

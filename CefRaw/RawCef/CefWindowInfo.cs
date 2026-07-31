@@ -159,6 +159,7 @@ public unsafe partial class CefWindowInfo : ICefWindowInfo
         get => _ptr->runtime_style;
         set => _ptr->runtime_style = value;
     }
+    
     /// <summary>
     /// Releases the native reference. Safe to call multiple times.
     /// </summary>

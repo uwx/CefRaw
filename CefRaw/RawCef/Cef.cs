@@ -122,7 +122,7 @@ public static unsafe partial class Cef
         CefClient client,
         string startUrl,
         ICefWindowInfo? windowInfo = null,
-        _cef_browser_settings_t* browserSettings = null)
+        ICefBrowserSettings? browserSettings = null)
     {
         _cef_string_utf16_t urlStr = default;
         fixed (char* p = startUrl)
@@ -134,7 +134,7 @@ public static unsafe partial class Cef
             windowInfo != null ? windowInfo.NativePtr : null,
             ((ICefClient)client).NativePtr,
             &urlStr,
-            browserSettings,
+            browserSettings != null ? browserSettings.NativePtr : null,
             null,   // extra_info
             null    // request_context
         );
