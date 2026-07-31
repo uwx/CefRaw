@@ -10,7 +10,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\RawCef.Binaries.Win64\RawCef.Binaries.Win64.csproj" />
         <ProjectReference Include="..\RawCef\RawCef.Windows.csproj" />
     </ItemGroup>
 
