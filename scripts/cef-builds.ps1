@@ -521,6 +521,30 @@ function New-CefBinariesProject {
         }
     }
 
+    # Strip debug symbols from Linux binaries to reduce package size.
+    # CEF distributes .so files with embedded DWARF symbols even in Release
+    # builds — stripping can reduce libcef.so from ~1.5 GB to ~200 MB.
+    # macOS dylib symbols are already small, so skip stripping there.
+    if (-not $IsSymbols -and $os -eq 'linux') {
+        Write-Host "Stripping debug symbols from Linux binaries..."
+
+        $filesToStrip = Get-ChildItem -Path $nativeDir -File | Where-Object {
+            $_.Extension -eq '.so'
+        }
+
+        foreach ($file in $filesToStrip) {
+            try {
+                # --strip-debug removes DWARF debug sections only
+                strip --strip-debug $file.FullName 2>&1 | Out-Null
+                $newSize = [math]::Round((Get-Item $file.FullName).Length / 1MB, 1)
+                Write-Host "  Stripped: $($file.Name) → $newSize MB"
+            }
+            catch {
+                Write-Warning "  Failed to strip $($file.Name): $_ (continuing)"
+            }
+        }
+    }
+
     # Generate the .csproj
     $csprojPath = Join-Path $projectDir "$packageId.csproj"
     Write-Host "Generating $csprojPath"
