@@ -137,7 +137,8 @@ jobs:
             Write-Host "Pushing $($_.Name) to nuget.org..."
             dotnet nuget push $_.FullName `
               --api-key ${{ steps.login.outputs.NUGET_API_KEY }} `
-              --source https://api.nuget.org/v3/index.json
+              --source https://api.nuget.org/v3/index.json `
+              --skip-duplicate
           }
 
       - name: Push to GitHub Packages
@@ -147,5 +148,6 @@ jobs:
             Write-Host "Pushing $($_.Name) to GitHub Packages..."
             dotnet nuget push $_.FullName `
               --api-key ${{ github.token }} `
-              --source https://nuget.pkg.github.com/uwx/index.json
+              --source https://nuget.pkg.github.com/uwx/index.json `
+              --skip-duplicate
           }
