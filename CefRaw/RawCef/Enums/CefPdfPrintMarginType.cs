@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefPdfPrintMarginType : int
 {
-    PDF_PRINT_MARGIN_DEFAULT,
-    PDF_PRINT_MARGIN_NONE,
-    PDF_PRINT_MARGIN_CUSTOM,
+    Default,
+    None,
+    Custom,
 }

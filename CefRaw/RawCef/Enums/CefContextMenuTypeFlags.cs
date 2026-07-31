@@ -8,11 +8,11 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefContextMenuTypeFlags : int
 {
-    CM_TYPEFLAG_NONE = 0,
-    CM_TYPEFLAG_PAGE = 1 << 0,
-    CM_TYPEFLAG_FRAME = 1 << 1,
-    CM_TYPEFLAG_LINK = 1 << 2,
-    CM_TYPEFLAG_MEDIA = 1 << 3,
-    CM_TYPEFLAG_SELECTION = 1 << 4,
-    CM_TYPEFLAG_EDITABLE = 1 << 5,
+    None = 0,
+    Page = 1 << 0,
+    Frame = 1 << 1,
+    Link = 1 << 2,
+    Media = 1 << 3,
+    Selection = 1 << 4,
+    Editable = 1 << 5,
 }

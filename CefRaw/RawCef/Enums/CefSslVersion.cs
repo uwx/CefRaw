@@ -8,13 +8,13 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefSslVersion : int
 {
-    SSL_CONNECTION_VERSION_UNKNOWN,
-    SSL_CONNECTION_VERSION_SSL2,
-    SSL_CONNECTION_VERSION_SSL3,
-    SSL_CONNECTION_VERSION_TLS1,
-    SSL_CONNECTION_VERSION_TLS1_1,
-    SSL_CONNECTION_VERSION_TLS1_2,
-    SSL_CONNECTION_VERSION_TLS1_3,
-    SSL_CONNECTION_VERSION_QUIC,
-    SSL_CONNECTION_VERSION_NUM_VALUES,
+    Unknown,
+    Ssl2,
+    Ssl3,
+    Tls1,
+    Tls11,
+    Tls12,
+    Tls13,
+    Quic,
+    NumValues,
 }

@@ -8,13 +8,13 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefUrlrequestFlags : int
 {
-    UR_FLAG_NONE = 0,
-    UR_FLAG_SKIP_CACHE = 1 << 0,
-    UR_FLAG_ONLY_FROM_CACHE = 1 << 1,
-    UR_FLAG_DISABLE_CACHE = 1 << 2,
-    UR_FLAG_ALLOW_STORED_CREDENTIALS = 1 << 3,
-    UR_FLAG_REPORT_UPLOAD_PROGRESS = 1 << 4,
-    UR_FLAG_NO_DOWNLOAD_DATA = 1 << 5,
-    UR_FLAG_NO_RETRY_ON_5XX = 1 << 6,
-    UR_FLAG_STOP_ON_REDIRECT = 1 << 7,
+    None = 0,
+    SkipCache = 1 << 0,
+    OnlyFromCache = 1 << 1,
+    DisableCache = 1 << 2,
+    AllowStoredCredentials = 1 << 3,
+    ReportUploadProgress = 1 << 4,
+    NoDownloadData = 1 << 5,
+    NoRetryOn5xx = 1 << 6,
+    StopOnRedirect = 1 << 7,
 }

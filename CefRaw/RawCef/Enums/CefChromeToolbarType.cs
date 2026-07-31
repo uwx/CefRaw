@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefChromeToolbarType : int
 {
-    CEF_CTT_UNKNOWN,
-    CEF_CTT_NONE,
-    CEF_CTT_NORMAL,
-    CEF_CTT_LOCATION,
-    CEF_CTT_NUM_VALUES,
+    Unknown,
+    None,
+    Normal,
+    Location,
+    NumValues,
 }

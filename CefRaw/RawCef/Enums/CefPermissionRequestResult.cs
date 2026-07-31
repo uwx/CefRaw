@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefPermissionRequestResult : int
 {
-    CEF_PERMISSION_RESULT_ACCEPT,
-    CEF_PERMISSION_RESULT_DENY,
-    CEF_PERMISSION_RESULT_DISMISS,
-    CEF_PERMISSION_RESULT_IGNORE,
-    CEF_PERMISSION_RESULT_NUM_VALUES,
+    Accept,
+    Deny,
+    Dismiss,
+    Ignore,
+    NumValues,
 }

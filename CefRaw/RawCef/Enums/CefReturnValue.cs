@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefReturnValue : int
 {
-    RV_CANCEL = 0,
-    RV_CONTINUE,
-    RV_CONTINUE_ASYNC,
+    Cancel = 0,
+    Continue,
+    ContinueAsync,
 }

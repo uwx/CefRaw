@@ -8,8 +8,8 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefJsdialogType : int
 {
-    JSDIALOGTYPE_ALERT,
-    JSDIALOGTYPE_CONFIRM,
-    JSDIALOGTYPE_PROMPT,
-    JSDIALOGTYPE_NUM_VALUES,
+    Alert,
+    Confirm,
+    Prompt,
+    NumValues,
 }

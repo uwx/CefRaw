@@ -8,12 +8,12 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefLogSeverity : int
 {
-    LOGSEVERITY_DEFAULT,
-    LOGSEVERITY_VERBOSE,
-    LOGSEVERITY_DEBUG = LOGSEVERITY_VERBOSE,
-    LOGSEVERITY_INFO,
-    LOGSEVERITY_WARNING,
-    LOGSEVERITY_ERROR,
-    LOGSEVERITY_FATAL,
-    LOGSEVERITY_DISABLE = 99,
+    Default,
+    Verbose,
+    Debug = Verbose,
+    Info,
+    Warning,
+    Error,
+    Fatal,
+    Disable = 99,
 }

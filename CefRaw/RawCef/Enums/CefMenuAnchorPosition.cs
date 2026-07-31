@@ -8,8 +8,8 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefMenuAnchorPosition : int
 {
-    CEF_MENU_ANCHOR_TOPLEFT,
-    CEF_MENU_ANCHOR_TOPRIGHT,
-    CEF_MENU_ANCHOR_BOTTOMCENTER,
-    CEF_MENU_ANCHOR_NUM_VALUES,
+    Topleft,
+    Topright,
+    Bottomcenter,
+    NumValues,
 }

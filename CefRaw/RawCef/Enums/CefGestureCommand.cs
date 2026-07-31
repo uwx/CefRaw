@@ -8,6 +8,6 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefGestureCommand : int
 {
-    CEF_GESTURE_COMMAND_BACK,
-    CEF_GESTURE_COMMAND_FORWARD,
+    Back,
+    Forward,
 }

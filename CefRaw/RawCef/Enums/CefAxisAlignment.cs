@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefAxisAlignment : int
 {
-    CEF_AXIS_ALIGNMENT_START,
-    CEF_AXIS_ALIGNMENT_CENTER,
-    CEF_AXIS_ALIGNMENT_END,
-    CEF_AXIS_ALIGNMENT_STRETCH,
-    CEF_AXIS_ALIGNMENT_NUM_VALUES,
+    Start,
+    Center,
+    End,
+    Stretch,
+    NumValues,
 }

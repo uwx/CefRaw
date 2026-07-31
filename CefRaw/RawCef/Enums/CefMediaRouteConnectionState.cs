@@ -8,10 +8,10 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefMediaRouteConnectionState : int
 {
-    CEF_MRCS_UNKNOWN = -1,
-    CEF_MRCS_CONNECTING,
-    CEF_MRCS_CONNECTED,
-    CEF_MRCS_CLOSED,
-    CEF_MRCS_TERMINATED,
-    CEF_MRCS_NUM_VALUES,
+    Unknown = -1,
+    Connecting,
+    Connected,
+    Closed,
+    Terminated,
+    NumValues,
 }

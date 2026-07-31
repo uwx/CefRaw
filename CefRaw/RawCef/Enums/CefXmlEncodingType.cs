@@ -8,10 +8,10 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefXmlEncodingType : int
 {
-    XML_ENCODING_NONE,
-    XML_ENCODING_UTF8,
-    XML_ENCODING_UTF16LE,
-    XML_ENCODING_UTF16BE,
-    XML_ENCODING_ASCII,
-    XML_ENCODING_NUM_VALUES,
+    None,
+    Utf8,
+    Utf16le,
+    Utf16be,
+    Ascii,
+    NumValues,
 }

@@ -8,10 +8,10 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefMenuItemType : int
 {
-    MENUITEMTYPE_NONE,
-    MENUITEMTYPE_COMMAND,
-    MENUITEMTYPE_CHECK,
-    MENUITEMTYPE_RADIO,
-    MENUITEMTYPE_SEPARATOR,
-    MENUITEMTYPE_SUBMENU,
+    None,
+    Command,
+    Check,
+    Radio,
+    Separator,
+    Submenu,
 }

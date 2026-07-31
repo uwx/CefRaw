@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefMediaAccessPermissionTypes : int
 {
-    CEF_MEDIA_PERMISSION_NONE = 0,
-    CEF_MEDIA_PERMISSION_DEVICE_AUDIO_CAPTURE = 1 << 0,
-    CEF_MEDIA_PERMISSION_DEVICE_VIDEO_CAPTURE = 1 << 1,
-    CEF_MEDIA_PERMISSION_DESKTOP_AUDIO_CAPTURE = 1 << 2,
-    CEF_MEDIA_PERMISSION_DESKTOP_VIDEO_CAPTURE = 1 << 3,
+    None = 0,
+    DeviceAudioCapture = 1 << 0,
+    DeviceVideoCapture = 1 << 1,
+    DesktopAudioCapture = 1 << 2,
+    DesktopVideoCapture = 1 << 3,
 }

@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefFocusSource : int
 {
-    FOCUS_SOURCE_NAVIGATION,
-    FOCUS_SOURCE_SYSTEM,
-    FOCUS_SOURCE_NUM_VALUES,
+    Navigation,
+    System,
+    NumValues,
 }

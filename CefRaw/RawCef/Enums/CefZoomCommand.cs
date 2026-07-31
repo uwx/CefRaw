@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefZoomCommand : int
 {
-    CEF_ZOOM_COMMAND_OUT,
-    CEF_ZOOM_COMMAND_RESET,
-    CEF_ZOOM_COMMAND_IN,
+    Out,
+    Reset,
+    In,
 }

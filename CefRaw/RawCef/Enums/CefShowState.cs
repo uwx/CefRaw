@@ -8,10 +8,10 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefShowState : int
 {
-    CEF_SHOW_STATE_NORMAL,
-    CEF_SHOW_STATE_MINIMIZED,
-    CEF_SHOW_STATE_MAXIMIZED,
-    CEF_SHOW_STATE_FULLSCREEN,
-    CEF_SHOW_STATE_HIDDEN,
-    CEF_SHOW_STATE_NUM_VALUES,
+    Normal,
+    Minimized,
+    Maximized,
+    Fullscreen,
+    Hidden,
+    NumValues,
 }

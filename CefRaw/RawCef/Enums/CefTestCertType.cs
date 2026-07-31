@@ -8,8 +8,8 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefTestCertType : int
 {
-    CEF_TEST_CERT_OK_IP,
-    CEF_TEST_CERT_OK_DOMAIN,
-    CEF_TEST_CERT_EXPIRED,
-    CEF_TEST_CERT_NUM_VALUES,
+    OkIp,
+    OkDomain,
+    Expired,
+    NumValues,
 }

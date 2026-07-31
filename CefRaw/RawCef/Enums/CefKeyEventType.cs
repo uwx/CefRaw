@@ -8,8 +8,8 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefKeyEventType : int
 {
-    KEYEVENT_RAWKEYDOWN = 0,
-    KEYEVENT_KEYDOWN,
-    KEYEVENT_KEYUP,
-    KEYEVENT_CHAR,
+    Rawkeydown = 0,
+    Keydown,
+    Keyup,
+    Char,
 }

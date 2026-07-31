@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefTouchHandleStateFlags : int
 {
-    CEF_THS_FLAG_NONE = 0,
-    CEF_THS_FLAG_ENABLED = 1 << 0,
-    CEF_THS_FLAG_ORIENTATION = 1 << 1,
-    CEF_THS_FLAG_ORIGIN = 1 << 2,
-    CEF_THS_FLAG_ALPHA = 1 << 3,
+    None = 0,
+    Enabled = 1 << 0,
+    Orientation = 1 << 1,
+    Origin = 1 << 2,
+    Alpha = 1 << 3,
 }

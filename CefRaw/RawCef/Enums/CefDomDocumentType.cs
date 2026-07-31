@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefDomDocumentType : int
 {
-    DOM_DOCUMENT_TYPE_UNKNOWN,
-    DOM_DOCUMENT_TYPE_HTML,
-    DOM_DOCUMENT_TYPE_XHTML,
-    DOM_DOCUMENT_TYPE_PLUGIN,
-    DOM_DOCUMENT_TYPE_NUM_VALUES,
+    Unknown,
+    Html,
+    Xhtml,
+    Plugin,
+    NumValues,
 }

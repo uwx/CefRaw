@@ -8,6 +8,6 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefPaintElementType : int
 {
-    PET_VIEW = 0,
-    PET_POPUP,
+    View = 0,
+    Popup,
 }

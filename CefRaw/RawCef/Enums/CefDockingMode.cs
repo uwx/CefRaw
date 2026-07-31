@@ -8,10 +8,10 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefDockingMode : int
 {
-    CEF_DOCKING_MODE_TOP_LEFT,
-    CEF_DOCKING_MODE_TOP_RIGHT,
-    CEF_DOCKING_MODE_BOTTOM_LEFT,
-    CEF_DOCKING_MODE_BOTTOM_RIGHT,
-    CEF_DOCKING_MODE_CUSTOM,
-    CEF_DOCKING_MODE_NUM_VALUES,
+    TopLeft,
+    TopRight,
+    BottomLeft,
+    BottomRight,
+    Custom,
+    NumValues,
 }

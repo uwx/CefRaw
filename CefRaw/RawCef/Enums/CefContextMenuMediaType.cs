@@ -8,12 +8,12 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefContextMenuMediaType : int
 {
-    CM_MEDIATYPE_NONE,
-    CM_MEDIATYPE_IMAGE,
-    CM_MEDIATYPE_VIDEO,
-    CM_MEDIATYPE_AUDIO,
-    CM_MEDIATYPE_CANVAS,
-    CM_MEDIATYPE_FILE,
-    CM_MEDIATYPE_PLUGIN,
-    CM_MEDIATYPE_NUM_VALUES,
+    None,
+    Image,
+    Video,
+    Audio,
+    Canvas,
+    File,
+    Plugin,
+    NumValues,
 }

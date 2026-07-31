@@ -8,8 +8,8 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefV8Propertyattribute : int
 {
-    V8_PROPERTY_ATTRIBUTE_NONE = 0,
-    V8_PROPERTY_ATTRIBUTE_READONLY = 1 << 0,
-    V8_PROPERTY_ATTRIBUTE_DONTENUM = 1 << 1,
-    V8_PROPERTY_ATTRIBUTE_DONTDELETE = 1 << 2,
+    None = 0,
+    Readonly = 1 << 0,
+    Dontenum = 1 << 1,
+    Dontdelete = 1 << 2,
 }

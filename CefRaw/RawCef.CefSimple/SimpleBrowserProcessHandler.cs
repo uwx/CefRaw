@@ -38,10 +38,7 @@ public unsafe class SimpleBrowserProcessHandler : CefBrowserProcessHandler
     public override void OnContextInitialized()
     {
         // Create the browser settings.
-        var browserSettings = new _cef_browser_settings_t
-        {
-            size = (nuint)sizeof(_cef_browser_settings_t)
-        };
+        var browserSettings = new CefBrowserSettings();
 
         // Create window info.
         var windowInfo = new CefWindowInfo();
@@ -63,13 +60,13 @@ public unsafe class SimpleBrowserProcessHandler : CefBrowserProcessHandler
 #endif
 
         // Use default runtime style (Chrome by default).
-        windowInfo.RuntimeStyle = CefRuntimeStyle.CEF_RUNTIME_STYLE_DEFAULT;
+        windowInfo.RuntimeStyle = CefRuntimeStyle.Default;
 
         // Create the browser. CEF takes ownership of the native pointer
         // (calls add_ref internally). Do NOT call AddRef() here — our
         // constructor already gave the SimpleClient ref count 1, and CEF
         // will add its own reference.
-        Cef.CreateBrowser(_client, _startUrl, windowInfo, &browserSettings);
+        Cef.CreateBrowser(_client, _startUrl, windowInfo, browserSettings);
     }
 
     // ── Remaining overrides ─────────────────────────────────────

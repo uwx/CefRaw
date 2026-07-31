@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefDomEventPhase : int
 {
-    DOM_EVENT_PHASE_UNKNOWN,
-    DOM_EVENT_PHASE_CAPTURING,
-    DOM_EVENT_PHASE_AT_TARGET,
-    DOM_EVENT_PHASE_BUBBLING,
-    DOM_EVENT_PHASE_NUM_VALUES,
+    Unknown,
+    Capturing,
+    AtTarget,
+    Bubbling,
+    NumValues,
 }

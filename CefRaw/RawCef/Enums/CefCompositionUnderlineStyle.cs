@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefCompositionUnderlineStyle : int
 {
-    CEF_CUS_SOLID,
-    CEF_CUS_DOT,
-    CEF_CUS_DASH,
-    CEF_CUS_NONE,
-    CEF_CUS_NUM_VALUES,
+    Solid,
+    Dot,
+    Dash,
+    None,
+    NumValues,
 }

@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefSslContentStatus : int
 {
-    SSL_CONTENT_NORMAL_CONTENT = 0,
-    SSL_CONTENT_DISPLAYED_INSECURE_CONTENT = 1 << 0,
-    SSL_CONTENT_RAN_INSECURE_CONTENT = 1 << 1,
+    NormalContent = 0,
+    DisplayedInsecureContent = 1 << 0,
+    RanInsecureContent = 1 << 1,
 }

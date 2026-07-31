@@ -8,8 +8,8 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefPostdataelementType : int
 {
-    PDE_TYPE_EMPTY = 0,
-    PDE_TYPE_BYTES,
-    PDE_TYPE_FILE,
-    PDE_TYPE_NUM_VALUES,
+    Empty = 0,
+    Bytes,
+    File,
+    NumValues,
 }

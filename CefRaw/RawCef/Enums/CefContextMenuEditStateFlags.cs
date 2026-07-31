@@ -8,14 +8,14 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefContextMenuEditStateFlags : int
 {
-    CM_EDITFLAG_NONE = 0,
-    CM_EDITFLAG_CAN_UNDO = 1 << 0,
-    CM_EDITFLAG_CAN_REDO = 1 << 1,
-    CM_EDITFLAG_CAN_CUT = 1 << 2,
-    CM_EDITFLAG_CAN_COPY = 1 << 3,
-    CM_EDITFLAG_CAN_PASTE = 1 << 4,
-    CM_EDITFLAG_CAN_DELETE = 1 << 5,
-    CM_EDITFLAG_CAN_SELECT_ALL = 1 << 6,
-    CM_EDITFLAG_CAN_TRANSLATE = 1 << 7,
-    CM_EDITFLAG_CAN_EDIT_RICHLY = 1 << 8,
+    None = 0,
+    CanUndo = 1 << 0,
+    CanRedo = 1 << 1,
+    CanCut = 1 << 2,
+    CanCopy = 1 << 3,
+    CanPaste = 1 << 4,
+    CanDelete = 1 << 5,
+    CanSelectAll = 1 << 6,
+    CanTranslate = 1 << 7,
+    CanEditRichly = 1 << 8,
 }

@@ -8,11 +8,11 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefMenuColorType : int
 {
-    CEF_MENU_COLOR_TEXT,
-    CEF_MENU_COLOR_TEXT_HOVERED,
-    CEF_MENU_COLOR_TEXT_ACCELERATOR,
-    CEF_MENU_COLOR_TEXT_ACCELERATOR_HOVERED,
-    CEF_MENU_COLOR_BACKGROUND,
-    CEF_MENU_COLOR_BACKGROUND_HOVERED,
-    CEF_MENU_COLOR_NUM_VALUES,
+    Text,
+    TextHovered,
+    TextAccelerator,
+    TextAcceleratorHovered,
+    Background,
+    BackgroundHovered,
+    NumValues,
 }

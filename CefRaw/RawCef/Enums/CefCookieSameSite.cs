@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefCookieSameSite : int
 {
-    CEF_COOKIE_SAME_SITE_UNSPECIFIED,
-    CEF_COOKIE_SAME_SITE_NO_RESTRICTION,
-    CEF_COOKIE_SAME_SITE_LAX_MODE,
-    CEF_COOKIE_SAME_SITE_STRICT_MODE,
-    CEF_COOKIE_SAME_SITE_NUM_VALUES,
+    Unspecified,
+    NoRestriction,
+    LaxMode,
+    StrictMode,
+    NumValues,
 }

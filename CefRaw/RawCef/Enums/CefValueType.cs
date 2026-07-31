@@ -8,14 +8,14 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefValueType : int
 {
-    VTYPE_INVALID,
-    VTYPE_NULL,
-    VTYPE_BOOL,
-    VTYPE_INT,
-    VTYPE_DOUBLE,
-    VTYPE_STRING,
-    VTYPE_BINARY,
-    VTYPE_DICTIONARY,
-    VTYPE_LIST,
-    VTYPE_NUM_VALUES,
+    Invalid,
+    Null,
+    Bool,
+    Int,
+    Double,
+    String,
+    Binary,
+    Dictionary,
+    List,
+    NumValues,
 }

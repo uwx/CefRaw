@@ -8,8 +8,8 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefJsonWriterOptions : int
 {
-    JSON_WRITER_DEFAULT = 0,
-    JSON_WRITER_OMIT_BINARY_VALUES = 1 << 0,
-    JSON_WRITER_OMIT_DOUBLE_TYPE_PRESERVATION = 1 << 1,
-    JSON_WRITER_PRETTY_PRINT = 1 << 2,
+    Default = 0,
+    OmitBinaryValues = 1 << 0,
+    OmitDoubleTypePreservation = 1 << 1,
+    PrettyPrint = 1 << 2,
 }

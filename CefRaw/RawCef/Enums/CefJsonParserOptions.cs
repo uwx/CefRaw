@@ -8,6 +8,6 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefJsonParserOptions : int
 {
-    JSON_PARSER_RFC = 0,
-    JSON_PARSER_ALLOW_TRAILING_COMMAS = 1 << 0,
+    Rfc = 0,
+    AllowTrailingCommas = 1 << 0,
 }

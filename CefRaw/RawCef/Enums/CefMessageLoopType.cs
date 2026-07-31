@@ -8,8 +8,8 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefMessageLoopType : int
 {
-    ML_TYPE_DEFAULT,
-    ML_TYPE_UI,
-    ML_TYPE_IO,
-    ML_NUM_VALUES,
+    TypeDefault,
+    TypeUi,
+    TypeIo,
+    NumValues,
 }

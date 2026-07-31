@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefFileDialogMode : int
 {
-    FILE_DIALOG_OPEN,
-    FILE_DIALOG_OPEN_MULTIPLE,
-    FILE_DIALOG_OPEN_FOLDER,
-    FILE_DIALOG_SAVE,
-    FILE_DIALOG_NUM_VALUES,
+    Open,
+    OpenMultiple,
+    OpenFolder,
+    Save,
+    NumValues,
 }

@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefAlphaType : int
 {
-    CEF_ALPHA_TYPE_OPAQUE,
-    CEF_ALPHA_TYPE_PREMULTIPLIED,
-    CEF_ALPHA_TYPE_POSTMULTIPLIED,
+    Opaque,
+    Premultiplied,
+    Postmultiplied,
 }

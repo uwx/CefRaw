@@ -8,11 +8,11 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefContentSettingValues : int
 {
-    CEF_CONTENT_SETTING_VALUE_DEFAULT,
-    CEF_CONTENT_SETTING_VALUE_ALLOW,
-    CEF_CONTENT_SETTING_VALUE_BLOCK,
-    CEF_CONTENT_SETTING_VALUE_ASK,
-    CEF_CONTENT_SETTING_VALUE_SESSION_ONLY,
-    CEF_CONTENT_SETTING_VALUE_DETECT_IMPORTANT_CONTENT_DEPRECATED,
-    CEF_CONTENT_SETTING_VALUE_NUM_VALUES,
+    Default,
+    Allow,
+    Block,
+    Ask,
+    SessionOnly,
+    DetectImportantContentDeprecated,
+    NumValues,
 }

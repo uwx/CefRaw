@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefHorizontalAlignment : int
 {
-    CEF_HORIZONTAL_ALIGNMENT_LEFT,
-    CEF_HORIZONTAL_ALIGNMENT_CENTER,
-    CEF_HORIZONTAL_ALIGNMENT_RIGHT,
+    Left,
+    Center,
+    Right,
 }

@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefMouseButtonType : int
 {
-    MBT_LEFT = 0,
-    MBT_MIDDLE,
-    MBT_RIGHT,
+    Left = 0,
+    Middle,
+    Right,
 }

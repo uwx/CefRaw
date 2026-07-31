@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefThreadPriority : int
 {
-    TP_BACKGROUND,
-    TP_NORMAL,
-    TP_DISPLAY,
-    TP_REALTIME_AUDIO,
-    TP_NUM_VALUES,
+    Background,
+    Normal,
+    Display,
+    RealtimeAudio,
+    NumValues,
 }

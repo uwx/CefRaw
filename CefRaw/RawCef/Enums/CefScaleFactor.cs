@@ -8,15 +8,15 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefScaleFactor : int
 {
-    SCALE_FACTOR_NONE,
-    SCALE_FACTOR_100P,
-    SCALE_FACTOR_125P,
-    SCALE_FACTOR_133P,
-    SCALE_FACTOR_140P,
-    SCALE_FACTOR_150P,
-    SCALE_FACTOR_180P,
-    SCALE_FACTOR_200P,
-    SCALE_FACTOR_250P,
-    SCALE_FACTOR_300P,
-    SCALE_FACTOR_NUM_VALUES,
+    None,
+    _100p,
+    _125p,
+    _133p,
+    _140p,
+    _150p,
+    _180p,
+    _200p,
+    _250p,
+    _300p,
+    NumValues,
 }

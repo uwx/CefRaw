@@ -8,12 +8,12 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefDragOperationsMask : int
 {
-    DRAG_OPERATION_NONE = 0,
-    DRAG_OPERATION_COPY = 1,
-    DRAG_OPERATION_LINK = 2,
-    DRAG_OPERATION_GENERIC = 4,
-    DRAG_OPERATION_PRIVATE = 8,
-    DRAG_OPERATION_MOVE = 16,
-    DRAG_OPERATION_DELETE = 32,
-    DRAG_OPERATION_EVERY = unchecked((int)(0xffffffff)),
+    None = 0,
+    Copy = 1,
+    Link = 2,
+    Generic = 4,
+    Private = 8,
+    Move = 16,
+    Delete = 32,
+    Every = unchecked((int)(0xffffffff)),
 }

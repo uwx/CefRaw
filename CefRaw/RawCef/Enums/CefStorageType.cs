@@ -8,6 +8,6 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefStorageType : int
 {
-    ST_LOCALSTORAGE = 0,
-    ST_SESSIONSTORAGE,
+    Localstorage = 0,
+    Sessionstorage,
 }

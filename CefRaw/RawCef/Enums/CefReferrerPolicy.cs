@@ -8,14 +8,14 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefReferrerPolicy : int
 {
-    REFERRER_POLICY_CLEAR_REFERRER_ON_TRANSITION_FROM_SECURE_TO_INSECURE,
-    REFERRER_POLICY_DEFAULT = REFERRER_POLICY_CLEAR_REFERRER_ON_TRANSITION_FROM_SECURE_TO_INSECURE,
-    REFERRER_POLICY_REDUCE_REFERRER_GRANULARITY_ON_TRANSITION_CROSS_ORIGIN,
-    REFERRER_POLICY_ORIGIN_ONLY_ON_TRANSITION_CROSS_ORIGIN,
-    REFERRER_POLICY_NEVER_CLEAR_REFERRER,
-    REFERRER_POLICY_ORIGIN,
-    REFERRER_POLICY_CLEAR_REFERRER_ON_TRANSITION_CROSS_ORIGIN,
-    REFERRER_POLICY_ORIGIN_CLEAR_ON_TRANSITION_FROM_SECURE_TO_INSECURE,
-    REFERRER_POLICY_NO_REFERRER,
-    REFERRER_POLICY_NUM_VALUES,
+    ClearReferrerOnTransitionFromSecureToInsecure,
+    Default = ClearReferrerOnTransitionFromSecureToInsecure,
+    ReduceReferrerGranularityOnTransitionCrossOrigin,
+    OriginOnlyOnTransitionCrossOrigin,
+    NeverClearReferrer,
+    Origin,
+    ClearReferrerOnTransitionCrossOrigin,
+    OriginClearOnTransitionFromSecureToInsecure,
+    NoReferrer,
+    NumValues,
 }

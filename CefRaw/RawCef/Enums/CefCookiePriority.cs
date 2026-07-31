@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefCookiePriority : int
 {
-    CEF_COOKIE_PRIORITY_LOW = -1,
-    CEF_COOKIE_PRIORITY_MEDIUM = 0,
-    CEF_COOKIE_PRIORITY_HIGH = 1,
+    Low = -1,
+    Medium = 0,
+    High = 1,
 }

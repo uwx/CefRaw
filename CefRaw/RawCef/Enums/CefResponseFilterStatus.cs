@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefResponseFilterStatus : int
 {
-    RESPONSE_FILTER_NEED_MORE_DATA,
-    RESPONSE_FILTER_DONE,
-    RESPONSE_FILTER_ERROR,
+    NeedMoreData,
+    Done,
+    Error,
 }

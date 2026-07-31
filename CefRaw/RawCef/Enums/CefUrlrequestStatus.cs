@@ -8,10 +8,10 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefUrlrequestStatus : int
 {
-    UR_UNKNOWN,
-    UR_SUCCESS,
-    UR_IO_PENDING,
-    UR_CANCELED,
-    UR_FAILED,
-    UR_NUM_VALUES,
+    Unknown,
+    Success,
+    IoPending,
+    Canceled,
+    Failed,
+    NumValues,
 }

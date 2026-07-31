@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefButtonState : int
 {
-    CEF_BUTTON_STATE_NORMAL,
-    CEF_BUTTON_STATE_HOVERED,
-    CEF_BUTTON_STATE_PRESSED,
-    CEF_BUTTON_STATE_DISABLED,
-    CEF_BUTTON_STATE_NUM_VALUES,
+    Normal,
+    Hovered,
+    Pressed,
+    Disabled,
+    NumValues,
 }

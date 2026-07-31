@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefQuickMenuEditStateFlags : int
 {
-    QM_EDITFLAG_NONE = 0,
-    QM_EDITFLAG_CAN_ELLIPSIS = 1 << 0,
-    QM_EDITFLAG_CAN_CUT = 1 << 1,
-    QM_EDITFLAG_CAN_COPY = 1 << 2,
-    QM_EDITFLAG_CAN_PASTE = 1 << 3,
+    None = 0,
+    CanEllipsis = 1 << 0,
+    CanCut = 1 << 1,
+    CanCopy = 1 << 2,
+    CanPaste = 1 << 3,
 }

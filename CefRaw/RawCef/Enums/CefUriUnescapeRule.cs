@@ -8,10 +8,10 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefUriUnescapeRule : int
 {
-    UU_NONE = 0,
-    UU_NORMAL = 1 << 0,
-    UU_SPACES = 1 << 1,
-    UU_PATH_SEPARATORS = 1 << 2,
-    UU_URL_SPECIAL_CHARS_EXCEPT_PATH_SEPARATORS = 1 << 3,
-    UU_REPLACE_PLUS_WITH_SPACE = 1 << 4,
+    None = 0,
+    Normal = 1 << 0,
+    Spaces = 1 << 1,
+    PathSeparators = 1 << 2,
+    UrlSpecialCharsExceptPathSeparators = 1 << 3,
+    ReplacePlusWithSpace = 1 << 4,
 }

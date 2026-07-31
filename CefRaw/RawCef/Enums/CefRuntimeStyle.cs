@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefRuntimeStyle : int
 {
-    CEF_RUNTIME_STYLE_DEFAULT,
-    CEF_RUNTIME_STYLE_CHROME,
-    CEF_RUNTIME_STYLE_ALLOY,
+    Default,
+    Chrome,
+    Alloy,
 }

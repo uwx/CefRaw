@@ -8,9 +8,9 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefDuplexMode : int
 {
-    DUPLEX_MODE_UNKNOWN = -1,
-    DUPLEX_MODE_SIMPLEX,
-    DUPLEX_MODE_LONG_EDGE,
-    DUPLEX_MODE_SHORT_EDGE,
-    DUPLEX_MODE_NUM_VALUES,
+    Unknown = -1,
+    Simplex,
+    LongEdge,
+    ShortEdge,
+    NumValues,
 }

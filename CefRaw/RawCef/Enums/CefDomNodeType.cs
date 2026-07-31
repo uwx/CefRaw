@@ -8,15 +8,15 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefDomNodeType : int
 {
-    DOM_NODE_TYPE_UNSUPPORTED,
-    DOM_NODE_TYPE_ELEMENT,
-    DOM_NODE_TYPE_ATTRIBUTE,
-    DOM_NODE_TYPE_TEXT,
-    DOM_NODE_TYPE_CDATA_SECTION,
-    DOM_NODE_TYPE_PROCESSING_INSTRUCTIONS,
-    DOM_NODE_TYPE_COMMENT,
-    DOM_NODE_TYPE_DOCUMENT,
-    DOM_NODE_TYPE_DOCUMENT_TYPE,
-    DOM_NODE_TYPE_DOCUMENT_FRAGMENT,
-    DOM_NODE_TYPE_NUM_VALUES,
+    Unsupported,
+    Element,
+    Attribute,
+    Text,
+    CdataSection,
+    ProcessingInstructions,
+    Comment,
+    Document,
+    DocumentType,
+    DocumentFragment,
+    NumValues,
 }

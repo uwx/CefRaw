@@ -8,8 +8,8 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefTouchEventType : int
 {
-    CEF_TET_RELEASED = 0,
-    CEF_TET_PRESSED,
-    CEF_TET_MOVED,
-    CEF_TET_CANCELLED,
+    Released = 0,
+    Pressed,
+    Moved,
+    Cancelled,
 }

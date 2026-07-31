@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefComInitMode : int
 {
-    COM_INIT_MODE_NONE,
-    COM_INIT_MODE_STA,
-    COM_INIT_MODE_MTA,
+    None,
+    Sta,
+    Mta,
 }

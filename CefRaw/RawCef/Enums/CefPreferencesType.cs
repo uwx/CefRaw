@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefPreferencesType : int
 {
-    CEF_PREFERENCES_TYPE_GLOBAL,
-    CEF_PREFERENCES_TYPE_REQUEST_CONTEXT,
-    CEF_PREFERENCES_TYPE_NUM_VALUES,
+    Global,
+    RequestContext,
+    NumValues,
 }

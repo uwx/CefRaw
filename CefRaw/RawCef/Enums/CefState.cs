@@ -8,7 +8,7 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefState : int
 {
-    STATE_DEFAULT = 0,
-    STATE_ENABLED,
-    STATE_DISABLED,
+    Default = 0,
+    Enabled,
+    Disabled,
 }

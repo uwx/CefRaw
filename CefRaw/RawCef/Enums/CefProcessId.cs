@@ -8,6 +8,6 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefProcessId : int
 {
-    PID_BROWSER,
-    PID_RENDERER,
+    Browser,
+    Renderer,
 }

@@ -8,12 +8,12 @@ namespace RawCef.Native;
 /// </summary>
 public enum CefThreadId : int
 {
-    TID_UI,
-    TID_FILE_BACKGROUND,
-    TID_FILE_USER_VISIBLE,
-    TID_FILE_USER_BLOCKING,
-    TID_PROCESS_LAUNCHER,
-    TID_IO,
-    TID_RENDERER,
-    TID_NUM_VALUES,
+    Ui,
+    FileBackground,
+    FileUserVisible,
+    FileUserBlocking,
+    ProcessLauncher,
+    Io,
+    Renderer,
+    NumValues,
 }
