@@ -4,21 +4,22 @@ using RawCef.Native;
 namespace RawCef.Tests;
 
 /// <summary>
-/// Tests for basic CEF utility types: <see cref="CefString"/>, <see cref="CefStringRef"/>,
-/// string-list/map wrappers, and the <see cref="Cef"/> lifecycle guard.
+/// Tests for basic CEF utility types that do NOT allocate through CEF's
+/// PartitionAlloc. These tests are safe to run without <c>cef_initialize</c>.
 ///
-/// These tests require the CEF native library (libcef.dll) to be present in the
-/// output directory. The <see cref="RawCef.Binaries.Win64.Debug"/> project reference
-/// ensures the DLLs are copied.
+/// Tests that require CEF allocation (e.g. <see cref="CefStringListRef"/>,
+/// <see cref="CefStringMapRef"/>, <see cref="CefStringMultimapRef"/>,
+/// <see cref="CefString"/> setter with copy, <see cref="CefStringRef.AllocUserfree"/>,
+/// and <see cref="Cef"/> lifecycle calls) live in
+/// <see cref="CefIntegrationTests"/> which has a proper CEF initialization fixture.
 /// </summary>
 public unsafe class BasicCefFunctionalityTests
 {
-    // ── CefString ─────────────────────────────────────────────────────
+    // ── CefString (read-only, no native allocation) ──────────────────
 
     [Fact]
     public void CefString_ConstructedWithNonNullPtr_HasEmptyDefault()
     {
-        // Allocate a stack CEF string and wrap it.
         _cef_string_utf16_t nativeStr = default;
         var cefStr = new CefString(&nativeStr);
 
@@ -27,29 +28,16 @@ public unsafe class BasicCefFunctionalityTests
     }
 
     [Fact]
-    public void CefString_SetAndGet_RoundTrips()
+    public void CefString_ConstructedWithNullStrField_ReturnsEmpty()
     {
+        // Zeroed struct has str=null, length=0.
         _cef_string_utf16_t nativeStr = default;
         var cefStr = new CefString(&nativeStr);
-
-        cefStr.Value = "hello";
-
-        Assert.Equal("hello", cefStr.Value);
-    }
-
-    [Fact]
-    public void CefString_SetToNull_ReturnsEmpty()
-    {
-        _cef_string_utf16_t nativeStr = default;
-        var cefStr = new CefString(&nativeStr);
-
-        cefStr.Value = "test";
-        cefStr.Value = null;
 
         Assert.Equal(string.Empty, cefStr.Value);
     }
 
-    // ── CefStringRef ─────────────────────────────────────────────────
+    // ── CefStringRef.ToString (pure managed read, no allocation) ─────
 
     [Fact]
     public void CefStringRef_ToString_WithNullPtr_ReturnsNull()
@@ -71,6 +59,8 @@ public unsafe class BasicCefFunctionalityTests
         _cef_string_utf16_t* result = CefStringRef.AllocUserfree(null);
         Assert.True(result == null);
     }
+
+    // ── CefStringRef.FillFromPinned (copy=0, no allocation) ──────────
 
     [Fact]
     public void CefStringRef_FillFromPinned_RoundTrips()
@@ -103,18 +93,43 @@ public unsafe class BasicCefFunctionalityTests
     }
 
     [Fact]
-    public void CefStringRef_AllocUserfree_RoundTrips()
+    public void CefStringRef_FillFromPinned_ThenOverwrite_RoundTrips()
     {
-        string input = "alloc test";
+        _cef_string_utf16_t nativeStr = default;
 
-        _cef_string_utf16_t* userfree = CefStringRef.AllocUserfree(input);
-        Assert.True(userfree != null);
+        // Fill once
+        string first = "first";
+        fixed (char* p = first)
+        {
+            CefStringRef.FillFromPinned(&nativeStr, p, first.Length);
+        }
+        Assert.Equal("first", CefStringRef.ToString(&nativeStr));
 
-        string? result = CefStringRef.ToStringAndFree(userfree);
+        // Overwrite with different string
+        string second = "second value";
+        fixed (char* p = second)
+        {
+            CefStringRef.FillFromPinned(&nativeStr, p, second.Length);
+        }
+        Assert.Equal("second value", CefStringRef.ToString(&nativeStr));
+    }
+
+    [Fact]
+    public void CefStringRef_FillFromPinned_Unicode_RoundTrips()
+    {
+        _cef_string_utf16_t nativeStr = default;
+        string input = "こんにちは 🌍";
+
+        fixed (char* p = input)
+        {
+            CefStringRef.FillFromPinned(&nativeStr, p, input.Length);
+        }
+
+        string? result = CefStringRef.ToString(&nativeStr);
         Assert.Equal(input, result);
     }
 
-    // ── Cef lifecycle ────────────────────────────────────────────────
+    // ── Cef.IsShutdown (pure managed flag) ───────────────────────────
 
     [Fact]
     public void Cef_Initially_IsNotShutdown()
@@ -122,139 +137,14 @@ public unsafe class BasicCefFunctionalityTests
         Assert.False(Cef.IsShutdown);
     }
 
-    [Fact]
-    public void Cef_InitializeLibrary_ResetsShutdownFlag()
-    {
-        // Simulate a prior shutdown by calling Shutdown first
-        // (in a test-only context, this is safe because no native CEF is loaded).
-        Cef.Shutdown();
-        Assert.True(Cef.IsShutdown);
-
-        Cef.InitializeLibrary();
-        Assert.False(Cef.IsShutdown);
-    }
+    // ── CefStringRef.ToString with zeroed struct ─────────────────────
 
     [Fact]
-    public void Cef_Shutdown_SetsFlag()
+    public void CefStringRef_ToString_WithZeroedStruct_ReturnsEmpty()
     {
-        // Ensure we're in a known state
-        Cef.InitializeLibrary();
-        Assert.False(Cef.IsShutdown);
+        _cef_string_utf16_t nativeStr = default;
 
-        Cef.Shutdown();
-        Assert.True(Cef.IsShutdown);
-
-        // Reset for other tests
-        Cef.InitializeLibrary();
-    }
-
-    // ── CefStringListRef ─────────────────────────────────────────────
-
-    [Fact]
-    public void CefStringListRef_NewList_IsEmpty()
-    {
-        using var list = new CefStringListRef();
-        Assert.Equal(0, list.Count);
-    }
-
-    [Fact]
-    public void CefStringListRef_AppendAndGet_RoundTrips()
-    {
-        using var list = new CefStringListRef();
-        list.Append("item1");
-        list.Append("item2");
-
-        Assert.Equal(2, list.Count);
-        Assert.Equal("item1", list.GetValue(0));
-        Assert.Equal("item2", list.GetValue(1));
-    }
-
-    [Fact]
-    public void CefStringListRef_Clear_EmptiesList()
-    {
-        using var list = new CefStringListRef();
-        list.Append("a");
-        list.Append("b");
-        list.Clear();
-
-        Assert.Equal(0, list.Count);
-    }
-
-    [Fact]
-    public void CefStringListRef_DoubleDispose_IsSafe()
-    {
-        var list = new CefStringListRef();
-        list.Dispose();
-        list.Dispose(); // should not throw
-    }
-
-    // ── CefStringMapRef ──────────────────────────────────────────────
-
-    [Fact]
-    public void CefStringMapRef_NewMap_IsEmpty()
-    {
-        using var map = new CefStringMapRef();
-        Assert.Equal(0, map.Count);
-    }
-
-    [Fact]
-    public void CefStringMapRef_AppendAndFind_RoundTrips()
-    {
-        using var map = new CefStringMapRef();
-        map.Append("key1", "value1");
-        map.Append("key2", "value2");
-
-        Assert.Equal(2, map.Count);
-        Assert.Equal("value1", map.Find("key1"));
-        Assert.Equal("value2", map.Find("key2"));
-    }
-
-    [Fact]
-    public void CefStringMapRef_Clear_EmptiesMap()
-    {
-        using var map = new CefStringMapRef();
-        map.Append("k", "v");
-        map.Clear();
-
-        Assert.Equal(0, map.Count);
-    }
-
-    [Fact]
-    public void CefStringMapRef_DoubleDispose_IsSafe()
-    {
-        var map = new CefStringMapRef();
-        map.Dispose();
-        map.Dispose();
-    }
-
-    // ── CefStringMultimapRef ─────────────────────────────────────────
-
-    [Fact]
-    public void CefStringMultimapRef_NewMap_IsEmpty()
-    {
-        using var map = new CefStringMultimapRef();
-        Assert.Equal(0, map.Count);
-    }
-
-    [Fact]
-    public void CefStringMultimapRef_AppendAndEnumerate_RoundTrips()
-    {
-        using var map = new CefStringMultimapRef();
-        map.Append("key1", "value1a");
-        map.Append("key1", "value1b");
-
-        Assert.Equal(2, map.Count);
-        Assert.Equal(2, map.FindCount("key1"));
-
-        Assert.Equal("value1a", map.Enumerate("key1", 0));
-        Assert.Equal("value1b", map.Enumerate("key1", 1));
-    }
-
-    [Fact]
-    public void CefStringMultimapRef_DoubleDispose_IsSafe()
-    {
-        var map = new CefStringMultimapRef();
-        map.Dispose();
-        map.Dispose();
+        string? result = CefStringRef.ToString(&nativeStr);
+        Assert.Equal(string.Empty, result);
     }
 }
