@@ -53,10 +53,10 @@ public unsafe class SimpleBrowserProcessHandler : CefBrowserProcessHandler
 
         var wi = (ICefWindowInfo)windowInfo;
         wi.Style = WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS | WS_VISIBLE;
-        windowInfo.Bounds = new _cef_rect_t { x = CW_USEDEFAULT, y = CW_USEDEFAULT, width = CW_USEDEFAULT, height = CW_USEDEFAULT };
+        windowInfo.Bounds = new CefRect { X = CW_USEDEFAULT, Y = CW_USEDEFAULT, Width = CW_USEDEFAULT, Height = CW_USEDEFAULT };
         windowInfo.WindowName = "cefsimple_capi";
 #elif OS_LINUX
-        windowInfo.Bounds = new _cef_rect_t { x = 0, y = 0, width = 800, height = 600 };
+        windowInfo.Bounds = new CefRect { X = 0, Y = 0, Width = 800, Height = 600 };
 #endif
 
         // Use default runtime style (Chrome by default).

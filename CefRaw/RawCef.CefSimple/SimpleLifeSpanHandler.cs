@@ -88,7 +88,7 @@ public unsafe class SimpleLifeSpanHandler : CefLifeSpanHandler
     // ── Remaining life-span handler overrides ──────────────────
 
     public override int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4,
-        CefWindowOpenDisposition arg5, int arg6, ICefPopupFeatures? arg7, ICefWindowInfo? arg8,
+        CefWindowOpenDisposition arg5, int arg6, ref CefPopupFeatures arg7, ICefWindowInfo? arg8,
         out ICefClient? arg9, ICefBrowserSettings? arg10, out ICefDictionaryValue? arg11, int* arg12)
     {
         arg9 = null;

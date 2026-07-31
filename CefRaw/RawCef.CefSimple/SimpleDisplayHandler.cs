@@ -65,10 +65,10 @@ public unsafe class SimpleDisplayHandler : CefDisplayHandler
     public override int OnTooltip(ICefBrowser? arg0, out string? arg1) { arg1 = null; return 0; }
     public override void OnStatusMessage(ICefBrowser? arg0, string? arg1) { }
     public override int OnConsoleMessage(ICefBrowser? arg0, CefLogSeverity arg1, string? arg2, string? arg3, int arg4) => 0;
-    public override int OnAutoResize(ICefBrowser? arg0, ICefSize? arg1) => 0;
+    public override int OnAutoResize(ICefBrowser? arg0, ref CefSize arg1) => 0;
     public override void OnLoadingProgressChange(ICefBrowser? arg0, double arg1) { }
-    public override int OnCursorChange(ICefBrowser? arg0, void* arg1, CefCursorType arg2, ICefCursorInfo? arg3) => 0;
+    public override int OnCursorChange(ICefBrowser? arg0, void* arg1, CefCursorType arg2, ref CefCursorInfo arg3) => 0;
     public override void OnMediaAccessChange(ICefBrowser? arg0, int arg1, int arg2) { }
-    public override int OnContentsBoundsChange(ICefBrowser? arg0, ICefRect? arg1) => 0;
-    public override int GetRootWindowScreenRect(ICefBrowser? arg0, ICefRect? arg1) => 0;
+    public override int OnContentsBoundsChange(ICefBrowser? arg0, ref CefRect arg1) => 0;
+    public override int GetRootWindowScreenRect(ICefBrowser? arg0, ref CefRect arg1) => 0;
 }

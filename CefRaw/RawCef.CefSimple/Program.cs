@@ -71,7 +71,7 @@ public static unsafe class Program
         var cefDir = AppContext.BaseDirectory;
         settings.ResourcesDirPath = cefDir;
         settings.LocalesDirPath = Path.Combine(cefDir, "locales");
-        settings.LogSeverity = CefLogSeverity.LOGSEVERITY_VERBOSE;
+        settings.LogSeverity = CefLogSeverity.Verbose;
         settings.LogFile = Path.Combine(cefDir, "cef_debug.log");
 
         if (!Cef.Initialize(app, settings))

@@ -25,7 +25,7 @@ public unsafe class SimpleLoadHandler : CefLoadHandler
         CefErrorcode errorCode, string? errorText, string? failedUrl)
     {
         // Only show error page in Alloy style, and don't show for ABORTED.
-        if (!_parent.IsAlloyStyle || errorCode == CefErrorcode.ERR_ABORTED)
+        if (!_parent.IsAlloyStyle || errorCode == CefErrorcode.Aborted)
             return;
 
         if (frame is null)
