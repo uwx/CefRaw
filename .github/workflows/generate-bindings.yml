@@ -266,7 +266,10 @@ jobs:
 
       - name: Build
         shell: pwsh
-        run: dotnet build CefRaw/CefRaw.sln --configuration Release
+        run: |
+          dotnet build CefRaw/RawCef/RawCef.Windows.csproj --configuration Release
+          dotnet build CefRaw/RawCef/RawCef.Mac.csproj --configuration Release
+          dotnet build CefRaw/RawCef/RawCef.Linux.csproj --configuration Release
 
       - name: Pack RawCef NuGet packages
         shell: pwsh
