@@ -69,9 +69,11 @@ jobs:
           Write-Host "Latest ${{ matrix.platform }} build: $($build.Name)"
           Write-Host "CEF version: $($build.CefVersion)"
 
-          # Export for subsequent steps
+          # Export for subsequent steps — append datetime revision so we can
+          # re-publish a fixed package without NuGet rejecting the version.
+          $revision = (Get-Date -Format 'yyyyMMddHHmmss')
           "BUILD_FILE=$($build.Name)" | Out-File -FilePath $env:GITHUB_ENV -Append
-          "CEF_VERSION=$($build.CefVersion)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "CEF_VERSION=$($build.CefVersion).$revision" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: Download and extract CEF build
         shell: pwsh

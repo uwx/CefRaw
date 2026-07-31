@@ -51,7 +51,11 @@ jobs:
             "BUILD_FILE_$p=$($build.Name)" | Out-File -FilePath $env:GITHUB_ENV -Append
             if (-not $cefVersion) { $cefVersion = $build.CefVersion }
           }
-          "CEF_VERSION=$cefVersion" | Out-File -FilePath $env:GITHUB_ENV -Append
+          # Export for subsequent steps — append datetime revision so we can
+          # re-publish a fixed package without NuGet rejecting the version.
+          $revision = (Get-Date -Format 'yyyyMMddHHmmss')
+          "CEF_VERSION=$cefVersion.$revision" | Out-File -FilePath $env:GITHUB_ENV -Append
+          Write-Host "CEF version for commit: $cefVersion"
 
       - name: Create merged include directory
         shell: pwsh
