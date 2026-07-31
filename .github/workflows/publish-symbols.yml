@@ -139,6 +139,14 @@ jobs:
             Write-Host "Package: $($_.Name) ($([math]::Round($_.Length / 1MB, 2)) MB)"
           }
 
+      - name: Upload symbol package artifact
+        if: env.SKIP != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.platform }}-symbols
+          path: ${{ env.NUPKG_DIR }}/*.nupkg
+          retention-days: 7
+
       - name: NuGet login (OIDC → temp API key)
         if: env.SKIP != 'true'
         id: login
