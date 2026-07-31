@@ -299,6 +299,6 @@ public static unsafe class CefV8
         var utc = dateTime.ToUniversalTime();
         var ticks = (utc - BasetimeEpoch).Ticks;
         // CEF basetime is microseconds; .NET ticks are 100-nanoseconds
-        return new _cef_basetime_t { val = ticks / 10 };
+        return new _cef_basetime_t { Val = ticks / 10 };
     }
 }

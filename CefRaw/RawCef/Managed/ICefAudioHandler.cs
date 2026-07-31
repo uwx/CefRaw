@@ -13,9 +13,9 @@ public unsafe partial interface ICefAudioHandler : ICefBaseRefCounted
 {
     new _cef_audio_handler_t* NativePtr { get; }
 
-    public int GetAudioParameters(ICefBrowser? arg0, ICefAudioParameters? arg1);
+    public int GetAudioParameters(ICefBrowser? arg0, ref CefAudioParameters arg1);
 
-    public void OnAudioStreamStarted(ICefBrowser? arg0, ICefAudioParameters? arg1, int arg2);
+    public void OnAudioStreamStarted(ICefBrowser? arg0, ref CefAudioParameters arg1, int arg2);
 
     public void OnAudioStreamPacket(ICefBrowser? arg0, float** arg1, int arg2, long arg3);
 
@@ -39,9 +39,9 @@ public unsafe partial interface ICefAudioHandler : ICefBaseRefCounted
 {
     new _cef_audio_handler_t* NativePtr { get; }
 
-    public int GetAudioParameters(ICefBrowser? arg0, ICefAudioParameters? arg1);
+    public int GetAudioParameters(ICefBrowser? arg0, ref CefAudioParameters arg1);
 
-    public void OnAudioStreamStarted(ICefBrowser? arg0, ICefAudioParameters? arg1, int arg2);
+    public void OnAudioStreamStarted(ICefBrowser? arg0, ref CefAudioParameters arg1, int arg2);
 
     public void OnAudioStreamPacket(ICefBrowser? arg0, float** arg1, int arg2, long arg3);
 
@@ -65,9 +65,9 @@ public unsafe partial interface ICefAudioHandler : ICefBaseRefCounted
 {
     new _cef_audio_handler_t* NativePtr { get; }
 
-    public int GetAudioParameters(ICefBrowser? arg0, ICefAudioParameters? arg1);
+    public int GetAudioParameters(ICefBrowser? arg0, ref CefAudioParameters arg1);
 
-    public void OnAudioStreamStarted(ICefBrowser? arg0, ICefAudioParameters? arg1, int arg2);
+    public void OnAudioStreamStarted(ICefBrowser? arg0, ref CefAudioParameters arg1, int arg2);
 
     public void OnAudioStreamPacket(ICefBrowser? arg0, float** arg1, int arg2, long arg3);
 

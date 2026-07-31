@@ -21,7 +21,7 @@ public unsafe partial interface ICefContextMenuHandler : ICefBaseRefCounted
 
     public void OnContextMenuDismissed(ICefBrowser? arg0, ICefFrame? arg1);
 
-    public int RunQuickMenu(ICefBrowser? arg0, ICefFrame? arg1, ICefPoint? arg2, ICefSize? arg3, cef_quick_menu_edit_state_flags_t arg4, ICefRunQuickMenuCallback? arg5);
+    public int RunQuickMenu(ICefBrowser? arg0, ICefFrame? arg1, ref CefPoint arg2, ref CefSize arg3, cef_quick_menu_edit_state_flags_t arg4, ICefRunQuickMenuCallback? arg5);
 
     public int OnQuickMenuCommand(ICefBrowser? arg0, ICefFrame? arg1, int arg2, cef_event_flags_t arg3);
 
@@ -51,7 +51,7 @@ public unsafe partial interface ICefContextMenuHandler : ICefBaseRefCounted
 
     public void OnContextMenuDismissed(ICefBrowser? arg0, ICefFrame? arg1);
 
-    public int RunQuickMenu(ICefBrowser? arg0, ICefFrame? arg1, ICefPoint? arg2, ICefSize? arg3, cef_quick_menu_edit_state_flags_t arg4, ICefRunQuickMenuCallback? arg5);
+    public int RunQuickMenu(ICefBrowser? arg0, ICefFrame? arg1, ref CefPoint arg2, ref CefSize arg3, cef_quick_menu_edit_state_flags_t arg4, ICefRunQuickMenuCallback? arg5);
 
     public int OnQuickMenuCommand(ICefBrowser? arg0, ICefFrame? arg1, int arg2, cef_event_flags_t arg3);
 
@@ -81,7 +81,7 @@ public unsafe partial interface ICefContextMenuHandler : ICefBaseRefCounted
 
     public void OnContextMenuDismissed(ICefBrowser? arg0, ICefFrame? arg1);
 
-    public int RunQuickMenu(ICefBrowser? arg0, ICefFrame? arg1, ICefPoint? arg2, ICefSize? arg3, cef_quick_menu_edit_state_flags_t arg4, ICefRunQuickMenuCallback? arg5);
+    public int RunQuickMenu(ICefBrowser? arg0, ICefFrame? arg1, ref CefPoint arg2, ref CefSize arg3, cef_quick_menu_edit_state_flags_t arg4, ICefRunQuickMenuCallback? arg5);
 
     public int OnQuickMenuCommand(ICefBrowser? arg0, ICefFrame? arg1, int arg2, cef_event_flags_t arg3);
 

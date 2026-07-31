@@ -40,7 +40,7 @@ public unsafe abstract partial class CefFindHandler : CefBaseRefCounted, ICefFin
     /// <summary>
     /// Implement the <c>on_find_result</c> callback.
     /// </summary>
-    public abstract void OnFindResult(ICefBrowser? arg0, int arg1, int arg2, ICefRect? arg3, int arg4, int arg5);
+    public abstract void OnFindResult(ICefBrowser? arg0, int arg1, int arg2, ref CefRect arg3, int arg4, int arg5);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -56,10 +56,10 @@ public unsafe abstract partial class CefFindHandler : CefBaseRefCounted, ICefFin
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
+            var _pd3 = *arg3;
             var _a4 = arg4;
             var _a5 = arg5;
-            _m.OnFindResult(_a0, _a1, _a2, _a3, _a4, _a5);
+            _m.OnFindResult(_a0, _a1, _a2, ref _pd3, _a4, _a5);
         }
         catch (Exception ex)
         {
@@ -111,7 +111,7 @@ public unsafe abstract partial class CefFindHandler : CefBaseRefCounted, ICefFin
     /// <summary>
     /// Implement the <c>on_find_result</c> callback.
     /// </summary>
-    public abstract void OnFindResult(ICefBrowser? arg0, int arg1, int arg2, ICefRect? arg3, int arg4, int arg5);
+    public abstract void OnFindResult(ICefBrowser? arg0, int arg1, int arg2, ref CefRect arg3, int arg4, int arg5);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -127,10 +127,10 @@ public unsafe abstract partial class CefFindHandler : CefBaseRefCounted, ICefFin
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
+            var _pd3 = *arg3;
             var _a4 = arg4;
             var _a5 = arg5;
-            _m.OnFindResult(_a0, _a1, _a2, _a3, _a4, _a5);
+            _m.OnFindResult(_a0, _a1, _a2, ref _pd3, _a4, _a5);
         }
         catch (Exception ex)
         {
@@ -182,7 +182,7 @@ public unsafe abstract partial class CefFindHandler : CefBaseRefCounted, ICefFin
     /// <summary>
     /// Implement the <c>on_find_result</c> callback.
     /// </summary>
-    public abstract void OnFindResult(ICefBrowser? arg0, int arg1, int arg2, ICefRect? arg3, int arg4, int arg5);
+    public abstract void OnFindResult(ICefBrowser? arg0, int arg1, int arg2, ref CefRect arg3, int arg4, int arg5);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -198,10 +198,10 @@ public unsafe abstract partial class CefFindHandler : CefBaseRefCounted, ICefFin
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
+            var _pd3 = *arg3;
             var _a4 = arg4;
             var _a5 = arg5;
-            _m.OnFindResult(_a0, _a1, _a2, _a3, _a4, _a5);
+            _m.OnFindResult(_a0, _a1, _a2, ref _pd3, _a4, _a5);
         }
         catch (Exception ex)
         {

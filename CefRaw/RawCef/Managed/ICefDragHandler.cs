@@ -15,7 +15,7 @@ public unsafe partial interface ICefDragHandler : ICefBaseRefCounted
 
     public int OnDragEnter(ICefBrowser? arg0, ICefDragData? arg1, cef_drag_operations_mask_t arg2);
 
-    public void OnDraggableRegionsChanged(ICefBrowser? arg0, ICefFrame? arg1, nuint arg2, ICefDraggableRegion? arg3);
+    public void OnDraggableRegionsChanged(ICefBrowser? arg0, ICefFrame? arg1, nuint arg2, ref CefDraggableRegion arg3);
 }
 #endif
 #if OS_MAC
@@ -35,7 +35,7 @@ public unsafe partial interface ICefDragHandler : ICefBaseRefCounted
 
     public int OnDragEnter(ICefBrowser? arg0, ICefDragData? arg1, cef_drag_operations_mask_t arg2);
 
-    public void OnDraggableRegionsChanged(ICefBrowser? arg0, ICefFrame? arg1, nuint arg2, ICefDraggableRegion? arg3);
+    public void OnDraggableRegionsChanged(ICefBrowser? arg0, ICefFrame? arg1, nuint arg2, ref CefDraggableRegion arg3);
 }
 #endif
 #if OS_LINUX
@@ -55,6 +55,6 @@ public unsafe partial interface ICefDragHandler : ICefBaseRefCounted
 
     public int OnDragEnter(ICefBrowser? arg0, ICefDragData? arg1, cef_drag_operations_mask_t arg2);
 
-    public void OnDraggableRegionsChanged(ICefBrowser? arg0, ICefFrame? arg1, nuint arg2, ICefDraggableRegion? arg3);
+    public void OnDraggableRegionsChanged(ICefBrowser? arg0, ICefFrame? arg1, nuint arg2, ref CefDraggableRegion arg3);
 }
 #endif

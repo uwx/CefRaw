@@ -21,7 +21,7 @@ public unsafe partial interface ICefPrintSettings : ICefBaseRefCounted
 
     public int IsLandscape();
 
-    public void SetPrinterPrintableArea(ICefSize? arg0, ICefRect? arg1, int arg2);
+    public void SetPrinterPrintableArea(ref CefSize arg0, ref CefRect arg1, int arg2);
 
     public void SetDeviceName(string? arg0);
 
@@ -31,11 +31,11 @@ public unsafe partial interface ICefPrintSettings : ICefBaseRefCounted
 
     public int GetDpi();
 
-    public void SetPageRanges(nuint arg0, ICefRange? arg1);
+    public void SetPageRanges(nuint arg0, ref CefRange arg1);
 
     public nuint GetPageRangesCount();
 
-    public void GetPageRanges(nuint* arg0, ICefRange? arg1);
+    public void GetPageRanges(nuint* arg0, ref CefRange arg1);
 
     public void SetSelectionOnly(int arg0);
 
@@ -81,7 +81,7 @@ public unsafe partial interface ICefPrintSettings : ICefBaseRefCounted
 
     public int IsLandscape();
 
-    public void SetPrinterPrintableArea(ICefSize? arg0, ICefRect? arg1, int arg2);
+    public void SetPrinterPrintableArea(ref CefSize arg0, ref CefRect arg1, int arg2);
 
     public void SetDeviceName(string? arg0);
 
@@ -91,11 +91,11 @@ public unsafe partial interface ICefPrintSettings : ICefBaseRefCounted
 
     public int GetDpi();
 
-    public void SetPageRanges(nuint arg0, ICefRange? arg1);
+    public void SetPageRanges(nuint arg0, ref CefRange arg1);
 
     public nuint GetPageRangesCount();
 
-    public void GetPageRanges(nuint* arg0, ICefRange? arg1);
+    public void GetPageRanges(nuint* arg0, ref CefRange arg1);
 
     public void SetSelectionOnly(int arg0);
 
@@ -141,7 +141,7 @@ public unsafe partial interface ICefPrintSettings : ICefBaseRefCounted
 
     public int IsLandscape();
 
-    public void SetPrinterPrintableArea(ICefSize? arg0, ICefRect? arg1, int arg2);
+    public void SetPrinterPrintableArea(ref CefSize arg0, ref CefRect arg1, int arg2);
 
     public void SetDeviceName(string? arg0);
 
@@ -151,11 +151,11 @@ public unsafe partial interface ICefPrintSettings : ICefBaseRefCounted
 
     public int GetDpi();
 
-    public void SetPageRanges(nuint arg0, ICefRange? arg1);
+    public void SetPageRanges(nuint arg0, ref CefRange arg1);
 
     public nuint GetPageRangesCount();
 
-    public void GetPageRanges(nuint* arg0, ICefRange? arg1);
+    public void GetPageRanges(nuint* arg0, ref CefRange arg1);
 
     public void SetSelectionOnly(int arg0);
 

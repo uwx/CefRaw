@@ -173,17 +173,17 @@ public static unsafe partial class Cef
     {
         _cef_main_args_t args = default;
 #if OS_WIN
-        args.instance = GetModuleHandle(null);
+        args.Instance = GetModuleHandle(null);
 #else
         // LEAKS UNMANAGED MEMORY !!!!!
         var managedArgs = Environment.GetCommandLineArgs();
-        args.argc = managedArgs.Length;
-        args.argv = (sbyte**)Marshal.AllocHGlobal(sizeof(sbyte*) * managedArgs.Length);
+        args.Argc = managedArgs.Length;
+        args.Argv = (sbyte**)Marshal.AllocHGlobal(sizeof(sbyte*) * managedArgs.Length);
         for (var i = 0; i < managedArgs.Length; i++)
         {
             var utf8 = Encoding.UTF8.GetBytes(managedArgs[i]);
-            args.argv[i] = (sbyte*)Marshal.AllocHGlobal(utf8.Length);
-            utf8.CopyTo(new Span<byte>(args.argv[i], utf8.Length));
+            args.Argv[i] = (sbyte*)Marshal.AllocHGlobal(utf8.Length);
+            utf8.CopyTo(new Span<byte>(args.Argv[i], utf8.Length));
         }
 #endif
         return args;

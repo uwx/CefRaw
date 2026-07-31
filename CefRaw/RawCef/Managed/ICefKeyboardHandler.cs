@@ -13,9 +13,9 @@ public unsafe partial interface ICefKeyboardHandler : ICefBaseRefCounted
 {
     new _cef_keyboard_handler_t* NativePtr { get; }
 
-    public int OnPreKeyEvent(ICefBrowser? arg0, ICefKeyEvent? arg1, tagMSG* arg2, int* arg3);
+    public int OnPreKeyEvent(ICefBrowser? arg0, ref CefKeyEvent arg1, tagMSG* arg2, int* arg3);
 
-    public int OnKeyEvent(ICefBrowser? arg0, ICefKeyEvent? arg1, tagMSG* arg2);
+    public int OnKeyEvent(ICefBrowser? arg0, ref CefKeyEvent arg1, tagMSG* arg2);
 }
 #endif
 #if OS_MAC
@@ -33,9 +33,9 @@ public unsafe partial interface ICefKeyboardHandler : ICefBaseRefCounted
 {
     new _cef_keyboard_handler_t* NativePtr { get; }
 
-    public int OnPreKeyEvent(ICefBrowser? arg0, ICefKeyEvent? arg1, void* arg2, int* arg3);
+    public int OnPreKeyEvent(ICefBrowser? arg0, ref CefKeyEvent arg1, void* arg2, int* arg3);
 
-    public int OnKeyEvent(ICefBrowser? arg0, ICefKeyEvent? arg1, void* arg2);
+    public int OnKeyEvent(ICefBrowser? arg0, ref CefKeyEvent arg1, void* arg2);
 }
 #endif
 #if OS_LINUX
@@ -53,8 +53,8 @@ public unsafe partial interface ICefKeyboardHandler : ICefBaseRefCounted
 {
     new _cef_keyboard_handler_t* NativePtr { get; }
 
-    public int OnPreKeyEvent(ICefBrowser? arg0, ICefKeyEvent? arg1, void* arg2, int* arg3);
+    public int OnPreKeyEvent(ICefBrowser? arg0, ref CefKeyEvent arg1, void* arg2, int* arg3);
 
-    public int OnKeyEvent(ICefBrowser? arg0, ICefKeyEvent? arg1, void* arg2);
+    public int OnKeyEvent(ICefBrowser? arg0, ref CefKeyEvent arg1, void* arg2);
 }
 #endif

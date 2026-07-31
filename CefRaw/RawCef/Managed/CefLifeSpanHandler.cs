@@ -45,7 +45,7 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>on_before_popup</c> callback.
     /// </summary>
-    public abstract int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ICefPopupFeatures? arg7, ICefWindowInfo? arg8, out ICefClient? arg9, ICefBrowserSettings? arg10, out ICefDictionaryValue? arg11, int* arg12);
+    public abstract int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ref CefPopupFeatures arg7, ICefWindowInfo? arg8, out ICefClient? arg9, ICefBrowserSettings? arg10, out ICefDictionaryValue? arg11, int* arg12);
 
     /// <summary>
     /// Implement the <c>on_before_popup_aborted</c> callback.
@@ -90,7 +90,7 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
             var _a4 = CefStringRef.ToString(arg4);
             var _a5 = arg5;
             var _a6 = arg6;
-            var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;
+            var _pd7 = *arg7;
             var _a8 = arg8 != null ? new CefWindowInfoRef(arg8) : null;
             ICefClient? _out9 = null;
             if (arg9 != null && *arg9 != null) _out9 = new CefClientRef(*arg9);
@@ -98,7 +98,7 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
             ICefDictionaryValue? _out11 = null;
             if (arg11 != null && *arg11 != null) _out11 = new CefDictionaryValueRef(*arg11);
             var _a12 = arg12;
-            var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7, _a8, out _out9, _a10, out _out11, _a12);
+            var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, ref _pd7, _a8, out _out9, _a10, out _out11, _a12);
 
             return _result;
             if (arg9 != null) *arg9 = _out9 != null ? _out9.NativePtr : null;
@@ -276,7 +276,7 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>on_before_popup</c> callback.
     /// </summary>
-    public abstract int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ICefPopupFeatures? arg7, ICefWindowInfo? arg8, out ICefClient? arg9, ICefBrowserSettings? arg10, out ICefDictionaryValue? arg11, int* arg12);
+    public abstract int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ref CefPopupFeatures arg7, ICefWindowInfo? arg8, out ICefClient? arg9, ICefBrowserSettings? arg10, out ICefDictionaryValue? arg11, int* arg12);
 
     /// <summary>
     /// Implement the <c>on_before_popup_aborted</c> callback.
@@ -321,7 +321,7 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
             var _a4 = CefStringRef.ToString(arg4);
             var _a5 = arg5;
             var _a6 = arg6;
-            var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;
+            var _pd7 = *arg7;
             var _a8 = arg8 != null ? new CefWindowInfoRef(arg8) : null;
             ICefClient? _out9 = null;
             if (arg9 != null && *arg9 != null) _out9 = new CefClientRef(*arg9);
@@ -329,7 +329,7 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
             ICefDictionaryValue? _out11 = null;
             if (arg11 != null && *arg11 != null) _out11 = new CefDictionaryValueRef(*arg11);
             var _a12 = arg12;
-            var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7, _a8, out _out9, _a10, out _out11, _a12);
+            var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, ref _pd7, _a8, out _out9, _a10, out _out11, _a12);
 
             return _result;
             if (arg9 != null) *arg9 = _out9 != null ? _out9.NativePtr : null;
@@ -507,7 +507,7 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>on_before_popup</c> callback.
     /// </summary>
-    public abstract int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ICefPopupFeatures? arg7, ICefWindowInfo? arg8, out ICefClient? arg9, ICefBrowserSettings? arg10, out ICefDictionaryValue? arg11, int* arg12);
+    public abstract int OnBeforePopup(ICefBrowser? arg0, ICefFrame? arg1, int arg2, string? arg3, string? arg4, cef_window_open_disposition_t arg5, int arg6, ref CefPopupFeatures arg7, ICefWindowInfo? arg8, out ICefClient? arg9, ICefBrowserSettings? arg10, out ICefDictionaryValue? arg11, int* arg12);
 
     /// <summary>
     /// Implement the <c>on_before_popup_aborted</c> callback.
@@ -552,7 +552,7 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
             var _a4 = CefStringRef.ToString(arg4);
             var _a5 = arg5;
             var _a6 = arg6;
-            var _a7 = arg7 != null ? new CefPopupFeaturesRef(arg7) : null;
+            var _pd7 = *arg7;
             var _a8 = arg8 != null ? new CefWindowInfoRef(arg8) : null;
             ICefClient? _out9 = null;
             if (arg9 != null && *arg9 != null) _out9 = new CefClientRef(*arg9);
@@ -560,7 +560,7 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
             ICefDictionaryValue? _out11 = null;
             if (arg11 != null && *arg11 != null) _out11 = new CefDictionaryValueRef(*arg11);
             var _a12 = arg12;
-            var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, _a7, _a8, out _out9, _a10, out _out11, _a12);
+            var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, ref _pd7, _a8, out _out9, _a10, out _out11, _a12);
 
             return _result;
             if (arg9 != null) *arg9 = _out9 != null ? _out9.NativePtr : null;

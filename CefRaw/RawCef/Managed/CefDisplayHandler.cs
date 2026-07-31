@@ -87,7 +87,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>on_auto_resize</c> callback.
     /// </summary>
-    public abstract int OnAutoResize(ICefBrowser? arg0, ICefSize? arg1);
+    public abstract int OnAutoResize(ICefBrowser? arg0, ref CefSize arg1);
 
     /// <summary>
     /// Implement the <c>on_loading_progress_change</c> callback.
@@ -97,7 +97,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>on_cursor_change</c> callback.
     /// </summary>
-    public abstract int OnCursorChange(ICefBrowser? arg0, HICON arg1, cef_cursor_type_t arg2, ICefCursorInfo? arg3);
+    public abstract int OnCursorChange(ICefBrowser? arg0, HICON arg1, cef_cursor_type_t arg2, ref CefCursorInfo arg3);
 
     /// <summary>
     /// Implement the <c>on_media_access_change</c> callback.
@@ -107,12 +107,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>on_contents_bounds_change</c> callback.
     /// </summary>
-    public abstract int OnContentsBoundsChange(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract int OnContentsBoundsChange(ICefBrowser? arg0, ref CefRect arg1);
 
     /// <summary>
     /// Implement the <c>get_root_window_screen_rect</c> callback.
     /// </summary>
-    public abstract int GetRootWindowScreenRect(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract int GetRootWindowScreenRect(ICefBrowser? arg0, ref CefRect arg1);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -294,8 +294,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
             var _m = GetManaged<CefDisplayHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefSizeRef(arg1) : null;
-            var _result = _m.OnAutoResize(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.OnAutoResize(_a0, ref _pd1);
 
             return _result;
         }
@@ -342,8 +342,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefCursorInfoRef(arg3) : null;
-            var _result = _m.OnCursorChange(_a0, _a1, _a2, _a3);
+            var _pd3 = *arg3;
+            var _result = _m.OnCursorChange(_a0, _a1, _a2, ref _pd3);
 
             return _result;
         }
@@ -389,8 +389,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
             var _m = GetManaged<CefDisplayHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            var _result = _m.OnContentsBoundsChange(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.OnContentsBoundsChange(_a0, ref _pd1);
 
             return _result;
         }
@@ -413,8 +413,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
             var _m = GetManaged<CefDisplayHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            var _result = _m.GetRootWindowScreenRect(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.GetRootWindowScreenRect(_a0, ref _pd1);
 
             return _result;
         }
@@ -515,7 +515,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>on_auto_resize</c> callback.
     /// </summary>
-    public abstract int OnAutoResize(ICefBrowser? arg0, ICefSize? arg1);
+    public abstract int OnAutoResize(ICefBrowser? arg0, ref CefSize arg1);
 
     /// <summary>
     /// Implement the <c>on_loading_progress_change</c> callback.
@@ -525,7 +525,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>on_cursor_change</c> callback.
     /// </summary>
-    public abstract int OnCursorChange(ICefBrowser? arg0, void* arg1, cef_cursor_type_t arg2, ICefCursorInfo? arg3);
+    public abstract int OnCursorChange(ICefBrowser? arg0, void* arg1, cef_cursor_type_t arg2, ref CefCursorInfo arg3);
 
     /// <summary>
     /// Implement the <c>on_media_access_change</c> callback.
@@ -535,12 +535,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>on_contents_bounds_change</c> callback.
     /// </summary>
-    public abstract int OnContentsBoundsChange(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract int OnContentsBoundsChange(ICefBrowser? arg0, ref CefRect arg1);
 
     /// <summary>
     /// Implement the <c>get_root_window_screen_rect</c> callback.
     /// </summary>
-    public abstract int GetRootWindowScreenRect(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract int GetRootWindowScreenRect(ICefBrowser? arg0, ref CefRect arg1);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -722,8 +722,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
             var _m = GetManaged<CefDisplayHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefSizeRef(arg1) : null;
-            var _result = _m.OnAutoResize(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.OnAutoResize(_a0, ref _pd1);
 
             return _result;
         }
@@ -770,8 +770,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefCursorInfoRef(arg3) : null;
-            var _result = _m.OnCursorChange(_a0, _a1, _a2, _a3);
+            var _pd3 = *arg3;
+            var _result = _m.OnCursorChange(_a0, _a1, _a2, ref _pd3);
 
             return _result;
         }
@@ -817,8 +817,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
             var _m = GetManaged<CefDisplayHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            var _result = _m.OnContentsBoundsChange(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.OnContentsBoundsChange(_a0, ref _pd1);
 
             return _result;
         }
@@ -841,8 +841,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
             var _m = GetManaged<CefDisplayHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            var _result = _m.GetRootWindowScreenRect(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.GetRootWindowScreenRect(_a0, ref _pd1);
 
             return _result;
         }
@@ -943,7 +943,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>on_auto_resize</c> callback.
     /// </summary>
-    public abstract int OnAutoResize(ICefBrowser? arg0, ICefSize? arg1);
+    public abstract int OnAutoResize(ICefBrowser? arg0, ref CefSize arg1);
 
     /// <summary>
     /// Implement the <c>on_loading_progress_change</c> callback.
@@ -953,7 +953,7 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>on_cursor_change</c> callback.
     /// </summary>
-    public abstract int OnCursorChange(ICefBrowser? arg0, void* arg1, cef_cursor_type_t arg2, ICefCursorInfo? arg3);
+    public abstract int OnCursorChange(ICefBrowser? arg0, void* arg1, cef_cursor_type_t arg2, ref CefCursorInfo arg3);
 
     /// <summary>
     /// Implement the <c>on_media_access_change</c> callback.
@@ -963,12 +963,12 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
     /// <summary>
     /// Implement the <c>on_contents_bounds_change</c> callback.
     /// </summary>
-    public abstract int OnContentsBoundsChange(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract int OnContentsBoundsChange(ICefBrowser? arg0, ref CefRect arg1);
 
     /// <summary>
     /// Implement the <c>get_root_window_screen_rect</c> callback.
     /// </summary>
-    public abstract int GetRootWindowScreenRect(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract int GetRootWindowScreenRect(ICefBrowser? arg0, ref CefRect arg1);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -1150,8 +1150,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
             var _m = GetManaged<CefDisplayHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefSizeRef(arg1) : null;
-            var _result = _m.OnAutoResize(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.OnAutoResize(_a0, ref _pd1);
 
             return _result;
         }
@@ -1198,8 +1198,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefCursorInfoRef(arg3) : null;
-            var _result = _m.OnCursorChange(_a0, _a1, _a2, _a3);
+            var _pd3 = *arg3;
+            var _result = _m.OnCursorChange(_a0, _a1, _a2, ref _pd3);
 
             return _result;
         }
@@ -1245,8 +1245,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
             var _m = GetManaged<CefDisplayHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            var _result = _m.OnContentsBoundsChange(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.OnContentsBoundsChange(_a0, ref _pd1);
 
             return _result;
         }
@@ -1269,8 +1269,8 @@ public unsafe abstract partial class CefDisplayHandler : CefBaseRefCounted, ICef
             var _m = GetManaged<CefDisplayHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            var _result = _m.GetRootWindowScreenRect(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.GetRootWindowScreenRect(_a0, ref _pd1);
 
             return _result;
         }

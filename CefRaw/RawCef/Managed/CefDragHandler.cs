@@ -46,7 +46,7 @@ public unsafe abstract partial class CefDragHandler : CefBaseRefCounted, ICefDra
     /// <summary>
     /// Implement the <c>on_draggable_regions_changed</c> callback.
     /// </summary>
-    public abstract void OnDraggableRegionsChanged(ICefBrowser? arg0, ICefFrame? arg1, nuint arg2, ICefDraggableRegion? arg3);
+    public abstract void OnDraggableRegionsChanged(ICefBrowser? arg0, ICefFrame? arg1, nuint arg2, ref CefDraggableRegion arg3);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -87,8 +87,8 @@ public unsafe abstract partial class CefDragHandler : CefBaseRefCounted, ICefDra
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefDraggableRegionRef(arg3) : null;
-            _m.OnDraggableRegionsChanged(_a0, _a1, _a2, _a3);
+            var _pd3 = *arg3;
+            _m.OnDraggableRegionsChanged(_a0, _a1, _a2, ref _pd3);
         }
         catch (Exception ex)
         {
@@ -146,7 +146,7 @@ public unsafe abstract partial class CefDragHandler : CefBaseRefCounted, ICefDra
     /// <summary>
     /// Implement the <c>on_draggable_regions_changed</c> callback.
     /// </summary>
-    public abstract void OnDraggableRegionsChanged(ICefBrowser? arg0, ICefFrame? arg1, nuint arg2, ICefDraggableRegion? arg3);
+    public abstract void OnDraggableRegionsChanged(ICefBrowser? arg0, ICefFrame? arg1, nuint arg2, ref CefDraggableRegion arg3);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -187,8 +187,8 @@ public unsafe abstract partial class CefDragHandler : CefBaseRefCounted, ICefDra
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefDraggableRegionRef(arg3) : null;
-            _m.OnDraggableRegionsChanged(_a0, _a1, _a2, _a3);
+            var _pd3 = *arg3;
+            _m.OnDraggableRegionsChanged(_a0, _a1, _a2, ref _pd3);
         }
         catch (Exception ex)
         {
@@ -246,7 +246,7 @@ public unsafe abstract partial class CefDragHandler : CefBaseRefCounted, ICefDra
     /// <summary>
     /// Implement the <c>on_draggable_regions_changed</c> callback.
     /// </summary>
-    public abstract void OnDraggableRegionsChanged(ICefBrowser? arg0, ICefFrame? arg1, nuint arg2, ICefDraggableRegion? arg3);
+    public abstract void OnDraggableRegionsChanged(ICefBrowser? arg0, ICefFrame? arg1, nuint arg2, ref CefDraggableRegion arg3);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -287,8 +287,8 @@ public unsafe abstract partial class CefDragHandler : CefBaseRefCounted, ICefDra
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefDraggableRegionRef(arg3) : null;
-            _m.OnDraggableRegionsChanged(_a0, _a1, _a2, _a3);
+            var _pd3 = *arg3;
+            _m.OnDraggableRegionsChanged(_a0, _a1, _a2, ref _pd3);
         }
         catch (Exception ex)
         {

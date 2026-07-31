@@ -59,7 +59,7 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void StopFinding(int arg0);
 
-    public void ShowDevTools(ICefWindowInfo? arg0, ICefClient? arg1, ICefBrowserSettings? arg2, ICefPoint? arg3);
+    public void ShowDevTools(ICefWindowInfo? arg0, ICefClient? arg1, ICefBrowserSettings? arg2, ref CefPoint arg3);
 
     public void CloseDevTools();
 
@@ -89,15 +89,15 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void SendExternalBeginFrame();
 
-    public void SendKeyEvent(ICefKeyEvent? arg0);
+    public void SendKeyEvent(ref CefKeyEvent arg0);
 
-    public void SendMouseClickEvent(ICefMouseEvent? arg0, cef_mouse_button_type_t arg1, int arg2, int arg3);
+    public void SendMouseClickEvent(ref CefMouseEvent arg0, cef_mouse_button_type_t arg1, int arg2, int arg3);
 
-    public void SendMouseMoveEvent(ICefMouseEvent? arg0, int arg1);
+    public void SendMouseMoveEvent(ref CefMouseEvent arg0, int arg1);
 
-    public void SendMouseWheelEvent(ICefMouseEvent? arg0, int arg1, int arg2);
+    public void SendMouseWheelEvent(ref CefMouseEvent arg0, int arg1, int arg2);
 
-    public void SendTouchEvent(ICefTouchEvent? arg0);
+    public void SendTouchEvent(ref CefTouchEvent arg0);
 
     public void SendCaptureLostEvent();
 
@@ -107,21 +107,21 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void SetWindowlessFrameRate(int arg0);
 
-    public void ImeSetComposition(string? arg0, nuint arg1, ICefCompositionUnderline? arg2, ICefRange? arg3, ICefRange? arg4);
+    public void ImeSetComposition(string? arg0, nuint arg1, ref CefCompositionUnderline arg2, ref CefRange arg3, ref CefRange arg4);
 
-    public void ImeCommitText(string? arg0, ICefRange? arg1, int arg2);
+    public void ImeCommitText(string? arg0, ref CefRange arg1, int arg2);
 
     public void ImeFinishComposingText(int arg0);
 
     public void ImeCancelComposition();
 
-    public void DragTargetDragEnter(ICefDragData? arg0, ICefMouseEvent? arg1, cef_drag_operations_mask_t arg2);
+    public void DragTargetDragEnter(ICefDragData? arg0, ref CefMouseEvent arg1, cef_drag_operations_mask_t arg2);
 
-    public void DragTargetDragOver(ICefMouseEvent? arg0, cef_drag_operations_mask_t arg1);
+    public void DragTargetDragOver(ref CefMouseEvent arg0, cef_drag_operations_mask_t arg1);
 
     public void DragTargetDragLeave();
 
-    public void DragTargetDrop(ICefMouseEvent? arg0);
+    public void DragTargetDrop(ref CefMouseEvent arg0);
 
     public void DragSourceEndedAt(int arg0, int arg1, cef_drag_operations_mask_t arg2);
 
@@ -131,7 +131,7 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void SetAccessibilityState(cef_state_t arg0);
 
-    public void SetAutoResizeEnabled(int arg0, ICefSize? arg1, ICefSize? arg2);
+    public void SetAutoResizeEnabled(int arg0, ref CefSize arg1, ref CefSize arg2);
 
     public void SetAudioMuted(int arg0);
 
@@ -213,7 +213,7 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void StopFinding(int arg0);
 
-    public void ShowDevTools(ICefWindowInfo? arg0, ICefClient? arg1, ICefBrowserSettings? arg2, ICefPoint? arg3);
+    public void ShowDevTools(ICefWindowInfo? arg0, ICefClient? arg1, ICefBrowserSettings? arg2, ref CefPoint arg3);
 
     public void CloseDevTools();
 
@@ -243,15 +243,15 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void SendExternalBeginFrame();
 
-    public void SendKeyEvent(ICefKeyEvent? arg0);
+    public void SendKeyEvent(ref CefKeyEvent arg0);
 
-    public void SendMouseClickEvent(ICefMouseEvent? arg0, cef_mouse_button_type_t arg1, int arg2, int arg3);
+    public void SendMouseClickEvent(ref CefMouseEvent arg0, cef_mouse_button_type_t arg1, int arg2, int arg3);
 
-    public void SendMouseMoveEvent(ICefMouseEvent? arg0, int arg1);
+    public void SendMouseMoveEvent(ref CefMouseEvent arg0, int arg1);
 
-    public void SendMouseWheelEvent(ICefMouseEvent? arg0, int arg1, int arg2);
+    public void SendMouseWheelEvent(ref CefMouseEvent arg0, int arg1, int arg2);
 
-    public void SendTouchEvent(ICefTouchEvent? arg0);
+    public void SendTouchEvent(ref CefTouchEvent arg0);
 
     public void SendCaptureLostEvent();
 
@@ -261,21 +261,21 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void SetWindowlessFrameRate(int arg0);
 
-    public void ImeSetComposition(string? arg0, nuint arg1, ICefCompositionUnderline? arg2, ICefRange? arg3, ICefRange? arg4);
+    public void ImeSetComposition(string? arg0, nuint arg1, ref CefCompositionUnderline arg2, ref CefRange arg3, ref CefRange arg4);
 
-    public void ImeCommitText(string? arg0, ICefRange? arg1, int arg2);
+    public void ImeCommitText(string? arg0, ref CefRange arg1, int arg2);
 
     public void ImeFinishComposingText(int arg0);
 
     public void ImeCancelComposition();
 
-    public void DragTargetDragEnter(ICefDragData? arg0, ICefMouseEvent? arg1, cef_drag_operations_mask_t arg2);
+    public void DragTargetDragEnter(ICefDragData? arg0, ref CefMouseEvent arg1, cef_drag_operations_mask_t arg2);
 
-    public void DragTargetDragOver(ICefMouseEvent? arg0, cef_drag_operations_mask_t arg1);
+    public void DragTargetDragOver(ref CefMouseEvent arg0, cef_drag_operations_mask_t arg1);
 
     public void DragTargetDragLeave();
 
-    public void DragTargetDrop(ICefMouseEvent? arg0);
+    public void DragTargetDrop(ref CefMouseEvent arg0);
 
     public void DragSourceEndedAt(int arg0, int arg1, cef_drag_operations_mask_t arg2);
 
@@ -285,7 +285,7 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void SetAccessibilityState(cef_state_t arg0);
 
-    public void SetAutoResizeEnabled(int arg0, ICefSize? arg1, ICefSize? arg2);
+    public void SetAutoResizeEnabled(int arg0, ref CefSize arg1, ref CefSize arg2);
 
     public void SetAudioMuted(int arg0);
 
@@ -367,7 +367,7 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void StopFinding(int arg0);
 
-    public void ShowDevTools(ICefWindowInfo? arg0, ICefClient? arg1, ICefBrowserSettings? arg2, ICefPoint? arg3);
+    public void ShowDevTools(ICefWindowInfo? arg0, ICefClient? arg1, ICefBrowserSettings? arg2, ref CefPoint arg3);
 
     public void CloseDevTools();
 
@@ -397,15 +397,15 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void SendExternalBeginFrame();
 
-    public void SendKeyEvent(ICefKeyEvent? arg0);
+    public void SendKeyEvent(ref CefKeyEvent arg0);
 
-    public void SendMouseClickEvent(ICefMouseEvent? arg0, cef_mouse_button_type_t arg1, int arg2, int arg3);
+    public void SendMouseClickEvent(ref CefMouseEvent arg0, cef_mouse_button_type_t arg1, int arg2, int arg3);
 
-    public void SendMouseMoveEvent(ICefMouseEvent? arg0, int arg1);
+    public void SendMouseMoveEvent(ref CefMouseEvent arg0, int arg1);
 
-    public void SendMouseWheelEvent(ICefMouseEvent? arg0, int arg1, int arg2);
+    public void SendMouseWheelEvent(ref CefMouseEvent arg0, int arg1, int arg2);
 
-    public void SendTouchEvent(ICefTouchEvent? arg0);
+    public void SendTouchEvent(ref CefTouchEvent arg0);
 
     public void SendCaptureLostEvent();
 
@@ -415,21 +415,21 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void SetWindowlessFrameRate(int arg0);
 
-    public void ImeSetComposition(string? arg0, nuint arg1, ICefCompositionUnderline? arg2, ICefRange? arg3, ICefRange? arg4);
+    public void ImeSetComposition(string? arg0, nuint arg1, ref CefCompositionUnderline arg2, ref CefRange arg3, ref CefRange arg4);
 
-    public void ImeCommitText(string? arg0, ICefRange? arg1, int arg2);
+    public void ImeCommitText(string? arg0, ref CefRange arg1, int arg2);
 
     public void ImeFinishComposingText(int arg0);
 
     public void ImeCancelComposition();
 
-    public void DragTargetDragEnter(ICefDragData? arg0, ICefMouseEvent? arg1, cef_drag_operations_mask_t arg2);
+    public void DragTargetDragEnter(ICefDragData? arg0, ref CefMouseEvent arg1, cef_drag_operations_mask_t arg2);
 
-    public void DragTargetDragOver(ICefMouseEvent? arg0, cef_drag_operations_mask_t arg1);
+    public void DragTargetDragOver(ref CefMouseEvent arg0, cef_drag_operations_mask_t arg1);
 
     public void DragTargetDragLeave();
 
-    public void DragTargetDrop(ICefMouseEvent? arg0);
+    public void DragTargetDrop(ref CefMouseEvent arg0);
 
     public void DragSourceEndedAt(int arg0, int arg1, cef_drag_operations_mask_t arg2);
 
@@ -439,7 +439,7 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public void SetAccessibilityState(cef_state_t arg0);
 
-    public void SetAutoResizeEnabled(int arg0, ICefSize? arg1, ICefSize? arg2);
+    public void SetAutoResizeEnabled(int arg0, ref CefSize arg1, ref CefSize arg2);
 
     public void SetAudioMuted(int arg0);
 

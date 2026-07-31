@@ -17,6 +17,13 @@ internal static partial class TypeMapper
     private static partial Regex CefStructRegex { get; }
 
     /// <summary>
+    /// Set of native CEF struct names (e.g. "_cef_point_t") that are plain data/value types
+    /// and should be marshaled by value (ref/out) instead of through managed wrappers.
+    /// Populated by Program.cs before generation begins.
+    /// </summary>
+    internal static HashSet<string> PlainDataStructNames { get; set; } = [];
+
+    /// <summary>
     /// Classifies a parameter in a CEF function-pointer signature.
     /// </summary>
     public enum ParamKind
@@ -127,12 +134,14 @@ internal static partial class TypeMapper
         out bool isString,
         out bool isCefObject,
         out string? cefObjectName,
-        out bool isBasetime)
+        out bool isBasetime,
+        out bool isPlainDataPtr)
     {
         isString = false;
         isCefObject = false;
         cefObjectName = null;
         isBasetime = false;
+        isPlainDataPtr = false;
 
         // Strip pointer suffix for analysis
         var baseType = nativeType.TrimEnd('*', ' ');
@@ -191,6 +200,13 @@ internal static partial class TypeMapper
         // _cef_*_t* (CEF object pointer)
         if (isPointer && CefStructRegex.IsMatch(baseType))
         {
+            // Plain data structs are marshaled by value (ref/out), not via managed wrappers
+            if (PlainDataStructNames.Contains(baseType))
+            {
+                isPlainDataPtr = true;
+                return GetManagedName(baseType);
+            }
+
             isCefObject = true;
             cefObjectName = GetManagedName(baseType);
             return "I" + cefObjectName + "?";

@@ -27,17 +27,17 @@ public unsafe partial interface ICefDisplayHandler : ICefBaseRefCounted
 
     public int OnConsoleMessage(ICefBrowser? arg0, cef_log_severity_t arg1, string? arg2, string? arg3, int arg4);
 
-    public int OnAutoResize(ICefBrowser? arg0, ICefSize? arg1);
+    public int OnAutoResize(ICefBrowser? arg0, ref CefSize arg1);
 
     public void OnLoadingProgressChange(ICefBrowser? arg0, double arg1);
 
-    public int OnCursorChange(ICefBrowser? arg0, HICON arg1, cef_cursor_type_t arg2, ICefCursorInfo? arg3);
+    public int OnCursorChange(ICefBrowser? arg0, HICON arg1, cef_cursor_type_t arg2, ref CefCursorInfo arg3);
 
     public void OnMediaAccessChange(ICefBrowser? arg0, int arg1, int arg2);
 
-    public int OnContentsBoundsChange(ICefBrowser? arg0, ICefRect? arg1);
+    public int OnContentsBoundsChange(ICefBrowser? arg0, ref CefRect arg1);
 
-    public int GetRootWindowScreenRect(ICefBrowser? arg0, ICefRect? arg1);
+    public int GetRootWindowScreenRect(ICefBrowser? arg0, ref CefRect arg1);
 }
 #endif
 #if OS_MAC
@@ -69,17 +69,17 @@ public unsafe partial interface ICefDisplayHandler : ICefBaseRefCounted
 
     public int OnConsoleMessage(ICefBrowser? arg0, cef_log_severity_t arg1, string? arg2, string? arg3, int arg4);
 
-    public int OnAutoResize(ICefBrowser? arg0, ICefSize? arg1);
+    public int OnAutoResize(ICefBrowser? arg0, ref CefSize arg1);
 
     public void OnLoadingProgressChange(ICefBrowser? arg0, double arg1);
 
-    public int OnCursorChange(ICefBrowser? arg0, void* arg1, cef_cursor_type_t arg2, ICefCursorInfo? arg3);
+    public int OnCursorChange(ICefBrowser? arg0, void* arg1, cef_cursor_type_t arg2, ref CefCursorInfo arg3);
 
     public void OnMediaAccessChange(ICefBrowser? arg0, int arg1, int arg2);
 
-    public int OnContentsBoundsChange(ICefBrowser? arg0, ICefRect? arg1);
+    public int OnContentsBoundsChange(ICefBrowser? arg0, ref CefRect arg1);
 
-    public int GetRootWindowScreenRect(ICefBrowser? arg0, ICefRect? arg1);
+    public int GetRootWindowScreenRect(ICefBrowser? arg0, ref CefRect arg1);
 }
 #endif
 #if OS_LINUX
@@ -111,16 +111,16 @@ public unsafe partial interface ICefDisplayHandler : ICefBaseRefCounted
 
     public int OnConsoleMessage(ICefBrowser? arg0, cef_log_severity_t arg1, string? arg2, string? arg3, int arg4);
 
-    public int OnAutoResize(ICefBrowser? arg0, ICefSize? arg1);
+    public int OnAutoResize(ICefBrowser? arg0, ref CefSize arg1);
 
     public void OnLoadingProgressChange(ICefBrowser? arg0, double arg1);
 
-    public int OnCursorChange(ICefBrowser? arg0, void* arg1, cef_cursor_type_t arg2, ICefCursorInfo? arg3);
+    public int OnCursorChange(ICefBrowser? arg0, void* arg1, cef_cursor_type_t arg2, ref CefCursorInfo arg3);
 
     public void OnMediaAccessChange(ICefBrowser? arg0, int arg1, int arg2);
 
-    public int OnContentsBoundsChange(ICefBrowser? arg0, ICefRect? arg1);
+    public int OnContentsBoundsChange(ICefBrowser? arg0, ref CefRect arg1);
 
-    public int GetRootWindowScreenRect(ICefBrowser? arg0, ICefRect? arg1);
+    public int GetRootWindowScreenRect(ICefBrowser? arg0, ref CefRect arg1);
 }
 #endif

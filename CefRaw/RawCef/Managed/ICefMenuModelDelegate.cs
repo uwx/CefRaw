@@ -15,7 +15,7 @@ public unsafe partial interface ICefMenuModelDelegate : ICefBaseRefCounted
 
     public void ExecuteCommand(ICefMenuModel? arg0, int arg1, cef_event_flags_t arg2);
 
-    public void MouseOutsideMenu(ICefMenuModel? arg0, ICefPoint? arg1);
+    public void MouseOutsideMenu(ICefMenuModel? arg0, ref CefPoint arg1);
 
     public void UnhandledOpenSubmenu(ICefMenuModel? arg0, int arg1);
 
@@ -45,7 +45,7 @@ public unsafe partial interface ICefMenuModelDelegate : ICefBaseRefCounted
 
     public void ExecuteCommand(ICefMenuModel? arg0, int arg1, cef_event_flags_t arg2);
 
-    public void MouseOutsideMenu(ICefMenuModel? arg0, ICefPoint? arg1);
+    public void MouseOutsideMenu(ICefMenuModel? arg0, ref CefPoint arg1);
 
     public void UnhandledOpenSubmenu(ICefMenuModel? arg0, int arg1);
 
@@ -75,7 +75,7 @@ public unsafe partial interface ICefMenuModelDelegate : ICefBaseRefCounted
 
     public void ExecuteCommand(ICefMenuModel? arg0, int arg1, cef_event_flags_t arg2);
 
-    public void MouseOutsideMenu(ICefMenuModel? arg0, ICefPoint? arg1);
+    public void MouseOutsideMenu(ICefMenuModel? arg0, ref CefPoint arg1);
 
     public void UnhandledOpenSubmenu(ICefMenuModel? arg0, int arg1);
 

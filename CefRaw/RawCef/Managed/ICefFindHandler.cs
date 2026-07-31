@@ -13,7 +13,7 @@ public unsafe partial interface ICefFindHandler : ICefBaseRefCounted
 {
     new _cef_find_handler_t* NativePtr { get; }
 
-    public void OnFindResult(ICefBrowser? arg0, int arg1, int arg2, ICefRect? arg3, int arg4, int arg5);
+    public void OnFindResult(ICefBrowser? arg0, int arg1, int arg2, ref CefRect arg3, int arg4, int arg5);
 }
 #endif
 #if OS_MAC
@@ -31,7 +31,7 @@ public unsafe partial interface ICefFindHandler : ICefBaseRefCounted
 {
     new _cef_find_handler_t* NativePtr { get; }
 
-    public void OnFindResult(ICefBrowser? arg0, int arg1, int arg2, ICefRect? arg3, int arg4, int arg5);
+    public void OnFindResult(ICefBrowser? arg0, int arg1, int arg2, ref CefRect arg3, int arg4, int arg5);
 }
 #endif
 #if OS_LINUX
@@ -49,6 +49,6 @@ public unsafe partial interface ICefFindHandler : ICefBaseRefCounted
 {
     new _cef_find_handler_t* NativePtr { get; }
 
-    public void OnFindResult(ICefBrowser? arg0, int arg1, int arg2, ICefRect? arg3, int arg4, int arg5);
+    public void OnFindResult(ICefBrowser? arg0, int arg1, int arg2, ref CefRect arg3, int arg4, int arg5);
 }
 #endif

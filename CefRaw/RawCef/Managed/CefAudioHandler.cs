@@ -44,12 +44,12 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
     /// <summary>
     /// Implement the <c>get_audio_parameters</c> callback.
     /// </summary>
-    public abstract int GetAudioParameters(ICefBrowser? arg0, ICefAudioParameters? arg1);
+    public abstract int GetAudioParameters(ICefBrowser? arg0, ref CefAudioParameters arg1);
 
     /// <summary>
     /// Implement the <c>on_audio_stream_started</c> callback.
     /// </summary>
-    public abstract void OnAudioStreamStarted(ICefBrowser? arg0, ICefAudioParameters? arg1, int arg2);
+    public abstract void OnAudioStreamStarted(ICefBrowser? arg0, ref CefAudioParameters arg1, int arg2);
 
     /// <summary>
     /// Implement the <c>on_audio_stream_packet</c> callback.
@@ -78,8 +78,8 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
             var _m = GetManaged<CefAudioHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefAudioParametersRef(arg1) : null;
-            var _result = _m.GetAudioParameters(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.GetAudioParameters(_a0, ref _pd1);
 
             return _result;
         }
@@ -102,9 +102,9 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
             var _m = GetManaged<CefAudioHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefAudioParametersRef(arg1) : null;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            _m.OnAudioStreamStarted(_a0, _a1, _a2);
+            _m.OnAudioStreamStarted(_a0, ref _pd1, _a2);
         }
         catch (Exception ex)
         {
@@ -227,12 +227,12 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
     /// <summary>
     /// Implement the <c>get_audio_parameters</c> callback.
     /// </summary>
-    public abstract int GetAudioParameters(ICefBrowser? arg0, ICefAudioParameters? arg1);
+    public abstract int GetAudioParameters(ICefBrowser? arg0, ref CefAudioParameters arg1);
 
     /// <summary>
     /// Implement the <c>on_audio_stream_started</c> callback.
     /// </summary>
-    public abstract void OnAudioStreamStarted(ICefBrowser? arg0, ICefAudioParameters? arg1, int arg2);
+    public abstract void OnAudioStreamStarted(ICefBrowser? arg0, ref CefAudioParameters arg1, int arg2);
 
     /// <summary>
     /// Implement the <c>on_audio_stream_packet</c> callback.
@@ -261,8 +261,8 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
             var _m = GetManaged<CefAudioHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefAudioParametersRef(arg1) : null;
-            var _result = _m.GetAudioParameters(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.GetAudioParameters(_a0, ref _pd1);
 
             return _result;
         }
@@ -285,9 +285,9 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
             var _m = GetManaged<CefAudioHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefAudioParametersRef(arg1) : null;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            _m.OnAudioStreamStarted(_a0, _a1, _a2);
+            _m.OnAudioStreamStarted(_a0, ref _pd1, _a2);
         }
         catch (Exception ex)
         {
@@ -410,12 +410,12 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
     /// <summary>
     /// Implement the <c>get_audio_parameters</c> callback.
     /// </summary>
-    public abstract int GetAudioParameters(ICefBrowser? arg0, ICefAudioParameters? arg1);
+    public abstract int GetAudioParameters(ICefBrowser? arg0, ref CefAudioParameters arg1);
 
     /// <summary>
     /// Implement the <c>on_audio_stream_started</c> callback.
     /// </summary>
-    public abstract void OnAudioStreamStarted(ICefBrowser? arg0, ICefAudioParameters? arg1, int arg2);
+    public abstract void OnAudioStreamStarted(ICefBrowser? arg0, ref CefAudioParameters arg1, int arg2);
 
     /// <summary>
     /// Implement the <c>on_audio_stream_packet</c> callback.
@@ -444,8 +444,8 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
             var _m = GetManaged<CefAudioHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefAudioParametersRef(arg1) : null;
-            var _result = _m.GetAudioParameters(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.GetAudioParameters(_a0, ref _pd1);
 
             return _result;
         }
@@ -468,9 +468,9 @@ public unsafe abstract partial class CefAudioHandler : CefBaseRefCounted, ICefAu
             var _m = GetManaged<CefAudioHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefAudioParametersRef(arg1) : null;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            _m.OnAudioStreamStarted(_a0, _a1, _a2);
+            _m.OnAudioStreamStarted(_a0, ref _pd1, _a2);
         }
         catch (Exception ex)
         {

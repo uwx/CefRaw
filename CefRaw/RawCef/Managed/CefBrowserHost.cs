@@ -223,7 +223,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>show_dev_tools</c> callback.
     /// </summary>
-    public abstract void ShowDevTools(ICefWindowInfo? arg0, ICefClient? arg1, ICefBrowserSettings? arg2, ICefPoint? arg3);
+    public abstract void ShowDevTools(ICefWindowInfo? arg0, ICefClient? arg1, ICefBrowserSettings? arg2, ref CefPoint arg3);
 
     /// <summary>
     /// Implement the <c>close_dev_tools</c> callback.
@@ -298,27 +298,27 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>send_key_event</c> callback.
     /// </summary>
-    public abstract void SendKeyEvent(ICefKeyEvent? arg0);
+    public abstract void SendKeyEvent(ref CefKeyEvent arg0);
 
     /// <summary>
     /// Implement the <c>send_mouse_click_event</c> callback.
     /// </summary>
-    public abstract void SendMouseClickEvent(ICefMouseEvent? arg0, cef_mouse_button_type_t arg1, int arg2, int arg3);
+    public abstract void SendMouseClickEvent(ref CefMouseEvent arg0, cef_mouse_button_type_t arg1, int arg2, int arg3);
 
     /// <summary>
     /// Implement the <c>send_mouse_move_event</c> callback.
     /// </summary>
-    public abstract void SendMouseMoveEvent(ICefMouseEvent? arg0, int arg1);
+    public abstract void SendMouseMoveEvent(ref CefMouseEvent arg0, int arg1);
 
     /// <summary>
     /// Implement the <c>send_mouse_wheel_event</c> callback.
     /// </summary>
-    public abstract void SendMouseWheelEvent(ICefMouseEvent? arg0, int arg1, int arg2);
+    public abstract void SendMouseWheelEvent(ref CefMouseEvent arg0, int arg1, int arg2);
 
     /// <summary>
     /// Implement the <c>send_touch_event</c> callback.
     /// </summary>
-    public abstract void SendTouchEvent(ICefTouchEvent? arg0);
+    public abstract void SendTouchEvent(ref CefTouchEvent arg0);
 
     /// <summary>
     /// Implement the <c>send_capture_lost_event</c> callback.
@@ -343,12 +343,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>ime_set_composition</c> callback.
     /// </summary>
-    public abstract void ImeSetComposition(string? arg0, nuint arg1, ICefCompositionUnderline? arg2, ICefRange? arg3, ICefRange? arg4);
+    public abstract void ImeSetComposition(string? arg0, nuint arg1, ref CefCompositionUnderline arg2, ref CefRange arg3, ref CefRange arg4);
 
     /// <summary>
     /// Implement the <c>ime_commit_text</c> callback.
     /// </summary>
-    public abstract void ImeCommitText(string? arg0, ICefRange? arg1, int arg2);
+    public abstract void ImeCommitText(string? arg0, ref CefRange arg1, int arg2);
 
     /// <summary>
     /// Implement the <c>ime_finish_composing_text</c> callback.
@@ -363,12 +363,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>drag_target_drag_enter</c> callback.
     /// </summary>
-    public abstract void DragTargetDragEnter(ICefDragData? arg0, ICefMouseEvent? arg1, cef_drag_operations_mask_t arg2);
+    public abstract void DragTargetDragEnter(ICefDragData? arg0, ref CefMouseEvent arg1, cef_drag_operations_mask_t arg2);
 
     /// <summary>
     /// Implement the <c>drag_target_drag_over</c> callback.
     /// </summary>
-    public abstract void DragTargetDragOver(ICefMouseEvent? arg0, cef_drag_operations_mask_t arg1);
+    public abstract void DragTargetDragOver(ref CefMouseEvent arg0, cef_drag_operations_mask_t arg1);
 
     /// <summary>
     /// Implement the <c>drag_target_drag_leave</c> callback.
@@ -378,7 +378,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>drag_target_drop</c> callback.
     /// </summary>
-    public abstract void DragTargetDrop(ICefMouseEvent? arg0);
+    public abstract void DragTargetDrop(ref CefMouseEvent arg0);
 
     /// <summary>
     /// Implement the <c>drag_source_ended_at</c> callback.
@@ -403,7 +403,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>set_auto_resize_enabled</c> callback.
     /// </summary>
-    public abstract void SetAutoResizeEnabled(int arg0, ICefSize? arg1, ICefSize? arg2);
+    public abstract void SetAutoResizeEnabled(int arg0, ref CefSize arg1, ref CefSize arg2);
 
     /// <summary>
     /// Implement the <c>set_audio_muted</c> callback.
@@ -975,8 +975,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _a0 = arg0 != null ? new CefWindowInfoRef(arg0) : null;
             var _a1 = arg1 != null ? new CefClientRef(arg1) : null;
             var _a2 = arg2 != null ? new CefBrowserSettingsRef(arg2) : null;
-            var _a3 = arg3 != null ? new CefPointRef(arg3) : null;
-            _m.ShowDevTools(_a0, _a1, _a2, _a3);
+            var _pd3 = *arg3;
+            _m.ShowDevTools(_a0, _a1, _a2, ref _pd3);
         }
         catch (Exception ex)
         {
@@ -1299,8 +1299,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefKeyEventRef(arg0) : null;
-            _m.SendKeyEvent(_a0);
+            var _pd0 = *arg0;
+            _m.SendKeyEvent(ref _pd0);
         }
         catch (Exception ex)
         {
@@ -1320,11 +1320,11 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
+            var _pd0 = *arg0;
             var _a1 = arg1;
             var _a2 = arg2;
             var _a3 = arg3;
-            _m.SendMouseClickEvent(_a0, _a1, _a2, _a3);
+            _m.SendMouseClickEvent(ref _pd0, _a1, _a2, _a3);
         }
         catch (Exception ex)
         {
@@ -1344,9 +1344,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
+            var _pd0 = *arg0;
             var _a1 = arg1;
-            _m.SendMouseMoveEvent(_a0, _a1);
+            _m.SendMouseMoveEvent(ref _pd0, _a1);
         }
         catch (Exception ex)
         {
@@ -1366,10 +1366,10 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
+            var _pd0 = *arg0;
             var _a1 = arg1;
             var _a2 = arg2;
-            _m.SendMouseWheelEvent(_a0, _a1, _a2);
+            _m.SendMouseWheelEvent(ref _pd0, _a1, _a2);
         }
         catch (Exception ex)
         {
@@ -1389,8 +1389,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefTouchEventRef(arg0) : null;
-            _m.SendTouchEvent(_a0);
+            var _pd0 = *arg0;
+            _m.SendTouchEvent(ref _pd0);
         }
         catch (Exception ex)
         {
@@ -1495,10 +1495,10 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
             var _a0 = CefStringRef.ToString(arg0);
             var _a1 = arg1;
-            var _a2 = arg2 != null ? new CefCompositionUnderlineRef(arg2) : null;
-            var _a3 = arg3 != null ? new CefRangeRef(arg3) : null;
-            var _a4 = arg4 != null ? new CefRangeRef(arg4) : null;
-            _m.ImeSetComposition(_a0, _a1, _a2, _a3, _a4);
+            var _pd2 = *arg2;
+            var _pd3 = *arg3;
+            var _pd4 = *arg4;
+            _m.ImeSetComposition(_a0, _a1, ref _pd2, ref _pd3, ref _pd4);
         }
         catch (Exception ex)
         {
@@ -1519,9 +1519,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _m = GetManaged<CefBrowserHost>(self);
 
             var _a0 = CefStringRef.ToString(arg0);
-            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            _m.ImeCommitText(_a0, _a1, _a2);
+            _m.ImeCommitText(_a0, ref _pd1, _a2);
         }
         catch (Exception ex)
         {
@@ -1583,9 +1583,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _m = GetManaged<CefBrowserHost>(self);
 
             var _a0 = arg0 != null ? new CefDragDataRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefMouseEventRef(arg1) : null;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            _m.DragTargetDragEnter(_a0, _a1, _a2);
+            _m.DragTargetDragEnter(_a0, ref _pd1, _a2);
         }
         catch (Exception ex)
         {
@@ -1605,9 +1605,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
+            var _pd0 = *arg0;
             var _a1 = arg1;
-            _m.DragTargetDragOver(_a0, _a1);
+            _m.DragTargetDragOver(ref _pd0, _a1);
         }
         catch (Exception ex)
         {
@@ -1647,8 +1647,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
-            _m.DragTargetDrop(_a0);
+            var _pd0 = *arg0;
+            _m.DragTargetDrop(ref _pd0);
         }
         catch (Exception ex)
         {
@@ -1756,9 +1756,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _m = GetManaged<CefBrowserHost>(self);
 
             var _a0 = arg0;
-            var _a1 = arg1 != null ? new CefSizeRef(arg1) : null;
-            var _a2 = arg2 != null ? new CefSizeRef(arg2) : null;
-            _m.SetAutoResizeEnabled(_a0, _a1, _a2);
+            var _pd1 = *arg1;
+            var _pd2 = *arg2;
+            _m.SetAutoResizeEnabled(_a0, ref _pd1, ref _pd2);
         }
         catch (Exception ex)
         {
@@ -2189,7 +2189,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>show_dev_tools</c> callback.
     /// </summary>
-    public abstract void ShowDevTools(ICefWindowInfo? arg0, ICefClient? arg1, ICefBrowserSettings? arg2, ICefPoint? arg3);
+    public abstract void ShowDevTools(ICefWindowInfo? arg0, ICefClient? arg1, ICefBrowserSettings? arg2, ref CefPoint arg3);
 
     /// <summary>
     /// Implement the <c>close_dev_tools</c> callback.
@@ -2264,27 +2264,27 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>send_key_event</c> callback.
     /// </summary>
-    public abstract void SendKeyEvent(ICefKeyEvent? arg0);
+    public abstract void SendKeyEvent(ref CefKeyEvent arg0);
 
     /// <summary>
     /// Implement the <c>send_mouse_click_event</c> callback.
     /// </summary>
-    public abstract void SendMouseClickEvent(ICefMouseEvent? arg0, cef_mouse_button_type_t arg1, int arg2, int arg3);
+    public abstract void SendMouseClickEvent(ref CefMouseEvent arg0, cef_mouse_button_type_t arg1, int arg2, int arg3);
 
     /// <summary>
     /// Implement the <c>send_mouse_move_event</c> callback.
     /// </summary>
-    public abstract void SendMouseMoveEvent(ICefMouseEvent? arg0, int arg1);
+    public abstract void SendMouseMoveEvent(ref CefMouseEvent arg0, int arg1);
 
     /// <summary>
     /// Implement the <c>send_mouse_wheel_event</c> callback.
     /// </summary>
-    public abstract void SendMouseWheelEvent(ICefMouseEvent? arg0, int arg1, int arg2);
+    public abstract void SendMouseWheelEvent(ref CefMouseEvent arg0, int arg1, int arg2);
 
     /// <summary>
     /// Implement the <c>send_touch_event</c> callback.
     /// </summary>
-    public abstract void SendTouchEvent(ICefTouchEvent? arg0);
+    public abstract void SendTouchEvent(ref CefTouchEvent arg0);
 
     /// <summary>
     /// Implement the <c>send_capture_lost_event</c> callback.
@@ -2309,12 +2309,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>ime_set_composition</c> callback.
     /// </summary>
-    public abstract void ImeSetComposition(string? arg0, nuint arg1, ICefCompositionUnderline? arg2, ICefRange? arg3, ICefRange? arg4);
+    public abstract void ImeSetComposition(string? arg0, nuint arg1, ref CefCompositionUnderline arg2, ref CefRange arg3, ref CefRange arg4);
 
     /// <summary>
     /// Implement the <c>ime_commit_text</c> callback.
     /// </summary>
-    public abstract void ImeCommitText(string? arg0, ICefRange? arg1, int arg2);
+    public abstract void ImeCommitText(string? arg0, ref CefRange arg1, int arg2);
 
     /// <summary>
     /// Implement the <c>ime_finish_composing_text</c> callback.
@@ -2329,12 +2329,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>drag_target_drag_enter</c> callback.
     /// </summary>
-    public abstract void DragTargetDragEnter(ICefDragData? arg0, ICefMouseEvent? arg1, cef_drag_operations_mask_t arg2);
+    public abstract void DragTargetDragEnter(ICefDragData? arg0, ref CefMouseEvent arg1, cef_drag_operations_mask_t arg2);
 
     /// <summary>
     /// Implement the <c>drag_target_drag_over</c> callback.
     /// </summary>
-    public abstract void DragTargetDragOver(ICefMouseEvent? arg0, cef_drag_operations_mask_t arg1);
+    public abstract void DragTargetDragOver(ref CefMouseEvent arg0, cef_drag_operations_mask_t arg1);
 
     /// <summary>
     /// Implement the <c>drag_target_drag_leave</c> callback.
@@ -2344,7 +2344,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>drag_target_drop</c> callback.
     /// </summary>
-    public abstract void DragTargetDrop(ICefMouseEvent? arg0);
+    public abstract void DragTargetDrop(ref CefMouseEvent arg0);
 
     /// <summary>
     /// Implement the <c>drag_source_ended_at</c> callback.
@@ -2369,7 +2369,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>set_auto_resize_enabled</c> callback.
     /// </summary>
-    public abstract void SetAutoResizeEnabled(int arg0, ICefSize? arg1, ICefSize? arg2);
+    public abstract void SetAutoResizeEnabled(int arg0, ref CefSize arg1, ref CefSize arg2);
 
     /// <summary>
     /// Implement the <c>set_audio_muted</c> callback.
@@ -2941,8 +2941,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _a0 = arg0 != null ? new CefWindowInfoRef(arg0) : null;
             var _a1 = arg1 != null ? new CefClientRef(arg1) : null;
             var _a2 = arg2 != null ? new CefBrowserSettingsRef(arg2) : null;
-            var _a3 = arg3 != null ? new CefPointRef(arg3) : null;
-            _m.ShowDevTools(_a0, _a1, _a2, _a3);
+            var _pd3 = *arg3;
+            _m.ShowDevTools(_a0, _a1, _a2, ref _pd3);
         }
         catch (Exception ex)
         {
@@ -3265,8 +3265,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefKeyEventRef(arg0) : null;
-            _m.SendKeyEvent(_a0);
+            var _pd0 = *arg0;
+            _m.SendKeyEvent(ref _pd0);
         }
         catch (Exception ex)
         {
@@ -3286,11 +3286,11 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
+            var _pd0 = *arg0;
             var _a1 = arg1;
             var _a2 = arg2;
             var _a3 = arg3;
-            _m.SendMouseClickEvent(_a0, _a1, _a2, _a3);
+            _m.SendMouseClickEvent(ref _pd0, _a1, _a2, _a3);
         }
         catch (Exception ex)
         {
@@ -3310,9 +3310,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
+            var _pd0 = *arg0;
             var _a1 = arg1;
-            _m.SendMouseMoveEvent(_a0, _a1);
+            _m.SendMouseMoveEvent(ref _pd0, _a1);
         }
         catch (Exception ex)
         {
@@ -3332,10 +3332,10 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
+            var _pd0 = *arg0;
             var _a1 = arg1;
             var _a2 = arg2;
-            _m.SendMouseWheelEvent(_a0, _a1, _a2);
+            _m.SendMouseWheelEvent(ref _pd0, _a1, _a2);
         }
         catch (Exception ex)
         {
@@ -3355,8 +3355,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefTouchEventRef(arg0) : null;
-            _m.SendTouchEvent(_a0);
+            var _pd0 = *arg0;
+            _m.SendTouchEvent(ref _pd0);
         }
         catch (Exception ex)
         {
@@ -3461,10 +3461,10 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
             var _a0 = CefStringRef.ToString(arg0);
             var _a1 = arg1;
-            var _a2 = arg2 != null ? new CefCompositionUnderlineRef(arg2) : null;
-            var _a3 = arg3 != null ? new CefRangeRef(arg3) : null;
-            var _a4 = arg4 != null ? new CefRangeRef(arg4) : null;
-            _m.ImeSetComposition(_a0, _a1, _a2, _a3, _a4);
+            var _pd2 = *arg2;
+            var _pd3 = *arg3;
+            var _pd4 = *arg4;
+            _m.ImeSetComposition(_a0, _a1, ref _pd2, ref _pd3, ref _pd4);
         }
         catch (Exception ex)
         {
@@ -3485,9 +3485,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _m = GetManaged<CefBrowserHost>(self);
 
             var _a0 = CefStringRef.ToString(arg0);
-            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            _m.ImeCommitText(_a0, _a1, _a2);
+            _m.ImeCommitText(_a0, ref _pd1, _a2);
         }
         catch (Exception ex)
         {
@@ -3549,9 +3549,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _m = GetManaged<CefBrowserHost>(self);
 
             var _a0 = arg0 != null ? new CefDragDataRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefMouseEventRef(arg1) : null;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            _m.DragTargetDragEnter(_a0, _a1, _a2);
+            _m.DragTargetDragEnter(_a0, ref _pd1, _a2);
         }
         catch (Exception ex)
         {
@@ -3571,9 +3571,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
+            var _pd0 = *arg0;
             var _a1 = arg1;
-            _m.DragTargetDragOver(_a0, _a1);
+            _m.DragTargetDragOver(ref _pd0, _a1);
         }
         catch (Exception ex)
         {
@@ -3613,8 +3613,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
-            _m.DragTargetDrop(_a0);
+            var _pd0 = *arg0;
+            _m.DragTargetDrop(ref _pd0);
         }
         catch (Exception ex)
         {
@@ -3722,9 +3722,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _m = GetManaged<CefBrowserHost>(self);
 
             var _a0 = arg0;
-            var _a1 = arg1 != null ? new CefSizeRef(arg1) : null;
-            var _a2 = arg2 != null ? new CefSizeRef(arg2) : null;
-            _m.SetAutoResizeEnabled(_a0, _a1, _a2);
+            var _pd1 = *arg1;
+            var _pd2 = *arg2;
+            _m.SetAutoResizeEnabled(_a0, ref _pd1, ref _pd2);
         }
         catch (Exception ex)
         {
@@ -4155,7 +4155,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>show_dev_tools</c> callback.
     /// </summary>
-    public abstract void ShowDevTools(ICefWindowInfo? arg0, ICefClient? arg1, ICefBrowserSettings? arg2, ICefPoint? arg3);
+    public abstract void ShowDevTools(ICefWindowInfo? arg0, ICefClient? arg1, ICefBrowserSettings? arg2, ref CefPoint arg3);
 
     /// <summary>
     /// Implement the <c>close_dev_tools</c> callback.
@@ -4230,27 +4230,27 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>send_key_event</c> callback.
     /// </summary>
-    public abstract void SendKeyEvent(ICefKeyEvent? arg0);
+    public abstract void SendKeyEvent(ref CefKeyEvent arg0);
 
     /// <summary>
     /// Implement the <c>send_mouse_click_event</c> callback.
     /// </summary>
-    public abstract void SendMouseClickEvent(ICefMouseEvent? arg0, cef_mouse_button_type_t arg1, int arg2, int arg3);
+    public abstract void SendMouseClickEvent(ref CefMouseEvent arg0, cef_mouse_button_type_t arg1, int arg2, int arg3);
 
     /// <summary>
     /// Implement the <c>send_mouse_move_event</c> callback.
     /// </summary>
-    public abstract void SendMouseMoveEvent(ICefMouseEvent? arg0, int arg1);
+    public abstract void SendMouseMoveEvent(ref CefMouseEvent arg0, int arg1);
 
     /// <summary>
     /// Implement the <c>send_mouse_wheel_event</c> callback.
     /// </summary>
-    public abstract void SendMouseWheelEvent(ICefMouseEvent? arg0, int arg1, int arg2);
+    public abstract void SendMouseWheelEvent(ref CefMouseEvent arg0, int arg1, int arg2);
 
     /// <summary>
     /// Implement the <c>send_touch_event</c> callback.
     /// </summary>
-    public abstract void SendTouchEvent(ICefTouchEvent? arg0);
+    public abstract void SendTouchEvent(ref CefTouchEvent arg0);
 
     /// <summary>
     /// Implement the <c>send_capture_lost_event</c> callback.
@@ -4275,12 +4275,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>ime_set_composition</c> callback.
     /// </summary>
-    public abstract void ImeSetComposition(string? arg0, nuint arg1, ICefCompositionUnderline? arg2, ICefRange? arg3, ICefRange? arg4);
+    public abstract void ImeSetComposition(string? arg0, nuint arg1, ref CefCompositionUnderline arg2, ref CefRange arg3, ref CefRange arg4);
 
     /// <summary>
     /// Implement the <c>ime_commit_text</c> callback.
     /// </summary>
-    public abstract void ImeCommitText(string? arg0, ICefRange? arg1, int arg2);
+    public abstract void ImeCommitText(string? arg0, ref CefRange arg1, int arg2);
 
     /// <summary>
     /// Implement the <c>ime_finish_composing_text</c> callback.
@@ -4295,12 +4295,12 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>drag_target_drag_enter</c> callback.
     /// </summary>
-    public abstract void DragTargetDragEnter(ICefDragData? arg0, ICefMouseEvent? arg1, cef_drag_operations_mask_t arg2);
+    public abstract void DragTargetDragEnter(ICefDragData? arg0, ref CefMouseEvent arg1, cef_drag_operations_mask_t arg2);
 
     /// <summary>
     /// Implement the <c>drag_target_drag_over</c> callback.
     /// </summary>
-    public abstract void DragTargetDragOver(ICefMouseEvent? arg0, cef_drag_operations_mask_t arg1);
+    public abstract void DragTargetDragOver(ref CefMouseEvent arg0, cef_drag_operations_mask_t arg1);
 
     /// <summary>
     /// Implement the <c>drag_target_drag_leave</c> callback.
@@ -4310,7 +4310,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>drag_target_drop</c> callback.
     /// </summary>
-    public abstract void DragTargetDrop(ICefMouseEvent? arg0);
+    public abstract void DragTargetDrop(ref CefMouseEvent arg0);
 
     /// <summary>
     /// Implement the <c>drag_source_ended_at</c> callback.
@@ -4335,7 +4335,7 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// <summary>
     /// Implement the <c>set_auto_resize_enabled</c> callback.
     /// </summary>
-    public abstract void SetAutoResizeEnabled(int arg0, ICefSize? arg1, ICefSize? arg2);
+    public abstract void SetAutoResizeEnabled(int arg0, ref CefSize arg1, ref CefSize arg2);
 
     /// <summary>
     /// Implement the <c>set_audio_muted</c> callback.
@@ -4907,8 +4907,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _a0 = arg0 != null ? new CefWindowInfoRef(arg0) : null;
             var _a1 = arg1 != null ? new CefClientRef(arg1) : null;
             var _a2 = arg2 != null ? new CefBrowserSettingsRef(arg2) : null;
-            var _a3 = arg3 != null ? new CefPointRef(arg3) : null;
-            _m.ShowDevTools(_a0, _a1, _a2, _a3);
+            var _pd3 = *arg3;
+            _m.ShowDevTools(_a0, _a1, _a2, ref _pd3);
         }
         catch (Exception ex)
         {
@@ -5231,8 +5231,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefKeyEventRef(arg0) : null;
-            _m.SendKeyEvent(_a0);
+            var _pd0 = *arg0;
+            _m.SendKeyEvent(ref _pd0);
         }
         catch (Exception ex)
         {
@@ -5252,11 +5252,11 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
+            var _pd0 = *arg0;
             var _a1 = arg1;
             var _a2 = arg2;
             var _a3 = arg3;
-            _m.SendMouseClickEvent(_a0, _a1, _a2, _a3);
+            _m.SendMouseClickEvent(ref _pd0, _a1, _a2, _a3);
         }
         catch (Exception ex)
         {
@@ -5276,9 +5276,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
+            var _pd0 = *arg0;
             var _a1 = arg1;
-            _m.SendMouseMoveEvent(_a0, _a1);
+            _m.SendMouseMoveEvent(ref _pd0, _a1);
         }
         catch (Exception ex)
         {
@@ -5298,10 +5298,10 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
+            var _pd0 = *arg0;
             var _a1 = arg1;
             var _a2 = arg2;
-            _m.SendMouseWheelEvent(_a0, _a1, _a2);
+            _m.SendMouseWheelEvent(ref _pd0, _a1, _a2);
         }
         catch (Exception ex)
         {
@@ -5321,8 +5321,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefTouchEventRef(arg0) : null;
-            _m.SendTouchEvent(_a0);
+            var _pd0 = *arg0;
+            _m.SendTouchEvent(ref _pd0);
         }
         catch (Exception ex)
         {
@@ -5427,10 +5427,10 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
 
             var _a0 = CefStringRef.ToString(arg0);
             var _a1 = arg1;
-            var _a2 = arg2 != null ? new CefCompositionUnderlineRef(arg2) : null;
-            var _a3 = arg3 != null ? new CefRangeRef(arg3) : null;
-            var _a4 = arg4 != null ? new CefRangeRef(arg4) : null;
-            _m.ImeSetComposition(_a0, _a1, _a2, _a3, _a4);
+            var _pd2 = *arg2;
+            var _pd3 = *arg3;
+            var _pd4 = *arg4;
+            _m.ImeSetComposition(_a0, _a1, ref _pd2, ref _pd3, ref _pd4);
         }
         catch (Exception ex)
         {
@@ -5451,9 +5451,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _m = GetManaged<CefBrowserHost>(self);
 
             var _a0 = CefStringRef.ToString(arg0);
-            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            _m.ImeCommitText(_a0, _a1, _a2);
+            _m.ImeCommitText(_a0, ref _pd1, _a2);
         }
         catch (Exception ex)
         {
@@ -5515,9 +5515,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _m = GetManaged<CefBrowserHost>(self);
 
             var _a0 = arg0 != null ? new CefDragDataRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefMouseEventRef(arg1) : null;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            _m.DragTargetDragEnter(_a0, _a1, _a2);
+            _m.DragTargetDragEnter(_a0, ref _pd1, _a2);
         }
         catch (Exception ex)
         {
@@ -5537,9 +5537,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
+            var _pd0 = *arg0;
             var _a1 = arg1;
-            _m.DragTargetDragOver(_a0, _a1);
+            _m.DragTargetDragOver(ref _pd0, _a1);
         }
         catch (Exception ex)
         {
@@ -5579,8 +5579,8 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         {
             var _m = GetManaged<CefBrowserHost>(self);
 
-            var _a0 = arg0 != null ? new CefMouseEventRef(arg0) : null;
-            _m.DragTargetDrop(_a0);
+            var _pd0 = *arg0;
+            _m.DragTargetDrop(ref _pd0);
         }
         catch (Exception ex)
         {
@@ -5688,9 +5688,9 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _m = GetManaged<CefBrowserHost>(self);
 
             var _a0 = arg0;
-            var _a1 = arg1 != null ? new CefSizeRef(arg1) : null;
-            var _a2 = arg2 != null ? new CefSizeRef(arg2) : null;
-            _m.SetAutoResizeEnabled(_a0, _a1, _a2);
+            var _pd1 = *arg1;
+            var _pd2 = *arg2;
+            _m.SetAutoResizeEnabled(_a0, ref _pd1, ref _pd2);
         }
         catch (Exception ex)
         {

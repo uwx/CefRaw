@@ -242,14 +242,14 @@ public static unsafe partial class Cef
     private static void FillCefTime(DateTime dateTime, _cef_time_t* time)
     {
         var utc = dateTime.ToUniversalTime();
-        time->year = utc.Year;
-        time->month = utc.Month;
-        time->day_of_week = (int)utc.DayOfWeek; // Sunday = 0, matches CEF tm_wday
-        time->day_of_month = utc.Day;
-        time->hour = utc.Hour;
-        time->minute = utc.Minute;
-        time->second = utc.Second;
-        time->millisecond = utc.Millisecond;
+        time->Year = utc.Year;
+        time->Month = utc.Month;
+        time->DayOfWeek = (int)utc.DayOfWeek; // Sunday = 0, matches CEF tm_wday
+        time->DayOfMonth = utc.Day;
+        time->Hour = utc.Hour;
+        time->Minute = utc.Minute;
+        time->Second = utc.Second;
+        time->Millisecond = utc.Millisecond;
     }
 
     /// <summary>
@@ -258,8 +258,8 @@ public static unsafe partial class Cef
     private static DateTime FromCefTime(_cef_time_t* time)
     {
         return new DateTime(
-            time->year, time->month, time->day_of_month,
-            time->hour, time->minute, time->second, time->millisecond,
+            time->Year, time->Month, time->DayOfMonth,
+            time->Hour, time->Minute, time->Second, time->Millisecond,
             DateTimeKind.Utc);
     }
 }

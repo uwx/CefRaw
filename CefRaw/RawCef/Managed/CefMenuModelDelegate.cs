@@ -51,7 +51,7 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>mouse_outside_menu</c> callback.
     /// </summary>
-    public abstract void MouseOutsideMenu(ICefMenuModel? arg0, ICefPoint? arg1);
+    public abstract void MouseOutsideMenu(ICefMenuModel? arg0, ref CefPoint arg1);
 
     /// <summary>
     /// Implement the <c>unhandled_open_submenu</c> callback.
@@ -113,8 +113,8 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
             var _m = GetManaged<CefMenuModelDelegate>(self);
 
             var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefPointRef(arg1) : null;
-            _m.MouseOutsideMenu(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.MouseOutsideMenu(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -293,7 +293,7 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>mouse_outside_menu</c> callback.
     /// </summary>
-    public abstract void MouseOutsideMenu(ICefMenuModel? arg0, ICefPoint? arg1);
+    public abstract void MouseOutsideMenu(ICefMenuModel? arg0, ref CefPoint arg1);
 
     /// <summary>
     /// Implement the <c>unhandled_open_submenu</c> callback.
@@ -355,8 +355,8 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
             var _m = GetManaged<CefMenuModelDelegate>(self);
 
             var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefPointRef(arg1) : null;
-            _m.MouseOutsideMenu(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.MouseOutsideMenu(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -535,7 +535,7 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
     /// <summary>
     /// Implement the <c>mouse_outside_menu</c> callback.
     /// </summary>
-    public abstract void MouseOutsideMenu(ICefMenuModel? arg0, ICefPoint? arg1);
+    public abstract void MouseOutsideMenu(ICefMenuModel? arg0, ref CefPoint arg1);
 
     /// <summary>
     /// Implement the <c>unhandled_open_submenu</c> callback.
@@ -597,8 +597,8 @@ public unsafe abstract partial class CefMenuModelDelegate : CefBaseRefCounted, I
             var _m = GetManaged<CefMenuModelDelegate>(self);
 
             var _a0 = arg0 != null ? new CefMenuModelRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefPointRef(arg1) : null;
-            _m.MouseOutsideMenu(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.MouseOutsideMenu(_a0, ref _pd1);
         }
         catch (Exception ex)
         {

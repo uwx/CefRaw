@@ -61,12 +61,12 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
     /// <summary>
     /// Implement the <c>get_root_screen_rect</c> callback.
     /// </summary>
-    public abstract int GetRootScreenRect(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract int GetRootScreenRect(ICefBrowser? arg0, ref CefRect arg1);
 
     /// <summary>
     /// Implement the <c>get_view_rect</c> callback.
     /// </summary>
-    public abstract void GetViewRect(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract void GetViewRect(ICefBrowser? arg0, ref CefRect arg1);
 
     /// <summary>
     /// Implement the <c>get_screen_point</c> callback.
@@ -76,7 +76,7 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
     /// <summary>
     /// Implement the <c>get_screen_info</c> callback.
     /// </summary>
-    public abstract int GetScreenInfo(ICefBrowser? arg0, ICefScreenInfo? arg1);
+    public abstract int GetScreenInfo(ICefBrowser? arg0, ref CefScreenInfo arg1);
 
     /// <summary>
     /// Implement the <c>on_popup_show</c> callback.
@@ -86,27 +86,27 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
     /// <summary>
     /// Implement the <c>on_popup_size</c> callback.
     /// </summary>
-    public abstract void OnPopupSize(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract void OnPopupSize(ICefBrowser? arg0, ref CefRect arg1);
 
     /// <summary>
     /// Implement the <c>on_paint</c> callback.
     /// </summary>
-    public abstract void OnPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ICefRect? arg3, void* arg4, int arg5, int arg6);
+    public abstract void OnPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ref CefRect arg3, void* arg4, int arg5, int arg6);
 
     /// <summary>
     /// Implement the <c>on_accelerated_paint</c> callback.
     /// </summary>
-    public abstract void OnAcceleratedPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ICefRect? arg3, ICefAcceleratedPaintInfo? arg4);
+    public abstract void OnAcceleratedPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ref CefRect arg3, ref CefAcceleratedPaintInfo arg4);
 
     /// <summary>
     /// Implement the <c>get_touch_handle_size</c> callback.
     /// </summary>
-    public abstract void GetTouchHandleSize(ICefBrowser? arg0, cef_horizontal_alignment_t arg1, ICefSize? arg2);
+    public abstract void GetTouchHandleSize(ICefBrowser? arg0, cef_horizontal_alignment_t arg1, ref CefSize arg2);
 
     /// <summary>
     /// Implement the <c>on_touch_handle_state_changed</c> callback.
     /// </summary>
-    public abstract void OnTouchHandleStateChanged(ICefBrowser? arg0, ICefTouchHandleState? arg1);
+    public abstract void OnTouchHandleStateChanged(ICefBrowser? arg0, ref CefTouchHandleState arg1);
 
     /// <summary>
     /// Implement the <c>start_dragging</c> callback.
@@ -126,12 +126,12 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
     /// <summary>
     /// Implement the <c>on_ime_composition_range_changed</c> callback.
     /// </summary>
-    public abstract void OnImeCompositionRangeChanged(ICefBrowser? arg0, ICefRange? arg1, nuint arg2, ICefRect? arg3);
+    public abstract void OnImeCompositionRangeChanged(ICefBrowser? arg0, ref CefRange arg1, nuint arg2, ref CefRect arg3);
 
     /// <summary>
     /// Implement the <c>on_text_selection_changed</c> callback.
     /// </summary>
-    public abstract void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ICefRange? arg2);
+    public abstract void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ref CefRange arg2);
 
     /// <summary>
     /// Implement the <c>on_virtual_keyboard_requested</c> callback.
@@ -173,8 +173,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            var _result = _m.GetRootScreenRect(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.GetRootScreenRect(_a0, ref _pd1);
 
             return _result;
         }
@@ -197,8 +197,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            _m.GetViewRect(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.GetViewRect(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -246,8 +246,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefScreenInfoRef(arg1) : null;
-            var _result = _m.GetScreenInfo(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.GetScreenInfo(_a0, ref _pd1);
 
             return _result;
         }
@@ -292,8 +292,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            _m.OnPopupSize(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.OnPopupSize(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -316,11 +316,11 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
+            var _pd3 = *arg3;
             var _a4 = arg4;
             var _a5 = arg5;
             var _a6 = arg6;
-            _m.OnPaint(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
+            _m.OnPaint(_a0, _a1, _a2, ref _pd3, _a4, _a5, _a6);
         }
         catch (Exception ex)
         {
@@ -343,9 +343,9 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
-            var _a4 = arg4 != null ? new CefAcceleratedPaintInfoRef(arg4) : null;
-            _m.OnAcceleratedPaint(_a0, _a1, _a2, _a3, _a4);
+            var _pd3 = *arg3;
+            var _pd4 = *arg4;
+            _m.OnAcceleratedPaint(_a0, _a1, _a2, ref _pd3, ref _pd4);
         }
         catch (Exception ex)
         {
@@ -367,8 +367,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
-            var _a2 = arg2 != null ? new CefSizeRef(arg2) : null;
-            _m.GetTouchHandleSize(_a0, _a1, _a2);
+            var _pd2 = *arg2;
+            _m.GetTouchHandleSize(_a0, _a1, ref _pd2);
         }
         catch (Exception ex)
         {
@@ -389,8 +389,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefTouchHandleStateRef(arg1) : null;
-            _m.OnTouchHandleStateChanged(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.OnTouchHandleStateChanged(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -483,10 +483,10 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
-            _m.OnImeCompositionRangeChanged(_a0, _a1, _a2, _a3);
+            var _pd3 = *arg3;
+            _m.OnImeCompositionRangeChanged(_a0, ref _pd1, _a2, ref _pd3);
         }
         catch (Exception ex)
         {
@@ -508,8 +508,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = CefStringRef.ToString(arg1);
-            var _a2 = arg2 != null ? new CefRangeRef(arg2) : null;
-            _m.OnTextSelectionChanged(_a0, _a1, _a2);
+            var _pd2 = *arg2;
+            _m.OnTextSelectionChanged(_a0, _a1, ref _pd2);
         }
         catch (Exception ex)
         {
@@ -604,12 +604,12 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
     /// <summary>
     /// Implement the <c>get_root_screen_rect</c> callback.
     /// </summary>
-    public abstract int GetRootScreenRect(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract int GetRootScreenRect(ICefBrowser? arg0, ref CefRect arg1);
 
     /// <summary>
     /// Implement the <c>get_view_rect</c> callback.
     /// </summary>
-    public abstract void GetViewRect(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract void GetViewRect(ICefBrowser? arg0, ref CefRect arg1);
 
     /// <summary>
     /// Implement the <c>get_screen_point</c> callback.
@@ -619,7 +619,7 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
     /// <summary>
     /// Implement the <c>get_screen_info</c> callback.
     /// </summary>
-    public abstract int GetScreenInfo(ICefBrowser? arg0, ICefScreenInfo? arg1);
+    public abstract int GetScreenInfo(ICefBrowser? arg0, ref CefScreenInfo arg1);
 
     /// <summary>
     /// Implement the <c>on_popup_show</c> callback.
@@ -629,27 +629,27 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
     /// <summary>
     /// Implement the <c>on_popup_size</c> callback.
     /// </summary>
-    public abstract void OnPopupSize(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract void OnPopupSize(ICefBrowser? arg0, ref CefRect arg1);
 
     /// <summary>
     /// Implement the <c>on_paint</c> callback.
     /// </summary>
-    public abstract void OnPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ICefRect? arg3, void* arg4, int arg5, int arg6);
+    public abstract void OnPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ref CefRect arg3, void* arg4, int arg5, int arg6);
 
     /// <summary>
     /// Implement the <c>on_accelerated_paint</c> callback.
     /// </summary>
-    public abstract void OnAcceleratedPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ICefRect? arg3, ICefAcceleratedPaintInfo? arg4);
+    public abstract void OnAcceleratedPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ref CefRect arg3, ref CefAcceleratedPaintInfo arg4);
 
     /// <summary>
     /// Implement the <c>get_touch_handle_size</c> callback.
     /// </summary>
-    public abstract void GetTouchHandleSize(ICefBrowser? arg0, cef_horizontal_alignment_t arg1, ICefSize? arg2);
+    public abstract void GetTouchHandleSize(ICefBrowser? arg0, cef_horizontal_alignment_t arg1, ref CefSize arg2);
 
     /// <summary>
     /// Implement the <c>on_touch_handle_state_changed</c> callback.
     /// </summary>
-    public abstract void OnTouchHandleStateChanged(ICefBrowser? arg0, ICefTouchHandleState? arg1);
+    public abstract void OnTouchHandleStateChanged(ICefBrowser? arg0, ref CefTouchHandleState arg1);
 
     /// <summary>
     /// Implement the <c>start_dragging</c> callback.
@@ -669,12 +669,12 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
     /// <summary>
     /// Implement the <c>on_ime_composition_range_changed</c> callback.
     /// </summary>
-    public abstract void OnImeCompositionRangeChanged(ICefBrowser? arg0, ICefRange? arg1, nuint arg2, ICefRect? arg3);
+    public abstract void OnImeCompositionRangeChanged(ICefBrowser? arg0, ref CefRange arg1, nuint arg2, ref CefRect arg3);
 
     /// <summary>
     /// Implement the <c>on_text_selection_changed</c> callback.
     /// </summary>
-    public abstract void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ICefRange? arg2);
+    public abstract void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ref CefRange arg2);
 
     /// <summary>
     /// Implement the <c>on_virtual_keyboard_requested</c> callback.
@@ -716,8 +716,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            var _result = _m.GetRootScreenRect(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.GetRootScreenRect(_a0, ref _pd1);
 
             return _result;
         }
@@ -740,8 +740,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            _m.GetViewRect(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.GetViewRect(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -789,8 +789,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefScreenInfoRef(arg1) : null;
-            var _result = _m.GetScreenInfo(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.GetScreenInfo(_a0, ref _pd1);
 
             return _result;
         }
@@ -835,8 +835,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            _m.OnPopupSize(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.OnPopupSize(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -859,11 +859,11 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
+            var _pd3 = *arg3;
             var _a4 = arg4;
             var _a5 = arg5;
             var _a6 = arg6;
-            _m.OnPaint(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
+            _m.OnPaint(_a0, _a1, _a2, ref _pd3, _a4, _a5, _a6);
         }
         catch (Exception ex)
         {
@@ -886,9 +886,9 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
-            var _a4 = arg4 != null ? new CefAcceleratedPaintInfoRef(arg4) : null;
-            _m.OnAcceleratedPaint(_a0, _a1, _a2, _a3, _a4);
+            var _pd3 = *arg3;
+            var _pd4 = *arg4;
+            _m.OnAcceleratedPaint(_a0, _a1, _a2, ref _pd3, ref _pd4);
         }
         catch (Exception ex)
         {
@@ -910,8 +910,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
-            var _a2 = arg2 != null ? new CefSizeRef(arg2) : null;
-            _m.GetTouchHandleSize(_a0, _a1, _a2);
+            var _pd2 = *arg2;
+            _m.GetTouchHandleSize(_a0, _a1, ref _pd2);
         }
         catch (Exception ex)
         {
@@ -932,8 +932,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefTouchHandleStateRef(arg1) : null;
-            _m.OnTouchHandleStateChanged(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.OnTouchHandleStateChanged(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -1026,10 +1026,10 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
-            _m.OnImeCompositionRangeChanged(_a0, _a1, _a2, _a3);
+            var _pd3 = *arg3;
+            _m.OnImeCompositionRangeChanged(_a0, ref _pd1, _a2, ref _pd3);
         }
         catch (Exception ex)
         {
@@ -1051,8 +1051,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = CefStringRef.ToString(arg1);
-            var _a2 = arg2 != null ? new CefRangeRef(arg2) : null;
-            _m.OnTextSelectionChanged(_a0, _a1, _a2);
+            var _pd2 = *arg2;
+            _m.OnTextSelectionChanged(_a0, _a1, ref _pd2);
         }
         catch (Exception ex)
         {
@@ -1147,12 +1147,12 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
     /// <summary>
     /// Implement the <c>get_root_screen_rect</c> callback.
     /// </summary>
-    public abstract int GetRootScreenRect(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract int GetRootScreenRect(ICefBrowser? arg0, ref CefRect arg1);
 
     /// <summary>
     /// Implement the <c>get_view_rect</c> callback.
     /// </summary>
-    public abstract void GetViewRect(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract void GetViewRect(ICefBrowser? arg0, ref CefRect arg1);
 
     /// <summary>
     /// Implement the <c>get_screen_point</c> callback.
@@ -1162,7 +1162,7 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
     /// <summary>
     /// Implement the <c>get_screen_info</c> callback.
     /// </summary>
-    public abstract int GetScreenInfo(ICefBrowser? arg0, ICefScreenInfo? arg1);
+    public abstract int GetScreenInfo(ICefBrowser? arg0, ref CefScreenInfo arg1);
 
     /// <summary>
     /// Implement the <c>on_popup_show</c> callback.
@@ -1172,27 +1172,27 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
     /// <summary>
     /// Implement the <c>on_popup_size</c> callback.
     /// </summary>
-    public abstract void OnPopupSize(ICefBrowser? arg0, ICefRect? arg1);
+    public abstract void OnPopupSize(ICefBrowser? arg0, ref CefRect arg1);
 
     /// <summary>
     /// Implement the <c>on_paint</c> callback.
     /// </summary>
-    public abstract void OnPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ICefRect? arg3, void* arg4, int arg5, int arg6);
+    public abstract void OnPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ref CefRect arg3, void* arg4, int arg5, int arg6);
 
     /// <summary>
     /// Implement the <c>on_accelerated_paint</c> callback.
     /// </summary>
-    public abstract void OnAcceleratedPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ICefRect? arg3, ICefAcceleratedPaintInfo? arg4);
+    public abstract void OnAcceleratedPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ref CefRect arg3, ref CefAcceleratedPaintInfo arg4);
 
     /// <summary>
     /// Implement the <c>get_touch_handle_size</c> callback.
     /// </summary>
-    public abstract void GetTouchHandleSize(ICefBrowser? arg0, cef_horizontal_alignment_t arg1, ICefSize? arg2);
+    public abstract void GetTouchHandleSize(ICefBrowser? arg0, cef_horizontal_alignment_t arg1, ref CefSize arg2);
 
     /// <summary>
     /// Implement the <c>on_touch_handle_state_changed</c> callback.
     /// </summary>
-    public abstract void OnTouchHandleStateChanged(ICefBrowser? arg0, ICefTouchHandleState? arg1);
+    public abstract void OnTouchHandleStateChanged(ICefBrowser? arg0, ref CefTouchHandleState arg1);
 
     /// <summary>
     /// Implement the <c>start_dragging</c> callback.
@@ -1212,12 +1212,12 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
     /// <summary>
     /// Implement the <c>on_ime_composition_range_changed</c> callback.
     /// </summary>
-    public abstract void OnImeCompositionRangeChanged(ICefBrowser? arg0, ICefRange? arg1, nuint arg2, ICefRect? arg3);
+    public abstract void OnImeCompositionRangeChanged(ICefBrowser? arg0, ref CefRange arg1, nuint arg2, ref CefRect arg3);
 
     /// <summary>
     /// Implement the <c>on_text_selection_changed</c> callback.
     /// </summary>
-    public abstract void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ICefRange? arg2);
+    public abstract void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ref CefRange arg2);
 
     /// <summary>
     /// Implement the <c>on_virtual_keyboard_requested</c> callback.
@@ -1259,8 +1259,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            var _result = _m.GetRootScreenRect(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.GetRootScreenRect(_a0, ref _pd1);
 
             return _result;
         }
@@ -1283,8 +1283,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            _m.GetViewRect(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.GetViewRect(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -1332,8 +1332,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefScreenInfoRef(arg1) : null;
-            var _result = _m.GetScreenInfo(_a0, _a1);
+            var _pd1 = *arg1;
+            var _result = _m.GetScreenInfo(_a0, ref _pd1);
 
             return _result;
         }
@@ -1378,8 +1378,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
-            _m.OnPopupSize(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.OnPopupSize(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -1402,11 +1402,11 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
+            var _pd3 = *arg3;
             var _a4 = arg4;
             var _a5 = arg5;
             var _a6 = arg6;
-            _m.OnPaint(_a0, _a1, _a2, _a3, _a4, _a5, _a6);
+            _m.OnPaint(_a0, _a1, _a2, ref _pd3, _a4, _a5, _a6);
         }
         catch (Exception ex)
         {
@@ -1429,9 +1429,9 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
-            var _a4 = arg4 != null ? new CefAcceleratedPaintInfoRef(arg4) : null;
-            _m.OnAcceleratedPaint(_a0, _a1, _a2, _a3, _a4);
+            var _pd3 = *arg3;
+            var _pd4 = *arg4;
+            _m.OnAcceleratedPaint(_a0, _a1, _a2, ref _pd3, ref _pd4);
         }
         catch (Exception ex)
         {
@@ -1453,8 +1453,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1;
-            var _a2 = arg2 != null ? new CefSizeRef(arg2) : null;
-            _m.GetTouchHandleSize(_a0, _a1, _a2);
+            var _pd2 = *arg2;
+            _m.GetTouchHandleSize(_a0, _a1, ref _pd2);
         }
         catch (Exception ex)
         {
@@ -1475,8 +1475,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefTouchHandleStateRef(arg1) : null;
-            _m.OnTouchHandleStateChanged(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.OnTouchHandleStateChanged(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -1569,10 +1569,10 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
             var _m = GetManaged<CefRenderHandler>(self);
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            var _a3 = arg3 != null ? new CefRectRef(arg3) : null;
-            _m.OnImeCompositionRangeChanged(_a0, _a1, _a2, _a3);
+            var _pd3 = *arg3;
+            _m.OnImeCompositionRangeChanged(_a0, ref _pd1, _a2, ref _pd3);
         }
         catch (Exception ex)
         {
@@ -1594,8 +1594,8 @@ public unsafe abstract partial class CefRenderHandler : CefBaseRefCounted, ICefR
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = CefStringRef.ToString(arg1);
-            var _a2 = arg2 != null ? new CefRangeRef(arg2) : null;
-            _m.OnTextSelectionChanged(_a0, _a1, _a2);
+            var _pd2 = *arg2;
+            _m.OnTextSelectionChanged(_a0, _a1, ref _pd2);
         }
         catch (Exception ex)
         {

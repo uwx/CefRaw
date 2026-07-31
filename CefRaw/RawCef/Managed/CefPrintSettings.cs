@@ -81,7 +81,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     /// <summary>
     /// Implement the <c>set_printer_printable_area</c> callback.
     /// </summary>
-    public abstract void SetPrinterPrintableArea(ICefSize? arg0, ICefRect? arg1, int arg2);
+    public abstract void SetPrinterPrintableArea(ref CefSize arg0, ref CefRect arg1, int arg2);
 
     /// <summary>
     /// Implement the <c>set_device_name</c> callback.
@@ -106,7 +106,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     /// <summary>
     /// Implement the <c>set_page_ranges</c> callback.
     /// </summary>
-    public abstract void SetPageRanges(nuint arg0, ICefRange? arg1);
+    public abstract void SetPageRanges(nuint arg0, ref CefRange arg1);
 
     /// <summary>
     /// Implement the <c>get_page_ranges_count</c> callback.
@@ -116,7 +116,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     /// <summary>
     /// Implement the <c>get_page_ranges</c> callback.
     /// </summary>
-    public abstract void GetPageRanges(nuint* arg0, ICefRange? arg1);
+    public abstract void GetPageRanges(nuint* arg0, ref CefRange arg1);
 
     /// <summary>
     /// Implement the <c>set_selection_only</c> callback.
@@ -266,10 +266,10 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
         {
             var _m = GetManaged<CefPrintSettings>(self);
 
-            var _a0 = arg0 != null ? new CefSizeRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
+            var _pd0 = *arg0;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            _m.SetPrinterPrintableArea(_a0, _a1, _a2);
+            _m.SetPrinterPrintableArea(ref _pd0, ref _pd1, _a2);
         }
         catch (Exception ex)
         {
@@ -376,8 +376,8 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
             var _m = GetManaged<CefPrintSettings>(self);
 
             var _a0 = arg0;
-            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-            _m.SetPageRanges(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.SetPageRanges(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -420,8 +420,8 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
             var _m = GetManaged<CefPrintSettings>(self);
 
             var _a0 = arg0;
-            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-            _m.GetPageRanges(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.GetPageRanges(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -729,7 +729,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     /// <summary>
     /// Implement the <c>set_printer_printable_area</c> callback.
     /// </summary>
-    public abstract void SetPrinterPrintableArea(ICefSize? arg0, ICefRect? arg1, int arg2);
+    public abstract void SetPrinterPrintableArea(ref CefSize arg0, ref CefRect arg1, int arg2);
 
     /// <summary>
     /// Implement the <c>set_device_name</c> callback.
@@ -754,7 +754,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     /// <summary>
     /// Implement the <c>set_page_ranges</c> callback.
     /// </summary>
-    public abstract void SetPageRanges(nuint arg0, ICefRange? arg1);
+    public abstract void SetPageRanges(nuint arg0, ref CefRange arg1);
 
     /// <summary>
     /// Implement the <c>get_page_ranges_count</c> callback.
@@ -764,7 +764,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     /// <summary>
     /// Implement the <c>get_page_ranges</c> callback.
     /// </summary>
-    public abstract void GetPageRanges(nuint* arg0, ICefRange? arg1);
+    public abstract void GetPageRanges(nuint* arg0, ref CefRange arg1);
 
     /// <summary>
     /// Implement the <c>set_selection_only</c> callback.
@@ -914,10 +914,10 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
         {
             var _m = GetManaged<CefPrintSettings>(self);
 
-            var _a0 = arg0 != null ? new CefSizeRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
+            var _pd0 = *arg0;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            _m.SetPrinterPrintableArea(_a0, _a1, _a2);
+            _m.SetPrinterPrintableArea(ref _pd0, ref _pd1, _a2);
         }
         catch (Exception ex)
         {
@@ -1024,8 +1024,8 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
             var _m = GetManaged<CefPrintSettings>(self);
 
             var _a0 = arg0;
-            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-            _m.SetPageRanges(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.SetPageRanges(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -1068,8 +1068,8 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
             var _m = GetManaged<CefPrintSettings>(self);
 
             var _a0 = arg0;
-            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-            _m.GetPageRanges(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.GetPageRanges(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -1377,7 +1377,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     /// <summary>
     /// Implement the <c>set_printer_printable_area</c> callback.
     /// </summary>
-    public abstract void SetPrinterPrintableArea(ICefSize? arg0, ICefRect? arg1, int arg2);
+    public abstract void SetPrinterPrintableArea(ref CefSize arg0, ref CefRect arg1, int arg2);
 
     /// <summary>
     /// Implement the <c>set_device_name</c> callback.
@@ -1402,7 +1402,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     /// <summary>
     /// Implement the <c>set_page_ranges</c> callback.
     /// </summary>
-    public abstract void SetPageRanges(nuint arg0, ICefRange? arg1);
+    public abstract void SetPageRanges(nuint arg0, ref CefRange arg1);
 
     /// <summary>
     /// Implement the <c>get_page_ranges_count</c> callback.
@@ -1412,7 +1412,7 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
     /// <summary>
     /// Implement the <c>get_page_ranges</c> callback.
     /// </summary>
-    public abstract void GetPageRanges(nuint* arg0, ICefRange? arg1);
+    public abstract void GetPageRanges(nuint* arg0, ref CefRange arg1);
 
     /// <summary>
     /// Implement the <c>set_selection_only</c> callback.
@@ -1562,10 +1562,10 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
         {
             var _m = GetManaged<CefPrintSettings>(self);
 
-            var _a0 = arg0 != null ? new CefSizeRef(arg0) : null;
-            var _a1 = arg1 != null ? new CefRectRef(arg1) : null;
+            var _pd0 = *arg0;
+            var _pd1 = *arg1;
             var _a2 = arg2;
-            _m.SetPrinterPrintableArea(_a0, _a1, _a2);
+            _m.SetPrinterPrintableArea(ref _pd0, ref _pd1, _a2);
         }
         catch (Exception ex)
         {
@@ -1672,8 +1672,8 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
             var _m = GetManaged<CefPrintSettings>(self);
 
             var _a0 = arg0;
-            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-            _m.SetPageRanges(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.SetPageRanges(_a0, ref _pd1);
         }
         catch (Exception ex)
         {
@@ -1716,8 +1716,8 @@ public unsafe abstract partial class CefPrintSettings : CefBaseRefCounted, ICefP
             var _m = GetManaged<CefPrintSettings>(self);
 
             var _a0 = arg0;
-            var _a1 = arg1 != null ? new CefRangeRef(arg1) : null;
-            _m.GetPageRanges(_a0, _a1);
+            var _pd1 = *arg1;
+            _m.GetPageRanges(_a0, ref _pd1);
         }
         catch (Exception ex)
         {

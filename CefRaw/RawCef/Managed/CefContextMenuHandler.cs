@@ -66,7 +66,7 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
     /// <summary>
     /// Implement the <c>run_quick_menu</c> callback.
     /// </summary>
-    public abstract int RunQuickMenu(ICefBrowser? arg0, ICefFrame? arg1, ICefPoint? arg2, ICefSize? arg3, cef_quick_menu_edit_state_flags_t arg4, ICefRunQuickMenuCallback? arg5);
+    public abstract int RunQuickMenu(ICefBrowser? arg0, ICefFrame? arg1, ref CefPoint arg2, ref CefSize arg3, cef_quick_menu_edit_state_flags_t arg4, ICefRunQuickMenuCallback? arg5);
 
     /// <summary>
     /// Implement the <c>on_quick_menu_command</c> callback.
@@ -191,11 +191,11 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-            var _a2 = arg2 != null ? new CefPointRef(arg2) : null;
-            var _a3 = arg3 != null ? new CefSizeRef(arg3) : null;
+            var _pd2 = *arg2;
+            var _pd3 = *arg3;
             var _a4 = arg4;
             var _a5 = arg5 != null ? new CefRunQuickMenuCallbackRef(arg5) : null;
-            var _result = _m.RunQuickMenu(_a0, _a1, _a2, _a3, _a4, _a5);
+            var _result = _m.RunQuickMenu(_a0, _a1, ref _pd2, ref _pd3, _a4, _a5);
 
             return _result;
         }
@@ -323,7 +323,7 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
     /// <summary>
     /// Implement the <c>run_quick_menu</c> callback.
     /// </summary>
-    public abstract int RunQuickMenu(ICefBrowser? arg0, ICefFrame? arg1, ICefPoint? arg2, ICefSize? arg3, cef_quick_menu_edit_state_flags_t arg4, ICefRunQuickMenuCallback? arg5);
+    public abstract int RunQuickMenu(ICefBrowser? arg0, ICefFrame? arg1, ref CefPoint arg2, ref CefSize arg3, cef_quick_menu_edit_state_flags_t arg4, ICefRunQuickMenuCallback? arg5);
 
     /// <summary>
     /// Implement the <c>on_quick_menu_command</c> callback.
@@ -448,11 +448,11 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-            var _a2 = arg2 != null ? new CefPointRef(arg2) : null;
-            var _a3 = arg3 != null ? new CefSizeRef(arg3) : null;
+            var _pd2 = *arg2;
+            var _pd3 = *arg3;
             var _a4 = arg4;
             var _a5 = arg5 != null ? new CefRunQuickMenuCallbackRef(arg5) : null;
-            var _result = _m.RunQuickMenu(_a0, _a1, _a2, _a3, _a4, _a5);
+            var _result = _m.RunQuickMenu(_a0, _a1, ref _pd2, ref _pd3, _a4, _a5);
 
             return _result;
         }
@@ -580,7 +580,7 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
     /// <summary>
     /// Implement the <c>run_quick_menu</c> callback.
     /// </summary>
-    public abstract int RunQuickMenu(ICefBrowser? arg0, ICefFrame? arg1, ICefPoint? arg2, ICefSize? arg3, cef_quick_menu_edit_state_flags_t arg4, ICefRunQuickMenuCallback? arg5);
+    public abstract int RunQuickMenu(ICefBrowser? arg0, ICefFrame? arg1, ref CefPoint arg2, ref CefSize arg3, cef_quick_menu_edit_state_flags_t arg4, ICefRunQuickMenuCallback? arg5);
 
     /// <summary>
     /// Implement the <c>on_quick_menu_command</c> callback.
@@ -705,11 +705,11 @@ public unsafe abstract partial class CefContextMenuHandler : CefBaseRefCounted, 
 
             var _a0 = arg0 != null ? new CefBrowserRef(arg0) : null;
             var _a1 = arg1 != null ? new CefFrameRef(arg1) : null;
-            var _a2 = arg2 != null ? new CefPointRef(arg2) : null;
-            var _a3 = arg3 != null ? new CefSizeRef(arg3) : null;
+            var _pd2 = *arg2;
+            var _pd3 = *arg3;
             var _a4 = arg4;
             var _a5 = arg5 != null ? new CefRunQuickMenuCallbackRef(arg5) : null;
-            var _result = _m.RunQuickMenu(_a0, _a1, _a2, _a3, _a4, _a5);
+            var _result = _m.RunQuickMenu(_a0, _a1, ref _pd2, ref _pd3, _a4, _a5);
 
             return _result;
         }

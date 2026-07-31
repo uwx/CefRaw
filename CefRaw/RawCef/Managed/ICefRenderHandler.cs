@@ -15,25 +15,25 @@ public unsafe partial interface ICefRenderHandler : ICefBaseRefCounted
 
     public ICefAccessibilityHandler? GetAccessibilityHandler();
 
-    public int GetRootScreenRect(ICefBrowser? arg0, ICefRect? arg1);
+    public int GetRootScreenRect(ICefBrowser? arg0, ref CefRect arg1);
 
-    public void GetViewRect(ICefBrowser? arg0, ICefRect? arg1);
+    public void GetViewRect(ICefBrowser? arg0, ref CefRect arg1);
 
     public int GetScreenPoint(ICefBrowser? arg0, int arg1, int arg2, int* arg3, int* arg4);
 
-    public int GetScreenInfo(ICefBrowser? arg0, ICefScreenInfo? arg1);
+    public int GetScreenInfo(ICefBrowser? arg0, ref CefScreenInfo arg1);
 
     public void OnPopupShow(ICefBrowser? arg0, int arg1);
 
-    public void OnPopupSize(ICefBrowser? arg0, ICefRect? arg1);
+    public void OnPopupSize(ICefBrowser? arg0, ref CefRect arg1);
 
-    public void OnPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ICefRect? arg3, void* arg4, int arg5, int arg6);
+    public void OnPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ref CefRect arg3, void* arg4, int arg5, int arg6);
 
-    public void OnAcceleratedPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ICefRect? arg3, ICefAcceleratedPaintInfo? arg4);
+    public void OnAcceleratedPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ref CefRect arg3, ref CefAcceleratedPaintInfo arg4);
 
-    public void GetTouchHandleSize(ICefBrowser? arg0, cef_horizontal_alignment_t arg1, ICefSize? arg2);
+    public void GetTouchHandleSize(ICefBrowser? arg0, cef_horizontal_alignment_t arg1, ref CefSize arg2);
 
-    public void OnTouchHandleStateChanged(ICefBrowser? arg0, ICefTouchHandleState? arg1);
+    public void OnTouchHandleStateChanged(ICefBrowser? arg0, ref CefTouchHandleState arg1);
 
     public int StartDragging(ICefBrowser? arg0, ICefDragData? arg1, cef_drag_operations_mask_t arg2, int arg3, int arg4);
 
@@ -41,9 +41,9 @@ public unsafe partial interface ICefRenderHandler : ICefBaseRefCounted
 
     public void OnScrollOffsetChanged(ICefBrowser? arg0, double arg1, double arg2);
 
-    public void OnImeCompositionRangeChanged(ICefBrowser? arg0, ICefRange? arg1, nuint arg2, ICefRect? arg3);
+    public void OnImeCompositionRangeChanged(ICefBrowser? arg0, ref CefRange arg1, nuint arg2, ref CefRect arg3);
 
-    public void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ICefRange? arg2);
+    public void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ref CefRange arg2);
 
     public void OnVirtualKeyboardRequested(ICefBrowser? arg0, cef_text_input_mode_t arg1);
 }
@@ -65,25 +65,25 @@ public unsafe partial interface ICefRenderHandler : ICefBaseRefCounted
 
     public ICefAccessibilityHandler? GetAccessibilityHandler();
 
-    public int GetRootScreenRect(ICefBrowser? arg0, ICefRect? arg1);
+    public int GetRootScreenRect(ICefBrowser? arg0, ref CefRect arg1);
 
-    public void GetViewRect(ICefBrowser? arg0, ICefRect? arg1);
+    public void GetViewRect(ICefBrowser? arg0, ref CefRect arg1);
 
     public int GetScreenPoint(ICefBrowser? arg0, int arg1, int arg2, int* arg3, int* arg4);
 
-    public int GetScreenInfo(ICefBrowser? arg0, ICefScreenInfo? arg1);
+    public int GetScreenInfo(ICefBrowser? arg0, ref CefScreenInfo arg1);
 
     public void OnPopupShow(ICefBrowser? arg0, int arg1);
 
-    public void OnPopupSize(ICefBrowser? arg0, ICefRect? arg1);
+    public void OnPopupSize(ICefBrowser? arg0, ref CefRect arg1);
 
-    public void OnPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ICefRect? arg3, void* arg4, int arg5, int arg6);
+    public void OnPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ref CefRect arg3, void* arg4, int arg5, int arg6);
 
-    public void OnAcceleratedPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ICefRect? arg3, ICefAcceleratedPaintInfo? arg4);
+    public void OnAcceleratedPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ref CefRect arg3, ref CefAcceleratedPaintInfo arg4);
 
-    public void GetTouchHandleSize(ICefBrowser? arg0, cef_horizontal_alignment_t arg1, ICefSize? arg2);
+    public void GetTouchHandleSize(ICefBrowser? arg0, cef_horizontal_alignment_t arg1, ref CefSize arg2);
 
-    public void OnTouchHandleStateChanged(ICefBrowser? arg0, ICefTouchHandleState? arg1);
+    public void OnTouchHandleStateChanged(ICefBrowser? arg0, ref CefTouchHandleState arg1);
 
     public int StartDragging(ICefBrowser? arg0, ICefDragData? arg1, cef_drag_operations_mask_t arg2, int arg3, int arg4);
 
@@ -91,9 +91,9 @@ public unsafe partial interface ICefRenderHandler : ICefBaseRefCounted
 
     public void OnScrollOffsetChanged(ICefBrowser? arg0, double arg1, double arg2);
 
-    public void OnImeCompositionRangeChanged(ICefBrowser? arg0, ICefRange? arg1, nuint arg2, ICefRect? arg3);
+    public void OnImeCompositionRangeChanged(ICefBrowser? arg0, ref CefRange arg1, nuint arg2, ref CefRect arg3);
 
-    public void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ICefRange? arg2);
+    public void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ref CefRange arg2);
 
     public void OnVirtualKeyboardRequested(ICefBrowser? arg0, cef_text_input_mode_t arg1);
 }
@@ -115,25 +115,25 @@ public unsafe partial interface ICefRenderHandler : ICefBaseRefCounted
 
     public ICefAccessibilityHandler? GetAccessibilityHandler();
 
-    public int GetRootScreenRect(ICefBrowser? arg0, ICefRect? arg1);
+    public int GetRootScreenRect(ICefBrowser? arg0, ref CefRect arg1);
 
-    public void GetViewRect(ICefBrowser? arg0, ICefRect? arg1);
+    public void GetViewRect(ICefBrowser? arg0, ref CefRect arg1);
 
     public int GetScreenPoint(ICefBrowser? arg0, int arg1, int arg2, int* arg3, int* arg4);
 
-    public int GetScreenInfo(ICefBrowser? arg0, ICefScreenInfo? arg1);
+    public int GetScreenInfo(ICefBrowser? arg0, ref CefScreenInfo arg1);
 
     public void OnPopupShow(ICefBrowser? arg0, int arg1);
 
-    public void OnPopupSize(ICefBrowser? arg0, ICefRect? arg1);
+    public void OnPopupSize(ICefBrowser? arg0, ref CefRect arg1);
 
-    public void OnPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ICefRect? arg3, void* arg4, int arg5, int arg6);
+    public void OnPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ref CefRect arg3, void* arg4, int arg5, int arg6);
 
-    public void OnAcceleratedPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ICefRect? arg3, ICefAcceleratedPaintInfo? arg4);
+    public void OnAcceleratedPaint(ICefBrowser? arg0, cef_paint_element_type_t arg1, nuint arg2, ref CefRect arg3, ref CefAcceleratedPaintInfo arg4);
 
-    public void GetTouchHandleSize(ICefBrowser? arg0, cef_horizontal_alignment_t arg1, ICefSize? arg2);
+    public void GetTouchHandleSize(ICefBrowser? arg0, cef_horizontal_alignment_t arg1, ref CefSize arg2);
 
-    public void OnTouchHandleStateChanged(ICefBrowser? arg0, ICefTouchHandleState? arg1);
+    public void OnTouchHandleStateChanged(ICefBrowser? arg0, ref CefTouchHandleState arg1);
 
     public int StartDragging(ICefBrowser? arg0, ICefDragData? arg1, cef_drag_operations_mask_t arg2, int arg3, int arg4);
 
@@ -141,9 +141,9 @@ public unsafe partial interface ICefRenderHandler : ICefBaseRefCounted
 
     public void OnScrollOffsetChanged(ICefBrowser? arg0, double arg1, double arg2);
 
-    public void OnImeCompositionRangeChanged(ICefBrowser? arg0, ICefRange? arg1, nuint arg2, ICefRect? arg3);
+    public void OnImeCompositionRangeChanged(ICefBrowser? arg0, ref CefRange arg1, nuint arg2, ref CefRect arg3);
 
-    public void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ICefRange? arg2);
+    public void OnTextSelectionChanged(ICefBrowser? arg0, string? arg1, ref CefRange arg2);
 
     public void OnVirtualKeyboardRequested(ICefBrowser? arg0, cef_text_input_mode_t arg1);
 }
