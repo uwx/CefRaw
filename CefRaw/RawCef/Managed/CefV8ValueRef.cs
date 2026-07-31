@@ -159,11 +159,11 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
         return _result;
     }
 
-    public _cef_basetime_t GetDateValue()
+    public DateTime GetDateValue()
     {
         var _result = _ptr->get_date_value(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
     public string? GetStringValue()
@@ -596,11 +596,11 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
         return _result;
     }
 
-    public _cef_basetime_t GetDateValue()
+    public DateTime GetDateValue()
     {
         var _result = _ptr->get_date_value(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
     public string? GetStringValue()
@@ -1033,11 +1033,11 @@ public unsafe partial class CefV8ValueRef : CefBaseRefCountedRef, ICefV8Value
         return _result;
     }
 
-    public _cef_basetime_t GetDateValue()
+    public DateTime GetDateValue()
     {
         var _result = _ptr->get_date_value(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
     public string? GetStringValue()

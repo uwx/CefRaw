@@ -1,0 +1,22 @@
+<Project>
+    <PropertyGroup>
+        <!-- Package metadata -->
+        <Authors>uwx</Authors>
+        <Copyright>Copyright © uwx</Copyright>
+        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/uwx/CefRaw</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/uwx/CefRaw.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>CEF;Chromium;Embedded;Framework;Browser;Native</PackageTags>
+        <Description>Chromium Embedded Framework (CEF) native binaries for .NET</Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+
+        <!-- Build settings -->
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+
+        <!-- NuGet symbol packages -->
+        <IncludeSymbols>false</IncludeSymbols>
+    </PropertyGroup>
+</Project>

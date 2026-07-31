@@ -307,7 +307,7 @@ internal static class Emitter
         var (args, @return) = TypeMapper.GetTypeListFromDelegate(method.Type.CSharpType);
         var paramKinds = TypeMapper.ClassifyParams(method.Type.Native!);
 
-        var returnManaged = TypeMapper.MapNativeToManaged(@return, out var returnIsString, out var returnIsCefObject, out var returnCefObjectName);
+        var returnManaged = TypeMapper.MapNativeToManaged(@return, out var returnIsString, out var returnIsCefObject, out var returnCefObjectName, out var returnIsBasetime);
 
         var nativeArgTypes = args.ToArray(); // includes self at index 0
 
@@ -383,6 +383,8 @@ internal static class Emitter
                     nativeArgs.Add($"&_out{ep.ManagedIndex}");
                 else if (ep.IsCefObject)
                     nativeArgs.Add($"arg{ep.ManagedIndex} is null ? null : arg{ep.ManagedIndex}.NativePtr");
+                else if (ep.IsBasetime)
+                    nativeArgs.Add($"Cef.TimeToBasetime(arg{ep.ManagedIndex})");
                 else
                     nativeArgs.Add($"arg{ep.ManagedIndex}");
             }
@@ -410,6 +412,8 @@ internal static class Emitter
                     sb.AppendLine("return CefStringRef.ToStringAndFree(_result);");
                 else if (returnIsCefObject)
                     sb.AppendLine($"return _result != null ? new {returnCefObjectName}Ref(_result) : null;");
+                else if (returnIsBasetime)
+                    sb.AppendLine("return Cef.TimeFromBasetime(_result);");
                 else
                     sb.AppendLine("return _result;");
             }
@@ -458,7 +462,7 @@ internal static class Emitter
                 kind = TypeMapper.ParamKind.InputArray;
             }
 
-            var managed = TypeMapper.MapNativeToManaged(nativeType, out var isStr, out var isCef, out var cefName);
+            var managed = TypeMapper.MapNativeToManaged(nativeType, out var isStr, out var isCef, out var cefName, out var isBasetime);
 
             // Determine managed signature type for special kinds
             var managedType = managed;
@@ -481,7 +485,8 @@ internal static class Emitter
                 ManagedIndex: managedIdx,
                 IsCefObject: isCef,
                 CefName: cefName,
-                ElementNativeType: elementNativeType
+                ElementNativeType: elementNativeType,
+                IsBasetime: isBasetime
             ));
 
             managedIdx++;
@@ -502,7 +507,8 @@ internal static class Emitter
         int ManagedIndex,
         bool IsCefObject,
         string? CefName,
-        string? ElementNativeType
+        string? ElementNativeType,
+        bool IsBasetime
     );
 
     private static void EmitDataProperty(IndentedStringBuilder sb, FieldDefinition field)
@@ -528,6 +534,15 @@ internal static class Emitter
             sb.AppendLine($"    set => _ptr->{field.Name} = value;");
             sb.AppendLine("}");
         }
+        else if (TypeMapper.IsBasetimeField(field.Type.CSharpType))
+        {
+            // _cef_basetime_t / _cef_time_t → DateTime with conversion
+            sb.AppendLine($"public DateTime {propName}");
+            sb.AppendLine("{");
+            sb.AppendLine($"    get => Cef.TimeFromBasetime(_ptr->{field.Name});");
+            sb.AppendLine($"    set => _ptr->{field.Name} = Cef.TimeToBasetime(value);");
+            sb.AppendLine("}");
+        }
         else
         {
             sb.AppendLine($"public {field.Type.CSharpType} {propName}");
@@ -546,7 +561,7 @@ internal static class Emitter
         var paramKinds = TypeMapper.ClassifyParams(method.Type.Native!);
         var nativeArgTypes = args.ToArray();
 
-        var returnManaged = TypeMapper.MapNativeToManaged(@return, out _, out _, out _);
+        var returnManaged = TypeMapper.MapNativeToManaged(@return, out _, out _, out _, out _);
         var effectiveParams = BuildEffectiveParams(nativeArgTypes, paramKinds);
 
         sb.Append($"public {returnManaged} {TypeMapper.SnakeToPascal(method.Name)}(");
@@ -572,8 +587,8 @@ internal static class Emitter
         }
         else
         {
-            TypeMapper.MapNativeToManaged(field.Type.CSharpType, out _, out _, out _);
-            sb.AppendLine($"{field.Type.CSharpType} {propName} {{ get; set; }}");
+            var managedType = TypeMapper.MapNativeToManaged(field.Type.CSharpType, out _, out _, out _, out _);
+            sb.AppendLine($"{managedType} {propName} {{ get; set; }}");
         }
     }
 
@@ -585,7 +600,7 @@ internal static class Emitter
         var paramKinds = TypeMapper.ClassifyParams(method.Type.Native!);
         var nativeArgTypes = args.ToArray();
 
-        var returnManaged = TypeMapper.MapNativeToManaged(@return, out _, out _, out _);
+        var returnManaged = TypeMapper.MapNativeToManaged(@return, out _, out _, out _, out _);
         var effectiveParams = BuildEffectiveParams(nativeArgTypes, paramKinds);
 
         sb.AppendLine("/// <summary>");
@@ -620,6 +635,15 @@ internal static class Emitter
             sb.AppendLine($"    set => _typedPtr->{field.Name} = value;");
             sb.AppendLine("}");
         }
+        else if (TypeMapper.IsBasetimeField(field.Type.CSharpType))
+        {
+            // _cef_basetime_t / _cef_time_t → DateTime with conversion
+            sb.AppendLine($"public virtual DateTime {propName}");
+            sb.AppendLine("{");
+            sb.AppendLine($"    get => Cef.TimeFromBasetime(_typedPtr->{field.Name});");
+            sb.AppendLine($"    set => _typedPtr->{field.Name} = Cef.TimeToBasetime(value);");
+            sb.AppendLine("}");
+        }
         else
         {
             sb.AppendLine($"public virtual {field.Type.CSharpType} {propName}");
@@ -642,7 +666,7 @@ internal static class Emitter
         var nativeReturnType = @return;
         var nativeArgTypes = args.ToArray();
 
-        var returnManaged = TypeMapper.MapNativeToManaged(@return, out var returnIsString, out var returnIsCefObject, out var returnCefObjectName);
+        var returnManaged = TypeMapper.MapNativeToManaged(@return, out var returnIsString, out var returnIsCefObject, out var returnCefObjectName, out var returnIsBasetime);
 
         var bridgeName = $"Bridge_{TypeMapper.SnakeToPascal(method.Name)}";
 
@@ -700,7 +724,7 @@ internal static class Emitter
                         var countArgIdx = argIdx - 1;
                         // Map inner type to get the managed element name
                         var innerType = nativeType.EndsWith("*") ? nativeType[..^1] : nativeType;
-                        var elementManaged = TypeMapper.MapNativeToManaged(innerType, out _, out _, out var elCefName);
+                        var elementManaged = TypeMapper.MapNativeToManaged(innerType, out _, out _, out var elCefName, out _);
                         sb.AppendLine($"var _count{managedIdx} = (int)arg{countArgIdx};");
                         sb.AppendLine($"var _span{managedIdx} = new {elementManaged}[_count{managedIdx}];");
                         sb.AppendLine(
@@ -711,7 +735,7 @@ internal static class Emitter
                     }
                     else if (kind == TypeMapper.ParamKind.Output)
                     {
-                        var managed = TypeMapper.MapNativeToManaged(nativeType, out _, out _, out var cefName);
+                        var managed = TypeMapper.MapNativeToManaged(nativeType, out _, out _, out var cefName, out _);
                         sb.AppendLine($"{managed} _out{managedIdx} = null;");
                         sb.AppendLine(
                             $"if (arg{argIdx} != null && *arg{argIdx} != null) _out{managedIdx} = new {cefName}Ref(*arg{argIdx});");
@@ -726,11 +750,16 @@ internal static class Emitter
                     }
                     else if (kind == TypeMapper.ParamKind.Input)
                     {
-                        var managed = TypeMapper.MapNativeToManaged(nativeType, out _, out var isCef, out var cefName);
+                        var managed = TypeMapper.MapNativeToManaged(nativeType, out _, out var isCef, out var cefName, out var isBasetime);
                         if (isCef)
                         {
                             sb.AppendLine(
                                 $"var _a{managedIdx} = arg{argIdx} != null ? new {cefName}Ref(arg{argIdx}) : null;");
+                        }
+                        else if (isBasetime)
+                        {
+                            sb.AppendLine(
+                                $"var _a{managedIdx} = Cef.TimeFromBasetime(arg{argIdx});");
                         }
                         else
                         {
@@ -766,6 +795,8 @@ internal static class Emitter
                         sb.AppendLine($"if (_result is ICefBaseRefCounted _rc) _rc.AddRef();");
                         sb.AppendLine($"return _result != null ? _result.NativePtr : null;");
                     }
+                    else if (returnIsBasetime)
+                        sb.AppendLine("return Cef.TimeToBasetime(_result);");
                     else
                         sb.AppendLine("return _result;");
                 }

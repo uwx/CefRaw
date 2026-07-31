@@ -84,7 +84,7 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_completion_time</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetCompletionTime();
+    public abstract DateTime GetCompletionTime();
 
     /// <summary>
     /// Implement the <c>get_http_status_code</c> callback.
@@ -263,7 +263,7 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
             var _result = _m.GetCompletionTime();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -404,7 +404,7 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_completion_time</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetCompletionTime();
+    public abstract DateTime GetCompletionTime();
 
     /// <summary>
     /// Implement the <c>get_http_status_code</c> callback.
@@ -583,7 +583,7 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
             var _result = _m.GetCompletionTime();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -724,7 +724,7 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_completion_time</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetCompletionTime();
+    public abstract DateTime GetCompletionTime();
 
     /// <summary>
     /// Implement the <c>get_http_status_code</c> callback.
@@ -903,7 +903,7 @@ public unsafe abstract partial class CefNavigationEntry : CefBaseRefCounted, ICe
 
             var _result = _m.GetCompletionTime();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {

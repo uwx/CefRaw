@@ -51,7 +51,7 @@ public unsafe partial interface ICefV8Value : ICefBaseRefCounted
 
     public double GetDoubleValue();
 
-    public _cef_basetime_t GetDateValue();
+    public DateTime GetDateValue();
 
     public string? GetStringValue();
 
@@ -171,7 +171,7 @@ public unsafe partial interface ICefV8Value : ICefBaseRefCounted
 
     public double GetDoubleValue();
 
-    public _cef_basetime_t GetDateValue();
+    public DateTime GetDateValue();
 
     public string? GetStringValue();
 
@@ -291,7 +291,7 @@ public unsafe partial interface ICefV8Value : ICefBaseRefCounted
 
     public double GetDoubleValue();
 
-    public _cef_basetime_t GetDateValue();
+    public DateTime GetDateValue();
 
     public string? GetStringValue();
 

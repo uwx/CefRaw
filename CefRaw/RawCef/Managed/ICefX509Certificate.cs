@@ -19,9 +19,9 @@ public unsafe partial interface ICefX509Certificate : ICefBaseRefCounted
 
     public ICefBinaryValue? GetSerialNumber();
 
-    public _cef_basetime_t GetValidStart();
+    public DateTime GetValidStart();
 
-    public _cef_basetime_t GetValidExpiry();
+    public DateTime GetValidExpiry();
 
     public ICefBinaryValue? GetDerencoded();
 
@@ -55,9 +55,9 @@ public unsafe partial interface ICefX509Certificate : ICefBaseRefCounted
 
     public ICefBinaryValue? GetSerialNumber();
 
-    public _cef_basetime_t GetValidStart();
+    public DateTime GetValidStart();
 
-    public _cef_basetime_t GetValidExpiry();
+    public DateTime GetValidExpiry();
 
     public ICefBinaryValue? GetDerencoded();
 
@@ -91,9 +91,9 @@ public unsafe partial interface ICefX509Certificate : ICefBaseRefCounted
 
     public ICefBinaryValue? GetSerialNumber();
 
-    public _cef_basetime_t GetValidStart();
+    public DateTime GetValidStart();
 
-    public _cef_basetime_t GetValidExpiry();
+    public DateTime GetValidExpiry();
 
     public ICefBinaryValue? GetDerencoded();
 

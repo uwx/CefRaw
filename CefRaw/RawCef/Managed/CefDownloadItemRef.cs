@@ -96,18 +96,18 @@ public unsafe partial class CefDownloadItemRef : CefBaseRefCountedRef, ICefDownl
         return _result;
     }
 
-    public _cef_basetime_t GetStartTime()
+    public DateTime GetStartTime()
     {
         var _result = _ptr->get_start_time(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
-    public _cef_basetime_t GetEndTime()
+    public DateTime GetEndTime()
     {
         var _result = _ptr->get_end_time(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
     public string? GetFullPath()
@@ -271,18 +271,18 @@ public unsafe partial class CefDownloadItemRef : CefBaseRefCountedRef, ICefDownl
         return _result;
     }
 
-    public _cef_basetime_t GetStartTime()
+    public DateTime GetStartTime()
     {
         var _result = _ptr->get_start_time(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
-    public _cef_basetime_t GetEndTime()
+    public DateTime GetEndTime()
     {
         var _result = _ptr->get_end_time(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
     public string? GetFullPath()
@@ -446,18 +446,18 @@ public unsafe partial class CefDownloadItemRef : CefBaseRefCountedRef, ICefDownl
         return _result;
     }
 
-    public _cef_basetime_t GetStartTime()
+    public DateTime GetStartTime()
     {
         var _result = _ptr->get_start_time(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
-    public _cef_basetime_t GetEndTime()
+    public DateTime GetEndTime()
     {
         var _result = _ptr->get_end_time(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
     public string? GetFullPath()

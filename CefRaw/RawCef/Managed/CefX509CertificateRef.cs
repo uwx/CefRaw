@@ -47,18 +47,18 @@ public unsafe partial class CefX509CertificateRef : CefBaseRefCountedRef, ICefX5
         return _result != null ? new CefBinaryValueRef(_result) : null;
     }
 
-    public _cef_basetime_t GetValidStart()
+    public DateTime GetValidStart()
     {
         var _result = _ptr->get_valid_start(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
-    public _cef_basetime_t GetValidExpiry()
+    public DateTime GetValidExpiry()
     {
         var _result = _ptr->get_valid_expiry(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
     public ICefBinaryValue? GetDerencoded()
@@ -152,18 +152,18 @@ public unsafe partial class CefX509CertificateRef : CefBaseRefCountedRef, ICefX5
         return _result != null ? new CefBinaryValueRef(_result) : null;
     }
 
-    public _cef_basetime_t GetValidStart()
+    public DateTime GetValidStart()
     {
         var _result = _ptr->get_valid_start(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
-    public _cef_basetime_t GetValidExpiry()
+    public DateTime GetValidExpiry()
     {
         var _result = _ptr->get_valid_expiry(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
     public ICefBinaryValue? GetDerencoded()
@@ -257,18 +257,18 @@ public unsafe partial class CefX509CertificateRef : CefBaseRefCountedRef, ICefX5
         return _result != null ? new CefBinaryValueRef(_result) : null;
     }
 
-    public _cef_basetime_t GetValidStart()
+    public DateTime GetValidStart()
     {
         var _result = _ptr->get_valid_start(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
-    public _cef_basetime_t GetValidExpiry()
+    public DateTime GetValidExpiry()
     {
         var _result = _ptr->get_valid_expiry(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
     public ICefBinaryValue? GetDerencoded()

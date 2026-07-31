@@ -1,0 +1,144 @@
+name: Publish CEF Natives
+
+on:
+  schedule:
+    # Daily at 6:00 AM UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Specific platform to build (leave empty for all)'
+        required: false
+        type: string
+      configuration:
+        description: 'Build configuration'
+        required: false
+        type: choice
+        options:
+          - Debug
+          - Release
+          - both
+
+permissions:
+  id-token: write   # Required for NuGet Trusted Publishing (OIDC)
+  packages: write    # Required for GitHub Packages
+  contents: read
+
+jobs:
+  publish:
+    name: ${{ matrix.platform }} ${{ matrix.configuration }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - windows64
+          - windows32
+          - windowsarm64
+          - linux64
+          - linux32
+          - linuxarm64
+          - linuxarm32
+          - macos64
+          - macosarm64
+        configuration:
+          - Debug
+          - Release
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: CefRaw/global.json
+
+      - name: Fetch CEF build index
+        shell: pwsh
+        run: |
+          . ./scripts/cef-builds.ps1
+          $index = Get-CefBuildIndex
+          $build = Get-LatestBuild -Platform "${{ matrix.platform }}" -Type Standard -Index $index
+
+          if (-not $build) {
+            Write-Error "No standard build found for ${{ matrix.platform }}"
+            exit 1
+          }
+
+          Write-Host "Latest ${{ matrix.platform }} build: $($build.FileName)"
+          Write-Host "CEF version: $($build.CefVersion)"
+
+          # Export for subsequent steps
+          "BUILD_FILE=$($build.FileName)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "CEF_VERSION=$($build.CefVersion)" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Download and extract CEF build
+        shell: pwsh
+        run: |
+          . ./scripts/cef-builds.ps1
+
+          $workDir = Join-Path $env:RUNNER_TEMP "cef-build"
+          $extractedDir = Expand-CefArchive -FileName $env:BUILD_FILE -OutputDirectory $workDir
+          Write-Host "Extracted to: $extractedDir"
+
+          "EXTRACTED_DIR=$extractedDir" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Generate binaries project
+        shell: pwsh
+        run: |
+          . ./scripts/cef-builds.ps1
+
+          $outputDir = Join-Path $env:RUNNER_TEMP "projects"
+          $project = New-CefBinariesProject `
+            -Platform "${{ matrix.platform }}" `
+            -Configuration "${{ matrix.configuration }}" `
+            -CefVersion $env:CEF_VERSION `
+            -ExtractedDir $env:EXTRACTED_DIR `
+            -OutputDir $outputDir
+
+          "PROJECT_DIR=$($project.ProjectDir)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "PACKAGE_ID=$($project.PackageId)" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Pack NuGet package
+        shell: pwsh
+        run: |
+          $nupkgDir = Join-Path $env:RUNNER_TEMP "nupkgs"
+          New-Item -ItemType Directory -Path $nupkgDir -Force | Out-Null
+
+          dotnet pack $env:PROJECT_DIR `
+            --configuration Release `
+            --output $nupkgDir `
+            /p:Version=$env:CEF_VERSION
+
+          "NUPKG_DIR=$nupkgDir" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+          Get-ChildItem $nupkgDir -Filter "*.nupkg" | ForEach-Object {
+            Write-Host "Package: $($_.Name) ($([math]::Round($_.Length / 1MB, 2)) MB)"
+          }
+
+      - name: NuGet login (OIDC → temp API key)
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Push to nuget.org
+        shell: pwsh
+        run: |
+          Get-ChildItem $env:NUPKG_DIR -Filter "*.nupkg" | ForEach-Object {
+            Write-Host "Pushing $($_.Name) to nuget.org..."
+            dotnet nuget push $_.FullName `
+              --api-key ${{ steps.login.outputs.NUGET_API_KEY }} `
+              --source https://api.nuget.org/v3/index.json
+          }
+
+      - name: Push to GitHub Packages
+        shell: pwsh
+        run: |
+          Get-ChildItem $env:NUPKG_DIR -Filter "*.nupkg" | ForEach-Object {
+            Write-Host "Pushing $($_.Name) to GitHub Packages..."
+            dotnet nuget push $_.FullName `
+              --api-key ${{ secrets.GITHUB_TOKEN }} `
+              --source https://nuget.pkg.github.com/uwx/index.json
+          }

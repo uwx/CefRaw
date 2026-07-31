@@ -64,12 +64,12 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_valid_start</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetValidStart();
+    public abstract DateTime GetValidStart();
 
     /// <summary>
     /// Implement the <c>get_valid_expiry</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetValidExpiry();
+    public abstract DateTime GetValidExpiry();
 
     /// <summary>
     /// Implement the <c>get_derencoded</c> callback.
@@ -178,7 +178,7 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
 
             var _result = _m.GetValidStart();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -200,7 +200,7 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
 
             var _result = _m.GetValidExpiry();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -392,12 +392,12 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_valid_start</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetValidStart();
+    public abstract DateTime GetValidStart();
 
     /// <summary>
     /// Implement the <c>get_valid_expiry</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetValidExpiry();
+    public abstract DateTime GetValidExpiry();
 
     /// <summary>
     /// Implement the <c>get_derencoded</c> callback.
@@ -506,7 +506,7 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
 
             var _result = _m.GetValidStart();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -528,7 +528,7 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
 
             var _result = _m.GetValidExpiry();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -720,12 +720,12 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
     /// <summary>
     /// Implement the <c>get_valid_start</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetValidStart();
+    public abstract DateTime GetValidStart();
 
     /// <summary>
     /// Implement the <c>get_valid_expiry</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetValidExpiry();
+    public abstract DateTime GetValidExpiry();
 
     /// <summary>
     /// Implement the <c>get_derencoded</c> callback.
@@ -834,7 +834,7 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
 
             var _result = _m.GetValidStart();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -856,7 +856,7 @@ public unsafe abstract partial class CefX509Certificate : CefBaseRefCounted, ICe
 
             var _result = _m.GetValidExpiry();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {

@@ -26,13 +26,13 @@ public unsafe partial interface ICefCookie
 
     int Httponly { get; set; }
 
-    _cef_basetime_t Creation { get; set; }
+    DateTime Creation { get; set; }
 
-    _cef_basetime_t LastAccess { get; set; }
+    DateTime LastAccess { get; set; }
 
     int HasExpires { get; set; }
 
-    _cef_basetime_t Expires { get; set; }
+    DateTime Expires { get; set; }
 
     cef_cookie_same_site_t SameSite { get; set; }
 

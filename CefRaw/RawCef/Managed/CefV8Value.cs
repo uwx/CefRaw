@@ -186,7 +186,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     /// <summary>
     /// Implement the <c>get_date_value</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetDateValue();
+    public abstract DateTime GetDateValue();
 
     /// <summary>
     /// Implement the <c>get_string_value</c> callback.
@@ -780,7 +780,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
 
             var _result = _m.GetDateValue();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -1720,7 +1720,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     /// <summary>
     /// Implement the <c>get_date_value</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetDateValue();
+    public abstract DateTime GetDateValue();
 
     /// <summary>
     /// Implement the <c>get_string_value</c> callback.
@@ -2314,7 +2314,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
 
             var _result = _m.GetDateValue();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -3254,7 +3254,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
     /// <summary>
     /// Implement the <c>get_date_value</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetDateValue();
+    public abstract DateTime GetDateValue();
 
     /// <summary>
     /// Implement the <c>get_string_value</c> callback.
@@ -3848,7 +3848,7 @@ public unsafe abstract partial class CefV8Value : CefBaseRefCounted, ICefV8Value
 
             var _result = _m.GetDateValue();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {

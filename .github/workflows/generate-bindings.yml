@@ -1,0 +1,159 @@
+name: Generate CEF Bindings
+
+on:
+  schedule:
+    # Daily at 8:00 AM UTC (after natives publish at 6 AM)
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write   # Required for committing and pushing generated code
+
+jobs:
+  generate:
+    name: Generate bindings from CEF headers
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ github.token }}
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: CefRaw/global.json
+
+      - name: Install ClangSharpPInvokeGenerator
+        shell: pwsh
+        run: |
+          dotnet tool install --global ClangSharpPInvokeGenerator --prerelease
+          # Add .NET tools to PATH
+          "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Append
+
+      - name: Fetch CEF build index
+        shell: pwsh
+        run: |
+          . ./scripts/cef-builds.ps1
+          $index = Get-CefBuildIndex
+
+          $platforms = @("windows64", "linux64", "macosarm64")
+          $cefVersion = $null
+          foreach ($p in $platforms) {
+            $build = Get-LatestBuild -Platform $p -Type Standard -Index $index
+            if (-not $build) {
+              Write-Error "No standard build found for $p"
+              exit 1
+            }
+            Write-Host "$p latest: $($build.FileName) (v$($build.CefVersion))"
+            "BUILD_FILE_$p=$($build.FileName)" | Out-File -FilePath $env:GITHUB_ENV -Append
+            if (-not $cefVersion) { $cefVersion = $build.CefVersion }
+          }
+          "CEF_VERSION=$cefVersion" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Create merged include directory
+        shell: pwsh
+        run: |
+          . ./scripts/cef-builds.ps1
+
+          $workDir = Join-Path $env:RUNNER_TEMP "cef-headers"
+          New-Item -ItemType Directory -Path $workDir -Force | Out-Null
+
+          # Download and extract headers from each platform
+          $platforms = @("windows64", "linux64", "macosarm64")
+          $extractedDirs = @{}
+
+          foreach ($p in $platforms) {
+            $envVarName = "BUILD_FILE_$p"
+            $fileName = [Environment]::GetEnvironmentVariable($envVarName)
+            if (-not $fileName) {
+              Write-Error "BUILD_FILE_$p environment variable not set"
+              exit 1
+            }
+            Write-Host "Downloading $p: $fileName"
+            $extracted = Expand-CefArchive -FileName $fileName -OutputDirectory (Join-Path $workDir $p)
+            $extractedDirs[$p] = $extracted
+          }
+
+          # Flat-merge: windows64 first (base), then linux64 overlay, then macosarm64 overlay
+          $mergedDir = Join-Path $workDir "include-merged"
+          if (Test-Path $mergedDir) {
+            Remove-Item -Recurse -Force $mergedDir
+          }
+          New-Item -ItemType Directory -Path $mergedDir -Force | Out-Null
+
+          foreach ($p in $platforms) {
+            $srcInclude = Join-Path $extractedDirs[$p] "include"
+            if (-not (Test-Path $srcInclude)) {
+              Write-Error "include/ not found in $p build at $srcInclude"
+              exit 1
+            }
+            Write-Host "Merging include/ from $p..."
+            # Copy all files, overwriting existing (later platforms win conflicts)
+            Copy-Item -Recurse -Force "$srcInclude\*" $mergedDir
+          }
+
+          # Copy merged include to repo
+          $repoInclude = Join-Path $env:GITHUB_WORKSPACE "include"
+          if (Test-Path $repoInclude) {
+            Remove-Item -Recurse -Force $repoInclude
+          }
+          Copy-Item -Recurse -Force "$mergedDir\*" $repoInclude
+          Write-Host "Merged $(@(Get-ChildItem -Recurse -File $repoInclude).Count) header files to include/"
+
+      - name: Run generate.ps1
+        shell: pwsh
+        working-directory: ${{ github.workspace }}
+        run: |
+          Write-Host "Running ClangSharpPInvokeGenerator..."
+          ./generate.ps1
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "generate.ps1 failed with exit code $LASTEXITCODE"
+            exit 1
+          }
+          Write-Host "Generated bindings XML files:"
+          Get-ChildItem bindings_*.xml | ForEach-Object { Write-Host "  $($_.Name) ($($_.Length) bytes)" }
+
+      - name: Build BindingsParser
+        shell: pwsh
+        run: |
+          dotnet build CefRaw/CefRaw.BindingsParser/CefRaw.BindingsParser.csproj --configuration Release
+
+      - name: Run RawCef.Generator
+        shell: pwsh
+        run: |
+          Write-Host "Running RawCef.Generator..."
+          dotnet run --project CefRaw/RawCef.Generator/RawCef.Generator.csproj --configuration Release -- CefRaw/RawCef
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "RawCef.Generator failed with exit code $LASTEXITCODE"
+            exit 1
+          }
+          Write-Host "Generator completed successfully"
+
+      - name: Check for changes
+        id: git-check
+        shell: pwsh
+        run: |
+          git add include/ bindings_*.xml CefRaw/RawCef/Native/ CefRaw/RawCef/Managed/ CefRaw/RawCef/Enums/ CefRaw/RawCef/*.g.cs
+
+          $hasChanges = git status --porcelain
+          if ($hasChanges) {
+            Write-Host "Changes detected, will commit"
+            "HAS_CHANGES=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          } else {
+            Write-Host "No changes detected"
+            "HAS_CHANGES=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          }
+
+      - name: Commit and push changes
+        if: steps.git-check.outputs.HAS_CHANGES == 'true'
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git commit -m "chore: regenerate bindings for CEF $env:CEF_VERSION"
+          git push origin HEAD:main
+          Write-Host "Changes committed and pushed for CEF $env:CEF_VERSION"

@@ -11,6 +11,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\RawCef\RawCef.Windows.csproj" />
+        <ProjectReference Include="..\RawCef.Binaries.Win64.Debug\RawCef.Binaries.Win64.Debug.csproj" />
     </ItemGroup>
 
 </Project>

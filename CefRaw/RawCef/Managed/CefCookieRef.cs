@@ -65,16 +65,16 @@ public unsafe partial class CefCookieRef : ICefCookie
         set => _ptr->httponly = value;
     }
 
-    public _cef_basetime_t Creation
+    public DateTime Creation
     {
-        get => _ptr->creation;
-        set => _ptr->creation = value;
+        get => Cef.TimeFromBasetime(_ptr->creation);
+        set => _ptr->creation = Cef.TimeToBasetime(value);
     }
 
-    public _cef_basetime_t LastAccess
+    public DateTime LastAccess
     {
-        get => _ptr->last_access;
-        set => _ptr->last_access = value;
+        get => Cef.TimeFromBasetime(_ptr->last_access);
+        set => _ptr->last_access = Cef.TimeToBasetime(value);
     }
 
     public int HasExpires
@@ -83,10 +83,10 @@ public unsafe partial class CefCookieRef : ICefCookie
         set => _ptr->has_expires = value;
     }
 
-    public _cef_basetime_t Expires
+    public DateTime Expires
     {
-        get => _ptr->expires;
-        set => _ptr->expires = value;
+        get => Cef.TimeFromBasetime(_ptr->expires);
+        set => _ptr->expires = Cef.TimeToBasetime(value);
     }
 
     public cef_cookie_same_site_t SameSite

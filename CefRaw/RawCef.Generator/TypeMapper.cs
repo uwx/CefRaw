@@ -126,11 +126,13 @@ internal static partial class TypeMapper
         string nativeType,
         out bool isString,
         out bool isCefObject,
-        out string? cefObjectName)
+        out string? cefObjectName,
+        out bool isBasetime)
     {
         isString = false;
         isCefObject = false;
         cefObjectName = null;
+        isBasetime = false;
 
         // Strip pointer suffix for analysis
         var baseType = nativeType.TrimEnd('*', ' ');
@@ -200,6 +202,13 @@ internal static partial class TypeMapper
             return baseType;
         }
 
+        // _cef_basetime_t / _cef_time_t (by value, not pointer) → DateTime
+        if (!isPointer && (baseType == "_cef_basetime_t" || baseType == "_cef_time_t"))
+        {
+            isBasetime = true;
+            return "DateTime";
+        }
+
         // Fallback: pass through as-is
         return nativeType;
     }
@@ -219,6 +228,14 @@ internal static partial class TypeMapper
     public static bool IsCefEnum(string csharpType)
     {
         return CefEnumRegex.IsMatch(csharpType);
+    }
+
+    /// <summary>
+    /// Determine if a field type is _cef_basetime_t or _cef_time_t (by value).
+    /// </summary>
+    public static bool IsBasetimeField(string csharpType)
+    {
+        return csharpType == "_cef_basetime_t" || csharpType == "_cef_time_t";
     }
 
     /// <summary>

@@ -33,9 +33,9 @@ public unsafe partial interface ICefDownloadItem : ICefBaseRefCounted
 
     public long GetReceivedBytes();
 
-    public _cef_basetime_t GetStartTime();
+    public DateTime GetStartTime();
 
-    public _cef_basetime_t GetEndTime();
+    public DateTime GetEndTime();
 
     public string? GetFullPath();
 
@@ -89,9 +89,9 @@ public unsafe partial interface ICefDownloadItem : ICefBaseRefCounted
 
     public long GetReceivedBytes();
 
-    public _cef_basetime_t GetStartTime();
+    public DateTime GetStartTime();
 
-    public _cef_basetime_t GetEndTime();
+    public DateTime GetEndTime();
 
     public string? GetFullPath();
 
@@ -145,9 +145,9 @@ public unsafe partial interface ICefDownloadItem : ICefBaseRefCounted
 
     public long GetReceivedBytes();
 
-    public _cef_basetime_t GetStartTime();
+    public DateTime GetStartTime();
 
-    public _cef_basetime_t GetEndTime();
+    public DateTime GetEndTime();
 
     public string? GetFullPath();
 

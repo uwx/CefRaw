@@ -109,12 +109,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
     /// <summary>
     /// Implement the <c>get_start_time</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetStartTime();
+    public abstract DateTime GetStartTime();
 
     /// <summary>
     /// Implement the <c>get_end_time</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetEndTime();
+    public abstract DateTime GetEndTime();
 
     /// <summary>
     /// Implement the <c>get_full_path</c> callback.
@@ -389,7 +389,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetStartTime();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -411,7 +411,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetEndTime();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -708,12 +708,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
     /// <summary>
     /// Implement the <c>get_start_time</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetStartTime();
+    public abstract DateTime GetStartTime();
 
     /// <summary>
     /// Implement the <c>get_end_time</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetEndTime();
+    public abstract DateTime GetEndTime();
 
     /// <summary>
     /// Implement the <c>get_full_path</c> callback.
@@ -988,7 +988,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetStartTime();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -1010,7 +1010,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetEndTime();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -1307,12 +1307,12 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
     /// <summary>
     /// Implement the <c>get_start_time</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetStartTime();
+    public abstract DateTime GetStartTime();
 
     /// <summary>
     /// Implement the <c>get_end_time</c> callback.
     /// </summary>
-    public abstract _cef_basetime_t GetEndTime();
+    public abstract DateTime GetEndTime();
 
     /// <summary>
     /// Implement the <c>get_full_path</c> callback.
@@ -1587,7 +1587,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetStartTime();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {
@@ -1609,7 +1609,7 @@ public unsafe abstract partial class CefDownloadItem : CefBaseRefCounted, ICefDo
 
             var _result = _m.GetEndTime();
 
-            return _result;
+            return Cef.TimeToBasetime(_result);
         }
         catch (Exception ex)
         {

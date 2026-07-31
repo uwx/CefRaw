@@ -75,11 +75,11 @@ public unsafe partial class CefNavigationEntryRef : CefBaseRefCountedRef, ICefNa
         return _result;
     }
 
-    public _cef_basetime_t GetCompletionTime()
+    public DateTime GetCompletionTime()
     {
         var _result = _ptr->get_completion_time(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
     public int GetHttpStatusCode()
@@ -180,11 +180,11 @@ public unsafe partial class CefNavigationEntryRef : CefBaseRefCountedRef, ICefNa
         return _result;
     }
 
-    public _cef_basetime_t GetCompletionTime()
+    public DateTime GetCompletionTime()
     {
         var _result = _ptr->get_completion_time(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
     public int GetHttpStatusCode()
@@ -285,11 +285,11 @@ public unsafe partial class CefNavigationEntryRef : CefBaseRefCountedRef, ICefNa
         return _result;
     }
 
-    public _cef_basetime_t GetCompletionTime()
+    public DateTime GetCompletionTime()
     {
         var _result = _ptr->get_completion_time(_ptr);
 
-        return _result;
+        return Cef.TimeFromBasetime(_result);
     }
 
     public int GetHttpStatusCode()

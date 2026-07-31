@@ -27,7 +27,7 @@ public unsafe partial interface ICefNavigationEntry : ICefBaseRefCounted
 
     public int HasPostData();
 
-    public _cef_basetime_t GetCompletionTime();
+    public DateTime GetCompletionTime();
 
     public int GetHttpStatusCode();
 
@@ -63,7 +63,7 @@ public unsafe partial interface ICefNavigationEntry : ICefBaseRefCounted
 
     public int HasPostData();
 
-    public _cef_basetime_t GetCompletionTime();
+    public DateTime GetCompletionTime();
 
     public int GetHttpStatusCode();
 
@@ -99,7 +99,7 @@ public unsafe partial interface ICefNavigationEntry : ICefBaseRefCounted
 
     public int HasPostData();
 
-    public _cef_basetime_t GetCompletionTime();
+    public DateTime GetCompletionTime();
 
     public int GetHttpStatusCode();
 
