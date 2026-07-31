@@ -7,7 +7,4 @@
         <Nullable>enable</Nullable>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     </PropertyGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\CefRaw.BindingsParser\CefRaw.BindingsParser.csproj" />
-    </ItemGroup>
 </Project>

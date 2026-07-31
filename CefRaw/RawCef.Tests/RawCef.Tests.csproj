@@ -24,7 +24,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\RawCef\RawCef.Windows.csproj" />
+        <ProjectReference Include="..\RawCef\RawCef.Windows.csproj" Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
+        <ProjectReference Include="..\RawCef\RawCef.Linux.csproj" Condition="$([MSBuild]::IsOSPlatform('Linux'))" />
     </ItemGroup>
 
 </Project>
