@@ -346,8 +346,8 @@ function New-CefBinariesProject {
     $resourcesDir = Join-Path $ExtractedDir "Resources"
 
     # For macOS, everything is inside the framework bundle
-    $isMacOS = $os -eq "mac"
-    if ($isMacOS) {
+    $isMac = $os -eq "mac"
+    if ($isMac) {
         $frameworkName = "Chromium Embedded Framework.framework"
         $frameworkDir = Join-Path $configDir $frameworkName
         if (-not (Test-Path $frameworkDir)) {
@@ -424,7 +424,7 @@ function New-CefBinariesProject {
     }
     else {
         # --- Standard package: collect native binaries and resources ---
-        if ($isMacOS) {
+        if ($isMac) {
             # macOS: framework → flattened
             $fwRes = Join-Path $frameworkDir "Resources"
             $fwLib = Join-Path $frameworkDir "Libraries"
