@@ -104,10 +104,21 @@ public unsafe class SafeBindingsTests
         var obj = new TestRefCounted();
         _cef_base_ref_counted_t* ptr = obj.NativePtr;
 
+        // Ref count = 1 → at least one ref = 1
+        Assert.Equal(1, ptr->has_at_least_one_ref(ptr));
+
+        ptr->add_ref(ptr);
+        // Ref count = 2 → at least one ref = 1
         Assert.Equal(1, ptr->has_at_least_one_ref(ptr));
 
         ptr->release(ptr);
-        Assert.Equal(0, ptr->has_at_least_one_ref(ptr));
+        // Ref count = 1 → at least one ref = 1
+        Assert.Equal(1, ptr->has_at_least_one_ref(ptr));
+
+        ptr->release(ptr);
+        // Ref count = 0 → native memory freed; no more bridge calls.
+        // The zero-ref case is tested via the managed object in
+        // DisposalTests.RefCounted_HasAtLeastOneRef_ReturnsZeroAfterFinalRelease.
     }
 
     // ── CefBaseScopedRef safety ──────────────────────────────────────
