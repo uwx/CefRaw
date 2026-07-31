@@ -231,6 +231,13 @@ jobs:
           dotnet build CefRaw/CefRaw.sln --configuration Release
           dotnet test CefRaw/RawCef.Tests/RawCef.Tests.csproj --configuration Release --no-build
 
+  # ── Job 4: Push NuGet ─────────────────────────────────────────
+  push-nuget:
+    name: Push NuGet Packages
+    needs: generate
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Fetch CEF version for NuGet
         shell: pwsh
         run: |
