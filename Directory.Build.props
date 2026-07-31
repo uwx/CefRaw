@@ -9,7 +9,6 @@
         <RepositoryType>git</RepositoryType>
         <PackageTags>CEF;Chromium;Embedded;Framework;Browser;Native</PackageTags>
         <Description>Chromium Embedded Framework (CEF) native binaries for .NET</Description>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
 
         <!-- Build settings -->
         <ImplicitUsings>disable</ImplicitUsings>
