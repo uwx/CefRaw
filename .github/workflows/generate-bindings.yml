@@ -118,12 +118,24 @@ jobs:
             }
           }
 
-          # Copy merged include to repo
+          # Copy merged include to repo (item-by-item to handle any conflicts)
           $repoInclude = Join-Path $env:GITHUB_WORKSPACE "include"
           if (Test-Path $repoInclude) {
             Remove-Item -Recurse -Force $repoInclude
           }
-          Copy-Item -Recurse -Force "$mergedDir\*" $repoInclude
+          # Use the same conflict-safe walk for the final copy
+          $mergedLen = $mergedDir.Length + 1
+          Get-ChildItem -Recurse -Path $mergedDir | ForEach-Object {
+            $relPath = $_.FullName.Substring($mergedLen)
+            $target = Join-Path $repoInclude $relPath
+            if ($_.PSIsContainer) {
+              if (Test-Path $target -PathType Leaf) { Remove-Item -Force $target }
+              if (-not (Test-Path $target)) { New-Item -ItemType Directory -Path $target -Force | Out-Null }
+            } else {
+              if (Test-Path $target -PathType Container) { Remove-Item -Recurse -Force $target }
+              Copy-Item -Force $_.FullName $target
+            }
+          }
           Write-Host "Merged $(@(Get-ChildItem -Recurse -File $repoInclude).Count) header files to include/"
 
       - name: Run generate.ps1
