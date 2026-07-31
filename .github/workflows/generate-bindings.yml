@@ -230,9 +230,6 @@ jobs:
         run: |
           dotnet build CefRaw/CefRaw.sln --configuration Release
           dotnet test CefRaw/RawCef.Tests/RawCef.Tests.csproj --configuration Release --no-build
-        uses: actions/setup-dotnet@v4
-        with:
-          global-json-file: CefRaw/global.json
 
       - name: Fetch CEF version for NuGet
         shell: pwsh
