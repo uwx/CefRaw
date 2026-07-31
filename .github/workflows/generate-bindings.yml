@@ -1,6 +1,9 @@
 name: Generate CEF Bindings
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     # Daily at 8:00 AM UTC (after natives publish at 6 AM)
     - cron: '0 8 * * *'
@@ -8,6 +11,8 @@ on:
 
 permissions:
   contents: write   # Required for committing and pushing generated code
+  id-token: write   # Required for NuGet Trusted Publishing (OIDC)
+  packages: write   # Required for GitHub Packages
 
 jobs:
   generate:
@@ -51,11 +56,13 @@ jobs:
             "BUILD_FILE_$p=$($build.Name)" | Out-File -FilePath $env:GITHUB_ENV -Append
             if (-not $cefVersion) { $cefVersion = $build.CefVersion }
           }
-          # Export for subsequent steps — append datetime revision so we can
-          # re-publish a fixed package without NuGet rejecting the version.
+          # Export for subsequent steps
           $revision = (Get-Date -Format 'yyyyMMddHHmmss')
+          "CEF_VERSION_CLEAN=$cefVersion" | Out-File -FilePath $env:GITHUB_ENV -Append
           "CEF_VERSION=$cefVersion.$revision" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "NUGET_VERSION=0.0.1-cef.$cefVersion-ci.$revision" | Out-File -FilePath $env:GITHUB_ENV -Append
           Write-Host "CEF version for commit: $cefVersion"
+          Write-Host "NuGet version: 0.0.1-cef.$cefVersion-ci.$revision"
 
       - name: Create merged include directory
         shell: pwsh
@@ -136,6 +143,111 @@ jobs:
           }
           Write-Host "Generator completed successfully"
 
+      - name: Download win64 Debug binaries for tests
+        shell: pwsh
+        run: |
+          . ./scripts/cef-builds.ps1
+
+          $workDir = Join-Path $env:RUNNER_TEMP "cef-win64-test"
+          New-Item -ItemType Directory -Path $workDir -Force | Out-Null
+
+          $fileName = [Environment]::GetEnvironmentVariable("BUILD_FILE_windows64")
+          if (-not $fileName) {
+            Write-Error "BUILD_FILE_windows64 not set"
+            exit 1
+          }
+
+          Write-Host "Downloading $fileName for test binaries..."
+          $extracted = Expand-CefArchive -FileName $fileName -OutputDirectory $workDir
+
+          # Copy Debug binaries into the binaries project directory
+          $binariesDir = Join-Path $env:GITHUB_WORKSPACE "CefRaw\RawCef.Binaries.Win64.Debug"
+          $debugSrc = Join-Path $extracted "Debug"
+          $resourcesSrc = Join-Path $extracted "Resources"
+
+          # Copy Debug/* to binaries dir
+          Copy-Item -Force "$debugSrc\*" $binariesDir
+          Write-Host "Copied Debug binaries to $binariesDir"
+
+          # Copy Resources/ contents
+          if (Test-Path "$binariesDir\Resources") {
+            Remove-Item -Recurse -Force "$binariesDir\Resources"
+          }
+          Copy-Item -Recurse -Force $resourcesSrc "$binariesDir\Resources"
+          Write-Host "Copied Resources to $binariesDir\Resources"
+
+      - name: Build solution
+        shell: pwsh
+        run: |
+          dotnet build CefRaw/CefRaw.sln --configuration Release
+
+      - name: Run tests
+        shell: pwsh
+        run: |
+          dotnet test CefRaw/RawCef.Tests/RawCef.Tests.csproj --configuration Release --no-build
+
+      - name: Pack RawCef NuGet packages
+        shell: pwsh
+        run: |
+          $nupkgDir = Join-Path $env:RUNNER_TEMP "nupkgs-rawcef"
+          New-Item -ItemType Directory -Path $nupkgDir -Force | Out-Null
+
+          $csprojs = @(
+            "CefRaw/RawCef/RawCef.Windows.csproj",
+            "CefRaw/RawCef/RawCef.Mac.csproj",
+            "CefRaw/RawCef/RawCef.Linux.csproj"
+          )
+
+          foreach ($csproj in $csprojs) {
+            Write-Host "Packing $csproj..."
+            dotnet pack $csproj `
+              --configuration Release `
+              --no-build `
+              --output $nupkgDir `
+              /p:PackageVersion=$env:NUGET_VERSION
+          }
+
+          "NUPKG_DIR=$nupkgDir" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+          Get-ChildItem $nupkgDir -Filter "*.nupkg" | ForEach-Object {
+            Write-Host "Package: $($_.Name) ($([math]::Round($_.Length / 1KB, 1)) KB)"
+          }
+
+      - name: Upload RawCef artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: rawcef-bindings
+          path: ${{ env.NUPKG_DIR }}/*.nupkg
+          retention-days: 7
+
+      - name: NuGet login (OIDC → temp API key)
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Push RawCef to nuget.org
+        shell: pwsh
+        run: |
+          Get-ChildItem $env:NUPKG_DIR -Filter "*.nupkg" | ForEach-Object {
+            Write-Host "Pushing $($_.Name) to nuget.org..."
+            dotnet nuget push $_.FullName `
+              --api-key ${{ steps.login.outputs.NUGET_API_KEY }} `
+              --source https://api.nuget.org/v3/index.json `
+              --skip-duplicate
+          }
+
+      - name: Push RawCef to GitHub Packages
+        shell: pwsh
+        run: |
+          Get-ChildItem $env:NUPKG_DIR -Filter "*.nupkg" | ForEach-Object {
+            Write-Host "Pushing $($_.Name) to GitHub Packages..."
+            dotnet nuget push $_.FullName `
+              --api-key ${{ github.token }} `
+              --source https://nuget.pkg.github.com/uwx/index.json `
+              --skip-duplicate
+          }
+
       - name: Check for changes
         id: git-check
         shell: pwsh
@@ -158,6 +270,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git commit -m "chore: regenerate bindings for CEF $env:CEF_VERSION"
+          git commit -m "chore: regenerate bindings for CEF $env:CEF_VERSION_CLEAN"
           git push origin HEAD:main
-          Write-Host "Changes committed and pushed for CEF $env:CEF_VERSION"
+          Write-Host "Changes committed and pushed for CEF $env:CEF_VERSION_CLEAN"
