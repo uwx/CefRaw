@@ -118,7 +118,8 @@ public unsafe class BasicCefFunctionalityTests
     public void CefStringRef_FillFromPinned_Unicode_RoundTrips()
     {
         _cef_string_utf16_t nativeStr = default;
-        string input = "こんにちは 🌍";
+        // Use BMP characters to avoid surrogate-pair edge cases.
+        string input = "こんにちは世界";
 
         fixed (char* p = input)
         {

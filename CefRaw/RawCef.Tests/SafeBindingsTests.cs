@@ -55,21 +55,12 @@ public unsafe class SafeBindingsTests
         wrapper.AddRef();
     }
 
-    [Fact]
-    public void RefCountedRef_DisposeAfterOriginalReleased_DoesNotThrow()
-    {
-        var obj = new TrackedRefCounted();
-        var wrapper = new CefBaseRefCountedRef(obj.NativePtr);
-
-        // Release the original — this frees the native memory.
-        // The wrapper still holds the original pointer but DisposeNative
-        // checks _ptr != null before calling release.
-        obj.Release(); // refCount: 2 → 1 (wrapper still has a ref)
-        obj.Release(); // refCount: 1 → 0 → native freed
-
-        // Wrapper dispose after original is gone — should not AV.
-        wrapper.Dispose();
-    }
+    // Note: RefCountedRef_DisposeAfterOriginalReleased is intentionally omitted.
+    // The Ref wrapper stores a copy of the native pointer at construction time.
+    // If the original object is released (freeing native memory), the wrapper's
+    // _ptr becomes a dangling pointer — the null check passes because the pointer
+    // value is non-null, but dereferencing it causes an AccessViolation.
+    // This is by design: wrappers must be disposed BEFORE the original object.
 
     // ── GCHandle round-trip ──────────────────────────────────────────
 
@@ -174,8 +165,9 @@ public unsafe class SafeBindingsTests
         var obj = new TestRefCounted();
         _cef_base_ref_counted_t* ptr = obj.NativePtr;
 
+        nuint expectedSize = (nuint)sizeof(_cef_base_ref_counted_t);
         Assert.NotEqual((nuint)0, ptr->size);
-        Assert.Equal((nuint)sizeof(_cef_base_ref_counted_t), ptr->size);
+        Assert.Equal(expectedSize, ptr->size);
     }
 
     [Fact]
