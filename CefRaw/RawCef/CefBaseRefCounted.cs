@@ -106,13 +106,13 @@ public abstract unsafe class CefBaseRefCounted : ICefBaseRefCounted
     /// CEF struct pointer. The GCHandle is read from the slot immediately after
     /// the struct (offset = <c>self->size</c>).
     /// </summary>
-    protected static T? GetManaged<T>(void* self) where T : CefBaseRefCounted
+    protected static T GetManaged<T>(void* self) where T : CefBaseRefCounted
     {
-        if (self is null) return null;
+        if (self is null) return null!;
         nuint structSize = ((_cef_base_ref_counted_t*)self)->size;
         nint* handleSlot = (nint*)((byte*)self + structSize);
         GCHandle handle = GCHandle.FromIntPtr(*handleSlot);
-        return handle.Target as T;
+        return (handle.Target as T)!;
     }
 
     // ── Ref-counting bridge methods ──────────────────────────────────
