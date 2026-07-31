@@ -425,32 +425,35 @@ function New-CefBinariesProject {
     else {
         # --- Standard package: collect native binaries and resources ---
         if ($isMac) {
-            # macOS: framework → flattened
+            # macOS: restructure framework for C# DllImport compatibility.
+            # C# uses DllImport("libcef") which resolves to libcef.dylib, but
+            # CEF ships a framework bundle. We flatten it as CefGlue does:
+            #   - Chromium Embedded Framework → libcef.dylib (root)
+            #   - Libraries/* → root
+            #   - Resources/* → Resources/ subfolder
+            #   - Resources/en.lproj/* → Resources/ (English locale, flattened)
             $fwRes = Join-Path $frameworkDir "Resources"
             $fwLib = Join-Path $frameworkDir "Libraries"
 
-            # Main framework binary → copy to native/ as the main lib
+            # Main framework binary → libcef.dylib at root
             $fwBinary = Join-Path $frameworkDir "Chromium Embedded Framework"
             if (Test-Path $fwBinary) {
-                Copy-Item -Force $fwBinary $nativeDir
-                Write-Host "  Copied: Chromium Embedded Framework"
-                $contentItems += @{ Source = $fwBinary; IsDir = $false; Name = "Chromium Embedded Framework" }
+                $destLib = Join-Path $nativeDir "libcef.dylib"
+                Copy-Item -Force $fwBinary $destLib
+                Write-Host "  Copied: Chromium Embedded Framework → libcef.dylib"
+                $contentItems += @{ Source = $fwBinary; IsDir = $false; Name = "libcef.dylib" }
             }
 
-            # Libraries → copy to native/
+            # Libraries → root (libEGL.dylib, libGLESv2.dylib, etc.)
             if (Test-Path $fwLib) {
                 foreach ($lib in Get-ChildItem -Path $fwLib -File) {
                     Copy-Item -Force $lib.FullName $nativeDir
                     Write-Host "  Copied: Libraries/$($lib.Name)"
                     $contentItems += @{ Source = $lib.FullName; IsDir = $false; Name = $lib.Name }
                 }
-                # Also copy non-dylib files from Libraries (like .json)
-                foreach ($f in Get-ChildItem -Path $fwLib) {
-                    if ($f -is [System.IO.FileInfo]) { continue } # already handled above
-                }
             }
 
-            # Resources → copy to native/Resources/ (macOS convention)
+            # Resources → Resources/ subfolder
             $resDest = Join-Path $nativeDir "Resources"
             if (-not (Test-Path $resDest)) {
                 New-Item -ItemType Directory -Path $resDest -Force | Out-Null
@@ -462,18 +465,14 @@ function New-CefBinariesProject {
                     Write-Host "  Copied: Resources/$($res.Name)"
                     $contentItems += @{ Source = $res.FullName; IsDir = $false; Name = "Resources/$($res.Name)" }
                 }
-                # Locale .lproj directories
-                foreach ($lproj in Get-ChildItem -Path $fwRes -Directory -Filter "*.lproj") {
-                    $lprojDest = Join-Path $resDest $lproj.Name
-                    Copy-Item -Recurse -Force $lproj.FullName $lprojDest
-                    Write-Host "  Copied: Resources/$($lproj.Name)/"
-                    # Add each file inside the lproj
-                    foreach ($lf in Get-ChildItem -Path $lproj.FullName -File) {
-                        $contentItems += @{
-                            Source = $lf.FullName
-                            IsDir  = $false
-                            Name   = "Resources/$($lproj.Name)/$($lf.Name)"
-                        }
+
+                # English locale → flat into Resources/ (as CefGlue does)
+                $enLproj = Join-Path $fwRes "en.lproj"
+                if (Test-Path $enLproj) {
+                    foreach ($lf in Get-ChildItem -Path $enLproj -File) {
+                        Copy-Item -Force $lf.FullName $resDest
+                        Write-Host "  Copied: Resources/en.lproj/$($lf.Name) → Resources/"
+                        $contentItems += @{ Source = $lf.FullName; IsDir = $false; Name = "Resources/$($lf.Name)" }
                     }
                 }
             }
