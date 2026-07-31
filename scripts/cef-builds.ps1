@@ -546,14 +546,17 @@ function New-CefBinariesProject {
             # the right cross-strip tool (the runner may not match the binary
             # arch). readelf -h prints the ELF header; Machine: shows e_machine.
             $sampleElf = ($filesToStrip | Select-Object -First 1).FullName
-            $readelf = & readelf -h $sampleElf 2>&1
+            $readelfOutput = & readelf -h $sampleElf 2>&1 | Out-String
             $global:LASTEXITCODE = 0
-            $elfMachine = if ($readelf -match 'Machine:\s+(.+)') { $Matches[1].Trim() } else { '' }
+            # Use [regex]::Match to avoid $Matches pollution from earlier -match calls
+            $machineMatch = [regex]::Match($readelfOutput, 'Machine:\s*(.+)')
+            $elfMachine = if ($machineMatch.Success) { $machineMatch.Groups[1].Value.Trim() } else { '' }
             Write-Host "  Detected ELF architecture: $elfMachine"
 
             # Map ELF machine name to strip tool + required apt package
             $stripInfo = switch -Wildcard ($elfMachine) {
                 'Advanced Micro Devices X86-64' { @{ Tool = 'strip'                     ; Pkg = $null } }
+                'Intel 80386'                   { @{ Tool = 'strip'                     ; Pkg = $null } }
                 'AArch64'                       { @{ Tool = 'aarch64-linux-gnu-strip'   ; Pkg = 'binutils-aarch64-linux-gnu' } }
                 'ARM'                           { @{ Tool = 'arm-linux-gnueabihf-strip' ; Pkg = 'binutils-arm-linux-gnueabihf' } }
                 default                         { @{ Tool = $null; Pkg = $null } }
