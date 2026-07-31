@@ -607,7 +607,6 @@ function New-CefBinariesProject {
         <TargetFramework>netstandard2.0</TargetFramework>
         <RootNamespace>$packageId</RootNamespace>
         <PackageId>$packageId</PackageId>
-        <Version>$CefVersion</Version>
         <Description>$description</Description>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
