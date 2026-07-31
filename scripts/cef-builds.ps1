@@ -536,7 +536,7 @@ function New-CefBinariesProject {
         <Description>$description</Description>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
-        <NoWarn>$(NoWarn);NU5100;NU5104</NoWarn>
+        <NoWarn>`$(NoWarn);NU5100;NU5104</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
