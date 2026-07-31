@@ -100,9 +100,9 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
             var _a12 = arg12;
             var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, ref _pd7, _a8, out _out9, _a10, out _out11, _a12);
 
-            return _result;
             if (arg9 != null) *arg9 = _out9 != null ? _out9.NativePtr : null;
             if (arg11 != null) *arg11 = _out11 != null ? _out11.NativePtr : null;
+            return _result;
         }
         catch (Exception ex)
         {
@@ -331,9 +331,9 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
             var _a12 = arg12;
             var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, ref _pd7, _a8, out _out9, _a10, out _out11, _a12);
 
-            return _result;
             if (arg9 != null) *arg9 = _out9 != null ? _out9.NativePtr : null;
             if (arg11 != null) *arg11 = _out11 != null ? _out11.NativePtr : null;
+            return _result;
         }
         catch (Exception ex)
         {
@@ -562,9 +562,9 @@ public unsafe abstract partial class CefLifeSpanHandler : CefBaseRefCounted, ICe
             var _a12 = arg12;
             var _result = _m.OnBeforePopup(_a0, _a1, _a2, _a3, _a4, _a5, _a6, ref _pd7, _a8, out _out9, _a10, out _out11, _a12);
 
-            return _result;
             if (arg9 != null) *arg9 = _out9 != null ? _out9.NativePtr : null;
             if (arg11 != null) *arg11 = _out11 != null ? _out11.NativePtr : null;
+            return _result;
         }
         catch (Exception ex)
         {

@@ -875,16 +875,22 @@ internal static class Emitter
                     managedIdx++;
                 }
 
-                // Call managed method
+                // Call managed method and write back output params
                 if (returnManaged == "void")
                 {
                     sb.AppendLine($"_m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
+
+                    // Write back output params for void methods
+                    EmitBridgeOutputWriteback(sb, nativeArgTypes, paramKinds);
                 }
                 else
                 {
                     sb.AppendLine(
                         $"var _result = _m.{TypeMapper.SnakeToPascal(method.Name)}({string.Join(", ", managedArgs)});");
                     sb.AppendLine();
+
+                    // Write back output params BEFORE return
+                    EmitBridgeOutputWriteback(sb, nativeArgTypes, paramKinds);
 
                     if (returnIsString)
                         sb.AppendLine("return CefStringRef.AllocUserfree(_result);");
@@ -897,42 +903,6 @@ internal static class Emitter
                         sb.AppendLine("return Cef.TimeToBasetime(_result);");
                     else
                         sb.AppendLine("return _result;");
-                }
-
-                // Write back output params
-                managedIdx = 0;
-                for (int i = 1; i < nativeArgTypes.Length; i++)
-                {
-                    var kind = paramKinds.Count > i ? paramKinds[i] : TypeMapper.ParamKind.Input;
-                    var nativeType = nativeArgTypes[i];
-
-                    if (IsSizeType(nativeType) && i + 1 < nativeArgTypes.Length
-                                               && paramKinds.Count > i + 1 &&
-                                               paramKinds[i + 1] == TypeMapper.ParamKind.InputArray)
-                    {
-                        i++;
-                        nativeType = nativeArgTypes[i];
-                        kind = TypeMapper.ParamKind.InputArray;
-                    }
-
-                    var argIdx = i - 1;
-
-                    if (kind == TypeMapper.ParamKind.Output)
-                    {
-                        sb.AppendLine(
-                            $"if (arg{argIdx} != null) *arg{argIdx} = _out{managedIdx} != null ? _out{managedIdx}.NativePtr : null;");
-                    }
-                    else if (kind == TypeMapper.ParamKind.OutputString)
-                    {
-                        sb.AppendLine($"if (arg{argIdx} != null)");
-                        sb.AppendLine("{");
-                        sb.AppendLine($"    fixed (char* _p{managedIdx} = _out{managedIdx})");
-                        sb.AppendLine(
-                            $"        CefUnsafe.StringUtf16Set((ushort*)_p{managedIdx}, (nuint)(_out{managedIdx}?.Length ?? 0), arg{argIdx}, copy: 1);");
-                        sb.AppendLine("}");
-                    }
-
-                    managedIdx++;
                 }
             }
 
@@ -948,6 +918,44 @@ internal static class Emitter
         }
 
         sb.AppendLine("}");
+    }
+
+    private static void EmitBridgeOutputWriteback(IndentedStringBuilder sb, string[] nativeArgTypes, List<TypeMapper.ParamKind> paramKinds)
+    {
+        int managedIdx = 0;
+        for (int i = 1; i < nativeArgTypes.Length; i++)
+        {
+            var kind = paramKinds.Count > i ? paramKinds[i] : TypeMapper.ParamKind.Input;
+            var nativeType = nativeArgTypes[i];
+
+            if (IsSizeType(nativeType) && i + 1 < nativeArgTypes.Length
+                                       && paramKinds.Count > i + 1 &&
+                                       paramKinds[i + 1] == TypeMapper.ParamKind.InputArray)
+            {
+                i++;
+                nativeType = nativeArgTypes[i];
+                kind = TypeMapper.ParamKind.InputArray;
+            }
+
+            var argIdx = i - 1;
+
+            if (kind == TypeMapper.ParamKind.Output)
+            {
+                sb.AppendLine(
+                    $"if (arg{argIdx} != null) *arg{argIdx} = _out{managedIdx} != null ? _out{managedIdx}.NativePtr : null;");
+            }
+            else if (kind == TypeMapper.ParamKind.OutputString)
+            {
+                sb.AppendLine($"if (arg{argIdx} != null)");
+                sb.AppendLine("{");
+                sb.AppendLine($"    fixed (char* _p{managedIdx} = _out{managedIdx})");
+                sb.AppendLine(
+                    $"        CefUnsafe.StringUtf16Set((ushort*)_p{managedIdx}, (nuint)(_out{managedIdx}?.Length ?? 0), arg{argIdx}, copy: 1);");
+                sb.AppendLine("}");
+            }
+
+            managedIdx++;
+        }
     }
 
     public static string GenerateEnum(EnumerationDefinition enumeration)

@@ -291,9 +291,9 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
             if (arg4 != null && *arg4 != null) _out4 = new CefV8ExceptionRef(*arg4);
             var _result = _m.Eval(_a0, _a1, _a2, out _out3, out _out4);
 
-            return _result;
             if (arg3 != null) *arg3 = _out3 != null ? _out3.NativePtr : null;
             if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+            return _result;
         }
         catch (Exception ex)
         {
@@ -596,9 +596,9 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
             if (arg4 != null && *arg4 != null) _out4 = new CefV8ExceptionRef(*arg4);
             var _result = _m.Eval(_a0, _a1, _a2, out _out3, out _out4);
 
-            return _result;
             if (arg3 != null) *arg3 = _out3 != null ? _out3.NativePtr : null;
             if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+            return _result;
         }
         catch (Exception ex)
         {
@@ -901,9 +901,9 @@ public unsafe abstract partial class CefV8Context : CefBaseRefCounted, ICefV8Con
             if (arg4 != null && *arg4 != null) _out4 = new CefV8ExceptionRef(*arg4);
             var _result = _m.Eval(_a0, _a1, _a2, out _out3, out _out4);
 
-            return _result;
             if (arg3 != null) *arg3 = _out3 != null ? _out3.NativePtr : null;
             if (arg4 != null) *arg4 = _out4 != null ? _out4.NativePtr : null;
+            return _result;
         }
         catch (Exception ex)
         {

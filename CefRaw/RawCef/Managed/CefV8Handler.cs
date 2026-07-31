@@ -65,13 +65,13 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
             if (arg5 != null) _out4 = CefStringRef.ToStringAndFree(arg5);
             var _result = _m.Execute(_a0, _a1, _span2, out _out3, out _out4);
 
-            return _result;
             if (arg4 != null) *arg4 = _out3 != null ? _out3.NativePtr : null;
             if (arg5 != null)
             {
                 fixed (char* _p4 = _out4)
                     CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg5, copy: 1);
             }
+            return _result;
         }
         catch (Exception ex)
         {
@@ -148,13 +148,13 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
             if (arg5 != null) _out4 = CefStringRef.ToStringAndFree(arg5);
             var _result = _m.Execute(_a0, _a1, _span2, out _out3, out _out4);
 
-            return _result;
             if (arg4 != null) *arg4 = _out3 != null ? _out3.NativePtr : null;
             if (arg5 != null)
             {
                 fixed (char* _p4 = _out4)
                     CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg5, copy: 1);
             }
+            return _result;
         }
         catch (Exception ex)
         {
@@ -231,13 +231,13 @@ public unsafe abstract partial class CefV8Handler : CefBaseRefCounted, ICefV8Han
             if (arg5 != null) _out4 = CefStringRef.ToStringAndFree(arg5);
             var _result = _m.Execute(_a0, _a1, _span2, out _out3, out _out4);
 
-            return _result;
             if (arg4 != null) *arg4 = _out3 != null ? _out3.NativePtr : null;
             if (arg5 != null)
             {
                 fixed (char* _p4 = _out4)
                     CefUnsafe.StringUtf16Set((ushort*)_p4, (nuint)(_out4?.Length ?? 0), arg5, copy: 1);
             }
+            return _result;
         }
         catch (Exception ex)
         {

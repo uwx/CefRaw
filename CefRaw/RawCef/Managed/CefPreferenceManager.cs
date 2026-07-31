@@ -183,12 +183,12 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
             if (arg2 != null) _out2 = CefStringRef.ToStringAndFree(arg2);
             var _result = _m.SetPreference(_a0, _a1, out _out2);
 
-            return _result;
             if (arg2 != null)
             {
                 fixed (char* _p2 = _out2)
                     CefUnsafe.StringUtf16Set((ushort*)_p2, (nuint)(_out2?.Length ?? 0), arg2, copy: 1);
             }
+            return _result;
         }
         catch (Exception ex)
         {
@@ -408,12 +408,12 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
             if (arg2 != null) _out2 = CefStringRef.ToStringAndFree(arg2);
             var _result = _m.SetPreference(_a0, _a1, out _out2);
 
-            return _result;
             if (arg2 != null)
             {
                 fixed (char* _p2 = _out2)
                     CefUnsafe.StringUtf16Set((ushort*)_p2, (nuint)(_out2?.Length ?? 0), arg2, copy: 1);
             }
+            return _result;
         }
         catch (Exception ex)
         {
@@ -633,12 +633,12 @@ public unsafe abstract partial class CefPreferenceManager : CefBaseRefCounted, I
             if (arg2 != null) _out2 = CefStringRef.ToStringAndFree(arg2);
             var _result = _m.SetPreference(_a0, _a1, out _out2);
 
-            return _result;
             if (arg2 != null)
             {
                 fixed (char* _p2 = _out2)
                     CefUnsafe.StringUtf16Set((ushort*)_p2, (nuint)(_out2?.Length ?? 0), arg2, copy: 1);
             }
+            return _result;
         }
         catch (Exception ex)
         {

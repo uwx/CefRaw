@@ -70,12 +70,12 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
             if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
             var _result = _m.GetLocalizedString(_a0, out _out1);
 
-            return _result;
             if (arg1 != null)
             {
                 fixed (char* _p1 = _out1)
                     CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
             }
+            return _result;
         }
         catch (Exception ex)
         {
@@ -208,12 +208,12 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
             if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
             var _result = _m.GetLocalizedString(_a0, out _out1);
 
-            return _result;
             if (arg1 != null)
             {
                 fixed (char* _p1 = _out1)
                     CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
             }
+            return _result;
         }
         catch (Exception ex)
         {
@@ -346,12 +346,12 @@ public unsafe abstract partial class CefResourceBundleHandler : CefBaseRefCounte
             if (arg1 != null) _out1 = CefStringRef.ToStringAndFree(arg1);
             var _result = _m.GetLocalizedString(_a0, out _out1);
 
-            return _result;
             if (arg1 != null)
             {
                 fixed (char* _p1 = _out1)
                     CefUnsafe.StringUtf16Set((ushort*)_p1, (nuint)(_out1?.Length ?? 0), arg1, copy: 1);
             }
+            return _result;
         }
         catch (Exception ex)
         {
