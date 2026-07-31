@@ -535,9 +535,9 @@ function New-CefBinariesProject {
     if (-not $IsSymbols -and $os -eq 'linux') {
         Write-Host "Stripping debug symbols from Linux binaries..."
 
-        $filesToStrip = Get-ChildItem -Path $nativeDir -File | Where-Object {
+        $filesToStrip = @(Get-ChildItem -Path $nativeDir -File -ErrorAction SilentlyContinue | Where-Object {
             $_.Extension -eq '.so'
-        }
+        })
         if ($filesToStrip.Count -eq 0) {
             Write-Host "  No .so files to strip"
         }
@@ -545,7 +545,7 @@ function New-CefBinariesProject {
             # Detect ELF architecture from the first .so file so we can pick
             # the right cross-strip tool (the runner may not match the binary
             # arch). readelf -h prints the ELF header; Machine: shows e_machine.
-            $sampleElf = $filesToStrip[0].FullName
+            $sampleElf = ($filesToStrip | Select-Object -First 1).FullName
             $readelf = & readelf -h $sampleElf 2>&1
             $global:LASTEXITCODE = 0
             $elfMachine = if ($readelf -match 'Machine:\s+(.+)') { $Matches[1].Trim() } else { '' }
