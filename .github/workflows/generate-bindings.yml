@@ -102,8 +102,20 @@ jobs:
               exit 1
             }
             Write-Host "Merging include/ from $p..."
-            # Copy all files, overwriting existing (later platforms win conflicts)
-            Copy-Item -Recurse -Force "$srcInclude\*" $mergedDir
+            # Walk items individually so we can resolve file↔directory conflicts
+            # (one platform may have a file where another has a directory).
+            $srcLen = $srcInclude.Length + 1
+            Get-ChildItem -Recurse -Path $srcInclude | ForEach-Object {
+              $relPath = $_.FullName.Substring($srcLen)
+              $target = Join-Path $mergedDir $relPath
+              if ($_.PSIsContainer) {
+                if (Test-Path $target -PathType Leaf) { Remove-Item -Force $target }
+                if (-not (Test-Path $target)) { New-Item -ItemType Directory -Path $target -Force | Out-Null }
+              } else {
+                if (Test-Path $target -PathType Container) { Remove-Item -Recurse -Force $target }
+                Copy-Item -Force $_.FullName $target
+              }
+            }
           }
 
           # Copy merged include to repo
