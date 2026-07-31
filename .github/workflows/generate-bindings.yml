@@ -124,7 +124,7 @@ jobs:
 
       - name: Build BindingsParser
         shell: pwsh
-        run: dotnet build CefRaw/CefRaw.BindingsParser/CefRaw.BindingsParser.csproj --configuration Release
+        run: dotnet build CefRaw/RawCef.BindingsParser/RawCef.BindingsParser.csproj --configuration Release
 
       - name: Run RawCef.Generator
         shell: pwsh
