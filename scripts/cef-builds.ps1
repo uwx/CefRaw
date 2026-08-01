@@ -619,11 +619,7 @@ function New-CefBinariesProject {
 "@
 
     foreach ($item in $contentItems) {
-        $pkgPath = if ($IsSymbols) {
-            "runtimes/$rid/native/$($item.Name)"
-        } else {
-            "runtimes/$rid/native/$($item.Name)"
-        }
+        $pkgPath = "$($item.Name)"
         # Replace backslashes with forward slashes for cross-platform compat
         $pkgPath = $pkgPath.Replace('\', '/')
         $itemName = $item.Name.Replace('\', '/')
