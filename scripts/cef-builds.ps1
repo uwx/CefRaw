@@ -642,16 +642,23 @@ function New-CefBinariesProject {
             AfterTargets="CopyFilesToOutputDirectory"
             BeforeTargets="CopyNativeBinaries">
         <ItemGroup>
-            <_CefNativeFiles Include="
-                `$(MSBuildThisFileDirectory)../runtimes/*/native/**"
-                Condition=" '%(Extension)' != '.targets' " />
+            <_CefRootFiles Include="
+                `$(MSBuildThisFileDirectory)../runtimes/*/native/*"
+                Exclude="
+                `$(MSBuildThisFileDirectory)../runtimes/*/native/locales\**" />
+            <_CefLocaleFiles Include="
+                `$(MSBuildThisFileDirectory)../runtimes/*/native/locales/*" />
         </ItemGroup>
-        <Copy SourceFiles="@(_CefNativeFiles)"
-              DestinationFolder="`$(OutputPath)%(RecursiveDir)"
+        <Copy SourceFiles="@(_CefRootFiles)"
+              DestinationFolder="`$(OutputPath)"
               SkipUnchangedFiles="true"
-              Condition=" '@(_CefNativeFiles)' != '' " />
+              Condition=" '@(_CefRootFiles)' != '' " />
+        <Copy SourceFiles="@(_CefLocaleFiles)"
+              DestinationFolder="`$(OutputPath)locales\"
+              SkipUnchangedFiles="true"
+              Condition=" '@(_CefLocaleFiles)' != '' " />
         <Message Importance="low"
-                 Text="Copied @(_CefNativeFiles->Count()) CEF native file(s) to `$(OutputPath)" />
+                 Text="Copied @(_CefRootFiles->Count()) CEF native files(s) and @(_CefLocaleFiles->Count()) locale(s) to `$(OutputPath)" />
     </Target>
 </Project>
 "@
