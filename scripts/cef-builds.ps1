@@ -619,63 +619,21 @@ function New-CefBinariesProject {
 "@
 
     foreach ($item in $contentItems) {
-        $pkgPath = "CEF/$($item.Name)"
-        # Replace backslashes with forward slashes for cross-platform compat
-        $pkgPath = $pkgPath.Replace('\', '/')
-        $itemName = $item.Name.Replace('\', '/')
-
         $csprojContent += @"
-        <Content Include="native\$itemName">
+        <Content Include="native\$($item.Name)">
             <Pack>true</Pack>
-            <PackagePath>$pkgPath</PackagePath>
+            <PackagePath>contentFiles\any\any\$($item.Name)</PackagePath>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
 "@
     }
 
-    # Generate a .props file (mirrors CefSharp's cef.redist.x64.props) that
-    # copies native binaries from the package's CEF/ folder to the build output
-    # root, preserving subdirectory structure (e.g. locales/ → locales/).
-    $propsPath = Join-Path $projectDir "$packageId.props"
-    $propsContent = @"
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
-    <ItemGroup>
-        <CefBinaries Include="`$(MSBuildThisFileDirectory)..\CEF\**\*.*" />
-    </ItemGroup>
-
-    <Target Name="CopyCefBinariesToOutput"
-            AfterTargets="Build"
-            BeforeTargets="CopyFilesToOutputDirectory">
-        <ItemGroup>
-            <_CefBinaries Include="`$(MSBuildThisFileDirectory)..\CEF\**\*.*" />
-        </ItemGroup>
-        <Message Importance="high"
-                 Text="Copying CEF binaries from `$(MSBuildThisFileDirectory)..\CEF to `$(TargetDir)" />
-        <Copy
-            SourceFiles="@(_CefBinaries)"
-            DestinationFiles="@(_CefBinaries->'`$(TargetDir)\%(RecursiveDir)%(Filename)%(Extension)')"
-            SkipUnchangedFiles="true" />
-    </Target>
-
-</Project>
-"@
-    Set-Content -Path $propsPath -Value $propsContent -Encoding UTF8
-
-    # Pack the .props into build/ and buildTransitive/ so it auto-imports
-    # in both direct and transitive consumer projects.
     $csprojContent += @"
-        <Content Include="$propsPath">
-            <Pack>true</Pack>
-            <PackagePath>build\$packageId.props</PackagePath>
-        </Content>
-        <Content Include="$propsPath">
-            <Pack>true</Pack>
-            <PackagePath>buildTransitive\$packageId.props</PackagePath>
-        </Content>
     </ItemGroup>
 
+    <PropertyGroup>
+        <ContentTargetFolders>contentFiles</ContentTargetFolders>
+    </PropertyGroup>
 </Project>
 "@
 
