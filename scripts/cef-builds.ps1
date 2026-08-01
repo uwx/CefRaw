@@ -619,7 +619,7 @@ function New-CefBinariesProject {
 "@
 
     foreach ($item in $contentItems) {
-        $pkgPath = "runtimes/$rid/native/$($item.Name)"
+        $pkgPath = "CEF/$($item.Name)"
         # Replace backslashes with forward slashes for cross-platform compat
         $pkgPath = $pkgPath.Replace('\', '/')
         $itemName = $item.Name.Replace('\', '/')
@@ -633,42 +633,46 @@ function New-CefBinariesProject {
 "@
     }
 
-    # Generate the .targets file that copies native binaries from runtime
-    # subdirectories to the root output directory at build time.
-    $targetsPath = Join-Path $projectDir "$packageId.targets"
-    $targetsContent = @"
-<Project>
-    <Target Name="CopyCefBinariesToOutputRoot"
-            AfterTargets="CopyFilesToOutputDirectory"
-            BeforeTargets="CopyNativeBinaries">
+    # Generate a .props file (mirrors CefSharp's cef.redist.x64.props) that
+    # copies native binaries from the package's CEF/ folder to the build output
+    # root, preserving subdirectory structure (e.g. locales/ → locales/).
+    $propsPath = Join-Path $projectDir "$packageId.props"
+    $propsContent = @"
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <ItemGroup>
+        <CefBinaries Include="`$(MSBuildThisFileDirectory)..\CEF\**\*.*" />
+    </ItemGroup>
+
+    <Target Name="CopyCefBinariesToOutput"
+            AfterTargets="Build"
+            BeforeTargets="CopyFilesToOutputDirectory">
         <ItemGroup>
-            <_CefRootFiles Include="
-                `$(MSBuildThisFileDirectory)../runtimes/*/native/*"
-                Exclude="
-                `$(MSBuildThisFileDirectory)../runtimes/*/native/locales\**" />
-            <_CefLocaleFiles Include="
-                `$(MSBuildThisFileDirectory)../runtimes/*/native/locales/*" />
+            <_CefBinaries Include="`$(MSBuildThisFileDirectory)..\CEF\**\*.*" />
         </ItemGroup>
-        <Copy SourceFiles="@(_CefRootFiles)"
-              DestinationFolder="`$(OutputPath)"
-              SkipUnchangedFiles="true"
-              Condition=" '@(_CefRootFiles)' != '' " />
-        <Copy SourceFiles="@(_CefLocaleFiles)"
-              DestinationFolder="`$(OutputPath)locales\"
-              SkipUnchangedFiles="true"
-              Condition=" '@(_CefLocaleFiles)' != '' " />
-        <Message Importance="low"
-                 Text="Copied @(_CefRootFiles->Count()) CEF native files(s) and @(_CefLocaleFiles->Count()) locale(s) to `$(OutputPath)" />
+        <Message Importance="high"
+                 Text="Copying CEF binaries from `$(MSBuildThisFileDirectory)..\CEF to `$(TargetDir)" />
+        <Copy
+            SourceFiles="@(_CefBinaries)"
+            DestinationFiles="@(_CefBinaries->'`$(TargetDir)\%(RecursiveDir)%(Filename)%(Extension)')"
+            SkipUnchangedFiles="true" />
     </Target>
+
 </Project>
 "@
-    Set-Content -Path $targetsPath -Value $targetsContent -Encoding UTF8
+    Set-Content -Path $propsPath -Value $propsContent -Encoding UTF8
 
-    # Include the .targets in the package so it auto-imports into consumer projects
+    # Pack the .props into build/ and buildTransitive/ so it auto-imports
+    # in both direct and transitive consumer projects.
     $csprojContent += @"
-        <Content Include="$targetsPath">
+        <Content Include="$propsPath">
             <Pack>true</Pack>
-            <PackagePath>build\$packageId.targets</PackagePath>
+            <PackagePath>build\$packageId.props</PackagePath>
+        </Content>
+        <Content Include="$propsPath">
+            <Pack>true</Pack>
+            <PackagePath>buildTransitive\$packageId.props</PackagePath>
         </Content>
     </ItemGroup>
 
