@@ -619,7 +619,7 @@ function New-CefBinariesProject {
 "@
 
     foreach ($item in $contentItems) {
-        $pkgPath = "$($item.Name)"
+        $pkgPath = "runtimes/$rid/native/$($item.Name)"
         # Replace backslashes with forward slashes for cross-platform compat
         $pkgPath = $pkgPath.Replace('\', '/')
         $itemName = $item.Name.Replace('\', '/')
@@ -640,6 +640,41 @@ function New-CefBinariesProject {
 "@
 
     Set-Content -Path $csprojPath -Value $csprojContent -Encoding UTF8
+
+    # Generate a .targets file that copies native binaries from runtime
+    # subdirectories to the root output directory at build time.
+    $targetsPath = Join-Path $projectDir "$packageId.targets"
+    $targetsContent = @"
+<Project>
+    <Target Name="CopyCefBinariesToOutputRoot"
+            AfterTargets="CopyFilesToOutputDirectory"
+            BeforeTargets="CopyNativeBinaries">
+        <ItemGroup>
+            <_CefNativeFiles Include="
+                $(MSBuildThisFileDirectory)../runtimes/*/native/**"
+                Condition=" '%(Extension)' != '.targets' " />
+        </ItemGroup>
+        <Copy SourceFiles="@(_CefNativeFiles)"
+              DestinationFolder="$(OutputPath)"
+              SkipUnchangedFiles="true"
+              Condition=" '@(_CefNativeFiles)' != '' " />
+        <Message Importance="low"
+                 Text="Copied @(_CefNativeFiles->Count()) CEF native file(s) to $(OutputPath)" />
+    </Target>
+</Project>
+"@
+    Set-Content -Path $targetsPath -Value $targetsContent -Encoding UTF8
+
+    # Add the .targets file to the project so it gets packed into build/
+    Add-Content -Path $csprojPath -Value @"
+
+    <ItemGroup>
+        <Content Include="$targetsPath">
+            <Pack>true</Pack>
+            <PackagePath>build\$packageId.targets</PackagePath>
+        </Content>
+    </ItemGroup>
+"@
 
     Write-Host "Project created with $($contentItems.Count) content items"
     return @{
