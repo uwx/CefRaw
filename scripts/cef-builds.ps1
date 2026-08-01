@@ -633,15 +633,7 @@ function New-CefBinariesProject {
 "@
     }
 
-    $csprojContent += @"
-    </ItemGroup>
-
-</Project>
-"@
-
-    Set-Content -Path $csprojPath -Value $csprojContent -Encoding UTF8
-
-    # Generate a .targets file that copies native binaries from runtime
+    # Generate the .targets file that copies native binaries from runtime
     # subdirectories to the root output directory at build time.
     $targetsPath = Join-Path $projectDir "$packageId.targets"
     $targetsContent = @"
@@ -651,30 +643,32 @@ function New-CefBinariesProject {
             BeforeTargets="CopyNativeBinaries">
         <ItemGroup>
             <_CefNativeFiles Include="
-                $(MSBuildThisFileDirectory)../runtimes/*/native/**"
+                `$(MSBuildThisFileDirectory)../runtimes/*/native/**"
                 Condition=" '%(Extension)' != '.targets' " />
         </ItemGroup>
         <Copy SourceFiles="@(_CefNativeFiles)"
-              DestinationFolder="$(OutputPath)"
+              DestinationFolder="`$(OutputPath)"
               SkipUnchangedFiles="true"
               Condition=" '@(_CefNativeFiles)' != '' " />
         <Message Importance="low"
-                 Text="Copied @(_CefNativeFiles->Count()) CEF native file(s) to $(OutputPath)" />
+                 Text="Copied @(_CefNativeFiles->Count()) CEF native file(s) to `$(OutputPath)" />
     </Target>
 </Project>
 "@
     Set-Content -Path $targetsPath -Value $targetsContent -Encoding UTF8
 
-    # Add the .targets file to the project so it gets packed into build/
-    Add-Content -Path $csprojPath -Value @"
-
-    <ItemGroup>
+    # Include the .targets in the package so it auto-imports into consumer projects
+    $csprojContent += @"
         <Content Include="$targetsPath">
             <Pack>true</Pack>
             <PackagePath>build\$packageId.targets</PackagePath>
         </Content>
     </ItemGroup>
+
+</Project>
 "@
+
+    Set-Content -Path $csprojPath -Value $csprojContent -Encoding UTF8
 
     Write-Host "Project created with $($contentItems.Count) content items"
     return @{
