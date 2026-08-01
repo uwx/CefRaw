@@ -296,9 +296,16 @@ function Get-OsCategory {
     Creates a .csproj NuGet package project for a set of CEF native binaries.
 .DESCRIPTION
     Walks the extracted CEF build directory, enumerates native binaries and resources,
-    and generates a .csproj file configured for NuGet packaging.
+    and generates a .csproj + .targets NuGet package project.
 
-    Platform-specific layouts:
+    Uses the standard NuGet contentFiles pattern:
+    - Native files are placed under contentFiles\any\any\ in the project (packed as-is).
+    - A build\{PackageId}.targets file references those files via
+      $(MSBuildThisFileDirectory)..\contentFiles\any\any\ and sets
+      CopyToOutputDirectory=PreserveNewest so consuming projects get the
+      natives dropped into their output directory automatically.
+
+    Platform-specific source layouts:
     - Windows/Linux: Native binaries at root, resources at root (pak files, icudtl.dat),
       locales in locales/ subfolder.
     - macOS: The framework is flattened — main binary and Libraries/*.dylib at root,
@@ -382,10 +389,15 @@ function New-CefBinariesProject {
     Write-Host "  Output dir: $projectDir"
     Write-Host "  Platform: $Platform, RID: $rid, OS: $os, Config: $Configuration"
 
-    # Collect files to include in the package
+    # Collect files to include in the package.
+    # Files go under contentFiles\any\any\ (NuGet convention for contentFiles
+    # that are not MSBuild-aware). A .targets file in build\ references them
+    # and sets CopyToOutputDirectory so consumers get the natives automatically.
     $contentItems = @()
-    $nativeDir = Join-Path $projectDir "native"
-    New-Item -ItemType Directory -Path $nativeDir -Force | Out-Null
+    $contentFilesDir = Join-Path $projectDir "contentFiles\any\any"
+    $buildDir = Join-Path $projectDir "build"
+    New-Item -ItemType Directory -Path $contentFilesDir -Force | Out-Null
+    New-Item -ItemType Directory -Path $buildDir -Force | Out-Null
 
     if ($IsSymbols) {
         # --- Symbol package: collect symbol files ---
@@ -403,9 +415,9 @@ function New-CefBinariesProject {
         }
         foreach ($file in $symbolFiles) {
             $destDir = if ($file -is [System.IO.DirectoryInfo]) {
-                Join-Path $nativeDir $file.Name
+                Join-Path $contentFilesDir $file.Name
             } else {
-                $nativeDir
+                $contentFilesDir
             }
             if (-not (Test-Path $destDir)) {
                 New-Item -ItemType Directory -Path $destDir -Force | Out-Null
@@ -438,7 +450,7 @@ function New-CefBinariesProject {
             # Main framework binary → libcef.dylib at root
             $fwBinary = Join-Path $frameworkDir "Chromium Embedded Framework"
             if (Test-Path $fwBinary) {
-                $destLib = Join-Path $nativeDir "libcef.dylib"
+                $destLib = Join-Path $contentFilesDir "libcef.dylib"
                 Copy-Item -Force $fwBinary $destLib
                 Write-Host "  Copied: Chromium Embedded Framework → libcef.dylib"
                 $contentItems += @{ Source = $fwBinary; IsDir = $false; Name = "libcef.dylib" }
@@ -447,14 +459,14 @@ function New-CefBinariesProject {
             # Libraries → root (libEGL.dylib, libGLESv2.dylib, etc.)
             if (Test-Path $fwLib) {
                 foreach ($lib in Get-ChildItem -Path $fwLib -File) {
-                    Copy-Item -Force $lib.FullName $nativeDir
+                    Copy-Item -Force $lib.FullName $contentFilesDir
                     Write-Host "  Copied: Libraries/$($lib.Name)"
                     $contentItems += @{ Source = $lib.FullName; IsDir = $false; Name = $lib.Name }
                 }
             }
 
             # Resources → Resources/ subfolder
-            $resDest = Join-Path $nativeDir "Resources"
+            $resDest = Join-Path $contentFilesDir "Resources"
             if (-not (Test-Path $resDest)) {
                 New-Item -ItemType Directory -Path $resDest -Force | Out-Null
             }
@@ -484,9 +496,9 @@ function New-CefBinariesProject {
                 throw
             }
 
-            # Copy all files from {Config}/ to native/
+            # Copy all files from {Config}/ to contentFiles/any/any/
             foreach ($file in Get-ChildItem -Path $configDir -File) {
-                Copy-Item -Force $file.FullName $nativeDir
+                Copy-Item -Force $file.FullName $contentFilesDir
                 Write-Host "  Copied: $($file.Name)"
                 $contentItems += @{ Source = $file.FullName; IsDir = $false; Name = $file.Name }
             }
@@ -494,19 +506,19 @@ function New-CefBinariesProject {
             # Copy Resources/ if it exists
             # On Windows/Linux: resources go to root level, locales to locales/
             if (Test-Path $resourcesDir) {
-                # Top-level resource files (.pak, .dat) → root of native/
+                # Top-level resource files (.pak, .dat) → root of contentFiles/any/any/
                 foreach ($res in Get-ChildItem -Path $resourcesDir -File) {
-                    Copy-Item -Force $res.FullName $nativeDir
+                    Copy-Item -Force $res.FullName $contentFilesDir
                     Write-Host "  Copied: Resources/$($res.Name)"
                     $contentItems += @{ Source = $res.FullName; IsDir = $false; Name = $res.Name }
                 }
-                # locales/ subfolder → native/locales/
+                # locales/ subfolder → contentFiles/any/any/locales/
                 # Only include base locale variants (skip _FEMININE, _MASCULINE,
                 # _NEUTER gender variants — they bloat the package with 150+
                 # unnecessary files).
                 $localesDir = Join-Path $resourcesDir "locales"
                 if (Test-Path $localesDir) {
-                    $localesDest = Join-Path $nativeDir "locales"
+                    $localesDest = Join-Path $contentFilesDir "locales"
                     if (-not (Test-Path $localesDest)) {
                         New-Item -ItemType Directory -Path $localesDest -Force | Out-Null
                     }
@@ -534,7 +546,7 @@ function New-CefBinariesProject {
     if (-not $IsSymbols -and $os -eq 'linux') {
         Write-Host "Stripping debug symbols from Linux binaries..."
 
-        $filesToStrip = @(Get-ChildItem -Path $nativeDir -File -ErrorAction SilentlyContinue | Where-Object {
+        $filesToStrip = @(Get-ChildItem -Path $contentFilesDir -File -ErrorAction SilentlyContinue | Where-Object {
             $_.Extension -eq '.so'
         })
         if ($filesToStrip.Count -eq 0) {
@@ -598,7 +610,45 @@ function New-CefBinariesProject {
         }
     }
 
-    # Generate the .csproj
+    # --- Generate the .targets file (build\{PackageId}.targets) ---
+    # This is the MSBuild glue that makes consuming projects automatically
+    # copy the native files to their output directory.
+    $targetsPath = Join-Path $buildDir "$packageId.targets"
+    Write-Host "Generating $targetsPath"
+
+    $targetsContent = @"
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemGroup>
+"@
+
+    foreach ($item in $contentItems) {
+        $relPath = $item.Name.Replace('\', '/')
+        # Link is the desired relative path in the output directory.
+        # Root-level files get just the filename; subdirectory files keep
+        # their path (e.g. "locales/en-US.pak", "Resources/icudtl.dat").
+        $linkPath = $relPath
+
+        $targetsContent += @"
+        <None Include="`$(MSBuildThisFileDirectory)..\contentFiles\any\any\$relPath">
+            <Link>$linkPath</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Visible>false</Visible>
+        </None>
+"@
+    }
+
+    $targetsContent += @"
+    </ItemGroup>
+</Project>
+"@
+
+    Set-Content -Path $targetsPath -Value $targetsContent -Encoding UTF8
+    Write-Host "Targets file created with $($contentItems.Count) items"
+
+    # --- Generate the .csproj ---
+    # The csproj uses <None> items (not <Content>) so the files are packed
+    # without MSBuild trying to process them at build time. The .targets file
+    # handles CopyToOutputDirectory at consume time.
     $csprojPath = Join-Path $projectDir "$packageId.csproj"
     Write-Host "Generating $csprojPath"
 
@@ -616,24 +666,36 @@ function New-CefBinariesProject {
     </PropertyGroup>
 
     <ItemGroup>
+        <!-- MSBuild .targets file → automatically imported by consuming projects -->
+        <None Include="build\$packageId.targets">
+            <Pack>true</Pack>
+            <PackagePath>build\</PackagePath>
+        </None>
 "@
 
     foreach ($item in $contentItems) {
+        $relPath = $item.Name.Replace('\', '/')
+        # Extract the subdirectory (if any) for PackagePath.
+        # e.g. "locales/en-US.pak" → subDir = "locales/"
+        #      "libcef.dll"       → subDir = ""
+        $subDir = Split-Path $relPath -Parent
+        if ($subDir) {
+            $subDir = $subDir.Replace('\', '/') + '/'
+        } else {
+            $subDir = ''
+        }
+
         $csprojContent += @"
-        <Content Include="native\$($item.Name)">
+        <None Include="contentFiles\any\any\$relPath">
             <Pack>true</Pack>
-            <PackagePath>contentFiles\any\any\$($item.Name)</PackagePath>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
+            <PackagePath>contentFiles\any\any\$($subDir)</PackagePath>
+        </None>
 "@
     }
 
     $csprojContent += @"
     </ItemGroup>
 
-    <PropertyGroup>
-        <ContentTargetFolders>contentFiles</ContentTargetFolders>
-    </PropertyGroup>
 </Project>
 "@
 
