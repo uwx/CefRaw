@@ -647,7 +647,7 @@ function New-CefBinariesProject {
                 Condition=" '%(Extension)' != '.targets' " />
         </ItemGroup>
         <Copy SourceFiles="@(_CefNativeFiles)"
-              DestinationFolder="`$(OutputPath)"
+              DestinationFolder="`$(OutputPath)%(RecursiveDir)"
               SkipUnchangedFiles="true"
               Condition=" '@(_CefNativeFiles)' != '' " />
         <Message Importance="low"
