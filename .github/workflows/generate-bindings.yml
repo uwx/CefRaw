@@ -259,8 +259,8 @@ jobs:
           $index = Get-CefBuildIndex
           $build = Get-LatestBuild -Platform "windows64" -FileType standard -Index $index
           $cefVersion = $build.CefVersion
-          $revision = (Get-Date -Format 'yyyyMMddHHmmss')
-          $nugetVersion = "0.0.1-cef.$cefVersion-ci.$revision"
+          $revision = "${{ github.run_id }}"
+          $nugetVersion = "1000.0.0-cef.$cefVersion.ci.$revision"
           Write-Host "NuGet version: $nugetVersion"
           "NUGET_VERSION=$nugetVersion" | Out-File -FilePath $env:GITHUB_ENV -Append
 

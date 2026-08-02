@@ -73,7 +73,7 @@ jobs:
           # can re-publish fixes without NuGet rejecting the version.
           $revision = "${{ github.run_id }}"
           "BUILD_FILE=$($build.Name)" | Out-File -FilePath $env:GITHUB_ENV -Append
-          "CEF_VERSION=$($build.CefVersion)-2.ci.$revision" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "CEF_VERSION=1000.0.0-cef.$($build.CefVersion).ci.$revision" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: Download and extract CEF build
         shell: pwsh
