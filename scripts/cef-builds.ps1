@@ -298,10 +298,9 @@ function Get-OsCategory {
     Walks the extracted CEF build directory, enumerates native binaries and resources,
     and generates a .csproj + .targets NuGet package project.
 
-    Uses the standard NuGet contentFiles pattern:
-    - Native files are placed under contentFiles\any\any\ in the project (packed as-is).
+    - Native files are placed under CEF\ in the project (packed as-is).
     - A build\{PackageId}.targets file references those files via
-      $(MSBuildThisFileDirectory)..\contentFiles\any\any\ and sets
+      $(MSBuildThisFileDirectory)..\CEF\ and sets
       CopyToOutputDirectory=PreserveNewest so consuming projects get the
       natives dropped into their output directory automatically.
 
@@ -390,11 +389,10 @@ function New-CefBinariesProject {
     Write-Host "  Platform: $Platform, RID: $rid, OS: $os, Config: $Configuration"
 
     # Collect files to include in the package.
-    # Files go under contentFiles\any\any\ (NuGet convention for contentFiles
-    # that are not MSBuild-aware). A .targets file in build\ references them
+    # Files go under CEF\. A .targets file in build\ references them
     # and sets CopyToOutputDirectory so consumers get the natives automatically.
     $contentItems = @()
-    $contentFilesDir = Join-Path $projectDir "contentFiles\any\any"
+    $contentFilesDir = Join-Path $projectDir "CEF"
     $buildDir = Join-Path $projectDir "build"
     New-Item -ItemType Directory -Path $contentFilesDir -Force | Out-Null
     New-Item -ItemType Directory -Path $buildDir -Force | Out-Null
@@ -496,7 +494,7 @@ function New-CefBinariesProject {
                 throw
             }
 
-            # Copy all files from {Config}/ to contentFiles/any/any/
+            # Copy all files from {Config}/ to CEF/
             foreach ($file in Get-ChildItem -Path $configDir -File) {
                 Copy-Item -Force $file.FullName $contentFilesDir
                 Write-Host "  Copied: $($file.Name)"
@@ -506,13 +504,13 @@ function New-CefBinariesProject {
             # Copy Resources/ if it exists
             # On Windows/Linux: resources go to root level, locales to locales/
             if (Test-Path $resourcesDir) {
-                # Top-level resource files (.pak, .dat) → root of contentFiles/any/any/
+                # Top-level resource files (.pak, .dat) → root of CEF/
                 foreach ($res in Get-ChildItem -Path $resourcesDir -File) {
                     Copy-Item -Force $res.FullName $contentFilesDir
                     Write-Host "  Copied: Resources/$($res.Name)"
                     $contentItems += @{ Source = $res.FullName; IsDir = $false; Name = $res.Name }
                 }
-                # locales/ subfolder → contentFiles/any/any/locales/
+                # locales/ subfolder → CEF/locales/
                 # Only include base locale variants (skip _FEMININE, _MASCULINE,
                 # _NEUTER gender variants — they bloat the package with 150+
                 # unnecessary files).
@@ -629,7 +627,7 @@ function New-CefBinariesProject {
         $linkPath = $relPath
 
         $targetsContent += @"
-        <None Include="`$(MSBuildThisFileDirectory)..\contentFiles\any\any\$relPath">
+        <None Include="`$(MSBuildThisFileDirectory)..\CEF\$relPath">
             <Link>$linkPath</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <Visible>false</Visible>
@@ -686,9 +684,9 @@ function New-CefBinariesProject {
         }
 
         $csprojContent += @"
-        <None Include="contentFiles\any\any\$relPath">
+        <None Include="CEF\$relPath">
             <Pack>true</Pack>
-            <PackagePath>contentFiles\any\any\$($subDir)</PackagePath>
+            <PackagePath>CEF\$($subDir)</PackagePath>
         </None>
 "@
     }
