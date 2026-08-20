@@ -463,6 +463,9 @@
       <enumerator name="CEF_CONTENT_SETTING_TYPE_INLINE_CUE_MENU" access="public">
         <type primitive="False">int</type>
       </enumerator>
+      <enumerator name="CEF_CONTENT_SETTING_TYPE_SUSPICIOUS_SITE_WARNING_DATA" access="public">
+        <type primitive="False">int</type>
+      </enumerator>
       <enumerator name="CEF_CONTENT_SETTING_TYPE_NUM_VALUES" access="public">
         <type primitive="False">int</type>
       </enumerator>
@@ -1789,6 +1792,12 @@
         <type primitive="False">int</type>
         <value>
           <code>-189</code>
+        </value>
+      </enumerator>
+      <enumerator name="ERR_MULTICAST_NOT_ALLOWED" access="public">
+        <type primitive="False">int</type>
+        <value>
+          <code>-190</code>
         </value>
       </enumerator>
       <enumerator name="ERR_CERT_COMMON_NAME_INVALID" access="public">
@@ -5916,6 +5925,12 @@
         <type primitive="False">int</type>
       </enumerator>
       <enumerator name="CEF_CPAIT_MULTISTEP_FILTER" access="public">
+        <type primitive="False">int</type>
+      </enumerator>
+      <enumerator name="CEF_CPAIT_PAYMENTS_CHURNED_USERS" access="public">
+        <type primitive="False">int</type>
+      </enumerator>
+      <enumerator name="CEF_CPAIT_FAKE_PAGE_ACTION_FOR_DEBUG" access="public">
         <type primitive="False">int</type>
       </enumerator>
       <enumerator name="CEF_CPAIT_NUM_VALUES" access="public">
@@ -11033,7 +11048,7 @@
       <constant name="CEF_API_HASH_PLATFORM" access="public">
         <type primitive="False">ReadOnlySpan&lt;byte&gt;</type>
         <value>
-          <code>"d88ff42c6092b448557bf38b6bcc668ab205793b"u8</code>
+          <code>"c881fa9803c71cb5cb260c86021ed9e6e5c470d8"u8</code>
         </value>
       </constant>
       <constant name="kNullCursorHandle" access="public">
@@ -11099,7 +11114,7 @@
       <constant name="CEF_API_HASH_PLATFORM" access="public">
         <type primitive="False">ReadOnlySpan&lt;byte&gt;</type>
         <value>
-          <code>"d88ff42c6092b448557bf38b6bcc668ab205793b"u8</code>
+          <code>"c881fa9803c71cb5cb260c86021ed9e6e5c470d8"u8</code>
         </value>
       </constant>
     </class>

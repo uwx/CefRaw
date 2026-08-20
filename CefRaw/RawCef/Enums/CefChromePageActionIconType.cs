@@ -55,5 +55,7 @@ public enum CefChromePageActionIconType : int
     WebAuthnAmbientSignin,
     AutofillPayment,
     MultistepFilter,
+    PaymentsChurnedUsers,
+    FakePageActionForDebug,
     NumValues,
 }

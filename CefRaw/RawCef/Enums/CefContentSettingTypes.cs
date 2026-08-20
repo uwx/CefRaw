@@ -139,5 +139,6 @@ public enum CefContentSettingTypes : int
     LoopbackNetwork,
     SubAppsWithoutPrompts,
     InlineCueMenu,
+    SuspiciousSiteWarningData,
     NumValues,
 }

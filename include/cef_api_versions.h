@@ -299,30 +299,40 @@
 #define CEF_API_HASH_15101 "5a32041cf2d7c50c5faad893cadda6c0cb7aecfc"
 #endif
 
-// Next version last updated August 14, 2026.
-#define CEF_API_VERSION_999998 999998
+// Added August 15, 2026.
+#define CEF_API_VERSION_15200 15200
 #if defined(OS_WIN)
-#define CEF_API_HASH_999998 "5933e18e1d2879e23205c70c637bf817c3f32454"
+#define CEF_API_HASH_15200 "1dde3bb571a5ee5aedd646ed4694d4bc8d9a2d96"
 #elif defined(OS_MAC)
-#define CEF_API_HASH_999998 "2e13595a0971262679bcdc01c5d1391b12b5cf0d"
+#define CEF_API_HASH_15200 "1e4981499ff0bace8da030a21a16a6613f46703c"
 #elif defined(OS_LINUX)
-#define CEF_API_HASH_999998 "5a32041cf2d7c50c5faad893cadda6c0cb7aecfc"
+#define CEF_API_HASH_15200 "9dd75967c3694b8755dc1730a0097a63a2ebfe44"
 #endif
 
-// Experimental version last updated August 14, 2026.
+// Next version last updated August 19, 2026.
+#define CEF_API_VERSION_999998 999998
+#if defined(OS_WIN)
+#define CEF_API_HASH_999998 "1dde3bb571a5ee5aedd646ed4694d4bc8d9a2d96"
+#elif defined(OS_MAC)
+#define CEF_API_HASH_999998 "1e4981499ff0bace8da030a21a16a6613f46703c"
+#elif defined(OS_LINUX)
+#define CEF_API_HASH_999998 "9dd75967c3694b8755dc1730a0097a63a2ebfe44"
+#endif
+
+// Experimental version last updated August 19, 2026.
 #define CEF_API_VERSION_999999 999999
 #if defined(OS_WIN)
-#define CEF_API_HASH_999999 "d88ff42c6092b448557bf38b6bcc668ab205793b"
+#define CEF_API_HASH_999999 "c881fa9803c71cb5cb260c86021ed9e6e5c470d8"
 #elif defined(OS_MAC)
-#define CEF_API_HASH_999999 "27759c0a4b5b85c632e775838eb599b65129b798"
+#define CEF_API_HASH_999999 "dd69aff726a8078509d746a12a2bde63564461b3"
 #elif defined(OS_LINUX)
-#define CEF_API_HASH_999999 "780e3ef9302b2225e99c7cc7619d3fd307956c37"
+#define CEF_API_HASH_999999 "33fa0809fd61a1efb554d5a21d167ea77b6bb461"
 #endif
 
 // Oldest supported CEF version.
 #define CEF_API_VERSION_MIN CEF_API_VERSION_13300
 
 // Newest supported CEF version.
-#define CEF_API_VERSION_LAST CEF_API_VERSION_15101
+#define CEF_API_VERSION_LAST CEF_API_VERSION_15200
 
 #endif  // CEF_INCLUDE_CEF_API_VERSIONS_H_

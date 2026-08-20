@@ -115,6 +115,7 @@ public enum CefErrorcode : int
     ProxyDelegateCanceledConnectRequest = -187,
     ProxyDelegateCanceledConnectResponse = -188,
     ControlMsgTooBig = -189,
+    MulticastNotAllowed = -190,
     CertCommonNameInvalid = -200,
     CertDateInvalid = -201,
     CertAuthorityInvalid = -202,

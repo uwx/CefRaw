@@ -90,7 +90,7 @@ public unsafe partial class CefUnsafe
     /// <summary>
     /// Value for CEF_API_HASH_PLATFORM.
     /// </summary>
-    public static ReadOnlySpan<byte> CEF_API_HASH_PLATFORM => "d88ff42c6092b448557bf38b6bcc668ab205793b"u8;
+    public static ReadOnlySpan<byte> CEF_API_HASH_PLATFORM => "c881fa9803c71cb5cb260c86021ed9e6e5c470d8"u8;
 
     /// <summary>
     /// Constant value for kNullCursorHandle.
@@ -969,7 +969,7 @@ public unsafe partial class CefUnsafe
     /// <summary>
     /// Value for CEF_API_HASH_PLATFORM.
     /// </summary>
-    public static ReadOnlySpan<byte> CEF_API_HASH_PLATFORM => "27759c0a4b5b85c632e775838eb599b65129b798"u8;
+    public static ReadOnlySpan<byte> CEF_API_HASH_PLATFORM => "dd69aff726a8078509d746a12a2bde63564461b3"u8;
 
     /// <summary>
     /// Constant value for kNullCursorHandle.
@@ -1848,7 +1848,7 @@ public unsafe partial class CefUnsafe
     /// <summary>
     /// Value for CEF_API_HASH_PLATFORM.
     /// </summary>
-    public static ReadOnlySpan<byte> CEF_API_HASH_PLATFORM => "780e3ef9302b2225e99c7cc7619d3fd307956c37"u8;
+    public static ReadOnlySpan<byte> CEF_API_HASH_PLATFORM => "33fa0809fd61a1efb554d5a21d167ea77b6bb461"u8;
 
     /// <summary>
     /// Constant value for kNullCursorHandle.
