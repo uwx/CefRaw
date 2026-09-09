@@ -57,5 +57,6 @@ public enum CefChromePageActionIconType : int
     MultistepFilter,
     PaymentsChurnedUsers,
     FakePageActionForDebug,
+    WalletReminderNotice,
     NumValues,
 }

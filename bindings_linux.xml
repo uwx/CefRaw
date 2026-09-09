@@ -5953,6 +5953,9 @@
       <enumerator name="CEF_CPAIT_FAKE_PAGE_ACTION_FOR_DEBUG" access="public">
         <type primitive="False">int</type>
       </enumerator>
+      <enumerator name="CEF_CPAIT_WALLET_REMINDER_NOTICE" access="public">
+        <type primitive="False">int</type>
+      </enumerator>
       <enumerator name="CEF_CPAIT_NUM_VALUES" access="public">
         <type primitive="False">int</type>
       </enumerator>
@@ -10882,18 +10885,6 @@
           <type>int</type>
         </param>
       </function>
-      <function name="cef_register_extension" access="public" lib="libcef" convention="Cdecl" static="true" unsafe="true">
-        <type>int</type>
-        <param name="extension_name">
-          <type>_cef_string_utf16_t*</type>
-        </param>
-        <param name="javascript_code">
-          <type>_cef_string_utf16_t*</type>
-        </param>
-        <param name="handler">
-          <type>_cef_v8_handler_t*</type>
-        </param>
-      </function>
       <function name="cef_register_scheme_handler_factory" access="public" lib="libcef" convention="Cdecl" static="true" unsafe="true">
         <type>int</type>
         <param name="scheme_name">
@@ -11068,7 +11059,7 @@
       <constant name="CEF_API_HASH_PLATFORM" access="public">
         <type primitive="False">ReadOnlySpan&lt;byte&gt;</type>
         <value>
-          <code>"33fa0809fd61a1efb554d5a21d167ea77b6bb461"u8</code>
+          <code>"488548509981031433af22af05c9b59e6f0788a9"u8</code>
         </value>
       </constant>
       <constant name="kNullCursorHandle" access="public">
@@ -11140,7 +11131,7 @@
       <constant name="CEF_API_HASH_PLATFORM" access="public">
         <type primitive="False">ReadOnlySpan&lt;byte&gt;</type>
         <value>
-          <code>"c881fa9803c71cb5cb260c86021ed9e6e5c470d8"u8</code>
+          <code>"f14d20a5b5f2c89e7fe93de28b60278b38300f84"u8</code>
         </value>
       </constant>
     </class>

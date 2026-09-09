@@ -90,7 +90,7 @@ public unsafe partial class CefUnsafe
     /// <summary>
     /// Value for CEF_API_HASH_PLATFORM.
     /// </summary>
-    public static ReadOnlySpan<byte> CEF_API_HASH_PLATFORM => "c881fa9803c71cb5cb260c86021ed9e6e5c470d8"u8;
+    public static ReadOnlySpan<byte> CEF_API_HASH_PLATFORM => "f14d20a5b5f2c89e7fe93de28b60278b38300f84"u8;
 
     /// <summary>
     /// Constant value for kNullCursorHandle.
@@ -810,12 +810,6 @@ public unsafe partial class CefUnsafe
     public static unsafe extern _cef_v8_stack_trace_t* V8StackTraceGetCurrent(int frame_limit);
 
     /// <summary>
-    /// Native export: cef_register_extension from libcef.
-    /// </summary>
-    [DllImport("libcef", EntryPoint = "cef_register_extension", CallingConvention = CallingConvention.Cdecl)]
-    public static unsafe extern int RegisterExtension(_cef_string_utf16_t* extension_name, _cef_string_utf16_t* javascript_code, _cef_v8_handler_t* handler);
-
-    /// <summary>
     /// Native export: cef_register_scheme_handler_factory from libcef.
     /// </summary>
     [DllImport("libcef", EntryPoint = "cef_register_scheme_handler_factory", CallingConvention = CallingConvention.Cdecl)]
@@ -969,7 +963,7 @@ public unsafe partial class CefUnsafe
     /// <summary>
     /// Value for CEF_API_HASH_PLATFORM.
     /// </summary>
-    public static ReadOnlySpan<byte> CEF_API_HASH_PLATFORM => "dd69aff726a8078509d746a12a2bde63564461b3"u8;
+    public static ReadOnlySpan<byte> CEF_API_HASH_PLATFORM => "a0751e05d62eb0b55000bb93ed449c395828684e"u8;
 
     /// <summary>
     /// Constant value for kNullCursorHandle.
@@ -1689,12 +1683,6 @@ public unsafe partial class CefUnsafe
     public static unsafe extern _cef_v8_stack_trace_t* V8StackTraceGetCurrent(int frame_limit);
 
     /// <summary>
-    /// Native export: cef_register_extension from libcef.
-    /// </summary>
-    [DllImport("libcef", EntryPoint = "cef_register_extension", CallingConvention = CallingConvention.Cdecl)]
-    public static unsafe extern int RegisterExtension(_cef_string_utf16_t* extension_name, _cef_string_utf16_t* javascript_code, _cef_v8_handler_t* handler);
-
-    /// <summary>
     /// Native export: cef_register_scheme_handler_factory from libcef.
     /// </summary>
     [DllImport("libcef", EntryPoint = "cef_register_scheme_handler_factory", CallingConvention = CallingConvention.Cdecl)]
@@ -1848,7 +1836,7 @@ public unsafe partial class CefUnsafe
     /// <summary>
     /// Value for CEF_API_HASH_PLATFORM.
     /// </summary>
-    public static ReadOnlySpan<byte> CEF_API_HASH_PLATFORM => "33fa0809fd61a1efb554d5a21d167ea77b6bb461"u8;
+    public static ReadOnlySpan<byte> CEF_API_HASH_PLATFORM => "488548509981031433af22af05c9b59e6f0788a9"u8;
 
     /// <summary>
     /// Constant value for kNullCursorHandle.
@@ -2571,12 +2559,6 @@ public unsafe partial class CefUnsafe
     /// </summary>
     [DllImport("libcef", EntryPoint = "cef_v8_stack_trace_get_current", CallingConvention = CallingConvention.Cdecl)]
     public static unsafe extern _cef_v8_stack_trace_t* V8StackTraceGetCurrent(int frame_limit);
-
-    /// <summary>
-    /// Native export: cef_register_extension from libcef.
-    /// </summary>
-    [DllImport("libcef", EntryPoint = "cef_register_extension", CallingConvention = CallingConvention.Cdecl)]
-    public static unsafe extern int RegisterExtension(_cef_string_utf16_t* extension_name, _cef_string_utf16_t* javascript_code, _cef_v8_handler_t* handler);
 
     /// <summary>
     /// Native export: cef_register_scheme_handler_factory from libcef.
