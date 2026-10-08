@@ -14,6 +14,10 @@ public unsafe partial interface ICefPreferenceRegistrar : ICefBaseScoped
     new _cef_preference_registrar_t* NativePtr { get; }
 
     public int AddPreference(string? arg0, ICefValue? arg1);
+
+    public int SetDefaultPreference(string? arg0, ICefValue? arg1, out string? arg2);
+
+    public ICefValue? GetDefaultPreference(string? arg0);
 }
 #endif
 #if OS_MAC
@@ -32,6 +36,10 @@ public unsafe partial interface ICefPreferenceRegistrar : ICefBaseScoped
     new _cef_preference_registrar_t* NativePtr { get; }
 
     public int AddPreference(string? arg0, ICefValue? arg1);
+
+    public int SetDefaultPreference(string? arg0, ICefValue? arg1, out string? arg2);
+
+    public ICefValue? GetDefaultPreference(string? arg0);
 }
 #endif
 #if OS_LINUX
@@ -50,5 +58,9 @@ public unsafe partial interface ICefPreferenceRegistrar : ICefBaseScoped
     new _cef_preference_registrar_t* NativePtr { get; }
 
     public int AddPreference(string? arg0, ICefValue? arg1);
+
+    public int SetDefaultPreference(string? arg0, ICefValue? arg1, out string? arg2);
+
+    public ICefValue? GetDefaultPreference(string? arg0);
 }
 #endif

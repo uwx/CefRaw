@@ -403,7 +403,7 @@
       <enumerator name="CEF_CONTENT_SETTING_TYPE_JAVASCRIPT_OPTIMIZER" access="public">
         <type primitive="False">int</type>
       </enumerator>
-      <enumerator name="CEF_CONTENT_SETTING_TYPE_STORAGE_ACCESS_HEADER_ORIGIN_TRIAL" access="public">
+      <enumerator name="CEF_CONTENT_SETTING_TYPE_STORAGE_ACCESS_HEADER_ORIGIN_TRIAL_DEPRECATED" access="public">
         <type primitive="False">int</type>
       </enumerator>
       <enumerator name="CEF_CONTENT_SETTING_TYPE_HAND_TRACKING" access="public">
@@ -412,7 +412,7 @@
       <enumerator name="CEF_CONTENT_SETTING_TYPE_WEB_APP_INSTALLATION" access="public">
         <type primitive="False">int</type>
       </enumerator>
-      <enumerator name="CEF_CONTENT_SETTING_TYPE_DIRECT_SOCKETS_PRIVATE_NETWORK_ACCESS" access="public">
+      <enumerator name="CEF_CONTENT_SETTING_TYPE_DIRECT_SOCKETS_PRIVATE_NETWORK_ACCESS_DEPRECATED" access="public">
         <type primitive="False">int</type>
       </enumerator>
       <enumerator name="CEF_CONTENT_SETTING_TYPE_LEGACY_COOKIE_SCOPE" access="public">
@@ -840,6 +840,12 @@
       </field>
       <field name="use_views_default_popup" access="public">
         <type>int</type>
+      </field>
+      <field name="keychain_service_name" access="public">
+        <type native="cef_string_t">_cef_string_utf16_t</type>
+      </field>
+      <field name="keychain_account_name" access="public">
+        <type native="cef_string_t">_cef_string_utf16_t</type>
       </field>
     </struct>
     <struct name="_cef_request_context_settings_t" access="public">
@@ -2868,10 +2874,22 @@
           <code>40</code>
         </value>
       </enumerator>
-      <enumerator name="CEF_RESULT_CODE_CHROME_LAST" access="public">
+      <enumerator name="CEF_RESULT_CODE_NORMAL_EXIT_RELAUNCH_REQUESTED" access="public">
         <type primitive="False">int</type>
         <value>
           <code>41</code>
+        </value>
+      </enumerator>
+      <enumerator name="CEF_RESULT_CODE_NORMAL_EXIT_RELAUNCH_BACKGROUND" access="public">
+        <type primitive="False">int</type>
+        <value>
+          <code>42</code>
+        </value>
+      </enumerator>
+      <enumerator name="CEF_RESULT_CODE_CHROME_LAST" access="public">
+        <type primitive="False">int</type>
+        <value>
+          <code>43</code>
         </value>
       </enumerator>
       <enumerator name="CEF_RESULT_CODE_SANDBOX_FATAL_FIRST" access="public">
@@ -6289,6 +6307,12 @@
           <code>1 &lt;&lt; 28</code>
         </value>
       </enumerator>
+      <enumerator name="CEF_PERMISSION_TYPE_AMBIENT_LOGIN" access="public">
+        <type primitive="False">int</type>
+        <value>
+          <code>1 &lt;&lt; 29</code>
+        </value>
+      </enumerator>
     </enumeration>
     <enumeration name="cef_permission_request_result_t" access="public">
       <type>int</type>
@@ -7876,6 +7900,12 @@
       </field>
       <field name="add_preference" access="public">
         <type native="int (*)(struct _cef_preference_registrar_t *, const cef_string_t *, struct _cef_value_t *) __attribute__((stdcall))">delegate* unmanaged[Stdcall]&lt;_cef_preference_registrar_t*, _cef_string_utf16_t*, _cef_value_t*, int&gt;</type>
+      </field>
+      <field name="set_default_preference" access="public">
+        <type native="int (*)(struct _cef_preference_registrar_t *, const cef_string_t *, struct _cef_value_t *, cef_string_t *) __attribute__((stdcall))">delegate* unmanaged[Stdcall]&lt;_cef_preference_registrar_t*, _cef_string_utf16_t*, _cef_value_t*, _cef_string_utf16_t*, int&gt;</type>
+      </field>
+      <field name="get_default_preference" access="public">
+        <type native="struct _cef_value_t *(*)(struct _cef_preference_registrar_t *, const cef_string_t *) __attribute__((stdcall))">delegate* unmanaged[Stdcall]&lt;_cef_preference_registrar_t*, _cef_string_utf16_t*, _cef_value_t*&gt;</type>
       </field>
     </struct>
     <struct name="_cef_preference_observer_t" access="public" unsafe="true">
@@ -11039,7 +11069,7 @@
       <constant name="CEF_API_HASH_PLATFORM" access="public">
         <type primitive="False">ReadOnlySpan&lt;byte&gt;</type>
         <value>
-          <code>"f14d20a5b5f2c89e7fe93de28b60278b38300f84"u8</code>
+          <code>"675a366a0df2e2fc012e078c9abbd7c37423b80e"u8</code>
         </value>
       </constant>
       <constant name="kNullCursorHandle" access="public">
@@ -11105,7 +11135,7 @@
       <constant name="CEF_API_HASH_PLATFORM" access="public">
         <type primitive="False">ReadOnlySpan&lt;byte&gt;</type>
         <value>
-          <code>"f14d20a5b5f2c89e7fe93de28b60278b38300f84"u8</code>
+          <code>"675a366a0df2e2fc012e078c9abbd7c37423b80e"u8</code>
         </value>
       </constant>
     </class>

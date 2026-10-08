@@ -73,4 +73,8 @@ public unsafe partial interface ICefSettings
     int DisableSignalHandlers { get; set; }
 
     int UseViewsDefaultPopup { get; set; }
+
+    string? KeychainServiceName { get; set; }
+
+    string? KeychainAccountName { get; set; }
 }

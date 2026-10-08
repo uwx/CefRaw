@@ -39,6 +39,32 @@ public unsafe partial class CefPreferenceRegistrarRef : CefBaseScopedRef, ICefPr
         }
     }
 
+    public int SetDefaultPreference(string? arg0, ICefValue? arg1, out string? arg2)
+    {
+        _cef_string_utf16_t _out2 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_default_preference(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, &_out2);
+
+            arg2 = CefStringRef.ToStringAndFree(&_out2);
+            return _result;
+        }
+    }
+
+    public ICefValue? GetDefaultPreference(string? arg0)
+    {
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_default_preference(_ptr, &_s0);
+
+            return _result != null ? new CefValueRef(_result) : null;
+        }
+    }
+
     public _cef_base_scoped_t @base
     {
         get => _ptr->@base;
@@ -87,6 +113,32 @@ public unsafe partial class CefPreferenceRegistrarRef : CefBaseScopedRef, ICefPr
         }
     }
 
+    public int SetDefaultPreference(string? arg0, ICefValue? arg1, out string? arg2)
+    {
+        _cef_string_utf16_t _out2 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_default_preference(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, &_out2);
+
+            arg2 = CefStringRef.ToStringAndFree(&_out2);
+            return _result;
+        }
+    }
+
+    public ICefValue? GetDefaultPreference(string? arg0)
+    {
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_default_preference(_ptr, &_s0);
+
+            return _result != null ? new CefValueRef(_result) : null;
+        }
+    }
+
     public _cef_base_scoped_t @base
     {
         get => _ptr->@base;
@@ -132,6 +184,32 @@ public unsafe partial class CefPreferenceRegistrarRef : CefBaseScopedRef, ICefPr
             var _result = _ptr->add_preference(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr);
 
             return _result;
+        }
+    }
+
+    public int SetDefaultPreference(string? arg0, ICefValue? arg1, out string? arg2)
+    {
+        _cef_string_utf16_t _out2 = default;
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->set_default_preference(_ptr, &_s0, arg1 is null ? null : arg1.NativePtr, &_out2);
+
+            arg2 = CefStringRef.ToStringAndFree(&_out2);
+            return _result;
+        }
+    }
+
+    public ICefValue? GetDefaultPreference(string? arg0)
+    {
+        fixed (char* _p0 = arg0)
+        {
+            _cef_string_utf16_t _s0;
+            CefStringRef.FillFromPinned(&_s0, _p0, arg0?.Length ?? 0);
+            var _result = _ptr->get_default_preference(_ptr, &_s0);
+
+            return _result != null ? new CefValueRef(_result) : null;
         }
     }
 

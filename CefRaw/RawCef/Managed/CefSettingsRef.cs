@@ -209,4 +209,16 @@ public unsafe partial class CefSettingsRef : ICefSettings
         get => _ptr->use_views_default_popup;
         set => _ptr->use_views_default_popup = value;
     }
+
+    public string? KeychainServiceName
+    {
+        get => new CefString(&_ptr->keychain_service_name).Value;
+        set => new CefString(&_ptr->keychain_service_name).Value = value;
+    }
+
+    public string? KeychainAccountName
+    {
+        get => new CefString(&_ptr->keychain_account_name).Value;
+        set => new CefString(&_ptr->keychain_account_name).Value = value;
+    }
 }

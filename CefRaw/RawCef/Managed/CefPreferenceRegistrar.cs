@@ -34,6 +34,8 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
         base.InitializeNativeStruct();
 
         _typedPtr->add_preference = &Bridge_AddPreference;
+        _typedPtr->set_default_preference = &Bridge_SetDefaultPreference;
+        _typedPtr->get_default_preference = &Bridge_GetDefaultPreference;
     }
 
 
@@ -41,6 +43,16 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
     /// Implement the <c>add_preference</c> callback.
     /// </summary>
     public abstract int AddPreference(string? arg0, ICefValue? arg1);
+
+    /// <summary>
+    /// Implement the <c>set_default_preference</c> callback.
+    /// </summary>
+    public abstract int SetDefaultPreference(string? arg0, ICefValue? arg1, out string? arg2);
+
+    /// <summary>
+    /// Implement the <c>get_default_preference</c> callback.
+    /// </summary>
+    public abstract ICefValue? GetDefaultPreference(string? arg0);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -58,6 +70,61 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
             var _result = _m.AddPreference(_a0, _a1);
 
             return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static int Bridge_SetDefaultPreference(_cef_preference_registrar_t* self, _cef_string_utf16_t* arg0, _cef_value_t* arg1, _cef_string_utf16_t* arg2)
+    {
+        try
+        {
+            var _m = GetManaged<CefPreferenceRegistrar>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
+            string? _out2 = null;
+            if (arg2 != null) _out2 = CefStringRef.ToStringAndFree(arg2);
+            var _result = _m.SetDefaultPreference(_a0, _a1, out _out2);
+
+            if (arg2 != null)
+            {
+                fixed (char* _p2 = _out2)
+                    CefUnsafe.StringUtf16Set((ushort*)_p2, (nuint)(_out2?.Length ?? 0), arg2, copy: 1);
+            }
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static _cef_value_t* Bridge_GetDefaultPreference(_cef_preference_registrar_t* self, _cef_string_utf16_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefPreferenceRegistrar>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetDefaultPreference(_a0);
+
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
         }
         catch (Exception ex)
         {
@@ -103,6 +170,8 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
         base.InitializeNativeStruct();
 
         _typedPtr->add_preference = &Bridge_AddPreference;
+        _typedPtr->set_default_preference = &Bridge_SetDefaultPreference;
+        _typedPtr->get_default_preference = &Bridge_GetDefaultPreference;
     }
 
 
@@ -110,6 +179,16 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
     /// Implement the <c>add_preference</c> callback.
     /// </summary>
     public abstract int AddPreference(string? arg0, ICefValue? arg1);
+
+    /// <summary>
+    /// Implement the <c>set_default_preference</c> callback.
+    /// </summary>
+    public abstract int SetDefaultPreference(string? arg0, ICefValue? arg1, out string? arg2);
+
+    /// <summary>
+    /// Implement the <c>get_default_preference</c> callback.
+    /// </summary>
+    public abstract ICefValue? GetDefaultPreference(string? arg0);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -127,6 +206,61 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
             var _result = _m.AddPreference(_a0, _a1);
 
             return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static int Bridge_SetDefaultPreference(_cef_preference_registrar_t* self, _cef_string_utf16_t* arg0, _cef_value_t* arg1, _cef_string_utf16_t* arg2)
+    {
+        try
+        {
+            var _m = GetManaged<CefPreferenceRegistrar>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
+            string? _out2 = null;
+            if (arg2 != null) _out2 = CefStringRef.ToStringAndFree(arg2);
+            var _result = _m.SetDefaultPreference(_a0, _a1, out _out2);
+
+            if (arg2 != null)
+            {
+                fixed (char* _p2 = _out2)
+                    CefUnsafe.StringUtf16Set((ushort*)_p2, (nuint)(_out2?.Length ?? 0), arg2, copy: 1);
+            }
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static _cef_value_t* Bridge_GetDefaultPreference(_cef_preference_registrar_t* self, _cef_string_utf16_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefPreferenceRegistrar>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetDefaultPreference(_a0);
+
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
         }
         catch (Exception ex)
         {
@@ -172,6 +306,8 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
         base.InitializeNativeStruct();
 
         _typedPtr->add_preference = &Bridge_AddPreference;
+        _typedPtr->set_default_preference = &Bridge_SetDefaultPreference;
+        _typedPtr->get_default_preference = &Bridge_GetDefaultPreference;
     }
 
 
@@ -179,6 +315,16 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
     /// Implement the <c>add_preference</c> callback.
     /// </summary>
     public abstract int AddPreference(string? arg0, ICefValue? arg1);
+
+    /// <summary>
+    /// Implement the <c>set_default_preference</c> callback.
+    /// </summary>
+    public abstract int SetDefaultPreference(string? arg0, ICefValue? arg1, out string? arg2);
+
+    /// <summary>
+    /// Implement the <c>get_default_preference</c> callback.
+    /// </summary>
+    public abstract ICefValue? GetDefaultPreference(string? arg0);
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -196,6 +342,61 @@ public unsafe abstract partial class CefPreferenceRegistrar : CefBaseScoped, ICe
             var _result = _m.AddPreference(_a0, _a1);
 
             return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static int Bridge_SetDefaultPreference(_cef_preference_registrar_t* self, _cef_string_utf16_t* arg0, _cef_value_t* arg1, _cef_string_utf16_t* arg2)
+    {
+        try
+        {
+            var _m = GetManaged<CefPreferenceRegistrar>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _a1 = arg1 != null ? new CefValueRef(arg1) : null;
+            string? _out2 = null;
+            if (arg2 != null) _out2 = CefStringRef.ToStringAndFree(arg2);
+            var _result = _m.SetDefaultPreference(_a0, _a1, out _out2);
+
+            if (arg2 != null)
+            {
+                fixed (char* _p2 = _out2)
+                    CefUnsafe.StringUtf16Set((ushort*)_p2, (nuint)(_out2?.Length ?? 0), arg2, copy: 1);
+            }
+            return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static _cef_value_t* Bridge_GetDefaultPreference(_cef_preference_registrar_t* self, _cef_string_utf16_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefPreferenceRegistrar>(self);
+
+            var _a0 = CefStringRef.ToString(arg0);
+            var _result = _m.GetDefaultPreference(_a0);
+
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
         }
         catch (Exception ex)
         {

@@ -38,4 +38,5 @@ public enum CefPermissionRequestTypes : int
     LocalNetwork = 1 << 26,
     LoopbackNetwork = 1 << 27,
     Sensors = 1 << 28,
+    AmbientLogin = 1 << 29,
 }

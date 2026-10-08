@@ -225,4 +225,18 @@ public unsafe partial struct _cef_settings_t
     /// Native type: <code></code>
     /// </remarks>
     public int use_views_default_popup;
+    /// <summary>
+    /// Managed binding for the keychain_service_name field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>cef_string_t</code>
+    /// </remarks>
+    public _cef_string_utf16_t keychain_service_name;
+    /// <summary>
+    /// Managed binding for the keychain_account_name field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>cef_string_t</code>
+    /// </remarks>
+    public _cef_string_utf16_t keychain_account_name;
 }

@@ -23,6 +23,20 @@ public unsafe partial struct _cef_preference_registrar_t
     /// Native type: <code>int (*)(struct _cef_preference_registrar_t *, const cef_string_t *, struct _cef_value_t *) __attribute__((stdcall))</code>
     /// </remarks>
     public delegate* unmanaged[Stdcall]<_cef_preference_registrar_t*, _cef_string_utf16_t*, _cef_value_t*, int> add_preference;
+    /// <summary>
+    /// Managed binding for the set_default_preference field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>int (*)(struct _cef_preference_registrar_t *, const cef_string_t *, struct _cef_value_t *, cef_string_t *) __attribute__((stdcall))</code>
+    /// </remarks>
+    public delegate* unmanaged[Stdcall]<_cef_preference_registrar_t*, _cef_string_utf16_t*, _cef_value_t*, _cef_string_utf16_t*, int> set_default_preference;
+    /// <summary>
+    /// Managed binding for the get_default_preference field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>struct _cef_value_t *(*)(struct _cef_preference_registrar_t *, const cef_string_t *) __attribute__((stdcall))</code>
+    /// </remarks>
+    public delegate* unmanaged[Stdcall]<_cef_preference_registrar_t*, _cef_string_utf16_t*, _cef_value_t*> get_default_preference;
 }
 #endif
 #if OS_MAC
@@ -50,6 +64,20 @@ public unsafe partial struct _cef_preference_registrar_t
     /// Native type: <code>int (*)(struct _cef_preference_registrar_t *, const cef_string_t *, struct _cef_value_t *)</code>
     /// </remarks>
     public delegate* unmanaged[Cdecl]<_cef_preference_registrar_t*, _cef_string_utf16_t*, _cef_value_t*, int> add_preference;
+    /// <summary>
+    /// Managed binding for the set_default_preference field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>int (*)(struct _cef_preference_registrar_t *, const cef_string_t *, struct _cef_value_t *, cef_string_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_preference_registrar_t*, _cef_string_utf16_t*, _cef_value_t*, _cef_string_utf16_t*, int> set_default_preference;
+    /// <summary>
+    /// Managed binding for the get_default_preference field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>struct _cef_value_t *(*)(struct _cef_preference_registrar_t *, const cef_string_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_preference_registrar_t*, _cef_string_utf16_t*, _cef_value_t*> get_default_preference;
 }
 #endif
 #if OS_LINUX
@@ -77,5 +105,19 @@ public unsafe partial struct _cef_preference_registrar_t
     /// Native type: <code>int (*)(struct _cef_preference_registrar_t *, const cef_string_t *, struct _cef_value_t *)</code>
     /// </remarks>
     public delegate* unmanaged[Cdecl]<_cef_preference_registrar_t*, _cef_string_utf16_t*, _cef_value_t*, int> add_preference;
+    /// <summary>
+    /// Managed binding for the set_default_preference field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>int (*)(struct _cef_preference_registrar_t *, const cef_string_t *, struct _cef_value_t *, cef_string_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_preference_registrar_t*, _cef_string_utf16_t*, _cef_value_t*, _cef_string_utf16_t*, int> set_default_preference;
+    /// <summary>
+    /// Managed binding for the get_default_preference field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>struct _cef_value_t *(*)(struct _cef_preference_registrar_t *, const cef_string_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_preference_registrar_t*, _cef_string_utf16_t*, _cef_value_t*> get_default_preference;
 }
 #endif
