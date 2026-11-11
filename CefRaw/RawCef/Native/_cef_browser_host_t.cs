@@ -493,6 +493,34 @@ public unsafe partial struct _cef_browser_host_t
     /// </remarks>
     public delegate* unmanaged[Stdcall]<_cef_browser_host_t*, cef_runtime_style_t> get_runtime_style;
     /// <summary>
+    /// Managed binding for the send_keyboard_event field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>void (*)(struct _cef_browser_host_t *, const struct _cef_keyboard_input_event_t *) __attribute__((stdcall))</code>
+    /// </remarks>
+    public delegate* unmanaged[Stdcall]<_cef_browser_host_t*, _cef_keyboard_input_event_t*, void> send_keyboard_event;
+    /// <summary>
+    /// Managed binding for the send_mouse_event field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>void (*)(struct _cef_browser_host_t *, const struct _cef_mouse_input_event_t *) __attribute__((stdcall))</code>
+    /// </remarks>
+    public delegate* unmanaged[Stdcall]<_cef_browser_host_t*, _cef_mouse_input_event_t*, void> send_mouse_event;
+    /// <summary>
+    /// Managed binding for the send_gesture_event field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>void (*)(struct _cef_browser_host_t *, const struct _cef_gesture_input_event_t *) __attribute__((stdcall))</code>
+    /// </remarks>
+    public delegate* unmanaged[Stdcall]<_cef_browser_host_t*, _cef_gesture_input_event_t*, void> send_gesture_event;
+    /// <summary>
+    /// Managed binding for the send_wheel_event field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>void (*)(struct _cef_browser_host_t *, const struct _cef_wheel_input_event_t *) __attribute__((stdcall))</code>
+    /// </remarks>
+    public delegate* unmanaged[Stdcall]<_cef_browser_host_t*, _cef_wheel_input_event_t*, void> send_wheel_event;
+    /// <summary>
     /// Managed binding for the set_ax_viewport_collapse field.
     /// </summary>
     /// <remarks>
@@ -996,6 +1024,34 @@ public unsafe partial struct _cef_browser_host_t
     /// </remarks>
     public delegate* unmanaged[Cdecl]<_cef_browser_host_t*, cef_runtime_style_t> get_runtime_style;
     /// <summary>
+    /// Managed binding for the send_keyboard_event field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>void (*)(struct _cef_browser_host_t *, const struct _cef_keyboard_input_event_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_browser_host_t*, _cef_keyboard_input_event_t*, void> send_keyboard_event;
+    /// <summary>
+    /// Managed binding for the send_mouse_event field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>void (*)(struct _cef_browser_host_t *, const struct _cef_mouse_input_event_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_browser_host_t*, _cef_mouse_input_event_t*, void> send_mouse_event;
+    /// <summary>
+    /// Managed binding for the send_gesture_event field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>void (*)(struct _cef_browser_host_t *, const struct _cef_gesture_input_event_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_browser_host_t*, _cef_gesture_input_event_t*, void> send_gesture_event;
+    /// <summary>
+    /// Managed binding for the send_wheel_event field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>void (*)(struct _cef_browser_host_t *, const struct _cef_wheel_input_event_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_browser_host_t*, _cef_wheel_input_event_t*, void> send_wheel_event;
+    /// <summary>
     /// Managed binding for the set_ax_viewport_collapse field.
     /// </summary>
     /// <remarks>
@@ -1498,6 +1554,34 @@ public unsafe partial struct _cef_browser_host_t
     /// Native type: <code>cef_runtime_style_t (*)(struct _cef_browser_host_t *)</code>
     /// </remarks>
     public delegate* unmanaged[Cdecl]<_cef_browser_host_t*, cef_runtime_style_t> get_runtime_style;
+    /// <summary>
+    /// Managed binding for the send_keyboard_event field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>void (*)(struct _cef_browser_host_t *, const struct _cef_keyboard_input_event_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_browser_host_t*, _cef_keyboard_input_event_t*, void> send_keyboard_event;
+    /// <summary>
+    /// Managed binding for the send_mouse_event field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>void (*)(struct _cef_browser_host_t *, const struct _cef_mouse_input_event_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_browser_host_t*, _cef_mouse_input_event_t*, void> send_mouse_event;
+    /// <summary>
+    /// Managed binding for the send_gesture_event field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>void (*)(struct _cef_browser_host_t *, const struct _cef_gesture_input_event_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_browser_host_t*, _cef_gesture_input_event_t*, void> send_gesture_event;
+    /// <summary>
+    /// Managed binding for the send_wheel_event field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>void (*)(struct _cef_browser_host_t *, const struct _cef_wheel_input_event_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_browser_host_t*, _cef_wheel_input_event_t*, void> send_wheel_event;
     /// <summary>
     /// Managed binding for the set_ax_viewport_collapse field.
     /// </summary>

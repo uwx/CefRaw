@@ -149,6 +149,13 @@ public unsafe partial struct _cef_client_t
     /// Native type: <code>int (*)(struct _cef_client_t *, struct _cef_browser_t *, struct _cef_frame_t *, cef_process_id_t, struct _cef_process_message_t *) __attribute__((stdcall))</code>
     /// </remarks>
     public delegate* unmanaged[Stdcall]<_cef_client_t*, _cef_browser_t*, _cef_frame_t*, cef_process_id_t, _cef_process_message_t*, int> on_process_message_received;
+    /// <summary>
+    /// Managed binding for the get_input_handler field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>struct _cef_input_handler_t *(*)(struct _cef_client_t *) __attribute__((stdcall))</code>
+    /// </remarks>
+    public delegate* unmanaged[Stdcall]<_cef_client_t*, _cef_input_handler_t*> get_input_handler;
 }
 #endif
 #if OS_MAC
@@ -302,6 +309,13 @@ public unsafe partial struct _cef_client_t
     /// Native type: <code>int (*)(struct _cef_client_t *, struct _cef_browser_t *, struct _cef_frame_t *, cef_process_id_t, struct _cef_process_message_t *)</code>
     /// </remarks>
     public delegate* unmanaged[Cdecl]<_cef_client_t*, _cef_browser_t*, _cef_frame_t*, cef_process_id_t, _cef_process_message_t*, int> on_process_message_received;
+    /// <summary>
+    /// Managed binding for the get_input_handler field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>struct _cef_input_handler_t *(*)(struct _cef_client_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_client_t*, _cef_input_handler_t*> get_input_handler;
 }
 #endif
 #if OS_LINUX
@@ -455,5 +469,12 @@ public unsafe partial struct _cef_client_t
     /// Native type: <code>int (*)(struct _cef_client_t *, struct _cef_browser_t *, struct _cef_frame_t *, cef_process_id_t, struct _cef_process_message_t *)</code>
     /// </remarks>
     public delegate* unmanaged[Cdecl]<_cef_client_t*, _cef_browser_t*, _cef_frame_t*, cef_process_id_t, _cef_process_message_t*, int> on_process_message_received;
+    /// <summary>
+    /// Managed binding for the get_input_handler field.
+    /// </summary>
+    /// <remarks>
+    /// Native type: <code>struct _cef_input_handler_t *(*)(struct _cef_client_t *)</code>
+    /// </remarks>
+    public delegate* unmanaged[Cdecl]<_cef_client_t*, _cef_input_handler_t*> get_input_handler;
 }
 #endif

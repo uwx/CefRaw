@@ -58,5 +58,6 @@ public enum CefChromePageActionIconType : int
     PaymentsChurnedUsers,
     FakePageActionForDebug,
     WalletReminderNotice,
+    GmailOtpOptIn,
     NumValues,
 }

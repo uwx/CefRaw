@@ -160,6 +160,13 @@ public unsafe partial class CefClientRef : CefBaseRefCountedRef, ICefClient
         return _result;
     }
 
+    public ICefInputHandler? GetInputHandler()
+    {
+        var _result = _ptr->get_input_handler(_ptr);
+
+        return _result != null ? new CefInputHandlerRef(_result) : null;
+    }
+
     public _cef_base_ref_counted_t @base
     {
         get => _ptr->@base;
@@ -329,6 +336,13 @@ public unsafe partial class CefClientRef : CefBaseRefCountedRef, ICefClient
         return _result;
     }
 
+    public ICefInputHandler? GetInputHandler()
+    {
+        var _result = _ptr->get_input_handler(_ptr);
+
+        return _result != null ? new CefInputHandlerRef(_result) : null;
+    }
+
     public _cef_base_ref_counted_t @base
     {
         get => _ptr->@base;
@@ -496,6 +510,13 @@ public unsafe partial class CefClientRef : CefBaseRefCountedRef, ICefClient
         var _result = _ptr->on_process_message_received(_ptr, arg0 is null ? null : arg0.NativePtr, arg1 is null ? null : arg1.NativePtr, arg2, arg3 is null ? null : arg3.NativePtr);
 
         return _result;
+    }
+
+    public ICefInputHandler? GetInputHandler()
+    {
+        var _result = _ptr->get_input_handler(_ptr);
+
+        return _result != null ? new CefInputHandlerRef(_result) : null;
     }
 
     public _cef_base_ref_counted_t @base

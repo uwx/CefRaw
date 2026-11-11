@@ -149,6 +149,14 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public cef_runtime_style_t GetRuntimeStyle();
 
+    public void SendKeyboardEvent(ICefKeyboardInputEvent? arg0);
+
+    public void SendMouseEvent(ICefMouseInputEvent? arg0);
+
+    public void SendGestureEvent(ICefGestureInputEvent? arg0);
+
+    public void SendWheelEvent(ICefWheelInputEvent? arg0);
+
     public void SetAxViewportCollapse(int arg0);
 }
 #endif
@@ -303,6 +311,14 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
 
     public cef_runtime_style_t GetRuntimeStyle();
 
+    public void SendKeyboardEvent(ICefKeyboardInputEvent? arg0);
+
+    public void SendMouseEvent(ICefMouseInputEvent? arg0);
+
+    public void SendGestureEvent(ICefGestureInputEvent? arg0);
+
+    public void SendWheelEvent(ICefWheelInputEvent? arg0);
+
     public void SetAxViewportCollapse(int arg0);
 }
 #endif
@@ -456,6 +472,14 @@ public unsafe partial interface ICefBrowserHost : ICefBaseRefCounted
     public int IsRenderProcessUnresponsive();
 
     public cef_runtime_style_t GetRuntimeStyle();
+
+    public void SendKeyboardEvent(ICefKeyboardInputEvent? arg0);
+
+    public void SendMouseEvent(ICefMouseInputEvent? arg0);
+
+    public void SendGestureEvent(ICefGestureInputEvent? arg0);
+
+    public void SendWheelEvent(ICefWheelInputEvent? arg0);
 
     public void SetAxViewportCollapse(int arg0);
 }

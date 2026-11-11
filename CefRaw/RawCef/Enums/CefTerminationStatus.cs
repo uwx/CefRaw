@@ -14,5 +14,6 @@ public enum CefTerminationStatus : int
     ProcessOom,
     LaunchFailed,
     IntegrityFailure,
+    EvictedForMemory,
     NumValues,
 }

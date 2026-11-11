@@ -52,6 +52,7 @@ public unsafe abstract partial class CefClient : CefBaseRefCounted, ICefClient
         _typedPtr->get_render_handler = &Bridge_GetRenderHandler;
         _typedPtr->get_request_handler = &Bridge_GetRequestHandler;
         _typedPtr->on_process_message_received = &Bridge_OnProcessMessageReceived;
+        _typedPtr->get_input_handler = &Bridge_GetInputHandler;
     }
 
 
@@ -149,6 +150,11 @@ public unsafe abstract partial class CefClient : CefBaseRefCounted, ICefClient
     /// Implement the <c>on_process_message_received</c> callback.
     /// </summary>
     public abstract int OnProcessMessageReceived(ICefBrowser? arg0, ICefFrame? arg1, cef_process_id_t arg2, ICefProcessMessage? arg3);
+
+    /// <summary>
+    /// Implement the <c>get_input_handler</c> callback.
+    /// </summary>
+    public abstract ICefInputHandler? GetInputHandler();
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -582,6 +588,29 @@ public unsafe abstract partial class CefClient : CefBaseRefCounted, ICefClient
             var _result = _m.OnProcessMessageReceived(_a0, _a1, _a2, _a3);
 
             return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static _cef_input_handler_t* Bridge_GetInputHandler(_cef_client_t* self)
+    {
+        try
+        {
+            var _m = GetManaged<CefClient>(self);
+
+            var _result = _m.GetInputHandler();
+
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
         }
         catch (Exception ex)
         {
@@ -645,6 +674,7 @@ public unsafe abstract partial class CefClient : CefBaseRefCounted, ICefClient
         _typedPtr->get_render_handler = &Bridge_GetRenderHandler;
         _typedPtr->get_request_handler = &Bridge_GetRequestHandler;
         _typedPtr->on_process_message_received = &Bridge_OnProcessMessageReceived;
+        _typedPtr->get_input_handler = &Bridge_GetInputHandler;
     }
 
 
@@ -742,6 +772,11 @@ public unsafe abstract partial class CefClient : CefBaseRefCounted, ICefClient
     /// Implement the <c>on_process_message_received</c> callback.
     /// </summary>
     public abstract int OnProcessMessageReceived(ICefBrowser? arg0, ICefFrame? arg1, cef_process_id_t arg2, ICefProcessMessage? arg3);
+
+    /// <summary>
+    /// Implement the <c>get_input_handler</c> callback.
+    /// </summary>
+    public abstract ICefInputHandler? GetInputHandler();
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -1175,6 +1210,29 @@ public unsafe abstract partial class CefClient : CefBaseRefCounted, ICefClient
             var _result = _m.OnProcessMessageReceived(_a0, _a1, _a2, _a3);
 
             return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static _cef_input_handler_t* Bridge_GetInputHandler(_cef_client_t* self)
+    {
+        try
+        {
+            var _m = GetManaged<CefClient>(self);
+
+            var _result = _m.GetInputHandler();
+
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
         }
         catch (Exception ex)
         {
@@ -1238,6 +1296,7 @@ public unsafe abstract partial class CefClient : CefBaseRefCounted, ICefClient
         _typedPtr->get_render_handler = &Bridge_GetRenderHandler;
         _typedPtr->get_request_handler = &Bridge_GetRequestHandler;
         _typedPtr->on_process_message_received = &Bridge_OnProcessMessageReceived;
+        _typedPtr->get_input_handler = &Bridge_GetInputHandler;
     }
 
 
@@ -1335,6 +1394,11 @@ public unsafe abstract partial class CefClient : CefBaseRefCounted, ICefClient
     /// Implement the <c>on_process_message_received</c> callback.
     /// </summary>
     public abstract int OnProcessMessageReceived(ICefBrowser? arg0, ICefFrame? arg1, cef_process_id_t arg2, ICefProcessMessage? arg3);
+
+    /// <summary>
+    /// Implement the <c>get_input_handler</c> callback.
+    /// </summary>
+    public abstract ICefInputHandler? GetInputHandler();
 
     #if OS_WIN
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
@@ -1768,6 +1832,29 @@ public unsafe abstract partial class CefClient : CefBaseRefCounted, ICefClient
             var _result = _m.OnProcessMessageReceived(_a0, _a1, _a2, _a3);
 
             return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static _cef_input_handler_t* Bridge_GetInputHandler(_cef_client_t* self)
+    {
+        try
+        {
+            var _m = GetManaged<CefClient>(self);
+
+            var _result = _m.GetInputHandler();
+
+            if (_result is ICefBaseRefCounted _rc) _rc.AddRef();
+            return _result != null ? _result.NativePtr : null;
         }
         catch (Exception ex)
         {

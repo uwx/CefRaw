@@ -468,6 +468,26 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
         return _result;
     }
 
+    public void SendKeyboardEvent(ICefKeyboardInputEvent? arg0)
+    {
+        _ptr->send_keyboard_event(_ptr, arg0 is null ? null : arg0.NativePtr);
+    }
+
+    public void SendMouseEvent(ICefMouseInputEvent? arg0)
+    {
+        _ptr->send_mouse_event(_ptr, arg0 is null ? null : arg0.NativePtr);
+    }
+
+    public void SendGestureEvent(ICefGestureInputEvent? arg0)
+    {
+        _ptr->send_gesture_event(_ptr, arg0 is null ? null : arg0.NativePtr);
+    }
+
+    public void SendWheelEvent(ICefWheelInputEvent? arg0)
+    {
+        _ptr->send_wheel_event(_ptr, arg0 is null ? null : arg0.NativePtr);
+    }
+
     public void SetAxViewportCollapse(int arg0)
     {
         _ptr->set_ax_viewport_collapse(_ptr, arg0);
@@ -950,6 +970,26 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
         return _result;
     }
 
+    public void SendKeyboardEvent(ICefKeyboardInputEvent? arg0)
+    {
+        _ptr->send_keyboard_event(_ptr, arg0 is null ? null : arg0.NativePtr);
+    }
+
+    public void SendMouseEvent(ICefMouseInputEvent? arg0)
+    {
+        _ptr->send_mouse_event(_ptr, arg0 is null ? null : arg0.NativePtr);
+    }
+
+    public void SendGestureEvent(ICefGestureInputEvent? arg0)
+    {
+        _ptr->send_gesture_event(_ptr, arg0 is null ? null : arg0.NativePtr);
+    }
+
+    public void SendWheelEvent(ICefWheelInputEvent? arg0)
+    {
+        _ptr->send_wheel_event(_ptr, arg0 is null ? null : arg0.NativePtr);
+    }
+
     public void SetAxViewportCollapse(int arg0)
     {
         _ptr->set_ax_viewport_collapse(_ptr, arg0);
@@ -1430,6 +1470,26 @@ public unsafe partial class CefBrowserHostRef : CefBaseRefCountedRef, ICefBrowse
         var _result = _ptr->get_runtime_style(_ptr);
 
         return _result;
+    }
+
+    public void SendKeyboardEvent(ICefKeyboardInputEvent? arg0)
+    {
+        _ptr->send_keyboard_event(_ptr, arg0 is null ? null : arg0.NativePtr);
+    }
+
+    public void SendMouseEvent(ICefMouseInputEvent? arg0)
+    {
+        _ptr->send_mouse_event(_ptr, arg0 is null ? null : arg0.NativePtr);
+    }
+
+    public void SendGestureEvent(ICefGestureInputEvent? arg0)
+    {
+        _ptr->send_gesture_event(_ptr, arg0 is null ? null : arg0.NativePtr);
+    }
+
+    public void SendWheelEvent(ICefWheelInputEvent? arg0)
+    {
+        _ptr->send_wheel_event(_ptr, arg0 is null ? null : arg0.NativePtr);
     }
 
     public void SetAxViewportCollapse(int arg0)

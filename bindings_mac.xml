@@ -1104,6 +1104,9 @@
       <enumerator name="TS_INTEGRITY_FAILURE" access="public">
         <type primitive="False">int</type>
       </enumerator>
+      <enumerator name="TS_EVICTED_FOR_MEMORY" access="public">
+        <type primitive="False">int</type>
+      </enumerator>
       <enumerator name="TS_NUM_VALUES" access="public">
         <type primitive="False">int</type>
       </enumerator>
@@ -3743,21 +3746,6 @@
         </value>
       </enumerator>
     </enumeration>
-    <enumeration name="cef_mouse_button_type_t" access="public">
-      <type>int</type>
-      <enumerator name="MBT_LEFT" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>0</code>
-        </value>
-      </enumerator>
-      <enumerator name="MBT_MIDDLE" access="public">
-        <type primitive="False">int</type>
-      </enumerator>
-      <enumerator name="MBT_RIGHT" access="public">
-        <type primitive="False">int</type>
-      </enumerator>
-    </enumeration>
     <struct name="_cef_mouse_event_t" access="public">
       <field name="x" access="public">
         <type>int</type>
@@ -3784,27 +3772,6 @@
         <type primitive="False">int</type>
       </enumerator>
       <enumerator name="CEF_TET_CANCELLED" access="public">
-        <type primitive="False">int</type>
-      </enumerator>
-    </enumeration>
-    <enumeration name="cef_pointer_type_t" access="public">
-      <type>int</type>
-      <enumerator name="CEF_POINTER_TYPE_TOUCH" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>0</code>
-        </value>
-      </enumerator>
-      <enumerator name="CEF_POINTER_TYPE_MOUSE" access="public">
-        <type primitive="False">int</type>
-      </enumerator>
-      <enumerator name="CEF_POINTER_TYPE_PEN" access="public">
-        <type primitive="False">int</type>
-      </enumerator>
-      <enumerator name="CEF_POINTER_TYPE_ERASER" access="public">
-        <type primitive="False">int</type>
-      </enumerator>
-      <enumerator name="CEF_POINTER_TYPE_UNKNOWN" access="public">
         <type primitive="False">int</type>
       </enumerator>
     </enumeration>
@@ -3850,111 +3817,6 @@
       </enumerator>
       <enumerator name="PET_POPUP" access="public">
         <type primitive="False">int</type>
-      </enumerator>
-    </enumeration>
-    <enumeration name="cef_event_flags_t" access="public">
-      <type>int</type>
-      <enumerator name="EVENTFLAG_NONE" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>0</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_CAPS_LOCK_ON" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 0</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_SHIFT_DOWN" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 1</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_CONTROL_DOWN" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 2</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_ALT_DOWN" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 3</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_LEFT_MOUSE_BUTTON" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 4</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_MIDDLE_MOUSE_BUTTON" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 5</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_RIGHT_MOUSE_BUTTON" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 6</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_COMMAND_DOWN" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 7</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_NUM_LOCK_ON" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 8</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_IS_KEY_PAD" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 9</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_IS_LEFT" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 10</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_IS_RIGHT" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 11</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_ALTGR_DOWN" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 12</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_IS_REPEAT" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 13</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_PRECISION_SCROLLING_DELTA" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 14</code>
-        </value>
-      </enumerator>
-      <enumerator name="EVENTFLAG_SCROLL_BY_PAGE" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>1 &lt;&lt; 15</code>
-        </value>
       </enumerator>
     </enumeration>
     <enumeration name="cef_menu_item_type_t" access="public">
@@ -4231,24 +4093,6 @@
         <value>
           <code>1 &lt;&lt; 3</code>
         </value>
-      </enumerator>
-    </enumeration>
-    <enumeration name="cef_key_event_type_t" access="public">
-      <type>int</type>
-      <enumerator name="KEYEVENT_RAWKEYDOWN" access="public">
-        <type primitive="False">int</type>
-        <value>
-          <code>0</code>
-        </value>
-      </enumerator>
-      <enumerator name="KEYEVENT_KEYDOWN" access="public">
-        <type primitive="False">int</type>
-      </enumerator>
-      <enumerator name="KEYEVENT_KEYUP" access="public">
-        <type primitive="False">int</type>
-      </enumerator>
-      <enumerator name="KEYEVENT_CHAR" access="public">
-        <type primitive="False">int</type>
       </enumerator>
     </enumeration>
     <struct name="_cef_key_event_t" access="public">
@@ -5949,6 +5793,9 @@
         <type primitive="False">int</type>
       </enumerator>
       <enumerator name="CEF_CPAIT_WALLET_REMINDER_NOTICE" access="public">
+        <type primitive="False">int</type>
+      </enumerator>
+      <enumerator name="CEF_CPAIT_GMAIL_OTP_OPT_IN" access="public">
         <type primitive="False">int</type>
       </enumerator>
       <enumerator name="CEF_CPAIT_NUM_VALUES" access="public">
@@ -8334,6 +8181,18 @@
       <field name="get_runtime_style" access="public">
         <type native="cef_runtime_style_t (*)(struct _cef_browser_host_t *)">delegate* unmanaged[Cdecl]&lt;_cef_browser_host_t*, cef_runtime_style_t&gt;</type>
       </field>
+      <field name="send_keyboard_event" access="public">
+        <type native="void (*)(struct _cef_browser_host_t *, const struct _cef_keyboard_input_event_t *)">delegate* unmanaged[Cdecl]&lt;_cef_browser_host_t*, _cef_keyboard_input_event_t*, void&gt;</type>
+      </field>
+      <field name="send_mouse_event" access="public">
+        <type native="void (*)(struct _cef_browser_host_t *, const struct _cef_mouse_input_event_t *)">delegate* unmanaged[Cdecl]&lt;_cef_browser_host_t*, _cef_mouse_input_event_t*, void&gt;</type>
+      </field>
+      <field name="send_gesture_event" access="public">
+        <type native="void (*)(struct _cef_browser_host_t *, const struct _cef_gesture_input_event_t *)">delegate* unmanaged[Cdecl]&lt;_cef_browser_host_t*, _cef_gesture_input_event_t*, void&gt;</type>
+      </field>
+      <field name="send_wheel_event" access="public">
+        <type native="void (*)(struct _cef_browser_host_t *, const struct _cef_wheel_input_event_t *)">delegate* unmanaged[Cdecl]&lt;_cef_browser_host_t*, _cef_wheel_input_event_t*, void&gt;</type>
+      </field>
       <field name="set_ax_viewport_collapse" access="public">
         <type native="void (*)(struct _cef_browser_host_t *, int)">delegate* unmanaged[Cdecl]&lt;_cef_browser_host_t*, int, void&gt;</type>
       </field>
@@ -9484,6 +9343,9 @@
       </field>
       <field name="on_process_message_received" access="public">
         <type native="int (*)(struct _cef_client_t *, struct _cef_browser_t *, struct _cef_frame_t *, cef_process_id_t, struct _cef_process_message_t *)">delegate* unmanaged[Cdecl]&lt;_cef_client_t*, _cef_browser_t*, _cef_frame_t*, cef_process_id_t, _cef_process_message_t*, int&gt;</type>
+      </field>
+      <field name="get_input_handler" access="public">
+        <type native="struct _cef_input_handler_t *(*)(struct _cef_client_t *)">delegate* unmanaged[Cdecl]&lt;_cef_client_t*, _cef_input_handler_t*&gt;</type>
       </field>
     </struct>
     <struct name="_cef_command_line_t" access="public" unsafe="true">
@@ -11066,7 +10928,7 @@
       <constant name="CEF_API_HASH_PLATFORM" access="public">
         <type primitive="False">ReadOnlySpan&lt;byte&gt;</type>
         <value>
-          <code>"57391896545d34a4c090c5e2ee5c7a7d902e61a6"u8</code>
+          <code>"00df354079525c0da54661df10277fb6c19e58a3"u8</code>
         </value>
       </constant>
       <constant name="kNullCursorHandle" access="public">
@@ -11132,7 +10994,7 @@
       <constant name="CEF_API_HASH_PLATFORM" access="public">
         <type primitive="False">ReadOnlySpan&lt;byte&gt;</type>
         <value>
-          <code>"675a366a0df2e2fc012e078c9abbd7c37423b80e"u8</code>
+          <code>"14400c7a2a1d409ff2c224be448e173545463ee5"u8</code>
         </value>
       </constant>
     </class>

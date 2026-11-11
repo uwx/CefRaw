@@ -50,6 +50,8 @@ public unsafe partial interface ICefClient : ICefBaseRefCounted
     public ICefRequestHandler? GetRequestHandler();
 
     public int OnProcessMessageReceived(ICefBrowser? arg0, ICefFrame? arg1, cef_process_id_t arg2, ICefProcessMessage? arg3);
+
+    public ICefInputHandler? GetInputHandler();
 }
 #endif
 #if OS_MAC
@@ -104,6 +106,8 @@ public unsafe partial interface ICefClient : ICefBaseRefCounted
     public ICefRequestHandler? GetRequestHandler();
 
     public int OnProcessMessageReceived(ICefBrowser? arg0, ICefFrame? arg1, cef_process_id_t arg2, ICefProcessMessage? arg3);
+
+    public ICefInputHandler? GetInputHandler();
 }
 #endif
 #if OS_LINUX
@@ -158,5 +162,7 @@ public unsafe partial interface ICefClient : ICefBaseRefCounted
     public ICefRequestHandler? GetRequestHandler();
 
     public int OnProcessMessageReceived(ICefBrowser? arg0, ICefFrame? arg1, cef_process_id_t arg2, ICefProcessMessage? arg3);
+
+    public ICefInputHandler? GetInputHandler();
 }
 #endif

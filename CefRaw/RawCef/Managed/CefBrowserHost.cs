@@ -101,6 +101,10 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         _typedPtr->execute_chrome_command = &Bridge_ExecuteChromeCommand;
         _typedPtr->is_render_process_unresponsive = &Bridge_IsRenderProcessUnresponsive;
         _typedPtr->get_runtime_style = &Bridge_GetRuntimeStyle;
+        _typedPtr->send_keyboard_event = &Bridge_SendKeyboardEvent;
+        _typedPtr->send_mouse_event = &Bridge_SendMouseEvent;
+        _typedPtr->send_gesture_event = &Bridge_SendGestureEvent;
+        _typedPtr->send_wheel_event = &Bridge_SendWheelEvent;
         _typedPtr->set_ax_viewport_collapse = &Bridge_SetAxViewportCollapse;
     }
 
@@ -444,6 +448,26 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// Implement the <c>get_runtime_style</c> callback.
     /// </summary>
     public abstract cef_runtime_style_t GetRuntimeStyle();
+
+    /// <summary>
+    /// Implement the <c>send_keyboard_event</c> callback.
+    /// </summary>
+    public abstract void SendKeyboardEvent(ICefKeyboardInputEvent? arg0);
+
+    /// <summary>
+    /// Implement the <c>send_mouse_event</c> callback.
+    /// </summary>
+    public abstract void SendMouseEvent(ICefMouseInputEvent? arg0);
+
+    /// <summary>
+    /// Implement the <c>send_gesture_event</c> callback.
+    /// </summary>
+    public abstract void SendGestureEvent(ICefGestureInputEvent? arg0);
+
+    /// <summary>
+    /// Implement the <c>send_wheel_event</c> callback.
+    /// </summary>
+    public abstract void SendWheelEvent(ICefWheelInputEvent? arg0);
 
     /// <summary>
     /// Implement the <c>set_ax_viewport_collapse</c> callback.
@@ -1947,6 +1971,90 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
     #endif
+    private static void Bridge_SendKeyboardEvent(_cef_browser_host_t* self, _cef_keyboard_input_event_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefBrowserHost>(self);
+
+            var _a0 = arg0 != null ? new CefKeyboardInputEventRef(arg0) : null;
+            _m.SendKeyboardEvent(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static void Bridge_SendMouseEvent(_cef_browser_host_t* self, _cef_mouse_input_event_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefBrowserHost>(self);
+
+            var _a0 = arg0 != null ? new CefMouseInputEventRef(arg0) : null;
+            _m.SendMouseEvent(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static void Bridge_SendGestureEvent(_cef_browser_host_t* self, _cef_gesture_input_event_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefBrowserHost>(self);
+
+            var _a0 = arg0 != null ? new CefGestureInputEventRef(arg0) : null;
+            _m.SendGestureEvent(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static void Bridge_SendWheelEvent(_cef_browser_host_t* self, _cef_wheel_input_event_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefBrowserHost>(self);
+
+            var _a0 = arg0 != null ? new CefWheelInputEventRef(arg0) : null;
+            _m.SendWheelEvent(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetAxViewportCollapse(_cef_browser_host_t* self, int arg0)
     {
         try
@@ -2067,6 +2175,10 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         _typedPtr->execute_chrome_command = &Bridge_ExecuteChromeCommand;
         _typedPtr->is_render_process_unresponsive = &Bridge_IsRenderProcessUnresponsive;
         _typedPtr->get_runtime_style = &Bridge_GetRuntimeStyle;
+        _typedPtr->send_keyboard_event = &Bridge_SendKeyboardEvent;
+        _typedPtr->send_mouse_event = &Bridge_SendMouseEvent;
+        _typedPtr->send_gesture_event = &Bridge_SendGestureEvent;
+        _typedPtr->send_wheel_event = &Bridge_SendWheelEvent;
         _typedPtr->set_ax_viewport_collapse = &Bridge_SetAxViewportCollapse;
     }
 
@@ -2410,6 +2522,26 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// Implement the <c>get_runtime_style</c> callback.
     /// </summary>
     public abstract cef_runtime_style_t GetRuntimeStyle();
+
+    /// <summary>
+    /// Implement the <c>send_keyboard_event</c> callback.
+    /// </summary>
+    public abstract void SendKeyboardEvent(ICefKeyboardInputEvent? arg0);
+
+    /// <summary>
+    /// Implement the <c>send_mouse_event</c> callback.
+    /// </summary>
+    public abstract void SendMouseEvent(ICefMouseInputEvent? arg0);
+
+    /// <summary>
+    /// Implement the <c>send_gesture_event</c> callback.
+    /// </summary>
+    public abstract void SendGestureEvent(ICefGestureInputEvent? arg0);
+
+    /// <summary>
+    /// Implement the <c>send_wheel_event</c> callback.
+    /// </summary>
+    public abstract void SendWheelEvent(ICefWheelInputEvent? arg0);
 
     /// <summary>
     /// Implement the <c>set_ax_viewport_collapse</c> callback.
@@ -3913,6 +4045,90 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     #else
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
     #endif
+    private static void Bridge_SendKeyboardEvent(_cef_browser_host_t* self, _cef_keyboard_input_event_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefBrowserHost>(self);
+
+            var _a0 = arg0 != null ? new CefKeyboardInputEventRef(arg0) : null;
+            _m.SendKeyboardEvent(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static void Bridge_SendMouseEvent(_cef_browser_host_t* self, _cef_mouse_input_event_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefBrowserHost>(self);
+
+            var _a0 = arg0 != null ? new CefMouseInputEventRef(arg0) : null;
+            _m.SendMouseEvent(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static void Bridge_SendGestureEvent(_cef_browser_host_t* self, _cef_gesture_input_event_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefBrowserHost>(self);
+
+            var _a0 = arg0 != null ? new CefGestureInputEventRef(arg0) : null;
+            _m.SendGestureEvent(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static void Bridge_SendWheelEvent(_cef_browser_host_t* self, _cef_wheel_input_event_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefBrowserHost>(self);
+
+            var _a0 = arg0 != null ? new CefWheelInputEventRef(arg0) : null;
+            _m.SendWheelEvent(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
     private static void Bridge_SetAxViewportCollapse(_cef_browser_host_t* self, int arg0)
     {
         try
@@ -4033,6 +4249,10 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
         _typedPtr->execute_chrome_command = &Bridge_ExecuteChromeCommand;
         _typedPtr->is_render_process_unresponsive = &Bridge_IsRenderProcessUnresponsive;
         _typedPtr->get_runtime_style = &Bridge_GetRuntimeStyle;
+        _typedPtr->send_keyboard_event = &Bridge_SendKeyboardEvent;
+        _typedPtr->send_mouse_event = &Bridge_SendMouseEvent;
+        _typedPtr->send_gesture_event = &Bridge_SendGestureEvent;
+        _typedPtr->send_wheel_event = &Bridge_SendWheelEvent;
         _typedPtr->set_ax_viewport_collapse = &Bridge_SetAxViewportCollapse;
     }
 
@@ -4376,6 +4596,26 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
     /// Implement the <c>get_runtime_style</c> callback.
     /// </summary>
     public abstract cef_runtime_style_t GetRuntimeStyle();
+
+    /// <summary>
+    /// Implement the <c>send_keyboard_event</c> callback.
+    /// </summary>
+    public abstract void SendKeyboardEvent(ICefKeyboardInputEvent? arg0);
+
+    /// <summary>
+    /// Implement the <c>send_mouse_event</c> callback.
+    /// </summary>
+    public abstract void SendMouseEvent(ICefMouseInputEvent? arg0);
+
+    /// <summary>
+    /// Implement the <c>send_gesture_event</c> callback.
+    /// </summary>
+    public abstract void SendGestureEvent(ICefGestureInputEvent? arg0);
+
+    /// <summary>
+    /// Implement the <c>send_wheel_event</c> callback.
+    /// </summary>
+    public abstract void SendWheelEvent(ICefWheelInputEvent? arg0);
 
     /// <summary>
     /// Implement the <c>set_ax_viewport_collapse</c> callback.
@@ -5866,6 +6106,90 @@ public unsafe abstract partial class CefBrowserHost : CefBaseRefCounted, ICefBro
             var _result = _m.GetRuntimeStyle();
 
             return _result;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static void Bridge_SendKeyboardEvent(_cef_browser_host_t* self, _cef_keyboard_input_event_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefBrowserHost>(self);
+
+            var _a0 = arg0 != null ? new CefKeyboardInputEventRef(arg0) : null;
+            _m.SendKeyboardEvent(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static void Bridge_SendMouseEvent(_cef_browser_host_t* self, _cef_mouse_input_event_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefBrowserHost>(self);
+
+            var _a0 = arg0 != null ? new CefMouseInputEventRef(arg0) : null;
+            _m.SendMouseEvent(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static void Bridge_SendGestureEvent(_cef_browser_host_t* self, _cef_gesture_input_event_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefBrowserHost>(self);
+
+            var _a0 = arg0 != null ? new CefGestureInputEventRef(arg0) : null;
+            _m.SendGestureEvent(_a0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Managed exception in callback: " + ex.Message);
+            throw;
+        }
+    }
+
+    #if OS_WIN
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+    #else
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    #endif
+    private static void Bridge_SendWheelEvent(_cef_browser_host_t* self, _cef_wheel_input_event_t* arg0)
+    {
+        try
+        {
+            var _m = GetManaged<CefBrowserHost>(self);
+
+            var _a0 = arg0 != null ? new CefWheelInputEventRef(arg0) : null;
+            _m.SendWheelEvent(_a0);
         }
         catch (Exception ex)
         {
